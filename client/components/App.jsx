@@ -2,33 +2,31 @@
 
 App = React.createClass({
 
-    getPosts() {
-        return [
-            {_id: 1, text: 'This is post 1'},
-            {_id: 2, text: 'This is post 2'},
-            {_id: 3, text: 'This is post 3'},
-        ];
-    },
-
-    renderPosts() {
-        return this.getPosts().map((post) => {
-            return <Post key={post._id} post={post} />;
-        });
-    },
-
     render() {
-        let posts = this.renderPosts();
 
         return (
-            <div className="ui container">
-                <header>
-                    <h1>Posts</h1>
-                </header>
-
-                <ul>
-                    {posts}
-                </ul>
+        <div>
+            <div className="ui labeled icon menu">
+                <div className="ui container">
+                    <a className="item" href="#">
+                    <i className="home icon"></i>
+                        Home
+                    </a>
+                    <a className="item">
+                        <i className="comments icon"></i>
+                        Posts
+                    </a>
+                    <div className="right menu">
+                        <a className="item">
+                          <i className="sign in icon"></i>
+                          Sign In
+                        </a>
+                    </div>
+                </div>
             </div>
+            <NewPost />
+            <Feed />
+        </div>
         );
     }
 
