@@ -6,13 +6,14 @@ NewPost = React.createClass({
         event.preventDefault();
 
         // Find the text field via React ref
-        let postInput = React.findDOMNode(this.refs.newPostText);
+        let postInput = ReactDOM.findDOMNode(this.refs.newPostText);
         let text = postInput.value.trim();
 
         // Insert new task
         Posts.insert({
             text: text,
-            createdAt: Date.now()
+            createdAt: new Date(),
+            likes: 0
         });
 
         // Clear form
