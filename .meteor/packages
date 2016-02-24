@@ -22,3 +22,5 @@ semantic:ui
 flemay:less-autoprefixer
 react
 kadira:flow-router
+kadira:react-layout
+accounts-password
