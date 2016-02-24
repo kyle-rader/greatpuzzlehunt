@@ -35,6 +35,12 @@ Post = React.createClass({
         return Math.floor(seconds) + ' seconds ago';
     },
 
+    likePost() {
+        Posts.update(this.props.post._id, {
+            $set: {likes: this.props.post.likes + 1}
+        });
+    },
+
     render() {
 
         return (
@@ -43,8 +49,7 @@ Post = React.createClass({
                 <div className="summary">
                     <a className="user">
                         UserName 
-                    </a>
-                    posted
+                    </a> &nbsp;posted
                     <div className="date">
                         {this.getDateLabel()}
                     </div>
@@ -53,7 +58,7 @@ Post = React.createClass({
                     {this.props.post.text}
                 </div>
                 <div className="meta">
-                    <a className="like">
+                    <a className="like" onClick={this.likePost}>
                         <i className="like icon"></i> {this.props.post.likes} likes
                     </a>
                 </div>
