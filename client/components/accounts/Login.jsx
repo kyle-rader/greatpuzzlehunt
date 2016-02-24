@@ -25,16 +25,16 @@ Login = React.createClass({
       <div className="ui middle aligned center aligned grid" style={gridStyle}>
           <div className="column" style={colStyle}>
               <form className="ui large form">
-                <div className="ui stacked segment">
-                  <h2 className="ui blue image header">
+                <div className="ui raised segment">
+                  <h2 className="ui blue header">
                     <div className="content">
-                      Safebook
+                      Altitude
                     </div>
                   </h2>
                   <div className="field">
                     <div className="ui left icon input">
                       <i className="user icon"></i>
-                      <input type="text" ref="email" placeholder="E-mail address" autoComplete="off" />
+                      <input type="text" ref="username" placeholder="Username" autoComplete="off" />
                     </div>
                   </div>
                   <div className="field">
