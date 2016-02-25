@@ -15,15 +15,9 @@ Login = React.createClass({
     },
 
     render() {
-      let gridStyle = {
-        height: '100%'
-      };
-      let colStyle = {
-        maxWidth: '440px'
-      };
       return (
-      <div className="ui middle aligned center aligned grid" style={gridStyle}>
-          <div className="column" style={colStyle}>
+      <div className="login ui middle aligned center aligned grid">
+          <div className="column">
               <form className="ui large form">
                 <div className="ui raised segment">
                   <h2 className="ui blue header">
