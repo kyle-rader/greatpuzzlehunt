@@ -27,9 +27,19 @@ App = React.createClass({
         return this.data.canView() ? this.props.yield : <Login />;
     },
 
+    needsTopMargin() {
+        let current = FlowRouter.current().route.name;
+        let publicRoutes = ['login', 'register', 'about'];
+        let index = publicRoutes.indexOf(current);
+        
+        if (index > -1) return false;
+
+        return !!Meteor.user();
+    },
+
     render() {
         let topMargin = {
-            marginTop: this.data.canView() ? '' : '73px'
+            marginTop: (this.needsTopMargin() ? '73px' : '')
         };
 
         return (
