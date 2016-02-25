@@ -6,7 +6,6 @@ App = React.createClass({
 
     getMeteorData() {
         return {
-            loggingIn: Meteor.loggingIn(),
             hasUser: !!Meteor.user(),
             isPublic(route) {
                 let publicRoutes = ['login', 'register', 'about'];
@@ -17,10 +16,6 @@ App = React.createClass({
                 return this.isPublic(FlowRouter.current().route.name) || !!Meteor.user();
             }
         };
-    },
-
-    loading() {
-        return <div className="loading"></div>;
     },
 
     getView() {
@@ -45,7 +40,7 @@ App = React.createClass({
         return (
         <div className="app-root" style={topMargin}>
             <AppHeader hasUser={this.data.hasUser} />
-            {this.data.loggingIn ? this.loading() : this.getView()}
+            {this.getView()}
         </div>);
     }
 

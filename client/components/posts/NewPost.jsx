@@ -22,7 +22,7 @@ NewPost = React.createClass({
 
     render() {
         return (
-        <form className="ui form container" onSubmit={this.makeNewPost} >
+        <form className="new-post ui form container" onSubmit={this.makeNewPost} >
             <div className="field">
                 <label>New Post</label>
                 <input type="text" ref="newPostText" placeholder="What's Up?" />
