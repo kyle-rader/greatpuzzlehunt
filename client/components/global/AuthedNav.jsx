@@ -3,16 +3,21 @@ AuthedNav = React.createClass({
         event.preventDefault();
         return Meteor.logout( () => FlowRouter.go('/login'));
     },
+
+    componentDidMount() {
+        $(this.refs.profileDropdown).dropdown();
+    },
+
     render() {
-        return
-        <div className="ui fixed labeled icon menu">
-            <a className="item" href="/home">
+        return (
+        <div className="top-menu ui fixed labeled icon menu">
+            <a className="item" href="/">
                 <i className="home icon"></i>
                 Home
             </a>
 
             <div className="right menu">
-                <div className="ui dropdown item">
+                <div className="ui dropdown item" ref="profileDropdown">
                     <i className="user icon"></i>
                     {this.props.user.username}
                     <div className="menu">
@@ -21,6 +26,6 @@ AuthedNav = React.createClass({
                     </div>
                 </div>
             </div>
-        </div>;
+        </div>);
     }
 });

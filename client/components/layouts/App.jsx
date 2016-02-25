@@ -9,7 +9,7 @@ App = React.createClass({
             loggingIn: Meteor.loggingIn(),
             hasUser: !!Meteor.user(),
             isPublic(route) {
-                let publicRoutes = ['login', 'register'];
+                let publicRoutes = ['login', 'register', 'about'];
 
                 return publicRoutes.indexOf(route) > -1;
             },
@@ -28,8 +28,12 @@ App = React.createClass({
     },
 
     render() {
+        let topMargin = {
+            marginTop: this.data.canView() ? '' : '73px'
+        };
+
         return (
-        <div className="app-root">
+        <div className="app-root" style={topMargin}>
             <AppHeader hasUser={this.data.hasUser} />
             {this.data.loggingIn ? this.loading() : this.getView()}
         </div>);

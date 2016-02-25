@@ -4,5 +4,5 @@ Accounts.onLogin(() => {
     let currentRoute = FlowRouter.current(),
         path = currentRoute.path;
 
-    return path !== '/login' ? FlowRouter.go(path) : FlowRouter.go('/home');
+    return path === '/login' ? FlowRouter.go('/home') : FlowRouter.go(path);
 });
