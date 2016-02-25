@@ -1,7 +1,7 @@
 AuthedNav = React.createClass({
     logout(event) {
         event.preventDefault();
-        return Meteor.logout( () => FlowRouter.go('/login'));
+        return Meteor.logout( () => FlowRouter.go('/'));
     },
 
     componentDidMount() {
@@ -21,8 +21,16 @@ AuthedNav = React.createClass({
                     <i className="user icon"></i>
                     {this.props.user.username}
                     <div className="menu">
-                        <a className="item">Profile</a>
-                        <a className="item">Settings</a>
+                        <a className="item">
+                            <i className="user icon"></i> Profile
+                        </a>
+                        <a className="item">
+                            <i className="settings icon"></i> Settings
+                        </a>
+                        <div className="divider"></div>
+                        <a className="item" onClick={this.logout}>
+                            <i className="sign out icon"></i> Logout
+                        </a>
                     </div>
                 </div>
             </div>
