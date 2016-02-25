@@ -16,15 +16,12 @@ Login = React.createClass({
         let username = $(this.refs.username).val();
         let password = $(this.refs.password).val();
 
-        console.log('Setting state');
-        // this.setState({err: {reason: 'No login For you!'}});
-
-        Meteor.loginWithPassword(username, password, function(err) {
+        Meteor.loginWithPassword(username, password, (err) => {
             
             if (err) {
               this.setState({err: err});
             }
-        }.bind(this));
+        });
     },
 
     getErrorMessage() {
