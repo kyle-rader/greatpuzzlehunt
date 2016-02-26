@@ -9,6 +9,9 @@ NewPost = React.createClass({
         let postInput = ReactDOM.findDOMNode(this.refs.newPostText);
         let text = postInput.value.trim();
 
+        if (text.length === 0)
+            return;
+
         // Insert new task
         Posts.insert({
             text: text,
