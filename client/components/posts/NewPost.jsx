@@ -13,7 +13,8 @@ NewPost = React.createClass({
         Posts.insert({
             text: text,
             createdAt: new Date(),
-            likes: 0
+            likes: 0,
+            username: Meteor.user().username
         });
 
         // Clear form
