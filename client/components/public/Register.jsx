@@ -80,7 +80,7 @@ Register = React.createClass({
                   </h2>
                   <div className="two fields">
                     <div className="field">
-                      <input type="text" ref="firstname" name="firstname" placeholder="Firt Name" autoComplete="off" defaultValue={this.state.firstname}/>
+                      <input type="text" ref="firstname" name="firstname" placeholder="First Name" autoComplete="off" defaultValue={this.state.firstname}/>
                     </div>
                     <div className="field">
                       <input type="text" ref="lastname" name="lastname" placeholder="Last Name" autoComplete="off" defaultValue={this.state.lastname}/>
