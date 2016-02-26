@@ -48,7 +48,7 @@ Post = React.createClass({
             <div className="content">
                 <div className="summary">
                     <a className="user">
-                        UserName 
+                        {this.props.post.username} 
                     </a> &nbsp;posted
                     <div className="date">
                         {this.getDateLabel()}
