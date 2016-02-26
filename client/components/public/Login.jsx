@@ -62,7 +62,7 @@ Login = React.createClass({
               {this.getErrorMessage()}
 
               <div className="ui message">
-                Get Started! <a href="#">Sign Up</a>
+                <a href="/register">Join Altitude!</a>
               </div>
           </div>
       </div>);
