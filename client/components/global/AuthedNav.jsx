@@ -10,7 +10,7 @@ AuthedNav = React.createClass({
 
     render() {
         return (
-        <div className="top-menu ui fixed labeled icon menu">
+        <div className="top-menu ui fixed icon menu">
             <a className="item" href="/">
                 <i className="home icon"></i>
                 Home
