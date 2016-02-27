@@ -13,11 +13,11 @@ NewPost = React.createClass({
             return;
 
         // Insert new task
-        Posts.insert({
-            text: text,
-            createdAt: new Date(),
-            likes: 0,
-            username: Meteor.user().username
+        Meteor.call('postInsert', {text: text}, (err, result) => {
+            if (err)
+                return alert(err.reason);
+
+            console.log(result);
         });
 
         // Clear form

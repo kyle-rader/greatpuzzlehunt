@@ -6,9 +6,12 @@ Feed = React.createClass({
 
     // Load posts from the Posts collection and put them in this.data.posts
     getMeteorData() {
-        return {
-            posts: Posts.find({}, {sort: {createdAt: -1}}).fetch()
-        };
+        let data = {};
+        let handle = Meteor.subscribe('posts');
+        if (handle.ready()) {
+            data.posts = Posts.find({}, {sort: {createdAt: -1}}).fetch()
+        }
+        return data;
     },
 
     renderPosts() {
@@ -21,7 +24,7 @@ Feed = React.createClass({
         return (
         <div className="ui container">
             <div className="ui feed">
-                {this.renderPosts()}
+                {this.data.posts ? this.renderPosts() : <p>Loading...</p>}
             </div>
         </div>
         );
