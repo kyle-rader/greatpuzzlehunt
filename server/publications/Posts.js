@@ -1,3 +1,5 @@
-Meteor.publish('posts', () => {
-    return Posts.find();
+Meteor.publish('posts', function() {
+    if (this.userId) {
+        return Posts.find();
+    }
 });
