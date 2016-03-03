@@ -19,10 +19,14 @@ Home = React.createClass({
                 <div className="two column stackable row">
                     <div className="column">
                         <div className="ui two column grid">
-                            <div className="column">
+                            <div className="text-center column">
                                 <div className="ui raised segment">
-                                    <h2>Title</h2>
-                                    A column here
+                                    <a className="icon-btn" href="/login">
+                                        <i className="huge green sign in icon"></i>
+                                        <h2>Login</h2>
+                                    </a>
+                                    Don't have an account yet?<br/>
+                                    <a href="/register">Create on now!</a>
                                 </div>
                             </div>
                             <div className="column">
