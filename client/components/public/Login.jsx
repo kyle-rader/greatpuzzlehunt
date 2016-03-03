@@ -35,13 +35,13 @@ Login = React.createClass({
 
     render() {
       return (
-      <div className="login ui middle aligned center aligned grid">
+      <div className="login ui middle aligned center aligned grid custom-bg bridge">
           <div className="column">
               <form className="ui large form" onSubmit={this.login}>
-                <div className="ui raised segment">
-                  <h2 className="ui blue header">
+                <div className="ui raised segment transparent-bg">
+                  <h2 className="ui green header">
                     <div className="content">
-                      Altitude
+                      Enter
                     </div>
                   </h2>
                   <div className="field">
@@ -56,13 +56,13 @@ Login = React.createClass({
                       <input type="password" ref="password" placeholder="Password" autoComplete="off" defaultValue={this.state.password}/>
                     </div>
                   </div>
-                  <input className="ui fluid large blue submit button" type="submit" value="Login" />
+                  <input className="ui fluid large green submit button" type="submit" value="Login" />
                 </div>
               </form>
               {this.getErrorMessage()}
 
-              <div className="ui message">
-                <a href="/register">Join Altitude!</a>
+              <div className="ui message transparent-bg">
+                <a href="/register">Join The Puzzle Hunt!</a>
               </div>
           </div>
       </div>);
