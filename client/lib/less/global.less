@@ -2,3 +2,59 @@ html, body, div#react-root, div.app-root {
     height: 100%;
     position: relative;
 }
+
+body {
+    overflow-x: hidden;
+}
+
+.custom-bg {
+    @media screen and (min-width: 900px) {
+        background-size: cover;
+        background-attachment: fixed;
+        background-position-x: 50%;
+        min-height: 100%;
+
+        &.map {
+            background-image: url("img/map.jpeg");
+        }
+
+        &.ocean {
+            background-image: url("img/ocean2.jpeg");
+        }
+
+        &.alaska {
+            background-image: url("img/alaska.jpeg");
+        }
+
+        &.bridge {
+            background-image: url("img/bridge.jpeg");
+        }
+
+        &.clouds {
+            background-image: url("img/clouds.jpg");
+        }
+
+        &.red-square {
+            background-image: url("img/red-square.jpg");
+        }
+    }
+}
+
+.puzzle-hunt-title {
+    h1, h2, h3 {font-weight: 300; }
+
+    text-align: center;
+
+    h1, img {
+        display: inline-block;
+    }
+    h1 {
+        font-size: 3em;
+        line-height: 160px;
+        vertical-align: bottom;
+    }
+    img {
+        max-height: 175px;
+        padding: 15px; 
+    }
+}

@@ -58,7 +58,7 @@ AppHeader = React.createClass({
 
     render() {
         return (
-        <div className="ui fixed labeled icon menu">
+        <div className="ui fixed labeled small icon menu">
             <a className="item" href="/">
                 <i className="home icon"></i>
                 Home
