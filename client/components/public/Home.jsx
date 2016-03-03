@@ -8,11 +8,11 @@ Home = React.createClass({
                 <div className="row">
                     <div className="column">
                         <div className="puzzle-hunt-title">
-                            <h2 className="center align">The First Annual</h2>
-                            <h1 className="">WWU Great</h1>
-                            <img className="img-responsive center-block puzzle-logo" src="img/logo-512.png" />
-                            <h1 className="">Puzzle Hunt</h1>
-                            <h4>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h4>
+                            <h2>The First Annual</h2>
+                            <h1>WWU Great</h1>
+                            <img src="img/logo-512.png" />
+                            <h1>Puzzle Hunt</h1>
+                            <h3>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h3>
                         </div>
                     </div>
                 </div>
