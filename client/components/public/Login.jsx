@@ -41,7 +41,7 @@ Login = React.createClass({
                 <div className="ui raised segment transparent-bg">
                   <h2 className="ui green header">
                     <div className="content">
-                      Enter
+                      Puzzles Await
                     </div>
                   </h2>
                   <div className="field">

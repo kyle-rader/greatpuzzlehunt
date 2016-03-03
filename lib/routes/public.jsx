@@ -23,9 +23,9 @@ publicRoutes.route('/register', {
     }
 });
 
-/*publicRoutes.route('/about', {
-    name: 'about',
+publicRoutes.route('/info', {
+    name: 'info',
     action() {
-        ReactLayout.render(App, {yield: <Login />});
+        ReactLayout.render(App, {yield: <Info />});
     }
-});*/
+});
