@@ -5,6 +5,7 @@ Home = React.createClass({
         <div className="custom-bg red-square">
             <br/>
             <div className="ui container raised segment grid transparent-bg">
+                {/* Puzzle Hunt Title */}
                 <div className="row">
                     <div className="column">
                         <div className="puzzle-hunt-title">
@@ -16,41 +17,38 @@ Home = React.createClass({
                         </div>
                     </div>
                 </div>
-                <div className="two column stackable row">
+                {/* Home Panels */}
+                <div className="two column equal height stackable row">
                     <div className="column">
                         <div className="ui two column grid">
-                            <div className="text-center column">
-                                <div className="ui raised segment">
-                                    <a className="icon-btn" href="/login">
-                                        <i className="huge green sign in icon"></i>
-                                        <h2>Login</h2>
-                                    </a>
-                                    Don't have an account yet?<br/>
-                                    <a href="/register">Create on now!</a>
-                                </div>
-                            </div>
-                            <div className="column">
-                                <div className="ui raised segment">
-                                    <h2>Title</h2>
-                                    A column here
-                                </div>
-                            </div>
+                            <HomePanel 
+                                title="Login" 
+                                icon="huge green sign in icon" 
+                                link="/login" 
+                                extraText="Log in to create or join a team!"
+                                />
+                            <HomePanel 
+                            title="Register" 
+                            icon="huge blue user add icon" 
+                            link="/register" 
+                            extraText="Free to Register! Space is limited!"
+                            />
                         </div>
                     </div>
                     <div className="column">
                         <div className="ui two column grid">
-                            <div className="column">
-                                <div className="ui raised segment">
-                                    <h2>Title</h2>
-                                    A column here
-                                </div>
-                            </div>
-                            <div className="column">
-                                <div className="ui raised segment">
-                                    <h2>Title</h2>
-                                    A column here
-                                </div>
-                            </div>
+                            <HomePanel 
+                            title="Info" 
+                            icon="huge purple info icon" 
+                            link="/info" 
+                            extraText="This is an event for WWU students/faculty/staff to join forces and solve epic puzzles of all kinds!"
+                            />
+                            <HomePanel 
+                            title="Puzzles" 
+                            icon="huge red cubes icon" 
+                            link="/puzzles" 
+                            extraText="Check out example puzzles!  Teams with diverse skillsets will be advantageous :)"
+                            />
                         </div>
                     </div>
                 </div>
