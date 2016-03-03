@@ -12,7 +12,7 @@ Home = React.createClass({
                             <h1 className="">WWU Great</h1>
                             <img className="img-responsive center-block puzzle-logo" src="img/logo-512.png" />
                             <h1 className="">Puzzle Hunt</h1>
-                            <h5>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h5>
+                            <h4>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h4>
                         </div>
                     </div>
                 </div>
