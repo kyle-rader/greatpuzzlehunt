@@ -2,6 +2,13 @@ const publicRoutes = FlowRouter.group({
     name: 'public'
 });
 
+publicRoutes.route('/', {
+    name: 'home',
+    action() {
+        ReactLayout.render(App, {yield: <Home />});
+    }
+});
+
 publicRoutes.route('/login', {
     name: 'login',
     action() {
