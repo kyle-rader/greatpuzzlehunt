@@ -21,11 +21,11 @@ AppHeader = React.createClass({
             return (
             <div className="right menu">
                 <a className="ui item" href="/team">
-                    <i className="users icon"></i>
+                    <i className="blue users icon"></i>
                     Team
                 </a>
                 <div className="ui dropdown item" ref="profileDropdown">
-                    <i className="user icon"></i>
+                    <i className="green user icon"></i>
                     {this.data.user.username}
                     <div className="menu">
                         <a className="item" hrelf="/profile">
@@ -44,11 +44,11 @@ AppHeader = React.createClass({
             return (
             <div className="right menu">
                 <a className="ui item" href="/register">
-                    <i className="user add icon"></i>
+                    <i className="blue user add icon"></i>
                     Register
                 </a>
                 <a className="ui item" href="/login">
-                    <i className="sign in icon"></i>
+                    <i className="green sign in icon"></i>
                     Log In
                 </a>
             </div>
@@ -60,11 +60,11 @@ AppHeader = React.createClass({
         return (
         <div className="ui fixed labeled small icon menu">
             <a className="item" href="/">
-                <i className="home icon"></i>
+                <i className="red home icon"></i>
                 Home
             </a>
             <a className="ui item" href="/info">
-                <i className="info icon"></i>
+                <i className="purple info icon"></i>
                 Info
             </a>
 
