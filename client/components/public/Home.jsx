@@ -45,7 +45,7 @@ Home = React.createClass({
                             />
                             <HomePanel 
                             title="Puzzles" 
-                            icon="huge red cubes icon" 
+                            icon="huge red puzzle icon" 
                             link="/puzzles" 
                             extraText="Check out example puzzles!  Teams with diverse skillsets will be advantageous :)"
                             />
