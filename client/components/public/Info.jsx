@@ -179,7 +179,7 @@ Info = React.createClass({
 
                 {/* T-Shirts? */}
                 <h2 className="ui top attached header">
-                    <a className="ui clear right floated button wwu-btn" href="http://commerce.cashnet.com/GreatPuzzleHunt2016" target="_blank">Buy Now!</a>
+                    <a className="ui clear right floated button wwu-btn" href="https://commerce.cashnet.com/GreatPuzzleHunt2016" target="_blank">Buy Now!</a>
                     <i className="pink ion-tshirt icon"></i>
                     <div className="content">
                         What do the T-Shirts look like?

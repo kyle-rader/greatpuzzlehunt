@@ -7,9 +7,9 @@ Puzzles = React.createClass({
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Puzzles"/>
 
-                <h2 className="ui center aligned header">
+                <h4 className="ui center aligned header">
                     Remember it will be useful to have a diverse team with a diverse set of skills if you want to solve all of the puzzles :)
-                </h2>
+                </h4>
 
                 <div className="ui stackable grid">
                     <div className="center aligned equal width row">

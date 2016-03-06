@@ -52,6 +52,59 @@ Home = React.createClass({
                         </div>
                     </div>
                 </div>
+                <div className="equal width stackable row">
+                    <div className="center aligned column">
+                        <div className="ui items">
+                            <div className="item">
+                                <a className="ui huge fluid labeled icon button wwu-btn" href="https://securelb.imodules.com/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1" target="_blank">
+                                    <i className="heart icon"></i>
+                                    Help make this event happen and donate now!
+                                </a>
+                            </div>
+                            <div className="item">
+                                <a className="ui huge fluid teal labeled icon button" href="https://goo.gl/forms/2MmEZHcqC5" target="_blank">
+                                    <i className="bullhorn icon"></i>
+                                    Volunteer to help run puzzle stations!
+                                </a>
+                            </div>
+                            <div className="item">
+                                <a className="ui huge fluid teal labeled icon button" href="https://goo.gl/forms/1a740S1RPv" target="_blank">
+                                    <i className="bullhorn icon"></i>
+                                    Sign up for a table in Red Square during this event!
+                                </a>
+                            </div>
+                            <div className="item">
+                                <a className="ui huge fluid labeled icon button" href="/contact">
+                                    <i className="mail icon"></i>
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="center aligned column">
+                        <h2 className="ui top attached header">Logistics</h2>
+                        <ul className="ui raised attached segment divided items">
+                            <li className="item">
+                                <div className="description">Free to register this year</div>
+                            </li>
+                            <li className="item">
+                                <div className="description">Limited space so register fast</div>
+                                </li>
+                            <li className="item">
+                                <div className="description">Must have a <strong>@student.wwu.edu</strong> or <strong>@wwu.edu</strong> email address</div>
+                            </li>
+                            <li className="item">
+                                <div className="description">Team size limit is 6</div>
+                            </li>
+                            <li className="item">
+                                <div className="description">Awesome T-Shirts are $15</div>
+                                <div className="extra">
+                                    <a className="ui right floated button wwu-btn" href="https://commerce.cashnet.com/GreatPuzzleHunt2016" target="_blank">Order Now!</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <br/>
         </div>
