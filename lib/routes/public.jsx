@@ -37,6 +37,13 @@ publicRoutes.route('/contact', {
     }
 });
 
+publicRoutes.route('/puzzles', {
+    name: 'puzzles',
+    action() {
+        ReactLayout.render(App, {yield: <Puzzles />});
+    }
+});
+
 publicRoutes.route('/requestpasswordreset', {
     name: 'requestpasswordreset',
     action() {
