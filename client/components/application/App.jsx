@@ -8,7 +8,7 @@ App = React.createClass({
         return {
             hasUser: !!Meteor.user(),
             isPublic(route) {
-                let publicRoutes = ['home', 'login', 'register', 'requestpasswordreset', 'passwordreset', 'info', 'puzzles'];
+                let publicRoutes = ['home', 'login', 'register', 'requestpasswordreset', 'passwordreset', 'info', 'puzzles', 'contact'];
 
                 return publicRoutes.indexOf(route) > -1;
             },
