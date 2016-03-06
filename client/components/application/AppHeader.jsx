@@ -69,7 +69,7 @@ AppHeader = React.createClass({
                         <i className="home icon"></i>&nbsp; Home
                     </a>
                     <a className="item" href="/info">
-                        <i className="info icon"></i>&nbsp; General Info
+                        <i className="info circle icon"></i>&nbsp; General Info
                     </a>
                     <a className="item" href="/puzzles">
                         <i className="puzzle icon"></i>&nbsp; Puzzles
