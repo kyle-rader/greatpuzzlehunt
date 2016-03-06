@@ -78,9 +78,7 @@ Register = React.createClass({
               this.setState({err: err});
             } else {
               this.setState({err: null, newAccountEmail: result.email});
-              console.log(result);
             }
-
           });
         }
       });
@@ -178,6 +176,7 @@ Register = React.createClass({
       }
     },
 
+    // TODO: Remove Test Button
     setuptest() {
       let form = $(this.refs.registerForm);
 
