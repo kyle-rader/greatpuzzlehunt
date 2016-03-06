@@ -30,6 +30,13 @@ publicRoutes.route('/info', {
     }
 });
 
+publicRoutes.route('/contact', {
+    name: 'contact',
+    action() {
+        ReactLayout.render(App, {yield: <Contact />});
+    }
+});
+
 publicRoutes.route('/requestpasswordreset', {
     name: 'requestpasswordreset',
     action() {
