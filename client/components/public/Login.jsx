@@ -62,7 +62,7 @@ Login = React.createClass({
               {this.getErrorMessage()}
 
               <div className="ui message transparent-bg">
-                <a href="/register">Join The Puzzle Hunt!</a>
+                <a href="/register">Join The Puzzle Hunt!</a> &nbsp; | &nbsp; <a href="/requestpasswordreset">Forgot Password</a>
               </div>
           </div>
       </div>);

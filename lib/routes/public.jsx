@@ -30,3 +30,16 @@ publicRoutes.route('/info', {
     }
 });
 
+publicRoutes.route('/requestpasswordreset', {
+    name: 'requestpasswordreset',
+    action() {
+        ReactLayout.render(App, {yield: <RequestPasswordReset />});
+    }
+});
+
+publicRoutes.route('/passwordreset/:token', {
+    name: 'passwordreset',
+    action(params, queryParams) {
+        ReactLayout.render(App, {yield: <PasswordReset token={params.token}/>});
+    }
+});
