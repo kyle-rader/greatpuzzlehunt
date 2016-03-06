@@ -90,14 +90,14 @@ RequestPasswordReset = React.createClass({
     render() {
 
       return (
-      <div className="request-password-reset ui middle aligned center aligned grid custom-bg map">
+      <div className="request-password-reset ui middle aligned center aligned grid custom-bg red-square">
           <div className="column">
 
               {this.getForm()}
               {this.getSuccessMsg()}
               {this.getErrorMsg()}
 
-              <div className="ui message transparent-bg">
+              <div className="ui message">
                 <a href="/login">Log In</a>
               </div>
           </div>

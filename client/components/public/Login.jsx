@@ -35,13 +35,13 @@ Login = React.createClass({
 
     render() {
       return (
-      <div className="login ui middle aligned center aligned grid custom-bg map">
+      <div className="login ui middle aligned center aligned grid custom-bg red-square">
           <div className="column">
               <form className="ui large form" onSubmit={this.login}>
                 <div className="ui raised segment transparent-bg">
                   <h2 className="ui green header">
                     <div className="content">
-                      Puzzles Await
+                      Log In
                     </div>
                   </h2>
                   <div className="field">
@@ -61,7 +61,7 @@ Login = React.createClass({
               </form>
               {this.getErrorMessage()}
 
-              <div className="ui message transparent-bg">
+              <div className="ui message">
                 <a href="/register">Join The Puzzle Hunt!</a> &nbsp; | &nbsp; <a href="/requestpasswordreset">Forgot Password</a>
               </div>
           </div>

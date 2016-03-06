@@ -114,7 +114,7 @@ Register = React.createClass({
             <div className="ui raised segment transparent-bg">
               <h2 className="ui blue header">
                 <div className="content">
-                  On your marks! Get set! Puzzles!
+                  Register
                 </div>
               </h2>
               <div className="two fields">
@@ -194,18 +194,18 @@ Register = React.createClass({
     render() {
 
       return (
-      <div className="register ui middle aligned center aligned grid custom-bg map">
+      <div className="register ui middle aligned center aligned grid custom-bg red-square">
           <div className="column">
 
               {this.getForm()}
               {this.getSuccessMsg()}
               {this.getErrorMsg()}
 
-              <div className="ui message transparent-bg">
+              <div className="ui message">
                 <a href="/login">Log In</a>
               </div>
 
-              <div className="ui message transparent-bg">
+              <div className="ui message">
                 <a className="ui button" onClick={this.setuptest}>Test</a>
               </div>
           </div>
