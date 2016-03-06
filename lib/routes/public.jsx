@@ -29,3 +29,4 @@ publicRoutes.route('/info', {
         ReactLayout.render(App, {yield: <Info />});
     }
 });
+
