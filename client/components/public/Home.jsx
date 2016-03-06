@@ -39,7 +39,7 @@ Home = React.createClass({
                         <div className="ui two column grid">
                             <HomePanel 
                             title="Info" 
-                            icon="huge purple info icon" 
+                            icon="huge purple help icon" 
                             link="/info" 
                             extraText="This is an event for WWU students/faculty/staff to join forces and solve epic puzzles of all kinds!"
                             />

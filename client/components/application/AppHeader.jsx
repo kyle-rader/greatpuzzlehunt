@@ -12,7 +12,10 @@ AppHeader = React.createClass({
     },
 
     componentDidMount() {
-        $(this.refs.profileDropdown).dropdown();
+        if (this.refs.profileDropdown)
+            $(this.refs.profileDropdown).dropdown();
+
+        $(this.refs.menuDropdown).dropdown();
     },
 
     getRightMenu() {
@@ -28,7 +31,7 @@ AppHeader = React.createClass({
                     <i className="green user icon"></i>
                     {this.data.user.username}
                     <div className="menu">
-                        <a className="item" hrelf="/profile">
+                        <a className="item" href="/profile">
                             <i className="setting icon"></i> Profile
                         </a>
                         <a className="item" onClick={this.logout}>
@@ -58,15 +61,24 @@ AppHeader = React.createClass({
 
     render() {
         return (
-        <div className="ui fixed labeled small icon menu">
-            <a className="item" href="/">
-                <i className="red home icon"></i>
-                Home
-            </a>
-            <a className="ui item" href="/info">
-                <i className="purple info icon"></i>
-                Info
-            </a>
+        <div className="ui fixed large menu">
+            <div className="ui dropdown item" ref="menuDropdown">
+                <i className="red bars icon"></i> Menu
+                <div className="menu">
+                    <a className="item" href="/">
+                        <i className="home icon"></i>&nbsp; Home
+                    </a>
+                    <a className="item" href="/info">
+                        <i className="info icon"></i>&nbsp; General Info
+                    </a>
+                    <a className="item" href="/contact">
+                        <i className="phone icon"></i>&nbsp; Contact
+                    </a>
+                    <a className="item" href="/teamlist">
+                        <i className="users icon"></i>&nbsp; Team List
+                    </a>
+                </div>
+            </div>
 
             {this.getRightMenu()}
         </div>);
