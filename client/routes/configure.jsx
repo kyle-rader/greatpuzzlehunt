@@ -6,3 +6,4 @@ Accounts.onLogin(() => {
 
     return (path === '/login' || path === '/register') ? FlowRouter.go('/team') : FlowRouter.go(path);
 });
+

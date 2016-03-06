@@ -35,7 +35,7 @@ Login = React.createClass({
 
     render() {
       return (
-      <div className="login ui middle aligned center aligned grid custom-bg bridge">
+      <div className="login ui middle aligned center aligned grid custom-bg map">
           <div className="column">
               <form className="ui large form" onSubmit={this.login}>
                 <div className="ui raised segment transparent-bg">
