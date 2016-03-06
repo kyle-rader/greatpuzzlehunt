@@ -1,4 +1,4 @@
-// Setup Email
+// Setup Email Verification
 Accounts.emailTemplates.siteName = 'WWU Puzzle Hunt';
 Accounts.emailTemplates.from = 'WWU Puzzle Hunt <accounts@wwupuzzlehunt.com>';
 Accounts.emailTemplates.verifyEmail = {
@@ -14,8 +14,22 @@ Accounts.emailTemplates.verifyEmail = {
     }
 };
 
-Accounts.validateLoginAttempt((attempt) => {
+// Setup Enrollement/ Migration email
+Accounts.emailTemplates.enrollAccount = {
+    subject(user) {
+        return user.profile.firstname + ', welcome to the new WWU Puzzle Hunt site!';
+    },
+    html(user, url) {
+        return 'Welcome ' + user.profile.firstname + ', to the new WWU Great Puzzle Hunt system!\n\n' +
+        'In order to finish your account migration please reset your password on the new site by clicking the link below.\n' +
+        url + ' \n\n' +
+        'If you have any questions or concerns about this process please email <a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a>\n' +
+        'Cheers,\n' +
+        'The WWU Puzzle Hunt Team';
+    }
+};
 
+Accounts.validateLoginAttempt((attempt) => {
     if (!attempt.allowed) {
         return false;
     }
