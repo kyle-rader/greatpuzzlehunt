@@ -13,3 +13,16 @@ Accounts.emailTemplates.verifyEmail = {
         'The WWU Puzzle Hunt Team';
     }
 };
+
+Accounts.validateLoginAttempt((attempt) => {
+
+    if (!attempt.allowed) {
+        return false;
+    }
+    else if (attempt.user && !attempt.user.emails[0].verified) {
+        throw new Meteor.Error(400, 'You must verify your email before logging in!');
+    }
+    else {
+        return true;
+    }
+});
