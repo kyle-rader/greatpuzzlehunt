@@ -13,6 +13,7 @@ Accounts.onEmailVerificationLink((token, done) => {
             // Route to bad link page
             console.log(err);
         } else {
+            done();
             FlowRouter.go('/team');
         }
     });
