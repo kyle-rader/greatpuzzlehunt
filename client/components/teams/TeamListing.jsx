@@ -7,9 +7,39 @@ TeamListing = React.createClass({
         };
     },
 
+    componentDidMount() {
+        if (this.props.showJoin) {
+            let form = $(this.refs.joinForm);
+            form.form({
+                fields: {
+                    password: {
+                        identifier: 'password',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'Must enter password'
+                        }]
+                    }
+                },
+                inline: true,
+                onSuccess: (event, fields) => {
+                    event.preventDefault();
+
+                    Meteor.call('teamJoin', fields, (err, result) => {
+                        if (err) {
+                            console.log(err);
+                            this.setState({err: err});
+                        }
+                    });
+                }
+            })
+        }
+    },
+
     getError() {
         if (this.state.err) {
-            return <div className="ui error message">{this.state.err.reason}</div>;
+            return (<div className="ui error message">{this.state.err.reason}</div>);
+        } else {
+            return null;
         }
     },
 
@@ -17,11 +47,12 @@ TeamListing = React.createClass({
         if (this.props.showJoin) {
             return (
             <div className="extra content">
-                <form className="ui large form" ref="joinForm">
-                    <div className="ui fluid action input">
-                        <input type="password" placeholder="Team Password" name="password"/>
-                        <button className="ui blue button" type="submit">Join</button>
+                <form className="ui form" ref="joinForm">
+                    <input type="hidden" name="teamId" value={this.props.team._id}/>
+                    <div className="field">
+                        <input type="password" placeholder="Password" name="password"/>
                     </div>
+                    <input className="ui blue button" type="submit" value="Join"/>
                 </form>
                 {this.getError()}
             </div>
@@ -35,7 +66,7 @@ TeamListing = React.createClass({
             <div className="content">
                 <div className="header">{this.props.team.name}</div>
                 <div className="description">
-                    <div className="label">{this.props.team.members.length} members</div>
+                    <div className="ui circular green label">{this.props.team.members.length}</div> Members
                 </div>
                 <br/>
                 {this.getJoinForm()}

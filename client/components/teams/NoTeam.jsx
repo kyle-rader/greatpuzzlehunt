@@ -106,7 +106,7 @@ NoTeam = React.createClass({
                     Join a Team
                 </div>
             </h2>
-            <div className="ui two stackable cards">
+            <div className="ui two doubling stackable cards">
                 {this.getTeamList()}
             </div>
         </div>
