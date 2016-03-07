@@ -11,10 +11,10 @@ Team = React.createClass({
 
     render() {
         if (this.data.user && this.data.user.profile.teamId) {
-            return <MyTeam />;
+            return <MyTeam user={this.data.user}/>;
         }
         else {
-            return <NoTeam />
+            return <NoTeam user={this.data.user}/>
         }
     }
 });

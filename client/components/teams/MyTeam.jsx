@@ -13,6 +13,7 @@ MyTeam = React.createClass({
         }
         if (membersHandle.ready()) {
             data.members = Meteor.users.find().fetch();
+            console.log(data.members);
         }
         return data;
     },
@@ -25,7 +26,7 @@ MyTeam = React.createClass({
 
     componentDidMount() {
         // Setup create Team form
-        let form = $(this.refs.createTeamForm);
+        let form = $(this.refs.teamForm);
 
         form.form({
             fields: {
@@ -52,7 +53,7 @@ MyTeam = React.createClass({
             onSuccess: (event, fields) => {
                 event.preventDefault();
 
-                Meteor.call('teamCreate', fields, (err, result) => {
+                Meteor.call('teamUpdate', fields, (err, result) => {
                     if (err) {
                         this.setState({err: err});
                     }
@@ -61,62 +62,85 @@ MyTeam = React.createClass({
         });
     },
 
+    teamOwner() {
+        return this.data.myTeam && (this.data.myTeam.owner.toString() === this.props.user._id.toString());
+    },
+
     getError() {
         if (this.state.err) {
-            return (
-                <div className="ui error message">
-                    {this.state.err.reason}
-                </div>
-            );
+            return <div className="ui error message">{this.state.err.reason}</div>;
         }
     },
 
-    // CREATE TEAM
-    getCreateTeamForm() {
-        return (
-        <form className="ui form" ref="createTeamForm">
-            <h2 className="ui center aligned header">
-                <div className="content">
-                    Create a new Team
+    getMembers() {
+        // If no Members yet - loading
+        if (!this.data.members) {
+            return (
+            <div className="ui segment">
+                <div className="ui active inverted dimmer">
+                    <div className="ui text loader">Loading</div>
                 </div>
-            </h2>
-            <div className="field">
-                <label>Team Name</label>
-                <input className="ui input" name="name" placeholder="Cool Team Name"/>
+                <p></p>
             </div>
-            <div className="field">
-                <label>Team Password <br/><span style={{fontWeight: 500}}> (Your friends can use this to join your team after they register)</span></label>
-                <input className="ui input" name="password" placeholder="Secret Password"/>
-            </div>
-            <input type="submit" className="ui blue button" value="Create Team"/>
-            {this.getError()}
-        </form>
+            );
+        }
+
+        let members = this.data.members.map((member) => {
+            return <MemberListing key={member._id} member={member}/>;
+        });
+
+        return (
+        <div className="ui four doubling stackable cards">
+            {members}
+        </div>
         );
     },
 
-    // JOIN TEAM
-    getJoinTeamForm() {
-        return (
-        <div>
-            <h2 className="ui center aligned header">
-                <div className="content">
-                    Join a Team
+    getTeamForm() {
+        // If No data yet - render loading
+        if (!this.data.myTeam) {
+            return (
+            <div className="ui segment">
+                <div className="ui active inverted dimmer">
+                    <div className="ui text loader">Loading</div>
                 </div>
+                <p></p>
+            </div>
+            );
+        }
+
+        let disabled = !this.teamOwner();
+        let submit = !disabled ? <input type="submit" className="ui blue button" value="Save"/> : null;
+        
+        return (
+        <div className="ui huge form">
+            <h2 className="ui center aligned header">
+                <div className="content">{this.data.myTeam.name}</div>
             </h2>
-        {/* LOAD TEAMS EACH ON A CARD */}
+            <input type="hidden" name="teamId" value={this.data.myTeam._id}/>
+            <div className="field">
+                <label>Team Name</label>
+                <input name="name" disabled={disabled} type="text" defaultValue={this.data.myTeam.name}/>
+            </div>
+            <div className="field">
+                <label>Team Password</label>
+                <input name="password" disabled={disabled} type="text" defaultValue={this.data.myTeam.password}/>
+            </div>
+            {submit}
         </div>
         );
     },
 
     render() {
         return (
-        <div className="team custom-bg red-square">
+        <div className="my-team custom-bg red-square">
             <br/>
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Team"/>
 
-                My Team: {this.data.myTeam ? this.data.myTeam.name : '...loading'} <br/>
-                Members Length: {this.data.myTeam ? this.data.myTeam.members.length : 'no members'}
+                {this.getTeamForm()}
+
+                {this.getMembers()}
                 
             </div>
             <br/>

@@ -24,7 +24,7 @@ Accounts.onEmailVerificationLink((token, done) => {
 // now that we have their reset token.
 Accounts.onEnrollmentLink((token, done) => {
     done();
-    FlowRouter.go('/resetpassword?token=' + token);
+    FlowRouter.go('/passwordreset/' + token);
 });
 
 
@@ -32,5 +32,5 @@ Accounts.onEnrollmentLink((token, done) => {
 // now that we have theur reset token
 Accounts.onResetPasswordLink((token, done) => {
     done();
-    FlowRouter.go('/resetpassword?token=' + token);
+    FlowRouter.go('/passwordreset/' + token);
 });
