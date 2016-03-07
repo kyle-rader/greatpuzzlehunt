@@ -66,7 +66,7 @@ RequestPasswordReset = React.createClass({
     getForm() {
       if (!this.state.email) {
         return (
-          <form id="resetForm" className="ui form" ref="resetForm">
+          <form id="resetForm" className="ui huge form" ref="resetForm">
             <div className="ui raised segment transparent-bg">
               <h2 className="ui violet header">
                 <div className="content">

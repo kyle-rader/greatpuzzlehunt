@@ -2,6 +2,17 @@
 
 NoTeam = React.createClass({
 
+    mixins: [ReactMeteorData],
+    getMeteorData() {
+        let data = {};
+        let handle = Meteor.subscribe('teams');
+        
+        if (handle.ready()) {
+            data.teams = Teams.find().fetch();
+        }
+        return data;
+    },
+
     getInitialState() {
         return {
             err: null
@@ -78,6 +89,14 @@ NoTeam = React.createClass({
         );
     },
 
+    getTeamList() {
+        if(this.data.teams) {
+            return this.data.teams.map((team) => {
+                return <TeamListing key={team._id} showJoin={true} team={team} />;
+            });
+        }
+    },
+
     // JOIN TEAM
     getJoinTeamForm() {
         return (
@@ -87,7 +106,9 @@ NoTeam = React.createClass({
                     Join a Team
                 </div>
             </h2>
-        {/* LOAD TEAMS EACH ON A CARD */}
+            <div className="ui two stackable cards">
+                {this.getTeamList()}
+            </div>
         </div>
         );
     },
