@@ -10,7 +10,7 @@ Accounts.onLogin(() => {
 // Verify this user via token (also logs the user in)
 Accounts.onEmailVerificationLink((token, done) => {
     Accounts.verifyEmail(token, (err) => {
-        if(err) {
+        if (err) {
             // Route to bad link page
             console.log(err);
         } else {
@@ -19,7 +19,6 @@ Accounts.onEmailVerificationLink((token, done) => {
         }
     });
 });
-
 
 // Redirect users clicking the enrollment URL to the reset password form 
 // now that we have their reset token.
