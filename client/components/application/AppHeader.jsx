@@ -29,7 +29,7 @@ AppHeader = React.createClass({
                 </a>
                 <div className="ui dropdown item" ref="profileDropdown">
                     <i className="green user icon"></i>
-                    {this.data.user.username}
+                    {this.data.user.profile.displayname}
                     <div className="menu">
                         <a className="item" href="/profile">
                             <i className="setting icon"></i> Profile

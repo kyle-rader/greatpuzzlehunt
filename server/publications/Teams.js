@@ -3,3 +3,7 @@ Meteor.publish('myTeam', function() {
         return Teams.find({members: this.userId});
     }
 });
+
+Meteor.publish('myTeamMembers', function() {
+
+});
