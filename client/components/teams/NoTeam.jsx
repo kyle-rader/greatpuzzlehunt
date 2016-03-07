@@ -1,17 +1,6 @@
 // No Team comp
 
 NoTeam = React.createClass({
-    
-    mixins: [ReactMeteorData],
-    getMeteorData() {
-        let data = {};
-        // let handle = Meteor.subscribe('posts');
-        
-        // if (handle.ready()) {
-        //     data.posts = Posts.find({}, {sort: {createdAt: -1}}).fetch()
-        // }
-        return data;
-    },
 
     getInitialState() {
         return {
@@ -85,7 +74,6 @@ NoTeam = React.createClass({
                 <input className="ui input" name="password" placeholder="Secret Password"/>
             </div>
             <input type="submit" className="ui blue button" value="Create Team"/>
-            {this.getError()}
         </form>
         );
     },
@@ -114,6 +102,7 @@ NoTeam = React.createClass({
                 <div className="ui two column stackable grid" style={{position: 'relative'}}>
                     <div className="column">
                         {this.getCreateTeamForm()}
+                        {this.getError()}
                     </div>
                     <div className="ui vertical divider">or</div>
                     <div className="column">
