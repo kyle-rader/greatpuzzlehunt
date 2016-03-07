@@ -44,6 +44,13 @@ publicRoutes.route('/puzzles', {
     }
 });
 
+publicRoutes.route('/teamlist', {
+    name: 'teamlist',
+    action() {
+        ReactLayout.render(App, {yield: <TeamList />});
+    }
+});
+
 publicRoutes.route('/requestpasswordreset', {
     name: 'requestpasswordreset',
     action() {
