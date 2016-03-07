@@ -5,11 +5,14 @@ MyTeam = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         let data = {};
-        let handle = Meteor.subscribe('myTeam');
+        let membersHandle = Meteor.subscribe('myTeamMembers');
+        let teamHandle = Meteor.subscribe('myTeam');
         
-        if (handle.ready()) {
+        if (teamHandle.ready()) {
             data.myTeam = Teams.findOne();
-            console.log('My team:', data.myTeam);
+        }
+        if (membersHandle.ready()) {
+            data.members = Meteor.users.find().fetch();
         }
         return data;
     },
@@ -112,7 +115,8 @@ MyTeam = React.createClass({
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Team"/>
 
-                My Team: {this.data.myTeam.name}
+                My Team: {this.data.myTeam ? this.data.myTeam.name : '...loading'} <br/>
+                Members Length: {this.data.myTeam ? this.data.myTeam.members.length : 'no members'}
                 
             </div>
             <br/>
