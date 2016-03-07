@@ -79,6 +79,12 @@ Home = React.createClass({
                                     Contact Us
                                 </a>
                             </div>
+                            <div className="item">
+                                <a className="ui huge fluid labeled icon facebook button" target="_blank" href="https://www.facebook.com/events/160687404314460/">
+                                    <i className="facebook icon"></i>
+                                    Share
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className="center aligned column">
