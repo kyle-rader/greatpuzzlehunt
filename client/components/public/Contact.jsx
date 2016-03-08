@@ -15,7 +15,8 @@ Contact = React.createClass({
                         </div>
                         <div className="column">
                             <h2>Website Support</h2>
-                            <h3>Clar Rinker | <a href="rinkerc@students.wwu.edu">rinkerc@students.wwu.edu</a></h3>
+                            <h3>Clark Rinker | <a href="rinkerc@students.wwu.edu">rinkerc@students.wwu.edu</a></h3>
+                            <h3>NOTE: During Dead Week please contact Clark with your support questions</h3>
                         </div>
                     </div>
                 </div>
