@@ -23,6 +23,7 @@ Accounts.emailTemplates.enrollAccount = {
     html(user, url) {
         return `Welcome ${user.profile.firstname}, to the new WWU Great Puzzle Hunt system!
   In order to finish your account migration please reset your password on the new site by clicking <a href="${url}">here</a>.
+  Team Capitans please reset your team passwords on the team page.
   If you have any questions or concerns about this process please email <a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a>
   Cheers,
   The WWU Puzzle Hunt Team`;
