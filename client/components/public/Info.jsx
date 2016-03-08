@@ -59,7 +59,7 @@ Info = React.createClass({
                     All WWU students, faculty, and staff regardless of major or puzzle-solving experience!
                     <a href="/register"> Sign up</a> and create a team of up to 6 people, or
                     register as an individual and browse existing teams and find one in need of your skills!
-                    Remember: only all-student teams are eligible for prizes!
+                    Remember: only <b>all-student</b> teams are eligible for prizes!
                 </div>
 
                 {/* DO I HAVE TO DO MATH? */}

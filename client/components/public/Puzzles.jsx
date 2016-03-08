@@ -15,7 +15,7 @@ Puzzles = React.createClass({
                     <div className="center aligned equal width row">
                         <div className="column">
                             <h2>Think Outside The Box</h2>
-                            <p>This problem involves spacial thinking/ visualization, patterns, and geometry!</p>
+                            <p>This problem involves spatial thinking/ visualization, patterns, and geometry!</p>
                             <a className="ui labeled teal icon button" target="_blank" href="/pdfs/Think-Outside-The-Box.pdf">
                                 <i className="download icon"></i> Download PDF
                             </a>
@@ -29,7 +29,7 @@ Puzzles = React.createClass({
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <br/>
         </div>
