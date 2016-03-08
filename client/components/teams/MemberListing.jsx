@@ -3,8 +3,6 @@
 MemberListing = React.createClass({
 
     render() {
-      console.log(this.props.member.profile);
-
         return (
         <div className="card">
             <div className="content">
