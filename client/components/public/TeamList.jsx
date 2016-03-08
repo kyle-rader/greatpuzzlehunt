@@ -5,7 +5,7 @@ TeamList = React.createClass({
     getMeteorData() {
         let data = {};
         let handle = Meteor.subscribe('teams');
-        
+
         if (handle.ready()) {
             data.teams = Teams.find().fetch();
         }
@@ -19,13 +19,13 @@ TeamList = React.createClass({
             });
         }
     },
-    
+
     render() {
         return (
         <div className="info custom-bg red-square">
             <br/>
             <div className="ui container raised segment transparent-bg">
-                <PuzzlePageTitle title="Information"/>
+                <PuzzlePageTitle title="Teams"/>
 
                 <div className="ui four doubling cards">
                     {this.getTeams()}

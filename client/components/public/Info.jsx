@@ -6,7 +6,7 @@ Info = React.createClass({
             <br/>
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Information"/>
-                
+
                 {/* WHAT IS IT? */}
                 <h2 className="ui top attached header">
                     <i className="red help icon"></i>
@@ -16,11 +16,11 @@ Info = React.createClass({
                     </div>
                 </h2>
                 <div className="ui attached segment">
-                    A puzzle hunt is like a scavenger hunt, with puzzles. 
-                    Teams (4-6 is a nice size) travel on foot about campus (outdoors) 
-                    solving a collection of puzzles (logic puzzles, word scrambles, trivia, etc.). 
-                    Lots of prizes will be awarded. Whether your team places first or two hundred and fifty-first, 
-                    competing in a puzzle hunt is a great way to stretch your mental muscles, bond with your teammates, 
+                    A puzzle hunt is like a scavenger hunt, with puzzles.
+                    Teams (4-6 is a nice size) travel on foot about campus (outdoors)
+                    solving a collection of puzzles (logic puzzles, word scrambles, trivia, etc.).
+                    Lots of prizes will be awarded. Whether your team places first or two hundred and fifty-first,
+                    competing in a puzzle hunt is a great way to stretch your mental muscles, bond with your teammates,
                     and have a lot of fun!
                 </div>
 
@@ -39,7 +39,7 @@ Info = React.createClass({
                             <div className="ui horizontal label">
                                 March 31, 2016
                             </div>
-                            Last day to mark yourself as wanting to buy a T-Shirt <strong>if</strong> you want to pick it up at the event.
+                            Last day to order a T-shirt <strong>if</strong> you want to pick it up at the event.
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,9 @@ Info = React.createClass({
                 </h2>
                 <div className="ui attached segment">
                     All WWU students, faculty, and staff regardless of major or puzzle-solving experience!
-                    <a href="/register"> Sign up</a> and create a team of up to 6 people, or 
+                    <a href="/register"> Sign up</a> and create a team of up to 6 people, or
                     register as an individual and browse existing teams and find one in need of your skills!
+                    Remember: only all-student teams are eligible for prizes!
                 </div>
 
                 {/* DO I HAVE TO DO MATH? */}
@@ -73,8 +74,8 @@ Info = React.createClass({
                     </div>
                 </h2>
                 <div className="ui attached segment">
-                    NO! A common misconception is that only mathematically inclined people are good at solving puzzles. 
-                    In this puzzle hunt, it will be to your advantage to have people on your team with 
+                    NO! A common misconception is that only mathematically inclined people are good at solving puzzles.
+                    In this puzzle hunt, it will be to your advantage to have people on your team with
                     knowledge of music, art, humanities and social sciences, as well as science and mathematics.
                 </div>
 
@@ -102,6 +103,12 @@ Info = React.createClass({
                                 <i className="large mobile icon"></i>Smart Phone
                             </div>
                             <strong>Required</strong> to submit puzzle codes to the website during the event.
+                        </div>
+                        <div className="item">
+                            <div className="ui horizontal label">
+                                <i className="large ion-qr-scanner icon"></i> QR Scanner
+                            </div>
+                            App that can read QR Codes
                         </div>
                         <div className="item">
                             <div className="ui horizontal label">
@@ -151,9 +158,9 @@ Info = React.createClass({
                     </div>
                 </h2>
                 <div className="ui attached segment">
-                    Registration and check-in will start at 10:00 a.m. in Red Square where your 
-                    team will receive a rules packet and team T-shirts pre-ordered by March 31, 2016. 
-                    The Puzzle Hunt will start at 11:00 a.m. when the first puzzle is released. 
+                    Registration and check-in will start at 10:00 a.m. in Red Square where your
+                    team will receive a rules packet and team T-shirts pre-ordered by March 31, 2016.
+                    The Puzzle Hunt will start at 11:00 a.m. when the first puzzle is released.
                     Prizes will be awarded at approximately 3:00 p.m.
                 </div>
 
@@ -166,14 +173,14 @@ Info = React.createClass({
                     </div>
                 </h2>
                 <div className="ui attached segment">
-                    Each puzzle results in a code word or words that must be entered to stop the clock for that problem. 
-                    Time is a factor, so make sure everyone on the team is assigned to a job. 
-                    Some members can cut out objects if needed. If a problem has several parts, see if different 
+                    Each puzzle results in a code word or words that must be entered to stop the clock for that problem.
+                    Time is a factor, so make sure everyone on the team is assigned to a job.
+                    Some members can cut out objects if needed. If a problem has several parts, see if different
                     members can tackle different parts independently.
                     <br/><br/>
-                    Once the proper code word(s) are entered, your team will be sent to the next destination. 
-                    If your team is stuck, you may ask for hints. Each hint will add time to your clock. 
-                    This information will be in the rules packet. Not all teams will travel the same paths. 
+                    Once the proper code word(s) are entered, your team will be sent to the next destination.
+                    If your team is stuck, you may ask for hints. Each hint will add time to your clock.
+                    This information will be in the rules packet. Not all teams will travel the same paths.
                     At each destination, you will need to scan a QR code to receive your next puzzle and re-start the clock.
                 </div>
 
