@@ -192,7 +192,9 @@ Register = React.createClass({
     },
 
     render() {
-
+      // <div className="ui message">
+      //   <a className="ui button" onClick={this.setuptest}>Test</a>
+      // </div>
       return (
       <div className="register ui middle aligned center aligned grid custom-bg red-square">
           <div className="column">
@@ -203,10 +205,6 @@ Register = React.createClass({
 
               <div className="ui message">
                 <a href="/login">Log In</a>
-              </div>
-
-              <div className="ui message">
-                <a className="ui button" onClick={this.setuptest}>Test</a>
               </div>
           </div>
       </div>);
