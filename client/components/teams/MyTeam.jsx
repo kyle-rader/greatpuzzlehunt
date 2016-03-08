@@ -19,13 +19,14 @@ MyTeam = React.createClass({
 
     getInitialState() {
         return {
-            err: null
+            err: null,
+            success: null,
         };
     },
 
     componentDidMount() {
         // Setup create Team form
-        let form = $(this.refs.teamForm);
+        let form = $("#teamForm");
 
         form.form({
             fields: {
@@ -51,14 +52,36 @@ MyTeam = React.createClass({
             inline: true,
             onSuccess: (event, fields) => {
                 event.preventDefault();
-
+                console.log("Clicked the button.");
                 Meteor.call('teamUpdate', fields, (err, result) => {
                     if (err) {
-                        this.setState({err: err});
+                        this.setState({err: err, success: false});
                     }
+                    else {
+                      this.setState({success: true});
+                    }
+
                 });
             }
         });
+    },
+
+    onSubmit(event, fields){
+      event.preventDefault();
+      var fields = {};
+      $.each($('#teamForm').serializeArray(), function(i, field) {
+          fields[field.name] = field.value;
+      });
+
+      Meteor.call('teamUpdate', fields, (err, result) => {
+          if (err) {
+              this.setState({err: err, success: false});
+          }
+          else {
+            this.setState({success: true});
+          }
+
+      });
     },
 
     teamOwner() {
@@ -69,6 +92,12 @@ MyTeam = React.createClass({
         if (this.state.err) {
             return <div className="ui error message">{this.state.err.reason}</div>;
         }
+    },
+
+    getSuccess() {
+      if(this.state.success){
+        return <div className="ui positive message">Update Successful</div>;
+      }
     },
 
     getMembers() {
@@ -109,10 +138,10 @@ MyTeam = React.createClass({
         }
 
         let disabled = !this.teamOwner();
-        let submit = !disabled ? <input type="submit" className="ui blue button" value="Save"/> : null;
+        let submit = !disabled ? <input onClick={this.onSubmit} type="submit" className="ui blue button" value="Save"/> : null;
 
         return (
-        <div className="ui huge form">
+        <form id="teamForm"  className="ui huge form" ref="teamForm">
             <h2 className="ui center aligned header">
                 <div className="content">{this.data.myTeam.name}</div>
             </h2>
@@ -126,7 +155,7 @@ MyTeam = React.createClass({
                 <input name="password" disabled={disabled} type="text" defaultValue={this.data.myTeam.password}/>
             </div>
             {submit}
-        </div>
+        </form>
         );
     },
 
@@ -136,9 +165,9 @@ MyTeam = React.createClass({
             <br/>
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Team"/>
-
                 {this.getTeamForm()}
-
+                {this.getError()}
+                {this.getSuccess()}
                 {this.getMembers()}
 
             </div>
