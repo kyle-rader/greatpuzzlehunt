@@ -11,7 +11,7 @@ Home = React.createClass({
                         <div className="puzzle-hunt-title">
                             <h2>The First Annual</h2>
                             <h1>WWU Great</h1>
-                            <img src="img/logo-512.png" />
+                            <a href="/"><img src="img/logo-512.png" /></a>
                             <h1>Puzzle Hunt</h1>
                             <h3>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h3>
                         </div>
@@ -21,32 +21,32 @@ Home = React.createClass({
                 <div className="two column equal height stackable row">
                     <div className="column">
                         <div className="ui two column grid">
-                            <HomePanel 
-                                title="Login" 
-                                icon="huge green sign in icon" 
-                                link="/login" 
-                                extraText="Log in to create or join a team!"
-                                />
-                            <HomePanel 
-                            title="Register" 
-                            icon="huge blue user add icon" 
-                            link="/register" 
+                            <HomePanel
+                            title="Register"
+                            icon="huge blue user add icon"
+                            link="/register"
                             extraText="Free to Register! Space is limited!"
                             />
+                            <HomePanel
+                                title="Login"
+                                icon="huge green sign in icon"
+                                link="/login"
+                                extraText="Log in to create or join a team!"
+                                />
                         </div>
                     </div>
                     <div className="column">
                         <div className="ui two column grid">
-                            <HomePanel 
-                            title="Info" 
-                            icon="huge purple help icon" 
-                            link="/info" 
+                            <HomePanel
+                            title="Info"
+                            icon="huge red help icon"
+                            link="/info"
                             extraText="This is an event for WWU students/faculty/staff to join forces and solve epic puzzles of all kinds!"
                             />
-                            <HomePanel 
-                            title="Puzzles" 
-                            icon="huge red puzzle icon" 
-                            link="/puzzles" 
+                            <HomePanel
+                            title="Puzzles"
+                            icon="huge purple puzzle icon"
+                            link="/puzzles"
                             extraText="Check out example puzzles!  Teams with diverse skillsets will be advantageous :)"
                             />
                         </div>
@@ -62,15 +62,9 @@ Home = React.createClass({
                                 </a>
                             </div>
                             <div className="item">
-                                <a className="ui huge fluid teal labeled icon button" href="https://goo.gl/forms/2MmEZHcqC5" target="_blank">
+                                <a className="ui huge fluid teal labeled icon button" href="https://docs.google.com/forms/d/1aEnToLDOTY9P53mY3LRecWkY5w-4_xyYpBmMwwSh0Pw/viewform" target="_blank">
                                     <i className="bullhorn icon"></i>
                                     Volunteer to help run puzzle stations!
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a className="ui huge fluid teal labeled icon button" href="https://goo.gl/forms/1a740S1RPv" target="_blank">
-                                    <i className="bullhorn icon"></i>
-                                    Sign up for a table in Red Square during this event!
                                 </a>
                             </div>
                             <div className="item">
@@ -107,6 +101,9 @@ Home = React.createClass({
                                 <div className="extra">
                                     <a className="ui right floated button wwu-btn" href="https://commerce.cashnet.com/GreatPuzzleHunt2016" target="_blank">Order Now!</a>
                                 </div>
+                            </li>
+                            <li className="item">
+                                <div className="description">T-Shirt Ordering Deadline is <b>Midnight March 31st!</b></div>
                             </li>
                         </ul>
                     </div>
