@@ -71,7 +71,7 @@ Register = React.createClass({
         inline: true,
         onSuccess: (event, fields) => {
           event.preventDefault();
-          
+
           // Call Meteor method to create account.
           Meteor.call('userCreate', fields, (err, result) => {
             if(err) {

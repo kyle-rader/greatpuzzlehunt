@@ -1,19 +1,18 @@
 // My Team comp
 
 MyTeam = React.createClass({
-    
+
     mixins: [ReactMeteorData],
     getMeteorData() {
         let data = {};
         let membersHandle = Meteor.subscribe('myTeamMembers');
         let teamHandle = Meteor.subscribe('myTeam');
-        
+
         if (teamHandle.ready()) {
             data.myTeam = Teams.findOne();
         }
         if (membersHandle.ready()) {
             data.members = Meteor.users.find().fetch();
-            console.log(data.members);
         }
         return data;
     },
@@ -111,7 +110,7 @@ MyTeam = React.createClass({
 
         let disabled = !this.teamOwner();
         let submit = !disabled ? <input type="submit" className="ui blue button" value="Save"/> : null;
-        
+
         return (
         <div className="ui huge form">
             <h2 className="ui center aligned header">
@@ -141,7 +140,7 @@ MyTeam = React.createClass({
                 {this.getTeamForm()}
 
                 {this.getMembers()}
-                
+
             </div>
             <br/>
         </div>
