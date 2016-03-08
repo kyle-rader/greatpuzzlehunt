@@ -5,12 +5,13 @@ Accounts.emailTemplates.verifyEmail = {
     subject(user) {
         return 'Welcome to the WWU Puzzle Hunt ' + user.profile.firstname;
     },
-    text(user, url) {
-        return 'Welcome ' + user.profile.firstname + ', to the First Annual WWU Great Puzzle Hunt!\n\n' +
-        'Please verify your email address by clicking the link below.\n' +
-        url + ' \n\n' +
-        'Cheers,\n' +
-        'The WWU Puzzle Hunt Team';
+    html(user, url) {
+        return `Welcome ${user.profile.firstname}, to the First Annual WWU Great Puzzle Hunt!
+
+  Please verify your email address by clicking <a href='${url}'>here</a>.
+
+  Cheers,
+  The WWU Puzzle Hunt Team`;
     }
 };
 
@@ -20,12 +21,11 @@ Accounts.emailTemplates.enrollAccount = {
         return user.profile.firstname + ', welcome to the new WWU Puzzle Hunt site!';
     },
     html(user, url) {
-        return 'Welcome ' + user.profile.firstname + ', to the new WWU Great Puzzle Hunt system!\n\n' +
-        'In order to finish your account migration please reset your password on the new site by clicking the link below.\n' +
-        url + ' \n\n' +
-        'If you have any questions or concerns about this process please email <a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a>\n' +
-        'Cheers,\n' +
-        'The WWU Puzzle Hunt Team';
+        return `Welcome ${user.profile.firstname}, to the new WWU Great Puzzle Hunt system!
+  In order to finish your account migration please reset your password on the new site by clicking <a href="${url}">here</a>.
+  If you have any questions or concerns about this process please email <a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a>
+  Cheers,
+  The WWU Puzzle Hunt Team`;
     }
 };
 

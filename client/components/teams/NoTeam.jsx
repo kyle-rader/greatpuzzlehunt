@@ -6,7 +6,7 @@ NoTeam = React.createClass({
     getMeteorData() {
         let data = {};
         let handle = Meteor.subscribe('teams');
-        
+
         if (handle.ready()) {
             data.teams = Teams.find().fetch();
         }
@@ -130,7 +130,7 @@ NoTeam = React.createClass({
                         {this.getJoinTeamForm()}
                     </div>
                 </div>
-                
+
             </div>
             <br/>
         </div>

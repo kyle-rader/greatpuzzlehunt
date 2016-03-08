@@ -3,14 +3,16 @@
 MemberListing = React.createClass({
 
     render() {
+      console.log(this.props.member.profile);
+
         return (
         <div className="card">
             <div className="content">
-                <div className="header">{this.props.member.displayname}</div>
+                <div className="header">{this.props.member.profile.displayname}</div>
                 <div className="description">
-                    <a href={'tel:' + this.props.member.phone}>
+                    <a href={'tel:' + this.props.member.profile.phone}>
                         <div className="ui icon label">
-                            <i className="phone icon"></i>{this.props.member.phone}
+                            <i className="phone icon"></i>{this.props.member.profile.phone}
                         </div>
                     </a>
                 </div>
