@@ -23,6 +23,18 @@ MyTeam = React.createClass({
             success: null,
         };
     },
+    leaveTeam(event, fields) {
+      event.preventDefault();
+      console.log("Clicked Leave");
+      Meteor.call("teamLeave", function(error, result){
+        if(error){
+          console.log("error", error);
+        }
+        if(result){
+
+        }
+      });
+    },
 
     componentDidMount() {
         // Setup create Team form
@@ -139,7 +151,7 @@ MyTeam = React.createClass({
 
         let disabled = !this.teamOwner();
         let submit = !disabled ? <input onClick={this.onSubmit} type="submit" className="ui blue button" value="Save"/> : null;
-
+        let leave = <input onClick={this.leaveTeam} type="submit" className="ui red button" value="Leave Team" />
         return (
         <form id="teamForm"  className="ui huge form" ref="teamForm">
             <h2 className="ui center aligned header">
@@ -154,7 +166,9 @@ MyTeam = React.createClass({
                 <label>Team Password</label>
                 <input name="password" disabled={disabled} type="text" defaultValue={this.data.myTeam.password}/>
             </div>
+            {leave}
             {submit}
+
         </form>
         );
     },
