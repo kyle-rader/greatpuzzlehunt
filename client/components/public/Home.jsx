@@ -64,7 +64,7 @@ Home = React.createClass({
                             <div className="item">
                                 <a className="ui huge fluid teal labeled icon button" href="https://docs.google.com/forms/d/1aEnToLDOTY9P53mY3LRecWkY5w-4_xyYpBmMwwSh0Pw/viewform" target="_blank">
                                     <i className="bullhorn icon"></i>
-                                    Volunteer to help run puzzle stations!
+                                    Volunteer to help run event!
                                 </a>
                             </div>
                             <div className="item">
