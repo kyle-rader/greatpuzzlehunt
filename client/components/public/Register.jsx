@@ -98,7 +98,7 @@ Register = React.createClass({
         return (
           <div className="ui success message">
             <h3>Welcome to the WWU Puzzle Hunt!</h3>
-            <h4>A verification email has been sent to <strong>{this.state.newAccountEmail}</strong></h4>
+            <h4><a href="/login">Log in</a> and setup your team!</h4>
             <a className="ui facebook button" target="_blank" href="https://www.facebook.com/events/160687404314460/">
               <i className="facebook icon"></i>
               Share
