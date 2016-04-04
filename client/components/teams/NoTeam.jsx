@@ -1,3 +1,6 @@
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+
 // No Team comp
 
 NoTeam = React.createClass({

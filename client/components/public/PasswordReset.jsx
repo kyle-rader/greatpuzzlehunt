@@ -1,3 +1,6 @@
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+
 // Reset Password comp
 
 PasswordReset = React.createClass({
@@ -85,7 +88,7 @@ PasswordReset = React.createClass({
                   </div>
                 </div>
 
-                <input className="ui fluid large orange submit button" type="submit" value="Join" />
+                <input className="ui fluid large orange submit button" type="submit" value="Reset" />
             </div>
         </form>
         );

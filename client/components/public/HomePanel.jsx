@@ -1,3 +1,5 @@
+import React from 'react';
+
 HomePanel = React.createClass({
     render() {
         return (

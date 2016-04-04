@@ -1,3 +1,6 @@
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+
 // Feed Component
 
 Team = React.createClass({

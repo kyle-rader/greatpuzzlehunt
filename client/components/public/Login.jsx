@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Define our login comp
 
 Login = React.createClass({

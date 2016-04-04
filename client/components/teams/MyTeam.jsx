@@ -1,3 +1,6 @@
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+
 // My Team comp
 
 MyTeam = React.createClass({
