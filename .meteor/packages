@@ -18,7 +18,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 semantic:ui
 flemay:less-autoprefixer
-react
 kadira:flow-router
 kadira:react-layout
 accounts-password
@@ -28,3 +27,6 @@ random
 jparker:crypto-base64
 pagebakers:ionicons
 accounts-base
+react
+react-runtime@=0.14.3
+react-template-helper@=0.2.4
