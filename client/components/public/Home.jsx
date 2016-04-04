@@ -1,3 +1,5 @@
+import React from 'react';
+
 Home = React.createClass({
 
     render() {

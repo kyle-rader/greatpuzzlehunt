@@ -1,0 +1,26 @@
+{
+  "name": "wwupuzzlehunt",
+  "version": "1.0.0",
+  "description": "A Puzzle Hunt Game System",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyle-rader/puzzlehunt.git"
+  },
+  "author": "Kyle W. Rader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyle-rader/puzzlehunt/issues"
+  },
+  "homepage": "https://github.com/kyle-rader/puzzlehunt#readme",
+  "dependencies": {
+    "meteor-node-stubs": "^0.2.1",
+    "react": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-mounter": "^1.1.0"
+  }
+}

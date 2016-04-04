@@ -1,3 +1,5 @@
+import React from 'react';
+
 Puzzles = React.createClass({
 
     render() {

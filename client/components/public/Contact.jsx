@@ -1,3 +1,5 @@
+import React from 'react';
+
 Contact = React.createClass({
 
     render() {

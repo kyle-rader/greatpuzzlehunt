@@ -1,3 +1,8 @@
+// Application header
+
+
+import React from 'react';
+
 AppHeader = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {

@@ -1,3 +1,6 @@
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+
 // Define our login comp
 
 Register = React.createClass({

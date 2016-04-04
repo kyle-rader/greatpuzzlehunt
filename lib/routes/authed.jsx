@@ -1,3 +1,7 @@
+import React from 'react';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { mount } from 'react-mounter';
+
 const authedRoutes = FlowRouter.group({
     name: 'authed'
 });
@@ -5,13 +9,13 @@ const authedRoutes = FlowRouter.group({
 authedRoutes.route('/team', {
     name: 'team',
     action() {
-        ReactLayout.render(App, {yield: <Team />});
+        mount(App, {yield: <Team />});
     }
 });
 
 authedRoutes.route('/profile', {
     name: 'profile',
     action() {
-        ReactLayout.render(App, {yield: <Login />});
+        mount(App, {yield: <Login />});
     }
 });

@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 Meteor.publish('teams', function() {
     let fields = {
         name: 1,

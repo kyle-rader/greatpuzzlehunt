@@ -1,7 +1,9 @@
 // Define our main App component
 
-App = React.createClass({
+import React from 'react';
 
+App = React.createClass({
+    
     mixins: [ReactMeteorData],
 
     getMeteorData() {
@@ -29,5 +31,4 @@ App = React.createClass({
             {this.getView()}
         </div>);
     }
-
 });

@@ -1,3 +1,5 @@
+import React from 'react';
+
 // A Member listing card
 
 MemberListing = React.createClass({
