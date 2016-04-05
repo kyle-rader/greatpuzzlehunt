@@ -5,3 +5,5 @@
 *settings.json
 node_modules/amdefine node_modules/asap node_modules/babel-runtime node_modules/base62 node_modules/core-js node_modules/domready node_modules/envify node_modules/esprima-fb node_modules/fbjs node_modules/js-tokens node_modules/jstransform node_modules/loose-envify node_modules/promise node_modules/react node_modules/react-addons-pure-render-mixin node_modules/react-dom node_modules/react-mounter node_modules/source-map node_modules/through node_modules/ua-parser-js node_modules/whatwg-fetch
 node_modules
+
+private/

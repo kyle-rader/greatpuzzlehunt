@@ -2,34 +2,56 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
 
-    if (Migrations.find({migration: '2'}).count() > 0) {
-      console.log('Migration 2 Already complete. Skipping...');
-      return;
-    }
+  if (Meteor.users.find().count() === 0) {
 
-    let numFalseUsers = Meteor.users.find({emails: { $elemMatch: {verified: false}}}).count();
+    console.log("Fresh Install Performing Migration...");
 
-    console.log(numFalseUsers + " Non-Verified Users Found, sending verification emails");
+    let users = JSON.parse(Assets.getText("migration/users.json"));
+    let teams = JSON.parse(Assets.getText("migration/teams.json"));
 
-    let users = Meteor.users.find({emails: { $elemMatch: {verified: false}}}).fetch();
-
+    let userCnt = 0;
     _.each(users, (user) => {
-      
-      let usernameMatches = user.username.match(/(w[0-9]+|@students\.wwu\.edu)/i);
 
-      if (user.username.indexOf('@') > -1 || (usernameMatches && usernameMatches.length > 0)) {
-        console.log(`${user.profile.displayname} has a bad username: \"${user.username}\" skipping...`);
-        return; // This user's username is malformed so their email isn't going to work.
+      // Clearing fields that have special JSON type keys.
+      user.services.resume= {};
+      if (user.services.email) {
+        user.services.email.verificationTokens = [];
+      }
+      if (user.services.password.reset) {
+        user.services.password.reset = {};
       }
 
-      Accounts.sendVerificationEmail(user._id);
+      let created = new Date(user.createdAt.$date);
+      user.createdAt = created;
 
-      console.log(`Email sent to ${user.emails[0].address}`);
+      Meteor.users.insert(user);
+
+      if (user.emails.length > 0 && !user.emails[0].verified) {
+        console.log(`User \"${user.username}\" has not verified their email!`);
+        // Accounts.sendVerificationEmail(user._id);
+      }
+
+      userCnt++;
+
     });
 
-    console.log("");
-    console.log("Migration 2 Done.");
+    console.log(`\n*** Found ${teams.length} teams ***\n`);
+    
+    let teamCnt = 0;
+    _.each(teams, (team) => {
 
-    Migrations.insert({migration: '2'});
+      let created = new Date(team.created.$date);
+      let updated = new Date(team.updated.$date);
+      team.created = created;
+      team.updated = updated;
+
+      Teams.insert(team);
+
+      teamCnt++;
+
+    });
+
+    console.log(`Migration Done. ${userCnt} users added.  ${teamCnt} teams added.`);
+  }
 
 });
