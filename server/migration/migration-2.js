@@ -28,7 +28,7 @@ Meteor.startup(() => {
 
       if (user.emails.length > 0 && !user.emails[0].verified) {
         console.log(`User \"${user.username}\" has not verified their email!`);
-        // Accounts.sendVerificationEmail(user._id);
+        Accounts.sendVerificationEmail(user._id);
       }
 
       userCnt++;
