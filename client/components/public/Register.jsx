@@ -113,7 +113,7 @@ Register = React.createClass({
     getForm() {
       if (!this.state.newAccountEmail) {
         return (
-          <form id="registerForm" className="ui huge form" ref="registerForm">
+          <form id="registerForm" className="ui large form" ref="registerForm">
             <div className="ui raised segment transparent-bg">
               <h2 className="ui blue header">
                 <div className="content">
@@ -122,24 +122,30 @@ Register = React.createClass({
               </h2>
               <div className="two fields">
                 <div className="field">
-                  <input type="text" name="firstname" placeholder="First Name" autoComplete="off" defaultValue={this.state.firstname}/>
+                  <label className="text-left">First Name</label>
+                  <input type="text" name="firstname" placeholder="eg. Kyle" autoComplete="off" defaultValue={this.state.firstname}/>
                 </div>
                 <div className="field">
-                  <input type="text" name="lastname" placeholder="Last Name" autoComplete="off" defaultValue={this.state.lastname}/>
+                  <label className="text-left">Last Name</label>
+                  <input type="text" name="lastname" placeholder="eg. Rader" autoComplete="off" defaultValue={this.state.lastname}/>
                 </div>
               </div>
               <div className="two fields">
                 <div className="field">
+                  <label className="text-left">WWU Username</label>
                   <div className="ui left icon input">
                     <i className="user icon"></i>
-                    <input type="text" name="username" placeholder="WWU Username" autoComplete="off" defaultValue={this.state.username}/>
+                    <input type="text" name="username" placeholder="eg. raderk" autoComplete="off" defaultValue={this.state.username}/>
                   </div>
+                  <small className="text-left">Same as My Western username</small>
                 </div>
                 <div className="field">
+                  <label className="text-left">Email Type</label>
                   <select name="userType" className="ui fluid dropdown">
                     <option value="student">Student</option>
                     <option value="faculty">Faculty/ Staff</option>
                   </select>
+                  <small className="text-left">Email extension is automatically added!</small>
                 </div>
               </div>
               <div className="two fields">
