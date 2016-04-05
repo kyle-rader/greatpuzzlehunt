@@ -28,7 +28,13 @@ Meteor.startup(() => {
 
       if (user.emails.length > 0 && !user.emails[0].verified) {
         console.log(`User \"${user.username}\" has not verified their email!`);
-        Accounts.sendVerificationEmail(user._id);
+        try {
+          Accounts.sendVerificationEmail(user._id);
+        }
+        catch(e) {
+          console.log(`Failed to send Reset Email for ${user.username} at ${user.emails[0].address}`);
+        }
+        
       }
 
       userCnt++;

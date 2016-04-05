@@ -39,7 +39,13 @@ Info = React.createClass({
                     <div className="ui list">
                         <div className="item">
                             <div className="ui horizontal label">
-                                April 9, 2016 at midnight
+                                April 9, 2016 10:00 AM
+                            </div>
+                            Game Day!
+                        </div>
+                        <div className="item">
+                            <div className="ui horizontal label">
+                                April 10, 2016 @ Midnight
                             </div>
                             Last day to order a T-shirt!
                         </div>
