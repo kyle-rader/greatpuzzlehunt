@@ -23,6 +23,11 @@ AppHeader = React.createClass({
         $(this.refs.menuDropdown).dropdown();
     },
 
+    componentDidUpdate() {
+        if (this.refs.profileDropdown)
+            $(this.refs.profileDropdown).dropdown();
+    },
+
     getRightMenu() {
         // User is logged in
         if (this.data.user) {

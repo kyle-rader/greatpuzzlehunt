@@ -3,15 +3,18 @@ Accounts.emailTemplates.siteName = 'WWU Puzzle Hunt';
 Accounts.emailTemplates.from = 'WWU Puzzle Hunt <accounts@wwupuzzlehunt.com>';
 Accounts.emailTemplates.verifyEmail = {
     subject(user) {
-        return 'Welcome to the WWU Puzzle Hunt ' + user.profile.firstname;
+        return 'WWU Puzzle Hunt Email Verification for: ' + user.profile.firstname;
     },
     html(user, url) {
-        return `Welcome ${user.profile.firstname}, to the First Annual WWU Great Puzzle Hunt!
-
-  Please verify your email address by clicking <a href='${url}'>here</a>.
-
-  Cheers,
-  The WWU Puzzle Hunt Team`;
+        return `
+<p>Hi ${user.profile.firstname}!</p>
+<p>Note your username is <strong>${user.username}</strong>
+<p>Please verify your email address by clicking <a href='${url}'>here</a>.</p>
+<br>
+<p>
+Cheers,
+The WWU Puzzle Hunt Team
+</p>`;
     }
 };
 
@@ -35,7 +38,7 @@ Accounts.validateLoginAttempt((attempt) => {
         return false;
     }
     else if (attempt.user && !attempt.user.emails[0].verified) {
-        throw new Meteor.Error(400, 'You must verify your email before logging in!');
+        throw new Meteor.Error(400, 'You must verify your email before logging in!  Questions? See our Contact page.');
     }
     else {
         return true;
