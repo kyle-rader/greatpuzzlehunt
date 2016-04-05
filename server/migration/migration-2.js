@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
 
-  if (Meteor.users.find().count() === 0) {
+  if (Meteor.users.find().count() === 0 && Migrations.find({migration: '2'}).count() === 0) {
 
     console.log("Fresh Install Performing Migration...");
 
@@ -52,6 +52,7 @@ Meteor.startup(() => {
     });
 
     console.log(`Migration Done. ${userCnt} users added.  ${teamCnt} teams added.`);
+    Migrations.insert({migration: '2'});
   }
 
 });
