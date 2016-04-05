@@ -123,13 +123,16 @@ NoTeam = React.createClass({
             <div className="ui container raised segment transparent-bg">
 
                 <PuzzlePageTitle title="Team"/>
-                <div className="ui two column stackable grid" style={{position: 'relative'}}>
+                <div className="ui one column grid" style={{position: 'relative'}}>
+                    <br/>
                     <div className="ui horizontal divider header">CHOOSE ONE</div>
                     <div className="column">
                         {this.getCreateTeamForm()}
                         {this.getError()}
                     </div>
-                    <div className="ui vertical divider">or</div>
+
+                    <div className="ui horizontal divider header">OR</div>
+
                     <div className="column">
                         {this.getJoinTeamForm()}
                     </div>
