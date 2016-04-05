@@ -39,9 +39,9 @@ Info = React.createClass({
                     <div className="ui list">
                         <div className="item">
                             <div className="ui horizontal label">
-                                March 31, 2016
+                                April 9, 2016 at midnight
                             </div>
-                            Last day to order a T-shirt <strong>if</strong> you want to pick it up at the event.
+                            Last day to order a T-shirt!
                         </div>
                     </div>
                 </div>

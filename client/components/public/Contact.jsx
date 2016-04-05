@@ -13,12 +13,12 @@ Contact = React.createClass({
                     <div className="center aligned row">
                         <div className="column">
                             <h2>Event Coordinator</h2>
-                            <h3>Millie Johnson | <a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a></h3>
+                            <h2><a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a></h2>
                         </div>
                         <div className="column">
                             <h2>Website Support</h2>
-                            <h3>Clark Rinker | <a href="rinkerc@students.wwu.edu">rinkerc@students.wwu.edu</a></h3>
-                            <h3>NOTE: During Dead Week track progress on <a href="https://trello.com/b/y8B6gqg1/wwu-puzzle-hunt">Trello</a></h3>
+                            <h2><a href="mailto:raderk@students.wwu.edu">raderk@students.wwu.edu</a></h2>
+                            <h3>Track development progress on <a href="https://trello.com/b/y8B6gqg1/wwu-puzzle-hunt">Trello</a></h3>
                         </div>
                     </div>
                 </div>
