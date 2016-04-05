@@ -6,8 +6,8 @@ Meteor.startup(() => {
 
     console.log("Fresh Install Performing Migration...");
 
-    let users = JSON.parse(Assets.getText("migration/users.json"));
-    let teams = JSON.parse(Assets.getText("migration/teams.json"));
+    let users = JSON.parse(Assets.getText("migration2/users.json"));
+    let teams = JSON.parse(Assets.getText("migration2/teams.json"));
 
     let userCnt = 0;
     _.each(users, (user) => {

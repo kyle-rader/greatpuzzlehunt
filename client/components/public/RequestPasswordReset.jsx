@@ -73,14 +73,16 @@ RequestPasswordReset = React.createClass({
             <div className="ui raised segment transparent-bg">
               <h2 className="ui violet header">
                 <div className="content">
-                  Password Reset
+                  Request Password Reset
                 </div>
               </h2>
               <div className="field">
+                <label className="text-left">WWU Username</label>
                 <div className="ui left icon input">
                   <i className="user icon"></i>
-                  <input type="text" name="username" placeholder="WWU Username" autoComplete="off" />
+                  <input type="text" name="username" placeholder="eg. raderk" autoComplete="off" />
                 </div>
+                <small className="text-left">Same as My Western username</small>
               </div>
 
               <input className="ui fluid large violet submit button" type="submit" value="Reset" />
