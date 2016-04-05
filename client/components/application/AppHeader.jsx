@@ -33,19 +33,16 @@ AppHeader = React.createClass({
         if (this.data.user) {
             return (
             <div className="right menu">
-                <a className="ui item" href="/team">
-                    <i className="blue users icon"></i>
-                    Team
-                </a>
                 <div className="ui dropdown item" ref="profileDropdown">
                     <i className="green user icon"></i>
                     {this.data.user.profile.displayname}
                     <div className="menu">
-                        <a className="item" href="/profile">
-                            <i className="setting icon"></i> Profile
+                        <a className="item" href="/team">
+                            <i className="blue users icon"></i>
+                            Team
                         </a>
                         <a className="item" onClick={this.logout}>
-                            <i className="sign out icon"></i> Logout
+                            <i className="orange sign out icon"></i> Logout
                         </a>
                     </div>
                 </div>
@@ -76,19 +73,19 @@ AppHeader = React.createClass({
                 <i className="red bars icon"></i> Menu
                 <div className="menu">
                     <a className="item" href="/">
-                        <i className="home icon"></i>&nbsp; Home
+                        <i className="teal home icon"></i>&nbsp; Home
                     </a>
                     <a className="item" href="/info">
-                        <i className="info circle icon"></i>&nbsp; General Info
+                        <i className="red info circle icon"></i>&nbsp; General Info
                     </a>
                     <a className="item" href="/puzzles">
-                        <i className="puzzle icon"></i>&nbsp; Puzzles
+                        <i className="purple puzzle icon"></i>&nbsp; Puzzles
                     </a>
                     <a className="item" href="/contact">
-                        <i className="mail icon"></i>&nbsp; Contact
+                        <i className="green mail icon"></i>&nbsp; Contact
                     </a>
                     <a className="item" href="/teamlist">
-                        <i className="users icon"></i>&nbsp; Team List
+                        <i className="blue users icon"></i>&nbsp; Team List
                     </a>
                 </div>
             </div>
