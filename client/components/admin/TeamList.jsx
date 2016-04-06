@@ -7,7 +7,7 @@ export default class TeamList extends React.Component {
     getTeamList() {
         return this.props.teams.map((team) => {
             return (
-                <TeamListRowContainer key={team._id} params={{teamId: team._id, team: team}} />
+                <TeamListRowContainer key={team._id} params={{id: team._id}} team={team} />
             );
         });
     }
@@ -74,7 +74,7 @@ export default class TeamList extends React.Component {
                 </tr>
             </thead>
           <tbody ref="teamlist">
-            {this.getTeamList()}
+            { this.getTeamList() }
           </tbody>
           <tfoot className="full-width">
             <tr>

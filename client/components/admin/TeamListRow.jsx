@@ -86,13 +86,15 @@ export default class TeamListRow extends React.Component {
         }
     }
 
+    componentDidMount() {
+        //console.log(`Team mounted`, this.props);
+    }
+
     componentWillReceiveProps() {
         this.setState({editMode: false});
     }
 
     render() {
-
-        console.log(this.props);
 
         if (this.props.loading) {
             return (
@@ -102,11 +104,13 @@ export default class TeamListRow extends React.Component {
             );
         }
 
+        console.log(this.props);
+
         return (
         <tr>
-            {this.getName()}
+            <td></td>
 
-            {this.getPassword()}
+            <td></td>
 
             <td></td>
             
