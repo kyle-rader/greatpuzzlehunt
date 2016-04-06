@@ -26,3 +26,10 @@ authedRoutes.route('/profile', {
         mount(App, {yield: <Login />});
     }
 });
+
+authedRoutes.route('/floaters', {
+  name: 'floaters',
+  action(){
+    mount(App, {yield: <Floaters />});
+  }
+});

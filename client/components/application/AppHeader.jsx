@@ -46,6 +46,10 @@ AppHeader = React.createClass({
                             <i className="blue users icon"></i>
                             Team
                         </a>
+                        <a className="item" href="/floaters">
+                            <i className="violet user icon"></i>
+                            Looking For Team
+                        </a>
                         <a className="item" onClick={this.logout}>
                             <i className="orange sign out icon"></i> Logout
                         </a>
