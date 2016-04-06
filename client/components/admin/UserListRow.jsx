@@ -105,8 +105,9 @@ export default class UserListRow extends React.Component {
                 </div>
             </td>);
         } else {
+            let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail}><i className="lock icon"></i></div> : null;
             return (
-            <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].address} &nbsp;</td>);
+            <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].address} &nbsp; {verifyBtn}</td>);
         }
     }
 
@@ -135,7 +136,7 @@ export default class UserListRow extends React.Component {
             <td className={!!user.profile.teamId ? 'positive' : 'negative'}>{!!user.profile.teamId ? 'Yes' : 'No'}</td>
             
             <td>
-                <div className="ui three icon compact buttons">
+                <div className="ui three icon tiny compact buttons">
                     {this.getEditButton()}
                     <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}><i className="refresh icon"></i></div>
                     <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
