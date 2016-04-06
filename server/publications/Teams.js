@@ -16,7 +16,7 @@ Meteor.publish('myTeam', function() {
 });
 
 
-Meteor.publish("myTeamMembers", function(){
+Meteor.publish("myTeamMembers", function() {
   if (this.userId) {
       team = Teams.findOne({members: this.userId});
       return Meteor.users.find({_id:{$in:team.members}},
@@ -36,6 +36,8 @@ Meteor.publish('teams.all', function() {
 });
 
 Meteor.publish('team.members', function(teamId) {
+  check(teamId, String);
+  
   if (!this.userId) return [];
 
   let user = Meteor.users.findOne(this.userId);

@@ -1,13 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import TeamListRowContainer from './TeamListRow.jsx';
 
 export default class TeamList extends React.Component {
 
     getTeamList() {
         return this.props.teams.map((team) => {
             return (
-                <TeamListRowContainer key={team._id} params={{id: team._id}} team={team} />
+                <TeamListRow key={team._id} team={team} />
             );
         });
     }
@@ -70,7 +69,7 @@ export default class TeamList extends React.Component {
                     <th>Name</th>
                     <th>Password</th>
                     <th>Members</th>
-                    <th>Actions</th>
+                    {/*<th>Actions</th>*/}
                 </tr>
             </thead>
           <tbody ref="teamlist">
