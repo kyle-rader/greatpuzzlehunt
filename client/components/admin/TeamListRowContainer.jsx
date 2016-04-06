@@ -2,18 +2,19 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import TeamListRow from './TeamListRow.jsx';
 
-export default createContainer( ({ team }) => {
+export default createContainer( ({ params }) => {
 
-    const membersHandle = Meteor.subscribe('team.members', team._id);
+    const { id } = params;
+
+    console.log('team container:', id);
+
+    const membersHandle = Meteor.subscribe('team.members', id);
     
     const loading = !membersHandle.ready();
 
-    const members = Meteor.users.find({"profile.teamId": team._id}, {sort: {name: 1}});
-
     return {
         loading,
-        team,
-        members: !loading ? members.fetch() : []
-    }; 
+        members: !loading ? membersHandle.find({"profile.teamId": id}).fetch() : []
+    };
 
 }, TeamListRow);
