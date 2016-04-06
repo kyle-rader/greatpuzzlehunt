@@ -160,8 +160,8 @@ export default class UserListRow extends React.Component {
             <td>
                 <div className="ui three icon tiny compact buttons">
                     {this.getEditButton()}
-                    <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}><i className="refresh icon"></i></div>
-                    <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
+                    <div className="ui disabled orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}><i className="refresh icon"></i></div>
+                    <div className="ui disabled red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
                 </div>
             </td>
         </tr>
