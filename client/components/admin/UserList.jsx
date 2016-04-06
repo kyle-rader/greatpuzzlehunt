@@ -1,6 +1,19 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 
 export default class UserList extends React.Component {
+
+    editUser(user) {
+        console.log(`Edit ${user.profile.displayname}`);
+    }
+
+    resetPassword(user) {
+        console.log(`Reset ${user.profile.displayname}`);
+    }
+
+    deleteUser(user) {
+        console.log(`Delete ${user.profile.displayname}`);
+    }
 
     getUserList() {
         return this.props.users.map((user) => {
@@ -14,9 +27,9 @@ export default class UserList extends React.Component {
                 <td className={!!user.profile.teamId ? 'positive' : 'negative'}>{!!user.profile.teamId ? 'Yes' : 'No'}</td>
                 <td>
                     <div className="ui three icon compact buttons">
-                        <div className="ui green basic button" title="Edit User"><i className="pencil icon"></i></div>
-                        <div className="ui orange basic button" title="Reset Password"><i className="refresh icon"></i></div>
-                        <div className="ui red basic button" title="Delete User"><i className="trash icon"></i></div>
+                        <div className="ui green basic button" title="Edit User" onClick={this.editUser.bind(this, user)}><i className="pencil icon"></i></div>
+                        <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this, user)}><i className="refresh icon"></i></div>
+                        <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this, user)}><i className="trash icon"></i></div>
                     </div>
                 </td>
             </tr>
