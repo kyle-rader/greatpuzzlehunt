@@ -14,8 +14,11 @@ export default class UserList extends React.Component {
                 <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].verified ? 'Yes' :'No'}</td>
                 <td className={!!user.profile.teamId ? 'positive' : 'negative'}>{!!user.profile.teamId ? 'Yes' : 'No'}</td>
                 <td>
-                    <div className="ui tiny button">Edit</div>
-                    <div className="ui tiny button">Reset Password</div>
+                    <div className="ui three icon compact buttons">
+                        <div className="ui green basic button" title="Edit User"><i className="pencil icon"></i></div>
+                        <div className="ui orange basic button" title="Reset Password"><i className="refresh icon"></i></div>
+                        <div className="ui red basic button" title="Delete User"><i className="trash icon"></i></div>
+                    </div>
                 </td>
             </tr>
             );
@@ -24,9 +27,13 @@ export default class UserList extends React.Component {
 
     search(event) {
         let search = event.target.value;
-        // $(this.refs.userlist).find('tr').each(() => {
-        //     console.log(elem);
-        // });
+        let userList = $(this.refs.userlist);
+        userList.find(`tr:contains(${search})`).each(function() {
+            $(this).show();
+        });
+        userList.find(`tr:not(:contains(${search}))`).each(function() {
+            $(this).hide();
+        });
     }
 
     render() {
@@ -62,7 +69,7 @@ export default class UserList extends React.Component {
                     <th>Email</th>
                     <th>Verified</th>
                     <th>Team</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
           <tbody ref="userlist">
