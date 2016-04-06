@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import UserListContainer from './UserListContainer.jsx';
+import TeamListContainer from './TeamListContainer.jsx';
 
 Admin = React.createClass({
 
@@ -47,7 +48,7 @@ Admin = React.createClass({
                         <UserListContainer />
                     </div>
                     <div className="ui bottom attached tab segment" data-tab="teams">
-                        Second
+                        <TeamListContainer />
                     </div>
                 </div>
             </div>

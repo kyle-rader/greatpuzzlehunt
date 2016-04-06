@@ -23,3 +23,26 @@ Meteor.publish("myTeamMembers", function(){
         {fields: {profile:1}});
   }
 });
+
+Meteor.publish('teams.all', function() {
+  if (!this.userId) return [];
+
+  let user = Meteor.users.findOne(this.userId);
+
+  if (user.roles.indexOf('admin') > -1) {
+    return Teams.find({});
+  }
+
+});
+
+Meteor.publish('team.members', function(teamId) {
+  if (!this.userId) return [];
+
+  let user = Meteor.users.findOne(this.userId);
+
+  if (user.roles.indexOf('admin') < 0) {
+    return [];
+  } else {
+    return Meteor.users.find({"profile.teamId": teamId}, {username: 1, profile: 1, emails: 1});
+  }
+})
