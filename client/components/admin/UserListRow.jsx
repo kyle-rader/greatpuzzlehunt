@@ -33,9 +33,9 @@ export default class UserListRow extends React.Component {
         }, (err, result) => {
             if (err) {
                 console.log(err);
-                editBtn.attr('data-content', 'Failed to save user!');
+                editBtn.attr('data-content', 'Failed to save user! 😰');
             } else {
-                editBtn.attr('data-content', `${firstname} saved!`);
+                editBtn.attr('data-content', `${firstname} saved! 😀`);
             }
 
             editBtn.popup({
@@ -56,9 +56,9 @@ export default class UserListRow extends React.Component {
         }, (err, result) => {
             if (err) {
                 console.log(err);
-                btn.attr('data-content', 'Send Failed!');
+                btn.attr('data-content', 'Send Failed! 😰');
             } else {
-                btn.attr('data-content', 'Verification Email Sent!');
+                btn.attr('data-content', 'Verification Email Sent! 😀');
             }
 
             btn.popup({
@@ -71,7 +71,24 @@ export default class UserListRow extends React.Component {
     }
 
     resetPassword(event) {
-        console.log(`Reset ${user.profile.displayname}`);
+        let btn = $(event.target);
+
+        Meteor.call('userAdminResetPassword', {
+            _id: this.props.user._id
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                btn.attr('data-content', 'Failed to send password reset email! 😰');
+            } else {
+                btn.attr('data-content', 'Password Reset Email Sent! 😀');
+            }
+            btn.popup({
+                on: 'manual'
+            }).popup('show');
+            setTimeout(() => {
+                btn.popup('hide');
+            }, 3000);
+        });
     }
 
     deleteUser(event) {
@@ -127,7 +144,7 @@ export default class UserListRow extends React.Component {
                 </div>
             </td>);
         } else {
-            let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="lock icon"></i></div> : null;
+            let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="send icon"></i></div> : null;
             return (
             <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].address} &nbsp; {verifyBtn}</td>);
         }
@@ -160,7 +177,12 @@ export default class UserListRow extends React.Component {
             <td>
                 <div className="ui three icon tiny compact buttons">
                     {this.getEditButton()}
-                    <div className="ui disabled orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}><i className="refresh icon"></i></div>
+                    <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}>
+                        <i className="icons">
+                            <i className="lock icon"></i>
+                            <i className="corner refresh icon"></i>
+                        </i>
+                    </div>
                     <div className="ui disabled red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
                 </div>
             </td>
