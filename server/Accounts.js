@@ -57,12 +57,13 @@ Accounts.onCreateUser((options, user) => {
             displayname: options.displayname,
             major: options.major,
             phone: options.phone,
-            teamId: options.teamId
-        }
+            teamId: options.teamId,
+        },
+        roles: ['user']
     });
 
     if (user.username === 'kyle+raderk') {
-        user.profile.roles = ['admin'];
+        user.roles.push('admin');
     }
 
     return user;
