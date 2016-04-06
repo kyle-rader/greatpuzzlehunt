@@ -6,10 +6,9 @@ export default class UserList extends React.Component {
         return this.props.users.map((user) => {
             return (
             <tr key={user._id}>
-                <td>{user.profile.displayname}</td>
+                <td>{user.profile.displayname} {(user.emails[0].address.indexOf('@wwu.edu') >= 0) ? (<i className="right floated blue university icon"></i>) : null}</td>
                 <td>
                     {user.emails[0].address} &nbsp;
-                    {(user.emails[0].address.indexOf('@wwu.edu') >= 0) ? (<i className="inline university icon"></i>) : null}
                 </td>
                 <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].verified ? 'Yes' :'No'}</td>
                 <td className={!!user.profile.teamId ? 'positive' : 'negative'}>{!!user.profile.teamId ? 'Yes' : 'No'}</td>
