@@ -48,11 +48,33 @@ export default class UserListRow extends React.Component {
         this.setState({editMode: false});
     }
 
-    resetPassword(user) {
+    verifyEmail(event) {
+        let btn = $(event.target);
+
+        Meteor.call('userAdminVerifyEmail', {
+            _id: this.props.user._id
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                btn.attr('data-content', 'Send Failed!');
+            } else {
+                btn.attr('data-content', 'Verification Email Sent!');
+            }
+
+            btn.popup({
+                on: 'manual'
+            }).popup('show');
+            setTimeout(() => {
+                btn.popup('hide');
+            }, 3000);
+        });
+    }
+
+    resetPassword(event) {
         console.log(`Reset ${user.profile.displayname}`);
     }
 
-    deleteUser(user) {
+    deleteUser(event) {
         console.log(`Delete ${user.profile.displayname}`);
     }
 
@@ -75,7 +97,7 @@ export default class UserListRow extends React.Component {
             return (
             <td>
                 {user.profile.displayname}
-                {(user.emails[0].address.indexOf('@wwu.edu') >= 0) ? <i className="blue university icon"></i> : null} 
+                {(user.emails[0].address.indexOf('@wwu.edu') >= 0) ? <i className="blue right floated university icon"></i> : null} 
             </td>);
         }
     }
@@ -105,7 +127,7 @@ export default class UserListRow extends React.Component {
                 </div>
             </td>);
         } else {
-            let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail}><i className="lock icon"></i></div> : null;
+            let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="lock icon"></i></div> : null;
             return (
             <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].address} &nbsp; {verifyBtn}</td>);
         }
