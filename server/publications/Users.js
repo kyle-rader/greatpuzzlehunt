@@ -10,7 +10,7 @@ Meteor.users.deny({
 
 Meteor.publish(null, function() {
     let currentUser = this.userId;
-     
+
     if (currentUser) {
     return Meteor.users.find({
         _id: currentUser
@@ -45,4 +45,11 @@ Meteor.publish('users.all', function() {
                 roles: 1
             });
     }
+});
+
+Meteor.publish("users.floaters", function(){
+  //ez logged in check
+  if(this.userId){
+    return Meteor.users.find({"profile.teamId": null}, {fields:{emails:1, profile:1}});
+  }
 });
