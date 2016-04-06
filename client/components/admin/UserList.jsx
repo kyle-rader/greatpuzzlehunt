@@ -24,13 +24,17 @@ export default class UserList extends React.Component {
     }
 
     componentDidMount() {
-
+        $(this.refs.controlRow)
+            .visibility({
+                type   : 'fixed',
+                offset : 35,
+            });
     }
 
     render() {
         return (
         <table className="ui compact celled table">
-            <thead className="full-width">
+            <thead ref="controlRow" className="full-width control-row">
                 <tr>
                     <th colSpan="5">
                         <div className="ui grid">

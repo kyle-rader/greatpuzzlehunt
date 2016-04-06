@@ -32,7 +32,7 @@ Admin = React.createClass({
         return (
             <div className="custom-bg red-square">
                 <br/>
-                <div className="ui container raised segment transparent-bg">
+                <div className="ui raised segment transparent-bg">
                     <h3 className="ui violet header">Admin Panel</h3>
                     <div className="ui top attached tabular compact menu" ref="tabMenu">
                         <a className="active item" data-tab="users">
