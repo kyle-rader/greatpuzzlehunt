@@ -13,6 +13,13 @@ authedRoutes.route('/team', {
     }
 });
 
+authedRoutes.route('/admin', {
+    name: 'admin',
+    action() {
+        mount(App, {yield: <Admin />});
+    }
+});
+
 authedRoutes.route('/profile', {
     name: 'profile',
     action() {

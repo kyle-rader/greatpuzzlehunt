@@ -1,13 +1,13 @@
 // Application header
 
-
 import React from 'react';
 
 AppHeader = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
-            user: Meteor.user()
+            user: Meteor.user(),
+            isAdmin: Meteor.user() && (Meteor.user().roles.indexOf('admin') > -1)
         };
     },
 
@@ -31,12 +31,17 @@ AppHeader = React.createClass({
     getRightMenu() {
         // User is logged in
         if (this.data.user) {
+            let adminLink = this.data.isAdmin ?
+                (<a className="item" href="/admin"><i className="violet tasks icon"></i> Admin</a>) :
+                null;
+
             return (
             <div className="right menu">
                 <div className="ui dropdown item" ref="profileDropdown">
                     <i className="green user icon"></i>
                     {this.data.user.profile.displayname}
                     <div className="menu">
+                        {adminLink}
                         <a className="item" href="/team">
                             <i className="blue users icon"></i>
                             Team
