@@ -49,6 +49,10 @@ export default class UserListRow extends React.Component {
     }
 
     verifyEmail(event) {
+
+        if (!confirm(`Are you sure you want to email ${this.props.user.emails[0].address}?`))
+            return;
+
         let btn = $(event.target);
 
         Meteor.call('userAdminVerifyEmail', {
@@ -71,6 +75,10 @@ export default class UserListRow extends React.Component {
     }
 
     resetPassword(event) {
+
+        if (!confirm(`Are you sure you want to reset the password for ${this.props.user.profile.displayname}?`))
+            return;
+
         let btn = $(event.target);
 
         Meteor.call('userAdminResetPassword', {
