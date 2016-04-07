@@ -18,6 +18,31 @@ Game = React.createClass({
         this.setState(_.extend(this.state, {size: event.target.value}));
     },
 
+    handleQRupload(event) {
+        let input = this.refs.qrUpload;
+        console.log(input);
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            let preview = $(this.refs.qrPreview);
+            
+            reader.onload = function (e) {
+                preview.attr('src', e.target.result);
+                preview.removeClass('hidden');
+                qrcode.decode(e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    },
+
+    componentDidMount() {
+        qrcode.callback = (data) => {
+            console.log(data);
+            alert(data);
+        };
+    },
+
     render() {
         return (
             <div className="custom-bg red-square">
@@ -36,11 +61,12 @@ Game = React.createClass({
                     </div>
 
                     <br/>
-                    <div className="ui form">
+                    <form className="ui form">
                         <div className="field">
-                            <input className="ui olive fluid button" type="file" accept="image/*" />
+                            <input className="ui olive fluid button" type="file" accept="image/*" ref="qrUpload" onChange={this.handleQRupload}/>
                         </div>
-                    </div>
+                        <img className="ui hidden image" ref="qrPreview" src="#" alt="QR Code Image" />
+                    </form>
 
                 </div>
                 
