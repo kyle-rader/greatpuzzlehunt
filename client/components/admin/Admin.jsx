@@ -15,13 +15,13 @@ Admin = React.createClass({
 
     componentWillUpdate() {
         if (this.data.user && (this.data.user.roles.indexOf('admin') < 0)) {
-            FlowRouter.redirect('/team');
+            FlowRouter.go('/team');
         }
     },
 
     componentWillMount() {
         if (this.data.user && (this.data.user.roles.indexOf('admin') < 0)) {
-            FlowRouter.redirect('/team');
+            FlowRouter.go('/team');
         }
     },
 
