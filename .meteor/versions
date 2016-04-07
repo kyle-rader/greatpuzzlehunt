@@ -61,6 +61,7 @@ observe-sequence@1.0.9
 ordered-dict@1.0.5
 pagebakers:ionicons@2.0.1_1
 promise@0.6.5
+raderk:qr-decode@0.0.1
 random@1.0.7
 rate-limit@1.0.2
 react-meteor-data@0.2.7
@@ -81,6 +82,7 @@ standard-minifier-css@1.0.4
 standard-minifier-js@1.0.4
 templating@1.1.7
 templating-tools@1.0.2
+tinytest@1.0.8
 tmeasday:check-npm-versions@0.2.0
 tracker@1.0.11
 ui@1.0.9
