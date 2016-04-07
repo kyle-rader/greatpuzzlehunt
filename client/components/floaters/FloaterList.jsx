@@ -38,7 +38,7 @@ export default class FloaterList extends React.Component{
                   <th colSpan="3">
                       <div className="ui grid">
                           <div className="three wide column">
-                              <div className="ui large green fluid label">
+                              <div className="ui large violet fluid label">
                                   <i className="user icon"></i>
                                   &nbsp;
                                   {this.props.users.length} Users
