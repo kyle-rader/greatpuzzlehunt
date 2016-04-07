@@ -12,22 +12,22 @@ export default class TeamList extends React.Component {
     }
 
     search(event) {
-        // let search = event.target.value;
-        // let userList = $(this.refs.userlist);
-        // userList.find(`tr:contains(${search})`).each(function() {
-        //     $(this).show();
-        // });
-        // userList.find(`tr:not(:contains(${search}))`).each(function() {
-        //     $(this).hide();
-        // });
+        let search = event.target.value;
+        let teamList = $(this.refs.teamList);
+        teamList.find(`tr:contains(${search})`).each(function() {
+            $(this).show();
+        });
+        teamList.find(`tr:not(:contains(${search}))`).each(function() {
+            $(this).hide();
+        });
     }
 
     componentDidMount() {
-        // $(this.refs.controlRow)
-        //     .visibility({
-        //         type   : 'fixed',
-        //         offset : 35,
-        //     });
+        $(this.refs.controlRow)
+            .visibility({
+                type   : 'fixed',
+                offset : 35,
+            });
     }
 
     render() {
@@ -72,7 +72,7 @@ export default class TeamList extends React.Component {
                     {/*<th>Actions</th>*/}
                 </tr>
             </thead>
-          <tbody ref="teamlist">
+          <tbody ref="teamList">
             { this.getTeamList() }
           </tbody>
           <tfoot className="full-width">
