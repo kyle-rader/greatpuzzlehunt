@@ -8,7 +8,7 @@ Floaters = React.createClass({
       <div className="custom-bg red-square">
           <br/>
           <div className="ui raised segment transparent-bg">
-              <h3 className="ui centered violet header">Free Puzzlers</h3>
+              <h3 className="ui centered orange header">Free Puzzlers</h3>
 
               <div className="ui container">
                   <FloaterListContainer />
