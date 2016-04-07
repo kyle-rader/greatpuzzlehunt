@@ -37,6 +37,9 @@ AppHeader = React.createClass({
 
             return (
             <div className="right menu">
+                <a className="ui icon item" href="https://google.com" target="_blank">
+                    <i className="large red fitted google icon"></i>
+                </a>
                 <div className="ui dropdown item" ref="profileDropdown">
                     <i className="green user icon"></i>
                     {this.data.user.profile.displayname}
