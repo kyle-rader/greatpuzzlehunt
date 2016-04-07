@@ -6,6 +6,12 @@ import TeamListContainer from './TeamListContainer.jsx';
 
 Admin = React.createClass({
 
+    getInitialState() {
+        return {
+            pageComp: UserListContainer
+        }
+    },
+
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
@@ -13,43 +19,53 @@ Admin = React.createClass({
         };
     },
 
-    componentWillUpdate() {
+    canViewAdminPage() {
         if (this.data.user && (this.data.user.roles.indexOf('admin') < 0)) {
             FlowRouter.go('/team');
         }
     },
 
+    componentWillUpdate() {
+        this.canViewAdminPage();
+    },
+
     componentWillMount() {
-        if (this.data.user && (this.data.user.roles.indexOf('admin') < 0)) {
-            FlowRouter.go('/team');
-        }
+        this.canViewAdminPage();
     },
 
     componentDidMount() {
         $(this.refs.tabMenu).find('.item').tab();
     },
 
+    setPage(targetPage) {
+        this.setState({
+            pageComp: targetPage
+        });
+    },
+
     render() {
+        let pageComp = this.state.pageComp ? <this.state.pageComp /> : <div className="basic segment">Oops, no page found</div>;
+
         return (
             <div className="custom-bg red-square">
                 <br/>
                 <div className="ui raised segment transparent-bg">
-                    <h3 className="ui violet header">Admin Panel</h3>
-                    <div className="ui top attached tabular compact menu" ref="tabMenu">
-                        <a className="active item" data-tab="users">
-                            <i className="green user icon"></i> Users
+                    <h3 className="ui violet center aligned header">Admin Panel</h3>
+                    <div className="ui labeled icon menu">
+                        <a className="item" onClick={this.setPage.bind(this, UserListContainer)}>
+                            <i className="green user icon"></i>
+                            Users
                         </a>
-                        <a className="item" data-tab="teams">
-                            <i className="blue users icon"></i> Teams
+                        <a className="item" onClick={this.setPage.bind(this, TeamListContainer)}>
+                            <i className="blue users icon"></i>
+                            Teams
                         </a>
-                        
+                        <a className="item" onClick={this.setPage.bind(this, null)}>
+                            <i className="violet puzzle icon"></i>
+                            Puzzles
+                        </a>
                     </div>
-                    <div className="ui bottom attached active tab segment" data-tab="users">
-                        <UserListContainer />
-                    </div>
-                    <div className="ui bottom attached tab segment" data-tab="teams">
-                        <TeamListContainer />
-                    </div>
+                    {pageComp}
                 </div>
             </div>
         );

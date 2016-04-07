@@ -24,11 +24,6 @@ export default class UserList extends React.Component {
     }
 
     componentDidMount() {
-        $(this.refs.controlRow)
-            .visibility({
-                type   : 'fixed',
-                offset : 35,
-            });
     }
 
     render() {
