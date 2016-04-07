@@ -27,9 +27,18 @@ Game = React.createClass({
 
                     <br/>
                     <div className="ui form">
-                        <div className="two fields">
+                        <div className="field">
                             <input type="text" defaultValue={this.state.encode} onChange={this.handleEncodeChange} />
+                        </div>
+                        <div className="field">
                             <input type="text" defaultValue={this.state.size} onChange={this.handleSizeChange} />
+                        </div>
+                    </div>
+
+                    <br/>
+                    <div className="ui form">
+                        <div className="field">
+                            <input className="ui olive fluid button" type="file" accept="image/*" />
                         </div>
                     </div>
 
