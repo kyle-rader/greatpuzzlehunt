@@ -28,7 +28,6 @@ MyTeam = React.createClass({
     },
     leaveTeam(event, fields) {
       event.preventDefault();
-      console.log("Clicked Leave");
       Meteor.call("teamLeave", function(error, result){
         if(error){
           console.log("error", error);
@@ -67,7 +66,6 @@ MyTeam = React.createClass({
             inline: true,
             onSuccess: (event, fields) => {
                 event.preventDefault();
-                console.log("Clicked the button.");
                 Meteor.call('teamUpdate', fields, (err, result) => {
                     if (err) {
                         this.setState({err: err, success: false});
@@ -156,7 +154,7 @@ MyTeam = React.createClass({
         let submit = !disabled ? <input onClick={this.onSubmit} type="submit" className="ui blue button" value="Save"/> : null;
         let leave = <input onClick={this.leaveTeam} type="submit" className="ui red button" value="Leave Team" />
         return (
-        <form id="teamForm"  className="ui huge form" ref="teamForm">
+        <form id="teamForm"  className="ui form" ref="teamForm">
             <h2 className="ui center aligned header">
                 <div className="content">{this.data.myTeam.name}</div>
             </h2>
@@ -169,9 +167,10 @@ MyTeam = React.createClass({
                 <label>Team Password</label>
                 <input name="password" disabled={disabled} type="text" defaultValue={this.data.myTeam.password}/>
             </div>
-            {leave}
-            {submit}
-
+            <div className="two buttons">
+                {leave}
+                {submit}
+            </div>
         </form>
         );
     },
@@ -185,6 +184,11 @@ MyTeam = React.createClass({
                 {this.getTeamForm()}
                 {this.getError()}
                 {this.getSuccess()}
+
+                <h2 className="ui center aligned icon header">
+                    <i className="circular users icon"></i>
+                    Members
+                </h2>
                 {this.getMembers()}
 
             </div>
