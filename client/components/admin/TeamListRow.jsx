@@ -71,7 +71,13 @@ TeamListRow = React.createClass({
         if (!this.data.members) return null;
 
         return this.data.members.map((member) => {
-            return <li key={member._id}><strong>{member.profile.displayname}</strong> | {member.emails[0].address} | {member.profile.phone}</li>
+            let owner = member._id === this.props.team.owner ?
+                <i className="bullhorn blue icon"></i> : null;
+
+            return (
+                <div className="item" key={member._id}>
+                    <strong>{owner}&nbsp;{member.profile.displayname}</strong> | {member.emails[0].address} | {member.profile.phone}
+                </div>);
         });
     },
 
@@ -97,10 +103,10 @@ TeamListRow = React.createClass({
         <tr>
             {this.getName()}
 
-            {this.getPassword()}
+            { /* this.getPassword() */}
 
-            <td>
-                <div className="ui list">
+            <td colSpan="2" style={{width: '50%'}}>
+                <div className="ui small relaxed list">
                     { this.getMembers() }
                 </div>
             </td>

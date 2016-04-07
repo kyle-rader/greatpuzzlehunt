@@ -67,8 +67,8 @@ export default class TeamList extends React.Component {
             <thead className="full-width">
                 <tr>
                     <th>Name</th>
-                    <th>Password</th>
-                    <th>Members</th>
+                    {/*<th>Password</th>*/}
+                    <th colSpan="2">Members</th>
                     {/*<th>Actions</th>*/}
                 </tr>
             </thead>
