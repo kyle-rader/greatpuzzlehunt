@@ -29,7 +29,14 @@ authedRoutes.route('/profile', {
 
 authedRoutes.route('/floaters', {
   name: 'floaters',
-  action(){
+  action() {
     mount(App, {yield: <Floaters />});
   }
+});
+
+authedRoutes.route('/qrcode', {
+    name: 'qrcode',
+    action() {
+        mount(App, {yield: <Game />});
+    }
 });
