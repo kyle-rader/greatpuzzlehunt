@@ -22,7 +22,7 @@ export default class UserListRow extends React.Component {
 
         console.log(`Tryin to save \nfirst:${firstname}\nlast:${lastname}\nUsername:${username} \nEmail:${email} `);
 
-        let editBtn = $(this.refs.editBtn);
+        let btn = $(this.refs.editBtn);
 
         Meteor.call('userAdminUpdate', {
             _id: this.props.user._id,
@@ -33,16 +33,16 @@ export default class UserListRow extends React.Component {
         }, (err, result) => {
             if (err) {
                 console.log(err);
-                editBtn.attr('data-content', 'Failed to save user! 😰');
+                btn.attr('data-content', 'Failed to save user! 😰');
             } else {
-                editBtn.attr('data-content', `${firstname} saved! 😀`);
+                btn.attr('data-content', `${firstname} saved! 😀`);
             }
 
-            editBtn.popup({
+            btn.popup({
                 on: 'manual'
             }).popup('show');
             setTimeout(() => {
-                editBtn.popup('hide');
+                btn.popup('hide');
             }, 3000);
         });
         this.setState({editMode: false});
@@ -100,7 +100,28 @@ export default class UserListRow extends React.Component {
     }
 
     deleteUser(event) {
-        console.log(`Delete ${user.profile.displayname}`);
+        if (!confirm(`Are you sure you want to DELETE ${this.props.user.profile.displayname}!?!?`))
+            return;
+
+        let btn = $(event.target);
+
+        Meteor.call('userAdminDelete', {
+            _id: this.props.user._id
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                btn.attr('data-content', 'Failed to delete user! 😰');
+            } else {
+                btn.attr('data-content', `${firstname} Deleted! 😀`);
+            }
+
+            btn.popup({
+                on: 'manual'
+            }).popup('show');
+            setTimeout(() => {
+                btn.popup('hide');
+            }, 3000);
+        });
     }
 
     getName() {
@@ -191,7 +212,7 @@ export default class UserListRow extends React.Component {
                             <i className="corner refresh icon"></i>
                         </i>
                     </div>
-                    <div className="ui disabled red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
+                    <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
                 </div>
             </td>
         </tr>
