@@ -19,6 +19,20 @@ Home = React.createClass({
                         </div>
                     </div>
                 </div>
+
+                <div className="two column row">
+                    <div className="column">
+                        <a className="ui fluid big button teal" href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf" target="_blank">
+                            Rules of Play and Hunting Tips
+                        </a>
+                    </div>
+                    <div className="column">
+                        <a className="ui fluid big button teal" href="/pdfs/puzzle-hunt-map.pdf" target="_blank">
+                            Puzzle Hunt Campus Map
+                        </a>
+                    </div>
+                </div>
+
                 {/* Home Panels */}
                 <div className="two column equal height stackable row">
                     <div className="column">
@@ -43,7 +57,7 @@ Home = React.createClass({
                             title="Info"
                             icon="huge red help icon"
                             link="/info"
-                            extraText="This is an event for WWU students/faculty/staff to join forces and solve epic puzzles of all kinds!"
+                            extraText="This is an event for WWU students, faculty, and staff to join forces and solve epic puzzles of all kinds!"
                             />
                             <HomePanel
                             title="Puzzles"
