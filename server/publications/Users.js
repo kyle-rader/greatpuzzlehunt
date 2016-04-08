@@ -50,6 +50,6 @@ Meteor.publish('users.all', function() {
 Meteor.publish("users.floaters", function(){
   //ez logged in check
   if(this.userId){
-    return Meteor.users.find({"profile.teamId": null}, {fields:{emails:1, profile:1}});
+    return Meteor.users.find({"profile.teamId": null, roles: {$nin: ['volunteer', 'admin']}}, {fields:{emails:1, profile:1}});
   }
 });

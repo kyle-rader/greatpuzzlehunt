@@ -28,7 +28,7 @@ export default UserList = React.createClass({
 
     search(event) {
         let search = event.target.value;
-        let userList = $(this.refs.userlist);
+        let userList = $('tbody.userlist');
         userList.find(`tr:contains(${search})`).each(function() {
             $(this).show();
         });
@@ -77,7 +77,7 @@ export default UserList = React.createClass({
                         <th>Actions</th>
                     </tr>
                 </thead>
-              <tbody ref="userlist">
+              <tbody className="userlist">
                 {this.getUserList()}
               </tbody>
               <tfoot className="full-width">
