@@ -48,6 +48,13 @@ publicRoutes.route('/puzzles', {
     }
 });
 
+publicRoutes.route('/leaderboard', {
+    name: 'leaderboard',
+    action() {
+        mount(App, {yield: <Leaderboard />});
+    }
+});
+
 publicRoutes.route('/teamlist', {
     name: 'teamlist',
     action() {

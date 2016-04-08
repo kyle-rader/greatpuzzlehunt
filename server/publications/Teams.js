@@ -35,9 +35,13 @@ Meteor.publish('teams.all', function() {
 
 });
 
+Meteor.publish("team.names", function(){
+  return Teams.find({}, {fields:{name:1}});
+});
+
 Meteor.publish('team.members', function(teamId) {
   check(teamId, String);
-  
+
   if (!this.userId) return [];
 
   let user = Meteor.users.findOne(this.userId);
@@ -47,4 +51,4 @@ Meteor.publish('team.members', function(teamId) {
   } else {
     return Meteor.users.find({"profile.teamId": teamId}, {username: 1, profile: 1, emails: 1});
   }
-})
+});
