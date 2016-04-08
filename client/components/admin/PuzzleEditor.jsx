@@ -5,7 +5,7 @@ PuzzleEditor = React.createClass({
 
     getInitialState() {
         return {
-
+            hints: []
         };
     },
 
@@ -28,19 +28,9 @@ PuzzleEditor = React.createClass({
                  console.log(err);
               } else {
                  // handle success depending what you need to do
-                let userId = Meteor.userId();
-                let imageURL = `/cfs/files/images/${fileObj._id}`;
-
-                Meteor.call('addImage', {
-                    path: imageURL
-                }, (err, result) => {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        alert('Saved url');
-                    }
+                this.setState({
+                    hints: this.state.hints.concat(fileObj._id)
                 });
-
               }
             });
         }
@@ -48,15 +38,35 @@ PuzzleEditor = React.createClass({
 
     render() {
 
+        let hints = this.state.hints.map((hint) => {
+            return <img className="ui image" src={`/cfs/files/images/${hint}`} />
+        });
+
         return (
             <form className="ui form">
                 <div className="fluid field">
+                    <label>Puzzle Name</label>
                     <input ref="name" type="text" placeholder="Puzzle Name" defaultValue={this.props.puzzle.name} />
                 </div>
-                <div className="field">
-                    <input className="ui olive fluid button" type="file" accept="image/*" ref="imageUpload" onChange={this.handleUpload}/>
+                <div className="fluid field">
+                    <label>Accepted Answers (Comma Separated)</label>
+                    <input ref="answers" type="text" placeholder="code, words, here" defaultValue={this.props.puzzle.answers.join([separator = ','])} />
                 </div>
-                <img className="ui hidden image" ref="qrPreview" src="#" alt="QR Code Image" />
+                <div className="fluid field">
+                    <label>Bad Answers (Comma Separated). These will trigger the bad answer response.</label>
+                    <input ref="badAnswers" type="text" placeholder="not right, not this either" defaultValue={this.props.puzzle.badAnswers.join([separator = ', '])} />
+                </div>
+                <div className="fluid field">
+                    <label>Bad Answer Rresponse</label>
+                    <input ref="badAnswerResponse" type="text" placeholder="close but no cigar" defaultValue={this.props.puzzle.badAnswers.join([separator = ', '])} />
+                </div>
+                <h3 className="ui header">Hints</h3>
+                <div className="field">
+                    <input className="ui small olive button" type="file" accept="image/*" ref="imageUpload" onChange={this.handleUpload}/>
+                </div>
+                <div className="ui images">
+                    {hints}
+                </div>
             </form>
         );
     }
