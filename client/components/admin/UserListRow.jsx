@@ -136,7 +136,7 @@ export default class UserListRow extends React.Component {
                 console.log(err);
                 btn.attr('data-content', 'Failed to delete user! 😰');
             } else {
-                btn.attr('data-content', `${firstname} Deleted! 😀`);
+                btn.attr('data-content', 'Deleted! 😀');
             }
 
             btn.popup({
