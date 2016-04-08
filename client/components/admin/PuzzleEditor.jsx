@@ -17,6 +17,7 @@ PuzzleEditor = React.createClass({
             answer: this.refs.answer.value.replace(/\s+/g,'').toLowerCase(),
             badAnswer: this.refs.badAnswer.value.replace(/\s+/g,'').toLowerCase(),
             badAnswerResponse: this.refs.badAnswerResponse.value.trim(),
+            location: this.refs.location.value.trim(),
             hints: this.props.puzzle.hints.concat(this.state.hints.map((hint) => {
                 return hint._id;
             }))
@@ -133,6 +134,10 @@ PuzzleEditor = React.createClass({
                         <label>Bad Answer Rresponse</label>
                         <input ref="badAnswerResponse" type="text" placeholder="close but no cigar" defaultValue={this.props.puzzle.badAnswerResponse} />
                     </div>
+                </div>
+                <div className="field">
+                    <label>Puzzle Location</label>
+                    <input ref="location" type="text" placeholder="By that one building!" defaultValue={this.props.puzzle.location} />
                 </div>
                 <h4 className="ui header">Hints</h4>
                 <div className="field">

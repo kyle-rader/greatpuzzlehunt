@@ -27,9 +27,14 @@ PuzzleDashboard = React.createClass({
     },
 
     setEditPuzzle(puzzle) {
-        this.setState({
-            puzzleToEdit: puzzle._id
-        });
+        if (this.state.puzzleToEdit) {
+            this.clearPuzzle();
+        }
+        else {
+            this.setState({
+                puzzleToEdit: puzzle._id
+            });
+        }
     },
 
     clearPuzzle() {
@@ -45,6 +50,7 @@ PuzzleDashboard = React.createClass({
                 return (
                 <tr key={puzzle._id}>
                     <td>{puzzle.name}</td>
+                    <td>{puzzle.location}</td>
                     <td>{puzzle.order}</td>
                     <td>
                         <div className="ui right floated blue button" onClick={this.setEditPuzzle.bind(this, puzzle)}>
@@ -60,6 +66,7 @@ PuzzleDashboard = React.createClass({
                     <thead>
                         <tr>
                             <th>Puzzle Name</th>
+                            <th>Location</th>
                             <th>Order</th>
                             <th>Actions</th>
                         </tr>
@@ -69,7 +76,7 @@ PuzzleDashboard = React.createClass({
                     </tbody>
                     <tfoot className="full-width">
                         <tr>
-                            <th colSpan="3">
+                            <th colSpan="4">
                                 <div className="ui right floated green button" onClick={this.createPuzzle}>
                                     <i className="plus icon"></i> &nbsp; New Puzzle
                                 </div>
@@ -87,14 +94,10 @@ PuzzleDashboard = React.createClass({
 
     render() {
 
+        let puzzle = PuzzleCollection.findOne({_id: this.state.puzzleToEdit});
         let puzzleEdit;
-        if (this.state.puzzleToEdit) {
-            for (let i = 0; i < this.data.puzzles.length; i++) {
-                if (this.state.puzzleToEdit === this.data.puzzles[i]._id) {
-                    puzzleEdit = <PuzzleEditor puzzle={this.data.puzzles[i]} />
-                    break;
-                }
-            }
+        if (puzzle) {            
+            puzzleEdit = <PuzzleEditor puzzle={puzzle} />
         }
 
         return (
