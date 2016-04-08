@@ -32,6 +32,12 @@ PuzzleDashboard = React.createClass({
         });
     },
 
+    clearPuzzle() {
+        this.setState({
+            puzzleToEdit: null
+        });
+    },
+
     renderPuzzleTable() {
 
         if (this.data.puzzles) {
@@ -39,6 +45,7 @@ PuzzleDashboard = React.createClass({
                 return (
                 <tr key={puzzle._id}>
                     <td>{puzzle.name}</td>
+                    <td>{puzzle.order}</td>
                     <td>
                         <div className="ui right floated blue button" onClick={this.setEditPuzzle.bind(this, puzzle)}>
                             Edit
@@ -53,6 +60,7 @@ PuzzleDashboard = React.createClass({
                     <thead>
                         <tr>
                             <th>Puzzle Name</th>
+                            <th>Order</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -61,9 +69,12 @@ PuzzleDashboard = React.createClass({
                     </tbody>
                     <tfoot className="full-width">
                         <tr>
-                            <th colSpan="2">
+                            <th colSpan="3">
                                 <div className="ui right floated green button" onClick={this.createPuzzle}>
                                     <i className="plus icon"></i> &nbsp; New Puzzle
+                                </div>
+                                <div className="ui right floated gray button" onClick={this.clearPuzzle}>
+                                    <i className="close icon"></i> &nbsp; Close
                                 </div>
                             </th>
                         </tr>
