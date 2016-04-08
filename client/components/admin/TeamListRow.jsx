@@ -30,41 +30,33 @@ TeamListRow = React.createClass({
         this.setState({editMode: true});
     },
 
-    saveTeam() {
-    },
-
-    deleteTeam(event) {
-    },
-
     getName() {
-        if (this.state.editMode) {
-            return (
-            <td>
-                
-            </td>);
 
-        } else {
-            return (
-            <td>
-                {this.props.team.name}
-            </td>);
+        let facultyTeam;
+        if (this.data.members) {
+            let facultyCnt = 0;
+
+            for (let i = 0; i < this.data.members.length; i++) {
+                facultyCnt += (this.data.members[i].emails[0].address.indexOf('@wwu.edu') >= 0) ? 1 : 0;
+            }
+
+            if (facultyCnt > 0) {
+                facultyTeam = (
+                    <i className="large blue university icon"></i>
+                );
+            }
         }
-    },
 
-    getPassword() {
-        if (this.state.editMode) {
-            return (
-            <td>
-                
-            </td>);
-        } else {
-            return (
-            <td>
-                <div className="ui input">
-                    <input type="password" disable defaultValue={this.props.team.password}/>
+        return (
+        <h3 className="ui header">
+            <div className="content">
+                {this.props.team.name} {facultyTeam}
+                <div className="sub header">
+                    {this.props.team.members.length} Member{this.props.team.members.length > 1 ? 's' : ''}
                 </div>
-            </td>);
-        }
+            </div>
+        </h3>
+        );
     },
 
     getMembers() {
@@ -76,51 +68,22 @@ TeamListRow = React.createClass({
 
             return (
                 <div className="item" key={member._id}>
-                    <strong>{owner}&nbsp;{member.profile.displayname}</strong> | {member.emails[0].address} | {member.profile.phone}
+                    <strong>{owner}&nbsp;{member.profile.displayname}</strong> &nbsp;|&nbsp; {member.emails[0].address} &nbsp;|&nbsp; {member.profile.phone}
                 </div>);
         });
-    },
-
-    getEditButton() {
-        if (this.state.editMode) {
-            return (<div ref="editBtn" className="ui green basic button" title="Edit User" onClick={this.saveTeam}><i className="save icon"></i></div>);
-        } else {
-            return (<div ref="editBtn" className="ui green basic button" title="Save User" onClick={this.enableEdit}><i className="pencil icon"></i></div>);
-        }
-    },
-
-    componentDidMount() {
-        //console.log(`Team mounted`, this.props);
-    },
-
-    componentWillReceiveProps() {
-        this.setState({editMode: false});
     },
 
     render() {
 
         return (
-        <tr>
+        <div className="ui segment team-listing">
             {this.getName()}
 
-            { /* this.getPassword() */}
+            <div className="ui items">
+                { this.getMembers() }
+            </div>
 
-            <td colSpan="2" style={{width: '50%'}}>
-                <div className="ui small relaxed list">
-                    { this.getMembers() }
-                </div>
-            </td>
-            {/*
-            <td>
-                <div className="ui three icon tiny compact buttons">
-                    {this.getEditButton()}
-                    <div className="ui disabled red basic button" title="Delete User" onClick={this.deleteTeam}>
-                        <i className="trash icon"></i>
-                    </div>
-                </div>
-            </td>
-            */}
-        </tr>
+        </div>
         );
     }
 });
