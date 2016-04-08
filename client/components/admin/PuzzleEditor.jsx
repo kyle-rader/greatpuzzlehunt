@@ -9,6 +9,14 @@ PuzzleEditor = React.createClass({
         };
     },
 
+    savePuzzle(event) {
+        console.log(`Saveing Puzzle ${this.props.puzzle._id}`);
+    },
+
+    deletePuzzle(event) {
+        console.log(`Deleteing puzzle ${this.props.puzzle._id}`);
+    },
+
     handleUpload(event) {
         let input = this.refs.imageUpload;
 
@@ -43,7 +51,7 @@ PuzzleEditor = React.createClass({
         });
 
         return (
-            <form className="ui form">
+            <form className="ui form segment" style={{overflow: 'auto'}}>
                 <div className="fluid field">
                     <label>Puzzle Name</label>
                     <input ref="name" type="text" placeholder="Puzzle Name" defaultValue={this.props.puzzle.name} />
@@ -67,6 +75,13 @@ PuzzleEditor = React.createClass({
                 <div className="ui images">
                     {hints}
                 </div>
+                <div className="ui right floated green button" onClick={this.savePuzzle}>
+                    <i className="save icon"></i> Save
+                </div>
+                <div className="ui right floated red button" onClick={this.deletePuzzle}>
+                    <i className="save icon"></i> Delete
+                </div>
+                <br/>
             </form>
         );
     }

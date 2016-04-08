@@ -174,8 +174,19 @@ export default class UserListRow extends React.Component {
             </td>);
         } else {
             let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="send icon"></i></div> : null;
+
+            let rolesBtn = (
+                <div className={`ui right floated ${user.roles.indexOf('volunteer') >= 0 ? 'yellow' : 'gray'} basic tiny compact icon button`}>
+                    <i className="help icon"></i>
+                </div>
+            );
             return (
-            <td className={user.emails[0].verified ? 'positive' : 'negative'}>{user.emails[0].address} &nbsp; {verifyBtn}</td>);
+                <td className={user.emails[0].verified ? 'positive' : 'negative'}>
+                    {rolesBtn}
+                    {verifyBtn}
+                    {user.emails[0].address} &nbsp;
+                </td>
+            );
         }
     }
 
