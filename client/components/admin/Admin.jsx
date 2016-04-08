@@ -5,12 +5,13 @@ import UserList from './UserList.jsx';
 import TeamList from './TeamList.jsx';
 import PuzzleDashboard from './PuzzleDashboard.jsx';
 import BulkEmail from './BulkEmail.jsx';
+import GamePlay from './GamePlay.jsx';
 
 Admin = React.createClass({
 
     getInitialState() {
         return {
-            pageComp: UserList //UserListContainer
+            pageComp: UserList
         }
     },
 
@@ -66,13 +67,13 @@ Admin = React.createClass({
                             <i className="violet puzzle icon"></i>
                             Puzzles
                         </a>
-                        <a className="item" onClick={this.setPage.bind(this, null)}>
-                            <i className="red gamepad icon"></i>
-                            The Game
-                        </a>
                         <a className="item" onClick={this.setPage.bind(this, BulkEmail)}>
                             <i className="orange mail icon"></i>
                             Email
+                        </a>
+                        <a className="item" onClick={this.setPage.bind(this, GamePlay)}>
+                            <i className="red gamepad icon"></i>
+                            The Game
                         </a>
                     </div>
                     {pageComp}
