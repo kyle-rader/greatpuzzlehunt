@@ -93,6 +93,9 @@ AppHeader = React.createClass({
                     <a className="item" href="/puzzles">
                         <i className="purple puzzle icon"></i>&nbsp; Puzzles
                     </a>
+                    <a className="item" href="/leaderboard">
+                        <i className="yellow trophy icon"></i>&nbsp; Leaderboards
+                    </a>
                     <a className="item" href="/contact">
                         <i className="green mail icon"></i>&nbsp; Contact
                     </a>
