@@ -93,7 +93,7 @@ export default UserList = React.createClass({
             return (
             <div className="ui segment">
                 <div className="ui active dimmer">
-                    <div className="ui text loader">Loading</div>
+                    <div className="ui big text loader">Loading</div>
                 </div>
                 <br/> <br/>
                 <br/> <br/>

@@ -1,88 +1,85 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-export default class TeamList extends React.Component {
+export default TeamList = React.createClass({
+
+    mixins:[ReactMeteorData],
+    getMeteorData() {
+        let data = {};
+
+        let teamsHandle = Meteor.subscribe('teams.all');
+        let loading = !teamsHandle.ready();
+
+        if (!loading) {
+            data.teams = Teams.find({}, {sort: {"profile.firstname": 1, "profile.lastname": 1}}).fetch();
+        }
+
+        return data;
+    },
 
     getTeamList() {
-        return this.props.teams.map((team) => {
+        return this.data.teams.map((team) => {
             return (
                 <TeamListRow key={team._id} team={team} />
             );
         });
-    }
+    },
 
     search(event) {
         let search = event.target.value;
-        let teamList = $(this.refs.teamList);
-        teamList.find(`tr:contains(${search})`).each(function() {
+
+        $(`div.ui.team-listing:contains(${search})`).each(function() {
             $(this).show();
         });
-        teamList.find(`tr:not(:contains(${search}))`).each(function() {
+
+        $(`div.ui.team-listing:not(:contains(${search}))`).each(function() {
+            console.log('Hide');
             $(this).hide();
         });
-    }
+    },
 
     componentDidMount() {
-    }
+    },
 
     render() {
-        // Don't do anything if loading. 
-        if (this.props.loading) {
+
+        if (this.data.teams) {
             return (
-                <div>Loading Teams...</div>
+            <div className="ui basic segment">
+                <div className="ui grid">
+                    <div className="three wide column">
+                        <div className="ui large blue fluid label">
+                            <i className="users icon"></i>
+                            &nbsp;
+                            {this.data.teams.length} Teams
+                        </div>
+                    </div>
+                    <div className="ten wide column">
+                        <div className="ui fluid right icon input">
+                            <input type="text" placeholder="Search" onChange={this.search}/>
+                            <i className="search icon"></i>
+                        </div>
+                    </div>
+                    <div className="three wide column">
+                        
+                    </div>
+                </div>
+
+                { this.getTeamList() }
+
+            </div>
+            );
+        } else {
+            return (
+            <div className="ui segment">
+                <div className="ui active dimmer">
+                    <div className="ui big text loader">Loading</div>
+                </div>
+                <br/> <br/>
+                <br/> <br/>
+                <br/> <br/>
+            </div>
             );
         }
-
-        return (
-        <table className="ui compact celled table">
-            <thead ref="controlRow" className="full-width control-row">
-                <tr>
-                    <th colSpan="4">
-                        <div className="ui grid">
-                            <div className="three wide column">
-                                <div className="ui large blue fluid label">
-                                    <i className="users icon"></i>
-                                    &nbsp;
-                                    {this.props.teams.length} Teams
-                                </div>
-                            </div>
-                            <div className="ten wide column">
-                                <div className="ui fluid right icon input">
-                                    <input type="text" placeholder="Search" onChange={this.search.bind(this)}/>
-                                    <i className="search icon"></i>
-                                </div>
-                            </div>
-                            <div className="three wide column">
-                                
-                            </div>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <thead className="full-width">
-                <tr>
-                    <th>Name</th>
-                    {/*<th>Password</th>*/}
-                    <th colSpan="2">Members</th>
-                    {/*<th>Actions</th>*/}
-                </tr>
-            </thead>
-          <tbody ref="teamList">
-            { this.getTeamList() }
-          </tbody>
-          <tfoot className="full-width">
-            <tr>
-              <th colSpan="4">
-                
-              </th>
-            </tr>
-          </tfoot>
-        </table>
-        );
     }
-}
-
-TeamList.propTypes = {
-    loading: React.PropTypes.bool,
-    teams: React.PropTypes.array
-};
+});
