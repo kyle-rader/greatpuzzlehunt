@@ -28,7 +28,7 @@ PuzzleDashboard = React.createClass({
 
     setEditPuzzle(puzzle) {
         this.setState({
-            puzzleToEdit: puzzle
+            puzzleToEdit: puzzle._id
         });
     },
 
@@ -76,7 +76,15 @@ PuzzleDashboard = React.createClass({
 
     render() {
 
-        let puzzleEdit = this.state.puzzleToEdit ? <PuzzleEditor puzzle={this.state.puzzleToEdit} /> : null;
+        let puzzleEdit;
+        if (this.state.puzzleToEdit) {
+            for (let i = 0; i < this.data.puzzles.length; i++) {
+                if (this.state.puzzleToEdit === this.data.puzzles[i]._id) {
+                    puzzleEdit = <PuzzleEditor puzzle={this.data.puzzles[i]} />
+                    break;
+                }
+            }
+        }
 
         return (
             <div className="basic segment">
