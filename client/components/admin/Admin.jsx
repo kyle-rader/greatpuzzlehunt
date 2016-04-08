@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import UserListContainer from './UserListContainer.jsx';
+import UserList from './UserList.jsx';
 import TeamListContainer from './TeamListContainer.jsx';
 import PuzzleDashboard from './PuzzleDashboard.jsx';
 
@@ -9,7 +9,7 @@ Admin = React.createClass({
 
     getInitialState() {
         return {
-            pageComp: PuzzleDashboard //UserListContainer
+            pageComp: UserList //UserListContainer
         }
     },
 
@@ -53,7 +53,7 @@ Admin = React.createClass({
                 <div className="ui raised segment transparent-bg">
                     <h3 className="ui violet center aligned header">Admin Panel</h3>
                     <div className="ui labeled icon menu">
-                        <a className="item" onClick={this.setPage.bind(this, UserListContainer)}>
+                        <a className="item" onClick={this.setPage.bind(this, UserList)}>
                             <i className="green user icon"></i>
                             Users
                         </a>
