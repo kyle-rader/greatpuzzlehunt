@@ -15,7 +15,6 @@ Meteor.publish('myTeam', function() {
     }
 });
 
-
 Meteor.publish("myTeamMembers", function() {
   if (this.userId) {
       team = Teams.findOne({members: this.userId});

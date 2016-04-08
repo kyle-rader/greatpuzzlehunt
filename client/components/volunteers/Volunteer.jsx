@@ -18,13 +18,13 @@ VolunteerPage = React.createClass({
         };
 
         let gamestateHandle = Meteor.subscribe('gamestate');
+        let gamestateLoading = !gamestateHandle.ready();
+
         let puzzlesHandle = Meteor.subscribe('puzzles.all');
+        let puzzlesLoading = !puzzlesHandle.ready();
 
         let teamHandle = Meteor.subscribe('team.names');
         let teamLoading = !teamHandle.ready();
-
-        let gamestateLoading = !gamestateHandle.ready();
-        let puzzlesLoading = !puzzlesHandle.ready();
 
         if (!gamestateLoading) {
             data.gamestate = GameState.findOne({});
@@ -125,9 +125,9 @@ VolunteerPage = React.createClass({
             return <div className="ui large info message">You are ready to scan a team's QR code!</div>;
         } 
         else if (this.data.team) {
-            // We Have Aquired the Team!
+            // We Have Aquired the Team!  This is the actual Start Button!
             return (
-            <div className="ui large green fluid labeled icon button">
+            <div className="ui large green fluid labeled icon button" onClick={this.startTimerForTeam}>
                 <i className="large clock icon"></i>
                 Start Timer for: <br/>
                 <h3>{this.data.team.name}</h3>
@@ -138,6 +138,10 @@ VolunteerPage = React.createClass({
         else if (this.state.currentTeamId && !this.data.team) {
             return <div className="ui large error message">That QR Code wasn't a Team ID. Try Again :)</div>;
         }
+    },
+
+    startTimerForTeam() {
+
     },
 
     render() {

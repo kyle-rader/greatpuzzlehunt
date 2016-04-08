@@ -46,6 +46,12 @@ AppHeader = React.createClass({
                 </a> :
                 null;
 
+            let gameLink = (this.data.isVolunteer && !this.data.isAdmin) || !this.data.user.profile.teamId ? null :
+                <a className="item" href="/game">
+                    <i className="violet puzzle icon"></i>
+                    Game Time
+                </a>;
+
             return (
             <div className="right menu">
                 <a className="ui icon item" href="https://google.com" target="_blank">
@@ -57,6 +63,11 @@ AppHeader = React.createClass({
                     <div className="menu">
                         {adminLink}
                         {volunteerLink}
+                        {gameLink}
+                        <a className="item" href="/leaderboard">
+                            <i className="yellow trophy icon"></i>
+                            Leaderboards
+                        </a>
                         <a className="item" href="/team">
                             <i className="blue users icon"></i>
                             Team
@@ -66,7 +77,8 @@ AppHeader = React.createClass({
                             Looking For Team
                         </a>
                         <a className="item" onClick={this.logout}>
-                            <i className="sign out icon"></i> Logout
+                            <i className="sign out icon"></i>
+                            Logout
                         </a>
                     </div>
                 </div>
@@ -104,9 +116,6 @@ AppHeader = React.createClass({
                     </a>
                     <a className="item" href="/puzzles">
                         <i className="purple puzzle icon"></i>&nbsp; Puzzles
-                    </a>
-                    <a className="item" href="/leaderboard">
-                        <i className="yellow trophy icon"></i>&nbsp; Leaderboards
                     </a>
                     <a className="item" href="/contact">
                         <i className="green mail icon"></i>&nbsp; Contact
