@@ -4,6 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import UserList from './UserList.jsx';
 import TeamList from './TeamList.jsx';
 import PuzzleDashboard from './PuzzleDashboard.jsx';
+import BulkEmail from './BulkEmail.jsx';
 
 Admin = React.createClass({
 
@@ -68,6 +69,10 @@ Admin = React.createClass({
                         <a className="item" onClick={this.setPage.bind(this, null)}>
                             <i className="red gamepad icon"></i>
                             The Game
+                        </a>
+                        <a className="item" onClick={this.setPage.bind(this, BulkEmail)}>
+                            <i className="orange mail icon"></i>
+                            Email
                         </a>
                     </div>
                     {pageComp}

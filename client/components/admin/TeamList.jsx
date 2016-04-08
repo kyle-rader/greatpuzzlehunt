@@ -47,8 +47,8 @@ export default TeamList = React.createClass({
             return (
             <div className="ui basic segment">
                 <div className="ui grid">
-                    <div className="three wide column">
-                        <div className="ui large blue fluid label">
+                    <div className="six wide column">
+                        <div className="ui large blue label">
                             <i className="users icon"></i>
                             &nbsp;
                             {this.data.teams.length} Teams

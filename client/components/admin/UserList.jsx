@@ -48,8 +48,8 @@ export default UserList = React.createClass({
                     <tr>
                         <th colSpan="5">
                             <div className="ui grid">
-                                <div className="three wide column">
-                                    <div className="ui large green fluid label">
+                                <div className="six wide column">
+                                    <div className="ui large green label">
                                         <i className="user icon"></i>
                                         &nbsp;
                                         {this.data.users.length} Users
@@ -60,9 +60,6 @@ export default UserList = React.createClass({
                                         <input type="text" placeholder="Search" onChange={this.search}/>
                                         <i className="search icon"></i>
                                     </div>
-                                </div>
-                                <div className="three wide column">
-                                    <div className="ui teal fluid button">Bulk Email</div>
                                 </div>
                             </div>
                         </th>
