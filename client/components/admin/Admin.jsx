@@ -22,20 +22,6 @@ Admin = React.createClass({
         };
     },
 
-    canViewAdminPage() {
-        if (this.data.user && (this.data.user.roles.indexOf('admin') < 0)) {
-            FlowRouter.go('/team');
-        }
-    },
-
-    componentWillUpdate() {
-        this.canViewAdminPage();
-    },
-
-    componentWillMount() {
-        this.canViewAdminPage();
-    },
-
     componentDidMount() {
         $(this.refs.tabMenu).find('.item').tab();
     },
@@ -47,6 +33,14 @@ Admin = React.createClass({
     },
 
     render() {
+        // First Check Access
+        if (!this.data.user) {
+            return <LoadingSegment />
+        }
+        else if (this.data.user.roles.indexOf('admin') < 0) {
+            return <Login />
+        }
+
         let pageComp = this.state.pageComp ? <this.state.pageComp /> : <div className="basic segment">Oops, no page found</div>;
 
         return (

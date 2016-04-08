@@ -7,7 +7,8 @@ AppHeader = React.createClass({
     getMeteorData() {
         return {
             user: Meteor.user(),
-            isAdmin: Meteor.user() && (Meteor.user().roles.indexOf('admin') > -1)
+            isAdmin: Meteor.user() && (Meteor.user().roles.indexOf('admin') > -1),
+            isVolunteer: Meteor.user() && (Meteor.user().roles.indexOf('volunteer') > -1)
         };
     },
 
@@ -32,7 +33,17 @@ AppHeader = React.createClass({
         // User is logged in
         if (this.data.user) {
             let adminLink = this.data.isAdmin ?
-                (<a className="item" href="/admin"><i className="violet tasks icon"></i> Admin</a>) :
+                <a className="item" href="/admin">
+                    <i className="violet tasks icon"></i>
+                    Admin
+                </a> :
+                null;
+
+            let volunteerLink = this.data.isVolunteer ?
+                <a className="item" href="/volunteer">
+                    <i className="teal clock icon"></i>
+                    Volunteer
+                </a> :
                 null;
 
             return (
@@ -45,6 +56,7 @@ AppHeader = React.createClass({
                     {this.data.user.profile.displayname}
                     <div className="menu">
                         {adminLink}
+                        {volunteerLink}
                         <a className="item" href="/team">
                             <i className="blue users icon"></i>
                             Team

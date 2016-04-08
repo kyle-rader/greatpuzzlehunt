@@ -16,13 +16,16 @@ authedRoutes.route('/team', {
 authedRoutes.route('/admin', {
     name: 'admin',
     action() {
-        if (Meteor.user() && Meteor.user().roles.indexOf('admin') >= 0) {
-            mount(App, {yield: <Admin />});
-        } else {
-            mount(App, {yield: <Login />});
-        }
+        mount(App, {yield: <Admin />});
     }
 });
+
+authedRoutes.route('/volunteer', {
+    name: 'volunteer',
+    action() {
+        mount(App, {yield: <VolunteerPage />});
+    }
+})
 
 authedRoutes.route('/profile', {
     name: 'profile',
