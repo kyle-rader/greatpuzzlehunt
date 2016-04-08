@@ -35,7 +35,7 @@ Meteor.publish('teams.all', function() {
 
 });
 
-Meteor.publish("team.names", function(){
+Meteor.publish("team.names", function() {
   return Teams.find({}, {fields:{name:1}});
 });
 
