@@ -41,8 +41,8 @@ authedRoutes.route('/floaters', {
   }
 });
 
-authedRoutes.route('/qrcode', {
-    name: 'qrcode',
+authedRoutes.route('/game', {
+    name: 'game',
     action() {
         mount(App, {yield: <Game />});
     }

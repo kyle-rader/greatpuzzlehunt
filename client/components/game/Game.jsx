@@ -7,66 +7,94 @@ Game = React.createClass({
     getInitialState() {
         return {
             encode: 'Hello QR Codes!',
-            size: 128
+            size: 256
         };
     },
 
-    handleEncodeChange(event) {
-        this.setState({encode: event.target.value});
-    },
-    handleSizeChange(event) {
-        this.setState(_.extend(this.state, {size: event.target.value}));
-    },
+    mixins:[ReactMeteorData],
+    getMeteorData() {
+        let data ={};
 
-    handleQRupload(event) {
-        let input = this.refs.qrUpload;
-        console.log(input);
-
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            let preview = $(this.refs.qrPreview);
-            
-            reader.onload = function (e) {
-                preview.attr('src', e.target.result);
-                preview.removeClass('hidden');
-                qrcode.decode(e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
+        let gamestateHandle = Meteor.subscribe('gamestate');
+        let gamestateLoading = !gamestateHandle.ready();
+        
+        if (!gamestateLoading) {
+            data.gamestate = GameState.findOne({});
         }
+
+        let teamHandle = Meteor.subscribe('myTeam');
+        let teamLoading = !teamHandle.ready();
+
+        if (!teamLoading) {
+            data.team = Teams.findOne({});
+        }
+
+        let puzzleAttemptsHandle = Meteor.subscribe('team.puzzleAttempts');
+        let puzzleAttemptsLoading = ! puzzleAttemptsHandle.ready();
+
+        if (!puzzleAttemptsLoading) {
+            data.puzzleAttempts = PuzzleAttempts.find({}).fetch();
+        }
+        
+        return data;
     },
 
     componentDidMount() {
-        qrcode.callback = (data) => {
-            console.log(data);
-            alert(data);
-        };
+    },
+
+    renderHeader() {
+        if(this.data.team) {
+            return (
+            <div className="qr">
+                <h2 className="ui center aligned blue header">{this.data.team.name} QR Code</h2>
+                <QR value={this.data.team._id} size={parseInt(this.state.size)} />
+            </div>
+            );
+        }
+        else {
+            return null;
+        }
+    },
+
+    // Render the current destination for this team.
+    // This will be initially assinged evenly to one of the available puzzles
+    // This comp will handle the message about game state. 
+    renderDestination() {
+
+        // Check that we have GameState
+        if (!this.data.gamestate) {
+            return null;
+        }
+        // Gameplay is Off
+        else if (!this.data.gamestate.gameplay) {
+            return (
+            <div className="ui large warning message">
+                The game has not started yet!
+            </div>
+            );
+        }
+        // Gameplay is On - do we have our team?
+        else if (this.data.team) {
+            return (
+            <div className="ui large info message">
+                <h3>Current Destination</h3>
+                {this.data.team.destination}
+            </div>
+            );
+        }
     },
 
     render() {
         return (
             <div className="custom-bg red-square">
                 <br/>
-                <div className="ui raised container segment transparent-bg">
-                    <QR value={this.state.encode} size={parseInt(this.state.size)} />
+                <div className="ui raised segment transparent-bg">
+
+                    {this.renderHeader()}
 
                     <br/>
-                    <div className="ui form">
-                        <div className="field">
-                            <input type="text" defaultValue={this.state.encode} onChange={this.handleEncodeChange} />
-                        </div>
-                        <div className="field">
-                            <input type="text" defaultValue={this.state.size} onChange={this.handleSizeChange} />
-                        </div>
-                    </div>
 
-                    <br/>
-                    <form className="ui form">
-                        <div className="field">
-                            <input className="ui olive fluid button" type="file" accept="image/*" ref="qrUpload" onChange={this.handleQRupload}/>
-                        </div>
-                        <img className="ui hidden image" ref="qrPreview" src="#" alt="QR Code Image" />
-                    </form>
+                    {this.renderDestination()}
 
                 </div>
                 
