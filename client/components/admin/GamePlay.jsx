@@ -24,6 +24,10 @@ export default GamePlay = React.createClass({
     },
 
     toggleRegistration() {
+
+        if (!confirm(`Are you sure you want ${this.data.gamestate.registration ? 'DISABLE' : 'ENABLE'} registration?`))
+            return;
+
         Meteor.call('toggleRegistration', (err, result) => {
             if (err) {
                 console.log(err);
@@ -33,6 +37,10 @@ export default GamePlay = React.createClass({
     },
 
     toggleGameplay() {
+
+        if (!confirm(`Are you sure you want ${this.data.gamestate.gameplay ? 'DISABLE' : 'ENABLE'} gameplay?`))
+            return;
+
         Meteor.call('toggleGameplay', (err, result) => {
             if (err) {
                 console.log(err);
