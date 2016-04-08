@@ -26,11 +26,26 @@ PuzzleDashboard = React.createClass({
         Meteor.call('createPuzzle');
     },
 
+    setEditPuzzle(puzzle) {
+        this.setState({
+            puzzleToEdit: puzzle
+        });
+    },
+
     renderPuzzleTable() {
 
         if (this.data.puzzles) {
             let puzzles = this.data.puzzles.map((puzzle) => {
-                return <tr key={puzzle._id}><td>puzzle</td></tr>;
+                return (
+                <tr key={puzzle._id}>
+                    <td>{puzzle.name}</td>
+                    <td>
+                        <div className="ui right floated blue button" onClick={this.setEditPuzzle.bind(this, puzzle)}>
+                            Edit
+                        </div>
+                    </td>
+                </tr>
+                );
             });
 
             return (
