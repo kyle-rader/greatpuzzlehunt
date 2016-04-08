@@ -3,12 +3,13 @@ import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import UserListContainer from './UserListContainer.jsx';
 import TeamListContainer from './TeamListContainer.jsx';
+import PuzzleDashboard from './PuzzleDashboard.jsx';
 
 Admin = React.createClass({
 
     getInitialState() {
         return {
-            pageComp: UserListContainer
+            pageComp: PuzzleDashboard //UserListContainer
         }
     },
 
@@ -60,9 +61,13 @@ Admin = React.createClass({
                             <i className="blue users icon"></i>
                             Teams
                         </a>
-                        <a className="item" onClick={this.setPage.bind(this, null)}>
+                        <a className="item" onClick={this.setPage.bind(this, PuzzleDashboard)}>
                             <i className="violet puzzle icon"></i>
                             Puzzles
+                        </a>
+                        <a className="item" onClick={this.setPage.bind(this, null)}>
+                            <i className="red gamepad icon"></i>
+                            The Game
                         </a>
                     </div>
                     {pageComp}
