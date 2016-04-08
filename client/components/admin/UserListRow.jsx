@@ -74,6 +74,30 @@ export default class UserListRow extends React.Component {
         });
     }
 
+    toggleVolunteer(event) {
+        
+        if(!confirm(`Are you sure you want to toggle ${this.props.user.profile.displayname} as a Volunteer?`))
+            return;
+
+        let btn = $(event.target);
+
+        Meteor.call('userPromoteToVolunteer', {_id: this.props.user._id}, (err, result) => {
+            if (err) {
+                console.log(err);
+                btn.attr('data-content', 'Toggle Failed! 😰');
+            } else {
+                btn.attr('data-content', `${this.props.user.profile.firstname} toggled! 😀`);
+            }
+
+            btn.popup({
+                on: 'manual'
+            }).popup('show');
+            setTimeout(() => {
+                btn.popup('hide');
+            }, 3000);
+        });
+    }
+
     resetPassword(event) {
 
         if (!confirm(`Are you sure you want to reset the password for ${this.props.user.profile.displayname}?`))
@@ -176,7 +200,7 @@ export default class UserListRow extends React.Component {
             let verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="send icon"></i></div> : null;
 
             let rolesBtn = (
-                <div className={`ui right floated ${user.roles.indexOf('volunteer') >= 0 ? 'yellow' : 'gray'} basic tiny compact icon button`}>
+                <div className={`ui right floated ${user.roles.indexOf('volunteer') >= 0 ? 'yellow' : 'gray'} basic tiny compact icon button`} title="Toggle Volunteer Role" onClick={this.toggleVolunteer.bind(this)}>
                     <i className="help icon"></i>
                 </div>
             );
