@@ -33,11 +33,14 @@ TeamListRow = React.createClass({
     getName() {
 
         let facultyTeam;
+        let studentTeam;
         if (this.data.members) {
             let facultyCnt = 0;
+            let studentCnt = 0;
 
             for (let i = 0; i < this.data.members.length; i++) {
                 facultyCnt += (this.data.members[i].emails[0].address.indexOf('@wwu.edu') >= 0) ? 1 : 0;
+                studentCnt += (this.data.members[i].emails[0].address.indexOf('@students') >= 0) ? 1 : 0;
             }
 
             if (facultyCnt > 0) {
@@ -45,12 +48,17 @@ TeamListRow = React.createClass({
                     <i className="large blue university icon"></i>
                 );
             }
+            if (studentCnt > 0) {
+                studentTeam = (
+                    <i className="large gray student icon"></i>
+                );
+            }
         }
 
         return (
         <h3 className="ui header">
             <div className="content">
-                {this.props.team.name} {facultyTeam}
+                {this.props.team.name} {facultyTeam} {studentTeam}
                 <div className="sub header">
                     {this.props.team.members.length} Member{this.props.team.members.length > 1 ? 's' : ''}
                 </div>
