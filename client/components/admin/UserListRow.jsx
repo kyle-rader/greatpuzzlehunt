@@ -201,7 +201,7 @@ export default class UserListRow extends React.Component {
 
             let rolesBtn = (
                 <div className={`ui right floated ${user.roles.indexOf('volunteer') >= 0 ? 'yellow' : 'gray'} basic tiny compact icon button`} title="Toggle Volunteer Role" onClick={this.toggleVolunteer.bind(this)}>
-                    <i className="help icon"></i>
+                    <i className="heart icon"></i>
                 </div>
             );
             return (
