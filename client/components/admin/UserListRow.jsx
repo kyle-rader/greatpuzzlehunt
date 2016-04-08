@@ -14,7 +14,7 @@ export default class UserListRow extends React.Component {
         this.setState({editMode: true});
     }
 
-    saveUser() {
+    saveUser(event) {
         let firstname = this.refs.firstname.value;
         let lastname = this.refs.lastname.value;
         let username = this.refs.username.value;
@@ -22,7 +22,7 @@ export default class UserListRow extends React.Component {
 
         console.log(`Tryin to save \nfirst:${firstname}\nlast:${lastname}\nUsername:${username} \nEmail:${email} `);
 
-        let btn = $(this.refs.editBtn);
+        let btn = $(event.target);
 
         Meteor.call('userAdminUpdate', {
             _id: this.props.user._id,
