@@ -13,6 +13,7 @@ PuzzleEditor = React.createClass({
         let puzzle = {
             _id: this.props.puzzle._id,
             name: this.refs.name.value.trim(),
+            order: parseInt(this.refs.order.value),
             answer: this.refs.answer.value.replace(/\s+/g,'').toLowerCase(),
             badAnswer: this.refs.badAnswer.value.replace(/\s+/g,'').toLowerCase(),
             badAnswerResponse: this.refs.badAnswerResponse.value.trim(),
@@ -109,23 +110,31 @@ PuzzleEditor = React.createClass({
 
         return (
             <form className="ui form segment" style={{overflow: 'auto'}}>
-                <div className="fluid field">
-                    <label>Puzzle Name</label>
-                    <input ref="name" type="text" placeholder="Puzzle Name" defaultValue={this.props.puzzle.name} />
+                <div className="two fields">
+                    <div className="field">
+                        <label>Puzzle Name</label>
+                        <input ref="name" type="text" placeholder="Puzzle Name" defaultValue={this.props.puzzle.name} />
+                    </div>
+                    <div className="field">
+                        <label>Puzzle Order (0 = First, 1 = Second, etc)</label>
+                        <input ref="order" type="number" placeholder="Puzzle Order" defaultValue={this.props.puzzle.order}/>
+                    </div>
                 </div>
-                <div className="fluid field">
-                    <label>Accepted Answer</label>
-                    <input ref="answer" type="text" placeholder="code, words, here" defaultValue={this.props.puzzle.answer} />
+                <div className="three fields">
+                    <div className="field">
+                        <label>Accepted Answer</label>
+                        <input ref="answer" type="text" placeholder="code, words, here" defaultValue={this.props.puzzle.answer} />
+                    </div>
+                    <div className="field">
+                        <label>Bad Answer (will trigger the bad response)</label>
+                        <input ref="badAnswer" type="text" placeholder="not right, not this either" defaultValue={this.props.puzzle.badAnswer} />
+                    </div>
+                    <div className="field">
+                        <label>Bad Answer Rresponse</label>
+                        <input ref="badAnswerResponse" type="text" placeholder="close but no cigar" defaultValue={this.props.puzzle.badAnswerResponse} />
+                    </div>
                 </div>
-                <div className="fluid field">
-                    <label>Bad Answer (will trigger the bad response)</label>
-                    <input ref="badAnswer" type="text" placeholder="not right, not this either" defaultValue={this.props.puzzle.badAnswer} />
-                </div>
-                <div className="fluid field">
-                    <label>Bad Answer Rresponse</label>
-                    <input ref="badAnswerResponse" type="text" placeholder="close but no cigar" defaultValue={this.props.puzzle.badAnswerResponse} />
-                </div>
-                <h3 className="ui header">Hints</h3>
+                <h4 className="ui header">Hints</h4>
                 <div className="field">
                     <input className="ui small teal button" type="file" accept="image/*" ref="imageUpload" onChange={this.handleUpload}/>
                 </div>
@@ -136,7 +145,7 @@ PuzzleEditor = React.createClass({
                     <i className="save icon"></i> Save
                 </div>
                 <div className="ui right floated red button" onClick={this.deletePuzzle}>
-                    <i className="save icon"></i> Delete
+                    <i className="trash icon"></i> Delete
                 </div>
                 <br/>
             </form>
