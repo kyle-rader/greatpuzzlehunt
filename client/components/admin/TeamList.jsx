@@ -11,7 +11,7 @@ export default TeamList = React.createClass({
         let loading = !teamsHandle.ready();
 
         if (!loading) {
-            data.teams = Teams.find({}, {sort: {"profile.firstname": 1, "profile.lastname": 1}}).fetch();
+            data.teams = Teams.find({}).fetch();
         }
 
         return data;
