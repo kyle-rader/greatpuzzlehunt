@@ -151,18 +151,25 @@ VolunteerPage = React.createClass({
             teamId: this.state.currentTeamId,
             puzzleId: this.state.currentPuzzleId
         }, (err, result) => {
-            if (err) {
-                console.log(err);
-            } else {
-                Meteor.setTimeout(() => {
-                    this.setState({
-                        currentPuzzleId: this.state.currentPuzzleId,
-                        currentTeamId: null,
-                        success: null,
-                        error: null
-                    });
-                }, 3000);
 
+            // If there is an error or not, we are still going to reset the state after 3.5 seconds
+            Meteor.setTimeout(() => {
+                this.setState({
+                    currentPuzzleId: this.state.currentPuzzleId,
+                    currentTeamId: null,
+                    success: null,
+                    error: null
+                });
+            }, 3500);
+
+            // Set state NOW to Error or Success!
+            if (err && err.reason) {                
+                this.setState({
+                    currentPuzzleId: this.state.currentPuzzleId,
+                    currentTeamId: null,
+                    error: err.reason
+                });
+            } else {
                 this.setState({
                     currentPuzzleId: this.state.currentPuzzleId,
                     currentTeamId: null,
