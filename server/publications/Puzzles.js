@@ -34,14 +34,5 @@ Meteor.publish('puzzles.all', function() {
     let user = Meteor.users.findOne({_id: this.userId});
     if (!user) return [];
 
-    let projection;
-    if (user.roles.indexOf('admin') < 0) {
-        // Normal user getting puzzle list
-        projection = {name: 1};
-    } else {
-        // Admin, get all
-        projection = {};
-    }
-
-    return PuzzleCollection.find({}, projection);
+    return PuzzleCollection.find({});
 });
