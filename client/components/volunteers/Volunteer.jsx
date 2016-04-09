@@ -5,7 +5,7 @@ VolunteerPage = React.createClass({
 
     getInitialState() {
         return {
-            currentPuzzle: null,
+            currentPuzzleId: null,
             currentTeamId: null,
             error: null
         };
@@ -40,14 +40,14 @@ VolunteerPage = React.createClass({
 
     selectPuzzle(puzzle) {
         this.setState({
-            currentPuzzle: puzzle._id,
+            currentPuzzleId: puzzle._id,
             currentTeamId: this.state.currentTeamId
         });
     },
 
     renderPuzzleSelector() {
         let puzzles = this.data.puzzles.map((puzzle) => {
-            let btnClass = this.state.currentPuzzle === puzzle._id ?
+            let btnClass = this.state.currentPuzzleId === puzzle._id ?
                 'ui violet button' : 'ui button';
             return (
             <div className={btnClass} key={puzzle._id} onClick={this.selectPuzzle.bind(this, puzzle)}>
@@ -79,13 +79,13 @@ VolunteerPage = React.createClass({
         qrcode.callback = (data) => {
             if (data === 'error decoding QR Code') {
                 this.setState({
-                    currentPuzzle: this.state.currentPuzzle,
+                    currentPuzzleId: this.state.currentPuzzleId,
                     currentTeamId: null,
                     error: 'Bad QR Photo! Try Again :)'
                 });
             } else {
                 this.setState({
-                    currentPuzzle: this.state.currentPuzzle,
+                    currentPuzzleId: this.state.currentPuzzleId,
                     currentTeamId: data,
                     error: null
                 });
@@ -95,7 +95,7 @@ VolunteerPage = React.createClass({
 
     renderQRcodeUploadButton() {
         // First make sure they have a puzzle selected
-        if (!this.state.currentPuzzle) {
+        if (!this.state.currentPuzzleId) {
             return <div className="ui large warning message">You need to select a puzzle!</div>;
         } else if (!this.state.currentTeamId) {
             return (
@@ -112,14 +112,19 @@ VolunteerPage = React.createClass({
     },
 
     renderStartTimer() {
-        if (!this.state.currentPuzzle) {
+        if (!this.state.currentPuzzleId) {
             // No Puzzle Yet. Render nothing.
             return null;
         } 
         else if (this.state.error) {
             // Error Reading QR Code
             return <div className="ui large error message">{this.state.error}</div>;
-        } 
+        }
+        else if (this.state.success) {
+            // Success After starting timer.
+            // Set timeout to clear state.
+            return <div className="ui large positive message">Timer Started!</div>;
+        }
         else if (!this.state.currentTeamId) {
             // Ready to Scan a Team QR Code
             return <div className="ui large info message">You are ready to scan a team's QR code!</div>;
@@ -142,6 +147,30 @@ VolunteerPage = React.createClass({
 
     startTimerForTeam() {
 
+        Meteor.call('startPuzzle', {
+            teamId: this.state.currentTeamId,
+            puzzleId: this.state.currentPuzzleId
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                Meteor.setTimeout(() => {
+                    this.setState({
+                        currentPuzzleId: this.state.currentPuzzleId,
+                        currentTeamId: null,
+                        success: null,
+                        error: null
+                    });
+                }, 3000);
+
+                this.setState({
+                    currentPuzzleId: this.state.currentPuzzleId,
+                    currentTeamId: null,
+                    success: true,
+                    error: null
+                });
+            }
+        });
     },
 
     render() {
