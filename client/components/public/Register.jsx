@@ -204,16 +204,25 @@ Register = React.createClass({
       // <div className="ui message">
       //   <a className="ui button" onClick={this.setuptest}>Test</a>
       // </div>
+      // return (
+      // <div className="register ui middle aligned center aligned grid custom-bg red-square">
+      //     <div className="column">
+
+      //         {this.getForm()}
+      //         {this.getSuccessMsg()}
+      //         {this.getErrorMsg()}
+
+      //         <div className="ui message">
+      //           <a href="/login">Log In</a>
+      //         </div>
+      //     </div>
+      // </div>);
+
       return (
       <div className="register ui middle aligned center aligned grid custom-bg red-square">
           <div className="column">
-
-              {this.getForm()}
-              {this.getSuccessMsg()}
-              {this.getErrorMsg()}
-
-              <div className="ui message">
-                <a href="/login">Log In</a>
+              <div className="ui large info message">
+                <h2>Registration has closed!</h2>
               </div>
           </div>
       </div>);
