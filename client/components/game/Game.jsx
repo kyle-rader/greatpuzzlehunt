@@ -6,8 +6,9 @@ Game = React.createClass({
 
     getInitialState() {
         return {
-            encode: 'Hello QR Codes!',
-            size: 256
+            size: 262,
+            good: '',
+            bad: ''
         };
     },
 
@@ -33,82 +34,91 @@ Game = React.createClass({
         let puzzleAttemptsLoading = ! puzzleAttemptsHandle.ready();
 
         if (!puzzleAttemptsLoading) {
-            data.puzzleAttempts = PuzzleAttempts.find({}).fetch();
+            data.puzzleAttempts = PuzzleAttempts.find({finalScore: { $ne: null }}).fetch();
+            data.currentAttempt = PuzzleAttempts.findOne({finishTime: null});
         }
-        
         return data;
     },
 
-    componentDidMount() {
+    directions() {
+        return (
+        <div className="ui large info message">
+            <h3>Start Location</h3>
+            {this.data.team.destination}
+        </div>
+        );
     },
 
-    renderHeader() {
-        if(this.data.team) {
+    renderCompletePuzzles() {
+        return null;
+    },
+
+    submitAnswer() {
+        Meteor.call('submitAnswer', {
+            teamId: this.data.team._id,
+            puzzleId: this.data.currentAttempt.puzzleId,
+            answer: this.refs.codeWord.value.replace(/\s+/g,'').toLowerCase()
+        }, (err, result) => {
+            if (err)
+                console.log(err);
+            if(result && result.message) {
+                this.setState({
+                    size: 262,
+                    message: result.message
+                });
+            }
+        });
+    },
+
+    renderContent() {
+        if (!this.data.gamestate) {
+            return null;
+        }
+
+        if (!this.data.gamestate.gameplay) {
+            return (
+            <div className="ui large warning message">
+                Game is not in session!
+            </div>);
+        }
+
+        if (this.data.currentAttempt) {
+
+            let message = this.state.mesage ? 
+                <div className="ui info message">{this.state.message}</div> : null;
+            return (
+            <div className="ui form">
+                <div className="field">
+                    <label>Code Word(s)</label>
+                    <input id="codeWord" ref="codeWord" type="text" />
+                </div>
+
+                <div className="ui blue fluid button" onClick={this.submitAnswer}>Submit</div>
+                {message}
+            </div>);
+        }
+
+        // We have our team and we are not solving anything.
+        if (this.data.team) {
             return (
             <div className="qr">
                 <h2 className="ui center aligned blue header">{this.data.team.name} QR Code</h2>
                 <QR value={this.data.team._id} size={parseInt(this.state.size)} />
+                {this.directions()}
             </div>
             );
         }
-        else {
-            return null;
-        }
-    },
 
-    // Render the current destination for this team.
-    // This will be initially assinged evenly to one of the available puzzles
-    // This comp will handle the message about game state. 
-    renderDestination() {
-
-        // Check that we have GameState
-        if (!this.data.gamestate) {
-            return null;
-        }
-        // Gameplay is Off
-        else if (!this.data.gamestate.gameplay) {
-            return (
-            <div className="ui large warning message">
-                The game has not started yet!
-            </div>
-            );
-        }
-        // Gameplay is On - do we have our team?
-        else if (this.data.team) {
-            return (
-            <div className="ui large info message">
-                <h3>Current Destination</h3>
-                {this.data.team.destination}
-            </div>
-            );
-        }
-    },
-
-    renderPuzzle() {
-        if (this.data.puzzleAttempts && this.data.puzzleAttempts[0]) {
-            return <div className="ui warning large message">{this.data.puzzleAttempts[0].startTime.toString()}</div>;
-        }
     },
 
     render() {
         return (
-            <div className="custom-bg red-square">
-                <br/>
-                <div className="ui raised segment transparent-bg">
-
-                    {this.renderHeader()}
-
-                    <br/>
-
-                    {this.renderDestination()}
-
-                    <br/>
-
-                    {this.renderPuzzle()}
-
-                </div>
-                
+        <div className="custom-bg red-square">
+            <br/>
+            <div className="ui raised segment transparent-bg">
+                { this.renderContent() }
             </div>
+        </div>
         );
     }
 });
