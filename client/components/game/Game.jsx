@@ -84,6 +84,12 @@ Game = React.createClass({
         }
     },
 
+    renderPuzzle() {
+        if (this.data.puzzleAttempts && this.data.puzzleAttempts[0]) {
+            return <div className="ui warning large message">{this.data.puzzleAttempts[0].startTime.toString()}</div>;
+        }
+    },
+
     render() {
         return (
             <div className="custom-bg red-square">
@@ -95,6 +101,10 @@ Game = React.createClass({
                     <br/>
 
                     {this.renderDestination()}
+
+                    <br/>
+
+                    {this.renderPuzzle()}
 
                 </div>
                 
