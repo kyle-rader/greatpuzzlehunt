@@ -10,3 +10,13 @@ Meteor.publish('team.puzzleAttempts', function() {
 
     return PuzzleAttempts.find({teamId: team._id});
 });
+
+Meteor.publish('allPuzzleAttempts', function() {
+    if (!this.userId) return [];
+
+    let user = Meteor.users.findOne(this.userId);
+
+    if (user.roles.indexOf('admin') > -1) {
+        return PuzzleAttempts.find({});
+    }
+});
