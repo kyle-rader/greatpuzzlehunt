@@ -49,10 +49,24 @@ export default GamePlay = React.createClass({
         });
     },
 
+    assignTeamsLocations() {
+        if (!confirm('Are you sure you want to generate start positions?'))
+            return;
+
+        Meteor.call('teamsAdminAssignDestinations', (err, result) => {
+            if (err) {
+                alert(err);
+            } else if (result) {
+                alert('Assinged');
+            }
+        });
+    },
+
     render() {
         if (this.data.gamestate) {
             return (
             <div className="ui segment">
+                <h2 className="ui dividing header">Game State Controls</h2>
                 <div className="ui form">
                     <div className="field">
                         <div className={`ui button ${this.data.gamestate.registration ? 'green' : 'red'}`} onClick={this.toggleRegistration}>
@@ -65,6 +79,16 @@ export default GamePlay = React.createClass({
                         </div>
                     </div>
                 </div>
+
+                <h2 className="ui dividing header">Setup Controls</h2>
+                <div className="ui form">
+                    <div className="field">
+                        <div className="ui blue button" onClick={this.assignTeamsLocations}>
+                            Assign Teams Start Locations
+                        </div>
+                    </div>
+                </div>
+
             </div>
             );
         } else {
