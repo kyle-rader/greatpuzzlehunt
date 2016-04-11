@@ -123,6 +123,9 @@ AppHeader = React.createClass({
                     <a className="item" href="/teamlist">
                         <i className="blue users icon"></i>&nbsp; Team List
                     </a>
+                    <a className="item" href="/qrcode">
+                        <i className="qrcode icon"></i>&nbsp; QR Codes!
+                    </a>
                 </div>
             </div>
 
