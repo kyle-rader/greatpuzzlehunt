@@ -48,6 +48,13 @@ publicRoutes.route('/puzzles', {
     }
 });
 
+publicRoutes.route('/qrcode', {
+    name: 'qrcode',
+    action() {
+        mount(App, {yield: <QRCode />});
+    }
+});
+
 publicRoutes.route('/leaderboard', {
     name: 'leaderboard',
     action() {
