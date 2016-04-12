@@ -119,7 +119,7 @@ Home = React.createClass({
                                 </div>
                             </li>
                             <li className="item">
-                                <div className="description">T-Shirt Ordering Deadline is <b>April 10, 2016 at midnight</b></div>
+                                <div className="description">T-Shirt Ordering Deadline is <b>Wednesday April 13, 2016 at midnight</b></div>
                             </li>
                         </ul>
                     </div>
