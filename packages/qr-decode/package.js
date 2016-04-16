@@ -2,9 +2,9 @@ Package.describe({
   name: 'raderk:qr-decode',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: 'A client side package for QR decoding with getMediaStream from html5 supported browsers or image upload.',
+  summary: 'In Browser QR Code Decoding. Wrap of https://github.com/LazarSoft/jsqrcode',
   // URL to the Git repository containing the source code for this package.
-  git: '',
+  git: 'https://github.com/LazarSoft/jsqrcode',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
