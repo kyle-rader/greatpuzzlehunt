@@ -3,7 +3,9 @@ import { Meteor } from 'meteor/meteor';
 Meteor.publish('teams', function() {
     let fields = {
         name: 1,
-        members: 1
+        members: 1,
+        totalScore: 1,
+        finished: 1
     };
 
     return Teams.find({}, {fields: fields});

@@ -64,10 +64,6 @@ AppHeader = React.createClass({
                         {adminLink}
                         {volunteerLink}
                         {gameLink}
-                        <a className="item" href="/leaderboard">
-                            <i className="yellow trophy icon"></i>
-                            Leaderboards
-                        </a>
                         <a className="item" href="/team">
                             <i className="blue users icon"></i>
                             Team
@@ -122,6 +118,10 @@ AppHeader = React.createClass({
                     </a>
                     <a className="item" href="/teamlist">
                         <i className="blue users icon"></i>&nbsp; Team List
+                    </a>
+                    <a className="item" href="/leaderboard">
+                        <i className="yellow trophy icon"></i>
+                        Leaderboard
                     </a>
                     <a className="item" href="/qrcode">
                         <i className="qrcode icon"></i>&nbsp; QR Codes!

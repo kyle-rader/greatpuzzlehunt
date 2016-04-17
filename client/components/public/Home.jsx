@@ -13,7 +13,7 @@ Home = React.createClass({
                         <div className="puzzle-hunt-title">
                             <h2>The First Annual</h2>
                             <h1>WWU Great</h1>
-                            <a href="/"><img src="img/logo-512.png" /></a>
+                            <a href="/"><img src="img/logo.png" /></a>
                             <h1>Puzzle Hunt</h1>
                             <h3>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h3>
                         </div>
