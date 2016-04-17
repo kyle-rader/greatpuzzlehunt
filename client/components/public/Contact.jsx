@@ -18,7 +18,7 @@ Contact = React.createClass({
                         <div className="column">
                             <h2>Website Support</h2>
                             <h2><a href="mailto:raderk@students.wwu.edu">raderk@students.wwu.edu</a></h2>
-                            <h3>Track development progress on <a href="https://trello.com/b/y8B6gqg1/wwu-puzzle-hunt">Trello</a></h3>
+                            <h3>Track development progress on <a target="_blank" href="https://trello.com/b/y8B6gqg1/wwu-puzzle-hunt">Trello</a></h3>
                         </div>
                     </div>
                 </div>
