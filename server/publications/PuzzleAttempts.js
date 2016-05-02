@@ -1,5 +1,7 @@
-Meteor.publish('leaderboard', function(argument) {
-  return PuzzleAttempts.find({}, {teamId: 1, puzzleId: 1, startTime: 1, finishTime: 1});
+Meteor.publish('attemptsLeaderboard', function(teamId) {
+    check(teamId, String);
+
+    return PuzzleAttempts.find({teamId: teamId}, {puzzleId: 1, startTime: 1, finishTime: 1, finalScore: 1, hintCount: 1, puzzleName: 1});
 });
 
 Meteor.publish('team.puzzleAttempts', function() {
@@ -9,14 +11,4 @@ Meteor.publish('team.puzzleAttempts', function() {
     if (!team) return [];
 
     return PuzzleAttempts.find({teamId: team._id});
-});
-
-Meteor.publish('allPuzzleAttempts', function() {
-    if (!this.userId) return [];
-
-    let user = Meteor.users.findOne(this.userId);
-
-    if (user.roles.indexOf('admin') > -1) {
-        return PuzzleAttempts.find({});
-    }
 });

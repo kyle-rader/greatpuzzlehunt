@@ -26,10 +26,7 @@ export default Leaderboard = React.createClass({
 
     return this.data.teams.map((team) => {
       return (
-      <tr key={team._id}>
-        <td>{team.name}</td>
-        <td>{team.totalScore} sec</td>
-      </tr>
+        <TeamLeaderRow key={team._id} team={team} />
       );
     });
   },
@@ -43,8 +40,13 @@ export default Leaderboard = React.createClass({
               <table className="ui celled table">
                 <thead>
                   <tr>
-                    <th>Team</th>
-                    <th>Total Calculated Score (in seconds)</th>
+                    <th width="15%">Team</th>
+                    <th width="15%">Total Scored Time (hh:mm:ss)</th>
+                    <th>Time will Tell</th>
+                    <th>Fold and Behold</th>
+                    <th>Stop the Clock</th>
+                    <th>Cite Unseen</th>
+                    <th>Meta Puzzle</th>
                   </tr>
                 </thead>
                 <tbody>
