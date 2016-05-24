@@ -69,6 +69,13 @@ publicRoutes.route('/teamlist', {
     }
 });
 
+publicRoutes.route('/gallery', {
+    name: 'gallery',
+    action() {
+        mount(App, {yield: <Gallery />});
+    }
+});
+
 publicRoutes.route('/requestpasswordreset', {
     name: 'requestpasswordreset',
     action() {
