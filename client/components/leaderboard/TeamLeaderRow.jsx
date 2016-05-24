@@ -46,6 +46,10 @@ TeamLeaderRow = React.createClass({
         });
     },
 
+    padZero(num) {
+        return (`${num}`.length === 1) ? `0${num}` : num;
+    },
+
     render() {
 
         let hours = Math.floor(this.props.team.totalScore / 3600);
@@ -55,7 +59,7 @@ TeamLeaderRow = React.createClass({
         return (
         <tr>
             <td>{this.props.team.name}</td>
-            <td>{hours}:{minutes}:{seconds}</td>
+            <td>{this.padZero(hours)}:{this.padZero(minutes)}:{this.padZero(seconds)}</td>
             {this.getPuzzleFields()}
         </tr>
         );
