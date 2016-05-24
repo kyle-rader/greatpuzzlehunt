@@ -19,9 +19,9 @@
   "dependencies": {
     "meteor-node-stubs": "^0.2.3",
     "qrcode.react": "^0.6.1",
-    "react": "^0.14.8",
-    "react-addons-pure-render-mixin": "^0.14.8",
-    "react-dom": "^0.14.8",
+    "react": "^15.1.0",
+    "react-addons-pure-render-mixin": "^15.1.0",
+    "react-dom": "^15.1.0",
     "react-mounter": "^1.2.0"
   }
 }
