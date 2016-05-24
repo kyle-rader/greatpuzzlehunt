@@ -62,16 +62,26 @@ body {
     text-align: right;
 }
 
-@wwu-blue:  #BAD80A;
+@wwu-green:  #BAD80A;
+@wwu-blue: #003f87;
+
 .wwu-btn {
-    background-color: @wwu-blue !important;
-    color: #003F87 !important;
+    background-color: @wwu-green !important;
+    color: @wwu-blue !important;
 
     &:hover {
-        background-color: darken(@wwu-blue, 5%) !important;
+        background-color: darken(@wwu-green, 5%) !important;
     }
 }
 
+.wwu-blue {
+    color: @wwu-blue !important;
+}
+
 .wwu-dark-blue {
-    color: #003f87 !important;
+    color: @wwu-blue !important;
+}
+
+.facebook-blue {
+    color: #304d8a !important;
 }

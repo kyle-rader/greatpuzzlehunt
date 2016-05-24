@@ -11,25 +11,12 @@ Home = React.createClass({
                 <div className="row">
                     <div className="column">
                         <div className="puzzle-hunt-title">
-                            <h2>The First Annual</h2>
+                            <h2>The Second Annual</h2>
                             <h1>WWU Great</h1>
                             <a href="/"><img src="img/logo.png" /></a>
                             <h1>Puzzle Hunt</h1>
-                            <h3>April 9th, 2016 &nbsp;&nbsp; 10AM - 3PM</h3>
+                            <h3>April 1st, 2017 &nbsp;&nbsp; 10AM - 3PM</h3>
                         </div>
-                    </div>
-                </div>
-
-                <div className="two column row">
-                    <div className="column">
-                        <a className="ui fluid big button teal" href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf" target="_blank">
-                            Rules of Play and Hunting Tips
-                        </a>
-                    </div>
-                    <div className="column">
-                        <a className="ui fluid big button teal" href="/pdfs/puzzle-hunt-map.pdf" target="_blank">
-                            Puzzle Hunt Campus Map
-                        </a>
                     </div>
                 </div>
 
@@ -41,7 +28,7 @@ Home = React.createClass({
                             title="Register"
                             icon="huge blue user add icon"
                             link="/register"
-                            extraText="Free to Register! Space is limited!"
+                            extraText="Registration will open near the end of 2016!"
                             />
                             <HomePanel
                                 title="Login"
@@ -57,7 +44,7 @@ Home = React.createClass({
                             title="Info"
                             icon="huge red help icon"
                             link="/info"
-                            extraText="This is an event for WWU students, faculty, and staff to join forces and solve epic puzzles of all kinds!"
+                            extraText="This is an event for WWU students, faculty, and staff to join forces and solve epic puzzles!"
                             />
                             <HomePanel
                             title="Puzzles"
@@ -68,62 +55,42 @@ Home = React.createClass({
                         </div>
                     </div>
                 </div>
-                <div className="equal width stackable row">
-                    <div className="center aligned column">
-                        <div className="ui items">
-                            <div className="item">
-                                <a className="ui huge fluid labeled icon button wwu-btn" href="https://securelb.imodules.com/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1" target="_blank">
-                                    <i className="heart icon"></i>
-                                    Help make this event happen and donate now!
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a className="ui huge fluid teal labeled icon button" href="https://docs.google.com/forms/d/1aEnToLDOTY9P53mY3LRecWkY5w-4_xyYpBmMwwSh0Pw/viewform" target="_blank">
-                                    <i className="bullhorn icon"></i>
-                                    Volunteer to help run event!
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a className="ui huge fluid labeled icon button" href="/contact">
-                                    <i className="mail icon"></i>
-                                    Contact Us
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a className="ui huge fluid labeled icon facebook button" target="_blank" href="https://www.facebook.com/events/160687404314460/">
-                                    <i className="facebook icon"></i>
-                                    Share
-                                </a>
-                            </div>
+
+                <div className="two column equal height stackable row">
+                    <div className="column">
+                        <div className="ui two column grid">
+                            <HomePanel
+                            title="Donate"
+                            icon="huge violet gift icon"
+                            link="https://securelb.imodules.com/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1"
+                            extraText="Your contribution will help make this happen!"
+                            />
+                            <HomePanel
+                                title="Gallery"
+                                icon="huge orange photo icon"
+                                link="/gallery"
+                                extraText="Check out the 2016 puzzle hunt!"
+                                />
                         </div>
                     </div>
-                    <div className="center aligned column">
-                        <h2 className="ui top attached header">Logistics</h2>
-                        <ul className="ui raised attached segment divided items">
-                            <li className="item">
-                                <div className="description">Free to register this year</div>
-                            </li>
-                            <li className="item">
-                                <div className="description">Limited space so register fast</div>
-                                </li>
-                            <li className="item">
-                                <div className="description">Must have a <strong>@student.wwu.edu</strong> or <strong>@wwu.edu</strong> email address</div>
-                            </li>
-                            <li className="item">
-                                <div className="description">Team size limit is 6</div>
-                            </li>
-                            <li className="item">
-                                <div className="description">Awesome T-Shirts are $15</div>
-                                <div className="extra">
-                                    <a className="ui right floated button wwu-btn" href="https://commerce.cashnet.com/GreatPuzzleHunt2016" target="_blank">Order Now!</a>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="description">T-Shirt Ordering Deadline is <b>Wednesday April 13, 2016 at midnight</b></div>
-                            </li>
-                        </ul>
+                    <div className="column">
+                        <div className="ui two column grid">
+                            <HomePanel
+                            title="Contact Us"
+                            icon="huge teal mail icon"
+                            link="mailto:info@wwupuzzlehunt.com"
+                            extraText="Questions about teams, registration, anything!"
+                            />
+                            <HomePanel
+                            title="Share"
+                            icon="huge square facebook facebook-blue icon"
+                            link="https://www.facebook.com/wwupuzzlehunt/"
+                            extraText="Look for the 2017 Puzzle Hunt upcoming on Facebook and invite your friends!"
+                            />
+                        </div>
                     </div>
                 </div>
+                
             </div>
             <br/>
         </div>
