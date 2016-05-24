@@ -35,3 +35,4 @@ tinytest
 raderk:qr-decode
 cfs:standard-packages
 cfs:gridfs
+okgrow:analytics

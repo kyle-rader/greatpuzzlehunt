@@ -222,7 +222,7 @@ Register = React.createClass({
       <div className="register ui middle aligned center aligned grid custom-bg red-square">
           <div className="column">
               <div className="ui large info message">
-                <h2>Registration has closed!</h2>
+                <h2>Registration is closed, check back soon!</h2>
               </div>
           </div>
       </div>);

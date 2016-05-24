@@ -9,6 +9,21 @@ Info = React.createClass({
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Information"/>
 
+                <div className="ui stackable grid">
+                    <div className="two column row">
+                        <div className="column">
+                            <a className="ui fluid big button teal" href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf" target="_blank">
+                                Rules of Play and Hunting Tips
+                            </a>
+                        </div>
+                        <div className="column">
+                            <a className="ui fluid big button teal" href="/pdfs/puzzle-hunt-map.pdf" target="_blank">
+                                Puzzle Hunt Campus Map
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 {/* WHAT IS IT? */}
                 <h2 className="ui top attached header">
                     <i className="red help icon"></i>
@@ -31,7 +46,7 @@ Info = React.createClass({
                     <i className="orange calendar icon"></i>
                     <div className="content">
                         When is it?
-                        <div className="sub header">Saturday April 9th, 2016 @ 10:00 AM, Red Square</div>
+                        <div className="sub header">Saturday April 1th, 2016 @ 10:00 AM, Red Square</div>
                     </div>
                 </h2>
                 <div className="ui attached segment">
@@ -39,15 +54,21 @@ Info = React.createClass({
                     <div className="ui list">
                         <div className="item">
                             <div className="ui horizontal label">
-                                April 9, 2016 10:00 AM
+                                TBD
                             </div>
-                            Game Day!
+                            Registration Opens
                         </div>
                         <div className="item">
                             <div className="ui horizontal label">
-                                Wednesday April 13, 2016 at midnight
+                                TBD
                             </div>
-                            Last day to order a T-shirt!
+                            Early Bird Registration Closes
+                        </div>
+                        <div className="item">
+                            <div className="ui horizontal label">
+                                April 1, 2017 &nbsp; 10:00 AM
+                            </div>
+                            Game Day!
                         </div>
                     </div>
                 </div>
@@ -201,7 +222,7 @@ Info = React.createClass({
                     </div>
                 </h2>
                 <div className="ui attached segment">
-                    <a className="ui button wwu-btn" href="https://commerce.cashnet.com/GreatPuzzleHunt2016" target="_blank">Buy Now!</a>
+                    <h3>Puzzle Hunt 2016 T-Shirts</h3>
                     <br/><br/>
                     <div className="ui medium images">
                         <img className="ui image" src="img/T-Shirt-front.png"/>
