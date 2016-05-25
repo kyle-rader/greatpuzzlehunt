@@ -15,7 +15,10 @@ Home = React.createClass({
                             <h1>WWU Great</h1>
                             <a href="/"><img src="img/logo.png" /></a>
                             <h1>Puzzle Hunt</h1>
-                            <h3>April 1st, 2017 &nbsp;&nbsp; 10AM - 3PM</h3>
+                            <h2 className="ui wwu-blue header">
+                                <i className="calendar icon"></i>
+                                April 1st, 2017 &nbsp; | &nbsp; 10AM - 3PM
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -71,6 +74,7 @@ Home = React.createClass({
                                 icon="huge orange photo icon"
                                 link="/gallery"
                                 extraText="Check out the 2016 puzzle hunt!"
+                                newTab="true"
                                 />
                         </div>
                     </div>
@@ -79,7 +83,7 @@ Home = React.createClass({
                             <HomePanel
                             title="Contact Us"
                             icon="huge teal mail icon"
-                            link="mailto:info@wwupuzzlehunt.com"
+                            link="/contact"
                             extraText="Questions about teams, registration, anything!"
                             />
                             <HomePanel
@@ -103,13 +107,13 @@ Home = React.createClass({
                             </div>
                         </h2>
                         <div className="ui relaxed items">
-                            <a className="item" href="http://www.westernfrontonline.com/2016/04/10/western-hosts-the-first-great-puzzle-hunt/">
+                            <a className="item" target="_blank" href="http://www.westernfrontonline.com/2016/04/10/western-hosts-the-first-great-puzzle-hunt/">
                                 <h3>April 14, 2016 | &nbsp; Western Front: Western hosts the first Great Puzzle Hunt</h3>
                             </a>
-                            <a className="item" href="https://westerntoday.wwu.edu/photos/photos-300-take-part-in-inaugural-great-puzzle-hunt">
+                            <a className="item" target="_blank" href="https://westerntoday.wwu.edu/photos/photos-300-take-part-in-inaugural-great-puzzle-hunt">
                                 <h3>April 10, 2016 | &nbsp; Western Today: Photos: 300 take part in inaugural Great Puzzle Hunt</h3>
                             </a>
-                            <a className="item" href="https://westerntoday.wwu.edu/news/registration-underway-for-wwu-great-puzzle-hunt-april-9">
+                            <a className="item" target="_blank" href="https://westerntoday.wwu.edu/news/registration-underway-for-wwu-great-puzzle-hunt-april-9">
                                 <h3>March 7, 2016 | &nbsp; Western Front: Registration underway for WWU Great Puzzle Hunt April 9</h3>
                             </a>
                         </div>
