@@ -7,3 +7,7 @@ node_modules/amdefine node_modules/asap node_modules/babel-runtime node_modules/
 node_modules
 
 private/
+
+mailurl
+
+backup-data/
