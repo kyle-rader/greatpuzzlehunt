@@ -41,7 +41,7 @@ export default Leaderboard = React.createClass({
                 <thead>
                   <tr>
                     <th width="15%">Team</th>
-                    <th width="15%">Total Scored Time (hh:mm:ss)</th>
+                    <th width="15%">Total Scored Time <a target="_blank" href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf"><i className="ui fitted circular help icon"></i></a> (hh:mm:ss)</th>
                     <th>Time will Tell</th>
                     <th>Fold and Behold</th>
                     <th>Stop the Clock</th>

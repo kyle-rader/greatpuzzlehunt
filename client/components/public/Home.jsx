@@ -17,7 +17,7 @@ Home = React.createClass({
                             <h1>Puzzle Hunt</h1>
                             <h2 className="ui wwu-blue header">
                                 <i className="calendar icon"></i>
-                                April 1st, 2017 &nbsp; | &nbsp; 10AM - 3PM
+                                Saturday, April 1st, 2017 &nbsp; | &nbsp; 10AM - 3PM
                             </h2>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ Home = React.createClass({
                             title="Info"
                             icon="huge red help icon"
                             link="/info"
-                            extraText="This is an event for WWU students, faculty, and staff to join forces and solve epic puzzles!"
+                            extraText="This is an event for Western and Bellingham community members to join forces and solve epic puzzles!"
                             />
                             <HomePanel
                             title="Puzzles"

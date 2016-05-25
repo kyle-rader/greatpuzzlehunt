@@ -46,7 +46,7 @@ Info = React.createClass({
                     <i className="orange calendar icon"></i>
                     <div className="content">
                         When is it?
-                        <div className="sub header">Saturday April 1th, 2016 @ 10:00 AM, Red Square</div>
+                        <div className="sub header">Saturday, April 1st, 2017 @ 10:00 AM, Red Square</div>
                     </div>
                 </h2>
                 <div className="ui attached segment">
@@ -66,7 +66,7 @@ Info = React.createClass({
                         </div>
                         <div className="item">
                             <div className="ui horizontal label">
-                                April 1, 2017 &nbsp; 10:00 AM
+                                Saturday, April 1st, 2017 &nbsp;@ 10:00 AM
                             </div>
                             Game Day!
                         </div>
@@ -81,15 +81,30 @@ Info = React.createClass({
                     </i>
                     <div className="content">
                         Who is invited?
-                        <div className="sub header">All WWU students, faculty, and staff!</div>
+                        <div className="sub header">Students, faculty, staff, Alumni, and the Bellingham Community!</div>
                     </div>
                 </h2>
                 <div className="ui attached segment">
-                    All WWU students, faculty, and staff regardless of major or puzzle-solving experience!
+                    We will be adding an OPEN division in 2017. More information forthcoming.
                     <a href="/register"> Sign up</a> and create a team of up to 6 people, or
                     register as an individual and browse existing teams and find one in need of your skills!
-                    Remember: only <b>all-student</b> teams are eligible for prizes!
                 </div>
+
+                {/* COST? */}
+                <h2 className="ui top attached header">
+                    <i className="green money icon"></i>
+                    <div className="content">
+                        How much does this cost?
+                        <div className="sub header">
+                            A small registration fee is being determined.
+                        </div>
+                    </div>
+                </h2>
+                <div className="ui attached segment">
+                    A small fee of $5-10/person (for early bird registration) will be charged to cover costs of materials, prizes, food, campus reservations, etc.
+                    We are seeking <a target="_blank" href="https://securelb.imodules.com/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">donations</a> to help with expenses to keep fees minimized.  
+                </div>
+
 
                 {/* DO I HAVE TO DO MATH? */}
                 <h2 className="ui top attached header">
@@ -107,15 +122,6 @@ Info = React.createClass({
                     In this puzzle hunt, it will be to your advantage to have people on your team with
                     knowledge of music, art, humanities and social sciences, as well as science and mathematics.
                 </div>
-
-                {/* COST? */}
-                <h2 className="ui top attached header">
-                    <i className="green money icon"></i>
-                    <div className="content">
-                        How much does this cost?
-                        <div className="sub header">Free this year! (Unless you want to buy an awesome T-Shirt)</div>
-                    </div>
-                </h2>
 
                 {/* WHAT TO BRING? */}
                 <h2 className="ui top attached header">
@@ -188,7 +194,7 @@ Info = React.createClass({
                 </h2>
                 <div className="ui attached segment">
                     Registration and check-in will start at 10:00 a.m. in Red Square where your
-                    team will receive a rules packet and team T-shirts pre-ordered by March 31, 2016.
+                    team will receive a <a href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf" target="_blank">rules packet</a> and team T-shirts pre-ordered by Date TBD.
                     The Puzzle Hunt will start at 11:00 a.m. when the first puzzle is released.
                     Prizes will be awarded at approximately 3:00 p.m.
                 </div>
@@ -209,7 +215,7 @@ Info = React.createClass({
                     <br/><br/>
                     Once the proper code word(s) are entered, your team will be sent to the next destination.
                     If your team is stuck, you may ask for hints. Each hint will add time to your clock.
-                    This information will be in the rules packet. Not all teams will travel the same paths.
+                    This information will be in the <a href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf" target="_blank">rules packet</a>. Not all teams will travel the same paths.
                     At each destination, you will need to scan a QR code to receive your next puzzle and re-start the clock.
                 </div>
 
