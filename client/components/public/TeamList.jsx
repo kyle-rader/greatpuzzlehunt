@@ -28,7 +28,7 @@ TeamList = React.createClass({
         <div className="info custom-bg red-square">
             <br/>
             <div className="ui container raised segment transparent-bg">
-                <PuzzlePageTitle title="Teams"/>
+                <PuzzlePageTitle title="2016 Teams"/>
 
                 <div className="ui four doubling cards">
                     {this.getTeams()}
