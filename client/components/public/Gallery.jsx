@@ -6,14 +6,14 @@ Gallery = React.createClass({
     getImages() {
 
         let images = [
-            "fun-in-the-sun.jpg",
-            "gathering.jpg",
+            //"gathering.jpg",
             "gathering2.jpg",
-            "gathering3.jpg",
-            "gathering4.jpg",
+            "fun-in-the-sun.jpg",
+            //"gathering4.jpg",
             "gathering5.jpg",
             "puzzle-sample.jpg",
             "scattering1.jpg",
+            "gathering3.jpg",
             "scattering2.jpg",
             "scattering3.jpg",
             "scattering4.jpg",
@@ -82,11 +82,15 @@ Gallery = React.createClass({
             "volunteers2.jpg",
             "volunteers3.jpg",
             "volunteers4.jpg",
-            "volunteers5.jpg"
+            //"volunteers5.jpg"
         ];
 
         return images.map((image) => {
-            return <img src={`/img/hunt2016/${image}`} key={image} title={image}/>;
+            return (
+                <div className="column">
+                    <img className="ui image" src={`/img/hunt2016/${image}`} key={image} title={image}/>
+                </div>
+            );
         });
     },
 
@@ -97,9 +101,9 @@ Gallery = React.createClass({
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Gallery"/>
 
-                <h2 className="ui header">Photo Credit: <a href="http://www.gabrielleponcz.com/" target="_BLANK">Gabrielle Poncz</a></h2>
+                <h2 className="ui center aligned header">Photo Credit: <a href="http://www.gabrielleponcz.com/" target="_BLANK">Gabrielle Poncz</a></h2>
 
-                <div className="ui large images">
+                <div className="ui stackable two column grid">
                     {this.getImages()}
                 </div>
             </div>
