@@ -9,7 +9,6 @@ Gallery = React.createClass({
             //"gathering.jpg",
             "gathering2.jpg",
             "fun-in-the-sun.jpg",
-            //"gathering4.jpg",
             "gathering5.jpg",
             "puzzle-sample.jpg",
             "scattering1.jpg",
@@ -82,6 +81,7 @@ Gallery = React.createClass({
             "volunteers2.jpg",
             "volunteers3.jpg",
             "volunteers4.jpg",
+            "gathering4.jpg",
             //"volunteers5.jpg"
         ];
 
@@ -101,7 +101,7 @@ Gallery = React.createClass({
             <div className="ui container raised segment transparent-bg">
                 <PuzzlePageTitle title="Gallery"/>
 
-                <h2 className="ui center aligned header">Photo Credit: <a href="http://www.gabrielleponcz.com/" target="_BLANK">Gabrielle Poncz</a></h2>
+                <h2 className="ui center aligned header">Photo Credit: <a target="_blank" href="http://www.gabrielleponcz.com/" >Gabrielle Poncz</a></h2>
 
                 <div className="ui stackable two column grid">
                     {this.getImages()}

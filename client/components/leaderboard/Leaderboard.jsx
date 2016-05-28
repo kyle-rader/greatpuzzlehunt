@@ -36,7 +36,7 @@ export default Leaderboard = React.createClass({
       <div className="custom-bg red-square">
           <br/>
           <div className="ui raised segment transparent-bg">
-              <h3 className="ui centered yellow header">Leaderboard</h3>
+              <h3 className="ui centered yellow header">2016 Leaderboard</h3>
               <table className="ui celled table">
                 <thead>
                   <tr>

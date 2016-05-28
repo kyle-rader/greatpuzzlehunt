@@ -31,13 +31,13 @@ Home = React.createClass({
                             title="Register"
                             icon="huge blue user add icon"
                             link="/register"
-                            extraText="Registration will open near the end of 2016!"
+                            extraText="2017 Registration will open near the end of 2016!"
                             />
                             <HomePanel
                                 title="Login"
                                 icon="huge green sign in icon"
                                 link="/login"
-                                extraText="Log in to create or join a team!"
+                                extraText="2017 Registration will open near the end of 2016!"
                                 />
                         </div>
                     </div>
@@ -47,7 +47,7 @@ Home = React.createClass({
                             title="Info"
                             icon="huge red help icon"
                             link="/info"
-                            extraText="This is an event for Western and Bellingham community members to join forces and solve epic puzzles!"
+                            extraText="This is an event for anyone who wants to join forces and solve epic puzzles!"
                             />
                             <HomePanel
                             title="Puzzles"
