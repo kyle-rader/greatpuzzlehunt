@@ -81,7 +81,7 @@ Info = React.createClass({
                     </i>
                     <div className="content">
                         Who is invited?
-                        <div className="sub header">Students, faculty, staff, Alumni, and the Bellingham Community!</div>
+                        <div className="sub header">Students, faculty, staff, Alumni, and Community!</div>
                     </div>
                 </h2>
                 <div className="ui attached segment">
