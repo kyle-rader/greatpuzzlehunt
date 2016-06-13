@@ -18,24 +18,6 @@ Puzzles = React.createClass({
                     <div className="center aligned equal width row">
 
                         <div className="column">
-                            <h2>Think Outside The Box</h2>
-                            <p>This problem involves spatial thinking/ visualization, patterns, and geometry!</p>
-                            <a className="ui labeled teal icon button" target="_blank" href="/pdfs/Think-Outside-The-Box.pdf">
-                                <i className="download icon"></i> Download PDF
-                            </a>
-                        </div>
-
-                        <div className="column">
-                            <h2>Read My Lips</h2>
-                            <p>This problem is about speech, sound, and words!</p>
-                            <a className="ui labeled teal icon button" target="_blank" href="/pdfs/Read-My-Lips.pdf">
-                                <i className="download icon"></i> Download PDF
-                            </a>
-                        </div>
-                    </div>
-                    <div className="center aligned equal width row">
-
-                        <div className="column">
                             <h2>Cite Unseen</h2>
                             <p>Visual Literature!</p>
                             <a className="ui labeled teal icon button" target="_blank" href="/puzzles/Cite Unseen FINAL.pdf">
@@ -69,6 +51,18 @@ Puzzles = React.createClass({
                                 <i className="download icon"></i> Download PDF
                             </a>
                         </div>
+                    </div>
+
+                    <div className="center aligned equal width row">
+
+                        <div className="column">
+                            <h2>Meta Puzzle</h2>
+                            <p>Combine the answers to all four puzzles to finish the final Meta Puzzle!</p>
+                            <a className="ui labeled teal icon button" target="_blank" href="/puzzles/Meta Puzzle FINAL.pdf">
+                                <i className="download icon"></i> Download PDF
+                            </a>
+                        </div>
+
                     </div>
                 </div>
 
