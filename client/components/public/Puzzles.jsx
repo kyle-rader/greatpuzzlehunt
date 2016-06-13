@@ -38,7 +38,7 @@ Puzzles = React.createClass({
 
                         <div className="column">
                             <h2>Stop the Clock</h2>
-                            <p>Visual numbers and math!</p>
+                            <p>Visual numbers, numerals, and logic!</p>
                             <a className="ui labeled teal icon button" target="_blank" href="/puzzles/Stop the Clock FINAL.pdf">
                                 <i className="download icon"></i> Download PDF
                             </a>
