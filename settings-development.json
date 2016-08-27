@@ -1,0 +1,21 @@
+{
+  "public": {
+    "siteName": "Great Puzzle Hunt",
+    "social": {
+      "facebook": "https://facebook.com/greatpuzzlehunt"
+    },
+    "analyticsSettings": {
+      "Google Analytics" : {"trackingId": "SOME_ID"}
+    }
+  },
+  "admin": {
+    "firstname": "Kyle",
+    "lastname": "Rader",
+    "username": "mcyamaha",
+    "email": "kyle@kylerader.ninja",
+    "password": "testtest"
+  },
+  "accounts": {
+    "fromEmail": "Great Puzzle Hunt<accounts@greatpuzzlehunt.com>"
+  }
+}
