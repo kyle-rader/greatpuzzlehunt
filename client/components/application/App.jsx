@@ -1,34 +1,24 @@
-// Define our main App component
+// Main App - React Root Component
 
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 
-App = React.createClass({
-    
-    mixins: [ReactMeteorData],
+App = class App extends React.Component {
 
-    getMeteorData() {
-        return {
-            hasUser: !!Meteor.user(),
-            isPublic(route) {
-                let publicRoutes = ['home', 'login', 'register', 'requestpasswordreset', 'passwordreset', 'info', 'puzzles', 'contact', 'teamlist', 'leaderboard', 'qrcode', 'gallery'];
+  componentDidMount() {
+    document.title = Meteor.settings.public.siteName;
+  }
 
-                return publicRoutes.indexOf(route) > -1;
-            },
-            canView() {
-                return this.isPublic(FlowRouter.current().route.name) || !!Meteor.user();
-            }
-        };
-    },
+  render() {
+    return (
+    <div className="app-root ui pushable">
+      <MenuContainer />
+      <div className="pusher">
+        <TopBar />
+        {this.props.yield}
+      </div>
+    </div>
+    );
+  }
 
-    getView() {
-        return this.data.canView() ? this.props.yield : <Login />;
-    },
-
-    render() {
-        return (
-        <div className="app-root">
-            <AppHeader hasUser={this.data.hasUser} />
-            {this.getView()}
-        </div>);
-    }
-});
+}

@@ -55,9 +55,6 @@ Accounts.onCreateUser((options, user) => {
             firstname: options.firstname,
             lastname: options.lastname,
             displayname: options.displayname,
-            major: options.major,
-            phone: options.phone,
-            teamId: options.teamId,
         },
         roles: ['user']
     });
