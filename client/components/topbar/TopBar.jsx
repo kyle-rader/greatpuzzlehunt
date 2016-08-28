@@ -21,12 +21,12 @@ TopBar = class TopBar extends React.Component {
 
   render() {
     return (
-      <div className="ui fixed labeled icon menu">
+      <div className="ui inverted fixed labeled icon menu top-bar">
         <a className="item" onClick={this.toggleSidebar}>
-          <i className="large green content icon"></i>
+          <i className="large content icon"></i>
           Menu
         </a>
-        {this.renderSocialButtons()}
+        { /* this.renderSocialButtons() */ }
       </div>
     );
   }

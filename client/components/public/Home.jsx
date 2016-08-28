@@ -1,6 +1,40 @@
-import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import React, { Component } from 'react';
 
-Home = React.createClass({
+Home = class home extends Component {
+
+  componentDidMount() {
+    const video = $(this.refs['embedded-video']);
+
+    video.embed({
+      source      : 'vimeo',
+      id          : '179503284',
+    });
+  }
+
+  render() {
+    return (
+    <div className="ui container">
+      <div className="header-main">
+        <div className="header-text -left">
+          <div className="extra-text">The Second Annual</div>
+          WWU Great
+        </div>
+        <img src="/img/logo.png"/>
+        <div className="header-text -right">
+          Puzzle Hunt
+          <div className="extra-text">Mobilizing Minds</div>
+        </div>
+      </div>
+
+      <div ref="embedded-video" class="ui embed"></div>
+
+    </div>
+    );
+  }
+}
+
+OldHome = React.createClass({
 
     render() {
         return (
@@ -119,7 +153,7 @@ Home = React.createClass({
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <br/>
         </div>
