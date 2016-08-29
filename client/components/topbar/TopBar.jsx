@@ -34,6 +34,11 @@ TopBar = class TopBar extends React.Component {
     }
   }
 
+  _logout(event) {
+    event.preventDefault();
+    return Meteor.logout(() => FlowRouter.go('/'));
+  }
+
   _toggleSideBar() {
     $('.ui.pushable > .ui.sidebar').sidebar('toggle');
   }
