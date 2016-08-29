@@ -1,4 +1,6 @@
-@media all and (min-width: 415px) {
+@import '../../lib/less/variables.less';
+
+@media all and (min-width: @desktop-min) {
   .header-main {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -45,7 +47,8 @@
   }
 
 }
-@media all and (max-width: 414px) {
+
+@media all and (max-width: @mobile-max) {
   .header-main {
     margin-top: 10px;
     margin-bottom: 15px;

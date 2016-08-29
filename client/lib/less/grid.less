@@ -1,0 +1,23 @@
+@import './variables.less';
+
+.ui.grid > .row > .column.dark-blue {
+  background-color: @dark-blue;
+  color: #fff;
+}
+
+.ui.container > .ui.padded.stackable.grid.filling {
+
+  &:not(.vertically):not(.horizontally) {
+    margin-right: -1em !important;
+    margin-left: -1em !important;
+  }
+
+  > .row.stacking {
+    padding: 0em !important;
+
+    > .column.no-padding {
+      padding: 0em !important;
+    }
+  }
+
+}

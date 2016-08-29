@@ -12,9 +12,8 @@ Home = class home extends Component {
     });
   }
 
-  render() {
+  _renderHeader() {
     return (
-    <div className="ui container">
       <div className="header-main">
         <div className="header-text -left">
           <div className="extra-text">The Second Annual</div>
@@ -26,8 +25,37 @@ Home = class home extends Component {
           <div className="extra-text">Mobilizing Minds</div>
         </div>
       </div>
+    );
+  }
 
-      <div ref="embedded-video" class="ui embed"></div>
+  render() {
+    return (
+    <div className="ui container">
+      {this._renderHeader()}
+
+      <div className="ui padded stackable filling grid">
+
+        <div className="two column stacking row">
+
+          <div className="no-padding nine wide column">
+            <img className="ui image" src="/img/hunt2016/gathering.jpg"/>
+          </div>
+
+          <div className="dark-blue seven wide column">
+            <div className="ui basic segment">
+              <h2>Grab some friends<br/>and go on an adventure!</h2>
+              <h3>Solve puzzle and win prizes!</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="one column stacking row">
+          <div className="no-padding column">
+            <div ref="embedded-video" class="ui embed"></div>
+          </div>
+        </div>
+
+      </div>
 
     </div>
     );
