@@ -43,8 +43,16 @@ Home = class home extends Component {
 
           <div className="dark-blue seven wide column">
             <div className="ui basic segment">
-              <h2>Grab some friends<br/>and go on an adventure!</h2>
-              <h3>Solve puzzle and win prizes!</h3>
+              <h1 className="thin">GRAB SOME FRIENDS<br/>AND HAVE AN ADVENTURE</h1>
+              <h2 className="thin">SOLVE PUZZLES AND WIN PRIZES</h2>
+              <div className="buttons">
+                <a className="ui large green button" href="/register">
+                  Register
+                </a>
+                <a className="ui large blue button" href="/login">
+                  Log In
+                </a>
+              </div>
             </div>
           </div>
         </div>
