@@ -8,17 +8,12 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Menu = class Menu extends React.Component {
 
-  _logout(event) {
-    event.preventDefault();
-    return Meteor.logout(() => FlowRouter.go('/'));
-  }
-
   _adminMenu() {
     return [
       <div className="ui divider" key="admin-divider"></div>,
       (
       <a className="item" href="/admin" key="edit-btn">
-        <i className="green edit icon"></i>
+        <i className="gray settings icon"></i>
         Settings
       </a>
       ),
