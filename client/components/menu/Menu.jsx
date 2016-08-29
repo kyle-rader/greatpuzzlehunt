@@ -50,7 +50,7 @@ Menu = class Menu extends React.Component {
     return (
     <div className="ui borderless sidebar vertical labeled icon menu" ref="sidebar">
       <a className="item" href="/">
-        <img className="ui centered mini menu-logo image" src="/img/logo.png"/>
+        <img className="ui centered mini menu-logo image" src="/img/logo-color-128.png"/>
         Home
       </a>
       <a className="item" href="/tags">

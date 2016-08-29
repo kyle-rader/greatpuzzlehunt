@@ -19,7 +19,7 @@ Home = class home extends Component {
           <div className="extra-text">The Second Annual</div>
           WWU Great
         </div>
-        <img src="/img/logo.png"/>
+        <img src="/img/logo-color-512.png"/>
         <div className="header-text -right">
           Puzzle Hunt
           <div className="extra-text">Mobilizing Minds</div>
