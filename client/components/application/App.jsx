@@ -11,11 +11,13 @@ App = class App extends React.Component {
 
   render() {
     return (
-    <div className="app-root ui pushable">
-      <MenuContainer />
-      <div className="pusher">
-        <TopBarContainer />
-        {this.props.yield}
+    <div id="app-root">
+      <TopBarContainer />
+      <div className="ui pushable">
+        <MenuContainer />
+        <div className="pusher">
+          {this.props.yield}
+        </div>
       </div>
     </div>
     );

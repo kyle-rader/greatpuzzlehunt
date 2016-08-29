@@ -1,21 +1,33 @@
 @import './variables.less';
 
-html, html.ios, html.android,
-body, div#react-root, div.app-root {
-  height: 100% !important;
+html,
+html > body,
+html.ios,
+html.ios > body,
+div#react-root,
+div#app-root {
   position: relative;
-  background-color: #fff;
-  color: #333;
-  padding: 0;
-  display: block;
+  background: #fff;
+}
+
+html,
+html > body,
+html.ios,
+html.ios > body,
+div#react-root,
+div#app-root {
+  height: 100% !important;
+}
+
+div#app-root {
+    padding-top: 71px;
+}
+div#app-root > .ui.pushable {
+  background: #fff;
 }
 
 body {
   overflow-x: hidden;
-}
-
-div#react-root > div.app-root > div.pusher {
-  padding-top: 68px;
 }
 
 .text-center {
