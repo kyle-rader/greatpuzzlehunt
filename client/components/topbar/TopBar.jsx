@@ -39,18 +39,36 @@ TopBar = class TopBar extends React.Component {
     return Meteor.logout(() => FlowRouter.go('/'));
   }
 
-  _toggleSideBar() {
-    $('.ui.pushable > .ui.sidebar').sidebar('toggle');
+  _initDropDownMenus() {
+    $(this.refs.topbar).find('.ui.dropdown').dropdown();
+  }
+
+  componentDidMount() {
+    this._initDropDownMenus();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this._initDropDownMenus();
   }
 
   render() {
     return (
-      <div className="ui top fixed inverted labeled icon menu top-bar" ref="topbar">
+      <div className="ui fixed inverted labeled icon menu top-bar" ref="topbar">
 
-        <a className="item" onClick={this._toggleSideBar}>
+        <div className="ui dropdown item" ref="menuDropdown">
           <i className="large content icon"></i>
           Menu
-        </a>
+          <div className="menu">
+            <a className="item" href="/">
+              <i className="home icon"></i>
+              Home
+            </a>
+            <a className="item" href="/gallery">
+              <i className="camera icon"></i>
+              Gallery
+            </a>
+          </div>
+        </div>
 
         <div className="right menu">
           {this._logInLogOutBtn()}
