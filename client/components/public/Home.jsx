@@ -37,14 +37,14 @@ Home = class home extends Component {
 
         <div className="two column stacking row">
 
-          <div className="no-padding nine wide column">
+          <div className="no-padding ten wide column">
             <img className="ui image" src="/img/hunt2016/gathering.jpg"/>
           </div>
 
-          <div className="dark-blue seven wide column">
+          <div className="dark-blue six wide column">
             <div className="ui basic segment">
-              <h1 className="thin">GRAB SOME FRIENDS<br/>AND HAVE AN ADVENTURE</h1>
-              <h2 className="thin">SOLVE PUZZLES AND WIN PRIZES</h2>
+              <h1 className="thin">Grab Some Friends<br/>and Have an Adventure!</h1>
+              <h2 className="thin">Solve Puzzles and Win Prizes!</h2>
               <div className="buttons">
                 <a className="ui large green button" href="/register">
                   Register
@@ -63,7 +63,36 @@ Home = class home extends Component {
           </div>
         </div>
 
+        <div className="one column stacking row">
+          <div className="dark-blue column">
+
+            <div className="ui basic segment">
+              <h1>
+                Help Support the Event<br/>
+                By Becoming a Sponsor
+              </h1>
+              <a className="ui large red labeled icon button" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">
+                Donate Now
+                <i className="heart icon"></i>
+              </a>
+
+              <div className="ui divider"></div>
+              <div className="ui four column stackable grid">
+                <SponsorTitle name="JIGSAW" icon="puzzle" price="$200 - $499" description="Name/Logo on website & sponsor list"/>
+                <SponsorTitle name="CROSSWORD" icon="crop" price="$500 - $999" description="JIGSAW + Name/Logo on t-shirt & press release"/>
+                <SponsorTitle name="CIPHER" icon="code" price="$1000 - $1999" description="CROSSWORD + Complimentary registration for 6 oerson team"/>
+                <SponsorTitle name="PUZZLE MASTER" icon="trophy" price="$2000+" description="CIPHER + Name/Logo on all event materials and advertising"/>
+              </div>
+              <div className="ui divider"></div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <br/>
+      <br/>
 
     </div>
     );
