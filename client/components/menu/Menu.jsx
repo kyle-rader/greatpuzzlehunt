@@ -27,13 +27,13 @@ Menu = class Menu extends React.Component {
 
   _initSideBarMenu() {
     // Init Semantic-UI SideBar
-    const reactRoot = $('.app-root.ui.pushable');
-    const sideBar = reactRoot.find('> .ui.sidebar');
+    const context = $('#app-root .ui.pushable');
+    const sideBar = $(this.refs.sidebar);
 
     sideBar.sidebar({
-      context: reactRoot[0]
+      context: context[0],
     })
-    .sidebar('attach events', '.app-root.ui.pushable > .ui.sidebar > a.item');
+    .sidebar('attach events', '.ui.sidebar > a.item');
   }
 
   componentDidMount() {
@@ -48,7 +48,7 @@ Menu = class Menu extends React.Component {
     const adminMenu = this.props.isAdmin() ? this._adminMenu() : null;
 
     return (
-    <div className="ui borderless sidebar vertical labeled icon menu">
+    <div className="ui borderless sidebar vertical labeled icon menu" ref="sidebar">
       <a className="item" href="/">
         <img className="ui centered mini menu-logo image" src="/img/logo.png"/>
         Home

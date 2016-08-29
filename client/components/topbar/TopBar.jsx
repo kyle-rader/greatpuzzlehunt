@@ -35,12 +35,12 @@ TopBar = class TopBar extends React.Component {
   }
 
   _toggleSideBar() {
-    $('.app-root.ui.pushable > .ui.sidebar').sidebar('toggle');
+    $('.ui.pushable > .ui.sidebar').sidebar('toggle');
   }
 
   render() {
     return (
-      <div className="ui inverted fixed labeled icon menu top-bar">
+      <div className="ui top fixed inverted labeled icon menu top-bar" ref="topbar">
 
         <a className="item" onClick={this._toggleSideBar}>
           <i className="large content icon"></i>
