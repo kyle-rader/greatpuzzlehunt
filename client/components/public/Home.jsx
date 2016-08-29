@@ -31,6 +31,7 @@ Home = class home extends Component {
   render() {
     return (
     <div className="ui container">
+
       {this._renderHeader()}
 
       <div className="ui padded stackable filling grid">
@@ -79,6 +80,19 @@ Home = class home extends Component {
         </div>
 
         <div className="one column stacking row">
+          <div className="column">
+            <div className="ui dark-blue basic container segment">
+              <h1 className="ui dark-blue header">What is the Puzzle Hunt?</h1>
+              <p className="h3">
+                The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles.  Teams travel to various puzzle stations
+                solving a diverse set of puzzles gathering clues along the way to solve one final meta puzzle.
+              </p>
+              <p className="h2">Check out the video below to see last year's puzzle hunt in action!</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="one column stacking row">
           <div className="no-padding column">
             <div ref="embedded-video" class="ui embed"></div>
           </div>
@@ -89,13 +103,13 @@ Home = class home extends Component {
 
             <div className="ui basic segment">
               <h1>
-                Help Support the Event<br/>
-                By Becoming a Sponsor
+                Help Support the Event by Becoming a Sponsor
               </h1>
               <a className="ui large red labeled icon button" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">
                 Donate Now
                 <i className="heart icon"></i>
               </a>
+              &nbsp; &nbsp;All donations are tax deductible!
 
               <div className="ui divider"></div>
               <div className="ui four column stackable grid">
@@ -107,6 +121,12 @@ Home = class home extends Component {
               <div className="ui divider"></div>
 
             </div>
+          </div>
+        </div>
+
+        <div className="one column stacking row">
+          <div className="no-padding column">
+            <img className="ui image" src="/img/hunt2016/team-saxaphone-bugs-thin.jpg"/>
           </div>
         </div>
 
