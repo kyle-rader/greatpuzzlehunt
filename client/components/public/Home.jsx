@@ -43,8 +43,8 @@ Home = class home extends Component {
 
           <div className="dark-blue six wide column">
             <div className="ui basic segment">
-              <h1 className="thin">Grab Some Friends<br/>and Have an Adventure!</h1>
-              <h2 className="thin">Solve Puzzles and Win Prizes!</h2>
+              <h1>Grab Some Friends<br/>and Have an Adventure!</h1>
+              <h2>Solve Puzzles and Win Prizes!</h2>
               <div className="buttons">
                 <a className="ui large green button" href="/register">
                   Register
@@ -52,6 +52,27 @@ Home = class home extends Component {
                 <a className="ui large blue button" href="/login">
                   Log In
                 </a>
+              </div>
+              <div className="ui relaxed large list">
+                <div className="item">
+                  <i className="large calendar icon"></i>
+                  <div className="content">
+                    April 1, 2017 &nbsp;|&nbsp; 10:00 AM
+                  </div>
+                </div>
+                <div className="item">
+                  <i className="large white marker icon"></i>
+                  <div className="white content">
+                    Western Washington University<br/>
+                    516 High Street<br/>
+                    Bellingham, WA 98225<br/><br/>
+
+                    <a className="ui right labeled icon button" target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631">
+                      <i className="google icon"></i>
+                      Google Maps
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
