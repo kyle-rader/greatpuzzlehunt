@@ -25,24 +25,6 @@ Menu = class Menu extends React.Component {
     ];
   }
 
-  _logInLogOutBtn() {
-    if (this.props.user) {
-      return (
-        <a className="item" onClick={this._logout}>
-          <i className="sign out icon"></i>
-          Leave
-        </a>
-      );
-    } else {
-      return (
-        <a className="item" href="/login">
-          <i className="sign in icon"></i>
-          Enter
-        </a>
-      );
-    }
-  }
-
   _initSideBarMenu() {
     // Init Semantic-UI SideBar
     const reactRoot = $('.app-root.ui.pushable');
@@ -51,7 +33,7 @@ Menu = class Menu extends React.Component {
     sideBar.sidebar({
       context: reactRoot[0]
     })
-    .sidebar('attach events', 'a.item');
+    .sidebar('attach events', '.app-root.ui.pushable > .ui.sidebar > a.item');
   }
 
   componentDidMount() {
@@ -64,7 +46,6 @@ Menu = class Menu extends React.Component {
 
   render() {
     const adminMenu = this.props.isAdmin() ? this._adminMenu() : null;
-    const logInLogOutBtn = this._logInLogOutBtn();
 
     return (
     <div className="ui borderless sidebar vertical labeled icon menu">
@@ -81,8 +62,6 @@ Menu = class Menu extends React.Component {
         Archive
       </a>
       {adminMenu}
-      <div className="ui divider"></div>
-      {logInLogOutBtn}
     </div>
     );
   }

@@ -1,11 +1,13 @@
 @import './variables.less';
 
-html, body, div#react-root, div.app-root {
-  height: 100%;
+html, html.ios, html.android,
+body, div#react-root, div.app-root {
+  height: 100% !important;
   position: relative;
   background-color: #fff;
   color: #333;
   padding: 0;
+  display: block;
 }
 
 body {
@@ -45,4 +47,8 @@ div#react-root > div.app-root > div.pusher {
 
 .facebook-blue {
     color: #304d8a !important;
+}
+
+.no-padding {
+  padding: 0 !important;
 }
