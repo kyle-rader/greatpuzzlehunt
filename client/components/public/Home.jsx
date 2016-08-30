@@ -17,7 +17,6 @@ Home = class home extends Component {
     <div className="one column stacking row">
       <div className="dark-blue column">
         <div className="ui basic segment">
-          <br/>
         </div>
       </div>
     </div>
@@ -80,7 +79,7 @@ Home = class home extends Component {
                     516 High Street<br/>
                     Bellingham, WA 98225<br/><br/>
 
-                    <a className="ui right labeled icon button" target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631">
+                    <a className="ui white right labeled icon button" target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631">
                       <i className="google icon"></i>
                       Google Maps
                     </a>
@@ -187,6 +186,7 @@ Home = class home extends Component {
 
           <div className="no-padding dark-blue nine wide column">
             <img className="ui image" src="/img/hunt2016/station1.jpg"/>
+            <div className="ui basic compact small segment">(Above) A volunteer scanning a team's QR code on their phone to start their puzzle timer</div>
           </div>
 
           <div className="dark-blue seven wide column">
@@ -217,6 +217,68 @@ Home = class home extends Component {
           </div>
         </div>
 
+        {this._renderBlueSpacer()}
+
+        <div className="one column stacking row">
+          <div className="no-padding column">
+            <img className="ui image" src="/img/hunt2016/team-theres-waldo-thin.jpeg"/>
+          </div>
+        </div>
+
+        <div className="one column stacking row">
+          <div className="column">
+            <div className="ui very padded basic segment">
+              <h1 className="dark-blue">Sample Puzzles</h1>
+              <div className="ui stackable dark-blue grid">
+                <div className="two column row">
+                  <div className="column">
+                    <h2>Cite Unseen</h2>
+                    <p>Visual literature</p>
+                    <a className="ui dark-blue button" target="_blank" href="/puzzles/Cite Unseen FINAL.pdf">Download</a>
+                  </div>
+                  <div className="column">
+                    <h2>Fold and Behold</h2>
+                    <p>Folding and geometry</p>
+                    <a className="ui dark-blue button" target="_blank" href="/puzzles/Fold AND Behold FINAL.pdf">Download</a>
+                  </div>
+                </div>
+                <div className="two column row">
+                  <div className="column">
+                    <h2>Stop the Clock</h2>
+                    <p>Visual numbers, numerals, and logic</p>
+                    <a className="ui dark-blue button" target="_blank" href="/puzzles/Stop the Clock FINAL.pdf">Download</a>
+                  </div>
+                  <div className="column">
+                    <h2>Time will Tell</h2>
+                    <p>Music and melody</p>
+                    <a className="ui dark-blue button" target="_blank" href="/puzzles/Time will tell FINAL.pdf">Download</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="one column stacking row">
+          <div className="dark-blue column">
+            <div className="ui very padded basic segment">
+              <h1>Take a look at past events</h1>
+              <small>Photography courtesy of Gabrielle Poncz</small>
+              <a className="ui large white right floated button" href="/gallery">View Gallery</a>
+            </div>
+          </div>
+        </div>
+        <div className="three column stacking row">
+          <div className="no-padding column">
+            <img className="ui image" src="/img/hunt2016/team-church-of-put-it-backism.jpg"/>
+          </div>
+          <div className="no-padding column">
+            <img className="ui image" src="/img/hunt2016/team-finesse.jpg"/>
+          </div>
+          <div className="no-padding column">
+            <img className="ui image" src="/img/hunt2016/team-mod.jpg"/>
+          </div>
+        </div>
         {this._renderBlueSpacer()}
 
       </div>

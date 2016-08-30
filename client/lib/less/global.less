@@ -62,6 +62,23 @@ body {
   color: @dark-blue !important;
 }
 
+.ui.white.button {
+  background-color: #fff;
+  color: @dark-blue;
+  &:hover {
+    color: @dark-blue;
+  }
+}
+.ui.dark-blue.button {
+  background-color: @dark-blue;
+  color: #fff !important;
+
+  &:hover {
+    background-color: darken(@dark-blue, 10%);
+    color: #fff !important;
+  }
+}
+
 .no-padding {
   padding: 0 !important;
 }
