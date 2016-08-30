@@ -14,6 +14,7 @@ App = class App extends React.Component {
     <div id="app-root">
       <TopBarContainer />
       {this.props.yield}
+      <Footer />
     </div>
     );
   }

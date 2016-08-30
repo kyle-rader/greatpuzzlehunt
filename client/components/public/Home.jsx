@@ -283,9 +283,6 @@ Home = class home extends Component {
 
       </div>
 
-      <br/>
-      <br/>
-
     </div>
     );
   }
