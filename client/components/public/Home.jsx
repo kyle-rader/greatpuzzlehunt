@@ -12,6 +12,18 @@ Home = class home extends Component {
     });
   }
 
+  _renderBlueSpacer() {
+    return (
+    <div className="one column stacking row">
+      <div className="dark-blue column">
+        <div className="ui basic segment">
+          <br/>
+        </div>
+      </div>
+    </div>
+    );
+  }
+
   _renderHeader() {
     return (
       <div className="header-main">
@@ -167,6 +179,45 @@ Home = class home extends Component {
             </div>
           </div>
         </div>
+
+        {this._renderBlueSpacer()}
+
+        {/* More registration info */}
+        <div className="two column stacking row">
+
+          <div className="no-padding dark-blue nine wide column">
+            <img className="ui image" src="/img/hunt2016/station1.jpg"/>
+          </div>
+
+          <div className="dark-blue seven wide column">
+            <div className="ui basic segment">
+              <h2>Early Bird Registration<br/>through March 10, 2017</h2>
+              <div className="ui list">
+                <div className="item">
+                  <div className="ui tag label">Student &nbsp; $5</div>
+                </div>
+                <div className="item">
+                  <div className="ui tag label">Non-Student &nbsp; $10</div>
+                </div>
+              </div>
+              <h2>Regular Registration<br/>March 11 - 30, 2017</h2>
+              <div className="ui list">
+                <div className="item">
+                  <div className="ui tag label">Student &nbsp; $8</div>
+                </div>
+                <div className="item">
+                  <div className="ui tag label">Non-Student &nbsp; $15</div>
+                </div>
+              </div>
+              <p>* Registration prices are per person.  Each person wanting to join a team must register themsleves first.</p>
+              <a className="ui large green button" href="/register">
+                Register
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {this._renderBlueSpacer()}
 
       </div>
 
