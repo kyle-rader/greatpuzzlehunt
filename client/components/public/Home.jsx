@@ -84,8 +84,11 @@ Home = class home extends Component {
             <div className="ui dark-blue basic container segment">
               <h1 className="ui dark-blue header">What is the Puzzle Hunt?</h1>
               <p className="h3">
-                The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles.  Teams travel to various puzzle stations
+                The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles.  Teams travel to various stations
                 solving a diverse set of puzzles gathering clues along the way to solve one final meta puzzle.
+              </p>
+              <p className="h3">
+                Everything is timed using your phone, QR codes, and this online system! So yes you can win :)
               </p>
               <p className="h2">Check out the video below to see last year's puzzle hunt in action!</p>
             </div>
@@ -105,12 +108,17 @@ Home = class home extends Component {
               <h1>
                 Help Support the Event by Becoming a Sponsor
               </h1>
-              <a className="ui large red labeled icon button" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">
-                Donate Now
-                <i className="heart icon"></i>
-              </a>
-              &nbsp; &nbsp;All donations are tax deductible!
-
+              <div className="ui horizontal stackable list">
+                <div className="item">
+                  <a className="item ui large red labeled icon button" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">
+                    Donate Now
+                    <i className="heart icon"></i>
+                  </a>
+                </div>
+                <h4 className="item">
+                  All donations are tax deductible!
+                </h4>
+              </div>
               <div className="ui divider"></div>
               <div className="ui four column stackable grid">
                 <SponsorTitle name="JIGSAW" icon="puzzle" price="$200 - $499" description="Name/Logo on website & sponsor list"/>
@@ -127,6 +135,36 @@ Home = class home extends Component {
         <div className="one column stacking row">
           <div className="no-padding column">
             <img className="ui image" src="/img/hunt2016/team-saxaphone-bugs-thin.jpg"/>
+          </div>
+        </div>
+
+        <div className="one column stacking row">
+          <div className="column">
+            <div className="ui basic segment">
+              <br/>
+              <div className="ui stackable dark-blue grid">
+                <div className="two column row">
+                  <div className="column">
+                    <h1>Who?</h1>
+                    <p>Everyone! However, each person under age 14 on a team must be accompanied by a legal guardian at all times.</p>
+                  </div>
+                  <div className="column">
+                    <h1>What?</h1>
+                    <p>Scavenger hunting, puzzle solving, brain adventuring!</p>
+                  </div>
+                </div>
+                <div className="two column row">
+                  <div className="column">
+                    <h1>When?</h1>
+                    <p>Saturday, April 1, 2017 from 10AM - 3PM<br/>Awards and Prizes at 4PM<br/>At Western Washington University</p>
+                  </div>
+                  <div className="column">
+                    <h1>Why?</h1>
+                    <p>Stretch your mental muscles, bond with your teammates, compete alongside people of all ages and walks of life, and have a lot of fun!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
