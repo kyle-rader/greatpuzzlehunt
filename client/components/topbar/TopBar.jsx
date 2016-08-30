@@ -58,14 +58,30 @@ TopBar = class TopBar extends React.Component {
         <div className="ui dropdown item" ref="menuDropdown">
           <i className="large content icon"></i>
           Menu
-          <div className="menu">
+          <div className="menu topbar-dropdown-menu">
             <a className="item" href="/">
-              <i className="home icon"></i>
+              <i className="green home icon"></i>
               Home
             </a>
             <a className="item" href="/gallery">
-              <i className="camera icon"></i>
+              <i className="blue camera icon"></i>
               Gallery
+            </a>
+            <a className="item" href="/contact">
+              <i className="violet mail icon"></i>
+              Contact
+            </a>
+            <a className="item" href="/puzzles">
+              <i className="red puzzle icon"></i>
+              Puzzles
+            </a>
+            <a className="item" href="/team-list">
+              <i className="orange users icon"></i>
+              Teams
+            </a>
+            <a className="item" href="/qrcode">
+              <i className="gray qrcode icon"></i>
+              QR Encoder
             </a>
           </div>
         </div>
