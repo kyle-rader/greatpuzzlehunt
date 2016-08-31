@@ -163,7 +163,7 @@ Home = class home extends Component {
               </div>
               <div className="column">
                 <h1>What?</h1>
-                <p>Scavenger hunting, puzzle solving, brain adventuring!</p>
+                <p>Scavenger hunting, puzzle solving, brain adventuring! <a href="/info">More details here</a></p>
               </div>
             </div>
             <div className="two column row">
