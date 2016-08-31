@@ -94,17 +94,14 @@ Gallery = class Gallery extends Component {
 
   render() {
       return (
-      <div className="info custom-bg red-square">
-        <br/>
-        <div className="ui container raised segment transparent-bg">
-          <PuzzlePageTitle title="Gallery"/>
+      <div className="ui container">
 
-          <h2 className="ui center aligned header">Photo Credit: <a target="_blank" href="http://www.gabrielleponcz.com/" >Gabrielle Poncz</a></h2>
+        <PuzzlePageTitle title="Gallery" subTitle="Photo Credit: Gabrielle Poncz" />
 
-          <div className="ui stackable two column grid">
-              {this._getImages()}
-          </div>
+        <div className="ui stackable two column grid">
+            {this._getImages()}
         </div>
+
         <br/>
       </div>
     );
