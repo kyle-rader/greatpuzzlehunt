@@ -139,12 +139,6 @@ Info = class Info extends Component {
             </div>
             <div className="item">
               <div className="ui horizontal label">
-                <i className="large ion-qr-scanner icon"></i> QR Scanner
-              </div>
-              App that can read QR Codes
-            </div>
-            <div className="item">
-              <div className="ui horizontal label">
                 <i className="large ion-android-clipboard icon"></i>Clipboard
               </div>
               Or notepad with graph paper might come in handy
@@ -226,7 +220,7 @@ Info = class Info extends Component {
           </div>
         </h2>
         <div className="ui attached segment">
-          <h3>Puzzle Hunt 2016 T-Shirts</h3>
+          <h3>Puzzle Hunt 2016 T-Shirts (2017 design on the way)</h3>
           <br/><br/>
           <div className="ui medium images">
             <img className="ui image" src="img/T-Shirt-front.png"/>
