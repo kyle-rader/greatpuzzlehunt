@@ -28,8 +28,8 @@ Meteor.startup(() => {
     const adminId = Accounts.createUser({
       username: Meteor.settings.admin.username,
       password: Meteor.settings.admin.password,
-      firstName: Meteor.settings.admin.firstname,
-      lastName: Meteor.settings.admin.lastname,
+      firstname: Meteor.settings.admin.firstname,
+      lastname: Meteor.settings.admin.lastname,
     });
 
     Accounts.addEmail(adminId, Meteor.settings.admin.email, true);
@@ -40,12 +40,10 @@ Meteor.startup(() => {
 
     adminUser = Meteor.users.findOne({roles: 'admin'});
     Meteor.logger.info("New Admin User: ");
-    Meteor.logger.logobj(adminUser);
-
   } else {
     Meteor.logger.info("Found Admin User: ");
-    Meteor.logger.logobj(adminUser);
   }
+  Meteor.logger.logobj(adminUser);
 
   // const ONE_HOUR = 3600000;
   // const ONE_SEC = 1000;

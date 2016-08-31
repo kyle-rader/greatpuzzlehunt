@@ -1,3 +1,6 @@
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
+
 // Setup Email Verification
 Accounts.emailTemplates.siteName = 'WWU Puzzle Hunt';
 Accounts.emailTemplates.from = 'WWU Puzzle Hunt <accounts@wwupuzzlehunt.com>';
@@ -54,7 +57,7 @@ Accounts.onCreateUser((options, user) => {
         profile: {
             firstname: options.firstname,
             lastname: options.lastname,
-            displayname: options.displayname,
+            displayname: `${options.firstname.slice(0,1).toUpperCase()}${options.firstname.slice(1)} ${options.lastname.slice(0,1).toUpperCase()}${options.lastname.slice(1)}`,
         },
         roles: ['user']
     });
