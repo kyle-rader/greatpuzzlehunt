@@ -25,7 +25,7 @@ authedRoutes.route('/volunteer', {
     action() {
         mount(App, {yield: <VolunteerPage />});
     }
-})
+});
 
 authedRoutes.route('/profile', {
     name: 'profile',
@@ -34,16 +34,16 @@ authedRoutes.route('/profile', {
     }
 });
 
-authedRoutes.route('/floaters', {
-  name: 'floaters',
-  action() {
-    mount(App, {yield: <Floaters />});
-  }
-});
+// authedRoutes.route('/floaters', {
+//   name: 'floaters',
+//   action() {
+//     mount(App, {yield: <Floaters />});
+//   }
+// });
 
-authedRoutes.route('/game', {
-    name: 'game',
-    action() {
-        mount(App, {yield: <Game />});
-    }
-});
+// authedRoutes.route('/game', {
+//     name: 'game',
+//     action() {
+//         mount(App, {yield: <Game />});
+//     }
+// });

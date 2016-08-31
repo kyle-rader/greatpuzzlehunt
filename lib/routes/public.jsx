@@ -55,19 +55,12 @@ publicRoutes.route('/qrcode', {
     }
 });
 
-publicRoutes.route('/leaderboard', {
-    name: 'leaderboard',
-    action() {
-        mount(App, {yield: <Leaderboard />});
-    }
-});
-
-publicRoutes.route('/teamlist', {
-    name: 'teamlist',
-    action() {
-        mount(App, {yield: <TeamList />});
-    }
-});
+// publicRoutes.route('/teamlist', {
+//     name: 'teamlist',
+//     action() {
+//         mount(App, {yield: <TeamList />});
+//     }
+// });
 
 publicRoutes.route('/gallery', {
     name: 'gallery',
