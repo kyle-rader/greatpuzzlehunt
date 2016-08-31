@@ -4,9 +4,13 @@
   "description": "A Puzzle Hunt Game System",
   "main": "main.js",
   "scripts": {
-    "start": "npm run meteor:dev",
-    "meteor:dev": "meteor --settings settings-development.json || true",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run meteor",
+    "meteor": "meteor --settings settings-development.json || true",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mup:set:dev": "cp mup-development.js mup.js && cp settings-development.json settings.json",
+    "mup:set:prod": "cp mup-production.js mup.js && cp settings-production.json settings.json",
+    "mup:deploy:dev": "mup deploy --config=mup-development.js --settings=settings-development.json",
+    "mup:deploy:prod": "mup deploy --config=mup-production.js --settings=settings-production.json"
   },
   "repository": {
     "type": "git",

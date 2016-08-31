@@ -1,1 +1,0 @@
-cp dev-mup.json mup.json && mupx deploy
