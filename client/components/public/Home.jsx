@@ -274,45 +274,6 @@ Home = class home extends Component {
     );
   }
 
-  _renderProfileCard(name, title, role, email, image) {
-    return (
-    <div className="centered card">
-      <div className="image">
-        <img src={image}/>
-      </div>
-      <div className="content">
-        <div className="header">{name}</div>
-        <div className="meta">
-          {title} <br/> <i className="fitted mail icon"></i><a target="_blank" href={`mailto:${email}`}>{email}</a>
-        </div>
-        <div className="description">
-          {role}
-        </div>
-      </div>
-    </div>
-    );
-  }
-
-  _renderContactSection() {
-    return (
-    <div className="one column stacking row">
-      <div className="dark-blue column">
-        <div className="ui padded basic segment">
-          <h1>Who are we?</h1>
-          <h2>We are Mind Mobilizers who love our community and the amazing diversity of talents it has to offer :)</h2>
-        </div>
-        <div className="ui basic segment">
-          <div className="ui three stackable cards">
-            {this._renderProfileCard('Millie Johnson', 'Associate Math Professor, WWU', 'Millie is the primary event coordinator and puzzle creator.', 'Millie.Johnson@wwu.edu', '/img/hunt2016/millie_johnson.jpg')}
-            {this._renderProfileCard('Kyle Rader', 'Software Engineer, Action Sprout', 'Kyle is the technology wizard and web application author.', 'kyle@kylerader.ninja', '/img/hunt2016/kyle_and_millie.jpg')}
-            {this._renderProfileCard('Wendy Aguilar', 'Web Developer, CDK Global', 'Wendy is the designer and has made all of the branding materials.', 'agu.wnd@gmail.com', '/img/logo-color-512.png')}
-          </div>
-        </div>
-      </div>
-    </div>
-    );
-  }
-
   render() {
     return (
     <div className="ui container">
@@ -351,7 +312,7 @@ Home = class home extends Component {
 
         {this._renderSamplePuzzlesSection()}
 
-        {this._renderContactSection()}
+        <ProfileCards />
 
         {this._renderGallerySection()}
 

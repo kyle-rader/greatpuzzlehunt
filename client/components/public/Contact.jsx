@@ -1,31 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-Contact = React.createClass({
+Contact = class Contact extends Component {
 
-    render() {
-        return (
-        <div className="contact custom-bg red-square">
-            <br/>
-            <div className="ui container raised segment transparent-bg">
-                <PuzzlePageTitle title="Contact"/>
+  render() {
+    return (
+    <div className="ui container">
+      <PuzzlePageTitle title="Contact"/>
 
-                <div className="ui equal width stackable internally celled grid">
-                    <div className="center aligned row">
-                        <div className="column">
-                            <h2>Event Coordinator</h2>
-                            <h2><a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a></h2>
-                        </div>
-                        <div className="column">
-                            <h2>Website Support</h2>
-                            <h2><a href="mailto:raderk@students.wwu.edu">kyle@kylerader.ninja</a></h2>
-                            <h3>Track development progress on <a target="_blank" href="https://trello.com/b/y8B6gqg1/wwu-puzzle-hunt">Trello</a></h3>
-                        </div>
-                    </div>
-                </div>
+      <div className="ui padded stackable grid">
+        <ProfileCards />
+      </div>
+    </div>
+    );
+  }
 
-            </div>
-            <br/>
-        </div>
-        );
-    }
-});
+}
