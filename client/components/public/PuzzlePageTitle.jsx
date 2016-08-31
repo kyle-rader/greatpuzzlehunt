@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-PuzzlePageTitle = React.createClass({
-    render() {
-        return (
-        <div className="puzzle-page-title">
-            <a href="/"><img src="img/logo.png"/></a>
-            <h2>{this.props.title}</h2>
+PuzzlePageTitle = class PuzzlePageTitle extends Component {
+  render() {
+    return (
+    <div className="ui padded grid puzzle-page-title">
+      <div className="one column row">
+        <div className="dark-blue column">
+          <h1>{this.props.title}<br/><small>{this.props.subTitle}</small></h1>
         </div>
-        );
-    }
-});
+      </div>
+    </div>
+    );
+  }
+}
