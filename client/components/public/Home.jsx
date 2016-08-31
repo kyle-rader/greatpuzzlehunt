@@ -299,7 +299,7 @@ Home = class home extends Component {
       <div className="dark-blue column">
         <div className="ui padded basic segment">
           <h1>Who are we?</h1>
-          <h2>We are movers and shakers who love our community and the amazing diversity of talents it has to offer :)</h2>
+          <h2>We are Mind Mobilizers who love our community and the amazing diversity of talents it has to offer :)</h2>
         </div>
         <div className="ui basic segment">
           <div className="ui three stackable cards">
