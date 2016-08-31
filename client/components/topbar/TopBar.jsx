@@ -75,9 +75,9 @@ TopBar = class TopBar extends React.Component {
               <i className="red puzzle icon"></i>
               Puzzles
             </a>
-            <a className="item" href="/team-list">
-              <i className="orange users icon"></i>
-              Teams
+            <a className="item" href="/info">
+              <i className="orange circle info icon"></i>
+              More Info
             </a>
             <a className="item" href="/qrcode">
               <i className="gray qrcode icon"></i>
