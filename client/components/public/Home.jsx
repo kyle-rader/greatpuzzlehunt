@@ -226,8 +226,8 @@ Home = class home extends Component {
     return (
     <div className="one column stacking row">
       <div className="column">
-        <div className="ui very padded basic segment">
-          <h1 className="dark-blue">Sample Puzzles</h1>
+        <div className="ui padded basic segment">
+          <h1>Sample Puzzles (from the 2016 hunt)</h1>
           <div className="ui stackable dark-blue grid">
             <div className="two column row">
               <div className="column">
@@ -251,6 +251,15 @@ Home = class home extends Component {
                 <h2>Time will Tell</h2>
                 <p>Music and melody</p>
                 <a className="ui dark-blue button" target="_blank" href="/puzzles/Time will tell FINAL.pdf">Download</a>
+              </div>
+            </div>
+            <div className="two column row">
+              <div className="column">
+                <h2>Meta Puzzle</h2>
+                <p>A puzzle that relies on you to solve the first four :)</p>
+                <a className="ui dark-blue button" target="_blank" href="/puzzles/Meta Puzzle FINAL.pdf">Download</a>
+              </div>
+              <div className="column">
               </div>
             </div>
           </div>
