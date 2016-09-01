@@ -98,7 +98,7 @@ Home = class home extends Component {
         <div className="ui dark-blue basic container segment">
           <h1 className="ui dark-blue header">What is the Puzzle Hunt?</h1>
           <p className="h3">
-            The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles.  Teams travel to various stations
+            The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles.  Teams travel on foot to various locations
             solving a diverse set of puzzles gathering clues along the way to solve one final meta puzzle.
           </p>
           <p className="h3">
