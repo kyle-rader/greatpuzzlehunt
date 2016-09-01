@@ -27,7 +27,7 @@ Home = class home extends Component {
     return (
       <div className="header-main">
         <div className="header-text -left">
-          <div className="extra-text red-text">The Second <strong>Annual</strong></div>
+          <div className="extra-text red-text">The Second Annual</div>
           WWU Great
         </div>
         <img src="/img/logo-color-512.png"/>
