@@ -132,14 +132,19 @@ Home = class home extends Component {
           </h1>
           <div className="ui horizontal stackable list">
             <div className="item">
-              <a className="item ui large red labeled icon button" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">
+              <a className="item ui large red labeled icon button" target="_blank" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">
                 Donate Now
                 <i className="heart icon"></i>
               </a>
             </div>
-            <h4 className="item">
+            <h3 className="item">
               All donations are tax deductible!
-            </h4>
+            </h3>
+            <div className="item">
+              <a className="ui white button" target="_blank" href="http://foundation.wwu.edu/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=420">
+                Donating by check?
+              </a>
+            </div>
           </div>
           <div className="ui divider"></div>
           <div className="ui four column stackable grid">
