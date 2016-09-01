@@ -71,10 +71,17 @@ Home = class home extends Component {
                 516 High Street<br/>
                 Bellingham, WA 98225<br/><br/>
 
-                <a className="ui white right labeled icon button" target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631">
+                <a className="ui small white right labeled icon button" target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631">
                   <i className="google icon"></i>
                   Google Maps
                 </a>
+              </div>
+            </div>
+            <div className="item">
+              <i className="large photo icon"></i>
+              <div className="content">
+                Photo Credit<br/><br/>
+                <a className="ui small white button" target="_blank" href="http://www.gabrielleponcz.com/">Gabrielle Poncz Photography</a>
               </div>
             </div>
           </div>
