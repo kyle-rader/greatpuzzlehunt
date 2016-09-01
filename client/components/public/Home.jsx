@@ -148,10 +148,10 @@ Home = class home extends Component {
           </div>
           <div className="ui divider"></div>
           <div className="ui four column stackable grid">
-            <SponsorTitle name="JIGSAW" icon="puzzle" price="$200 - $499" description="Name/Logo on website & sponsor list"/>
-            <SponsorTitle name="CROSSWORD" icon="crop" price="$500 - $999" description="JIGSAW + Name/Logo on t-shirt & press release"/>
-            <SponsorTitle name="CIPHER" icon="code" price="$1000 - $1999" description="CROSSWORD + Complimentary registration for 6 oerson team"/>
-            <SponsorTitle name="PUZZLE MASTER" icon="trophy" price="$2000+" description="CIPHER + Name/Logo on all event materials and advertising"/>
+            <SponsorTitle name="JIGSAW" icon="puzzle" price="$200 - $499" description="Name/Logo on website sponsor list"/>
+            <SponsorTitle name="CROSSWORD" icon="crop" price="$500 - $999" description="All from JIGSAW + Name/Logo on t-shirt"/>
+            <SponsorTitle name="CIPHER" icon="code" price="$1000 - $1999" description="All from CROSSWORD + Complimentary registration for 6 person team"/>
+            <SponsorTitle name="PUZZLE MASTER" icon="trophy" price="$2000+" description="All from CIPHER + Name/Logo on all event materials, advertising, and press releases"/>
           </div>
           <div className="ui divider"></div>
 
