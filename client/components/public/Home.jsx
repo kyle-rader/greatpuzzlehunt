@@ -146,15 +146,19 @@ Home = class home extends Component {
               </a>
             </div>
           </div>
-          <div className="ui divider"></div>
+          <h1>Sponsorship Levels</h1>
           <div className="ui four column stackable grid">
             <SponsorTitle name="JIGSAW" icon="puzzle" price="$200 - $499" description="Name/Logo on website sponsor list"/>
             <SponsorTitle name="CROSSWORD" icon="crop" price="$500 - $999" description="All from JIGSAW + Name/Logo on t-shirt"/>
             <SponsorTitle name="CIPHER" icon="code" price="$1000 - $1999" description="All from CROSSWORD + Complimentary registration for 6 person team"/>
             <SponsorTitle name="PUZZLE MASTER" icon="trophy" price="$2000+" description="All from CIPHER + Name/Logo on all event materials, advertising, and press releases"/>
           </div>
-          <div className="ui divider"></div>
 
+          <h1>2017 Sponsors</h1>
+          <div className="ui middle aligned  images">
+              <img className="ui image" src="/img/2017_sponsor_logos/weculogo.png"/>
+              <img className="ui medium image" src="/img/2017_sponsor_logos/wwu_cse.png"/>
+          </div>
         </div>
       </div>
     </div>
