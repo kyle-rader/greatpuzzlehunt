@@ -37,6 +37,10 @@ body {
     text-align: right;
 }
 
+.no-padding {
+  padding: 0 !important;
+}
+
 .wwu-btn {
     background-color: @wwu-green !important;
     color: @wwu-blue !important;
@@ -46,11 +50,10 @@ body {
     }
 }
 
+/**********/
+/* COLORS */
+/**********/
 .wwu-blue {
-    color: @wwu-blue !important;
-}
-
-.wwu-dark-blue {
     color: @wwu-blue !important;
 }
 
@@ -67,6 +70,7 @@ body {
   color: @dark-blue;
   &:hover {
     color: @dark-blue;
+    background-color: darken(@white, 10%);
   }
 }
 .ui.dark-blue.button {
@@ -79,6 +83,12 @@ body {
   }
 }
 
-.no-padding {
-  padding: 0 !important;
+.red-text {
+  color: @redTextColor;
+}
+.blue-text {
+  color: @blueTextColor;
+}
+.green-text {
+  color: @greenTextColor;
 }
