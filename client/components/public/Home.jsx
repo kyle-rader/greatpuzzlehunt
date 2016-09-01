@@ -171,7 +171,10 @@ Home = class home extends Component {
             <div className="two column row">
               <div className="column">
                 <h1>Who?</h1>
-                <p>Everyone! However, each person under age 14 on a team must be accompanied by a legal guardian at all times.</p>
+                <p>Everyone! However, each person under age 14 on a team must be accompanied by a
+                  parent/legal guardian at all times - parent/legal guardian must be registered on
+                  team with child under age 14. *Note: The puzzles are created for ages 14 and older.
+                </p>
               </div>
               <div className="column">
                 <h1>What?</h1>
@@ -181,7 +184,7 @@ Home = class home extends Component {
             <div className="two column row">
               <div className="column">
                 <h1>When?</h1>
-                <p>Saturday, April 1, 2017 from 10AM - 3PM<br/>Awards and Prizes at 4PM<br/>At Western Washington University</p>
+                <p>Saturday, April 1, 2017 from 10AM - 3PM<br/>Awards and Prizes at 4PM<br/>At Red Square, Western Washington University</p>
               </div>
               <div className="column">
                 <h1>Why?</h1>
@@ -224,7 +227,7 @@ Home = class home extends Component {
               <div className="ui tag label">Non-Student &nbsp; $15</div>
             </div>
           </div>
-          <p>* Registration prices are per person.  Each person wanting to join a team must register themsleves first.</p>
+          <p>* Registration prices are per person.  Each person wanting to join a team must register themselves first.</p>
           <a className="ui large green button" href="/register">
             Register
           </a>
