@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.publish('gamestate', function() {
+// Meteor.publish('gamestate', function() {
 
-    if (!this.userId) return null;
+//     if (!this.userId) return null;
 
-    return GameState.find({});
-});
+//     return GameState.find({});
+// });

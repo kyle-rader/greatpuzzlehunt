@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
 // Define our login comp
 
-RequestPasswordReset = React.createClass({
+RequestPasswordReset = class RequestPasswordReset extends Component {
 
-    getInitialState() {
-      return {
+    constructor(props) {
+      super(props);
+      this.state = {
         err: null,
-        email: null
+        email: null,
       };
-    },
+    }
 
     componentDidMount() {
       let form = $(this.refs.resetForm);
@@ -29,7 +30,7 @@ RequestPasswordReset = React.createClass({
         inline: true,
         onSuccess: (event, fields) => {
           event.preventDefault();
-          
+
           // Call Meteor method to create account.
           Meteor.call('userSendPasswordReset', fields, (err, result) => {
             if (err) {
@@ -42,7 +43,7 @@ RequestPasswordReset = React.createClass({
           });
         }
       });
-    },
+    }
 
     getErrorMsg() {
       if (this.state.err) {
@@ -51,20 +52,20 @@ RequestPasswordReset = React.createClass({
           {this.state.err.reason}
         </div>);
       }
-    },
+    }
 
     getSuccessMsg() {
       if (this.state.email) {
         return (
           <div className="ui success message">
             <h3>A password reset email has been sent to <strong>{this.state.email}</strong></h3>
-            <a className="ui facebook button" target="_blank" href="https://www.facebook.com/events/160687404314460/">
+            <a className="ui facebook button" target="_blank" href="https://www.facebook.com/greatpuzzlehunt/">
               <i className="facebook icon"></i>
               Share the Puzzle Hunt!
             </a>
           </div>);
       }
-    },
+    }
 
     getForm() {
       if (!this.state.email) {
@@ -77,12 +78,10 @@ RequestPasswordReset = React.createClass({
                 </div>
               </h2>
               <div className="field">
-                <label className="text-left">WWU Username</label>
                 <div className="ui left icon input">
                   <i className="user icon"></i>
-                  <input type="text" name="username" placeholder="eg. raderk" autoComplete="off" />
+                  <input type="text" name="username" placeholder="Username or Email" autoComplete="off" />
                 </div>
-                <small className="text-left">Same as My Western username</small>
               </div>
 
               <input className="ui fluid large violet submit button" type="submit" value="Reset" />
@@ -90,7 +89,7 @@ RequestPasswordReset = React.createClass({
           </form>
         );
       }
-    },
+    }
 
     render() {
 
@@ -108,4 +107,4 @@ RequestPasswordReset = React.createClass({
           </div>
       </div>);
     }
-});
+}
