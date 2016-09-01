@@ -16,94 +16,16 @@ div.login, div.register, div.password-reset, div.request-password-reset {
     background-color: rgba(255,255,255,.9) !important;
 }
 
-.puzzle-hunt-title {
+div.puzzle-page-title > .row > .column > h1 {
+    padding: 15px 0px;
 
-    @media screen and (min-width: 900px) {
-        h1, h2, h3 {font-weight: 300; }
-
-        h2, h3 {
-            margin: 5px 0px;
-        }
-
-        text-align: center;
-
-        h1, img {
-            display: inline-block;
-        }
-        h1 {
-            font-size: 3em;
-            line-height: 220px;
-            vertical-align: bottom;
-        }
-        h2 {
-            font-size: 2.2em;
-        }
-        h3 {
-            font-size: 1.8em;
-        }
-        img {
-            max-height: 255px;
-            padding: 15px; 
-        }
-    }
-
-    @media screen and (max-width: 899px) {
-        h1, h2, h3 {font-weight: 300; }
-
-        h2, h3 {
-            margin: 5px 0px;
-        }
-
-        text-align: center;
-
-        h1, img {
-            display: block;
-        }
-        h1 {
-            font-size: 3em;
-            line-height: 40px;
-            vertical-align: bottom;
-        }
-        img {
-            max-height: 175px;
-            padding: 5px;
-            margin-right: auto;
-            margin-left: auto;
-        }
+    small {
+        font-size: .6em;
     }
 }
 
-div.puzzle-page-title {
-    display: block !important;
-    text-align: center;
-    margin-bottom: 10px !important;
-    
-    img {
-        display: inline-block;
-        max-height: 130px;
-    }
-    h2 {
-        vertical-align: bottom;
-        line-height: 135px;
-        font-size: 2em;
-        margin-left: 20px;
-        display: inline-block;
-        margin-top: 0px;
-    }
-}
-
-div.home-panel {
-    font-size: 16px;
-
-    a.icon-btn {
-        display: block;
-        color: rgba(0, 0, 0, .87);
-        i {
-            margin-bottom: 5px;
-        }
-        h2 {
-            margin: 5px 5px;
-            color: rgba(0, 0, 0, .87);
-        }
-    }
+.ui.cards > .card > .content > .meta,
+.ui.cards > .card > .content > .description {
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.8);
 }
