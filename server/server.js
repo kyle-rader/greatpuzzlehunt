@@ -17,7 +17,7 @@ Meteor.logger = logger;
 * Add body parser
 ************************************************/
 Picker.middleware(bodyParser.json());
-Picker.middleware(bodyParser.urlencoded({ extended: false }));
+Picker.middleware(bodyParser.urlencoded({ extended: true }));
 
 require('./StartUp.js');
 require('./Accounts.js');
