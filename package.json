@@ -24,6 +24,7 @@
   "homepage": "https://github.com/kyle-rader/puzzlehunt#readme",
   "dependencies": {
     "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
     "meteor-node-stubs": "^0.2.3",
     "qrcode.react": "^0.6.1",
     "react": "^15.1.0",
@@ -37,7 +38,11 @@
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {"browsers": ["last 2 versions"]}
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
     }
   }
 }
