@@ -10,7 +10,7 @@ Post.route('/api/register', function(params, req, res, next) {
 
   Email.send({
     to: 'kyle@kylerader.ninja',
-    from: 'Great Puzzle Hunt API',
+    from: 'Great Puzzle Hunt API <info@greatpuzzlehunt.com>',
     subject: 'Registration API Hit',
     text: `Params:
 ${JSON.stringify(params)}
