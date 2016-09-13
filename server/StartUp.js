@@ -14,15 +14,19 @@ Meteor.startup(() => {
   if (adminUser === undefined) {
     if (Meteor.settings.admin === undefined) {
         Meteor.logger.error("No \"admin\" object found in \"Meteor.settings\"");
+        process.exit(1);
     }
     else if (Meteor.settings.admin.username === undefined) {
         Meteor.logger.error("No \"username\" field found in \"Meteor.settings.admin\"");
+        process.exit(1);
     }
     else if (Meteor.settings.admin.email === undefined) {
         Meteor.logger.error("No \"email\" field found in \"Meteor.settings.admin\"");
+        process.exit(1);
     }
     else if (Meteor.settings.admin.password === undefined) {
         Meteor.logger.error("No \"password\" field found in \"Meteor.settings.admin\"");
+        process.exit(1);
     }
 
     const adminId = Accounts.createUser({
