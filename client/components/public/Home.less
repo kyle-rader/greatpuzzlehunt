@@ -21,11 +21,28 @@
       font-size: 3.4em;
       line-height: 1.9em;
 
+      img.footprints {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        width: 80%;
+      }
+
       &.-left {
         padding-right: 15px;
+
+        img.footprints {
+          vertical-align: top;
+          padding-top: 4px;
+        }
       }
       &.-right {
         padding-left: 15px;
+
+        img.footprints {
+          vertical-align: bottom;
+          margin-bottom: -13px;
+        }
       }
 
       .extra-text {
@@ -64,6 +81,10 @@
 
     .header-text, img {
       display: block;
+    }
+
+    img.footprints {
+      display: none;
     }
 
     .header-text {
