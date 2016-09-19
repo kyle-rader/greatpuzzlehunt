@@ -140,7 +140,7 @@ Info = class Info extends Component {
             <List>
               <List.Item description="10:00 AM - Check in at Red Square.  Team's will receive a rules packet and any pre-ordered t-shirts."/>
               <List.Item description="10:45 AM - Announcements."/>
-              <List.Item description="10:50 AM - Puzzle Hunt starts!"/>
+              <List.Item description="11:00 AM - Puzzle Hunt starts!"/>
               <List.Item description="3:00 PM - Finishing Puzzles and Lunch"/>
               <List.Item description="4:00 PM - Prizes awarded!"/>
             </List>

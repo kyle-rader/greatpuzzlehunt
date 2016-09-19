@@ -1,5 +1,6 @@
-import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import React from 'react';
+import { Grid, Button, Icon } from 'stardust';
 
 // Define our login comp
 
@@ -219,12 +220,30 @@ Register = React.createClass({
       // </div>);
 
       return (
-      <div className="register ui middle aligned center aligned grid custom-bg red-square">
-          <div className="column">
-              <div className="ui large info message">
-                <h2>Registration is closed, check back soon!</h2>
-              </div>
-          </div>
-      </div>);
+      <Grid stackable columns="three" className="register middle aligned center aligned">
+        <Grid.Row>
+          <Grid.Column>
+            <h2>Pre-Register and get notified as soon as registration opens!</h2>
+            <Button color="blue" fluid size="huge" animated="fade" as="a" href="https://actionsprout.io/7E111B" target="_blank">
+            <Button.Content visible>Pre-Register</Button.Content>
+            <Button.Content hidden>
+              <Icon name='share' />
+              Get me on that list!
+            </Button.Content>
+          </Button>
+          </Grid.Column>
+          <Grid.Column><h2>Or</h2></Grid.Column>
+          <Grid.Column>
+            <h2>Be a part of the magic and volunteer at the event!</h2>
+            <Button color="orange" fluid size="huge" animated="fade" as="a" href="https://actionsprout.io/A83570" target="_blank">
+              <Button.Content visible>Volunteer</Button.Content>
+              <Button.Content hidden>
+                <Icon name='share' />
+                Let's Do This!
+              </Button.Content>
+            </Button>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>);
     }
 });
