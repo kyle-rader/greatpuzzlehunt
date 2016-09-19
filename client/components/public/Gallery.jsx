@@ -92,6 +92,10 @@ Gallery = class Gallery extends Component {
     );
   }
 
+  componentDidMount() {
+    $('html, body').scrollTop(0);
+  }
+
   render() {
       return (
       <div className="ui container">

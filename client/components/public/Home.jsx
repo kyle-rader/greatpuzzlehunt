@@ -10,6 +10,8 @@ Home = class home extends Component {
       source      : 'vimeo',
       id          : '181258972',
     });
+
+    $('html, body').scrollTop(0);
   }
 
   _renderBlueSpacer() {
@@ -296,8 +298,8 @@ Home = class home extends Component {
       <div className="dark-blue column">
         <div className="ui very padded basic segment">
           <h1>Take a look at past events</h1>
-          <small>Photography courtesy of Gabrielle Poncz</small>
-          <a className="ui large white right floated button" href="/gallery">View Gallery</a>
+          <h3>Photography courtesy of Gabrielle Poncz</h3>
+          <a className="ui large white button" href="/gallery">View Gallery</a>
         </div>
       </div>
     </div>
@@ -327,8 +329,6 @@ Home = class home extends Component {
         </div>
 
         {this._renderDescription2()}
-
-        {this._renderBlueSpacer()}
 
         {this._renderRegistrationSection()}
 
