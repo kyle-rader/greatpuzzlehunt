@@ -169,9 +169,9 @@ Info = class Info extends Component {
           <Accordion.Content>
             This year we have awesome Next Level Poly/Cotton blend T-Shirts!<br/>
             <List>
-              <List.Item>All colors are on <a target="_blank" href="http://www.nextlevelapparel.com/dsn/wwwnextlevelapparelcom/Content/PDF/2015ColorCard-web.pdf">Next Level's color chart</a> <strong>under the POLY/COTTON</strong> section.</List.Item>
+              <List.Item>All colors can be viewed at Next Level:<a target="_blank" href="http://www.nextlevelapparel.com/Prod-24-1-29-2/men39s-polycotton-crew.htm">Men's Colors</a> | <a target="_blank" href="http://www.nextlevelapparel.com/Prod-22-1-13-1/next-level-polycotton-tee.htm">Women's Colors</a>.</List.Item>
               <List.Item description="These are the kind of shirts you will want to wear all the time!"/>
-              <List.Item description="There is a women’s and a men’s version.  You can choose a White or Navy logo for any shirt color. (Some colors are only available for one gender)."/>
+              <List.Item description="You can choose a White or Navy logo for any shirt color."/>
               <List.Item description="Early bird price: $10."/>
               <List.Item description="Regular Price (March 11 - March 23): $13"/>
               <List.Item description="T-Shirt sales end March 23, 2017 at midnight."/>
