@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import React, { Component } from 'react';
 
 Gallery = class Gallery extends Component {
 
@@ -97,13 +97,12 @@ Gallery = class Gallery extends Component {
   }
 
   render() {
-      return (
+    return (
       <div className="ui container">
-
         <PuzzlePageTitle title="Gallery" subTitle="Photo Credit: Gabrielle Poncz" />
 
         <div className="ui stackable two column grid">
-            {this._getImages()}
+          {this._getImages()}
         </div>
 
         <br/>
