@@ -87,7 +87,7 @@ Gallery = class Gallery extends Component {
 
     return images.map((image) => (
       <div className="column" key={image}>
-          <img className="ui image" src={`/img/hunt2016/${image}`} key={image} title={image}/>
+          <img className="ui image" src={`/img/2016/event-photos/${image}`} key={image} title={image}/>
       </div>)
     );
   }

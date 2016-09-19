@@ -47,7 +47,7 @@ Home = class home extends Component {
     return (
     <div className="two column stacking row">
       <div className="no-padding ten wide column">
-        <img className="ui image" src="/img/hunt2016/gathering.jpg"/>
+        <img className="ui image" src="/img/2016/event-photos/gathering.jpg"/>
       </div>
       <div className="dark-blue six wide column">
         <div className="ui basic segment">
@@ -59,6 +59,9 @@ Home = class home extends Component {
             </a>
             <a className="ui large blue button" href="/login">
               Log In
+            </a>
+            <a className="ui large orange button" href="/info">
+              More Info
             </a>
           </div>
           <div className="ui relaxed large list">
@@ -160,8 +163,8 @@ Home = class home extends Component {
 
           <h1>2017 Sponsors</h1>
           <div className="ui middle aligned  images">
-              <img className="ui image" src="/img/2017_sponsor_logos/weculogo.png"/>
-              <img className="ui medium image" src="/img/2017_sponsor_logos/wwu_cse.png"/>
+              <img className="ui image" src="/img/2017/sponsor-logos/weculogo.png"/>
+              <img className="ui medium image" src="/img/2017/sponsor-logos/wwu_cse.png"/>
           </div>
         </div>
       </div>
@@ -211,7 +214,7 @@ Home = class home extends Component {
     <div className="two column stacking row">
 
       <div className="no-padding dark-blue nine wide column">
-        <img className="ui image" src="/img/hunt2016/station1.jpg"/>
+        <img className="ui image" src="/img/2016/event-photos/station1.jpg"/>
         <div className="ui basic compact small segment">(Above) A volunteer scanning a team's QR code on their phone to start their puzzle timer</div>
       </div>
 
@@ -324,7 +327,7 @@ Home = class home extends Component {
 
         <div className="one column stacking row">
           <div className="no-padding column">
-            <img className="ui image" src="/img/hunt2016/team-saxaphone-bugs-thin.jpg"/>
+            <img className="ui image" src="/img/2016/event-photos/team-saxaphone-bugs-thin.jpg"/>
           </div>
         </div>
 
@@ -336,7 +339,7 @@ Home = class home extends Component {
 
         <div className="one column stacking row">
           <div className="no-padding column">
-            <img className="ui image" src="/img/hunt2016/team-theres-waldo-thin.jpeg"/>
+            <img className="ui image" src="/img/2016/event-photos/team-theres-waldo-thin.jpeg"/>
           </div>
         </div>
 
@@ -348,13 +351,13 @@ Home = class home extends Component {
 
         <div className="three column stacking row">
           <div className="no-padding column">
-            <img className="ui image" src="/img/hunt2016/team-church-of-put-it-backism.jpg"/>
+            <img className="ui image" src="/img/2016/event-photos/team-church-of-put-it-backism.jpg"/>
           </div>
           <div className="no-padding column">
-            <img className="ui image" src="/img/hunt2016/team-finesse.jpg"/>
+            <img className="ui image" src="/img/2016/event-photos/team-finesse.jpg"/>
           </div>
           <div className="no-padding column">
-            <img className="ui image" src="/img/hunt2016/team-mod.jpg"/>
+            <img className="ui image" src="/img/2016/event-photos/team-mod.jpg"/>
           </div>
         </div>
 

@@ -68,8 +68,8 @@ ProfileCards = class ProfileCards extends Component {
         </div>
         <div className="ui basic segment">
           <div className="ui three stackable cards">
-            {this._renderProfileCard('Millie Johnson', 'Associate Math Professor, WWU', 'Millie is the primary event coordinator and puzzle creator.', 'Millie.Johnson@wwu.edu', '/img/hunt2016/millie_johnson.jpg')}
-            {this._renderProfileCard('Kyle Rader', 'Software Engineer, Action Sprout', 'Kyle is the technology wizard and web application author.', 'kyle@kylerader.ninja', '/img/hunt2016/kyle_and_millie.jpg')}
+            {this._renderProfileCard('Millie Johnson', 'Associate Math Professor, WWU', 'Millie is the primary event coordinator and puzzle creator.', 'Millie.Johnson@wwu.edu', '/img/2016/event-photos/millie_johnson.jpg')}
+            {this._renderProfileCard('Kyle Rader', 'Software Engineer, Action Sprout', 'Kyle is the technology wizard and web application author.', 'kyle@kylerader.ninja', '/img/2016/event-photos/kyle_and_millie.jpg')}
             {this._renderProfileCard('Wendy Aguilar', 'Web Design Specialist, CDK Global', 'Wendy is the design wizard and has made all of the branding materials.', 'agu.wnd@gmail.com', '/img/logo-color-512.png')}
           </div>
         </div>
