@@ -3,7 +3,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import ScrollToTop from 'react-scroll-up';
-import { Button } from 'stardust';
+import { Button } from 'semantic-ui-react';
 
 App = class App extends Component {
 
@@ -19,7 +19,7 @@ App = class App extends Component {
       <Footer />
 
       <ScrollToTop showUnder={1000}>
-        <Button labeled="right" icon="up arrow" content="Scroll Up" />
+        <Button labelPosition="right" icon="up arrow" content="Scroll Up" />
       </ScrollToTop>
 
     </div>

@@ -32,7 +32,7 @@
     "react-dom": "^15.1.0",
     "react-mounter": "^1.2.0",
     "react-scroll-up": "^1.1.5",
-    "stardust": "^0.44.1",
+    "semantic-ui-react": "^0.56.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {

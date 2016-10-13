@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-TopBar = class TopBar extends React.Component {
+TopBar = class TopBar extends Component {
 
   _socialButton(socialApp) {
     return (
