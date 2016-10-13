@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Grid, Button, Icon } from 'stardust';
+import { Grid, Button, Icon } from 'semantic-ui-react';
 
 // Define our login comp
 

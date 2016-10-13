@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { renderToString } from 'react-dom/server';
-import { Accordion, List, Icon, Header, Segment, Button, Image } from 'stardust';
+import { Accordion, List, Icon, Header, Segment, Button, Image } from 'semantic-ui-react';
 
 Info = class Info extends Component {
 

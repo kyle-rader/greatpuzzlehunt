@@ -122,7 +122,7 @@ Home = class home extends Component {
     return (
     <div className="one column stacking row">
       <div className="no-padding column">
-        <div ref="embedded-video" class="ui embed"></div>
+        <div ref="embedded-video" className="ui embed"></div>
       </div>
     </div>
     );
