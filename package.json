@@ -1,5 +1,5 @@
 {
-  "name": "wwupuzzlehunt",
+  "name": "wwugreatpuzzlehunt",
   "version": "1.0.0",
   "description": "A Puzzle Hunt Game System",
   "main": "main.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kyle-rader/puzzlehunt.git"
+    "url": "git+https://github.com/kyle-rader/greatpuzzlehunt.git"
   },
   "author": "Kyle W. Rader",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kyle-rader/puzzlehunt/issues"
+    "url": "https://github.com/kyle-rader/greatpuzzlehunt/issues"
   },
-  "homepage": "https://github.com/kyle-rader/puzzlehunt#readme",
+  "homepage": "https://github.com/kyle-rader/greatpuzzlehunt#readme",
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
