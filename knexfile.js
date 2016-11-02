@@ -2,9 +2,10 @@ require('babel-register');
 
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './dev-db.sqlite3'
+      host: 'localhost',
+      database: 'gph-dev'
     },
     seeds: {
       directory: './src/database/seeds'

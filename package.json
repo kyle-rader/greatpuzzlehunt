@@ -1,13 +1,13 @@
 {
-  "name": "apollo-fullstack-starter-kit",
+  "name": "greatpuzzlehunt",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "src/server",
   "app": {
     "backendBuildDir": "build/server",
     "frontendBuildDir": "build/client",
     "webpackDevPort": 3000,
-    "apiPort": 8080
+    "apiPort": 3001
   },
   "engines": {
     "node": "6.6.0",
@@ -25,20 +25,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:sysgears/apollo-fullstack-starter-kit.git"
+    "url": "https://github.com/kyle-rader/greatpuzzlehunt"
   },
   "bugs": {
-    "url": "https://github.com/sysgears/apollo-fullstack-starter-kit/issues"
+    "url": "https://github.com/kyle-rader/greatpuzzlehunt/issues"
   },
-  "homepage": "https://github.com/sysgears/apollo-fullstack-starter-kit",
+  "homepage": "https://greatpuzzlehunt.com",
   "keywords": [
+    "puzzle hunt",
     "apollo",
     "fullstack",
-    "starter",
     "graphql",
     "react"
   ],
-  "author": "SysGears INC",
+  "author": "Great Puzzle Hunt",
   "license": "MIT",
   "dependencies": {
     "aphrodite": "^0.6.0",
@@ -55,6 +55,8 @@
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.12.1",
     "minilog": "^3.0.1",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
     "react": "^15.3.2",
     "react-addons-update": "^15.3.2",
     "react-apollo": "^0.5.8",
@@ -63,8 +65,8 @@
     "react-hot-loader": "^3.0.0-beta.5",
     "react-router": "^2.8.1",
     "source-map-support": "^0.4.2",
-    "subscriptions-transport-ws": "^0.2.3",
     "sqlite3": "^3.1.4",
+    "subscriptions-transport-ws": "^0.2.3",
     "webpack": "^1.13.2",
     "webpack-manifest-plugin": "^1.0.1"
   },
