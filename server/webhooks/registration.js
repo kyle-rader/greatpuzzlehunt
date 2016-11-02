@@ -9,7 +9,7 @@ Post.route('/api/register', function(params, req, res, next) {
   Meteor.logger.info(`Request on route:`);
 
   Email.send({
-    to: 'kyle@kylerader.ninja',
+    to: ['kyle@kylerader.ninja', 'kyle-daling@live.com'],
     from: 'Great Puzzle Hunt API <info@greatpuzzlehunt.com>',
     subject: 'Registration API Hit',
     text: `Params:
