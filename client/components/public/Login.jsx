@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 // Define our login comp
 
@@ -66,7 +67,7 @@ Login = class Login extends Component {
         {this.getErrorMessage()}
 
         <div className="ui message">
-          <a href="/register">Join The Puzzle Hunt!</a> &nbsp; | &nbsp; <a href="/requestpasswordreset">Forgot Password</a>
+          <Link to="/register">Join The Puzzle Hunt!</Link> &nbsp; | &nbsp; <Link to="/requestpasswordreset">Forgot Password</Link>
         </div>
       </div>
     </div>);
