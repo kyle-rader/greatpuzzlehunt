@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import UserListRow from './UserListRow.jsx';
 
 export default UserList = React.createClass({
 
@@ -80,7 +79,7 @@ export default UserList = React.createClass({
               <tfoot className="full-width">
                 <tr>
                   <th colSpan="5">
-                    
+
                   </th>
                 </tr>
               </tfoot>

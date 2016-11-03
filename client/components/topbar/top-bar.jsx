@@ -1,4 +1,6 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
 TopBar = class TopBar extends Component {
 
@@ -93,3 +95,12 @@ TopBar = class TopBar extends Component {
     );
   }
 }
+
+TopBar = createContainer(({ params }) => {
+  return {
+    user: Meteor.user(),
+    isAdmin() {
+      return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
+    }
+  };
+}, TopBar);

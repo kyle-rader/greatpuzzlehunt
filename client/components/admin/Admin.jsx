@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import UserList from './UserList.jsx';
-import TeamList from './TeamList.jsx';
-import PuzzleDashboard from './PuzzleDashboard.jsx';
-import BulkEmail from './BulkEmail.jsx';
-import GamePlay from './GamePlay.jsx';
-import Scoreing from './Scoring.jsx';
 
 Admin = class Admin extends Component {
 
