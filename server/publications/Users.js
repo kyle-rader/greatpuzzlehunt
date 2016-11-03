@@ -14,11 +14,10 @@ Meteor.publish(null, function() {
       _id: currentUser
     }, {
       fields: {
-        // Default
         emails: 1,
-        // Default
-        profile: 1,
-        // Created roles property
+        firstname: 1,
+        lastname: 1,
+        displayname: 1,
         roles: 1
       }
     });

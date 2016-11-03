@@ -50,21 +50,14 @@ Accounts.validateLoginAttempt((attempt) => {
 
 // Extending Account Creation
 Accounts.onCreateUser((options, user) => {
-    user.profile = options.profile || {};
 
-    // Assign all other properties from the options
-    user = _.extend(user, {
-        profile: {
-            firstname: options.firstname,
-            lastname: options.lastname,
-            displayname: `${options.firstname.slice(0,1).toUpperCase()}${options.firstname.slice(1)} ${options.lastname.slice(0,1).toUpperCase()}${options.lastname.slice(1)}`,
-        },
-        roles: ['user']
-    });
+  // Assign all other properties from the options
+  user = _.extend(user, {
+    firstname: options.firstname,
+    lastname: options.lastname,
+    displayname: `${options.firstname.slice(0,1).toUpperCase()}${options.firstname.slice(1)} ${options.lastname.slice(0,1).toUpperCase()}${options.lastname.slice(1)}`,
+    roles: ['user']
+  });
 
-    if (user.username === 'kyle+raderk') {
-        user.roles.push('admin');
-    }
-
-    return user;
+  return user;
 });
