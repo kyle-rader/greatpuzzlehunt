@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Link } from 'react-router';
+import { Icon } from 'semantic-ui-react';
+
 
 TopBar = class TopBar extends Component {
 
@@ -20,19 +21,52 @@ TopBar = class TopBar extends Component {
     return socialApps.map((app) => this._socialButton(app));
   }
 
+  _renderAdminBUttons() {
+    if (this.props.user.hasRole('admin')) {
+      return [
+        <div className="divider" key="adminDivider"></div>,
+        (<Link className="item" to="/admin" key="adminLink">
+          <Icon name="configure" color="red"/>
+          Admin
+        </Link>)
+      ];
+    }
+    return null;
+  }
+
   _logInLogOutBtn() {
     if (this.props.user) {
       return (
-        <a className="item" onClick={this._logout}>
-          <i className="sign out icon"></i>
-          Leave
-        </a>
+        <div className="ui dropdown item">
+          <i className="large settings icon"></i>
+          {this.props.user.displayname}
+          <div className="menu topbar-dropdown-menu">
+            <Link className="item" to="/profile">
+              <Icon name="user" color="green"/>
+              Profile
+            </Link>
+            <Link className="item" to="/gallery">
+              <Icon name="users" color="blue"/>
+              Team
+            </Link>
+            <Link className="item" to="/contact">
+              <Icon name="puzzle" color="violet"/>
+              Game
+            </Link>
+            {this._renderAdminBUttons()}
+            <div className="divider"></div>
+            <a className="item" onClick={(e) => this._logout(e)}>
+              <Icon name="sign out"/>
+              Logout
+            </a>
+          </div>
+        </div>
       );
     } else {
       return (
         <Link className="item" to="/login">
           <i className="sign in icon"></i>
-          Enter
+          Login
         </Link>
       );
     }

@@ -39,7 +39,7 @@ Meteor.startup(() => {
     Accounts.addEmail(adminId, Meteor.settings.admin.email, true);
 
     Meteor.users.update({_id: adminId}, {
-      $push: { roles: 'admin'}
+      $push: { roles: { $each: ['admin', 'volunteer'] } }
     });
 
     adminUser = Meteor.users.findOne({roles: 'admin'});
@@ -48,6 +48,7 @@ Meteor.startup(() => {
     Meteor.logger.info("Found Admin User: ");
   }
   Meteor.logger.logobj(adminUser);
+
 
   // const ONE_HOUR = 3600000;
   // const ONE_SEC = 1000;

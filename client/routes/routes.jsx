@@ -20,6 +20,9 @@ export const renderRoutes = () => (
       <Route path="requestpasswordreset" component={RequestPasswordReset}/>
       <Route path="passwordreset/:token" component={PasswordReset}/>
 
+      {/* Authed Routes */}
+      <Route path="profile" component={Profile}/>
+
       {/* Admin Routes */}
       <Route path="admin" component={Admin}>
 
