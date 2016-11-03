@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router';
 
 // Reset Password comp
 
@@ -101,7 +102,7 @@ PasswordReset = class PasswordReset extends Component {
             {this.getErrorMsg()}
 
             <div className="ui message">
-              <a href="/login">Log In</a>
+              <Link to="/login">Log In</Link>
             </div>
         </div>
     </div>

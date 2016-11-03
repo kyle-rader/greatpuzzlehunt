@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Link } from 'react-router';
 
 TopBar = class TopBar extends Component {
 
@@ -28,10 +29,10 @@ TopBar = class TopBar extends Component {
       );
     } else {
       return (
-        <a className="item" href="/login">
+        <Link className="item" to="/login">
           <i className="sign in icon"></i>
           Enter
-        </a>
+        </Link>
       );
     }
   }
@@ -61,32 +62,34 @@ TopBar = class TopBar extends Component {
           <i className="large content icon"></i>
           Menu
           <div className="menu topbar-dropdown-menu">
-            <a className="item" href="/">
+            <Link className="item" to="/">
               <i className="green home icon"></i>
               Home
-            </a>
-            <a className="item" href="/gallery">
+            </Link>
+            <Link className="item" to="/gallery">
               <i className="blue camera icon"></i>
               Gallery
-            </a>
-            <a className="item" href="/contact">
+            </Link>
+            <Link className="item" to="/contact">
               <i className="violet mail icon"></i>
               Contact
-            </a>
-            <a className="item" href="/puzzles">
+            </Link>
+            <Link className="item" to="/puzzles">
               <i className="red puzzle icon"></i>
               Puzzles
-            </a>
-            <a className="item" href="/info">
+            </Link>
+            <Link className="item" to="/info">
               <i className="orange circle info icon"></i>
               More Info
-            </a>
-            <a className="item" href="/qrcode">
+            </Link>
+            <Link className="item" to="/qrcode">
               <i className="gray qrcode icon"></i>
               QR Encoder
-            </a>
+            </Link>
           </div>
         </div>
+
+        {this._renderSocialButtons()}
 
         <div className="right menu">
           {this._logInLogOutBtn()}

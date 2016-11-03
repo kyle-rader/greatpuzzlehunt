@@ -12,12 +12,11 @@ AuthedComponent = class AuthedComponent extends React.Component {
   }
 }
 
-AuthedComponent = createContainer(({ params }) => {
-  const { accessLevel } = params;
+AuthedComponent = createContainer(({ accessLevel }) => {
   return {
     user: Meteor.user(),
     canView() {
-      return Meteor.user() && Meteor.user().roles.indexOf(accessLevel) > -1;
+      return Boolean(Meteor.user()) && Meteor.user().hasRole(accessLevel);
     }
   };
 }, AuthedComponent);
