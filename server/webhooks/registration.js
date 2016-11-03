@@ -2,9 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Email } from 'meteor/email';
 
-const Post = Picker.filter((req, res) => (req.method === 'POST'));
+import { PostRoute } from '../post-route.js';
 
-Post.route('/api/register', function(params, req, res, next) {
+PostRoute.route('/api/register', function(params, req, res, next) {
 
   Meteor.logger.info(`Request on route:`);
 
@@ -13,9 +13,9 @@ Post.route('/api/register', function(params, req, res, next) {
     from: 'Great Puzzle Hunt API <info@greatpuzzlehunt.com>',
     subject: 'Registration API Hit',
     text: `Params:
-${JSON.stringify(params)}
+${JSON.stringify(params, null, 2)}
 body:
-${JSON.stringify(req.body)}`
+${JSON.stringify(req.body, null, 2)}`
   });
 
   res.setHeader('Content-Type', 'application/json');
