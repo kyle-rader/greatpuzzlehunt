@@ -1,12 +1,12 @@
 import { browserHistory } from 'react-router';
 
 Accounts.onLogin(() => {
+  let path = browserHistory.getCurrentLocation().pathname;
 
-  console.log(`Accounts:onLogin(): brwoserHistory.location:${browserHistory.location}`);
+  if (path === '/login') {
+    browserHistory.push('/profile');
+  }
 
-  let currentRoute = browserHistory.location.pathname;
-
-  return (path === '/login' || path === '/register') ? FlowRouter.go('/team') : FlowRouter.go(path);
 });
 
 // Verify this user via token (also logs the user in)

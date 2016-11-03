@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+
 
 // Reset Password comp
 
@@ -43,11 +44,11 @@ PasswordReset = class PasswordReset extends Component {
         event.preventDefault();
 
         // Reset Password
-        Accounts.resetPassword(this.props.token, fields.password, (err, result) => {
+        Accounts.resetPassword(this.props.params.token, fields.password, (err, result) => {
           if (err) {
             this.setState({err: err});
           } else {
-            FlowRouter.go('/team');
+            browserHistory.push('/profile');
           }
         });
       }
