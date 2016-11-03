@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router';
 
@@ -39,7 +40,7 @@ TopBar = class TopBar extends Component {
 
   _logout(event) {
     event.preventDefault();
-    return Meteor.logout(() => FlowRouter.go('/'));
+    return Meteor.logout(() => browserHistory.push('/'));
   }
 
   _initDropDownMenus() {
