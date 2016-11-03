@@ -14,8 +14,10 @@ App = class App extends Component {
   render() {
     return (
     <div id="app-root">
-      <TopBarContainer />
-      {this.props.yield}
+      <TopBar />
+
+      {this.props.children}
+
       <Footer />
 
       <ScrollToTop showUnder={1000}>
