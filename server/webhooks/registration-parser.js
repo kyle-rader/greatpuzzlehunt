@@ -22,7 +22,7 @@ class RegistrationParser {
                 qty: jsonBody[`qty${i + 1}`],
             };
         });
-        let referenceRE = /ref(\d{1,2})type(\d{1,2})/;
+        let referenceRE = /^ref(\d+)type(\d+)$/;
         keys(jsonBody).map((key) => {
             let REresult = referenceRE.exec(key);
             if (REresult) {
