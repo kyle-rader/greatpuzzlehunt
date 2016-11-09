@@ -1,84 +1,80 @@
-"use strict";
-import 'babel-register';
-import _ from 'lodash'
+import { times, keys, parseInt } from "lodash";
 
-class cashnetJSON {
-    constructor(cnj) {
-        let { itemcnt } = cnj;
-        let refs = this.refs(cnj);
-        this.batchNumber = cnj['batchno'];
+class RegistrationParser {
+    constructor(jsonBody) {
+        let refs = this.refs(jsonBody);
+        this.batchNumber = jsonBody["batchno"];
         this.primaryContact = {
-            "email": cnj['MA3-PUEMAIL'],
-            "name": cnj['MA3-PUNAME']
+            "email": jsonBody["MA3-PUEMAIL"],
+            "name": jsonBody["MA3-PUNAME"],
         };
         this.participants = this.getParticipants(refs);
         this.tshirts = this.getTshirts(refs);
-        this.transaction = cnj['tx'];
+        this.transaction = jsonBody["tx"];
         this.totalAmount = this.getTotalAmount(refs);
     }
-    refs(cnj) {
-        let { itemcnt } = cnj;
-        let refArray = [];
-        _.forEach(_.range(1, _.toInteger(itemcnt) + 1), function (index) {
-            refArray.push({});
-            refArray[index - 1]['amount'] = cnj[`amount${index}`];
-            refArray[index - 1]['qty'] = cnj[`qty${index}`];
+    refs(jsonBody) {
+        let { itemcnt } = jsonBody;
+        let refArray = new Array(parseInt(itemcnt));
+        times(parseInt(itemcnt), (i) => {
+            refArray[i] = {
+                amount: jsonBody[`amount${i + 1}`],
+                qty: jsonBody[`qty${i + 1}`],
+            };
         });
-        let refRE = /ref(\d{1,2})type(\d{1,2})/;
-        _.forEach(_.keys(cnj), function (value) {
-            let REresult = refRE.exec(value);
+        let referenceRE = /ref(\d{1,2})type(\d{1,2})/;
+        keys(jsonBody).map((key) => {
+            let REresult = referenceRE.exec(key);
             if (REresult) {
-                refArray[_.toInteger(REresult[2]) - 1][cnj[REresult[0]]] = cnj[`ref${REresult[1]}val${REresult[2]}`];
+                let referenceIndex = parseInt(REresult[2] - 1);
+                refArray[referenceIndex][jsonBody[key]] = jsonBody[`ref${REresult[1]}val${REresult[2]}`];
             }
         });
         return refArray;
     }
     getParticipants(refs) {
-        let participants = [];
-        _.forEach(refs, function (object) {
-            if (object['MA3-REGFEE']) {
+        return refs.reduce((participants, object) => {
+            if (object["MA3-REGFEE"]) {
                 participants.push({
-                    "address": object['ADDR1'],
-                    "city": object['CITY'],
-                    "state": object['STATE'],
-                    "zip": object['ZIP'],
-                    "age": _.parseInt(object['MA3-AGE']),
-                    "email": object['G_EMAIL1'],
-                    "name": object['MA3_NAME'],
-                    "phone": object['G_PHONE1'],
-                    "isAdult": object['MA3-HH2_A'] == 'Adult',
-                    "registrationType": object['MA3-REGFEE'].toLowerCase(),
-                    "photoPermission": object["MA3-HH1"] == "Yes"
+                    "address": object["ADDR1"],
+                    "city": object["CITY"],
+                    "state": object["STATE"],
+                    "zip": object["ZIP"],
+                    "age": parseInt(object["MA3-AGE"]),
+                    "email": object["G_EMAIL1"],
+                    "name": object["MA3_NAME"],
+                    "phone": object["G_PHONE1"],
+                    "isAdult": object["MA3-HH2_A"] == "Adult",
+                    "registrationType": object["MA3-REGFEE"].toLowerCase(),
+                    "photoPermission": object["MA3-HH1"] == "Yes",
                 });
             }
-        });
-        return participants;
+            return participants;
+        }, []);
     }
     getTshirts(refs) {
-        let tshirts = [];
-        _.forEach(refs, function(object) {
-            if (object['MA3-STYLE']) {
+        return refs.reduce((tshirts, object) => {
+            if (object["MA3-STYLE"]) {
                 let tshirt = {
-                    "amount": _.parseInt(object['amount']),
-                    "qty": _.parseInt(object['qty']),
-                    "fontColor": object['MA3_FONTCOLOR'],
-                    "gender": object['MA3-STYLE'],
-                    "size": object['MA3_SIZE'],
-                    "mensColor": (object['MA3_MCOLOR'] == 'n/a' ? null : object['MA3_MCOLOR']),
-                    "womansColor": (object['MA3_LCOLOR'] == 'n/a' ? null : object['MA3_LCOLOR'])
-                }
-                tshirt['isValid'] = (tshirt['mensColor'] && tshirt.gender == 'MENS' || tshirt['womansColor'] && tshirt.gender == 'LADIES');
+                    "amount": parseInt(object["amount"]),
+                    "qty": parseInt(object["qty"]),
+                    "fontColor": object["MA3_FONTCOLOR"],
+                    "gender": object["MA3-STYLE"],
+                    "size": object["MA3_SIZE"],
+                    "mensColor": (object["MA3_MCOLOR"] == "n/a" ? null : object["MA3_MCOLOR"]),
+                    "womansColor": (object["MA3_LCOLOR"] == "n/a" ? null : object["MA3_LCOLOR"]),
+                };
+                tshirt["isValid"] = (tshirt["mensColor"] && tshirt.gender == "MENS" || tshirt["womansColor"] && tshirt.gender == "LADIES");
                 tshirts.push(tshirt);
             }
-        });
-        return tshirts;
+            return tshirts;
+        }, []);
     }
     getTotalAmount(refs) {
-        let sum = 0;
-        _.forEach(refs, function(object) {
-            sum += parseFloat(object['amount']);
-        });
-        return sum;
+        return refs.reduce((sum, object) => {
+            return sum + parseFloat(object.amount);
+        }, 0);
     }
 }
-module.exports = cashnetJSON;
+
+export default RegistrationParser;
