@@ -26,7 +26,7 @@ class RegistrationParser {
         keys(jsonBody).map((key) => {
             let REresult = referenceRE.exec(key);
             if (REresult) {
-                let referenceIndex = parseInt(REresult[2] - 1);
+                let referenceIndex = parseInt(REresult[2]) - 1;
                 refArray[referenceIndex][jsonBody[key]] = jsonBody[`ref${REresult[1]}val${REresult[2]}`];
             }
         });
@@ -64,7 +64,10 @@ class RegistrationParser {
                     "mensColor": (object["MA3_MCOLOR"] == "n/a" ? null : object["MA3_MCOLOR"]),
                     "womansColor": (object["MA3_LCOLOR"] == "n/a" ? null : object["MA3_LCOLOR"]),
                 };
-                tshirt["isValid"] = (tshirt["mensColor"] && tshirt.gender == "MENS" || tshirt["womansColor"] && tshirt.gender == "LADIES");
+                tshirt.isValid = true == ((tshirt["mensColor"] && tshirt.gender == "MENS") || (tshirt["womansColor"] && tshirt.gender == "LADIES"));
+                if (tshirt.gender == "LADIES") {
+                    tshirt.isValid = tshirt.isValid && tshirt.size != "3XL";
+                }
                 tshirts.push(tshirt);
             }
             return tshirts;
