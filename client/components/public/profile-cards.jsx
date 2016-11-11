@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Card, Image, Button, Icon } from 'semantic-ui-react';
+import { map } from 'lodash';
 
 ProfileCards = class ProfileCards extends Component {
 
@@ -31,31 +33,55 @@ ProfileCards = class ProfileCards extends Component {
         currentFocus.focus();
     }
     return succeed;
-}
+  }
 
-  _renderProfileCard(name, title, role, email, image) {
-    return (
-    <div className="card">
-      <div className="image">
-        <img src={image}/>
-      </div>
-      <div className="content">
-        <div className="header">{name}</div>
-        <div className="meta">
-          {title} <br/>
-          <div className="ui left labeled button">
-            <a className="ui dark-blue label" href={`mailto:${email}`}>{email}</a>
-            <div className="ui icon button" onClick={this._copyToClipboard.bind({email})}>
-              <i className="copy icon"></i> Copy
-            </div>
-          </div>
-        </div>
-        <div className="description">
-          {role}
+  _renderProfileCard({ name, title, role, email, image }) {
+    let extra = (
+      <div className="ui white left labeled button">
+        <a className="ui label" href={`mailto:${email}`}>{email}</a>
+        <div className="ui icon button" onClick={this._copyToClipboard.bind({email})}>
+          <i className="copy icon"></i> Copy
         </div>
       </div>
-    </div>
     );
+
+    return (
+    <Card key={email}
+      image={image}
+      header={name}
+      meta={title}
+      description={role}
+      extra={extra}
+    />
+    );
+  }
+
+  _renderProfiles() {
+    const profiles = [
+      {
+        name: 'Millie Johnson',
+        title: 'Associate Math Professor, WWU',
+        role: 'Primary event coordinator, puzzle creator, and founder of the Great Puzzle Hunt.',
+        email: 'Millie.Johnson@wwu.edu',
+        image: '/img/2016/event-photos/millie_johnson.jpg',
+      },
+      {
+        name: 'Kyle Rader',
+        title: 'Software Engineer, Action Sprout',
+        role: 'Lead developer and secondary event coordinator.',
+        email: 'kyle@kylerader.ninja',
+        image: '/img/team/kyle.jpg',
+      },
+      {
+        name: 'Wendy Aguilar',
+        title: 'Web Design Specialist, CDK Global',
+        role: 'Lead designer.  She makes everthing beautiful',
+        email: 'agu.wnd@gmail.com',
+        image: '/img/team/wendy.jpg',
+      }
+    ];
+
+    return map(profiles, (profile) => this._renderProfileCard(profile));
   }
 
   render() {
@@ -68,9 +94,7 @@ ProfileCards = class ProfileCards extends Component {
         </div>
         <div className="ui basic segment">
           <div className="ui three stackable cards">
-            {this._renderProfileCard('Millie Johnson', 'Associate Math Professor, WWU', 'Millie is the primary event coordinator and puzzle creator.', 'Millie.Johnson@wwu.edu', '/img/2016/event-photos/millie_johnson.jpg')}
-            {this._renderProfileCard('Kyle Rader', 'Software Engineer, Action Sprout', 'Kyle is the technology wizard and web application author.', 'kyle@kylerader.ninja', '/img/2016/event-photos/kyle_and_millie.jpg')}
-            {this._renderProfileCard('Wendy Aguilar', 'Web Design Specialist, CDK Global', 'Wendy is the design wizard and has made all of the branding materials.', 'agu.wnd@gmail.com', '/img/logo-color-512.png')}
+            {this._renderProfiles()}
           </div>
         </div>
       </div>
