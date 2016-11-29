@@ -25,7 +25,12 @@ export const renderRoutes = () => (
 
       {/* Admin Routes */}
       <Route path="admin" component={Admin}>
-
+        <Route path="users" component={UserList} />
+        <Route path="teams" component={TeamList} />
+        <Route path="puzzles" component={PuzzleDashboard} />
+        <Route path="email" component={BulkEmail} />
+        <Route path="game" component={GamePlay} />
+        <Route path="scoring" component={Scoring} />
       </Route>
 
       <Route path="*" component={Home}/>
