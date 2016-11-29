@@ -25,7 +25,7 @@ Admin = class Admin extends Component {
     let pageComp = this.state.pageComp ? <this.state.pageComp /> : <div className="basic segment">Oops, no page found</div>;
 
     return (
-      <AuthedComponentContainer params={{accessLevel: 'admin'}}>
+      <Authed params={{accessLevel: 'admin'}}>
         <div className="ui container">
           <PuzzlePageTitle title="Admin" />
           <div className="ui labeled icon menu">
@@ -56,7 +56,7 @@ Admin = class Admin extends Component {
           </div>
           {pageComp}
         </div>
-      </AuthedComponentContainer>
+      </Authed>
     );
   }
 }

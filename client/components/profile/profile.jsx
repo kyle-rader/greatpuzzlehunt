@@ -36,9 +36,9 @@ Profile = class Profile extends Component {
 
   render() {
     return (
-      <AuthedComponent accessLevel="user">
+      <Authed accessLevel="user">
         {this._renderMain()}
-      </AuthedComponent>
+      </Authed>
     );
   }
 }

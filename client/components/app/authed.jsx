@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
-AuthedComponent = class AuthedComponent extends React.Component {
+Authed = class Authed extends React.Component {
   render() {
     if (this.props.canView()) {
       return this.props.children;
@@ -12,11 +12,11 @@ AuthedComponent = class AuthedComponent extends React.Component {
   }
 }
 
-AuthedComponent = createContainer(({ accessLevel }) => {
+Authed = createContainer(({ accessLevel }) => {
   return {
     user: Meteor.user(),
     canView() {
       return Boolean(Meteor.user()) && Meteor.user().hasRole(accessLevel);
     }
   };
-}, AuthedComponent);
+}, Authed);
