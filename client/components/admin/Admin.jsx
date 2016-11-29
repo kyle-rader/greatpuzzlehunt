@@ -1,60 +1,44 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 
 Admin = class Admin extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      pageComp: Scoring //UserList
-    }
-  }
-
   componentDidMount() {
       $(this.refs.tabMenu).find('.item').tab();
   }
 
-  setPage(targetPage) {
-      this.setState({
-          pageComp: targetPage
-      });
-  }
-
   render() {
-
-    let pageComp = this.state.pageComp ? <this.state.pageComp /> : <div className="basic segment">Oops, no page found</div>;
-
     return (
-      <Authed params={{accessLevel: 'admin'}}>
+      <Authed accessLevel='admin'>
         <div className="ui container">
           <PuzzlePageTitle title="Admin" />
           <div className="ui labeled icon menu">
-            <a className="item" onClick={this.setPage.bind(this, UserList)}>
+            <Link className="item" to="/admin/users">
               <i className="green user icon"></i>
               Users
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, TeamList)}>
+            </Link>
+            <Link className="item" to="/admin/teams">
               <i className="blue users icon"></i>
               Teams
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, PuzzleDashboard)}>
+            </Link>
+            <Link className="item" to="/admin/puzzles">
               <i className="violet puzzle icon"></i>
               Puzzles
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, BulkEmail)}>
+            </Link>
+            <Link className="item" to="/admin/email">
               <i className="orange mail icon"></i>
               Email
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, GamePlay)}>
+            </Link>
+            <Link className="item" to="/admin/game">
               <i className="red gamepad icon"></i>
               The Game
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, Scoring)}>
+            </Link>
+            <Link className="item" to="/admin/scoring">
               <i className="yellow trophy icon"></i>
               Scoring
-            </a>
+            </Link>
           </div>
-          {pageComp}
+          {this.props.children}
         </div>
       </Authed>
     );
