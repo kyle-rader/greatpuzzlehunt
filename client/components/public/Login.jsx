@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Container, Grid, Form, Segment, Header, Message } from 'semantic-ui-react';
 
 // Define our login comp
 
@@ -11,18 +12,16 @@ Login = class Login extends Component {
     this.state = {
       err: null,
       username: '',
-      password: ''
+      password: '',
     };
   }
 
   login(event) {
     event.preventDefault();
 
-    let username = $(this.refs.username).val();
-    let password = $(this.refs.password).val();
+    const { username, password } = this.state;
 
-    Meteor.loginWithPassword(username, password, (err) => {
-
+    Meteor.loginWithPassword({ username }, password, (err) => {
         if (err) {
           this.setState({err: err});
         }
@@ -30,7 +29,7 @@ Login = class Login extends Component {
   }
 
   getErrorMessage() {
-    if (this.state.err != null) {
+    if (this.state.err) {
       return <div className="ui error message">{this.state.err.reason}</div>;
     }
     else {
@@ -38,38 +37,54 @@ Login = class Login extends Component {
     }
   }
 
+  _handleUsernameChange(e) {
+    this.setState({ username: e.target.value });
+  }
+
+  _handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+
   render() {
     return (
-    <div className="login ui middle aligned center aligned grid">
-      <div className="column">
-        <form className="ui huge form" onSubmit={(e) => this.login(e)}>
-          <div className="ui raised segment transparent-bg">
-            <h2 className="ui blue header">
-              <div className="content">
+    <Grid className="login" verticalAlign="middle" textAlign="center">
+      <Grid.Column>
+        <Form size="huge" onSubmit={(e) => this.login(e)}>
+          <Segment raised>
+            <Header color="blue">
+              <Header.Content as="h2">
                 Log In
-              </div>
-            </h2>
-            <div className="field">
-              <div className="ui left icon input">
-                <i className="user icon"></i>
-                <input type="text" ref="username" placeholder="Username or Email" autoComplete="off" defaultValue={this.state.username}/>
-              </div>
-            </div>
-            <div className="field">
-              <div className="ui left icon input">
-                <i className="lock icon"></i>
-                <input type="password" ref="password" placeholder="Password" autoComplete="off" defaultValue={this.state.password}/>
-              </div>
-            </div>
-            <input className="ui fluid large blue submit button" type="submit" value="Login" />
-          </div>
-        </form>
+              </Header.Content>
+            </Header>
+            <Form.Input
+              icon="user"
+              iconPosition="left"
+              type="text"
+              name="username"
+              placeholder="Username"
+              autoComplete="off"
+              value={this.state.username}
+              onChange={(e, data) => this._handleUsernameChange(e, data)}
+            />
+            <Form.Input
+              icon="lock"
+              iconPosition="left"
+              type="password"
+              name="password"
+              placeholder="Password"
+              autoComplete="off"
+              value={this.state.password}
+              onChange={(e, data) => this._handlePasswordChange(e, data)}
+            />
+            <Form.Button fluid size="large" color="blue" type="submit" content="Login" />
+          </Segment>
+        </Form>
         {this.getErrorMessage()}
 
-        <div className="ui message">
+        <Message>
           <Link to="/register">Join The Puzzle Hunt!</Link> &nbsp; | &nbsp; <Link to="/requestpasswordreset">Forgot Password</Link>
-        </div>
-      </div>
-    </div>);
+        </Message>
+      </Grid.Column>
+    </Grid>);
   }
 }
