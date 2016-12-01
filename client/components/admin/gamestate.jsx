@@ -92,7 +92,7 @@ export default GamePlay = React.createClass({
             </div>
             );
         } else {
-            return <LoadingSegment />;
+            return <Loading />;
         }
     }
 });

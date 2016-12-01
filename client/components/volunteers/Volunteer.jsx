@@ -115,7 +115,7 @@ VolunteerPage = React.createClass({
         if (!this.state.currentPuzzleId) {
             // No Puzzle Yet. Render nothing.
             return null;
-        } 
+        }
         else if (this.state.error) {
             // Error Reading QR Code
             return <div className="ui large error message">{this.state.error}</div>;
@@ -128,7 +128,7 @@ VolunteerPage = React.createClass({
         else if (!this.state.currentTeamId) {
             // Ready to Scan a Team QR Code
             return <div className="ui large info message">You are ready to scan a team's QR code!</div>;
-        } 
+        }
         else if (this.data.team) {
             // We Have Aquired the Team!  This is the actual Start Button!
             return (
@@ -163,7 +163,7 @@ VolunteerPage = React.createClass({
             }, 3500);
 
             // Set state NOW to Error or Success!
-            if (err && err.reason) {                
+            if (err && err.reason) {
                 this.setState({
                     currentPuzzleId: this.state.currentPuzzleId,
                     currentTeamId: null,
@@ -183,7 +183,7 @@ VolunteerPage = React.createClass({
     render() {
         // First Check Access
         if (!this.data.user) {
-            return <LoadingSegment />
+            return <Loading />
         }
         else if (this.data.user.roles.indexOf('volunteer') < 0) {
             return <Login />
@@ -191,7 +191,7 @@ VolunteerPage = React.createClass({
 
         if (!this.data.gamestate || !this.data.puzzles) {
             // GameState not loaded - we don't know what to render yet.
-            return <LoadingSegment />;
+            return <Loading />;
         }
 
         // Has the Game Started?

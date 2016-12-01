@@ -61,7 +61,7 @@ export default TeamList = React.createClass({
                         </div>
                     </div>
                     <div className="three wide column">
-                        
+
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@ export default TeamList = React.createClass({
             </div>
             );
         } else {
-            return <LoadingSegment />;
+            return <Loading />;
         }
     }
 });

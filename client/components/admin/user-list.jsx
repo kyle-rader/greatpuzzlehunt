@@ -86,7 +86,7 @@ export default UserList = React.createClass({
             </table>
             );
         } else {
-            return <LoadingSegment />;
+            return <Loading />;
         }
     }
 });
