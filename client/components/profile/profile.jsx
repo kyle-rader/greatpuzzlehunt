@@ -16,25 +16,25 @@ Profile = class Profile extends Component {
   _renderLoading() {
     return (
       <div className="ui container">
-        <LoadingSegment />
+        <Loading />
       </div>
     );
   }
 
   _renderMain() {
-    if (!this.props.user) {
-      return this._renderLoading();
-    }
     return (
       <div className="ui container">
         <PuzzlePageTitle title="Profile" subTitle={this.props.user.displayname} />
-        {JSON.stringify(this.props.user, null, 2)}
+        <Loading />
         <br/>
       </div>
     );
   }
 
   render() {
+    if (!this.props.user) {
+      return this._renderLoading();
+    }
     return (
       <Authed accessLevel="user">
         {this._renderMain()}

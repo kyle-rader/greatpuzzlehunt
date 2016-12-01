@@ -6,7 +6,10 @@ export const renderRoutes = () => (
 
     <Route path="/" component={App}>
 
-      {/* Public Routes */}
+      {/*
+        * Public Routes
+      */}
+
       <IndexRoute component={Home}/>
       <Route path="gallery" component={Gallery}/>
       <Route path="contact" component={Contact}/>
@@ -20,7 +23,10 @@ export const renderRoutes = () => (
       <Route path="requestpasswordreset" component={RequestPasswordReset}/>
       <Route path="passwordreset/:token" component={PasswordReset}/>
 
-      {/* Authed Routes */}
+      {/*
+        * Authed Routes
+      */}
+
       <Route path="profile" component={Profile}/>
 
       {/* Admin Routes */}

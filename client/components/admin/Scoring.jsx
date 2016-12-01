@@ -34,7 +34,7 @@ export default Scoring = React.createClass({
             </div>
             );
         } else {
-            return <LoadingSegment />;
+            return <Loading />;
         }
     }
 });
