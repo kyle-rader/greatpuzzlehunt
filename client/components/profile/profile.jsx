@@ -25,7 +25,6 @@ Profile = class Profile extends Component {
     return (
       <div className="ui container">
         <PuzzlePageTitle title="Profile" subTitle={this.props.user.displayname} />
-        <Loading />
         <br/>
       </div>
     );
