@@ -18,7 +18,8 @@ Meteor.publish(null, function() {
         firstname: 1,
         lastname: 1,
         displayname: 1,
-        roles: 1
+        roles: 1,
+        updatedAt: 1,
       }
     });
   } else {
