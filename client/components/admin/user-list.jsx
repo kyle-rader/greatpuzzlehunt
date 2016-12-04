@@ -1,31 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
 
-export default UserList = React.createClass({
-
-    mixins:[ReactMeteorData],
-    getMeteorData() {
-        let data = {};
-
-        let usersHandle = Meteor.subscribe('users.all');
-        let loading = !usersHandle.ready();
-
-        if (!loading) {
-            data.users = Meteor.users.find({}, {sort: {"profile.firstname": 1, "profile.lastname": 1}}).fetch()
-        }
-
-        return data;
-    },
-
-    getUserList() {
-        return this.data.users.map((user) => {
+AdminUserList = class AdminUserList extends Component {
+    _getUserList() {
+        return this.props.users.find().map((user) => {
             return (
-            <UserListRow user={user} key={user._id}/>
+                <AdminUserListRow user={user} key={user._id}/>
             );
         });
-    },
+    }
 
-    search(event) {
+    _search(event) {
         let search = event.target.value;
         let userList = $('tbody.userlist');
         userList.find(`tr:contains(${search})`).each(function() {
@@ -34,13 +20,10 @@ export default UserList = React.createClass({
         userList.find(`tr:not(:contains(${search}))`).each(function() {
             $(this).hide();
         });
-    },
-
-    componentDidMount() {
-    },
+    }
 
     render() {
-        if (this.data.users) {
+        if (this.props.users) {
             return (
             <table className="ui compact celled table">
                 <thead ref="controlRow" className="full-width control-row">
@@ -51,12 +34,12 @@ export default UserList = React.createClass({
                                     <div className="ui large green label">
                                         <i className="user icon"></i>
                                         &nbsp;
-                                        {this.data.users.length} Users
+                                        {this.props.users.length} Users
                                     </div>
                                 </div>
                                 <div className="ten wide column">
                                     <div className="ui fluid right icon input">
-                                        <input type="text" placeholder="Search" onChange={this.search}/>
+                                        <input type="text" placeholder="Search" onChange={this._search}/>
                                         <i className="search icon"></i>
                                     </div>
                                 </div>
@@ -74,7 +57,7 @@ export default UserList = React.createClass({
                     </tr>
                 </thead>
               <tbody className="userlist">
-                {this.getUserList()}
+                {this._getUserList()}
               </tbody>
               <tfoot className="full-width">
                 <tr>
@@ -89,4 +72,10 @@ export default UserList = React.createClass({
             return <Loading />;
         }
     }
-});
+}
+
+AdminUserList = createContainer((props) => {
+  return {
+    users: Meteor.users
+  };
+}, AdminUserList);

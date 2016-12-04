@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-export default class UserListRow extends React.Component {
-
+AdminUserListRow = class UserListRow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -256,6 +255,6 @@ export default class UserListRow extends React.Component {
     }
 }
 
-UserListRow.propTypes = {
+AdminUserListRow.propTypes = {
     user: React.PropTypes.object
 };

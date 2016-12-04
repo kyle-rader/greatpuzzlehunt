@@ -22,7 +22,7 @@ TopBar = class TopBar extends Component {
   }
 
   _renderAdminBUttons() {
-    if (this.props.user.hasRole('admin')) {
+    if (this.props.x.hasRole('admin')) {
       return [
         <div className="divider" key="adminDivider"></div>,
         (<Link className="item" to="/admin" key="adminLink">
