@@ -1,31 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
 
-export default TeamList = React.createClass({
-
-    mixins:[ReactMeteorData],
-    getMeteorData() {
-        let data = {};
-
-        let teamsHandle = Meteor.subscribe('teams.all');
-        let loading = !teamsHandle.ready();
-
-        if (!loading) {
-            data.teams = Teams.find({}).fetch();
-        }
-
-        return data;
-    },
-
-    getTeamList() {
-        return this.data.teams.map((team) => {
+AdminTeamList = class AdminTeamList extends Component {
+    _getTeamList() {
+        return this.props.teams.map((team) => {
             return (
-                <TeamListRow key={team._id} team={team} />
+                <AdminTeamListRow key={team._id} team={team} />
             );
         });
-    },
+    }
 
-    search(event) {
+    _search(event) {
         let search = event.target.value;
 
         $(`div.ui.team-listing:contains(${search})`).each(function() {
@@ -36,14 +22,11 @@ export default TeamList = React.createClass({
             console.log('Hide');
             $(this).hide();
         });
-    },
-
-    componentDidMount() {
-    },
+    }
 
     render() {
 
-        if (this.data.teams) {
+        if (this.props.teams) {
             return (
             <div className="ui basic segment">
                 <div className="ui grid">
@@ -51,12 +34,12 @@ export default TeamList = React.createClass({
                         <div className="ui large blue label">
                             <i className="users icon"></i>
                             &nbsp;
-                            {this.data.teams.length} Teams
+                            {this.props.teams.length} Teams
                         </div>
                     </div>
                     <div className="ten wide column">
                         <div className="ui fluid right icon input">
-                            <input type="text" placeholder="Search" onChange={this.search}/>
+                            <input type="text" placeholder="Search" onChange={this._search}/>
                             <i className="search icon"></i>
                         </div>
                     </div>
@@ -65,7 +48,7 @@ export default TeamList = React.createClass({
                     </div>
                 </div>
 
-                { this.getTeamList() }
+                { this._getTeamList() }
 
             </div>
             );
@@ -73,4 +56,10 @@ export default TeamList = React.createClass({
             return <Loading />;
         }
     }
-});
+}
+
+AdminTeamList = createContainer((props) => {
+  return {
+    teams: Teams.find({}).fetch()
+  };
+}, AdminTeamList);

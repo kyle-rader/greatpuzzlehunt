@@ -33,9 +33,9 @@ export const renderRoutes = () => (
 
       {/* Admin Routes */}
       <Route path="admin" component={Admin}>
-        <IndexRoute component={TeamList} />
-        <Route path="users" component={UserList} />
-        <Route path="teams" component={TeamList} />
+        <IndexRoute component={AdminUserList} />
+        <Route path="users" component={AdminUserList} />
+        <Route path="teams" component={AdminTeamList} />
         <Route path="puzzles" component={PuzzleDashboard} />
         <Route path="email" component={BulkEmail} />
         <Route path="game" component={GamePlay} />

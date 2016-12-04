@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Icon, Menu, Button } from 'semantic-ui-react'
 import { Meteor } from 'meteor/meteor';
 
 Admin = class Admin extends Component {
@@ -12,32 +13,32 @@ Admin = class Admin extends Component {
       <Authed accessLevel='admin'>
         <div className="ui container">
           <PuzzlePageTitle title="Admin" />
-          <div className="ui labeled icon menu">
+          <Menu icon="labeled">
             <Link className="item" to="/admin/users">
-              <i className="green user icon"></i>
+              <Icon className="green user icon"></Icon>
               Users
             </Link>
             <Link className="item" to="/admin/teams">
-              <i className="blue users icon"></i>
+              <Icon className="blue users icon"></Icon>
               Teams
             </Link>
             <Link className="item" to="/admin/puzzles">
-              <i className="violet puzzle icon"></i>
+              <Icon className="violet puzzle icon"></Icon>
               Puzzles
             </Link>
             <Link className="item" to="/admin/email">
-              <i className="orange mail icon"></i>
+              <Icon className="orange mail icon"></Icon>
               Email
             </Link>
             <Link className="item" to="/admin/game">
-              <i className="red gamepad icon"></i>
+              <Icon className="red gamepad icon"></Icon>
               The Game
             </Link>
             <Link className="item" to="/admin/scoring">
-              <i className="yellow trophy icon"></i>
+              <Icon className="yellow trophy icon"></Icon>
               Scoring
             </Link>
-          </div>
+          </Menu>
           {this.props.children}
         </div>
       </Authed>

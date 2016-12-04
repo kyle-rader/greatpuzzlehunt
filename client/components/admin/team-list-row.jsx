@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-TeamListRow = React.createClass({
+AdminTeamListRow = React.createClass({
 
     propTypes: {
         loading: React.PropTypes.bool,
