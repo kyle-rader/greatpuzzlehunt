@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 
 Accounts.onLogin(() => {
-  let path = browserHistory.getCurrentLocation().pathname;
+  const path = browserHistory.getCurrentLocation().pathname;
 
   if (path === '/login') {
     browserHistory.push('/profile');

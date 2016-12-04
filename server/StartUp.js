@@ -39,7 +39,8 @@ Meteor.startup(() => {
     Accounts.addEmail(adminId, Meteor.settings.admin.email, true);
 
     Meteor.users.update({_id: adminId}, {
-      $push: { roles: { $each: ['admin', 'volunteer'] } }
+      $push: { roles: { $each: ['admin', 'volunteer'] } },
+      $set: { updatedAt: new Date() },
     });
 
     adminUser = Meteor.users.findOne({roles: 'admin'});
