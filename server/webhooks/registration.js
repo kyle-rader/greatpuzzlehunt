@@ -1,12 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Email } from 'meteor/email';
+import { map } from 'lodash';
 
 import { PostRoute } from '../imports/post-route.js';
-import RegistrationParser from './imports/registration-parser.js';
+import TransactionParser from './imports/transaction-parser.js';
 
 PostRoute.route('/api/register', function(params, req, res, next) {
 
+  // Validate access token
   if (!params.query.accessToken || params.query.accessToken !== Meteor.settings.accounts.registrationApiKey) {
     Meteor.logger.info(`Request on "/api/register" with bad accessToken: "${params.query.accessToken}" from ${Meteor.logger.jstring(req.headers)}`);
     res.setHeader('Content-Type', 'application/json');
@@ -16,7 +18,15 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   }
 
   Meteor.logger.info(`Request on "/api/register" (valid accessToken) from ${Meteor.logger.jstring(req.headers)}`);
-  // const registration = new RegistrationParser(res.body);
+
+  // Parse registration POST body
+  const transaction = new TransactionParser(req.body);
+
+  Meteor.logger.logobj(transaction);
+
+  // Store original transaction:
+  Transactions.upsert({ _id: transaction._id }, { $set: transaction });
+
 
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
