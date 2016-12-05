@@ -1,6 +1,6 @@
 import { times, keys, parseInt } from 'lodash';
 
-export default class RegistrationParser {
+export default class TransactionParser {
   constructor(jsonBody) {
     const refs = this.refs(jsonBody);
     this.batchNumber = jsonBody['batchno'];
@@ -10,7 +10,7 @@ export default class RegistrationParser {
     };
     this.participants = this.getParticipants(refs);
     this.tshirts = this.getTshirts(refs);
-    this.transaction = jsonBody['tx'];
+    this._id = jsonBody['tx'];
     this.totalAmount = this.getTotalAmount(refs);
   }
 
