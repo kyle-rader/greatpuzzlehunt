@@ -34,15 +34,21 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   }
 
   // Store T-Shirt Orders:
-  map(transaction.tshirts, (tshirtOrder) => {
-    Tshirts.insert(extend(tshirtOrder, {
+  const tshirts = map(transaction.tshirts, (tshirtOrder) => {
+    return Tshirts.insert(extend(tshirtOrder, {
       email: transaction.primaryContact.email,
       name: transaction.primaryContact.name,
     }));
   });
+
+  map(transaction.participants, (user) => registerUser(user, transaction));
 
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
   res.end();
 
 });
+
+function registerUser(user, transaction) {
+
+}
