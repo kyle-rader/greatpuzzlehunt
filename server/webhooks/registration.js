@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Email } from 'meteor/email';
-import { map } from 'lodash';
+import { map, extend } from 'lodash';
 
 import { PostRoute } from '../imports/post-route.js';
 import TransactionParser from './imports/transaction-parser.js';
@@ -25,8 +25,21 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   Meteor.logger.logobj(transaction);
 
   // Store original transaction:
-  Transactions.upsert({ _id: transaction._id }, { $set: transaction });
+  const txResult = Transactions.upsert({ _id: transaction._id }, { $set: transaction });
 
+  if (process.env.NODE_ENV !== 'production' && txResult.numberAffected === 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 200;
+    return res.end();
+  }
+
+  // Store T-Shirt Orders:
+  map(transaction.tshirts, (tshirtOrder) => {
+    Tshirts.insert(extend(tshirtOrder, {
+      email: transaction.primaryContact.email,
+      name: transaction.primaryContact.name,
+    }));
+  });
 
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
