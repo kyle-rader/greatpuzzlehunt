@@ -11,6 +11,10 @@ logger.logobj = function logobj(obj, level) {
   logger[level](JSON.stringify(obj, null, 2));
 };
 
+logger.jstring = function(obj) {
+  return JSON.stringify(obj, null, 2);
+}
+
 Meteor.logger = logger;
 
 /************************************************

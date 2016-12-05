@@ -7,17 +7,16 @@ import RegistrationParser from './imports/registration-parser.js';
 
 PostRoute.route('/api/register', function(params, req, res, next) {
 
-  Meteor.logger.info(`Request on route:`);
+  if (!params.query.accessToken || params.query.accessToken !== Meteor.settings.accounts.registrationApiKey) {
+    Meteor.logger.info(`Request on "/api/register" with bad accessToken: "${params.query.accessToken}" from ${Meteor.logger.jstring(req.headers)}`);
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 400;
+    res.write('{ error: \'Invalid accessToken\' }');
+    return res.end();
+  }
 
-  Email.send({
-    to: ['kyle@kylerader.ninja', 'kyle-daling@live.com'],
-    from: 'Great Puzzle Hunt API <info@greatpuzzlehunt.com>',
-    subject: 'Registration API Hit',
-    text: `Params:
-${JSON.stringify(params, null, 2)}
-body:
-${JSON.stringify(req.body, null, 2)}`
-  });
+  Meteor.logger.info(`Request on "/api/register" (valid accessToken) from ${Meteor.logger.jstring(req.headers)}`);
+  // const registration = new RegistrationParser(res.body);
 
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
