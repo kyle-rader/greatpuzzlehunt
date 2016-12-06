@@ -22,8 +22,6 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   // Parse registration POST body
   const transaction = new TransactionParser(req.body);
 
-  Meteor.logger.logobj(transaction);
-
   // Store original transaction:
   const txResult = Transactions.upsert({ _id: transaction._id }, { $set: transaction });
 
@@ -38,6 +36,7 @@ PostRoute.route('/api/register', function(params, req, res, next) {
     return Tshirts.insert(extend(tshirtOrder, {
       email: transaction.primaryContact.email,
       name: transaction.primaryContact.name,
+      transactionId: transaction._id,
     }));
   });
 
@@ -50,5 +49,5 @@ PostRoute.route('/api/register', function(params, req, res, next) {
 });
 
 function registerUser(user, transaction) {
-
+  Meteor.logger.logobj(user);
 }

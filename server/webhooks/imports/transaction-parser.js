@@ -37,19 +37,33 @@ export default class TransactionParser {
   getParticipants(refs) {
     return refs.reduce((participants, object) => {
       if (object['MA3-REGFEE']) {
-        participants.push({
-          'address': object['ADDR1'],
-          'city': object['CITY'],
-          'state': object['STATE'],
-          'zip': object['ZIP'],
-          'age': parseInt(object['MA3-AGE']),
-          'email': object['G_EMAIL1'],
-          'name': object['MA3_NAME'],
-          'phone': object['G_PHONE1'],
-          'isAdult': object['MA3-HH2_A'] == 'Adult',
-          'registrationType': object['MA3-REGFEE'].toLowerCase(),
-          'photoPermission': object['MA3-HH1'] == 'Yes',
-        });
+        const newParticipant = {
+          address: object['ADDR1'],
+          city: object['CITY'],
+          state: object['STATE'],
+          zip: object['ZIP'],
+          age: parseInt(object['MA3-AGE']),
+          email: object['G_EMAIL1'],
+          name: object['MA3_NAME'],
+          phone: object['G_PHONE1'],
+          isAdult: object['MA3-HH2_A'] == 'Adult',
+          registrationType: object['MA3-REGFEE'].toLowerCase(),
+          photoPermission: object['MA3-HH1'] == 'Yes',
+          legalGuardian: {
+            name: object['MA3-PGNAME'] || null,
+            relation: object['MA3-PGRELATION'] || null,
+          },
+        };
+        if (object['MA3-PGECINFO'] !== 'PG-Same') {
+          newParticipant.emergencyContact = {
+            name: object['MA3_EC-NAME'],
+            relation: object['MA3_EC-RELATION'],
+            phone: object['MA3_EC-PHONE'],
+            altPhone: object['MA3_EC-PHONE2'],
+            email: object['MA3_EC-EMAIL'],
+          };
+        }
+        participants.push(newParticipant);
       }
       return participants;
     }, []);
