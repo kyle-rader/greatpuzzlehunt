@@ -7,17 +7,24 @@ import moment from 'moment';
 
 Profile = class Profile extends Component {
 
+  _makeStateFromUser(user) {
+    return {
+      updatedAt: user ? moment(user.updatedAt).fromNow() : '',
+    };
+  }
+
   constructor(props) {
     super(props);
 
     this.state = {
-      edit: false
+      edit: false,
+      updatedAt: this._makeStateFromUser(props.user),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user && nextProps.user.updatedAt) {
-      this.setState({ updatedAt: moment(nextProps.user.updatedAt).fromNow() });
+    if (nextProps.user) {
+      this.setState(this._makeStateFromUser(nextProps.user));
     }
   }
 
