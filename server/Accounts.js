@@ -37,27 +37,22 @@ Accounts.emailTemplates.enrollAccount = {
 };
 
 Accounts.validateLoginAttempt((attempt) => {
-    if (!attempt.allowed) {
-        return false;
-    }
-    else if (attempt.user && !attempt.user.emails[0].verified) {
-        throw new Meteor.Error(400, 'You must verify your email before logging in!  Questions? See our Contact page.');
-    }
-    else {
-        return true;
-    }
+  if (!attempt.allowed) {
+    return false;
+  }
+  else if (attempt.user && !attempt.user.emails[0].verified) {
+    throw new Meteor.Error(400, 'You must verify your email before logging in!  Questions? See our Contact page.');
+  }
+  else {
+    return true;
+  }
 });
 
 // Extending Account Creation
 Accounts.onCreateUser((options, user) => {
 
   // Assign all other properties from the options
-  user = _.extend(user, {
-    firstname: options.firstname,
-    lastname: options.lastname,
-    displayname: `${options.firstname.slice(0,1).toUpperCase()}${options.firstname.slice(1)} ${options.lastname.slice(0,1).toUpperCase()}${options.lastname.slice(1)}`,
-    roles: ['user']
-  });
+  user = _.extend(user, _.omit(options, ['password']));
 
   return user;
 });

@@ -26,6 +26,7 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   const txResult = Transactions.upsert({ _id: transaction._id }, { $set: transaction });
 
   if (process.env.NODE_ENV !== 'production' && txResult.numberAffected === 0) {
+    Meteor.logger.info(`Transaction Failed to store:\n${transaction}`);
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 200;
     return res.end();
@@ -40,6 +41,7 @@ PostRoute.route('/api/register', function(params, req, res, next) {
     }));
   });
 
+  // Create new users
   map(transaction.participants, (user) => registerUser(user, transaction));
 
   res.setHeader('Content-Type', 'application/json');
@@ -49,5 +51,5 @@ PostRoute.route('/api/register', function(params, req, res, next) {
 });
 
 function registerUser(user, transaction) {
-  Meteor.logger.logobj(user);
+
 }
