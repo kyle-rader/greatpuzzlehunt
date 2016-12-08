@@ -4,7 +4,7 @@ import { map, extend, omit } from 'lodash';
 import crypto from 'crypto';
 
 export function registerUser(user, transaction) {
-  const { firstname, lastname, displayname } = makeNames(user.name);
+  const { firstname, lastname } = makeNames(user.name);
   const { email } = user;
   const userOptions = omit(user, ['email']);
 
@@ -14,7 +14,6 @@ export function registerUser(user, transaction) {
     roles: ['user'],
     firstname,
     lastname,
-    displayname,
     username: makeUsername(user),
   });
 
@@ -26,11 +25,10 @@ export function registerUser(user, transaction) {
 }
 
 export function makeNames(name) {
-  const parts = name.match(/\S+/g);
+  const parts = map(name.match(/\S+/g), (part) => (part.charAt(0).toUpperCase() + part.slice(1)));
   return {
-    displayname: map(parts, (part) => (part.charAt(0).toUpperCase() + part.slice(1))).join(' '),
-    firstname: parts[0],
-    lastname: parts[1],
+    firstname: parts[0] || '',
+    lastname: parts[1] || '',
   };
 }
 

@@ -17,7 +17,7 @@ Meteor.publish(null, function() {
         emails: 1,
         firstname: 1,
         lastname: 1,
-        displayname: 1,
+        name: 1,
         roles: 1,
         updatedAt: 1,
       }
