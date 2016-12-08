@@ -46,9 +46,9 @@ export default class TransactionParser {
           email: object['G_EMAIL1'],
           name: object['MA3_NAME'],
           phone: object['G_PHONE1'],
-          isAdult: object['MA3-HH2_A'] == 'Adult',
+          isAdult: object['MA3-HH2_A'] === 'Adult',
           registrationType: object['MA3-REGFEE'].toLowerCase(),
-          photoPermission: object['MA3-HH1'] == 'Yes',
+          photoPermission: object['MA3-HH1'] === 'Yes',
           legalGuardian: {
             name: object['MA3-PGNAME'] || null,
             relation: object['MA3-PGRELATION'] || null,

@@ -5,6 +5,7 @@ import { map, extend } from 'lodash';
 
 import { PostRoute } from '../imports/post-route.js';
 import TransactionParser from './imports/transaction-parser.js';
+import { registerUser } from './imports/register-user.js';
 
 PostRoute.route('/api/register', function(params, req, res, next) {
 
@@ -25,13 +26,6 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   // Store original transaction:
   const txResult = Transactions.upsert({ _id: transaction._id }, { $set: transaction });
 
-  if (process.env.NODE_ENV !== 'production' && txResult.numberAffected === 0) {
-    Meteor.logger.info(`Transaction Failed to store:\n${transaction}`);
-    res.setHeader('Content-Type', 'application/json');
-    res.statusCode = 200;
-    return res.end();
-  }
-
   // Store T-Shirt Orders:
   const tshirts = map(transaction.tshirts, (tshirtOrder) => {
     return Tshirts.insert(extend(tshirtOrder, {
@@ -42,14 +36,13 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   });
 
   // Create new users
-  map(transaction.participants, (user) => registerUser(user, transaction));
+  const usersIds = map(transaction.participants, (user) => registerUser(user, transaction));
+  Transactions.update({ _id: transaction._id }, {
+    $set: { usersIds },
+  });
 
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
   res.end();
 
 });
-
-function registerUser(user, transaction) {
-
-}

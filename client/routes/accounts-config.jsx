@@ -26,7 +26,7 @@ Accounts.onEmailVerificationLink((token, done) => {
 // now that we have their reset token.
 Accounts.onEnrollmentLink((token, done) => {
     done();
-    browserHistory.push('/passwordreset/' + token);
+    browserHistory.push('/setup/' + token);
 });
 
 // Redirect users clicking the reset password URL to the reset password from
