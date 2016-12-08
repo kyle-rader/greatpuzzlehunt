@@ -39,7 +39,7 @@ TopBar = class TopBar extends Component {
       return (
         <div className="ui dropdown item">
           <i className="large settings icon"></i>
-          {this.props.user.displayname}
+          {this.props.user.name}
           <div className="menu topbar-dropdown-menu">
             <Link className="item" to="/profile">
               <Icon name="user" color="green"/>

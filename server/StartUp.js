@@ -29,14 +29,14 @@ Meteor.startup(() => {
         process.exit(1);
     }
 
-    const { username, password, firstname, lastname, displayname } = Meteor.settings.admin;
+    const { username, password, firstname, lastname, name } = Meteor.settings.admin;
 
     const adminId = Accounts.createUser({
       username,
       password,
       firstname,
       lastname,
-      displayname,
+      name,
       roles: ['user', 'admin', 'volunteer'],
       updatedAt: new Date(),
     });

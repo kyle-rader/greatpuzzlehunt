@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import moment from 'moment';
+import { extend } from 'lodash';
 
 Profile = class Profile extends Component {
 
@@ -16,10 +17,11 @@ Profile = class Profile extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      edit: false,
-      updatedAt: this._makeStateFromUser(props.user),
-    };
+    this.state = extend({
+        edit: false,
+      },
+      this._makeStateFromUser(props.user)
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,7 +33,7 @@ Profile = class Profile extends Component {
   _renderMain() {
     return (
     <Container>
-      <PuzzlePageTitle title={`Profile: ${this.props.user.displayname}`} subTitle={`Last Updated: ${this.state.updatedAt}`}/>
+      <PuzzlePageTitle title={`Profile: ${this.props.user.name}`} subTitle={`Last Updated: ${this.state.updatedAt}`}/>
     </Container>
     );
   }

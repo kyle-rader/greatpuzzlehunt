@@ -1,22 +1,25 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
+const { siteName, accountsEmail } = Meteor.settings.public;
+
 // Setup Email Verification
-Accounts.emailTemplates.siteName = 'WWU Puzzle Hunt';
-Accounts.emailTemplates.from = 'WWU Puzzle Hunt <accounts@wwupuzzlehunt.com>';
+Accounts.emailTemplates.siteName = siteName;
+Accounts.emailTemplates.from = accountsEmail;
+
 Accounts.emailTemplates.verifyEmail = {
     subject(user) {
-        return 'WWU Puzzle Hunt Email Verification for: ' + user.profile.firstname;
+        return `${siteName} Email Verification for: ${user.getEmail()}`;
     },
     html(user, url) {
         return `
-<p>Hi ${user.profile.firstname}!</p>
+<p>Hi ${user.firstname}!</p>
 <p>Note your username is <strong>${user.username}</strong>
-<p>Please verify your email address by clicking <a href='${url}'>here</a>.</p>
+<p>Please verify this email address by clicking <a href='${url}'>here</a>.</p>
 <br>
 <p>
 Cheers,
-The WWU Puzzle Hunt Team
+The ${siteName} Team
 </p>`;
     }
 };
@@ -24,15 +27,20 @@ The WWU Puzzle Hunt Team
 // Setup Enrollement/ Migration email
 Accounts.emailTemplates.enrollAccount = {
     subject(user) {
-        return user.profile.firstname + ', welcome to the new WWU Puzzle Hunt site!';
+        return `Welcome to the ${siteName}!`;
     },
     html(user, url) {
-        return `Welcome ${user.profile.firstname}, to the new WWU Great Puzzle Hunt system!
-  In order to finish your account migration please reset your password on the new site by clicking <a href="${url}">here</a>.
-  Team Capitans please reset your team passwords on the team page.
-  If you have any questions or concerns about this process please email <a href="mailto:millie.johnson@wwu.edu">Millie.Johnson@wwu.edu</a>
-  Cheers,
-  The WWU Puzzle Hunt Team`;
+        return `
+<h3>Welcome ${user.firstname}, to the ${siteName}!</h3>
+<p>You are ready to finish setting up your account!</p>
+<p>Get started by <a href="${url}">clicking here</a> to set your username and password.
+Then you will be able to setup your team and invite your friends!
+</p>
+<p>If you have any questions about the account setup process plese email <a href="mailto:kyle@kylerader.ninja">kyle@greatpuzzlehunt.com</a></p>
+<br>
+<br>
+<h4>Welcome to the hunt!</4>
+<p>- The ${siteName} Team`;
     }
 };
 
