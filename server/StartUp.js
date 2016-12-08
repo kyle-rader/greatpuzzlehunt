@@ -29,21 +29,21 @@ Meteor.startup(() => {
         process.exit(1);
     }
 
+    const { username, password, firstname, lastname, displayname } = Meteor.settings.admin;
+
     const adminId = Accounts.createUser({
-      username: Meteor.settings.admin.username,
-      password: Meteor.settings.admin.password,
-      firstname: Meteor.settings.admin.firstname,
-      lastname: Meteor.settings.admin.lastname,
+      username,
+      password,
+      firstname,
+      lastname,
+      displayname,
+      roles: ['user', 'admin', 'volunteer'],
+      updatedAt: new Date(),
     });
 
     Accounts.addEmail(adminId, Meteor.settings.admin.email, true);
 
-    Meteor.users.update({_id: adminId}, {
-      $push: { roles: { $each: ['admin', 'volunteer'] } },
-      $set: { updatedAt: new Date() },
-    });
-
-    adminUser = Meteor.users.findOne({roles: 'admin'});
+    adminUser = Meteor.users.findOne({ roles: 'admin' });
     Meteor.logger.info("New Admin User: ");
   } else {
     Meteor.logger.info("Found Admin User: ");
