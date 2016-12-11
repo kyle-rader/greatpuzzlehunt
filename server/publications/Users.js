@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { isAdmin } from '../../lib/imports/method-helpers.js';
 
 Meteor.users.deny({
   update: () => {
@@ -25,4 +26,8 @@ Meteor.publish(null, function() {
   } else {
       return this.ready();
   }
+});
+
+Meteor.publish('admin.users', function(){
+  return isAdmin() ? Meteor.users.find({}) : [];
 });
