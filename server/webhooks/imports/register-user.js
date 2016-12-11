@@ -18,7 +18,7 @@ export function registerUser(user, transaction) {
   });
 
   const userId = Accounts.createUser(userOptions);
-  Accounts.addEmail(userId, email, false);
+  Accounts.addEmail(userId, email, true);
   Accounts.sendEnrollmentEmail(userId);
 
   return userId;
