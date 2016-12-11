@@ -7,16 +7,13 @@ import moment from 'moment';
 import { extend } from 'lodash';
 
 Profile = class Profile extends Component {
-<<<<<<< HEAD
-
+  
   _makeStateFromUser(user) {
     return {
       updatedAt: user ? moment(user.updatedAt).fromNow() : '',
     };
   }
 
-=======
->>>>>>> 41af6de... Update user list and teams
   constructor(props) {
     super(props);
 
