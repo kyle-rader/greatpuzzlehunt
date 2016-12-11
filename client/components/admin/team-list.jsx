@@ -59,7 +59,15 @@ AdminTeamList = class AdminTeamList extends Component {
 }
 
 AdminTeamList = createContainer((props) => {
+  const teamsHandle = Meteor.subscribe('admin.teams');
+  const loading = !teamsHandle.ready();
+
+  const options = {};
+
+  const teams = Teams.find({}, options).fetch();
+
   return {
-    teams: Teams.find({}).fetch()
+    loading,
+    teams,
   };
 }, AdminTeamList);

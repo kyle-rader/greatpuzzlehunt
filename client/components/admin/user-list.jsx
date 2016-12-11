@@ -4,7 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 AdminUserList = class AdminUserList extends Component {
     _getUserList() {
-        return this.props.users.find().map((user) => {
+        return this.props.users.map((user) => {
             return (
                 <AdminUserListRow user={user} key={user._id}/>
             );
@@ -75,7 +75,15 @@ AdminUserList = class AdminUserList extends Component {
 }
 
 AdminUserList = createContainer((props) => {
+  const usersHandle = Meteor.subscribe('admin.users');
+  const loading = !usersHandle.ready();
+
+  const options = {};
+
+  const users = Meteor.users.find({}, options).fetch();
+
   return {
-    users: Meteor.users
+    loading,
+    users,
   };
 }, AdminUserList);

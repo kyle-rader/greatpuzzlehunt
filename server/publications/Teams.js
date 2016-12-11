@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { isAdmin } from '../../lib/imports/method-helpers.js';
 
 // Meteor.publish('teams', function() {
 //     let fields = {
@@ -25,16 +26,9 @@ import { Meteor } from 'meteor/meteor';
 //   }
 // });
 
-// Meteor.publish('teams.all', function() {
-//   if (!this.userId) return [];
-
-//   let user = Meteor.users.findOne(this.userId);
-
-//   if (user.roles.indexOf('admin') > -1) {
-//     return Teams.find({});
-//   }
-
-// });
+Meteor.publish('admin.teams', function() {
+  return isAdmin() ? Teams.find({}) : [];
+});
 
 // Meteor.publish("team.names", function() {
 //   return Teams.find({}, {fields:{name:1}});
