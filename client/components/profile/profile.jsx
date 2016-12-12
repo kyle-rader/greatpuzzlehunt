@@ -7,12 +7,6 @@ import moment from 'moment';
 import { extend } from 'lodash';
 
 Profile = class Profile extends Component {
-  
-  _makeStateFromUser(user) {
-    return {
-      updatedAt: user ? moment(user.updatedAt).fromNow() : '',
-    };
-  }
 
   constructor(props) {
     super(props);
@@ -24,18 +18,16 @@ Profile = class Profile extends Component {
     );
   }
 
+  _makeStateFromUser(user) {
+    return {
+      updatedAt: user ? moment(user.updatedAt).fromNow() : '',
+    };
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.user) {
       this.setState(this._makeStateFromUser(nextProps.user));
     }
-  }
-
-  _renderMain() {
-    return (
-    <Container>
-      <PuzzlePageTitle title={`Profile: ${this.props.user.name}`} subTitle={`Last Updated: ${this.state.updatedAt}`}/>
-    </Container>
-    );
   }
 
   render() {
@@ -45,6 +37,16 @@ Profile = class Profile extends Component {
       </Authed>
     );
   }
+
+  _renderMain() {
+    return (
+    <Container>
+      <PuzzlePageTitle title={this.props.user.name} subTitle={`Last Updated: ${this.state.updatedAt}`}/>
+      <ProfileEditor user={this.props.user} />
+    </Container>
+    );
+  }
+
 }
 
 Profile = createContainer((props) => {
