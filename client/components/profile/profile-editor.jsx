@@ -30,7 +30,7 @@ ProfileEditor = class ProfileEditor extends Component {
   render() {
     return (
     <Form onSubmit={(e) => this._handleSubmit(e)}>
-      <Header as='h3' content='Account' icon='user' />
+      <Header as='h3' content='Account' icon={<Icon name='user' color='green' />} />
       <Form.Group widths='equal'>
         <Form.Input name='firstname' label='First Name' placeholder='First name' value={this.state.firstname} onChange={(e) => this._handleChange(e)} />
         <Form.Input name='lastname' label='Last Name' placeholder='Last name' value={this.state.lastname} onChange={(e) => this._handleChange(e)} />

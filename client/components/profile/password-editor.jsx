@@ -16,12 +16,12 @@ PasswordEditor = class PasswordEditor extends Component {
   render() {
     return (
     <Form onSubmit={(e) => this._handleSubmit(e)}>
-      <Header as='h3' content='Password' icon='lock' />
+      <Header as='h3' content='Password' icon={<Icon name='lock' color='orange'/>} />
       <Form.Group widths='equal'>
         <Form.Input name='newPassword' label='New Password' type="password" value={this.state.newPassword} onChange={(e) => this._handleChange(e)} />
         <Form.Input name='confirmPassword' label='Confirm Password' type="password" value={this.state.confirmPassword} onChange={(e) => this._handleChange(e)} />
       </Form.Group>
-      <Form.Button type='submit' color="green" content="Save"/>
+      <Form.Button type='submit' color="orange" content="Save"/>
       <Message
        negative
        hidden={!this.state.error}
