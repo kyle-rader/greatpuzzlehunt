@@ -44,6 +44,7 @@ ProfileEditor = class ProfileEditor extends Component {
        negative
        hidden={!this.state.error}
        icon="warning sign"
+       onDismiss={() => this.setState({ error: null })}
        content={this.state.error ? this.state.error.reason : ''}
       />
       <Message

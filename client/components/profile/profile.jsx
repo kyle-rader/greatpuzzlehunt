@@ -43,6 +43,8 @@ Profile = class Profile extends Component {
     <Container>
       <PuzzlePageTitle title={this.props.user.name} subTitle={`Last Updated: ${this.state.updatedAt}`}/>
       <ProfileEditor user={this.props.user} />
+      <br/>
+      <PasswordEditor />
     </Container>
     );
   }
