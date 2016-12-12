@@ -1,112 +1,70 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link, browserHistory } from 'react-router';
+import { Header, Grid, Segment, Form, Message } from 'semantic-ui-react';
 
-
-// Reset Password comp
+const PASSWORD_MIN_LENGTH = 6;
 
 PasswordReset = class PasswordReset extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      err: null
+      newPassword: '',
+      confirmPassword: '',
     };
   }
 
-  componentDidMount() {
-    let form = $(this.refs.resetForm);
-
-    // Init form validation and submission
-    $(form).form({
-      fields: {
-        password: {
-          identifier: 'password',
-          rules: [{
-            type: 'empty',
-            prompt: 'Enter a password'
-          },
-          {
-            type: 'minLength[6]',
-            prompt: 'Min length of 6!'
-          }]
-        },
-        confirmPassword: {
-          identifier: 'confirmPassword',
-          rules: [{
-            type: 'match[password]',
-            prompt: 'Passwords do not match!'
-          }]
-        }
-      },
-      inline: true,
-      onSuccess: (event, fields) => {
-        event.preventDefault();
-
-        // Reset Password
-        Accounts.resetPassword(this.props.params.token, fields.password, (err, result) => {
-          if (err) {
-            this.setState({err: err});
-          } else {
-            browserHistory.push('/profile');
-          }
-        });
-      }
-    });
-  }
-
-  getErrorMsg() {
-    if (this.state.err) {
-      return (
-      <div className="ui error message">
-        {this.state.err.reason}
-      </div>);
-    }
-  }
-
-  getForm() {
-    return (
-    <form id="resetForm" className="ui huge form" ref="resetForm">
-      <div className="ui raised segment transparent-bg">
-        <h2 className="ui orange header">
-          <div className="content">
-            Choose a New Password
-          </div>
-        </h2>
-
-        <div className="field">
-          <div className="ui left icon input">
-            <i className="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" autoComplete="off" defaultValue={this.state.password}/>
-          </div>
-        </div>
-        <div className="field">
-          <div className="ui left icon input">
-            <i className="lock icon"></i>
-            <input type="password" name="confirmPassword" placeholder="Confirm Password" autoComplete="off" defaultValue={this.state.confirmPassword}/>
-          </div>
-        </div>
-
-        <input className="ui fluid large orange submit button" type="submit" value="Reset" />
-      </div>
-    </form>
-    );
-  }
-
   render() {
-
     return (
-    <div className="password-reset ui middle aligned center aligned grid custom-bg red-square">
-        <div className="column">
+    <Grid className='password-reset' textAlign='center' verticalAlign='middle'>
+      <Grid.Row columns='1'>
+        <Grid.Column>
+          <Segment raised>
+            <Form onSubmit={(e) => this._handleSubmit(e)}>
+              <Header as='h2' color='orange' content='Reset Password'/>
+              <Form.Input name='newPassword' icon='lock' iconPosition='left' placeholder='Password' type="password" value={this.state.newPassword} onChange={(e) => this._handleChange(e)}/>
+              <Form.Input name='confirmPassword' icon='lock' iconPosition='left' placeholder='Confirm Password' type="password" value={this.state.confirmPassword} onChange={(e) => this._handleChange(e)}/>
+              <Form.Button type='submit' color='orange' content='Reset' fluid/>
+              <Message
+                negative
+                hidden={!this.state.error}
+                icon='warning sign'
+                onDismiss={() => this.setState({ error: null })}
+                content={this.state.error ? this.state.error.reason : ''}
+              />
+            </Form>
+          </Segment>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>);
+  }
 
-            {this.getForm()}
-            {this.getErrorMsg()}
+  _handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
 
-            <div className="ui message">
-              <Link to="/login">Log In</Link>
-            </div>
-        </div>
-    </div>
-    );
+  _handleSubmit(e) {
+    e.preventDefault();
+
+    const { newPassword, confirmPassword } = this.state;
+
+    if (newPassword.length < PASSWORD_MIN_LENGTH) {
+      return this.setState({ error: {
+        reason: `Password must be at least ${PASSWORD_MIN_LENGTH} characters long!`,
+      }});
+    } else if (newPassword !== confirmPassword) {
+      return this.setState({ error: {
+        reason: 'Password do not match!',
+      }});
+    }
+
+    // Call Meteor method to create account.
+    Accounts.resetPassword(this.props.params.token, newPassword, (error, result) => {
+      if (error) return this.setState({ error });
+
+      browserHistory.push('/profile');
+    });
   }
 }
