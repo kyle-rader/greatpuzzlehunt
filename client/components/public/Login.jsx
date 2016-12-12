@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Container, Grid, Form, Segment, Header, Message } from 'semantic-ui-react';
 
-// Define our login comp
-
 Login = class Login extends Component {
 
   constructor(props) {
