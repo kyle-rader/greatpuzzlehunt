@@ -33,6 +33,7 @@ Meteor.publish(null, function() {
         registrationType: 1,
         photoPermission: 1,
         legalGuardian: 1,
+        teamId: 1,
       }
     });
   } else {

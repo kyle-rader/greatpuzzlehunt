@@ -45,11 +45,11 @@ TopBar = class TopBar extends Component {
               <Icon name="user" color="green"/>
               Profile
             </Link>
-            <Link className="item" to="/gallery">
+            <Link className="item" to="/team">
               <Icon name="users" color="blue"/>
               Team
             </Link>
-            <Link className="item" to="/contact">
+            <Link className="item" to="/game">
               <Icon name="puzzle" color="violet"/>
               Game
             </Link>
