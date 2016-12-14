@@ -2,6 +2,7 @@
  * Meteor Startup:
  * For running appliction startup code
 */
+import { cloneDeep } from 'lodash';
 
 Meteor.startup(() => {
 
@@ -9,47 +10,29 @@ Meteor.startup(() => {
     return;
 
   // Check for Admin account
-  let adminUser = Meteor.users.findOne({roles: 'admin'});
+  let adminUser = Meteor.users.findOne({ roles: 'admin' });
 
   if (adminUser === undefined) {
-    if (Meteor.settings.admin === undefined) {
-        Meteor.logger.error("No \"admin\" object found in \"Meteor.settings\"");
-        process.exit(1);
-    }
-    else if (Meteor.settings.admin.username === undefined) {
-        Meteor.logger.error("No \"username\" field found in \"Meteor.settings.admin\"");
-        process.exit(1);
-    }
-    else if (Meteor.settings.admin.email === undefined) {
-        Meteor.logger.error("No \"email\" field found in \"Meteor.settings.admin\"");
-        process.exit(1);
-    }
-    else if (Meteor.settings.admin.password === undefined) {
-        Meteor.logger.error("No \"password\" field found in \"Meteor.settings.admin\"");
-        process.exit(1);
+
+    if (!Meteor.settings.admin) {
+      Meteor.logger.error('No "admin" object found in "Meteor.settings"');
+      process.exit(1);
     }
 
-    const { username, password, firstname, lastname, name } = Meteor.settings.admin;
+    const adminProps = cloneDeep(Meteor.settings.admin);
+    adminProps.updatedAt = new Date();
 
-    const adminId = Accounts.createUser({
-      username,
-      password,
-      firstname,
-      lastname,
-      name,
-      roles: ['user', 'admin', 'volunteer'],
-      updatedAt: new Date(),
-    });
-
+    const adminId = Accounts.createUser(adminProps);
     Accounts.addEmail(adminId, Meteor.settings.admin.email, true);
 
     adminUser = Meteor.users.findOne({ roles: 'admin' });
     Meteor.logger.info("New Admin User: ");
+
   } else {
     Meteor.logger.info("Found Admin User: ");
   }
-  Meteor.logger.logobj(adminUser);
 
+  Meteor.logger.logobj(adminUser);
 
   // const ONE_HOUR = 3600000;
   // const ONE_SEC = 1000;
