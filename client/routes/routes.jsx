@@ -32,7 +32,7 @@ export const renderRoutes = () => (
       <Route path='profile' component={Profile}/>
 
       <Route path='team'>
-        <IndexRoute component={Team}/>
+        <IndexRoute component={TeamManager}/>
         <Route path='create' component={TeamCreator}/>
         <Route path='join' component={TeamBrowser}/>
       </Route>

@@ -5,7 +5,6 @@ import { Container, Grid, Form, Icon } from 'semantic-ui-react';
 TeamManager = class TeamManager extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
@@ -17,7 +16,3 @@ TeamManager = class TeamManager extends Component {
     );
   }
 }
-
-TeamManager.propTypes = {
-  user: React.PropTypes.object.isRequired,
-};

@@ -51,8 +51,6 @@ Profile = class Profile extends Component {
 
 }
 
-Profile = createContainer((props) => {
-  return {
+Profile = createContainer((props) => ({
     user: Meteor.user()
-  };
-}, Profile);
+}), Profile);
