@@ -6,12 +6,13 @@ Meteor.publish('admin.teams', function() {
 });
 
 Meteor.publish('teams.myTeam', function() {
-  const { userId } = this.userId;
+  const { userId } = this;
 
   if (!userId) {
     return this.ready();
   }
 
-  const user = Meteor.users.findOne({ _id: userId });
-  return Teams.find({ members: user.teamId });
+  return Teams.find({
+    members: userId,
+  });
 });
