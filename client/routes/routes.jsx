@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import makeAuthed from '../components/app/imports/make-authed.js';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
@@ -31,7 +32,7 @@ export const renderRoutes = () => (
 
       <Route path='profile' component={Profile}/>
 
-      <Route path='team'>
+      <Route path='team' component={makeAuthed('user')}>
         <IndexRoute component={TeamManager}/>
         <Route path='create' component={TeamCreator}/>
         <Route path='join' component={TeamBrowser}/>
