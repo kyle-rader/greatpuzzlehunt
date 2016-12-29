@@ -14,21 +14,25 @@ TeamCreator = class TeamCreator extends Component {
       name: '',
       password: '',
       division: '',
-      divisionSelected: false,
       invites: [],
     };
     this._checkProps(this.props);
     this.divisions = [
-      { text: 'WWU Student', value: 'wwu-student' },
-      { text: 'WWU Alumni', value: 'wwu-alumni' },
-      { text: 'Post-Secondary', value: 'post-secondary' },
-      { text: 'High School', value: 'high-school' },
-      { text: 'Open', value: 'open' },
+      { name: 'WWU Student (All members must be current WWU students)', value: 'wwu-student' },
+      { name: 'WWU Alumni (Must have 4 or more alumni members)', value: 'wwu-alumni' },
+      { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
+      { name: 'High School (Must all be current high school students)', value: 'high-school' },
+      { name: 'Open (For mixed teams, community members, family, or anyone else!)', value: 'open' },
     ];
+
+    this._handleChange = (e, { name: dataName, value: dataValue } = {}) => {
+      const name = e.target.name || dataName;
+      const value = e.target.value || dataValue;
+      this.setState({ [name]: value });
+    };
   }
 
   _checkProps(props) {
-    console.log('Checking props', props);
     if (props.team) {
       browserHistory.push('/team');
     }
@@ -45,10 +49,14 @@ TeamCreator = class TeamCreator extends Component {
         <Segment basic>
           <Form widths='equal' size='big' onSubmit={(e, data) => this._handleSubmit(e, data)}>
             <Form.Group>
-              <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={(e) => this._handleChange(e)} />
-              <Form.Input name='password' label='Team Password' placeholder='Team Password' value={this.state.password} onChange={(e) => this._handleChange(e)} />
+              <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={this._handleChange} />
+              <Form.Input name='password' label='Team Password' placeholder='Team Password' value={this.state.password} onChange={this._handleChange} />
             </Form.Group>
-            <Form.Select name='division' label='Team Dvision' placeholder='Select a Division' options={this.divisions} onChange={(e) => this._handleChange(e)}/>
+            <Form.Field>
+              <label>Team Division <br/><small>This determines your prize group</small></label>
+              <br/>
+              {this._renderDivisionRadio()}
+            </Form.Field>
             <Form.Button color='blue' type='submit'>Create Team</Form.Button>
           </Form>
           <Message
@@ -61,6 +69,10 @@ TeamCreator = class TeamCreator extends Component {
         </Segment>
       </Container>
     );
+  }
+
+  _renderDivisionRadio() {
+    return this.divisions.map((division) => (<Form.Radio key={division.value} label={division.name} name='division' value={division.value} checked={this.state.division === division.value} onChange={this._handleChange}/>));
   }
 
   _handleSubmit(e, formData) {
@@ -78,7 +90,7 @@ TeamCreator = class TeamCreator extends Component {
     else if (password.length < 6) {
       return this.setState({ error: { reason: 'Your Team Password must be at least 6 characters long' } });
     }
-    else if (!this.state.divisionSelected) {
+    else if (!this.state.division) {
       return this.setState({ error: { reason: 'You must select a team division' } });
     }
 
@@ -88,17 +100,6 @@ TeamCreator = class TeamCreator extends Component {
     //   this.setState({ success: 'Account Saved!', error: null });
     //   Meteor.setTimeout(() => this.setState({ success: null }), 2000);
     // });
-  }
-
-  _handleChange(e) {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-
-    console.log(`${name} has changed to ${value}`, e);
-
-    if (name === 'division' && !this.state.divisionSelected) {
-      this.setState({ divisionSelected: true });
-    }
   }
 
 }
