@@ -11,9 +11,6 @@ Meteor.publish(null, function() {
   const { userId } = this;
 
   if (userId) {
-
-    console.log(`Subscript called for user ${userId}`);
-
     return Meteor.users.find({
       _id: userId
     }, {
