@@ -8,11 +8,14 @@ Meteor.users.deny({
 });
 
 Meteor.publish(null, function() {
-  let currentUser = this.userId;
+  const { userId } = this;
 
-  if (currentUser) {
+  if (userId) {
+
+    console.log(`Subscript called for user ${userId}`);
+
     return Meteor.users.find({
-      _id: currentUser
+      _id: userId
     }, {
       fields: {
         emails: 1,
