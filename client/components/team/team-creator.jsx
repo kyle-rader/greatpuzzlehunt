@@ -93,7 +93,7 @@ TeamCreator = class TeamCreator extends Component {
       return this.setState({ error: { reason: 'You must select a team division' } });
     }
 
-    Meteor.call('teams.create', formData, (error, result) => {
+    Meteor.call('teams.upsert', formData, (error, result) => {
       if (error) return this.setState({ error });
     });
   }
