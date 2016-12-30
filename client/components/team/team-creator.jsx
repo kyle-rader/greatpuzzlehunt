@@ -79,7 +79,6 @@ TeamCreator = class TeamCreator extends Component {
     e.preventDefault();
 
     const { name, password, division } = formData;
-    console.log(formData);
 
     if (!name) {
       return this.setState({ error: { reason: 'You must choose a Team Name' } });
@@ -94,12 +93,9 @@ TeamCreator = class TeamCreator extends Component {
       return this.setState({ error: { reason: 'You must select a team division' } });
     }
 
-    // Meteor.call('user.update.account', fields, (error, result) => {
-    //   if (error) return this.setState({ error });
-
-    //   this.setState({ success: 'Account Saved!', error: null });
-    //   Meteor.setTimeout(() => this.setState({ success: null }), 2000);
-    // });
+    Meteor.call('teams.create', formData, (error, result) => {
+      if (error) return this.setState({ error });
+    });
   }
 
 }
