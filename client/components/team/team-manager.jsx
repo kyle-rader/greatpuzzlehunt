@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Container, Grid, Form, Icon } from 'semantic-ui-react';
+import { Container, Segment, Grid, Form, Icon } from 'semantic-ui-react';
 import { makeTeamComp } from './imports/team-helpers.js';
 
 TeamManager = class TeamManager extends Component {
@@ -14,15 +14,21 @@ TeamManager = class TeamManager extends Component {
 
     return (
       <Container>
-        <PuzzlePageTitle title='Team' />
+        <PuzzlePageTitle title={this._getTitle()} />
         {content}
       </Container>
     );
   }
 
+  _getTitle() {
+    return this.props.team ? `Team: ${this.props.team.name}` : 'Team';
+  }
+
   _renderMain() {
     return (
-      <h3>Team manager UI</h3>
+      <Segment basic>
+        <TeamEditor showsSuccess={true} team={this.props.team}/>
+      </Segment>
     );
   }
 }
