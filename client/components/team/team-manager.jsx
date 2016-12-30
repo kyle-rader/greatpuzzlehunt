@@ -2,11 +2,20 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Container, Segment, Grid, Form, Icon } from 'semantic-ui-react';
 import { makeTeamComp } from './imports/team-helpers.js';
+import moment from 'moment';
 
 TeamManager = class TeamManager extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      lastUpdated: '',
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.team) {
+      this.setState({ lastUpdated: moment(nextProps.team.updatedAt).fromNow() });
+    }
   }
 
   render() {
@@ -14,7 +23,7 @@ TeamManager = class TeamManager extends Component {
 
     return (
       <Container>
-        <PuzzlePageTitle title={this._getTitle()} />
+        <PuzzlePageTitle title={this._getTitle()} subTitle={`Last Updated: ${this.state.lastUpdated}`}/>
         {content}
       </Container>
     );
