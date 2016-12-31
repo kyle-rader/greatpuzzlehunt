@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Card, Icon } from 'semantic-ui-react';
+import { Card, Icon, Button } from 'semantic-ui-react';
 
 TeamMembers = class TeamMembers extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ TeamMembers = class TeamMembers extends Component {
             {member.name}
           </Card.Header>
           <Card.Meta>
-            {member.phone} | {member.email}
+            {member.phone} <br/>{member.getEmail()}
           </Card.Meta>
         </Card.Content>
         <Card.Content extra>
