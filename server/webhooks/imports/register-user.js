@@ -21,7 +21,7 @@ export function registerUser(user, transaction) {
   const userId = Accounts.createUser(userOptions);
   Accounts.addEmail(userId, email, true);
   Accounts.sendEnrollmentEmail(userId);
-  computeDistance(userId, userOptions);
+  computeDistanceTraveled(userId, userOptions);
 
   return userId;
 }
