@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Container, Segment, Grid, Form, Icon } from 'semantic-ui-react';
+import { Container, Segment, Header, Grid, Form, Icon } from 'semantic-ui-react';
 import { makeTeamComp } from './imports/team-helpers.js';
 import moment from 'moment';
 
@@ -36,6 +36,7 @@ TeamManager = class TeamManager extends Component {
   _renderMain() {
     return (
       <Segment basic>
+        <Header as='h2' icon={<Icon name='settings' color='blue'/>} content='Settings'/>
         <TeamEditor showsSuccess={true} team={this.props.team}/>
       </Segment>
     );
