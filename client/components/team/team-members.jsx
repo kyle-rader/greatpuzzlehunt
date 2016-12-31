@@ -23,7 +23,7 @@ TeamMembers = class TeamMembers extends Component {
             {member.name}
           </Card.Header>
           <Card.Meta>
-            {member.phone} <br/>{member.getEmail()}
+            {member.getEmail()}<br/>{member.phone}
           </Card.Meta>
         </Card.Content>
         <Card.Content extra>
