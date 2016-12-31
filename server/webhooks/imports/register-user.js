@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { map, extend, omit } from 'lodash';
 import crypto from 'crypto';
+import googleDistanceMatrix from 'google-distance-matrix';
 
 export function registerUser(user, transaction) {
   const { firstname, lastname } = makeNames(user.name);
@@ -20,8 +21,19 @@ export function registerUser(user, transaction) {
   const userId = Accounts.createUser(userOptions);
   Accounts.addEmail(userId, email, true);
   Accounts.sendEnrollmentEmail(userId);
+  computeDistanceTraveled(userId, userOptions);
 
   return userId;
+}
+
+function computeDistanceTraveled(userId, { address, city, state, zip }) {
+  const origins = ['48.7335, -122.4873'];
+  const destinations = [`${address} ${zip}`];
+
+  googleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
+    const distance = distances.rows[0].elements[0].distance.value
+    Meteor.users.update({ _id: userId }, { $set: { distanceTraveled: distance } });
+  })
 }
 
 export function makeNames(name) {
