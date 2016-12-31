@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { map, extend, omit } from 'lodash';
 import crypto from 'crypto';
-import gmaps from 'google-distance-matrix';
+import googleDistanceMatrix from 'google-distance-matrix';
 
 export function registerUser(user, transaction) {
   const { firstname, lastname } = makeNames(user.name);
@@ -26,21 +26,15 @@ export function registerUser(user, transaction) {
   return userId;
 }
 
-function computeDistance(userId, { address, city, state, zip }) {
+function computeDistanceTraveled(userId, { address, city, state, zip }) {
   const origins = ['48.7335, -122.4873'];
   const destinations = [`${address} ${zip}`];
 
-  gmaps.matrix(origins, destinations, function (err, distances) {
+  googleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
     const distance = distances.rows[0].elements[0].distance.value
-    Meteor.users.update({ _id: user._id }, { $set: { distanceTraveled: distance } });
+    Meteor.users.update({ _id: userId }, { $set: { distanceTraveled: distance } });
   })
 }
-
-Meteor.methods({
-  'test.distance'() {
-    computeDistance('12345', { address: '23714 NE 61st St', city: 'redmond', state: 'WA', zip: '98053' });
-  },
-});
 
 export function makeNames(name) {
   const parts = map(name.match(/\S+/g), (part) => (part.charAt(0).toUpperCase() + part.slice(1)));
