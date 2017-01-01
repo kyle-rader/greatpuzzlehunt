@@ -34,28 +34,22 @@ TeamManager = class TeamManager extends Component {
   }
 
   _renderMain() {
-    return [
-    (
+    return (
       <Segment basic key='settings'>
-        <Header as='h2' icon={<Icon name='settings' color='black'/>} content='Settings'/>
+
+        <Header as='h2' icon={<Icon name='settings' color='violet'/>} content='Settings'/>
         <TeamEditor showsSuccess={true} team={this.props.team}/>
-      </Segment>
-    ),
-    (
-      <Segment basic key='members'>
-        <Header as='h2' content='Invite more members'/>
+
+        <Header as='h2' icon={<Icon name='add user' color='green'/>} content='Invite more members'/>
         <TeamInviter team={this.props.team}/>
+
         <Header as='h2' icon={<Icon name='users' color='blue'/>} content='Members'/>
         <TeamMembers team={this.props.team}/>
-      </Segment>
-     ),
-    (
-      <Segment basic key='invites'>
+
         <Header as='h2' icon={<Icon name='mail outline' color='orange'/>} content='Pending Invites'/>
         <TeamInvites team={this.props.team}/>
       </Segment>
-     ),
-    ];
+    );
   }
 }
 
