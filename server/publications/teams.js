@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { isAdmin } from '../../lib/imports/method-helpers.js';
 
 Meteor.publish('admin.teams', function() {
-  return isAdmin() ? Teams.find({}) : this.ready();
+  return isAdmin(this.userId) ? Teams.find({}) : this.ready();
 });
 
 Meteor.publish('teams.myTeam', function() {

@@ -32,15 +32,9 @@ Meteor.users.deny({
 Meteor.publish(null, function() {
   const { userId } = this;
 
-  if (userId) {
-    return Meteor.users.find({
-      _id: userId
-    }, {
-      fields: USER_FIELDS,
-    });
-  } else {
-    return this.ready();
-  }
+  if (!userId) return this.ready();
+
+  return Meteor.users.find({ _id: userId }, { fields: USER_FIELDS });
 });
 
 Meteor.publish('users.myTeam', function() {
@@ -53,6 +47,6 @@ Meteor.publish('users.myTeam', function() {
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
 });
 
-Meteor.publish('admin.users', function(){
-  return isAdmin() ? Meteor.users.find({}) : this.ready();
+Meteor.publish('admin.users', function() {
+  return isAdmin(this.userId) ? Meteor.users.find({}) : this.ready();
 });
