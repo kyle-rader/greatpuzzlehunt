@@ -20,8 +20,15 @@ TeamInviter = class TeamInviter extends Component {
   _renderInviteForm() {
     return (
       <Form onSubmit={(e, d) => this._handleSubmit(e, d)}>
-        <Form.Input type='text' name='email' label="Friend's Email" value={this.state.email} onChange={(e) => this._handleChange(e)}/>
+        <Form.Input type='text' name='email' placeholder="Friend's Email" label="Friend's Email" value={this.state.email} onChange={(e) => this._handleChange(e)}/>
         <Form.Button type='submit' content='Invite'/>
+        <Message
+         negative
+         hidden={!this.state.error}
+         icon="warning sign"
+         onDismiss={() => this.setState({ error: null })}
+         content={this.state.error ? this.state.error.reason : ''}
+        />
       </Form>
     );
   }
@@ -32,7 +39,13 @@ TeamInviter = class TeamInviter extends Component {
   }
 
   _handleSubmit(e, formData) {
+    e.preventDefault();
 
+    Meteor.call('teams.inviteMember', this.state.email, (error, result) => {
+      if (error) return this.setState({ error });
+
+      this.setState({ email: '', error: null });
+    });
   }
 }
 
