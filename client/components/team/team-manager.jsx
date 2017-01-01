@@ -43,13 +43,15 @@ TeamManager = class TeamManager extends Component {
     ),
     (
       <Segment basic key='members'>
+        <Header as='h2' content='Invite more members'/>
+        <TeamInviter team={this.props.team}/>
         <Header as='h2' icon={<Icon name='users' color='blue'/>} content='Members'/>
         <TeamMembers team={this.props.team}/>
       </Segment>
      ),
     (
       <Segment basic key='invites'>
-        <Header as='h2' icon={<Icon name='mail outline' color='orange'/>} content='Invites'/>
+        <Header as='h2' icon={<Icon name='mail outline' color='orange'/>} content='Pending Invites'/>
         <TeamInvites team={this.props.team}/>
       </Segment>
      ),
