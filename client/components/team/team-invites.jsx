@@ -39,7 +39,7 @@ TeamInvites = class TeamInvites extends Component {
 TeamInvites = createContainer(({ team }) => {
   const invitesHandle = Meteor.subscribe('teams.invites');
   const ready = invitesHandle.ready();
-  const invites = Invites.find({ teamId: team._id }).fetch();
+  const invites = Invites.find({ teamId: team._id, accepted: false }).fetch();
 
   return {
     ready,
