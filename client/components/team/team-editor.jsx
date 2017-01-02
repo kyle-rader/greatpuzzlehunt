@@ -37,7 +37,7 @@ TeamEditor = class TeamEditor extends Component {
 
   render() {
     return (
-      <Form widths='equal' size='big' onSubmit={(e, data) => this._handleSubmit(e, data)}>
+      <Form widths='equal' onSubmit={(e, data) => this._handleSubmit(e, data)}>
         <Form.Group>
           <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={this._handleChange} />
           <Form.Input name='password' label='Team Password' placeholder='Team Password' value={this.state.password} onChange={this._handleChange} />
