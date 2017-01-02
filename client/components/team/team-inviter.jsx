@@ -41,7 +41,7 @@ TeamInviter = class TeamInviter extends Component {
   _handleSubmit(e, formData) {
     e.preventDefault();
 
-    Meteor.call('teams.inviteMember', this.state.email, (error, result) => {
+    Meteor.call('teams.inviteMember', this.props.team, this.state.email, (error, result) => {
       if (error) return this.setState({ error });
 
       this.setState({ email: '', error: null });
