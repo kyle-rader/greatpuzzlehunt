@@ -37,17 +37,17 @@ TeamManager = class TeamManager extends Component {
     return (
       <Segment basic key='settings'>
 
-        <Header as='h2' icon={<Icon name='settings' color='violet'/>} content='Settings'/>
+        <Header as='h3' icon={<Icon name='settings' color='violet'/>} content='Settings'/>
         <TeamEditor showsSuccess={true} team={this.props.team}/>
 
-        <Header as='h2' icon={<Icon name='add user' color='green'/>} content='Invite more members'/>
-        <TeamInviter team={this.props.team}/>
+        <Header as='h3' icon={<Icon name='add user' color='green'/>} content='Invite more members'/>
+        <TeamInviter team={this.props.team} user={this.props.user}/>
 
-        <Header as='h2' icon={<Icon name='users' color='blue'/>} content='Members'/>
-        <TeamMembers team={this.props.team}/>
+        <Header as='h3' icon={<Icon name='users' color='blue'/>} content='Members'/>
+        <TeamMembers team={this.props.team} user={this.props.user}/>
 
-        <Header as='h2' icon={<Icon name='mail outline' color='orange'/>} content='Pending Invites'/>
-        <TeamInvites team={this.props.team}/>
+        <Header as='h3' icon={<Icon name='mail outline' color='orange'/>} content='Pending Invites'/>
+        <TeamInvites team={this.props.team} user={this.props.user}/>
       </Segment>
     );
   }
