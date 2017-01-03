@@ -1,26 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Segment, Header, Icon } from 'semantic-ui-react';
+import { Segment, Message, Header, Icon, Button } from 'semantic-ui-react';
+import { makeTeamComp } from '../team/imports/team-helpers.js';
 
 ProfileTeamPreview = class ProfileTeamPreview extends Component {
   constructor(props) {
     super(props);
-    this.state = this._makeStateFromProps(props);
-  }
-
-  _makeStateFromProps(props) {
-    return {
-      hasTeam: (props.user && props.user.teamId),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(this._makeStateFromProps(nextProps));
   }
 
   render() {
-    const content = this.state.hasTeam ? this._renderWithTeam() : this._renderWithoutTeam();
+    const content = this.props.team ? this._renderWithTeam() : this._renderWithoutTeam();
 
     return (
       <Segment basic>
@@ -31,8 +21,15 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
   }
 
   _renderWithTeam() {
+    const size = this.props.team.members.length;
     return (
-    <div></div>
+      <Message info>
+        <Message.Header>{this.props.team.name}</Message.Header>
+        <Message.Content>
+          <p>{size} team member{size > 1 ? '' : 's'}.</p>
+          <Link to='/team'><Button content='View Team'/></Link>
+        </Message.Content>
+      </Message>
     );
   }
 
@@ -42,6 +39,4 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
 
 }
 
-ProfileTeamPreview.propTypes = {
-  user: React.PropTypes.object.isRequired,
-};
+ProfileTeamPreview = makeTeamComp(ProfileTeamPreview);
