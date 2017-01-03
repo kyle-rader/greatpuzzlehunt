@@ -15,15 +15,17 @@ TeamManager = class TeamManager extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.team) {
       this.setState({ lastUpdated: moment(nextProps.team.updatedAt).fromNow() });
+    } else {
+      this.setState({ lastUpdated: null });
     }
   }
 
   render() {
-    const content = this.props.team ? this._renderMain() : <NoTeamMessage />;
+    const content = this.props.team ? this._renderMain() : <Segment basic><NoTeamMessage /></Segment>;
 
     return (
       <Container>
-        <PuzzlePageTitle title={this._getTitle()} subTitle={`Last Updated: ${this.state.lastUpdated}`}/>
+        <PuzzlePageTitle title={this._getTitle()} subTitle={this.state.lastUpdate ? `Last Updated: ${this.state.lastUpdated}` : ''}/>
         {content}
       </Container>
     );
@@ -48,6 +50,9 @@ TeamManager = class TeamManager extends Component {
 
         <Header as='h3' icon={<Icon name='mail outline' color='orange'/>} content='Pending Invites'/>
         <TeamInvites team={this.props.team} user={this.props.user}/>
+
+        <Header as='h3' icon={<Icon name='warning sign' color='red'/>} content='Danger Zone'/>
+        <TeamDangerZone team={this.props.team} user={this.props.user}/>
       </Segment>
     );
   }
