@@ -9,6 +9,7 @@ TeamInvites = class TeamInvites extends Component {
     super(props);
     this.state = {
       success: null,
+      error: null,
     };
   }
 
@@ -17,6 +18,13 @@ TeamInvites = class TeamInvites extends Component {
       return (
         <Card.Group>
           {this._renderInvites()}
+          <Message
+           negative
+           hidden={!this.state.error}
+           icon="warning sign"
+           onDismiss={() => this.setState({ error: null })}
+           content={this.state.error ? this.state.error.reason : ''}
+          />
           <Message
            positive
            hidden={!this.state.success}
@@ -43,7 +51,7 @@ TeamInvites = class TeamInvites extends Component {
         </Card.Content>
         <Card.Content extra>
           <Button floated='left' icon='mail' color='green' inverted content='Resend' onClick={() => this._handleResendClick(invite.email)}/>
-          <Button floated='right' icon='trash' color='red' inverted content='Revoke'/>
+          <Button floated='right' icon='trash' color='red' inverted content='Delete' onClick={() => this._handleDeleteClick(invite.email)}/>
         </Card.Content>
       </Card>
     ));
@@ -54,6 +62,17 @@ TeamInvites = class TeamInvites extends Component {
       if (error) return this.setState({ error });
 
       this.setState({ success: `Invite resent to ${email}` });
+      Meteor.setTimeout(() => {
+        this.setState({ success: null });
+      }, 6000);
+    });
+  }
+
+  _handleDeleteClick(email) {
+    Meteor.call('teams.deleteInvite', this.props.team, email, (error, result) => {
+      if (error) return this.setState({ error });
+
+      this.setState({ success: `Invite for ${email} has been deleted!` });
       Meteor.setTimeout(() => {
         this.setState({ success: null });
       }, 6000);
