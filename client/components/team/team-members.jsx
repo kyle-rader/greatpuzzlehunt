@@ -37,30 +37,42 @@ TeamMembers = class TeamMembers extends Component {
   }
 
   _renderMembers() {
-    return this.props.members.map((member) => (
-      <Card key={member._id}>
-        <Card.Content>
-          <Card.Header>
-            {member.name}
-          </Card.Header>
-          <Card.Meta>
-            {member.getEmail()}<br/>{member.phone}
-          </Card.Meta>
-        </Card.Content>
-        <Card.Content extra>
-          <Button floated='right' content='Remove' icon='remove user' labelPosition='right' onClick={() => this._handleRemoveUser(member)}></Button>
-        </Card.Content>
-      </Card>
-    ));
+    return this.props.members.map((member) => {
+      let deleteBtn = null;
+
+      if (this.props.user._id === this.props.team.owner) {
+        deleteBtn = (
+          <Card.Content extra>
+            <Button floated='right' content='Remove' icon='remove user' labelPosition='right' onClick={() => this._handleRemoveUser(member)}></Button>
+          </Card.Content>
+        );
+      }
+
+      return (
+        <Card key={member._id}>
+          <Card.Content>
+            <Card.Header>
+              {member.name}
+            </Card.Header>
+            <Card.Meta>
+              {member.getEmail()}<br/>{member.phone}
+            </Card.Meta>
+          </Card.Content>
+          {deleteBtn}
+        </Card>
+      );
+    });
   }
 
   _handleRemoveUser(member) {
-    Meteor.call('teams.removeMember', member, (error, result) => {
-      if (error) return this.setState({ error });
+    if (confirm(`Are you sure you want to remove ${member.name} from your team?`)) {
+      Meteor.call('teams.removeMember', member, (error, result) => {
+        if (error) return this.setState({ error });
 
-      this.setState({ success: `${member.name} has been removed from the team!`, error: null });
-      Meteor.setTimeout(() => this.setState({ success: null }), 6000);
-    });
+        this.setState({ success: `${member.name} has been removed from the team!`, error: null });
+        Meteor.setTimeout(() => this.setState({ success: null }), 6000);
+      });
+    }
   }
 }
 
