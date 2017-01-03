@@ -1,16 +1,37 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Card, Icon, Button } from 'semantic-ui-react';
+import { Card, Icon, Button, Message } from 'semantic-ui-react';
 
 TeamMembers = class TeamMembers extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      success: null,
+      error: null,
+    };
   }
 
   render() {
     if (this.props.ready) {
-      return <Card.Group>{this._renderMembers()}</Card.Group>;
+      return (
+        <Card.Group>
+          {this._renderMembers()}
+          <Message
+           negative
+           hidden={!this.state.error}
+           icon="warning sign"
+           onDismiss={() => this.setState({ error: null })}
+           content={this.state.error ? this.state.error.reason : ''}
+          />
+          <Message
+           positive
+           hidden={!this.state.success || !this.props.showsSuccess}
+           icon="check"
+           content={this.state.success}
+          />
+        </Card.Group>
+      );
     }
     return <Loading />;
   }
@@ -27,10 +48,19 @@ TeamMembers = class TeamMembers extends Component {
           </Card.Meta>
         </Card.Content>
         <Card.Content extra>
-          <Button floated='right'>Kick</Button>
+          <Button floated='right' content='Remove' icon='remove user' labelPosition='right' onClick={() => this._handleRemoveUser(member)}></Button>
         </Card.Content>
       </Card>
     ));
+  }
+
+  _handleRemoveUser(member) {
+    Meteor.call('teams.removeMember', member, (error, result) => {
+      if (error) return this.setState({ error });
+
+      this.setState({ success: `${member.name} has been removed from the team!`, error: null });
+      Meteor.setTimeout(() => this.setState({ success: null }), 6000);
+    });
   }
 }
 
