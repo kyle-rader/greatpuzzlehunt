@@ -21,7 +21,7 @@ TeamInviter = class TeamInviter extends Component {
     return (
       <Form onSubmit={(e, d) => this._handleSubmit(e, d)}>
         <Form.Input type='text' name='email' placeholder="Friend's Email" label="Friend's Email" value={this.state.email} onChange={(e) => this._handleChange(e)}/>
-        <Form.Button type='submit' content='Invite'/>
+        <Form.Button type='submit' content='Invite' icon='send' labelPosition='right'/>
         <Message
          negative
          hidden={!this.state.error}

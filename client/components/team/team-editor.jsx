@@ -47,7 +47,7 @@ TeamEditor = class TeamEditor extends Component {
           <br/>
           {this._renderDivisionRadio()}
         </Form.Field>
-        <Form.Button type='submit'>{this.props.team ? 'Save' : 'Create'} Team</Form.Button>
+        <Form.Button type='submit' icon='save' labelPosition='right' content={this.props.team ? 'Save Team' : 'Create Team'}/>
         <Message
          negative
          hidden={!this.state.error}
