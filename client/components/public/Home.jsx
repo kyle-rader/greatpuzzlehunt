@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 Home = class home extends Component {
 
@@ -54,15 +55,15 @@ Home = class home extends Component {
           <h1>Grab Some Friends<br/>and Have an Adventure!</h1>
           <h2>Solve Puzzles and Win Prizes!</h2>
           <div className="buttons">
-            <a className="ui large green button" href="/register">
+            <Link className="ui large green button" to="/register">
               Register
-            </a>
-            <a className="ui large blue button" href="/login">
+            </Link>
+            <Link className="ui large blue button" to="/login">
               Log In
-            </a>
-            <a className="ui large orange button" href="/info">
+            </Link>
+            <Link className="ui large orange button" to="/info">
               More Info
-            </a>
+            </Link>
           </div>
           <div className="ui relaxed large list">
             <div className="item">
@@ -122,7 +123,7 @@ Home = class home extends Component {
     return (
     <div className="one column stacking row">
       <div className="no-padding column">
-        <div ref="embedded-video" class="ui embed"></div>
+        <div ref="embedded-video" className="ui embed"></div>
       </div>
     </div>
     );
@@ -189,7 +190,7 @@ Home = class home extends Component {
               </div>
               <div className="column">
                 <h1>What?</h1>
-                <p>Scavenger hunting, puzzle solving, brain adventuring! <a href="/info">More details here</a></p>
+                <p>Scavenger hunting, puzzle solving, brain adventuring! <Link to="/info">More details here</Link></p>
               </div>
             </div>
             <div className="two column row">
@@ -239,9 +240,9 @@ Home = class home extends Component {
             </div>
           </div>
           <p>* Registration prices are per person.  Each person wanting to join a team must register themselves first.</p>
-          <a className="ui large green button" href="/register">
+          <Link className="ui large green button" to="/register">
             Register
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -302,7 +303,7 @@ Home = class home extends Component {
         <div className="ui very padded basic segment">
           <h1>Take a look at past events</h1>
           <h3>Photography courtesy of Gabrielle Poncz</h3>
-          <a className="ui large white button" href="/gallery">View Gallery</a>
+          <Link className="ui large white button" to="/gallery">View Gallery</Link>
         </div>
       </div>
     </div>

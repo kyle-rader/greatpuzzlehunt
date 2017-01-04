@@ -1,69 +1,47 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import { Icon, Menu, Button } from 'semantic-ui-react'
 import { Meteor } from 'meteor/meteor';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import UserList from './UserList.jsx';
-import TeamList from './TeamList.jsx';
-import PuzzleDashboard from './PuzzleDashboard.jsx';
-import BulkEmail from './BulkEmail.jsx';
-import GamePlay from './GamePlay.jsx';
-import Scoreing from './Scoring.jsx';
 
 Admin = class Admin extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      pageComp: Scoring //UserList
-    }
-  }
-
   componentDidMount() {
       $(this.refs.tabMenu).find('.item').tab();
   }
 
-  setPage(targetPage) {
-      this.setState({
-          pageComp: targetPage
-      });
-  }
-
   render() {
-
-    let pageComp = this.state.pageComp ? <this.state.pageComp /> : <div className="basic segment">Oops, no page found</div>;
-
     return (
-      <AuthedComponentContainer params={{accessLevel: 'admin'}}>
+      <Authed accessLevel='admin'>
         <div className="ui container">
           <PuzzlePageTitle title="Admin" />
-          <div className="ui labeled icon menu">
-            <a className="item" onClick={this.setPage.bind(this, UserList)}>
-              <i className="green user icon"></i>
+          <Menu icon="labeled">
+            <Link className="item" to="/admin/users">
+              <Icon className="green user icon"></Icon>
               Users
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, TeamList)}>
-              <i className="blue users icon"></i>
+            </Link>
+            <Link className="item" to="/admin/teams">
+              <Icon className="blue users icon"></Icon>
               Teams
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, PuzzleDashboard)}>
-              <i className="violet puzzle icon"></i>
+            </Link>
+            <Link className="item" to="/admin/puzzles">
+              <Icon className="violet puzzle icon"></Icon>
               Puzzles
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, BulkEmail)}>
-              <i className="orange mail icon"></i>
+            </Link>
+            <Link className="item" to="/admin/email">
+              <Icon className="orange mail icon"></Icon>
               Email
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, GamePlay)}>
-              <i className="red gamepad icon"></i>
+            </Link>
+            <Link className="item" to="/admin/game">
+              <Icon className="red gamepad icon"></Icon>
               The Game
-            </a>
-            <a className="item" onClick={this.setPage.bind(this, Scoring)}>
-              <i className="yellow trophy icon"></i>
+            </Link>
+            <Link className="item" to="/admin/scoring">
+              <Icon className="yellow trophy icon"></Icon>
               Scoring
-            </a>
-          </div>
-          {pageComp}
+            </Link>
+          </Menu>
+          {this.props.children}
         </div>
-      </AuthedComponentContainer>
+      </Authed>
     );
   }
 }

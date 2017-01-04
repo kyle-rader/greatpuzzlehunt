@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Grid, Button, Icon } from 'stardust';
+import { Grid, Button, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router';
 
 // Define our login comp
 
@@ -214,7 +215,7 @@ Register = React.createClass({
       //         {this.getErrorMsg()}
 
       //         <div className="ui message">
-      //           <a href="/login">Log In</a>
+      //           <Link to="/login">Log In</Link>
       //         </div>
       //     </div>
       // </div>);
