@@ -21,7 +21,7 @@ TeamManager = class TeamManager extends Component {
   }
 
   render() {
-    const content = this.props.team ? this._renderMain() : <Segment basic><NoTeamMessage /></Segment>;
+    const content = this.props.team ? this._renderMain() : <Segment basic><NoTeamMessage><ProfileInvites user={this.props.user}/></NoTeamMessage></Segment>;
 
     return (
       <Container>

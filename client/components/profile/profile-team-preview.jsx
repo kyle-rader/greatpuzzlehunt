@@ -34,7 +34,11 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
   }
 
   _renderWithoutTeam() {
-    return <NoTeamMessage />;
+    return (
+      <NoTeamMessage>
+        <ProfileInvites user={this.props.user}/>
+      </NoTeamMessage>
+    );
   }
 
 }
