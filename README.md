@@ -11,13 +11,14 @@ An on-line and in person real-time puzzle scavenger hunt!
 
 4. Install [Meteor](https://www.meteor.com/install)
 
-5. Use NVM to install `Node@4.4.7` and set an alias for that version as meteor
+5. Use NVM to install `Node@4.4.7` and set an alias for that version as meteor.  If you want to use [yarn](https://code.facebook.com/posts/1840075619545360) as well install yarn.
 
   ```bash
   $ nvm install 4.4.7
 
   $ nvm alias meteor 4.4.7
   $ nvm use meteor
+  $ npm i -g yarn
   ```
 6. Clone the repo
 
@@ -28,32 +29,56 @@ An on-line and in person real-time puzzle scavenger hunt!
 
   ```bash
   $ cd puzzlehunt/
-  $ npm install
+  $ yarn install  # instead of npm install
   ```
 8. Add a new development settings file called `settings-development.json`
 
   ```
-  {
-    "public": {
-      "siteName": "(Dev) Great Puzzle Hunt",
-      "social": {
-        "facebook": "https://facebook.com/greatpuzzlehunt"
-      },
-      "analyticsSettings": {
-        "Google Analytics" : {"trackingId": ""}
-      }
+{
+  "public": {
+    "siteName": "(Dev) Great Puzzle Hunt",
+    "accountsEmail": "Great Puzzle Hunt <accounts@greatpuzzlehunt.com>",
+    "infoEmail": "Great Puzzle Hunt <info@greatpuzzlehunt.com>",
+    "eventYear": "2017",
+    "social": {
+      "facebook": "https://facebook.com/<YOUR LINK>"
     },
-    "admin": {
-      "firstname": "<YOUR FIRST NAME>",
-      "lastname": "<YOUR LAST NAME>",
-      "username": "<USERNAME>",
-      "email": "<YOUR EMAIL>",
-      "password": "<PASSWORD>"
-    },
-    "accounts": {
-      "fromEmail": "Great Puzzle Hunt<accounts@greatpuzzlehunt.com>"
+    "analyticsSettings": {
+      "Google Analytics" : {"trackingId": "YOUR TRACKING ID"}
     }
+  },
+  "admin": {
+    "firstname": "",
+    "lastname": "",
+    "name": "",
+    "username": "",
+    "email": "",
+    "password": "",
+    "roles": ["default", "roles"],
+    "address": "",
+    "city": "",
+    "state": "",
+    "zip": "",
+    "age": 25,
+    "phone": "",
+    "isAdult": true,
+    "registrationType": "student",
+    "photoPermission": true,
+    "legalGuardian": {},
+    "emergencyContact": {
+      "name": "",
+      "relation": "",
+      "phone": "",
+      "altPhone": "",
+      "email": ""
+    }
+  },
+  "accounts": {
+    "fromEmail": "Great Puzzle Hunt<accounts@greatpuzzlehunt.com>",
+    "registrationApiKey": ""
   }
+}
+
   ```
 9. Run the application using the scripts define in `package.json`
 
