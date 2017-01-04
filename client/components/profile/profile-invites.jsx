@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { Segment, Header, Card, Button, Icon } from 'semantic-ui-react';
 import { map } from 'lodash';
 import moment from 'moment'
@@ -52,14 +53,17 @@ ProfileInvites = class ProfileInvites extends Component {
   }
 
   _handleAcceptClick(invite) {
-
+    Meteor.call('invites.accept', invite, (error, result) => {
+      if (error) return alert(error.reason);
+      browserHistory.push('/team');
+    });
   }
 }
 
 ProfileInvites = createContainer(({ user }) => {
   const invitesHandle = Meteor.subscribe('invites.myInvites');
   const ready = invitesHandle.ready();
-  const invites = Invites.find({ email: user.getEmail() }).fetch();
+  const invites = Invites.find({ email: user.getEmail(), accepted: false }).fetch();
 
   return {
     ready,
