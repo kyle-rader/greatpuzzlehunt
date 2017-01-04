@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import TeamScore from './TeamScore.jsx';
 
 export default Scoring = React.createClass({
 
@@ -35,7 +34,7 @@ export default Scoring = React.createClass({
             </div>
             );
         } else {
-            return <LoadingSegment />;
+            return <Loading />;
         }
     }
 });

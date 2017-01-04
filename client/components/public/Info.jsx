@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { renderToString } from 'react-dom/server';
-import { Accordion, List, Icon, Header, Segment, Button, Image } from 'stardust';
+import { Accordion, List, Icon, Header, Segment, Button, Image } from 'semantic-ui-react';
+import { Link } from 'react-router';
 
 Info = class Info extends Component {
 
@@ -159,7 +160,7 @@ Info = class Info extends Component {
             What kind of puzzles will we be solving?
           </Accordion.Title>
           <Accordion.Content>
-            Check out the <a href="/puzzles">puzzles from last year</a>!
+            Check out the <Link to="/puzzles">puzzles from last year</Link>!
           </Accordion.Content>
 
           <Accordion.Title>
