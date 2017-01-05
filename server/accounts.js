@@ -38,9 +38,9 @@ Then you will be able to setup your team and invite your friends!
 </p>
 <p>If you have any questions about the account setup process plese email <a href="mailto:kyle@kylerader.ninja">kyle@greatpuzzlehunt.com</a></p>
 <br>
-<br>
-<h4>Welcome to the hunt!</4>
-<p>- The ${siteName} Team`;
+<p>Welcome to the hunt!<br>
+<p>Cheers,</p>
+<p>The ${siteName} Team</p>`;
     }
 };
 
