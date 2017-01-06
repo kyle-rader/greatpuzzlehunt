@@ -15,22 +15,60 @@ AccountSetup = class AccountSetup extends Component {
     this.state = {
       user: null,
       validToken: true,
+      email: '',
       username: '',
       password1: '',
       password2: '',
       error: null,
+      success: null,
     };
 
     this._getUser(props.params.token);
 
   }
 
+  _getUser(token) {
+    Meteor.call('findUserByToken', token, (error, result) => {
+      if (error) {
+        this.setState({ validToken: false, error });
+      } else  if (result) {
+        this.setState({ user: result, email: result.email });
+      } else {
+        this.setState({ validToken: false });
+      }
+    });
+  }
+
   render() {
+    if (this.state.success) {
+      return this._renderSuccess();
+    }
     if (this.state.validToken) {
       return this._renderMain();
     } else {
       return this._renderBadToken();
     }
+  }
+
+  _renderSuccess() {
+    return (
+    <Container>
+      <PuzzlePageTitle title={'Almost Done!'} subTitle="Last step: Verify your new email address" />
+      <Grid>
+        <Grid.Row>
+          <Grid.Column mobile="16" tablet="14" computer="10" widescreen="8" largeScreen="6">
+            <Message positive icon>
+              <Icon name='mail'/>
+              <Message.Content>
+                <Message.Header>We've sent a verification email to <i>{this.state.email}</i></Message.Header>
+                <p>Once you verify your email you can log in and create or join a team!</p>
+              </Message.Content>
+            </Message>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Container>
+    );
   }
 
   _renderMain() {
@@ -46,7 +84,9 @@ AccountSetup = class AccountSetup extends Component {
                 <Header.Content>Account Setup</Header.Content>
               </Header>
 
-              <Form.Input label="Choose a Username" name="username" placeholder="Username" value={this.state.username.value} onChange={(e) => this._handleChange(e)}/>
+              <Form.Input label="Your Email" name="email" placeholder="Email" value={this.state.email} onChange={(e) => this._handleChange(e)}/>
+
+              <Form.Input label="Choose a Username" name="username" placeholder="Username" value={this.state.username} onChange={(e) => this._handleChange(e)}/>
 
               <Form.Input label="Choose a Password" type="password" name="password1" placeholder="Password" value={this.state.password1} onChange={(e) => this._handleChange(e)}/>
               <Form.Input label="Confirm Password" type="password" name="password2" placeholder="Confirm Password" value={this.state.password2} onChange={(e) => this._handleChange(e)}/>
@@ -73,21 +113,8 @@ AccountSetup = class AccountSetup extends Component {
     return (
       <Container>
         <PuzzlePageTitle title="Sorry this token is no longer valid" />
-
       </Container>
     );
-  }
-
-  _getUser(token) {
-    Meteor.call('findUserByToken', token, (error, result) => {
-      if (error) {
-        this.setState({ validToken: false, error });
-      } else  if (result) {
-        this.setState({ user: result });
-      } else {
-        this.setState({ validToken: false });
-      }
-    });
   }
 
   _title() {
@@ -102,9 +129,10 @@ AccountSetup = class AccountSetup extends Component {
 
   _handleSubmit(e, formData) {
     e.preventDefault();
-    const { username, password1, password2 } = this.state;
+    const { email, username, password1, password2 } = this.state;
     const { token } = this.props.params;
     const fields = {
+      email,
       username,
       password1,
       password2,
@@ -114,12 +142,14 @@ AccountSetup = class AccountSetup extends Component {
     Meteor.call('setupAccount', fields, (error, result) => {
       if (error) return this.setState({ error });
 
-      if (result) {
+      if (result.login) {
         Meteor.loginWithPassword({ username }, password1, (error2) => {
           if (error2) return this.setState({ error: error2 });
 
           browserHistory.push('/profile');
         });
+      } else {
+        this.setState({ user: null, success: true });
       }
     });
   }
