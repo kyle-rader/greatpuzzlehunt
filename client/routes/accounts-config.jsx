@@ -17,13 +17,12 @@ Accounts.onEmailVerificationLink((token, done) => {
           console.log(err);
       } else {
           done();
-          browserHistory.push('/team');
+          browserHistory.push('/profile');
       }
   });
 });
 
-// Redirect users clicking the enrollment URL to the reset password form
-// now that we have their reset token.
+// Redirect users clicking the enrollment URL to account setup
 Accounts.onEnrollmentLink((token, done) => {
     done();
     browserHistory.push('/setup/' + token);
