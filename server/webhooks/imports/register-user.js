@@ -7,9 +7,8 @@ import googleDistanceMatrix from 'google-distance-matrix';
 export function registerUser(user, transaction) {
   const { firstname, lastname } = makeNames(user.name);
   const { email } = user;
-  const userOptions = omit(user, ['email']);
 
-  extend(userOptions, {
+  const userOptions = extend(user, {
     transactionId: transaction._id,
     updatedAt: new Date(),
     roles: ['user'],
@@ -21,6 +20,7 @@ export function registerUser(user, transaction) {
   const userId = Accounts.createUser(userOptions);
   Accounts.addEmail(userId, email, true);
   Accounts.sendEnrollmentEmail(userId);
+  Accounts.removeEmail(userId, email);
 
   // computeDistanceTraveled(userId, userOptions);
 
@@ -34,7 +34,7 @@ function computeDistanceTraveled(userId, { address, city, state, zip }) {
   googleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
     const distance = distances.rows[0].elements[0].distance.value
     Meteor.users.update({ _id: userId }, { $set: { distanceTraveled: distance } });
-  })
+  });
 }
 
 export function makeNames(name) {

@@ -14,11 +14,11 @@ Accounts.emailTemplates.verifyEmail = {
     html(user, url) {
         return `
 <p>Hi ${user.firstname}!</p>
-<p>Note your username is <strong>${user.username}</strong>
+<p>Your username is <strong>${user.username}</strong>
 <p>Please verify this email address by clicking <a href='${url}'>here</a>.</p>
 <br>
 <p>
-Cheers,
+Cheers,<br>
 The ${siteName} Team
 </p>`;
     }
