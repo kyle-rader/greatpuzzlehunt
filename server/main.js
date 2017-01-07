@@ -23,5 +23,5 @@ Meteor.logger = logger;
 Picker.middleware(bodyParser.json());
 Picker.middleware(bodyParser.urlencoded({ extended: true }));
 
-import './start-up.js';
-import './accounts.js';
+import './imports/start-up.js';
+import './imports/accounts.js';
