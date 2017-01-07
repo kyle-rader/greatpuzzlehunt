@@ -32,7 +32,12 @@ function computeDistanceTraveled(userId, { address, city, state, zip }) {
   const destination = `${address} ${city}, ${state} ${zip}`;
 
   googleDistance.get({ origin, destination }, Meteor.bindEnvironment(function _getDistance(err, data) {
-    Meteor.users.update(userId, { $set: { traveled: data.distanceValue } });
+    if (err) {
+      Meteor.logger.info(`Failed to get distance traveled for user ${userId}, coming from ${destination}`);
+      Meteor.logger.info(err);
+    }
+    const traveled = !err && data.distanceValue ? data.distanceValue : -1;
+    Meteor.users.update(userId, { $set: { traveled } });
   }));
 }
 
