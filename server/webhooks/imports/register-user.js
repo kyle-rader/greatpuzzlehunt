@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { map, extend, omit } from 'lodash';
 import crypto from 'crypto';
-import googleDistanceMatrix from 'google-distance-matrix';
+import googleDistance from 'google-distance';
 
 export function registerUser(user, transaction) {
   const { firstname, lastname } = makeNames(user.name);
@@ -22,19 +22,23 @@ export function registerUser(user, transaction) {
   Accounts.sendEnrollmentEmail(userId);
   Accounts.removeEmail(userId, email);
 
-  // computeDistanceTraveled(userId, userOptions);
+  computeDistanceTraveled(userId, userOptions);
 
   return userId;
 }
 
 function computeDistanceTraveled(userId, { address, city, state, zip }) {
-  const origins = ['48.7335, -122.4873'];
-  const destinations = [`${address} ${zip}`];
+  const origin = '48.7335, -122.4873';
+  const destination = `${address} ${city}, ${state} ${zip}`;
 
-  googleDistanceMatrix.matrix(origins, destinations, function (err, distances) {
-    const distance = distances.rows[0].elements[0].distance.value
-    Meteor.users.update({ _id: userId }, { $set: { distanceTraveled: distance } });
-  });
+  googleDistance.get({ origin, destination }, Meteor.bindEnvironment(function _getDistance(err, data) {
+    if (err) {
+      Meteor.logger.info(`Failed to get distance traveled for user ${userId}, coming from ${destination}`);
+      Meteor.logger.info(err);
+    }
+    const traveled = !err && data.distanceValue ? data.distanceValue : -1;
+    Meteor.users.update(userId, { $set: { traveled } });
+  }));
 }
 
 export function makeNames(name) {
