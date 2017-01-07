@@ -41,7 +41,10 @@ Profile = class Profile extends Component {
   _renderMain() {
     return (
     <Container>
-      <PuzzlePageTitle title={this.props.user.name} subTitle={`Last Updated: ${this.state.updatedAt}`}/>
+      <PuzzlePageTitle
+        title={this.props.user.name}
+        subTitle={<p>{this.props.user.getEmail()}<br/>Last Updated: {this.state.updatedAt}</p>}
+      />
       <ProfileEditor user={this.props.user} />
       <ProfileTeamPreview />
       <PasswordEditor />
