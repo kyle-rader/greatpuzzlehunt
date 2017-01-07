@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Message, Input, Popup, Icon } from 'semantic-ui-react';
 
 TeamEditor = class TeamEditor extends Component {
 
@@ -40,7 +40,10 @@ TeamEditor = class TeamEditor extends Component {
       <Form widths='equal' onSubmit={(e, data) => this._handleSubmit(e, data)}>
         <Form.Group>
           <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={this._handleChange} />
-          <Form.Input name='password' label='Team Password' placeholder='Team Password' value={this.state.password} onChange={this._handleChange} />
+          <Form.Field>
+            <label>Team Password <Popup trigger={<Icon name='question'/>} content='You can share your team password with your friends to let them join your team!'/></label>
+            <Input name='password' placeholder='Team Password' value={this.state.password} onChange={this._handleChange} />
+          </Form.Field>
         </Form.Group>
         <Form.Field>
           <label>Team Division <br/><small>This determines your prize group</small></label>
