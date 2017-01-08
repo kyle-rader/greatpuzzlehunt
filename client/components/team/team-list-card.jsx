@@ -34,7 +34,7 @@ TeamListCard = class TeamListCard extends Component {
     const { team } = this.props;
     const membersLabel = `${memberCount} of 6 members`;
     const membersPercent = Math.round((memberCount / 6)*100);
-    const progressColor = isFull ? 'blue' : 'green';
+    const progressColor = this._getProgressColor(memberCount);
 
     return (
       <Card centered>
@@ -57,6 +57,12 @@ TeamListCard = class TeamListCard extends Component {
         </Card.Content>
       </Card>
     );
+  }
+
+  _getProgressColor(count) {
+    if (count >= 6) return 'blue';
+    else if (count >= 4) return 'green';
+    else return 'orange';
   }
 
   _renderPasswordField() {
