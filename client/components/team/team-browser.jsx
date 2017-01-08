@@ -2,21 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import { Container, Grid, Form, Icon, Message } from 'semantic-ui-react';
+import { Container, Segment, Grid, Form, Header, Icon, Message } from 'semantic-ui-react';
+
+import { DIVISION_OPTS } from './imports/team-helpers.js';
 
 const SORT_BY_OPTS = [
   { text: 'None', value: 'none' },
   { text: 'Last Updated', value: 'last-updated' },
   { text: 'Team Size', value: 'size' },
-];
-
-const DIVISION_OPTS = [
-  { text: 'All', value: 'all' },
-  { text: 'WWU Student', value: 'wwu-student' },
-  { text: 'WWU Alumni', value: 'wwu-alumni' },
-  { text: 'Post-Secondary/Non-WWU college', value: 'post-secondary' },
-  { text: 'High School', value: 'high-school' },
-  { text: 'Open', value: 'open' },
 ];
 
 TeamBrowser = class TeamBrowser extends Component {
@@ -37,12 +30,16 @@ TeamBrowser = class TeamBrowser extends Component {
     return (
       <Container>
         <PuzzlePageTitle title='Join a Team' />
-        <Form>
-          <Form.Group widths='equal'>
-            <Form.Select label='Sort By' name='sortBy' options={SORT_BY_OPTS} value={this.state.sortBy} onChange={(e, data) => this._handleChange(e, data)}/>
-            <Form.Select label='Division' name='division' options={DIVISION_OPTS} value={this.state.division} onChange={(e, data) => this._handleChange(e, data)}/>
-          </Form.Group>
-        </Form>
+        <Segment basic>
+          <Header as='h3' icon={<Icon name='options' color='violet'/>} content='Options'/>
+          <Form>
+            <Form.Group widths='equal'>
+              <Form.Select label='Sort By' name='sortBy' options={SORT_BY_OPTS} value={this.state.sortBy} onChange={(e, data) => this._handleChange(e, data)}/>
+              <Form.Select label='Division' name='division' options={DIVISION_OPTS} value={this.state.division} onChange={(e, data) => this._handleChange(e, data)}/>
+            </Form.Group>
+          </Form>
+          { this.props.ready ? <TeamList teams={this.props.teams}/> : <Loading /> }
+        </Segment>
       </Container>
     );
   }
