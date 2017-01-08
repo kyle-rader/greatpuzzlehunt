@@ -24,18 +24,18 @@ TeamListCard = class TeamListCard extends Component {
     const { team } = this.props;
     const membersLabel = `${memberCount} of 6 members`;
     const membersPercent = Math.round((memberCount / 6)*100);
-
+    const progressColor = isFull ? 'blue' : 'green';
     return (
       <Card centered>
         <Card.Content>
           <Card.Header>{team.name}</Card.Header>
           <Card.Meta><Icon name='sitemap'/> { division } </Card.Meta>
-          <Card.Description><Progress size='small' percent={membersPercent}>{membersLabel}</Progress></Card.Description>
+          <Card.Description><Progress size='small' percent={membersPercent} color={progressColor}>{membersLabel}</Progress></Card.Description>
         </Card.Content>
         <Card.Content extra>
           Updated<br/>
           { updatedAt }
-          <Button size='small' floated='right' icon='reply' labelPosition='right' content='Join Team'/>
+          {!isFull ? <Button size='small' floated='right' icon='reply' labelPosition='right' content='Join Team'/> : null}
         </Card.Content>
       </Card>
     );
