@@ -13,11 +13,6 @@ TeamBrowser = class TeamBrowser extends Component {
     return (
       <Container>
         <PuzzlePageTitle title='Join a Team' />
-        <Message info
-          icon='configure'
-          header='The team browser will be ready shortly!'
-          content="If you want to join a friend's team, ask them to invite you using your account's email address"
-        />
 
       </Container>
     );
