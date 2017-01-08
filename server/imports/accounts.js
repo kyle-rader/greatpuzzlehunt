@@ -32,11 +32,11 @@ Accounts.emailTemplates.enrollAccount = {
     html(user, url) {
         return `
 <h3>Welcome ${user.firstname}, to the ${siteName}!</h3>
-<p>You are ready to finish setting up your account!</p>
-<p>Get started by <a href="${url}">clicking here</a> to set your username and password.
-Then you will be able to setup your team and invite your friends!
+<p>To finish setting up your account <a href="${url}">click here</a>.</p>
+<p>You will be asked to set your email, username, and password.
+Then you will be able to create your team and invite your friends!
 </p>
-<p>If you have any questions about the account setup process plese email <a href="mailto:kyle@kylerader.ninja">kyle@greatpuzzlehunt.com</a></p>
+<p>If you have any questions about the account setup process please email <a href="mailto:support@greatpuzzlehunt.com">support@greatpuzzlehunt.com</a></p>
 <br>
 <p>Welcome to the hunt!<br>
 <p>Cheers,</p>
