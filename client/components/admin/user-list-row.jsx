@@ -2,54 +2,54 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 AdminUserListRow = class UserListRow extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            editMode: false
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      editMode: false
+    };
+  }
 
-    enableEdit(user) {
-        this.setState({editMode: true});
-    }
+  enableEdit(user) {
+    this.setState({editMode: true});
+  }
 
-    saveUser(event) {
-        let firstname = this.refs.firstname.value;
-        let lastname = this.refs.lastname.value;
-        let username = this.refs.username.value;
-        let email = this.refs.email.value;
+  saveUser(event) {
+      let firstname = this.refs.firstname.value;
+      let lastname = this.refs.lastname.value;
+      let username = this.refs.username.value;
+      let email = this.refs.email.value;
 
-        console.log(`Tryin to save \nfirst:${firstname}\nlast:${lastname}\nUsername:${username} \nEmail:${email} `);
+      console.log(`Tryin to save \nfirst:${firstname}\nlast:${lastname}\nUsername:${username} \nEmail:${email} `);
 
-        let btn = $(event.target);
+      let btn = $(event.target);
 
-        Meteor.call('userAdminUpdate', {
-            _id: this.props.user._id,
-            firstname: firstname,
-            lastname: lastname,
-            username: username,
-            email: email
-        }, (err, result) => {
-            if (err) {
-                console.log(err);
-                btn.attr('data-content', 'Failed to save user! 😰');
-            } else {
-                btn.attr('data-content', `${firstname} saved! 😀`);
-            }
+      Meteor.call('userAdminUpdate', {
+          _id: this.props.user._id,
+          firstname: firstname,
+          lastname: lastname,
+          username: username,
+          email: email
+      }, (err, result) => {
+          if (err) {
+              console.log(err);
+              btn.attr('data-content', 'Failed to save user! 😰');
+          } else {
+              btn.attr('data-content', `${firstname} saved! 😀`);
+          }
 
-            btn.popup({
-                on: 'manual'
-            }).popup('show');
-            setTimeout(() => {
-                btn.popup('hide');
-            }, 3000);
-        });
-        this.setState({editMode: false});
-    }
+          btn.popup({
+              on: 'manual'
+          }).popup('show');
+          setTimeout(() => {
+              btn.popup('hide');
+          }, 3000);
+      });
+      this.setState({editMode: false});
+  }
 
     verifyEmail(event) {
 
-        if (!confirm(`Are you sure you want to email ${this.props.user.emails[0].address}?`))
+        if (!confirm(`Are you sure you want to email ${this.props.user.getEmail()}?`))
             return;
 
         let btn = $(event.target);
@@ -74,8 +74,8 @@ AdminUserListRow = class UserListRow extends React.Component {
     }
 
     toggleVolunteer(event) {
-        
-        if(!confirm(`Are you sure you want to toggle ${this.props.user.profile.displayname} as a Volunteer?`))
+
+        if(!confirm(`Are you sure you want to toggle ${this.props.user.name} as a Volunteer?`))
             return;
 
         let btn = $(event.target);
@@ -85,7 +85,7 @@ AdminUserListRow = class UserListRow extends React.Component {
                 console.log(err);
                 btn.attr('data-content', 'Toggle Failed! 😰');
             } else {
-                btn.attr('data-content', `${this.props.user.profile.firstname} toggled! 😀`);
+                btn.attr('data-content', `${this.props.user.firstname} toggled! 😀`);
             }
 
             btn.popup({
@@ -99,7 +99,7 @@ AdminUserListRow = class UserListRow extends React.Component {
 
     resetPassword(event) {
 
-        if (!confirm(`Are you sure you want to reset the password for ${this.props.user.profile.displayname}?`))
+        if (!confirm(`Are you sure you want to reset the password for ${this.props.user.name}?`))
             return;
 
         let btn = $(event.target);
@@ -123,7 +123,7 @@ AdminUserListRow = class UserListRow extends React.Component {
     }
 
     deleteUser(event) {
-        if (!confirm(`Are you sure you want to DELETE ${this.props.user.profile.displayname}!?!?`))
+        if (!confirm(`Are you sure you want to DELETE ${this.props.user.name}!?!?`))
             return;
 
         let btn = $(event.target);
@@ -154,10 +154,10 @@ AdminUserListRow = class UserListRow extends React.Component {
             <td>
                 <div className="ui small form">
                     <div className="field">
-                        <input ref="firstname" type="text" defaultValue={this.props.user.profile.firstname}/>
+                        <input ref="firstname" type="text" defaultValue={this.props.user.firstname}/>
                     </div>
                     <div className="field">
-                        <input ref="lastname" type="text" defaultValue={this.props.user.profile.lastname}/>
+                        <input ref="lastname" type="text" defaultValue={this.props.user.lastname}/>
                     </div>
                 </div>
             </td>);
@@ -165,8 +165,7 @@ AdminUserListRow = class UserListRow extends React.Component {
         } else {
             return (
             <td>
-                {user.profile.displayname}
-                {(user.emails[0].address.indexOf('@wwu.edu') >= 0) ? <i className="blue right floated university icon"></i> : null} 
+                {user.name}
             </td>);
         }
     }
@@ -235,8 +234,8 @@ AdminUserListRow = class UserListRow extends React.Component {
             {this.getUsername()}
             {this.getEmail()}
 
-            <td className={!!user.profile.teamId ? 'positive' : 'negative'}>{!!user.profile.teamId ? 'Yes' : 'No'}</td>
-            
+            <td className={!!user.teamId ? 'positive' : 'negative'}>{!!user.teamId ? 'Yes' : 'No'}</td>
+
             <td>
                 <div className="ui three icon tiny compact buttons">
                     {this.getEditButton()}
@@ -250,7 +249,7 @@ AdminUserListRow = class UserListRow extends React.Component {
                 </div>
             </td>
         </tr>
-        
+
         );
     }
 }
