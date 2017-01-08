@@ -19,12 +19,23 @@ TeamListCard = class TeamListCard extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.showPasswordField && this.state.showPasswordField) {
+      $(`#${this._getPasswordId()} > input`).focus();
+    }
+  }
+
+  _getPasswordId() {
+    return `password-${this.props.team._id}`;
+  }
+
   render() {
     const { division, showPasswordField, isFull, memberCount } = this.state;
     const { team } = this.props;
     const membersLabel = `${memberCount} of 6 members`;
     const membersPercent = Math.round((memberCount / 6)*100);
     const progressColor = isFull ? 'blue' : 'green';
+
     return (
       <Card centered>
         <Card.Content>
@@ -51,7 +62,7 @@ TeamListCard = class TeamListCard extends Component {
   _renderPasswordField() {
     return (
       <Form onSubmit={(e) => this._handlePasswordSubmit(e)}>
-        <Form.Input name='password' label='Team Password' value={ this.state.password } onChange={(e) => this.setState({ password: e.target.value })}/>
+        <Form.Input id={this._getPasswordId()} name='password' label='Team Password' value={ this.state.password } onChange={(e) => this.setState({ password: e.target.value })}/>
         <Button color='green' type='submit' content='Submit' size='small'/>
         <Button floated='right' color='red' inverted content='Cancel' size='small' onClick={(e) => this._cancel(e)}/>
       </Form>
@@ -60,7 +71,12 @@ TeamListCard = class TeamListCard extends Component {
 
   _handlePasswordSubmit(e) {
     e.preventDefault();
-    console.log(`Join team ${this.props.team.name} with password ${this.state.password}`);
+    const { password } = this.state;
+    if (!password) return alert('You must enter a password!');
+
+    Meteor.call('teams.join', this.props.team._id, password, (error, result) => {
+      if (error) alert(error.reason);
+    });
   }
 
   _cancel(e) {

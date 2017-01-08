@@ -24,6 +24,11 @@ TeamBrowser = class TeamBrowser extends Component {
 
   componentWillReceiveProps(nextProps) {
     // Needto add team filtering and sorting here.
+    if (nextProps.user && nextProps.user.teamId) {
+      browserHistory.push('/team');
+    }
+
+
   }
 
   render() {
@@ -53,12 +58,14 @@ TeamBrowser = class TeamBrowser extends Component {
 }
 
 TeamBrowser = createContainer((props) => {
+  const user = Meteor.user();
   const teamsHandle = Meteor.subscribe('teams.browse');
   const ready = teamsHandle.ready();
   const teams = Teams.find({}).fetch();
 
   return {
     ready,
+    user,
     teams,
   };
 }, TeamBrowser);
