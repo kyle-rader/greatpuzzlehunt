@@ -3,6 +3,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { Container, Segment, Grid, Form, Header, Icon, Message } from 'semantic-ui-react';
+import { filter, sortBy as sort } from 'lodash';
+import moment from 'moment';
 
 import { DIVISION_OPTS } from './imports/team-helpers.js';
 
@@ -19,16 +21,12 @@ TeamBrowser = class TeamBrowser extends Component {
       sortBy: 'none',
       division: 'all',
     };
-
   }
 
   componentWillReceiveProps(nextProps) {
-    // Needto add team filtering and sorting here.
     if (nextProps.user && nextProps.user.teamId) {
       browserHistory.push('/team');
     }
-
-
   }
 
   render() {
@@ -43,7 +41,7 @@ TeamBrowser = class TeamBrowser extends Component {
               <Form.Select label='Division' name='division' options={DIVISION_OPTS} value={this.state.division} onChange={(e, data) => this._handleChange(e, data)}/>
             </Form.Group>
           </Form>
-          { this.props.ready ? <TeamList teams={this.props.teams}/> : <Loading /> }
+          { this.props.ready ? <TeamList teams={this._getTeams()}/> : <Loading /> }
         </Segment>
       </Container>
     );
@@ -55,6 +53,27 @@ TeamBrowser = class TeamBrowser extends Component {
 
     this.setState({ [name]: value });
   }
+
+  _getTeams() {
+    const { sortBy, division } = this.state;
+    let { teams } = this.props;
+
+    // First filter down teams
+    if (division !== 'all') {
+      teams = filter(teams, (team) => team.division === division);
+    }
+
+    // Then sort filtered results.
+    if (sortBy === 'size') {
+      teams = sort(teams, (team) => (-team.members.length));
+    }
+    else if (sortBy === 'last-updated') {
+      teams = sort(teams, (team) => (-moment(team.updatedAt).unix()));
+    }
+
+    return teams;
+  }
+
 }
 
 TeamBrowser = createContainer((props) => {
