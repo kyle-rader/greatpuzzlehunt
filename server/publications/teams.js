@@ -16,3 +16,14 @@ Meteor.publish('teams.myTeam', function() {
     members: userId,
   });
 });
+
+Meteor.publish('teams.browse', function() {
+  return Teams.find({}, {
+    fields: {
+      name: 1,
+      members: 1,
+      updatedAt: 1,
+      division:1,
+    },
+  });
+});
