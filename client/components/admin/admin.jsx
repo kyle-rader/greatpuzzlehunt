@@ -1,17 +1,17 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Icon, Menu, Button } from 'semantic-ui-react'
-import { Meteor } from 'meteor/meteor';
+import { Container, Icon, Menu } from 'semantic-ui-react';
 
 Admin = class Admin extends Component {
-  componentDidMount() {
-      $(this.refs.tabMenu).find('.item').tab();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
       <Authed accessLevel='admin'>
-        <div className="ui container">
+        <Container>
           <PuzzlePageTitle title="Admin" />
           <Menu icon="labeled">
             <Link className="item" to="/admin/users">
@@ -39,8 +39,10 @@ Admin = class Admin extends Component {
               Scoring
             </Link>
           </Menu>
+
           {this.props.children}
-        </div>
+
+        </Container>
       </Authed>
     );
   }
