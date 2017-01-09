@@ -30,7 +30,7 @@ TeamListCard = class TeamListCard extends Component {
   }
 
   render() {
-    const { division, showPasswordField, isFull, memberCount } = this.state;
+    const { division, showPasswordField, memberCount } = this.state;
     const { team } = this.props;
     const membersLabel = `${memberCount} of 6 members`;
     const membersPercent = Math.round((memberCount / 6)*100);
@@ -45,16 +45,8 @@ TeamListCard = class TeamListCard extends Component {
             <Progress size='small' percent={ membersPercent } color={progressColor}>{ membersLabel }</Progress>
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
-          { !isFull && !showPasswordField ?
-            <Button size='small' floated='right' icon='reply' labelPosition='right' content='Join Team' onClick={() => this.setState({ showPasswordField: true })}/>
-            : null
-          }
-          { !isFull && showPasswordField ?
-            this._renderPasswordField()
-            : null
-          }
-        </Card.Content>
+
+        { this._getCardExtra() }
       </Card>
     );
   }
@@ -63,6 +55,20 @@ TeamListCard = class TeamListCard extends Component {
     if (count >= 6) return 'blue';
     else if (count >= 4) return 'green';
     else return 'orange';
+  }
+
+  _getCardExtra() {
+    const { showPasswordField, isFull } = this.state;
+    if (isFull) return null;
+
+    const joinBtn = !showPasswordField ? <Button size='small' floated='right' icon='reply' labelPosition='right' content='Join Team' onClick={() => this.setState({ showPasswordField: true })}/> : null;
+    const passwordForm = showPasswordField ? this._renderPasswordField() : null;
+    return (
+      <Card.Content extra>
+        { joinBtn }
+        { passwordForm }
+      </Card.Content>
+    );
   }
 
   _renderPasswordField() {
