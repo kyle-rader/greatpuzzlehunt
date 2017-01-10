@@ -34,7 +34,7 @@ Register = class Register extends Component {
               Do I have to buy T-Shirts while buying registration?
             </Accordion.Title>
             <Accordion.Content>
-                No, you can buy T-Shirts at any time by following by clicking the "Register Now" button above and only selecting T-Shirts.
+                No, you can buy T-Shirts at any time by clicking the "Register Now" button above and only selecting T-Shirts.
             </Accordion.Content>
 
           </Accordion>
