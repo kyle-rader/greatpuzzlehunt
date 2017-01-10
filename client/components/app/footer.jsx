@@ -9,10 +9,10 @@ Footer = class Footer extends Component {
             Great Puzzle Hunt &copy; 2017
           </div>
           <div className="column">
-            <a href="mailto:kyle@kylerader.ninja">Account Questions</a>
+            <a href="mailto:support@greatpuzzlehunt.com">Account Questions</a>
           </div>
           <div className="column">
-            <a href="mailto:Millie.Johnson@wwu.edu">Event Questions</a>
+            <a href="mailto:millie@greatpuzzlehunt.com">Event Questions</a>
           </div>
         </div>
         <br/>
