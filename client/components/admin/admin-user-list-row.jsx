@@ -10,7 +10,7 @@ AdminUserListRow = class UserListRow extends Component {
   }
 
   enableEdit(user) {
-    this.setState({editMode: true});
+    this.setState({ editMode: true });
   }
 
   saveUser(event) {
@@ -180,26 +180,29 @@ AdminUserListRow = class UserListRow extends Component {
 
   getEmail() {
     const user = this.props.user;
+    const verified = user.getEmail() ? user.emails[0].verified : false;
+    const email = user.getEmail() || user.email;
     if (this.state.editMode) {
       return (
         <td>
           <div className="ui small fluid input">
-            <input ref="email" type="text" defaultValue={this.props.user.emails[0].address}/>
+            <input ref="email" type="text" defaultValue={ email }/>
           </div>
         </td>
       );
     } else {
-      const verifyBtn = !user.emails[0].verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="send icon"></i></div> : null;
+      const verifyBtn = !verified ? <div className="ui right floated yellow basic tiny compact icon button" title="Send Verification Email" onClick={this.verifyEmail.bind(this)}><i className="send icon"></i></div> : null;
       const rolesBtn = (
         <div className={`ui right floated ${user.roles.indexOf('volunteer') >= 0 ? 'yellow' : 'gray'} basic tiny compact icon button`} title="Toggle Volunteer Role" onClick={this.toggleVolunteer.bind(this)}>
           <i className="heart icon"></i>
         </div>
       );
+
       return (
-        <td className={user.emails[0].verified ? 'positive' : 'negative'}>
-          {rolesBtn}
-          {verifyBtn}
-          {user.emails[0].address} &nbsp;
+        <td className={verified ? 'positive' : 'negative'}>
+          { rolesBtn }
+          { verifyBtn }
+          { email } &nbsp;
         </td>
       );
     }
