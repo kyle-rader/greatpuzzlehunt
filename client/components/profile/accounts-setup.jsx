@@ -131,15 +131,8 @@ AccountSetup = class AccountSetup extends Component {
     e.preventDefault();
     const { email, username, password1, password2 } = this.state;
     const { token } = this.props.params;
-    const fields = {
-      email,
-      username,
-      password1,
-      password2,
-      token,
-    };
 
-    Meteor.call('setupAccount', fields, (error, result) => {
+    Meteor.call('setupAccount', { email, username, password1, password2, token }, (error, result) => {
       if (error) return this.setState({ error });
 
       if (result.login) {

@@ -20,6 +20,7 @@ export function registerUser(user, transaction) {
   const userId = Accounts.createUser(userOptions);
   Accounts.addEmail(userId, email, true);
   Accounts.sendEnrollmentEmail(userId);
+
   Accounts.removeEmail(userId, email);
 
   computeDistanceTraveled(userId, userOptions);
