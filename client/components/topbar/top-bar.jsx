@@ -101,9 +101,9 @@ TopBar = class TopBar extends Component {
               <i className="green home icon"></i>
               Home
             </Link>
-            <Link className="item" to="/gallery">
-              <i className="blue camera icon"></i>
-              Gallery
+            <Link className="item" to="/teams-list">
+              <i className="blue users icon"></i>
+              Teams
             </Link>
             <Link className="item" to="/contact">
               <i className="violet mail icon"></i>
@@ -116,6 +116,10 @@ TopBar = class TopBar extends Component {
             <Link className="item" to="/info">
               <i className="orange circle info icon"></i>
               More Info
+            </Link>
+            <Link className="item" to="/gallery">
+              <i className="teal camera icon"></i>
+              Gallery
             </Link>
             <Link className="item" to="/qrcode">
               <i className="gray qrcode icon"></i>
