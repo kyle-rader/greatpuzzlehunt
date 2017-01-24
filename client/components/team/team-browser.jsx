@@ -20,6 +20,7 @@ TeamBrowser = class TeamBrowser extends Component {
     this.state = {
       sortBy: 'none',
       division: 'all',
+      public: Boolean(this.props.public),
     };
   }
 
@@ -41,7 +42,7 @@ TeamBrowser = class TeamBrowser extends Component {
               <Form.Select label='Division' name='division' options={DIVISION_OPTS} value={this.state.division} onChange={(e, data) => this._handleChange(e, data)}/>
             </Form.Group>
           </Form>
-          { this.props.ready ? <TeamList teams={this._getTeams()}/> : <Loading /> }
+          { this.props.ready ? <TeamList teams={this._getTeams()} public={this.state.public}/> : <Loading /> }
         </Segment>
       </Container>
     );
