@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
+import { check, Match } from 'meteor/check';
 import { isAdmin } from '../../lib/imports/method-helpers.js';
 
+const FIND_LIMIT = 25;
 const USER_FIELDS = {
   emails: 1,
   firstname: 1,
@@ -47,6 +49,11 @@ Meteor.publish('users.myTeam', function() {
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
 });
 
-Meteor.publish('admin.users', function() {
-  return isAdmin(this.userId) ? Meteor.users.find({}) : this.ready();
+Meteor.publish('admin.users', function(page = 0) {
+  check(page, Match.Integer);
+
+  return isAdmin(this.userId) ? Meteor.users.find({ roles: { $ne: 'admin' } }, {
+    limit: FIND_LIMIT,
+    skip: FIND_LIMIT * page,
+  }) : this.ready();
 });
