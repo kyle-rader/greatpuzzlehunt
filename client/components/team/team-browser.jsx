@@ -33,7 +33,7 @@ TeamBrowser = class TeamBrowser extends Component {
   render() {
     return (
       <Container>
-        <PuzzlePageTitle title='Join a Team' />
+        <PuzzlePageTitle title={this._getTitle()} />
         <Segment basic>
           <Header as='h3' icon={<Icon name='options' color='violet'/>} content='Options'/>
           <Form>
@@ -46,6 +46,10 @@ TeamBrowser = class TeamBrowser extends Component {
         </Segment>
       </Container>
     );
+  }
+
+  _getTitle() {
+    return this.state.public ? '2017 Teams' : 'Join a Team';
   }
 
   _handleChange(e, data) {
