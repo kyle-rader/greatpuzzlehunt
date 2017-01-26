@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Header, Icon, Button } from 'semantic-ui-react';
 
 Home = class home extends Component {
 
@@ -112,6 +113,14 @@ Home = class home extends Component {
           <p className="h3">
             Everything is timed using your phone, QR codes, and this online system! So yes you can win :)
           </p>
+          <Header as='h3' className="dark-blue">
+            <Icon name='hand paper' color='violet'/>
+            <Header.Content>
+              <Button color='violet' style={{marginBottom: '10px'}} content={<Link to='/register' style={{color: '#fff'}}>Sign up to Volunteer now</Link>}/>
+              <br/>
+              We need awesome people like you to help make the magic happen!
+            </Header.Content>
+          </Header>
           <p className="h2">Check out the video below to see last year's puzzle hunt in action!</p>
         </div>
       </div>
