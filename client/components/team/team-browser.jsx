@@ -20,6 +20,7 @@ TeamBrowser = class TeamBrowser extends Component {
     this.state = {
       sortBy: 'none',
       division: 'all',
+      public: Boolean(this.props.public),
     };
   }
 
@@ -32,7 +33,7 @@ TeamBrowser = class TeamBrowser extends Component {
   render() {
     return (
       <Container>
-        <PuzzlePageTitle title='Join a Team' />
+        <PuzzlePageTitle title={this._getTitle()} />
         <Segment basic>
           <Header as='h3' icon={<Icon name='options' color='violet'/>} content='Options'/>
           <Form>
@@ -41,10 +42,14 @@ TeamBrowser = class TeamBrowser extends Component {
               <Form.Select label='Division' name='division' options={DIVISION_OPTS} value={this.state.division} onChange={(e, data) => this._handleChange(e, data)}/>
             </Form.Group>
           </Form>
-          { this.props.ready ? <TeamList teams={this._getTeams()}/> : <Loading /> }
+          { this.props.ready ? <TeamList teams={this._getTeams()} public={this.state.public}/> : <Loading /> }
         </Segment>
       </Container>
     );
+  }
+
+  _getTitle() {
+    return this.state.public ? '2017 Teams' : 'Join a Team';
   }
 
   _handleChange(e, data) {

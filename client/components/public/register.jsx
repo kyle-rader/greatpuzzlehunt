@@ -28,7 +28,6 @@ Register = class Register extends Component {
             <Accordion.Content>
                 Yes, you can. But you have to add each one to your basket individually.  We recommend you only do this if you know all the required info for each person you are registering.
             </Accordion.Content>
-
             <Accordion.Title>
               <Icon name='caret right' size='large'/>
               Do I have to buy T-Shirts while buying registration?
@@ -36,9 +35,12 @@ Register = class Register extends Component {
             <Accordion.Content>
                 No, you can buy T-Shirts at any time by clicking the "Register Now" button above and only selecting T-Shirts.
             </Accordion.Content>
-
           </Accordion>
+        </Segment>
 
+        <Segment basic>
+          <Header as='h1' icon='hand paper' content='Volunteer at the 2017 Hunt!'/>
+          <iframe src="https://docs.google.com/a/kylerader.ninja/forms/d/e/1FAIpQLSfTwicPiiM21gQE-nRvDJm5vWPQyLhshkZrykRwtKygTWlhdw/viewform?embedded=true" width="100%" height="800px" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
         </Segment>
       </Container>
     );

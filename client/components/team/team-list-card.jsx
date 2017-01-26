@@ -58,6 +58,10 @@ TeamListCard = class TeamListCard extends Component {
   }
 
   _getCardExtra() {
+    if (this.props.public) {
+      return null;
+    }
+    
     const { showPasswordField, isFull } = this.state;
     if (isFull) return null;
 

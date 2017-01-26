@@ -22,7 +22,7 @@ TeamList = class TeamList extends Component {
     const { teams } = this.props;
     const mappedTeams = Array(teams.length);
     times(teams.length, (i) => {
-      mappedTeams[i] = <TeamListCard team={teams[i]} key={teams[i]._id}/>;
+      mappedTeams[i] = <TeamListCard public={this.props.public} team={teams[i]} key={teams[i]._id}/>;
     });
     return mappedTeams;
   }
