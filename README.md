@@ -1,4 +1,4 @@
-# WWU Puzzle hunt
+# The Great Puzzle Hunt
 An on-line and in person real-time puzzle scavenger hunt!
 
 ## Development Setup
