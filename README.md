@@ -82,5 +82,11 @@ An on-line and in person real-time puzzle scavenger hunt!
 9. Run the application using the scripts define in `package.json`
 
   ```
-  $ npm start
+  $ yarn start
   ```
+
+10. In another shell you can connect to the Meteor server with the Meteor shell (much like rails console).
+  ```
+  $ meteor shell
+  ```
+  
