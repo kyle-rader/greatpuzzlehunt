@@ -14,9 +14,13 @@ PostRoute.route('/api/register', function(params, req, res, next) {
     Meteor.logger.info(`Request on "/api/register" with bad accessToken: "${params.query.accessToken}" from ${Meteor.logger.jstring(req.headers)}`);
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 400;
-    res.write('{ error: \'Invalid accessToken\' }');
+    res.write('{ "error": "Invalid accessToken" }');
     return res.end();
   }
+
+  res.setHeader('Content-Type', 'application/json');
+  res.statusCode = 200;
+  res.end();
 
   Meteor.logger.info(`Request on "/api/register" (valid accessToken) from ${Meteor.logger.jstring(req.headers)}`);
 
@@ -40,9 +44,5 @@ PostRoute.route('/api/register', function(params, req, res, next) {
   Transactions.update({ _id: transaction._id }, {
     $set: { usersIds },
   });
-
-  res.setHeader('Content-Type', 'application/json');
-  res.statusCode = 200;
-  res.end();
 
 });
