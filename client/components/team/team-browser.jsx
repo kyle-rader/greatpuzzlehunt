@@ -25,7 +25,7 @@ TeamBrowser = class TeamBrowser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user && nextProps.user.teamId) {
+    if (!this.state.public && nextProps.user && nextProps.user.teamId) {
       browserHistory.push('/team');
     }
   }

@@ -5,7 +5,7 @@ import {
 } from 'semantic-ui-react';
 
 // Public Team List
-PublicTeamList = class TeamList extends Component {
+PublicTeamList = class PublicTeamList extends Component {
   constructor(props) {
     super(props);
     this.state = {};
