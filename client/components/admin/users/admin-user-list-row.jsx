@@ -49,19 +49,17 @@ AdminUserListRow = class UserListRow extends Component {
 
   verifyEmail(event) {
 
-    if (!confirm(`Are you sure you want to email ${this.props.user.getEmail()}?`))
+    if (!confirm(`Are you sure you want to resend enrollment email for ${this.props.user.email}?`))
       return;
 
     const btn = $(event.target);
 
-    Meteor.call('userAdminVerifyEmail', {
-      _id: this.props.user._id
-    }, (err, result) => {
+    Meteor.call('user.resendEnrollmentEmail', this.props.user.username, (err, result) => {
       if (err) {
         console.log(err);
         btn.attr('data-content', 'Send Failed! 😰');
       } else {
-        btn.attr('data-content', 'Verification Email Sent! 😀');
+        btn.attr('data-content', 'Enrollment Email Sent! 😀');
       }
 
       btn.popup({
