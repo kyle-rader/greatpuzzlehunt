@@ -10,6 +10,11 @@ const adminMenuItems = [
     iconClass: 'green user',
   },
   {
+    name: 'Add Users',
+    to: 'add-users',
+    iconClass: 'green plus',
+  },
+  {
     name: 'Teams',
     to: 'teams',
     iconClass: 'blue users',
