@@ -4,14 +4,14 @@ import { map, extend, omit } from 'lodash';
 import crypto from 'crypto';
 import googleDistance from 'google-distance';
 
-export function registerUser(user, transaction) {
+export function registerUser(user, transaction, roles = ['user']) {
   const { firstname, lastname } = makeNames(user.name);
   const { email } = user;
 
   const userOptions = extend(user, {
     transactionId: transaction._id,
     updatedAt: new Date(),
-    roles: ['user'],
+    roles,
     firstname,
     lastname,
     username: makeUsername(user),
@@ -20,7 +20,6 @@ export function registerUser(user, transaction) {
   const userId = Accounts.createUser(userOptions);
   Accounts.addEmail(userId, email, true);
   Accounts.sendEnrollmentEmail(userId);
-
   Accounts.removeEmail(userId, email);
 
   computeDistanceTraveled(userId, userOptions);
