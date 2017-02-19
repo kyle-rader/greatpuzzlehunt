@@ -8,6 +8,7 @@ import WelcomeSection from './imports/welcome-section';
 import EventDescription from './imports/event-description';
 import SponsorLevels from './imports/sponsor-levels';
 import Sponsors from './imports/sponsors';
+import EventDescription2 from './imports/event-description-2';
 
 Home = class Home extends Component {
 
@@ -161,17 +162,10 @@ Home = class Home extends Component {
       <SponsorLevels/>
       <br/>
       <Sponsors />
-      
+
+      <EventDescription2/>
+
       <div className="ui padded stackable filling grid">
-
-        <div className="one column stacking row">
-          <div className="no-padding column">
-            <img className="ui image" src="/img/2016/event-photos/team-saxaphone-bugs-thin.jpg"/>
-          </div>
-        </div>
-
-        {this._renderDescription2()}
-
 
         <div className="one column stacking row">
           <div className="no-padding column">
