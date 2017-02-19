@@ -11,6 +11,7 @@ import Sponsors from './imports/sponsors';
 import EventDescription2 from './imports/event-description-2';
 import RegistrationInfo from './imports/registration-info';
 import SamplePuzzles from './imports/sample-puzzles';
+import ProfileCards from './imports/profile-cards';
 
 Home = class Home extends Component {
 
@@ -41,10 +42,10 @@ Home = class Home extends Component {
       <EventDescription2/>
       <RegistrationInfo/>
       <SamplePuzzles/>
+      <ProfileCards />
 
       <div className="ui padded stackable filling grid">
 
-        <ProfileCards />
 
         {this._renderGallerySection()}
 

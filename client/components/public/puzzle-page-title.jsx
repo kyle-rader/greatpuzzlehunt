@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 PuzzlePageTitle = class PuzzlePageTitle extends Component {
   render() {
     return (
-    <div className="ui padded grid puzzle-page-title">
-      <div className="one column row">
-        <div className="column">
-          <h1>{this.props.title}<br/><small>{this.props.subTitle}</small></h1>
-        </div>
-      </div>
-    </div>
+    <Grid stackable padded className='puzzle-page-title filling'>
+      <Grid.Row>
+        <Grid.Column>
+          <Segment basic>
+            <h1 className='dark-blue'>
+              {this.props.title}<br/>
+              <small>{this.props.subTitle}</small>
+            </h1>
+          </Segment>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
     );
   }
 }

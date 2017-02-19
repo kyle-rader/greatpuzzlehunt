@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Image, Button, Icon } from 'semantic-ui-react';
+import { Grid, Segment, Card, Image, Button, Icon } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-ProfileCards = class ProfileCards extends Component {
+export default class ProfileCards extends Component {
 
   constructor(props) {
     super(props);
@@ -34,19 +34,19 @@ ProfileCards = class ProfileCards extends Component {
 
   render() {
     return (
-      <div className="one column stacking row">
-        <div className="dark-blue column">
-          <div className="ui padded basic segment">
-            <h1>Who are we?</h1>
-            <h2>We are Mind Mobilizers who love our community and the amazing diversity of talents it has to offer :)</h2>
-          </div>
-          <div className="ui basic segment">
-            <div className="ui three stackable cards">
-              {this._renderProfiles()}
-            </div>
-          </div>
-        </div>
-      </div>
+      <Grid padded stackable className='filling'>
+        <Grid.Row>
+          <Grid.Column>
+            <Segment basic>
+              <h1 className='dark-blue'>Who are we?</h1>
+              <h2 className='dark-blue'>We are Mind Mobilizers who love our community and the amazing diversity of talents it has to offer :)</h2>
+              <Card.Group stackable itemsPerRow={3}>
+                { this._renderProfiles() }
+              </Card.Group>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 
