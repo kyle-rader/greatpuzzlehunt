@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Grid, Input, Menu, Icon, Label } from 'semantic-ui-react';
+import ReactPaginate from 'react-paginate';
 
 const PAGE_LIMIT = 25;
 
@@ -17,7 +18,7 @@ AdminUsers = class AdminUsers extends Component {
 
     this._updateSearchToPass = _.debounce(() => {
       this.setState({ searchToPass: this.state.search });
-    }, 300);
+    }, 500);
 
     this.userCountInterval = Meteor.setInterval(() => Meteor.call('userCount', (error, result) => {
       if (error) return alert(error);
@@ -35,7 +36,20 @@ AdminUsers = class AdminUsers extends Component {
     <Grid>
       <Grid.Row>
         <Grid.Column width='7'>
-          { this._pageMenu() }
+          <ReactPaginate
+            pageCount={ this.state.pages }
+            pageRangeDisplayed={1}
+            marginPagesDisplayed={1}
+            initialPage={1}
+            containerClassName='ui pagination menu'
+            pageClassName='item btn'
+            previousClassName='item btn'
+            nextClassName='item btn'
+            breakClassName='item break'
+            activeClassName='active'
+            previousLabel='Prev'
+            onPageChange={(page) => this._handlePageChange(page)}
+          />
         </Grid.Column>
         <Grid.Column stretched width='2'>
           { this._usersLabel() }
@@ -53,16 +67,8 @@ AdminUsers = class AdminUsers extends Component {
     </Grid>)
   }
 
-  _pageMenu() {
-    const items = _.times(this.state.pages, (i) => (
-      <Menu.Item name={`${i+1}`} key={`page${i}`} active={i == this.state.page} onClick={() => this._handlePageClick(i)} content={`${i+1}`}/>
-    ));
-
-    return <Menu pagination>{ items }</Menu>;
-  }
-
   _usersLabel() {
-    return <Label color='green' icon='users' size='large' content={this.state.users} />;
+    return <Label color='green' icon='users' content={this.state.users} />;
   }
 
   _handleSearchChange(e) {
@@ -70,7 +76,7 @@ AdminUsers = class AdminUsers extends Component {
     this._updateSearchToPass();
   }
 
-  _handlePageClick(page) {
-    this.setState({ page });
+  _handlePageChange({ selected }) {
+    this.setState({ page: selected });
   }
 }
