@@ -7,6 +7,7 @@ import HomeHeader from './imports/home-header';
 import WelcomeSection from './imports/welcome-section';
 import EventDescription from './imports/event-description';
 import SponsorLevels from './imports/sponsor-levels';
+import Sponsors from './imports/sponsors';
 
 Home = class Home extends Component {
 
@@ -158,11 +159,10 @@ Home = class Home extends Component {
       <EventDescription/>
 
       <SponsorLevels/>
-
+      <br/>
+      <Sponsors />
+      
       <div className="ui padded stackable filling grid">
-
-
-        <Sponsors />
 
         <div className="one column stacking row">
           <div className="no-padding column">

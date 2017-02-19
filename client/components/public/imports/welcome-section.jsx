@@ -46,10 +46,10 @@ export default class WelcomeSection extends Component {
       <LinkButton to='/register' size='large' color='green' content='Register'/>
       <LinkButton to="/login" size='large' color='blue' content='Log In'/>
       <LinkButton to="/info" size='large' color='orange' content='More Info'/>
-      <LinkButton to="/volunteer" size='large' color='violet' content='Volunteer'/>
+      <LinkButton to="/volunteer" size='large' color='teal' content='Volunteer'/>
       <LinkButton as='a'
         href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1"
-        size='large' color='red' content='Donate'
+        size='large' color='violet' content='Donate'
         icon={<Icon name='heart'/>}
       />
     </div>

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Grid, Segment, Button, Icon } from 'semantic-ui-react';
+import { Grid, Segment, Button, Icon, Image } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
 import SponsorTile from './sponsor-tile';
 
@@ -9,6 +9,11 @@ export default class SponsorLevels extends Component {
     return (
       <Grid padded stackable className="filling">
         <Grid.Row>
+          <Grid.Column>
+            <Image src='/img/2016/event-photos/gathering-thin.jpg'/>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
           <Grid.Column className='dark-blue'>
             <Segment basic>
               <h1>
@@ -16,7 +21,7 @@ export default class SponsorLevels extends Component {
               </h1>
               <LinkButton as='a'
                 href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1"
-                size='large' color='red' content='Donate Online'
+                size='large' color='violet' content='Donate Online'
                 icon={<Icon name='heart'/>}
               />
               <h3>

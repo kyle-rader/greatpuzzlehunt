@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Segment, Header, Icon, Card, Image } from 'semantic-ui-react';
+import { Grid, Segment, Header, Icon, Card, Image } from 'semantic-ui-react';
 import { filter } from 'lodash';
 
-Sponsors = class Sponsors extends Component {
+export default class Sponsors extends Component {
   constructor(props) {
     super(props);
 
@@ -49,16 +49,18 @@ Sponsors = class Sponsors extends Component {
 
   render() {
     return (
-    <div className="one column stacking row">
-      <div className="column">
-        <Segment basic>
-          <br/>
-          <Header className='dark-blue' size='huge' content='A Huge Thank You to Our 2017 Sponsors!'/>
-
-          { this._renderSections() }
-        </Segment>
-      </div>
-    </div>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column>
+            <Header className='dark-blue' size='huge' content='Our Epic 2017 Sponsors!'/>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            { this._renderSections() }
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 
@@ -71,10 +73,10 @@ Sponsors = class Sponsors extends Component {
     let content = null;
 
     if (sponsors.length === 0) {
-      content = <Header size='small' content={`Join as a ${title} sponsor today!`}/>
-    } else {
-      content = <Image.Group size='medium'>{ sponsors }</Image.Group>;
+      return null;
     }
+
+    content = <Image.Group size='medium'>{ sponsors }</Image.Group>;
 
     return (
       <Segment basic key={title}>
