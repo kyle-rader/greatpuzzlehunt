@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Grid, Segment, Header, Button, Icon } from 'semantic-ui-react';
+import { Grid, Segment, Header, Button, Icon, Image } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
 
 export default class EventDescription extends Component {
@@ -23,6 +23,11 @@ export default class EventDescription extends Component {
               Everything is timed using your phone, QR codes, and this online system! So yes you can win :)
             </h3>
           </Segment>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>
+          <Image src='/img/2016/event-photos/gathering.jpg'/>
         </Grid.Column>
       </Grid.Row>
     </Grid>

@@ -6,6 +6,7 @@ import { Header, Icon, Button } from 'semantic-ui-react';
 import HomeHeader from './imports/home-header';
 import WelcomeSection from './imports/welcome-section';
 import EventDescription from './imports/event-description';
+import SponsorLevels from './imports/sponsor-levels';
 
 Home = class Home extends Component {
 
@@ -156,9 +157,10 @@ Home = class Home extends Component {
 
       <EventDescription/>
 
+      <SponsorLevels/>
+
       <div className="ui padded stackable filling grid">
 
-        <SponsorLevels />
 
         <Sponsors />
 

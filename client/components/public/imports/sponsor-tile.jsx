@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
-SponsorTitle = class SponsorTile extends Component {
+class SponsorTile extends Component {
   render() {
     return (
-      <div className="column">
+      <Grid.Column className='dark-blue'>
         <div className="ui center aligned inverted icon header">
           <i className={`${this.props.icon} icon`}></i>
           <div className="content">
@@ -14,14 +15,16 @@ SponsorTitle = class SponsorTile extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Grid.Column>
     );
   }
 }
 
-SponsorTitle.PropTypes = {
+SponsorTile.PropTypes = {
   name: React.PropTypes.string,
   icon: React.PropTypes.string,
   price: React.PropTypes.string,
   description: React.PropTypes.string,
 };
+
+export default SponsorTile;
