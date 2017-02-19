@@ -19,11 +19,15 @@ AdminUsers = class AdminUsers extends Component {
       this.setState({ searchToPass: this.state.search });
     }, 300);
 
-    Meteor.call('userCount', (error, result) => {
+    this.userCountInterval = Meteor.setInterval(() => Meteor.call('userCount', (error, result) => {
       if (error) return alert(error);
       const pages = Math.ceil(result / PAGE_LIMIT);
       this.setState({ users: result, pages });
-    });
+    }), 1000);
+  }
+
+  componentWillUnmount() {
+    Meteor.clearInterval(this.userCountInterval);
   }
 
   render() {
