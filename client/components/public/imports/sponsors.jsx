@@ -23,6 +23,11 @@ export default class Sponsors extends Component {
         logo: '/img/2017/sponsor-logos/wwu_cse.png',
         rank: 2,
       },
+      {
+        name: 'WWU Book Store',
+        logo: '/img/2017/sponsor-logos/wwu_bookstore.jpg',
+        rank: 1,
+      },
     ];
 
     this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
