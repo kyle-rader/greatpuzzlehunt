@@ -10,7 +10,16 @@ export default class LinkButton extends Component {
     };
 
     if (this.props.as) {
-      return <Button as={this.props.as} style={linkStyle} size={this.props.size} color={this.props.color} content={this.props.content} icon={this.props.icon}/>
+      return <Button
+        as={this.props.as}
+        style={linkStyle}
+        size={this.props.size}
+        color={this.props.color}
+        content={this.props.content}
+        icon={this.props.icon}
+        href={this.props.href}
+        target='_blank'
+      />
     }
 
     return (
