@@ -49,11 +49,37 @@ Meteor.publish('users.myTeam', function() {
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
 });
 
-Meteor.publish('admin.users', function(page = 0) {
+Meteor.publish('admin.users', function(page = 0, search = null) {
   check(page, Match.Integer);
+  check(search, Match.Any);
+  const hasSearch = search && search.length > 0;
 
-  return isAdmin(this.userId) ? Meteor.users.find({ roles: { $ne: 'admin' } }, {
-    limit: FIND_LIMIT,
-    skip: FIND_LIMIT * page,
-  }) : this.ready();
+  if (!isAdmin(this.userId)) return this.ready();
+
+  const roles = {
+    roles: { $ne: 'admin' },
+  };
+  const options = {
+    limit: hasSearch ? undefined : FIND_LIMIT,
+    skip: hasSearch ? undefined : FIND_LIMIT * page,
+  };
+
+  let query;
+  if (hasSearch) {
+    search = search.trim()
+    query = {
+      $or: [
+        { 'name': { $regex: search, $options: 'i' } },
+        { 'emails': { $elemMatch: { address: { $regex: search, $options: 'i' } } } },
+        { 'username': { $regex: search, $options: 'i' } },
+      ],
+    };
+  } else {
+    query = roles;
+  }
+
+  Meteor.logger.info('Query in progress!');
+  Meteor.logger.logobj(query);
+
+  return Meteor.users.find(query, options);
 });
