@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Header, Icon, Button } from 'semantic-ui-react';
+import { Container, Header, Icon, Button } from 'semantic-ui-react';
 
 import HomeHeader from './imports/home-header';
 import WelcomeSection from './imports/welcome-section';
@@ -9,84 +9,9 @@ import EventDescription from './imports/event-description';
 import SponsorLevels from './imports/sponsor-levels';
 import Sponsors from './imports/sponsors';
 import EventDescription2 from './imports/event-description-2';
+import RegistrationInfo from './imports/registration-info';
 
 Home = class Home extends Component {
-
-  _renderDescription2() {
-    return (
-    <div className="one column stacking row">
-      <div className="column">
-        <div className="ui basic segment">
-          <br/>
-          <div className="ui stackable dark-blue grid">
-            <div className="two column row">
-              <div className="column">
-                <h1>Who?</h1>
-                <p>Everyone! However, each person under age 14 on a team must be accompanied by a
-                  parent/legal guardian at all times - parent/legal guardian must be registered on
-                  team with child under age 14. *Note: The puzzles are created for ages 14 and older.
-                </p>
-              </div>
-              <div className="column">
-                <h1>What?</h1>
-                <p>Scavenger hunting, puzzle solving, brain adventuring! <Link to="/info">More details here</Link></p>
-              </div>
-            </div>
-            <div className="two column row">
-              <div className="column">
-                <h1>When?</h1>
-                <p>Saturday, April 1, 2017 from 10AM - 3PM<br/>Awards and Prizes at 4PM<br/>At Red Square, Western Washington University</p>
-              </div>
-              <div className="column">
-                <h1>Why?</h1>
-                <p>Stretch your mental muscles, bond with your teammates, compete alongside people of all ages and walks of life, and have a lot of fun!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    );
-  }
-
-  _renderRegistrationSection() {
-    return (
-    <div className="two column stacking row">
-
-      <div className="no-padding dark-blue nine wide column">
-        <img className="ui image" src="/img/2016/event-photos/station1.jpg"/>
-        <div className="ui basic compact small segment">(Above) A volunteer scanning a team's QR code on their phone to start their puzzle timer</div>
-      </div>
-
-      <div className="dark-blue seven wide column">
-        <div className="ui basic segment">
-          <h2>Early Bird Registration<br/>through March 10, 2017</h2>
-          <div className="ui list">
-            <div className="item">
-              <div className="ui tag label">Student &nbsp; $5</div>
-            </div>
-            <div className="item">
-              <div className="ui tag label">Non-Student &nbsp; $10</div>
-            </div>
-          </div>
-          <h2>Regular Registration<br/>March 11 - 30, 2017</h2>
-          <div className="ui list">
-            <div className="item">
-              <div className="ui tag label">Student &nbsp; $8</div>
-            </div>
-            <div className="item">
-              <div className="ui tag label">Non-Student &nbsp; $15</div>
-            </div>
-          </div>
-          <p>* Registration prices are per person.  Each person wanting to join a team must register themselves first.</p>
-          <Link className="ui large green button" to="/register">
-            Register
-          </Link>
-        </div>
-      </div>
-    </div>
-    );
-  }
 
   _renderSamplePuzzlesSection() {
     return (
@@ -151,7 +76,7 @@ Home = class Home extends Component {
 
   render() {
     return (
-    <div className="ui container">
+    <Container>
 
       <HomeHeader/>
 
@@ -164,6 +89,8 @@ Home = class Home extends Component {
       <Sponsors />
 
       <EventDescription2/>
+
+      <RegistrationInfo/>
 
       <div className="ui padded stackable filling grid">
 
@@ -193,7 +120,7 @@ Home = class Home extends Component {
 
       </div>
 
-    </div>
+    </Container>
     );
   }
 }
