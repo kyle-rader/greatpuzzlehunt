@@ -68,12 +68,14 @@ AdminUserList = class AdminUserList extends Component {
 }
 
 AdminUserList = createContainer(({ page = 1, search }) => {
-  const usersHandle = Meteor.subscribe('admin.users', page);
+  const usersHandle = Meteor.subscribe('admin.users', page, search);
   const loading = !usersHandle.ready();
 
+  const hasSearch = search && search.length > 0;
+  const query = hasSearch ? {} : { roles: { $ne: 'admin' } };
   const options = {};
 
-  const users = Meteor.users.find({ roles: { $ne: 'admin' } }, options).fetch();
+  const users = Meteor.users.find(query, options).fetch();
 
   return {
     loading,
