@@ -24,7 +24,7 @@ export default class LinkButton extends Component {
 
     return (
       <Link to={this.props.to} style={linkStyle}>
-        <Button size={this.props.size} color={this.props.color} content={this.props.content} icon={this.props.icon}/>
+        <Button className={this.props.className} size={this.props.size} color={this.props.color} content={this.props.content} icon={this.props.icon}/>
       </Link>
     )
   }
