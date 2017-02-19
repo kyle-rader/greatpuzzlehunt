@@ -5,6 +5,7 @@ import { Header, Icon, Button } from 'semantic-ui-react';
 
 import HomeHeader from './imports/home-header';
 import WelcomeSection from './imports/welcome-section';
+import EventDescription from './imports/event-description';
 
 Home = class Home extends Component {
 
@@ -24,34 +25,6 @@ Home = class Home extends Component {
     <div className="one column stacking row">
       <div className="dark-blue column">
         <div className="ui basic segment">
-        </div>
-      </div>
-    </div>
-    );
-  }
-
-  _renderDescriptionSection() {
-    return (
-    <div className="one column stacking row">
-      <div className="column">
-        <div className="ui dark-blue basic container segment">
-          <h1 className="ui dark-blue header">What is the Puzzle Hunt?</h1>
-          <p className="h3">
-            The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles.  Teams travel on foot to various locations
-            solving a diverse set of puzzles gathering clues along the way to solve one final meta puzzle.
-          </p>
-          <p className="h3">
-            Everything is timed using your phone, QR codes, and this online system! So yes you can win :)
-          </p>
-          <Header as='h3' className="dark-blue">
-            <Icon name='hand paper' color='violet'/>
-            <Header.Content>
-              <Button color='violet' style={{marginBottom: '10px'}} content={<Link to='/register' style={{color: '#fff'}}>Sign up to Volunteer now</Link>}/>
-              <br/>
-              We need awesome people like you to help make the magic happen!
-            </Header.Content>
-          </Header>
-          <p className="h2">Check out the video below to see last year's puzzle hunt in action!</p>
         </div>
       </div>
     </div>
@@ -213,9 +186,9 @@ Home = class Home extends Component {
 
       <WelcomeSection/>
 
-      <div className="ui padded stackable filling grid">
+      <EventDescription/>
 
-        {this._renderDescriptionSection()}
+      <div className="ui padded stackable filling grid">
 
         {this._renderVideoSection()}
 

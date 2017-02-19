@@ -1,8 +1,8 @@
-import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Grid, Segment, Button, Icon, List } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
+import RowBuffer from './row-buffer';
 
 export default class WelcomeSection extends Component {
   render() {
@@ -27,6 +27,8 @@ export default class WelcomeSection extends Component {
             <img className="ui image" src="/img/2016/event-photos/gathering.jpg"/>
           </Grid.Column>
         </Grid.Row>
+
+        <RowBuffer/>
 
       </Grid>
     );
