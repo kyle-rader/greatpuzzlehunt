@@ -42,16 +42,12 @@ const adminMenuItems = [
 ];
 
 Admin = class Admin extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Authed accessLevel='admin'>
         <Container>
-          <PuzzlePageTitle title="Admin" />
-          <Menu icon="labeled">
+          <PuzzlePageTitle title='Admin' />
+          <Menu icon='labeled'>
             { this._renderMenuLinks() }
           </Menu>
 
@@ -64,7 +60,7 @@ Admin = class Admin extends Component {
 
   _renderMenuLinks() {
     return adminMenuItems.map((item) => (
-      <Link key={item.to} className="item" to={`/admin/${item.to}`}>
+      <Link key={item.to} className='item' to={`/admin/${item.to}`}>
         <Icon className={item.iconClass}/>
         { item.name }
       </Link>
