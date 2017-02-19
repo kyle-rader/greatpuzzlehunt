@@ -33,9 +33,9 @@ AdminUsers = class AdminUsers extends Component {
 
   render() {
     return (
-    <Grid>
-      <Grid.Row>
-        <Grid.Column width='7'>
+    <Grid stackable>
+      <Grid.Row columns={3}>
+        <Grid.Column width={7}>
           <ReactPaginate
             pageCount={ this.state.pages }
             pageRangeDisplayed={1}
@@ -51,10 +51,12 @@ AdminUsers = class AdminUsers extends Component {
             onPageChange={(page) => this._handlePageChange(page)}
           />
         </Grid.Column>
-        <Grid.Column stretched width='2'>
-          { this._usersLabel() }
+        <Grid.Column width={2}>
+          <Label>
+            <Icon name='users' color='green'/> { this.state.users }
+          </Label>
         </Grid.Column>
-        <Grid.Column stretched width='7'>
+        <Grid.Column stretched width={7}>
           <Input name='search' placeholder='Search...' fluid icon='search' value={this.state.search} onChange={(e) => this._handleSearchChange(e)}/>
         </Grid.Column>
       </Grid.Row>
@@ -65,10 +67,6 @@ AdminUsers = class AdminUsers extends Component {
         </Grid.Column>
       </Grid.Row>
     </Grid>)
-  }
-
-  _usersLabel() {
-    return <Label color='green' icon='users' content={this.state.users} />;
   }
 
   _handleSearchChange(e) {
