@@ -1,12 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import {
-  Grid,
-  Input,
-  Menu,
-  Icon,
-  Label,
-} from 'semantic-ui-react';
+import { Grid, Input, Menu, Icon, Label } from 'semantic-ui-react';
 
 const PAGE_LIMIT = 25;
 

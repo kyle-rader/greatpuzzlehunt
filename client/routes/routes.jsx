@@ -7,10 +7,6 @@ export const renderRoutes = () => (
 
     <Route path='/' component={App}>
 
-      {/*
-        * Public Routes
-      */}
-
       <IndexRoute component={Home}/>
       <Route path='teams-list' component={PublicTeamList}/>
       <Route path='gallery' component={Gallery}/>
@@ -21,16 +17,11 @@ export const renderRoutes = () => (
       <Route path='register' component={Register}/>
       <Route path='volunteer' component={Volunteer}/>
 
-      {/* Authentication Routes */}
       <Route path='login' component={Login}/>
       <Route path='requestpasswordreset' component={RequestPasswordReset}/>
       <Route path='passwordreset/:token' component={PasswordReset}/>
 
       <Route path='setup/:token' component={AccountSetup}/>
-
-      {/*
-        * Authed Routes
-      */}
 
       <Route path='profile' component={Profile}/>
 
