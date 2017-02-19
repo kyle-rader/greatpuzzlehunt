@@ -9,38 +9,6 @@ import EventDescription from './imports/event-description';
 
 Home = class Home extends Component {
 
-  componentDidMount() {
-    const video = $(this.refs['embedded-video']);
-
-    video.embed({
-      source      : 'vimeo',
-      id          : '181258972',
-    });
-
-    $('html, body').scrollTop(0);
-  }
-
-  _renderBlueSpacer() {
-    return (
-    <div className="one column stacking row">
-      <div className="dark-blue column">
-        <div className="ui basic segment">
-        </div>
-      </div>
-    </div>
-    );
-  }
-
-  _renderVideoSection() {
-    return (
-    <div className="one column stacking row">
-      <div className="no-padding column">
-        <div ref="embedded-video" className="ui embed"></div>
-      </div>
-    </div>
-    );
-  }
-
   _renderDescription2() {
     return (
     <div className="one column stacking row">
@@ -190,8 +158,6 @@ Home = class Home extends Component {
 
       <div className="ui padded stackable filling grid">
 
-        {this._renderVideoSection()}
-
         <SponsorLevels />
 
         <Sponsors />
@@ -204,9 +170,6 @@ Home = class Home extends Component {
 
         {this._renderDescription2()}
 
-        {this._renderRegistrationSection()}
-
-        {this._renderBlueSpacer()}
 
         <div className="one column stacking row">
           <div className="no-padding column">
@@ -231,8 +194,6 @@ Home = class Home extends Component {
             <img className="ui image" src="/img/2016/event-photos/team-mod.jpg"/>
           </div>
         </div>
-
-        {this._renderBlueSpacer()}
 
       </div>
 
