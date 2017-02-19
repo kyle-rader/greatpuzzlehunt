@@ -24,7 +24,7 @@ export default class WelcomeSection extends Component {
           <Grid.Column width={6} className='dark-blue'>
             { this._infoList() }
           </Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column width={10} className='dark-blue'>
             <Vimeo vimeo_id='181258972' source='vimeo'/>
             {/* <Embed
               id='181258972'
