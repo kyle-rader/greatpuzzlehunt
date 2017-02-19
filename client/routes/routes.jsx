@@ -18,10 +18,11 @@ export const renderRoutes = () => (
       <Route path='puzzles' component={Puzzles}/>
       <Route path='info' component={Info}/>
       <Route path='qrcode' component={QRCode}/>
+      <Route path='register' component={Register}/>
+      <Route path='volunteer' component={Volunteer}/>
 
       {/* Authentication Routes */}
       <Route path='login' component={Login}/>
-      <Route path='register' component={Register}/>
       <Route path='requestpasswordreset' component={RequestPasswordReset}/>
       <Route path='passwordreset/:token' component={PasswordReset}/>
 
