@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Grid, Segment, Button, Icon, List } from 'semantic-ui-react';
+import { Grid, Segment, Button, Icon, List, Embed } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
 import RowBuffer from './row-buffer';
+import Vimeo from './vimeo';
 
 export default class WelcomeSection extends Component {
   render() {
@@ -24,7 +25,12 @@ export default class WelcomeSection extends Component {
             { this._infoList() }
           </Grid.Column>
           <Grid.Column width={10}>
-            <img className="ui image" src="/img/2016/event-photos/gathering.jpg"/>
+            <Vimeo vimeo_id='181258972' source='vimeo'/>
+            {/* <Embed
+              id='181258972'
+              placeholder='/img/2016/event-photos/gathering.jpg'
+              source='vimeo'
+            /> */}
           </Grid.Column>
         </Grid.Row>
 
