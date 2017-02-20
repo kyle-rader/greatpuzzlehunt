@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Grid, Button, Icon } from 'semantic-ui-react';
 
 import AdminUserEdit from './admin-user-edit';
+import AdminUserDisplay from './admin-user-display';
 import Actions from './actions';
 
 class AdminUser extends Component {
@@ -14,8 +15,12 @@ class AdminUser extends Component {
   }
 
   render() {
+    const { user } = this.props;
     return (
       <Grid.Row>
+        <Grid.Column computer={13} mobile={16}>
+          { this.state.editMode ? <AdminUserEdit user={ user }/> : <AdminUserDisplay user={ user }/> }
+        </Grid.Column>
         <Grid.Column computer={3} mobile={16}>
           <Actions
             onEdit={ (e) => this._toggleEdit() }
