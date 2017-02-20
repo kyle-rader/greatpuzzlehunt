@@ -19,7 +19,7 @@ class AdminUser extends Component {
         <Grid.Column computer={3} mobile={16}>
           <Actions
             onEdit={() => this._toggleEdit()}
-            onPasswordReset={() => console.log(`password reset: ${this.props.user.name}`)}
+            onPasswordReset={(e) => this._sendPasswordReset(e)}
             onEmailResend={() => console.log(`email resend: ${this.props.user.name}`)}
             onDelete={() => console.log(`delete: ${this.props.user.name}`)}
           />
@@ -30,6 +30,31 @@ class AdminUser extends Component {
 
   _toggleEdit() {
     this.setState({ editMode: !this.state.editMode });
+  }
+
+  _sendPasswordReset(event) {
+
+    if (!confirm(`Confirm Send Password Reset for "${this.props.user.name}" ?`))
+      return;
+
+    const btn = $(event.target);
+
+    Meteor.call('userAdminResetPassword', { _id: this.props.user._id }, (err, result) => {
+      if (err) {
+        console.log(err);
+        btn.attr('data-content', 'Failed to send password reset email! 😰');
+      } else {
+        btn.attr('data-content', 'Password Reset Email Sent! 😀');
+      }
+
+      btn.popup({
+        on: 'manual'
+      }).popup('show');
+
+      Meteor.setTimeout(() => {
+        btn.popup('hide');
+      }, 2500);
+    });
   }
 
   saveUser(event) {
@@ -114,30 +139,6 @@ class AdminUser extends Component {
     });
   }
 
-  resetPassword(event) {
-
-    if (!confirm(`Are you sure you want to reset the password for ${this.props.user.name}?`))
-      return;
-
-    const btn = $(event.target);
-
-    Meteor.call('userAdminResetPassword', {
-      _id: this.props.user._id
-    }, (err, result) => {
-      if (err) {
-        console.log(err);
-        btn.attr('data-content', 'Failed to send password reset email! 😰');
-      } else {
-        btn.attr('data-content', 'Password Reset Email Sent! 😀');
-      }
-      btn.popup({
-        on: 'manual'
-      }).popup('show');
-      setTimeout(() => {
-        btn.popup('hide');
-      }, 3000);
-    });
-  }
 
   deleteUser(event) {
     if (!confirm(`Are you sure you want to DELETE ${this.props.user.name}!?!?`))
@@ -222,15 +223,6 @@ class AdminUser extends Component {
           { email } &nbsp;
         </td>
       );
-    }
-  }
-
-  getEditButton() {
-    const user = this.props.user;
-    if (this.state.editMode) {
-      return <div ref="editBtn" className="ui green basic button" title="Edit User" onClick={this.saveUser.bind(this)}><i className="save icon"></i></div>;
-    } else {
-      return <div ref="editBtn" className="ui green basic button" title="Save User" onClick={this.enableEdit.bind(this)}><i className="pencil icon"></i></div>;
     }
   }
 
