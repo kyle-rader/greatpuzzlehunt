@@ -18,18 +18,18 @@ class AdminUser extends Component {
       <Grid.Row>
         <Grid.Column computer={3} mobile={16}>
           <Actions
-            onEdit={() => console.log(`edit: ${this.props.user.name}`)}
+            onEdit={() => this._toggleEdit()}
             onPasswordReset={() => console.log(`password reset: ${this.props.user.name}`)}
             onEmailResend={() => console.log(`email resend: ${this.props.user.name}`)}
             onDelete={() => console.log(`delete: ${this.props.user.name}`)}
           />
         </Grid.Column>
       </Grid.Row>
-    )
+    );
   }
 
-  enableEdit(user) {
-    this.setState({ editMode: true });
+  _toggleEdit() {
+    this.setState({ editMode: !this.state.editMode });
   }
 
   saveUser(event) {
