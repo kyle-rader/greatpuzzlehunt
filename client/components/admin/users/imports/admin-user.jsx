@@ -1,12 +1,45 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
+import { Grid, Button, Icon } from 'semantic-ui-react';
+import AdminUserEdit from './admin-user-edit';
 
-AdminUserListRow = class UserListRow extends Component {
+class AdminUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
       editMode: false
     };
+  }
+
+  render() {
+    return (
+      <Grid.Row>
+        <Grid.Column computer={3} mobile={16}>
+          { this._actions() }
+        </Grid.Column>
+      </Grid.Row>
+    )
+  }
+
+  _actions() {
+    return (
+      <Button.Group size='small' fluid>
+        <Button basic icon='pencil' color='green' onClick={() => console.log('wanna edit?')}/>
+        <Button basic color='blue' onClick={() => console.log('wanna reset password?')}>
+          <Icon.Group>
+            <Icon name='lock'/>
+            <Icon name='repeat' corner/>
+          </Icon.Group>
+        </Button>
+        <Button basic color='violet' onClick={() => console.log('wanna resend verification email/welcome email email?')}>
+          <Icon.Group>
+            <Icon name='mail'/>
+            <Icon name='repeat' corner/>
+          </Icon.Group>
+        </Button>
+        <Button basic icon='trash' color='red' onClick={() => console.log('wanna delete?')}/>
+      </Button.Group>
+    )
   }
 
   enableEdit(user) {
@@ -120,30 +153,30 @@ AdminUserListRow = class UserListRow extends Component {
     });
   }
 
-  // deleteUser(event) {
-  //   if (!confirm(`Are you sure you want to DELETE ${this.props.user.name}!?!?`))
-  //       return;
+  deleteUser(event) {
+    if (!confirm(`Are you sure you want to DELETE ${this.props.user.name}!?!?`))
+        return;
 
-  //   let btn = $(event.target);
+    let btn = $(event.target);
 
-  //   Meteor.call('userAdminDelete', {
-  //       _id: this.props.user._id
-  //   }, (err, result) => {
-  //       if (err) {
-  //           console.log(err);
-  //           btn.attr('data-content', 'Failed to delete user! 😰');
-  //       } else {
-  //           btn.attr('data-content', 'Deleted! 😀');
-  //       }
+    Meteor.call('userAdminDelete', {
+        _id: this.props.user._id
+    }, (err, result) => {
+        if (err) {
+            console.log(err);
+            btn.attr('data-content', 'Failed to delete user! 😰');
+        } else {
+            btn.attr('data-content', 'Deleted! 😀');
+        }
 
-  //       btn.popup({
-  //           on: 'manual'
-  //       }).popup('show');
-  //       setTimeout(() => {
-  //           btn.popup('hide');
-  //       }, 3000);
-  //   });
-  // }
+        btn.popup({
+            on: 'manual'
+        }).popup('show');
+        setTimeout(() => {
+            btn.popup('hide');
+        }, 3000);
+    });
+  }
 
   getName() {
     const user = this.props.user;
@@ -219,31 +252,33 @@ AdminUserListRow = class UserListRow extends Component {
     this.setState({ editMode: false });
   }
 
-  render() {
-    const user = this.props.user;
-    return (
-      <tr>
-        {this.getName()}
-        {this.getUsername()}
-        {this.getEmail()}
-          <td className={!!user.teamId ? 'positive' : 'negative'}>{!!user.teamId ? 'Yes' : 'No'}</td>
-          <td>
-            <div className="ui three icon tiny compact buttons">
-              {this.getEditButton()}
-              <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}>
-                <i className="icons">
-                  <i className="lock icon"></i>
-                  <i className="corner refresh icon"></i>
-                </i>
-              </div>
-              {/* <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div> */}
-            </div>
-          </td>
-      </tr>
-    );
-  }
+  // render() {
+  //   const user = this.props.user;
+  //   return (
+  //     <tr>
+  //       {this.getName()}
+  //       {this.getUsername()}
+  //       {this.getEmail()}
+  //         <td className={!!user.teamId ? 'positive' : 'negative'}>{!!user.teamId ? 'Yes' : 'No'}</td>
+  //         <td>
+  //           <div className="ui three icon tiny compact buttons">
+  //             {this.getEditButton()}
+  //             <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}>
+  //               <i className="icons">
+  //                 <i className="lock icon"></i>
+  //                 <i className="corner refresh icon"></i>
+  //               </i>
+  //             </div>
+  //             <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
+  //           </div>
+  //         </td>
+  //     </tr>
+  //   );
+  // }
 }
 
-AdminUserListRow.propTypes = {
+AdminUser.propTypes = {
   user: PropTypes.object.isRequired,
 };
+
+export default AdminUser;

@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Grid, Input, Menu, Icon, Label } from 'semantic-ui-react';
+import AdminUserList from './imports/admin-user-list';
+
 import ReactPaginate from 'react-paginate';
 
 const PAGE_LIMIT = 25;
@@ -36,20 +38,7 @@ AdminUsers = class AdminUsers extends Component {
     <Grid stackable>
       <Grid.Row columns={3}>
         <Grid.Column width={7}>
-          <ReactPaginate
-            pageCount={ this.state.pages }
-            pageRangeDisplayed={1}
-            marginPagesDisplayed={1}
-            initialPage={0}
-            containerClassName='ui pagination menu'
-            pageClassName='item btn'
-            previousClassName='item btn'
-            nextClassName='item btn'
-            breakClassName='item break'
-            activeClassName='active'
-            previousLabel='Prev'
-            onPageChange={(page) => this._handlePageChange(page)}
-          />
+          { this._pagination() }
         </Grid.Column>
         <Grid.Column width={2}>
           <Label>
@@ -67,6 +56,23 @@ AdminUsers = class AdminUsers extends Component {
         </Grid.Column>
       </Grid.Row>
     </Grid>)
+  }
+
+  _pagination() {
+    return <ReactPaginate
+      pageCount={ this.state.pages }
+      pageRangeDisplayed={1}
+      marginPagesDisplayed={1}
+      initialPage={0}
+      containerClassName='ui pagination menu'
+      pageClassName='item btn'
+      previousClassName='item btn'
+      nextClassName='item btn'
+      breakClassName='item break'
+      activeClassName='active'
+      previousLabel='Prev'
+      onPageChange={(page) => this._handlePageChange(page)}
+    />;
   }
 
   _handleSearchChange(e) {
