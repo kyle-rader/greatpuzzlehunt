@@ -18,10 +18,10 @@ class AdminUser extends Component {
       <Grid.Row>
         <Grid.Column computer={3} mobile={16}>
           <Actions
-            onEdit={() => this._toggleEdit()}
+            onEdit={ (e) => this._toggleEdit() }
             onPasswordReset={(e) => this._sendPasswordReset(e)}
-            onEmailResend={() => console.log(`email resend: ${this.props.user.name}`)}
-            onDelete={() => console.log(`delete: ${this.props.user.name}`)}
+            onEmailResend={(e) => this._sendEmailResend(e)}
+            onDelete={ (e) => console.log(`delete: ${this.props.user.name}`) }
           />
         </Grid.Column>
       </Grid.Row>
@@ -33,7 +33,6 @@ class AdminUser extends Component {
   }
 
   _sendPasswordReset(event) {
-
     if (!confirm(`Confirm Send Password Reset for "${this.props.user.name}" ?`))
       return;
 
@@ -45,6 +44,30 @@ class AdminUser extends Component {
         btn.attr('data-content', 'Failed to send password reset email! 😰');
       } else {
         btn.attr('data-content', 'Password Reset Email Sent! 😀');
+      }
+
+      btn.popup({
+        on: 'manual'
+      }).popup('show');
+
+      Meteor.setTimeout(() => {
+        btn.popup('hide');
+      }, 2500);
+    });
+  }
+
+  _sendEmailResend(event) {
+    if (!confirm(`Confirm Resend Enrollment/Verification email for "${this.props.user.name}" ?`))
+      return;
+
+    const btn = $(event.target);
+
+    Meteor.call('user.resendEnrollmentEmail', this.props.user.username, (err, result) => {
+      if (err) {
+        console.log(err);
+        btn.attr('data-content', 'Send Failed! 😰');
+      } else {
+        btn.attr('data-content', 'Email Sent! 😀');
       }
 
       btn.popup({
@@ -91,30 +114,6 @@ class AdminUser extends Component {
     this.setState({ editMode: false });
   }
 
-  verifyEmail(event) {
-
-    if (!confirm(`Are you sure you want to resend enrollment email for ${this.props.user.email}?`))
-      return;
-
-    const btn = $(event.target);
-
-    Meteor.call('user.resendEnrollmentEmail', this.props.user.username, (err, result) => {
-      if (err) {
-        console.log(err);
-        btn.attr('data-content', 'Send Failed! 😰');
-      } else {
-        btn.attr('data-content', 'Enrollment Email Sent! 😀');
-      }
-
-      btn.popup({
-        on: 'manual'
-      }).popup('show');
-      setTimeout(() => {
-        btn.popup('hide');
-      }, 3000);
-    });
-  }
-
   toggleVolunteer(event) {
 
     if(!confirm(`Are you sure you want to toggle ${this.props.user.name} as a Volunteer?`))
@@ -138,7 +137,6 @@ class AdminUser extends Component {
       }, 3000);
     });
   }
-
 
   deleteUser(event) {
     if (!confirm(`Are you sure you want to DELETE ${this.props.user.name}!?!?`))
@@ -229,30 +227,6 @@ class AdminUser extends Component {
   componentWillReceiveProps() {
     this.setState({ editMode: false });
   }
-
-  // render() {
-  //   const user = this.props.user;
-  //   return (
-  //     <tr>
-  //       {this.getName()}
-  //       {this.getUsername()}
-  //       {this.getEmail()}
-  //         <td className={!!user.teamId ? 'positive' : 'negative'}>{!!user.teamId ? 'Yes' : 'No'}</td>
-  //         <td>
-  //           <div className="ui three icon tiny compact buttons">
-  //             {this.getEditButton()}
-  //             <div className="ui orange basic button" title="Reset Password" onClick={this.resetPassword.bind(this)}>
-  //               <i className="icons">
-  //                 <i className="lock icon"></i>
-  //                 <i className="corner refresh icon"></i>
-  //               </i>
-  //             </div>
-  //             <div className="ui red basic button" title="Delete User" onClick={this.deleteUser.bind(this)}><i className="trash icon"></i></div>
-  //           </div>
-  //         </td>
-  //     </tr>
-  //   );
-  // }
 }
 
 AdminUser.propTypes = {
