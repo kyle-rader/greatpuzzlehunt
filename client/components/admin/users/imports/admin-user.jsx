@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Grid, Button, Icon } from 'semantic-ui-react';
+
 import AdminUserEdit from './admin-user-edit';
+import Actions from './actions';
 
 class AdminUser extends Component {
   constructor(props) {
@@ -15,30 +17,14 @@ class AdminUser extends Component {
     return (
       <Grid.Row>
         <Grid.Column computer={3} mobile={16}>
-          { this._actions() }
+          <Actions
+            onEdit={() => console.log(`edit: ${this.props.user.name}`)}
+            onPasswordReset={() => console.log(`password reset: ${this.props.user.name}`)}
+            onEmailResend={() => console.log(`email resend: ${this.props.user.name}`)}
+            onDelete={() => console.log(`delete: ${this.props.user.name}`)}
+          />
         </Grid.Column>
       </Grid.Row>
-    )
-  }
-
-  _actions() {
-    return (
-      <Button.Group size='small' fluid>
-        <Button basic icon='pencil' color='green' onClick={() => console.log('wanna edit?')}/>
-        <Button basic color='blue' onClick={() => console.log('wanna reset password?')}>
-          <Icon.Group>
-            <Icon name='lock'/>
-            <Icon name='repeat' corner/>
-          </Icon.Group>
-        </Button>
-        <Button basic color='violet' onClick={() => console.log('wanna resend verification email/welcome email email?')}>
-          <Icon.Group>
-            <Icon name='mail'/>
-            <Icon name='repeat' corner/>
-          </Icon.Group>
-        </Button>
-        <Button basic icon='trash' color='red' onClick={() => console.log('wanna delete?')}/>
-      </Button.Group>
     )
   }
 
