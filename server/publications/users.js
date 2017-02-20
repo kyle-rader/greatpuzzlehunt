@@ -78,8 +78,8 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
     query = roles;
   }
 
-  Meteor.logger.info('Query in progress!');
-  Meteor.logger.logobj(query);
+  // Meteor.logger.info('Query in progress!');
+  // Meteor.logger.logobj(query);
 
   return Meteor.users.find(query, options);
 });
