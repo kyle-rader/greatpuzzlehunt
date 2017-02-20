@@ -62,7 +62,7 @@ class AdminUser extends Component {
 
     const btn = $(event.target);
 
-    Meteor.call('user.resendEnrollmentEmail', this.props.user.username, (err, result) => {
+    Meteor.call('user.emailResend', this.props.user._id, (err, result) => {
       if (err) {
         console.log(err);
         btn.attr('data-content', 'Send Failed! 😰');
