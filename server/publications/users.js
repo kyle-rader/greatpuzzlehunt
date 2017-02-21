@@ -56,9 +56,6 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
 
   if (!isAdmin(this.userId)) return this.ready();
 
-  const roles = {
-    roles: { $ne: 'admin' },
-  };
   const options = {
     limit: hasSearch ? undefined : FIND_LIMIT,
     skip: hasSearch ? undefined : FIND_LIMIT * page,
@@ -75,7 +72,7 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
       ],
     };
   } else {
-    query = roles;
+    query = {};
   }
 
   // Meteor.logger.info('Query in progress!');
