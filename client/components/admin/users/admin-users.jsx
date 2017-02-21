@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Grid, Input, Menu, Icon, Label } from 'semantic-ui-react';
+import { Grid, Container, Input, Menu, Icon, Label } from 'semantic-ui-react';
 import AdminUserList from './imports/admin-user-list';
 
 import ReactPaginate from 'react-paginate';
@@ -35,27 +35,37 @@ AdminUsers = class AdminUsers extends Component {
 
   render() {
     return (
-    <Grid stackable>
-      <Grid.Row columns={3}>
-        <Grid.Column width={7}>
-          { this._pagination() }
-        </Grid.Column>
-        <Grid.Column width={2}>
-          <Label>
-            <Icon name='users' color='green'/> { this.state.users }
-          </Label>
-        </Grid.Column>
-        <Grid.Column stretched width={7}>
-          <Input name='search' placeholder='Search...' fluid icon='search' value={this.state.search} onChange={(e) => this._handleSearchChange(e)}/>
-        </Grid.Column>
-      </Grid.Row>
+      <Container>
+        <PuzzlePageTitle title='Users'/>
+        { this._renderGrid() }
+      </Container>
+    );
+  }
 
-      <Grid.Row>
-        <Grid.Column>
-          <AdminUserList page={this.state.page} search={this.state.searchToPass} />
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>)
+  _renderGrid() {
+    return (
+      <Grid stackable>
+        <Grid.Row columns={3}>
+          <Grid.Column width={7}>
+            { this._pagination() }
+          </Grid.Column>
+          <Grid.Column width={2}>
+            <Label>
+              <Icon name='users' color='green'/> { this.state.users }
+            </Label>
+          </Grid.Column>
+          <Grid.Column stretched width={7}>
+            <Input name='search' placeholder='Search...' fluid icon='search' value={this.state.search} onChange={(e) => this._handleSearchChange(e)}/>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            <AdminUserList page={this.state.page} search={this.state.searchToPass} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    );
   }
 
   _pagination() {
