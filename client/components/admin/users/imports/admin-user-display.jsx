@@ -1,11 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Grid, Icon } from 'semantic-ui-react';
+import { Grid, Message, Button, Icon } from 'semantic-ui-react';
 
 class AdminUserDisplay extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      more_info: false,
+    };
+  }
+
   render() {
     const { user } = this.props;
-
+    const { moreInfo } = this.state;
     return (
       <Grid>
         <Grid.Row>
@@ -13,6 +20,7 @@ class AdminUserDisplay extends Component {
           { this._username_team() }
           { this._info() }
         </Grid.Row>
+        { moreInfo ? this._moreInfo() : null }
       </Grid>
     );
   }
@@ -23,7 +31,7 @@ class AdminUserDisplay extends Component {
     const email = user.email || user.getEmail();
     return (
       <Grid.Column computer={6} mobile={16}>
-        <h3>{ user.name }</h3>
+        <h4>{ user.name }</h4>
         { email } <Icon color={ good ? 'green' : 'red' } name={ good ? 'check' : 'close' }/>
       </Grid.Column>
     );
@@ -33,19 +41,47 @@ class AdminUserDisplay extends Component {
     const { user } = this.props;
     return (
       <Grid.Column computer={6} mobile={16}>
-        <pre>{ user.username } : { user.teamId }</pre>
+        { user.username } : { user.teamId }
       </Grid.Column>
     );
   }
 
   _info() {
     const { user } = this.props;
+    const { moreInfo } = this.state;
     return (
       <Grid.Column computer={4} mobile={16}>
-        <Icon name='phone'/> { user.phone }
-          {/* { JSON.stringify(user.emergencyContact, null, 2) } */}
+        <Button basic size='tiny' onClick={ () => this._toggleInfo() } content={ moreInfo ? 'Show less' : 'Show more' }/>
       </Grid.Column>
     );
+  }
+
+  _toggleInfo() {
+    this.setState({ moreInfo: !this.state.moreInfo });
+  }
+
+  _moreInfo() {
+    const { user } = this.props;
+    return (
+      <Grid.Row>
+        <Grid.Column computer={4} mobile={8}>
+          <Icon name='phone'/>{ user.phone }
+        </Grid.Column>
+        <Grid.Column computer={6} mobile={8}>
+          <Icon name='location arrow'/>{ `${user.city}, ${user.state}` }
+        </Grid.Column>
+        <Grid.Column computer={6} mobile={16}>
+          <Icon name='first aid'/>{ this._ec() }
+        </Grid.Column>
+      </Grid.Row>
+    );
+  }
+
+  _ec() {
+    const { user } = this.props;
+    if (!user.emergencyContact) return null;
+    const { emergencyContact: ec } = user;
+    return [ec.name, ec.relation, ec.phone, ec.email, ec.altPhone].filter(n => Boolean(n)).join(', ');
   }
 }
 
