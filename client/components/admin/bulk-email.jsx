@@ -5,27 +5,31 @@ import { Container, Message } from 'semantic-ui-react';
 BulkEmail = class BulkEmail extends Component {
   render() {
     return (
-      <form ref="emailForm" className="ui segment form">
+      <Container>
+        <PuzzlePageTitle title='Bulk Emailer'/>
+
+        <form ref="emailForm" className="ui segment form">
           <h3 className="ui header">Bulk Email</h3>
           <div className="fields">
-              <div className="twelve wide field">
-                  <label>Subect</label>
-                  <input ref="subject" type="text" className="ui fluid input" />
-              </div>
-              <div className="four wide field">
-                  <label>Group</label>
-                  <select ref="role" className="ui dropdown">
-                      <option value="user">Users</option>
-                      <option value="volunteer">Volunteers</option>
-                      <option value="admin">Admins</option>
-                  </select>
-              </div>
+            <div className="twelve wide field">
+              <label>Subect</label>
+              <input ref="subject" type="text" className="ui fluid input" />
+            </div>
+            <div className="four wide field">
+              <label>Group</label>
+              <select ref="role" className="ui dropdown">
+                <option value="user">Users</option>
+                <option value="volunteer">Volunteers</option>
+                <option value="admin">Admins</option>
+              </select>
+            </div>
           </div>
           <div className="field">
-              <textarea ref="message" rows="6"></textarea>
+            <textarea ref="message" rows="6"></textarea>
           </div>
-              <input type="submit" className="ui blue button" value="Send" onClick={this.sendEmail}/>
-      </form>
+          <input type="submit" className="ui blue button" value="Send" onClick={(e) => this.sendEmail(e)}/>
+        </form>
+      </Container>
     );
   }
 
