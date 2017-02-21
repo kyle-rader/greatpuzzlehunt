@@ -2,6 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Grid, Message, Button, Icon } from 'semantic-ui-react';
 
+function phoneLink(phone) {
+  return Boolean(phone) ? <a href={`tel:${phone}`}>{ phone }</a> : null;
+}
+
 class AdminUserDisplay extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +34,7 @@ class AdminUserDisplay extends Component {
     const good = user.isVerified();
     const email = user.email || user.getEmail();
     return (
-      <Grid.Column computer={6} mobile={16}>
+      <Grid.Column computer={5} mobile={16}>
         <h4>{ user.name }</h4>
         { email } <Icon color={ good ? 'green' : 'red' } name={ good ? 'check' : 'close' }/>
       </Grid.Column>
@@ -50,7 +54,7 @@ class AdminUserDisplay extends Component {
     const { user } = this.props;
     const { moreInfo } = this.state;
     return (
-      <Grid.Column computer={4} mobile={16}>
+      <Grid.Column computer={5} mobile={16}>
         <Button basic size='tiny' onClick={ () => this._toggleInfo() } content={ moreInfo ? 'Show less' : 'Show more' }/>
       </Grid.Column>
     );
@@ -65,7 +69,7 @@ class AdminUserDisplay extends Component {
     return (
       <Grid.Row>
         <Grid.Column computer={4} mobile={8}>
-          <Icon name='phone'/>{ user.phone }
+          <Icon name='phone'/>{ phoneLink(user.phone) }
         </Grid.Column>
         <Grid.Column computer={6} mobile={8}>
           <Icon name='location arrow'/>{ `${user.city}, ${user.state}` }
@@ -81,7 +85,13 @@ class AdminUserDisplay extends Component {
     const { user } = this.props;
     if (!user.emergencyContact) return null;
     const { emergencyContact: ec } = user;
-    return [ec.name, ec.relation, ec.phone, ec.email, ec.altPhone].filter(n => Boolean(n)).join(', ');
+    const hasAlt = Boolean(ec.altPhone);
+    return (
+      <span>
+        { [ec.name, ec.relation].filter(n => Boolean(n)).join(', ') } <br/>
+        { phoneLink(ec.phone) } { hasAlt ? ', alt: ' : '' } { phoneLink(ec.altPhone) }
+      </span>
+    )
   }
 }
 
