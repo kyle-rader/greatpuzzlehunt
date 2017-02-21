@@ -114,12 +114,13 @@ Info = class Info extends Component {
           <Accordion.Content>
             Your creativity and problem solving skills! Along with the following:<br/>
             <List>
-              <List.Item description="At least one smart phone.  The more the better! (Think about battery life)."/>
+              <List.Item description="At least one smart phone. The more the better! (Think about battery life). Googling is encouraged!"/>
               <List.Item description="A clip board, or a note pad.  Graph paper might come in handy."/>
               <List.Item description="Scissors and tape."/>
-              <List.Item description="Writing utensils (pens and pencils)."/>
+              <List.Item description="Writing utensils (pencils, colored pencils, erasers, highlighters)."/>
               <List.Item description="A sturdy single hole punch (capable of punching through 8 layers of paper)."/>
               <List.Item description="Water to drink! You are welcome to bring your own snacks too."/>
+              <List.Item description="Umbrella for your puzzles!"/>
             </List>
           </Accordion.Content>
 
