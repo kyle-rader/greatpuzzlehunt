@@ -32,7 +32,7 @@ export const renderRoutes = () => (
       </Route>
 
       {/* Admin Routes */}
-      <Route path='admin' component={Admin}>
+      <Route path='admin' component={makeAuthed('admin')}>
         <IndexRoute component={AdminUsers} />
         <Route path='users' component={AdminUsers} />
         <Route path='teams' component={AdminTeamList} />

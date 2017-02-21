@@ -4,8 +4,130 @@ import { Link, browserHistory } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Icon } from 'semantic-ui-react';
 
+const mainMenuLinks = [
+  {
+    name: 'Home',
+    to: '/',
+    iconClass: 'green home',
+  },
+  {
+    name: 'Teams',
+    to: '/teams-list',
+    iconClass: 'blue users',
+  },
+  {
+    name: 'Contact',
+    to: '/contact',
+    iconClass: 'violet mail',
+  },
+  {
+    name: 'Puzzles',
+    to: '/puzzles',
+    iconClass: 'red puzzle',
+  },
+  {
+    name: 'Info',
+    to: '/info',
+    iconClass: 'orange circle info',
+  },
+  {
+    name: 'Gallery',
+    to: '/gallery',
+    iconClass: 'teal camera',
+  },
+  {
+    name: 'QR Encoder',
+    to: '/qrcode',
+    iconClass: 'gray qrcode',
+  },
+];
+const adminMenuItems = [
+  {
+    name: 'Users',
+    to: '/admin/users',
+    iconClass: 'green user',
+  },
+  {
+    name: 'Add Users',
+    to: '/admin/add-users',
+    iconClass: 'green plus',
+  },
+  {
+    name: 'Teams',
+    to: '/admin/teams',
+    iconClass: 'blue users',
+  },
+  {
+    name: 'Puzzles',
+    to: '/admin/puzzles',
+    iconClass: 'violet puzzle',
+  },
+  {
+    name: 'Email',
+    to: '/admin/email',
+    iconClass: 'orange mail',
+  },
+  {
+    name: 'Game',
+    to: '/admin/game',
+    iconClass: 'red gamepad',
+  },
+  {
+    name: 'Scoring',
+    to: '/admin/scoring',
+    iconClass: 'yellow trophy',
+  },
+];
 
 TopBar = class TopBar extends Component {
+  render() {
+    const { isAdmin } = this.props;
+    return (
+      <div className="ui fixed inverted labeled icon menu top-bar" ref="topbar">
+
+        <div className="ui dropdown item" ref="menuDropdown">
+          <i className="large content icon"></i>
+          Menu
+          <div className="menu topbar-dropdown-menu">
+            { this._renderMenuLinks(mainMenuLinks) }
+          </div>
+        </div>
+
+        { this._renderSocialButtons() }
+
+        <div className="right menu">
+          { isAdmin() ? this._renderAdminMenu() : null }
+          {this._logInLogOutBtn()}
+        </div>
+      </div>
+    );
+  }
+
+  _renderMenuLinks(links) {
+    return links.map((item) => (
+      <Link key={ item.to } className='item' to={ item.to }>
+        <Icon className={ item.iconClass }/>
+        { item.name }
+      </Link>
+    ));
+  }
+
+  _renderSocialButtons() {
+    const socialApps = Object.keys(Meteor.settings.public.social);
+    return socialApps.map((app) => this._socialButton(app));
+  }
+
+  _renderAdminMenu() {
+    return (
+      <div className="ui dropdown item">
+        <Icon name='spy' size='large'/>
+        Admin
+        <div className="menu topbar-dropdown-menu">
+          { this._renderMenuLinks(adminMenuItems) }
+        </div>
+      </div>
+    );
+  }
 
   _socialButton(socialApp) {
     return (
@@ -16,30 +138,12 @@ TopBar = class TopBar extends Component {
     );
   }
 
-  _renderSocialButtons() {
-    const socialApps = Object.keys(Meteor.settings.public.social);
-    return socialApps.map((app) => this._socialButton(app));
-  }
-
-  _renderAdminBUttons() {
-    if (this.props.user.hasRole('admin')) {
-      return [
-        <div className="divider" key="adminDivider"></div>,
-        (<Link className="item" to="/admin" key="adminLink">
-          <Icon name="configure" color="red"/>
-          Admin
-        </Link>)
-      ];
-    }
-    return null;
-  }
-
   _logInLogOutBtn() {
     if (this.props.user) {
       return (
         <div className="ui dropdown item">
-          <i className="large settings icon"></i>
-          {this.props.user.name}
+          <Icon name='settings' size='large'/>
+          { this.props.user.name }
           <div className="menu topbar-dropdown-menu">
             <Link className="item" to="/profile">
               <Icon name="user" color="green"/>
@@ -53,7 +157,6 @@ TopBar = class TopBar extends Component {
               <Icon name="puzzle" color="violet"/>
               Game
             </Link>
-            {this._renderAdminBUttons()}
             <div className="divider"></div>
             <a className="item" onClick={(e) => this._logout(e)}>
               <Icon name="sign out"/>
@@ -65,7 +168,7 @@ TopBar = class TopBar extends Component {
     } else {
       return (
         <Link className="item" to="/login">
-          <i className="sign in icon"></i>
+          <Icon name='sign in'/>
           Login
         </Link>
       );
@@ -89,60 +192,11 @@ TopBar = class TopBar extends Component {
     this._initDropDownMenus();
   }
 
-  render() {
-    return (
-      <div className="ui fixed inverted labeled icon menu top-bar" ref="topbar">
-
-        <div className="ui dropdown item" ref="menuDropdown">
-          <i className="large content icon"></i>
-          Menu
-          <div className="menu topbar-dropdown-menu">
-            <Link className="item" to="/">
-              <i className="green home icon"></i>
-              Home
-            </Link>
-            <Link className="item" to="/teams-list">
-              <i className="blue users icon"></i>
-              Teams
-            </Link>
-            <Link className="item" to="/contact">
-              <i className="violet mail icon"></i>
-              Contact
-            </Link>
-            <Link className="item" to="/puzzles">
-              <i className="red puzzle icon"></i>
-              Puzzles
-            </Link>
-            <Link className="item" to="/info">
-              <i className="orange circle info icon"></i>
-              More Info
-            </Link>
-            <Link className="item" to="/gallery">
-              <i className="teal camera icon"></i>
-              Gallery
-            </Link>
-            <Link className="item" to="/qrcode">
-              <i className="gray qrcode icon"></i>
-              QR Encoder
-            </Link>
-          </div>
-        </div>
-
-        {this._renderSocialButtons()}
-
-        <div className="right menu">
-          {this._logInLogOutBtn()}
-        </div>
-      </div>
-    );
-  }
 }
 
-TopBar = createContainer(({ params }) => {
-  return {
-    user: Meteor.user(),
-    isAdmin() {
-      return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
-    }
-  };
-}, TopBar);
+TopBar = createContainer(() => ({
+  user: Meteor.user(),
+  isAdmin() {
+    return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
+  }
+}), TopBar);
