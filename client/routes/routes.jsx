@@ -38,7 +38,7 @@ export const renderRoutes = () => (
         <Route path='teams' component={AdminTeamList} />
         <Route path='puzzles' component={PuzzleDashboard} />
         <Route path='email' component={BulkEmail} />
-        <Route path='game' component={GamePlay} />
+        <Route path='game' component={GameState} />
         <Route path='scoring' component={Scoring} />
       </Route>
 
