@@ -19,7 +19,15 @@ class AdminUser extends Component {
     return (
       <Grid.Row>
         <Grid.Column computer={13} mobile={16}>
-          { this.state.editMode ? <AdminUserEdit user={ user }/> : <AdminUserDisplay user={ user }/> }
+          {
+            this.state.editMode ?
+            <AdminUserEdit user={ user }/> :
+            <AdminUserDisplay
+              user={ user }
+              onToggleAdmin={ (e) => this._toggleRole('admin') }
+              onToggleVolunteer={ (e) => this._toggleRole('volunteer') }
+            />
+          }
         </Grid.Column>
         <Grid.Column computer={3} mobile={16}>
           <Actions
@@ -31,6 +39,15 @@ class AdminUser extends Component {
         </Grid.Column>
       </Grid.Row>
     );
+  }
+
+  _toggleRole(role) {
+    const { user } = this.props;
+    if (!confirm(`Toggle ${role} for ${user.name} ?`)) return;
+
+    Meteor.call('admin.user.toggleRole', user._id, role, (err, result) => {
+      if (err) return alert(err);
+    });
   }
 
   _toggleEdit(state = null) {

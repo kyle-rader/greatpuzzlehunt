@@ -110,6 +110,8 @@ class AdminUserDisplay extends Component {
 
 AdminUserDisplay.propTypes = {
   user: PropTypes.object.isRequired,
+  onToggleAdmin: PropTypes.func.isRequired,
+  onToggleVolunteer: PropTypes.func.isRequired,
 };
 
 export default AdminUserDisplay;

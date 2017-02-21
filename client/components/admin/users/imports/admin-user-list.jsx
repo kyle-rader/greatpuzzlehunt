@@ -26,7 +26,7 @@ AdminUserList = createContainer(({ page = 1, search }) => {
   const loading = !usersHandle.ready();
 
   const hasSearch = search && search.length > 0;
-  const query = hasSearch ? {} : { roles: { $ne: 'admin' } };
+  const query = {};
   const options = {};
 
   const users = Meteor.users.find(query, options).fetch();
