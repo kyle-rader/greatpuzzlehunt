@@ -25,5 +25,5 @@ PuzzlePageTitle = class PuzzlePageTitle extends Component {
 
 PuzzlePageTitle.propTypes = {
   title: PropTypes.node.isRequired,
-  subTitle: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
 };
