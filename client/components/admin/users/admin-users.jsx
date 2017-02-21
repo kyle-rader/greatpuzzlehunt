@@ -81,6 +81,6 @@ AdminUsers = class AdminUsers extends Component {
   }
 
   _handlePageChange({ selected }) {
-    this.setState({ page: selected });
+    this.setState({ page: selected, search: '', searchToPass: '' });
   }
 }
