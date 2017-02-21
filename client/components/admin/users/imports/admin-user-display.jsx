@@ -10,7 +10,7 @@ class AdminUserDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      more_info: false,
+      more_buttons: false,
     };
   }
 
@@ -22,7 +22,7 @@ class AdminUserDisplay extends Component {
         <Grid.Row>
           { this._name_email() }
           { this._username_team() }
-          { this._info() }
+          { this._buttons() }
         </Grid.Row>
         { moreInfo ? this._moreInfo() : null }
       </Grid>
@@ -50,12 +50,25 @@ class AdminUserDisplay extends Component {
     );
   }
 
-  _info() {
+  _buttons() {
     const { user } = this.props;
     const { moreInfo } = this.state;
     return (
-      <Grid.Column computer={5} mobile={16}>
-        <Button basic size='tiny' onClick={ () => this._toggleInfo() } content={ moreInfo ? 'Show less' : 'Show more' }/>
+      <Grid.Column computer={5} mobile={16} className='top-mobile-padding'>
+        <Button basic size='small'
+          onClick={ () => this._toggleInfo() }
+          content={ moreInfo ? 'Show less' : 'Show more' }
+        />
+        <Button basic size='small'
+          color={ user.hasRole('admin') ? 'violet' : null }
+          onClick={ this.props.onToggleAdmin }
+          icon={ <Icon name='power'/> }
+        />
+        <Button basic size='small'
+          color={ user.hasRole('volunteer') ? 'teal' : null }
+          onClick={ this.props.onToggleVolunteer }
+          icon={ <Icon name='heart'/> }
+        />
       </Grid.Column>
     );
   }
