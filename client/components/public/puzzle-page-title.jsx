@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 
 PuzzlePageTitle = class PuzzlePageTitle extends Component {
   render() {
+    const smallStyle = {
+      fontSize: '.65em',
+    };
     return (
     <Grid stackable padded className='puzzle-page-title filling'>
       <Grid.Row>
@@ -10,7 +13,7 @@ PuzzlePageTitle = class PuzzlePageTitle extends Component {
           <Segment basic>
             <h1 className='dark-blue'>
               {this.props.title}<br/>
-              <small>{this.props.subTitle}</small>
+              <small style={ smallStyle }>{this.props.subTitle}</small>
             </h1>
           </Segment>
         </Grid.Column>
@@ -19,3 +22,8 @@ PuzzlePageTitle = class PuzzlePageTitle extends Component {
     );
   }
 }
+
+PuzzlePageTitle.propTypes = {
+  title: PropTypes.node.isRequired,
+  subTitle: PropTypes.string.isRequired,
+};
