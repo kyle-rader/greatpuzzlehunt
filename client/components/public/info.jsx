@@ -16,20 +16,22 @@ Info = class Info extends Component {
 
         <Segment basic>
           <h3>Useful downloads</h3>
-          <Button color="blue" animated="fade" as="a" href="/pdfs/The Great Puzzle Hunt Rules of Play and Tips.pdf" target="_blank">
-            <Button.Content visible>Rules of Play and Tips</Button.Content>
-            <Button.Content hidden>
-              <Icon name='download' />
-              Download
-            </Button.Content>
-          </Button>
-          <Button color="blue" animated="fade" as="a" href="/pdfs/puzzle-hunt-map.pdf" target="_blank">
-            <Button.Content visible>Puzzle Campus Map</Button.Content>
-            <Button.Content hidden>
-              <Icon name='download' />
-              Download
-            </Button.Content>
-          </Button>
+          <Button
+            as="a"
+            color="blue"
+            icon='download'
+            href="/pdfs/2017/2017 Great Puzzle Hunt Rules of Play and Tips.pdf"
+            target="_blank"
+            content='Rules of Play and Tips'
+          />
+          <Button
+            as="a"
+            color="blue"
+            icon='download'
+            href="/pdfs/2016/puzzle-hunt-map.pdf"
+            target="_blank"
+            content='2016 Puzzle Campus Map'
+          />
         </Segment>
 
         <Accordion styled fluid>
