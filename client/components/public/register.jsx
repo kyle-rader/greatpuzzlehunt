@@ -4,11 +4,6 @@ import { Container, Header, Segment, Accordion, Button, Icon } from 'semantic-ui
 import { Link } from 'react-router';
 
 Register = class Register extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Container>
