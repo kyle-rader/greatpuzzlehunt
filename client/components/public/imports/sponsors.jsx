@@ -28,6 +28,16 @@ export default class Sponsors extends Component {
         logo: '/img/2017/sponsor-logos/wwu_bookstore.jpg',
         rank: 1,
       },
+      {
+        name: 'Woods Coffee',
+        logo: '/img/2017/sponsor-logos/woods_logo.png',
+        rank: 2,
+      },
+      {
+        name: 'WWU Associated Students',
+        logo: '/img/2017/sponsor-logos/as_logo.png',
+        rank: 3,
+      },
     ];
 
     this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
@@ -95,8 +105,8 @@ export default class Sponsors extends Component {
     return sponsors = filter(this.sponsors, (s) => s.rank === rank)
       .map((sponsor) =>
         <Image
-          key={sponsor.name}
-          src={sponsor.logo}
+          key={ sponsor.name }
+          src={ sponsor.logo }
           centered
           verticalAlign='middle'
           label={<small>{sponsor.level}</small>}
