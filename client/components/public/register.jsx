@@ -11,10 +11,11 @@ Register = class Register extends Component {
         <Segment basic>
           <Header as='h1' icon={<Icon name='ticket' color='violet'/>} content='Register for the 2017 Great Puzzle Hunt!'/>
           <Button color='green' size='large' as='a' target='_blank' href='https://commerce.cashnet.com/GreatPuzzleHunt2017' content='Register Now' icon='shop' labelPosition='right'/>
+          <Link to='/register-promo-code'><Button color='teal' size='large' content='Register With a Promo Code' icon='gift' labelPosition='right'/></Link>
         </Segment>
 
         <Segment basic>
-          <Header as='h1' icon={<Icon name='help circle' color='red'/>} content='Registration FAQ'/>
+          <Header as='h1' icon={<Icon name='help circle' color='orange'/>} content='Registration FAQ'/>
           <Accordion styled>
             <Accordion.Title>
               <Icon name='caret right' size='large'/>
