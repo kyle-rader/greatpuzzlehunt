@@ -50,7 +50,7 @@ const adminMenuItems = [
   {
     name: 'Promo Codes',
     to: '/admin/promo-codes',
-    iconClass: 'green plus',
+    iconClass: 'green ticket',
   },
   {
     name: 'Teams',
