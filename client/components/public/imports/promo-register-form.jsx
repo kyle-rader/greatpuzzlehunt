@@ -163,7 +163,7 @@ export default class PromoRegisterForm extends Component {
         <Form.Checkbox
           toggle
           name='holdHarmless'
-          label='By checking this box I acknowledge that I have read and understand the risk & hold harmless agreement.'
+          label='By checking this box I acknowledge that I have read and understand the risk & hold harmless agreement and that I am either 18+ years old or a WWU student or the parent/ guardian of a minor participant.'
           onChange={ (e,data) => this._handleDataChange(e,data) }
         />
 
