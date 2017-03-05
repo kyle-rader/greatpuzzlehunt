@@ -6,7 +6,7 @@ export const renderRoutes = () => (
   <Router history={browserHistory}>
 
     <Route path='/' component={App}>
-      
+
       <IndexRoute component={Home}/>
       <Route path='teams-list' component={PublicTeamList}/>
       <Route path='gallery' component={Gallery}/>
@@ -36,7 +36,7 @@ export const renderRoutes = () => (
         <IndexRoute component={AdminUsers} />
         <Route path='users' component={AdminUsers} />
         <Route path='teams' component={AdminTeamList} />
-        <Route path='promo-codes' component={PromoCodesEditor} />
+        <Route path='promo-codes' component={PromoCodesList} />
         <Route path='puzzles' component={PuzzleDashboard} />
         <Route path='email' component={BulkEmail} />
         <Route path='game' component={GameState} />

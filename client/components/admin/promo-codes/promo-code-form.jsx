@@ -6,8 +6,12 @@ PromoCodeForm = class PromoCodeForm extends Component {
 
   constructor(props) {
     super(props);
+    const { promoCode } = props;
     this.state = {
       error: null,
+      name: promoCode.name,
+      code: promoCode.code,
+      units: promoCode.units,
     };
   }
 
@@ -40,6 +44,10 @@ PromoCodeForm = class PromoCodeForm extends Component {
 
   _onSave(e, data) {
     e.preventDefault();
+    const id = this.props.promoCode._id;
+    Meteor.call('promo_codes.update', id, data, (error, response) => {
+      if (error) this.setState({error });
+    });
   }
 
   _onRemove(e) {
@@ -48,7 +56,10 @@ PromoCodeForm = class PromoCodeForm extends Component {
 
   _errorMessage() {
     if (!this.state.error) return null;
-    return <Message error content={ this.state.error.message }/>;
+    return <Message error
+      content={ this.state.error.message }
+      onDismiss={ () => this.setState({ error: null }) }
+    />;
   }
 
 }
@@ -56,3 +67,5 @@ PromoCodeForm = class PromoCodeForm extends Component {
 PromoCodeForm.propTypes = {
   promoCode: PropTypes.object.isRequired,
 };
+
+export default PromoCodeForm;
