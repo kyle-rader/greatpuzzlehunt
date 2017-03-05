@@ -107,23 +107,26 @@ export default class PromoRegisterForm extends Component {
     return (
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
         <h3><Icon name='user' color='green' size='big'/>Participant Info</h3>
+
         <Form.Group widths='equal'>
           <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='lastname' label='Last Name' placeholder='Last Name' value={ this.state.lastname } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
+
         <Form.Group widths='equal'>
           <Form.Input name='promocode' label='Promo Code' placeholder='promo code' value={ this.state.promocode } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='age' label='Age' placeholder='##' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='phone' label='Phone' placeholder='111-222-33333' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
+
         <Form.Group widths='equal'>
           <Form.Input name='address' label='Street Address' placeholder='12345 6th Ave' value={ this.state.address } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='city' label='City' placeholder='City' value={ this.state.city } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Select name='state' label='State' options={ STATES } value={ this.state.state } onChange={ (e,data) => this._handleDataChange(e,data) }/>
         </Form.Group>
 
-        <Form.Checkbox toggle name='photoPermission' label='Photo Permission (see below)' value={ this.state.promocode } onChange={ (e) => this._handleTextChange(e) }/>
+        <Form.Checkbox toggle name='photoPermission' label='Photo Permission (see below)' value={ this.state.promocode } onChange={ (e,data) => this._handleDataChange(e,data) }/>
 
         <Form.Button type='submit' content='Register' color='green'/>
         <h3>Important Registration Information:</h3>
@@ -155,8 +158,9 @@ export default class PromoRegisterForm extends Component {
   }
 
   _handleDataChange(e, data) {
-    const { name, value } = data;
-    this.setState({ [name]: value });
+    const { name, value, checked } = data;
+    // console.log(data);
+    this.setState({ [name]: (value || checked) });
   }
 
   _handleCheckBoxChange(e) {
