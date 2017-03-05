@@ -12,6 +12,7 @@ PromoCodeForm = class PromoCodeForm extends Component {
       name: promoCode.name,
       code: promoCode.code,
       units: promoCode.units,
+      used: promoCode.used,
     };
   }
 
@@ -21,6 +22,7 @@ PromoCodeForm = class PromoCodeForm extends Component {
       name: promoCode.name,
       code: promoCode.code,
       units: promoCode.units,
+      used: promoCode.used,
     });
   }
 
@@ -31,7 +33,7 @@ PromoCodeForm = class PromoCodeForm extends Component {
           <Form.Input name='name' label='Name' placeholder='Promo Name' value={ this.state.name } onChange={ (e) => this._handleChange(e) }/>
           <Form.Input name='code' label='Promo Code' placeholder='Promo Code' value={ this.state.code } onChange={ (e) => this._handleChange(e) }/>
           <Form.Input name='units' label='Units' placeholder='Promo Name' value={ this.state.units } onChange={ (e) => this._handleChange(e) }/>
-          <Form.Input name='used' label='Used' defaultValue={ this.props.promoCode.used } readOnly />
+          <Form.Input name='used' label='Used' value={ this.state.used } readOnly />
         </Form.Group>
         <Form.Group>
           <Form.Button basic color='green' content='Save'/>
