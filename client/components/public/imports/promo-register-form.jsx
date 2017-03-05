@@ -120,13 +120,13 @@ export default class PromoRegisterForm extends Component {
         </Form.Group>
 
         <Form.Group widths='equal'>
-          <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='email' type='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='promocode' label='Promo Code' placeholder='promo code' value={ this.state.promocode } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         <Form.Group widths='equal'>
           <Form.Input name='age' label='Age' placeholder='##' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
-          <Form.Input name='phone' label='Phone' placeholder='111-222-33333' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='phone' label='Phone' type='phone' placeholder='111-222-33333' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         <Form.Group widths='equal'>
@@ -168,6 +168,8 @@ export default class PromoRegisterForm extends Component {
         />
 
         <Form.Button type='submit' content='Register' color='green'/>
+
+        { this._errorMessage() }
         <h3>Important Registration Information</h3>
         <List>
           <List.Item><strong>Participants under age 18 (minor child):</strong> A parent/legal guardian must complete this registration form on behalf of their minor child.</List.Item>
@@ -188,7 +190,34 @@ export default class PromoRegisterForm extends Component {
 
   _register(e) {
     e.preventDefault();
-    console.log('Going to register with:', this.state);
+    const data = this._registrationData();
+    console.log('Going to register with:', data);
+
+    Meteor.call('promo_codes.register', data, (error, result) => {
+      if (error) return this.setState({ error });
+      this.setState({ error: null, result });
+    });
+  }
+
+  _registrationData() {
+    return {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      email: this.state.email,
+      promocode: this.state.promocode,
+      age: parseInt(this.state.age),
+      phone: this.state.phone,
+      address: this.state.address,
+      zip: this.state.zip,
+      city: this.state.city,
+      state: this.state.state,
+      ecName: this.state.ecName,
+      ecRelation: this.state.ecRelation,
+      ecPhone: this.state.ecPhone,
+      ecAltPhone: this.state.ecAltPhone,
+      photoPermission: this.state.photoPermission,
+      holdHarmless: this.state.holdHarmless,
+    };
   }
 
   _handleTextChange(e) {
@@ -209,10 +238,10 @@ export default class PromoRegisterForm extends Component {
 
   _holdHarmlessButton() {
     if (this.state.showHoldHarmless) {
-      return <Button basic content='Hide Agreement' onClick={ (e) => this.setState({ showHoldHarmless: false }) }/>
+      return <Button as='a' basic content='Hide Agreement' onClick={ (e) => this.setState({ showHoldHarmless: false }) }/>
     }
     else {
-      return <Button basic content='Show Agreement' onClick={ (e) => this.setState({ showHoldHarmless: true }) }/>
+      return <Button as='a' basic content='Show Agreement' onClick={ (e) => this.setState({ showHoldHarmless: true }) }/>
     }
   }
 
@@ -228,4 +257,13 @@ export default class PromoRegisterForm extends Component {
     );
   }
 
+  _errorMessage() {
+    if (!this.state.error) return null;
+    return <Message negative
+      icon='warning'
+      title='There were issues registering!'
+      content={ this.state.error.reason }
+      onDismiss={ (e) => this.setState({ error: null }) }
+    />
+  }
 }
