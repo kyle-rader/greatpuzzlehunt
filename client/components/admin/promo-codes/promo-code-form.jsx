@@ -52,6 +52,10 @@ PromoCodeForm = class PromoCodeForm extends Component {
 
   _onRemove(e) {
     e.preventDefault();
+    const id = this.props.promoCode._id;
+    Meteor.call('promo_codes.delete', id, (error, response) => {
+      if (error) this.setState({error });
+    });
   }
 
   _errorMessage() {
