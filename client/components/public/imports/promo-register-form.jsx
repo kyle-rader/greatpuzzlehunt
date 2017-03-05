@@ -103,7 +103,8 @@ export default class PromoRegisterForm extends Component {
         <Icon name='mail' color='green'/>
         <Message.Content>
           <Message.Header>Thank you for registering!<br/></Message.Header>
-          We've sent you an email with a link to finish setting up your account!
+          <p>We've sent an email to { this.state.email } with a link to finish setting up your account!</p>
+          <p>Once setup you will be able to join or create a team.</p>
         </Message.Content>
       </Message>
     );
@@ -195,7 +196,7 @@ export default class PromoRegisterForm extends Component {
 
     Meteor.call('promo_codes.register', data, (error, result) => {
       if (error) return this.setState({ error });
-      this.setState({ error: null, result });
+      this.setState({ error: null, result, mode: 'thankyou' });
     });
   }
 

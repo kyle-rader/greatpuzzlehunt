@@ -25,3 +25,4 @@ Picker.middleware(bodyParser.urlencoded({ extended: true }));
 
 import './imports/start-up.js';
 import './imports/accounts.js';
+import './imports/set-traveled-distance.js';
