@@ -9,7 +9,7 @@ RegisterPromoCode = class RegisterPromoCode extends Component {
   render() {
     return (
       <Container>
-        <PuzzlePageTitle title='Promo Code Registration'/>
+        <PuzzlePageTitle title='Regsiter with a Promo Code'/>
 
         <Grid>
           <Grid.Column>

@@ -7,6 +7,10 @@ export default class PromoRegisterForm extends Component {
     super(props);
     this.state = {
       mode: 'register',
+      firstname: '',
+      lastname: '',
+      email: '',
+      promocode: '',
     };
   }
 
@@ -33,7 +37,18 @@ export default class PromoRegisterForm extends Component {
 
   _form() {
     return (
-      <Form>
+      <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
+        <h3><Icon name='user' color='green' size='big'/>Participant Info</h3>
+        <Form.Group widths='equal'>
+          <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleChange(e) }/>
+          <Form.Input name='lastname' label='Last Name' placeholder='Last Name' value={ this.state.lastname } onChange={ (e) => this._handleChange(e) }/>
+        </Form.Group>
+        <Form.Group widths='equal'>
+          <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleChange(e) }/>
+          <Form.Input name='promocode' label='Promo Code' placeholder='promo code' value={ this.state.promocode } onChange={ (e) => this._handleChange(e) }/>
+        </Form.Group>
+
+        <Form.Button type='submit' content='Register' color='green'/>
         <h3>Important Registration Information:</h3>
         <List>
           <List.Item><strong>Participants under age 18 (minor child):</strong> A parent/legal guardian must complete this registration form on behalf of their minor child.</List.Item>
@@ -42,6 +57,24 @@ export default class PromoRegisterForm extends Component {
         </List>
       </Form>
     );
+  }
+
+  _formStyle() {
+    return {
+      maxWidth: '800px',
+      marginRight: 'auto',
+      marginLeft: 'auto',
+    };
+  }
+
+  _register(e) {
+    e.preventDefault();
+    console.log('Going to register with:', this.state);
+  }
+
+  _handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   }
 
 }
