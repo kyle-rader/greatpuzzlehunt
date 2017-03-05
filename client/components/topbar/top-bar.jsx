@@ -48,8 +48,8 @@ const adminMenuItems = [
     iconClass: 'green user',
   },
   {
-    name: 'Add Users',
-    to: '/admin/add-users',
+    name: 'Promo Codes',
+    to: '/admin/promo-codes',
     iconClass: 'green plus',
   },
   {
