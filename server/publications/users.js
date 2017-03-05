@@ -50,7 +50,7 @@ Meteor.publish('users.myTeam', function() {
 });
 
 Meteor.publish('admin.users', function(page = 0, search = null) {
-  check(page, Match.Integer);
+  check(page, Number);
   check(search, Match.Any);
   const hasSearch = search && search.length > 0;
 
