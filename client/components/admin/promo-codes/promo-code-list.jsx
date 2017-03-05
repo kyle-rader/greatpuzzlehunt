@@ -44,8 +44,6 @@ PromoCodesList = createContainer(() => {
   const ready = handle.ready();
   const promo_codes = PromoCodes.find({}).fetch();
 
-  console.log(promo_codes);
-
   return {
     ready,
     promo_codes,
