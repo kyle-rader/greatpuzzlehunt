@@ -52,6 +52,8 @@ PromoCodeForm = class PromoCodeForm extends Component {
 
   _onRemove(e) {
     e.preventDefault();
+    if (!confirm(`Are you sure you want to delete promo code ${this.state.name}?`)) return;
+    
     const id = this.props.promoCode._id;
     Meteor.call('promo_codes.delete', id, (error, response) => {
       if (error) this.setState({error });
