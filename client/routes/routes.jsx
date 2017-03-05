@@ -15,6 +15,7 @@ export const renderRoutes = () => (
       <Route path='info' component={Info}/>
       <Route path='qrcode' component={QRCode}/>
       <Route path='register' component={Register}/>
+      <Route path='register-promo-code' component={RegisterPromoCode}/>
       <Route path='volunteer' component={Volunteer}/>
 
       <Route path='login' component={Login}/>
