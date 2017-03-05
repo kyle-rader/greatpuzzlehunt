@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Form, Button, Icon, List, Message } from 'semantic-ui-react';
 
 const STATES = [
+  { key: 'WA', text: 'WA', value: 'WA' },
   { key: 'AL', text: 'AL', value: 'AL' },
   { key: 'AK', text: 'AK', value: 'AK' },
   { key: 'AS', text: 'AS', value: 'AS' },
@@ -58,7 +59,6 @@ const STATES = [
   { key: 'VT', text: 'VT', value: 'VT' },
   { key: 'VI', text: 'VI', value: 'VI' },
   { key: 'VA', text: 'VA', value: 'VA' },
-  { key: 'WA', text: 'WA', value: 'WA' },
   { key: 'WV', text: 'WV', value: 'WV' },
   { key: 'WI', text: 'WI', value: 'WI' },
   { key: 'WY', text: 'WY', value: 'WY' },
@@ -78,6 +78,7 @@ export default class PromoRegisterForm extends Component {
       address: '',
       city: '',
       state: '',
+      zip: '',
       photoPermission: false,
     };
   }
@@ -111,22 +112,31 @@ export default class PromoRegisterForm extends Component {
         <Form.Group widths='equal'>
           <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='lastname' label='Last Name' placeholder='Last Name' value={ this.state.lastname } onChange={ (e) => this._handleTextChange(e) }/>
-          <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         <Form.Group widths='equal'>
+          <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='promocode' label='Promo Code' placeholder='promo code' value={ this.state.promocode } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
           <Form.Input name='age' label='Age' placeholder='##' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='phone' label='Phone' placeholder='111-222-33333' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         <Form.Group widths='equal'>
           <Form.Input name='address' label='Street Address' placeholder='12345 6th Ave' value={ this.state.address } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='zip' label='Zip Code' placeholder='12345' value={ this.state.zip } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
           <Form.Input name='city' label='City' placeholder='City' value={ this.state.city } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Select name='state' label='State' options={ STATES } value={ this.state.state } onChange={ (e,data) => this._handleDataChange(e,data) }/>
         </Form.Group>
 
         <Form.Checkbox toggle name='photoPermission' label='Photo Permission (see below)' value={ this.state.promocode } onChange={ (e,data) => this._handleDataChange(e,data) }/>
+
+        <h3><Icon name='first aid' color='red' size='big'/>Emergency Contact</h3>
 
         <Form.Button type='submit' content='Register' color='green'/>
         <h3>Important Registration Information:</h3>
