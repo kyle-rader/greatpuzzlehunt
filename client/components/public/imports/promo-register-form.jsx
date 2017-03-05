@@ -80,6 +80,10 @@ export default class PromoRegisterForm extends Component {
       state: '',
       zip: '',
       photoPermission: false,
+      ecName: '',
+      ecRelation: '',
+      ecPhone: '',
+      ecAltPhone: '',
     };
   }
 
@@ -136,10 +140,19 @@ export default class PromoRegisterForm extends Component {
 
         <Form.Checkbox toggle name='photoPermission' label='Photo Permission (see below)' value={ this.state.promocode } onChange={ (e,data) => this._handleDataChange(e,data) }/>
 
-        <h3><Icon name='first aid' color='red' size='big'/>Emergency Contact</h3>
+        <h3><Icon name='first aid' color='red' size='big'/>Emergency Contact <small>(optional)</small></h3>
+        <Form.Group widths='equal'>
+          <Form.Input name='ecName' label='Name' placeholder='John' value={ this.state.ecName } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='ecRelation' label='Relationship' placeholder='parent' value={ this.state.ecRelation } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
+          <Form.Input name='ecPhone' label='Primary Phone' placeholder='111-222-3344' value={ this.state.ecPhone } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='ecAltPhone' label='Alternative Phone' placeholder='123-123-1234' value={ this.state.ecAltPhone } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
 
         <Form.Button type='submit' content='Register' color='green'/>
-        <h3>Important Registration Information:</h3>
+        <h3>Important Registration Information</h3>
         <List>
           <List.Item><strong>Participants under age 18 (minor child):</strong> A parent/legal guardian must complete this registration form on behalf of their minor child.</List.Item>
           <List.Item><strong>Participants under age 14:</strong> In addition to registering their minor child, a parent/legal guardian must also register as a member of a team with their under age 14 minor child and accompany them at all times during the Puzzle Hunt.</List.Item>
