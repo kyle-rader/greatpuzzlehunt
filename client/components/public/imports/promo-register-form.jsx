@@ -2,6 +2,68 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Form, Button, Icon, List, Message } from 'semantic-ui-react';
 
+const STATES = [
+  { key: 'AL', text: 'AL', value: 'AL' },
+  { key: 'AK', text: 'AK', value: 'AK' },
+  { key: 'AS', text: 'AS', value: 'AS' },
+  { key: 'AZ', text: 'AZ', value: 'AZ' },
+  { key: 'AR', text: 'AR', value: 'AR' },
+  { key: 'CA', text: 'CA', value: 'CA' },
+  { key: 'CO', text: 'CO', value: 'CO' },
+  { key: 'CT', text: 'CT', value: 'CT' },
+  { key: 'DE', text: 'DE', value: 'DE' },
+  { key: 'DC', text: 'DC', value: 'DC' },
+  { key: 'FM', text: 'FM', value: 'FM' },
+  { key: 'FL', text: 'FL', value: 'FL' },
+  { key: 'GA', text: 'GA', value: 'GA' },
+  { key: 'GU', text: 'GU', value: 'GU' },
+  { key: 'HI', text: 'HI', value: 'HI' },
+  { key: 'ID', text: 'ID', value: 'ID' },
+  { key: 'IL', text: 'IL', value: 'IL' },
+  { key: 'IN', text: 'IN', value: 'IN' },
+  { key: 'IA', text: 'IA', value: 'IA' },
+  { key: 'KS', text: 'KS', value: 'KS' },
+  { key: 'KY', text: 'KY', value: 'KY' },
+  { key: 'LA', text: 'LA', value: 'LA' },
+  { key: 'ME', text: 'ME', value: 'ME' },
+  { key: 'MH', text: 'MH', value: 'MH' },
+  { key: 'MD', text: 'MD', value: 'MD' },
+  { key: 'MA', text: 'MA', value: 'MA' },
+  { key: 'MI', text: 'MI', value: 'MI' },
+  { key: 'MN', text: 'MN', value: 'MN' },
+  { key: 'MS', text: 'MS', value: 'MS' },
+  { key: 'MO', text: 'MO', value: 'MO' },
+  { key: 'MT', text: 'MT', value: 'MT' },
+  { key: 'NE', text: 'NE', value: 'NE' },
+  { key: 'NV', text: 'NV', value: 'NV' },
+  { key: 'NH', text: 'NH', value: 'NH' },
+  { key: 'NJ', text: 'NJ', value: 'NJ' },
+  { key: 'NM', text: 'NM', value: 'NM' },
+  { key: 'NY', text: 'NY', value: 'NY' },
+  { key: 'NC', text: 'NC', value: 'NC' },
+  { key: 'ND', text: 'ND', value: 'ND' },
+  { key: 'MP', text: 'MP', value: 'MP' },
+  { key: 'OH', text: 'OH', value: 'OH' },
+  { key: 'OK', text: 'OK', value: 'OK' },
+  { key: 'OR', text: 'OR', value: 'OR' },
+  { key: 'PW', text: 'PW', value: 'PW' },
+  { key: 'PA', text: 'PA', value: 'PA' },
+  { key: 'PR', text: 'PR', value: 'PR' },
+  { key: 'RI', text: 'RI', value: 'RI' },
+  { key: 'SC', text: 'SC', value: 'SC' },
+  { key: 'SD', text: 'SD', value: 'SD' },
+  { key: 'TN', text: 'TN', value: 'TN' },
+  { key: 'TX', text: 'TX', value: 'TX' },
+  { key: 'UT', text: 'UT', value: 'UT' },
+  { key: 'VT', text: 'VT', value: 'VT' },
+  { key: 'VI', text: 'VI', value: 'VI' },
+  { key: 'VA', text: 'VA', value: 'VA' },
+  { key: 'WA', text: 'WA', value: 'WA' },
+  { key: 'WV', text: 'WV', value: 'WV' },
+  { key: 'WI', text: 'WI', value: 'WI' },
+  { key: 'WY', text: 'WY', value: 'WY' },
+];
+
 export default class PromoRegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +73,12 @@ export default class PromoRegisterForm extends Component {
       lastname: '',
       email: '',
       promocode: '',
+      age: '',
+      phone: '',
+      address: '',
+      city: '',
+      state: '',
+      photoPermission: false,
     };
   }
 
@@ -40,13 +108,22 @@ export default class PromoRegisterForm extends Component {
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
         <h3><Icon name='user' color='green' size='big'/>Participant Info</h3>
         <Form.Group widths='equal'>
-          <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleChange(e) }/>
-          <Form.Input name='lastname' label='Last Name' placeholder='Last Name' value={ this.state.lastname } onChange={ (e) => this._handleChange(e) }/>
+          <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='lastname' label='Last Name' placeholder='Last Name' value={ this.state.lastname } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
         <Form.Group widths='equal'>
-          <Form.Input name='email' label='Email' placeholder='youR@email.com' value={ this.state.email } onChange={ (e) => this._handleChange(e) }/>
-          <Form.Input name='promocode' label='Promo Code' placeholder='promo code' value={ this.state.promocode } onChange={ (e) => this._handleChange(e) }/>
+          <Form.Input name='promocode' label='Promo Code' placeholder='promo code' value={ this.state.promocode } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='age' label='Age' placeholder='##' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='phone' label='Phone' placeholder='111-222-33333' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
+        <Form.Group widths='equal'>
+          <Form.Input name='address' label='Street Address' placeholder='12345 6th Ave' value={ this.state.address } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='city' label='City' placeholder='City' value={ this.state.city } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Select name='state' label='State' options={ STATES } value={ this.state.state } onChange={ (e,data) => this._handleDataChange(e,data) }/>
+        </Form.Group>
+
+        <Form.Checkbox toggle name='photoPermission' label='Photo Permission (see below)' value={ this.state.promocode } onChange={ (e) => this._handleTextChange(e) }/>
 
         <Form.Button type='submit' content='Register' color='green'/>
         <h3>Important Registration Information:</h3>
@@ -72,9 +149,19 @@ export default class PromoRegisterForm extends Component {
     console.log('Going to register with:', this.state);
   }
 
-  _handleChange(e) {
+  _handleTextChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  }
+
+  _handleDataChange(e, data) {
+    const { name, value } = data;
+    this.setState({ [name]: value });
+  }
+
+  _handleCheckBoxChange(e) {
+    const { name, value } = e.target;
+    console.log(name, value);
   }
 
 }
