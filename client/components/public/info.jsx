@@ -59,7 +59,6 @@ Info = class Info extends Component {
             </h4>
             Other important dates:
             <List className='bulleted'>
-              <List.Item>Now: <a target="_blank" href="https://actionsprout.io/7E111B">Pre-Register and get notified when registration opens!</a></List.Item>
               <List.Item>March 10, 2017: Early Bird registration closes.</List.Item>
               <List.Item>March 23, 2017: T-Shirt Pre-Order deadline (in order to pick up your shirt at check-in on April 1, 2017)</List.Item>
               <List.Item>March 30, 2017: Registration Closes (Or earlier if team limit is reached).</List.Item>
