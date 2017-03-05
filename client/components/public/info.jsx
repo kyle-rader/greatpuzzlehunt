@@ -173,11 +173,16 @@ Info = class Info extends Component {
             This year we have awesome Next Level Poly/Cotton blend T-Shirts!<br/>
             <List>
               <List.Item>All colors can be viewed at Next Level:<a target="_blank" href="http://www.nextlevelapparel.com/Prod-24-1-29-2/men39s-polycotton-crew.htm">Men's Colors</a> | <a target="_blank" href="http://www.nextlevelapparel.com/Prod-22-1-13-1/next-level-polycotton-tee.htm">Women's Colors</a>.</List.Item>
-              <List.Item description="These are the kind of shirts you will want to wear all the time!"/>
-              <List.Item description="You can choose a White or Navy logo for any shirt color."/>
-              <List.Item description="Early bird price: $10."/>
-              <List.Item description="Regular Price (March 11 - March 23): $13"/>
-              <List.Item description="T-Shirt sales end March 23, 2017 at midnight."/>
+              <List.Item>Next Level Cotton/Poly blend Tshirts!</List.Item>
+              <List.Item>
+                Mens' Sizes: S-3XL<br/>
+                Ladies’ Sizes: S-2XL  (*The ladies run small. They are a Junior Fitted T-shirt. )<br/>
+                Sizes 2-3XL are an additional $2.
+              </List.Item>
+              <List.Item>White or Navy logo for any shirt color."</List.Item>
+              <List.Item>Early bird price: $10."</List.Item>
+              <List.Item>Regular Price (March 11 - March 23): $13"</List.Item>
+              <List.Item>T-Shirt sales end March 23, 2017 at midnight."</List.Item>
             </List>
             <Image.Group>
               <Image src="/img/2017/t-shirts/mens.jpg"/>
