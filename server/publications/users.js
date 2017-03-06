@@ -23,6 +23,8 @@ const USER_FIELDS = {
   photoPermission: 1,
   legalGuardian: 1,
   teamId: 1,
+  lookingForTeam: 1,
+  bio: 1,
 };
 
 Meteor.users.deny({
