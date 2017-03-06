@@ -32,8 +32,8 @@ export const renderRoutes = () => (
         <Route path='join' component={TeamBrowser}/>
       </Route>
 
-      <Route path='match-maker' component={makeAuthed('user')}>
-        <IndexRoute component={ MatchMaker }/>
+      <Route path='looking-for-team' component={makeAuthed('user')}>
+        <IndexRoute component={ LookingForTeam }/>
       </Route>
 
       {/* Admin Routes */}

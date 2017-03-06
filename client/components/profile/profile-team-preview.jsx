@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Segment, Message, Header, Icon, Button } from 'semantic-ui-react';
+import { Grid, Segment, Message, Header, Icon, Button } from 'semantic-ui-react';
 import { makeTeamComp } from '../team/imports/team-helpers.js';
 
 ProfileTeamPreview = class ProfileTeamPreview extends Component {
@@ -27,9 +27,15 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
         <Message.Header>{ this.props.team.name }</Message.Header>
         <Message.Content>
           <p>{ size } team member{ size > 1 ? '' : 's' }.</p>
-          <Link to='/team'><Button content='View Team'/></Link>
+          <Grid stackable>
+            <Grid.Column width={6}>
+              <Link to='/team'><Button content='View Team'/></Link>
+            </Grid.Column>
+            <Grid.Column width={10}>
+              { this._matchMakerButton() }
+            </Grid.Column>
+          </Grid>
         </Message.Content>
-
       </Message>
     );
   }
@@ -39,10 +45,16 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
       <NoTeamMessage>
         <ProfileInvites user={ this.props.user }/>
         <p></p>
-        <Link to='match-maker'>
-          <Button basic color='violet' content='Browse other teams and players looking to build teams!'/>
-        </Link>
+        { this._matchMakerButton() }
       </NoTeamMessage>
+    );
+  }
+
+  _matchMakerButton() {
+    return (
+      <Link to='looking-for-team'>
+        <Button basic color='violet' content='Browse other players looking to join teams!'/>
+      </Link>
     );
   }
 
