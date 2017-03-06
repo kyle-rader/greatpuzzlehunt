@@ -23,7 +23,7 @@ NoTeamMessage = class NoTeamMessage extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          {this.props.children}
+          { this.props.children }
         </Message.Content>
       </Message>
     );
