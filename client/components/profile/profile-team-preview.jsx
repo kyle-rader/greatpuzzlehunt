@@ -15,7 +15,7 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
     return (
       <Segment basic>
         <Header as="h3" icon={<Icon name="users" color="blue"/>} content="Team"/>
-        {content}
+        { content }
       </Segment>
     );
   }
@@ -24,11 +24,12 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
     const size = this.props.team.members.length;
     return (
       <Message info>
-        <Message.Header>{this.props.team.name}</Message.Header>
+        <Message.Header>{ this.props.team.name }</Message.Header>
         <Message.Content>
-          <p>{size} team member{size > 1 ? '' : 's'}.</p>
+          <p>{ size } team member{ size > 1 ? '' : 's' }.</p>
           <Link to='/team'><Button content='View Team'/></Link>
         </Message.Content>
+
       </Message>
     );
   }
@@ -36,7 +37,11 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
   _renderWithoutTeam() {
     return (
       <NoTeamMessage>
-        <ProfileInvites user={this.props.user}/>
+        <ProfileInvites user={ this.props.user }/>
+        <p></p>
+        <Link to='match-maker'>
+          <Button basic color='violet' content='Browse other teams and players looking to build teams!'/>
+        </Link>
       </NoTeamMessage>
     );
   }
