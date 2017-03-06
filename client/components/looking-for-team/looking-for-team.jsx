@@ -2,11 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Container } from 'semantic-ui-react';
 
-FindPeople = class FindPeople extends Component {
+LookingForTeam = class LookingForTeam extends Component {
   render() {
     return (
       <Container>
-        <PuzzlePageTitle title='People Looking for a Team'/>
+        <PuzzlePageTitle title='Players Looking for a Team' subtitle='Find a team or more players'/>
       </Container>
     );
   }
