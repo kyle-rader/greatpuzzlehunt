@@ -24,6 +24,8 @@ Meteor.publish('teams.browse', function() {
       members: 1,
       updatedAt: 1,
       division:1,
+      owner: 1,
+      lookingForMembers: 1,
     },
   });
 });
