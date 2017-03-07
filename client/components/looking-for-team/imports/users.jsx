@@ -6,7 +6,7 @@ import { Card, Icon } from 'semantic-ui-react';
 Users = class Users extends Component {
   render() {
     if (!this.props.ready) return <Loading/>
-    
+
     return (
       <Card.Group>
         { this._users() }
@@ -34,9 +34,10 @@ Users = class Users extends Component {
 }
 
 Users = createContainer(() => {
+  const user = Meteor.user();
   const handle = Meteor.subscribe('users.lookingForTeam');
   const ready = handle.ready();
-  const users = Meteor.users.find({ lookingForTeam: true }).fetch();
+  const users = Meteor.users.find({ _id: { $ne: user._id }, lookingForTeam: true }).fetch();
 
   return { ready, users };
 }, Users);
