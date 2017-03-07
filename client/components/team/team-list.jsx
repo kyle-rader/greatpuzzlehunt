@@ -10,10 +10,9 @@ TeamList = class TeamList extends Component {
   }
 
   render() {
-    const teamsToRender = this._mapTeams();
     return (
       <Card.Group>
-        { teamsToRender }
+        { this._mapTeams() }
       </Card.Group>
     );
   }
