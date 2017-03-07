@@ -23,6 +23,8 @@ const USER_FIELDS = {
   photoPermission: 1,
   legalGuardian: 1,
   teamId: 1,
+  lookingForTeam: 1,
+  bio: 1,
 };
 
 Meteor.users.deny({
@@ -47,6 +49,18 @@ Meteor.publish('users.myTeam', function() {
   if (!user) return this.ready();
 
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
+});
+
+Meteor.publish('users.lookingForTeam', function() {
+  const { userId } = this;
+  if (!userId) return this.ready();
+
+  return Meteor.users.find({ _id: { $ne: userId }, lookingForTeam: true, teamId: null }, { fields: {
+    name: true,
+    emails: true,
+    bio: true,
+    lookingForTeam: true,
+  }});
 });
 
 Meteor.publish('admin.users', function(page = 0, search = null) {

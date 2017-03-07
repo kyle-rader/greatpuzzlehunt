@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Segment, Message, Header, Icon, Button } from 'semantic-ui-react';
+import { Grid, Segment, Message, Header, Icon, Button } from 'semantic-ui-react';
 import { makeTeamComp } from '../team/imports/team-helpers.js';
 
 ProfileTeamPreview = class ProfileTeamPreview extends Component {
@@ -15,7 +15,7 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
     return (
       <Segment basic>
         <Header as="h3" icon={<Icon name="users" color="blue"/>} content="Team"/>
-        {content}
+        { content }
       </Segment>
     );
   }
@@ -24,10 +24,19 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
     const size = this.props.team.members.length;
     return (
       <Message info>
-        <Message.Header>{this.props.team.name}</Message.Header>
+        <Message.Header>{ this.props.team.name }</Message.Header>
         <Message.Content>
-          <p>{size} team member{size > 1 ? '' : 's'}.</p>
-          <Link to='/team'><Button content='View Team'/></Link>
+          <p>{ size } team member{ size > 1 ? '' : 's' }.</p>
+          <Grid stackable>
+            <Grid.Column width={6}>
+              <Link to='/team'><Button content='View Team'/></Link>
+            </Grid.Column>
+            <Grid.Column width={10}>
+              <Link to='looking-for-team'>
+                <Button basic color='violet' content='Browse other players looking to join teams!'/>
+              </Link>
+            </Grid.Column>
+          </Grid>
         </Message.Content>
       </Message>
     );
@@ -36,11 +45,11 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
   _renderWithoutTeam() {
     return (
       <NoTeamMessage>
-        <ProfileInvites user={this.props.user}/>
+        <ProfileInvites user={ this.props.user }/>
+        <p></p>
       </NoTeamMessage>
     );
   }
-
 }
 
 ProfileTeamPreview = makeTeamComp(ProfileTeamPreview);
