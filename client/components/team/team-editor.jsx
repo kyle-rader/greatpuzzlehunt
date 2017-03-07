@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import { Form, Message, Input, Popup, Icon } from 'semantic-ui-react';
+import { Form, Message, Input, Popup, Icon, Checkbox } from 'semantic-ui-react';
 
 TeamEditor = class TeamEditor extends Component {
 
@@ -25,10 +25,16 @@ TeamEditor = class TeamEditor extends Component {
   }
 
   _getStateFromProps(props) {
-    if (props.team) {
-      return _.pick(props.team, ['name', 'password', 'division']);
+    const { team } = props;
+    if (team) {
+      return {
+        name: team.name || '',
+        password: team.password || '',
+        division: team.division || null,
+        lookingForMembers: (team.lookingForMembers || false),
+      };
     }
-    return { name: '', password: '', division: null };
+    return { name: '', password: '', division: null, lookingForMembers: false };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,6 +55,16 @@ TeamEditor = class TeamEditor extends Component {
           <label>Team Division <br/><small>This determines your prize group</small></label>
           <br/>
           {this._renderDivisionRadio()}
+        </Form.Field>
+        <Form.Field>
+          <label>Looking for members?</label>
+          <Checkbox
+            toggle
+            name='lookingForMembers'
+            label="Show this team as looking for members on the join team page. (This will display team creator's contact information)"
+            checked={ this.state.lookingForMembers }
+            onChange={ (e,data) => this._handleDataChange(e,data) }
+          />
         </Form.Field>
         <Form.Button type='submit' icon='save' labelPosition='right' content={this.props.team ? 'Save Team' : 'Create Team'}/>
         <Message
@@ -72,10 +88,15 @@ TeamEditor = class TeamEditor extends Component {
     return this.divisions.map((division) => (<Form.Radio key={division.value} label={division.name} name='division' value={division.value} checked={this.state.division === division.value} onChange={this._handleChange}/>));
   }
 
+  _handleDataChange(e,data) {
+    const { name, value, checked } = data;
+    this.setState({ [name]: (value || checked) });
+  }
+
   _handleSubmit(e, formData) {
     e.preventDefault();
 
-    const { name, password, division } = formData;
+    const { name, password, division, lookingForMembers } = formData;
     if (this.props.team) {
       formData._id = this.props.team._id;
     }
