@@ -51,6 +51,18 @@ Meteor.publish('users.myTeam', function() {
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
 });
 
+Meteor.publish('users.lookingForTeam', function() {
+  const { userId } = this;
+  if (!userId) return this.ready();
+
+  return Meteor.users.find({ lookingForTeam: true }, { fields: {
+    name: true,
+    emails: true,
+    bio: true,
+    lookingForTeam: true,
+  }});
+});
+
 Meteor.publish('admin.users', function(page = 0, search = null) {
   check(page, Number);
   check(search, Match.Any);
