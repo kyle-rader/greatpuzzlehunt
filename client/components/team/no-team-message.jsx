@@ -23,7 +23,11 @@ NoTeamMessage = class NoTeamMessage extends Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          {this.props.children}
+          { this.props.children }
+          <p></p>
+          <Link to='looking-for-team'>
+            <Button basic color='violet' content='Browse other players looking to join teams!'/>
+          </Link>
         </Message.Content>
       </Message>
     );
