@@ -32,7 +32,9 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
               <Link to='/team'><Button content='View Team'/></Link>
             </Grid.Column>
             <Grid.Column width={10}>
-              { this._matchMakerButton() }
+              <Link to='looking-for-team'>
+                <Button basic color='violet' content='Browse other players looking to join teams!'/>
+              </Link>
             </Grid.Column>
           </Grid>
         </Message.Content>
@@ -45,19 +47,9 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
       <NoTeamMessage>
         <ProfileInvites user={ this.props.user }/>
         <p></p>
-        { this._matchMakerButton() }
       </NoTeamMessage>
     );
   }
-
-  _matchMakerButton() {
-    return (
-      <Link to='looking-for-team'>
-        <Button basic color='violet' content='Browse other players looking to join teams!'/>
-      </Link>
-    );
-  }
-
 }
 
 ProfileTeamPreview = makeTeamComp(ProfileTeamPreview);
