@@ -43,7 +43,11 @@ export const renderRoutes = () => (
         <Route path='teams' component={AdminTeamList} />
         <Route path='promo-codes' component={PromoCodesList} />
         <Route path='puzzles' component={PuzzleDashboard} />
-        <Route path='email' component={BulkEmail} />
+        <Route path='email' component={AdminEmailContainer}>
+          <IndexRoute component={AdminEmailMailer}/>
+          <Route path='mailer' component={AdminEmailMailer}/>
+          <Route path='lists' component={AdminEmailLists}/>
+        </Route>
         <Route path='game' component={GameState} />
         <Route path='scoring' component={Scoring} />
       </Route>

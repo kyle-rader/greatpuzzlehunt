@@ -1,0 +1,30 @@
+import React, { Component, PropTypes } from 'react';
+import { Segment } from 'semantic-ui-react';
+
+class EmailList extends Component {
+  render() {
+    return (
+      <Segment basic>
+        <h3>{ this.props.title }</h3>
+        <pre className='ui email-list'>
+          { this.printEmails() }
+        </pre>
+      </Segment>
+    );
+  }
+
+  printEmails() {
+    return this.props.emails.map(mapUser).join('\n');
+  }
+}
+
+function mapUser({ firstname, lastname, email, username }) {
+  return `${firstname}, ${lastname}, ${email}, ${username}`;
+}
+
+EmailList.PropTypes = {
+  title: PropTypes.string.isRequired,
+  emails: PropTypes.array.isRequired,
+};
+
+export default EmailList;
