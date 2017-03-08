@@ -18,8 +18,9 @@ class EmailList extends Component {
   }
 }
 
-function mapUser({ firstname, lastname, email, username }) {
-  return `${firstname}, ${lastname}, ${email}, ${username}`;
+function mapUser({ firstname, lastname, email, emails, username }) {
+  const e = email || emails[0].address;
+  return `${firstname}, ${lastname}, ${e}, ${username}`;
 }
 
 EmailList.PropTypes = {
