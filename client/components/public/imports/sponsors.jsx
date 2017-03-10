@@ -41,6 +41,12 @@ export default class Sponsors extends Component {
         rank: 3,
         width: 200,
       },
+      {
+        name: 'Toyota of Bellingham',
+        logo: '/img/2017/sponsor-logos/toyota_logo.png',
+        rank: 1,
+        width: 250,
+      },
     ];
 
     this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
