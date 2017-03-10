@@ -27,14 +27,16 @@ The ${siteName} Team
 // Setup Enrollement/ Migration email
 Accounts.emailTemplates.enrollAccount = {
     subject(user) {
-        return `Welcome to the ${siteName}!`;
+        return `Finish ${siteName} Registration!`;
     },
     html(user, url) {
         return `
 <h3>Welcome ${user.firstname}, to the ${siteName}!</h3>
-<p>To finish setting up your account <a href="${url}">click here</a>.</p>
-<p>You will be asked to set your email, username, and password.
-Then you will be able to create your team and invite your friends!
+<p>
+  <ol>
+    <li>Finish registration: <a href="${url}">click here</a>!</li>
+    <li>Create/find a team <a href="https://greatpuzzlehunt.com/profile">from your profile</a></li>
+  </ol>
 </p>
 <p>If you have any questions about the account setup process please email <a href="mailto:support@greatpuzzlehunt.com">support@greatpuzzlehunt.com</a></p>
 <br>
