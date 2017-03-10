@@ -81,13 +81,13 @@ TeamListCard = class TeamListCard extends Component {
         />
         :
         <Popup
-          trigger={<Button size='small' icon='eye' onClick={ () => this.setState({ showOwner: true })} />}
+          trigger={<Button size='small' icon='eye' color='blue' onClick={ () => this.setState({ showOwner: true })} />}
           content='Looking for Members, click for team captain info!'
         />;
     }
     const ownerInfo = showOwner ? this._renderOwnerInfo() : null;
 
-    const joinBtn = !showOwner && !showPasswordField ? <Button size='small' floated='right' icon='reply' labelPosition='right' content='Join Team' onClick={() => this.setState({ showPasswordField: true })}/> : null;
+    const joinBtn = !showOwner && !showPasswordField ? <Button basic size='small' floated='right' icon='reply' labelPosition='right' content='Join Team' onClick={() => this.setState({ showPasswordField: true })}/> : null;
     const passwordForm = showPasswordField ? this._renderPasswordField() : null;
     return (
       <Card.Content extra>
