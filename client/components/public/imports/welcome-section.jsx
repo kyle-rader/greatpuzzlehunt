@@ -85,7 +85,7 @@ export default class WelcomeSection extends Component {
         <List.Item>
           <Icon size='large' name='ticket'/>
           <List.Content className="white">
-            <p>$8 for Students (any school)</p>
+            <p>$8 for Students</p>
             <p>$15 for Non-Students</p>
             <p>T-shirts $13 (2-3XL $15)</p>
           </List.Content>
