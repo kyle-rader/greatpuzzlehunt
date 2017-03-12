@@ -16,22 +16,38 @@ Info = class Info extends Component {
 
         <Segment basic>
           <h3>Useful downloads</h3>
-          <Button
-            as="a"
-            color="blue"
-            icon='download'
-            href="/pdfs/2017/2017 Great Puzzle Hunt Rules of Play and Tips.pdf"
-            target="_blank"
-            content='Rules of Play and Tips'
-          />
-          <Button
-            as="a"
-            color="blue"
-            icon='download'
-            href="/pdfs/2016/puzzle-hunt-map.pdf"
-            target="_blank"
-            content='2016 Puzzle Campus Map'
-          />
+          <List>
+            <List.Item>
+              <Button
+                as="a"
+                color="blue"
+                icon='download'
+                href="/pdfs/2017/2017_GPH_general_info.pdf"
+                target="_blank"
+                content='General Info'
+              />
+            </List.Item>
+            <List.Item>
+              <Button
+                as="a"
+                color="violet"
+                icon='download'
+                href="/pdfs/2017/2017_GPH_rules_of_play.pdf"
+                target="_blank"
+                content='2017 Rules of Play & Scoring'
+              />
+            </List.Item>
+            <List.Item>
+              <Button
+                as="a"
+                color="orange"
+                icon='download'
+                href="/pdfs/2016/puzzle-hunt-map.pdf"
+                target="_blank"
+                content='2016 Puzzle Campus Map'
+              />
+            </List.Item>
+          </List>
         </Segment>
 
         <Accordion styled fluid>
