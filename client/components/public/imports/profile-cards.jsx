@@ -60,7 +60,7 @@ export default class ProfileCards extends Component {
       header={name}
       meta={title}
       description={role}
-      extra={<Button as='a' className='white' labelPosition='left' icon='mail' href={`mailto:${email}`} content={email} />}
+      extra={<a href={`mailto:${email}`}>{email}</a>}
     />;
   }
 }
