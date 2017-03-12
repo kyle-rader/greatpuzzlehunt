@@ -72,22 +72,22 @@ export default class WelcomeSection extends Component {
             Western Washington University<br/>
             516 High Street<br/>
             Bellingham, WA 98225<br/><br/>
-            <Button as='a' size='small' className="white button" icon='google' labelPosition='right' content='Google Maps' target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631"/>
+            <Button as='a' size='tiny' className="white button" icon='location arrow' labelPosition='right' content='Google Maps' target="_blank" href="https://www.google.com/maps/place/Western+Washington+University/@48.738511,-122.4878197,17z/data=!3m1!4b1!4m5!3m4!1s0x5485a3ca4cc915cd:0xa84926de4cbaf2c0!8m2!3d48.738511!4d-122.485631"/>
           </List.Content>
         </List.Item>
         <List.Item>
           <Icon size='large' name='photo'/>
           <List.Content className="white">
             Photo Credit<br/><br/>
-            <Button as='a' size='small' className="white button" icon='globe' labelPosition='right' content='Gabrielle Poncz Photography' target="_blank" href="http://www.gabrielleponcz.com/"/>
+            <Button as='a' size='tiny' className="white button" content='Gabrielle Poncz Photography' target="_blank" href="http://www.gabrielleponcz.com/"/>
           </List.Content>
         </List.Item>
         <List.Item>
           <Icon size='large' name='ticket'/>
           <List.Content className="white">
-            Early bird prices end March 10, 2017!<br/><br/>
-            $5 for Students<br/>
-            $10 for Non-Students
+            <p>$8 for Students (any school)</p>
+            <p>$15 for Non-Students</p>
+            <p>T-shirts $13 (2-3XL $15)</p>
           </List.Content>
         </List.Item>
       </List>
