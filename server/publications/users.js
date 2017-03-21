@@ -63,6 +63,12 @@ Meteor.publish('users.lookingForTeam', function() {
   }});
 });
 
+Meteor.publish('admin.team.members', function(teamId) {
+  check(teamId, String);
+  if (!isAdmin(this.userId)) return this.ready();
+  return Meteor.users.find({ teamId: teamId });
+});
+
 Meteor.publish('admin.users', function(page = 0, search = null) {
   check(page, Number);
   check(search, Match.Any);
