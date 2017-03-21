@@ -47,6 +47,12 @@ export default class Sponsors extends Component {
         rank: 1,
         width: 250,
       },
+      {
+        name: 'Faith & Paul Komarek',
+        logo: '/img/2017/sponsor-logos/faith_and_paul_komarek_logo.png',
+        rank: 4,
+        width: 250,
+      },
     ];
 
     this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
@@ -76,7 +82,7 @@ export default class Sponsors extends Component {
       <Grid>
         <Grid.Row>
           <Grid.Column>
-            <Header className='dark-blue' size='huge' content='Our Epic 2017 Sponsors!'/>
+            <Header className='dark-blue' as='h1' content='Our Epic 2017 Sponsors!'/>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -104,7 +110,7 @@ export default class Sponsors extends Component {
 
     return (
       <Segment basic key={title}>
-        <Header className='dark-blue' size='medium' icon={<Icon name={this.rankLogoMap[rank]} color='black'/>} content={`${title} Sponsors`}/>
+        <Header className='dark-blue' size='large' icon={<Icon name={this.rankLogoMap[rank]} color='black'/>} content={`${title} Sponsors`}/>
         { content }
       </Segment>
     );
