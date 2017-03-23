@@ -31,6 +31,7 @@ class AdminUser extends Component {
         </Grid.Column>
         <Grid.Column computer={3} mobile={16}>
           <Actions
+            editMode={ this.state.editMode }
             onEdit={ (e) => this._toggleEdit() }
             onPasswordReset={(e) => this._sendPasswordReset(e)}
             onEmailResend={(e) => this._sendEmailResend(e)}

@@ -5,7 +5,7 @@ class Actions extends Component {
   render() {
     return (
       <Button.Group size='small' fluid>
-        <Button basic icon='pencil' color='green' onClick={ this.props.onEdit }/>
+        <Button basic icon={this._editIcon()} color={this._editColor()} onClick={ this.props.onEdit }/>
         <Button basic color='blue' onClick={ this.props.onPasswordReset }>
           <Icon.Group>
             <Icon name='lock'/>
@@ -22,6 +22,14 @@ class Actions extends Component {
       </Button.Group>
     );
   }
+
+  _editIcon() {
+    return this.props.editMode ? 'close' : 'pencil';
+  }
+
+  _editColor() {
+    return this.props.editMode ? 'red' : 'green';
+  }
 }
 
 Actions.propTypes = {
@@ -29,6 +37,7 @@ Actions.propTypes = {
   onPasswordReset: PropTypes.func.isRequired,
   onEmailResend: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default Actions;
