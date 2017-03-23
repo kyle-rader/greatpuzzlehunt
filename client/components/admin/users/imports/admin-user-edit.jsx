@@ -6,7 +6,7 @@ class AdminUserEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: props.user.getEmail(),
+      email: props.user.getEmail() || '',
       error: null,
     }
   }
