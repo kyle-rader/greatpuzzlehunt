@@ -62,7 +62,7 @@ class AdminUser extends Component {
 
     const btn = $(event.target);
 
-    Meteor.call('userAdminResetPassword', { _id: this.props.user._id }, (err, result) => {
+    Meteor.call('admin.user.resetPassword', { _id: this.props.user._id }, (err, result) => {
       if (err) {
         console.log(err);
         btn.attr('data-content', 'Failed to send password reset email! 😰');
@@ -86,7 +86,7 @@ class AdminUser extends Component {
 
     const btn = $(event.target);
 
-    Meteor.call('user.emailResend', this.props.user._id, (err, result) => {
+    Meteor.call('admin.user.emailResend', this.props.user._id, (err, result) => {
       if (err) {
         console.log(err);
         btn.attr('data-content', 'Send Failed! 😰');
@@ -110,7 +110,7 @@ class AdminUser extends Component {
 
     let btn = $(event.target);
 
-    Meteor.call('userAdminDelete', this.props.user._id, (err, result) => {
+    Meteor.call('admin.user.delete', this.props.user._id, (err, result) => {
       if (err) {
         alert(err);
         btn.attr('data-content', 'Failed to delete user! 😰');
