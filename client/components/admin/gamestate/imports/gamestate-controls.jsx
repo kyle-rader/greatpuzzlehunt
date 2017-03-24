@@ -47,6 +47,15 @@ class GamestateControlsInner extends Component {
     />;
   }
 
+  _toggleRegistration(e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to toggle registration?')) {
+      Meteor.call('admin.gamestate.toggleRegistration', (error, result) => {
+        if (error) alert(error.reason);
+      });
+    }
+  }
+
 }
 
 GamestateControlsInner.propTypes = {
