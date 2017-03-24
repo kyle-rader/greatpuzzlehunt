@@ -34,6 +34,9 @@ class GamestateControlsInner extends Component {
         <Form.Group>
           { this._fieldButton('Registration') }
         </Form.Group>
+        <Form.Group>
+          { this._fieldButton('Gameplay') }
+        </Form.Group>
       </Form>
     );
   }
