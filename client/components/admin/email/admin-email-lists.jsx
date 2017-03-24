@@ -14,7 +14,7 @@ AdminEmailLists = class AdminEmailLists extends Component {
       needsSetup: [],
     };
 
-    Meteor.call('admin.getUsers', (error, allUsers) => {
+    Meteor.call('admin.users.fetch', (error, allUsers) => {
       if (error) return alert(error);
 
       const needsSetup = allUsers.filter((user) => Boolean(user.email));
