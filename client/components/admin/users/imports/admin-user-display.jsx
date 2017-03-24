@@ -18,63 +18,32 @@ class AdminUserDisplay extends Component {
     const { user } = this.props;
     const { moreInfo } = this.state;
     return (
-      <Grid>
-        <Grid.Row>
-          { this._name_email() }
-          { this._username_team() }
-          { this._buttons() }
-        </Grid.Row>
-        { moreInfo ? this._moreInfo() : null }
-      </Grid>
+      <div>
+        { this._email() }
+        { this._team() }
+        { this._moreInfo() }
+      </div>
     );
   }
 
-  _name_email() {
+  _email() {
     const { user } = this.props;
     const good = user.isVerified();
     const email = user.email || user.getEmail();
     return (
-      <Grid.Column computer={5} mobile={16}>
-        <h4>{ user.name }</h4>
-        { email } <Icon color={ good ? 'green' : 'red' } name={ good ? 'check' : 'close' }/>
-      </Grid.Column>
+      <p>
+        <Icon name='mail' size='small'/> { email } <Icon color={ good ? 'green' : 'red' } name={ good ? 'check' : 'close' }/>
+      </p>
     );
   }
 
-  _username_team() {
+  _team() {
     const { user } = this.props;
     return (
-      <Grid.Column computer={6} mobile={16}>
-        { user.username } : { user.teamId }
-      </Grid.Column>
+      <p>
+        <Icon name='users' size='small'/> { user.teamId }
+      </p>
     );
-  }
-
-  _buttons() {
-    const { user } = this.props;
-    const { moreInfo } = this.state;
-    return (
-      <Grid.Column computer={5} mobile={16} className='top-mobile-padding'>
-        <Button basic size='small'
-          onClick={ () => this._toggleInfo() }
-          content={ moreInfo ? 'Show less' : 'Show more' }
-        />
-        <Button basic size='small'
-          color={ user.hasRole('admin') ? 'violet' : null }
-          onClick={ this.props.onToggleAdmin }
-          icon={ <Icon name='power'/> }
-        />
-        <Button basic size='small'
-          color={ user.hasRole('volunteer') ? 'teal' : null }
-          onClick={ this.props.onToggleVolunteer }
-          icon={ <Icon name='heart'/> }
-        />
-      </Grid.Column>
-    );
-  }
-
-  _toggleInfo() {
-    this.setState({ moreInfo: !this.state.moreInfo });
   }
 
   _moreInfo() {
@@ -110,8 +79,6 @@ class AdminUserDisplay extends Component {
 
 AdminUserDisplay.propTypes = {
   user: PropTypes.object.isRequired,
-  onToggleAdmin: PropTypes.func.isRequired,
-  onToggleVolunteer: PropTypes.func.isRequired,
 };
 
 export default AdminUserDisplay;
