@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import { createContainer } from 'meteor/react-meteor-data';
 import AdminUser from './admin-user';
 
@@ -9,9 +9,9 @@ class AdminUserList extends Component {
     if (this.props.loading) return <Loading />
 
     return (
-      <Grid celled>
+      <Card.Group doubling stackable itemsPerRow='4'>
         { this._users() }
-      </Grid>
+      </Card.Group>
     );
   }
 

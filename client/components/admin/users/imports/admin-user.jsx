@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Grid, Button, Icon } from 'semantic-ui-react';
+import { Card, Button, Icon } from 'semantic-ui-react';
 
 import AdminUserEdit from './admin-user-edit';
 import AdminUserDisplay from './admin-user-display';
@@ -17,28 +17,31 @@ class AdminUser extends Component {
   render() {
     const { user } = this.props;
     return (
-      <Grid.Row>
-        <Grid.Column computer={13} mobile={16}>
-          {
-            this.state.editMode ?
-            <AdminUserEdit user={ user }/> :
-            <AdminUserDisplay
-              user={ user }
-              onToggleAdmin={ (e) => this._toggleRole('admin') }
-              onToggleVolunteer={ (e) => this._toggleRole('volunteer') }
-            />
-          }
-        </Grid.Column>
-        <Grid.Column computer={3} mobile={16}>
+      <Card>
+        <Card.Content>
+          <Card.Header content={ user.name }/>
+          <Card.Meta>username: { user.username }</Card.Meta>
+          <Card.Description>
+            {
+              this.state.editMode ?
+              <AdminUserEdit user={ user }/> :
+              <AdminUserDisplay user={ user }/>
+            }
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
           <Actions
+            user={ user }
             editMode={ this.state.editMode }
             onEdit={ (e) => this._toggleEdit() }
             onPasswordReset={(e) => this._sendPasswordReset(e)}
             onEmailResend={(e) => this._sendEmailResend(e)}
             onDelete={ (e) => this._deleteUser(e) }
+            onToggleAdmin={ (e) => this._toggleRole('admin') }
+            onToggleVolunteer={ (e) => this._toggleRole('volunteer') }
           />
-        </Grid.Column>
-      </Grid.Row>
+        </Card.Content>
+      </Card>
     );
   }
 
