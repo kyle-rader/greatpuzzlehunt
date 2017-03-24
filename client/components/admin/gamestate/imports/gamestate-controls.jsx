@@ -32,25 +32,25 @@ class GamestateControlsInner extends Component {
     return (
       <Form onSubmit={ (e) => e.preventDefault() }>
         <Form.Group>
-          { this._registrationButton() }
+          { this._fieldButton('Registration') }
         </Form.Group>
       </Form>
     );
   }
 
-  _registrationButton() {
-    const { registration } = this.props.gamestate;
+  _fieldButton(name) {
+    const field = this.props.gamestate[name.toLowerCase()];
     return <Button
-      color={ registration ? 'green' : 'red' }
-      content={ 'Turn Registration ' + (registration ? 'Off' : 'On') }
-      onClick={ (e) => this._toggleRegistration(e) }
+      color={ field ? 'green' : 'red' }
+      content={ `Turn ${name} ${(field ? 'Off' : 'On')}` }
+      onClick={ (e) => this._toggleField(e, name) }
     />;
   }
 
-  _toggleRegistration(e) {
+  _toggleField(e, name) {
     e.preventDefault();
-    if (confirm('Are you sure you want to toggle registration?')) {
-      Meteor.call('admin.gamestate.toggleRegistration', (error, result) => {
+    if (confirm(`Are you sure you want to toggle ${name}?`)) {
+      Meteor.call(`admin.gamestate.toggle${name}`, (error, result) => {
         if (error) alert(error.reason);
       });
     }
