@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Segment, Form, Button, Icon, List, Message } from 'semantic-ui-react';
 
+import GamestateComp from '../../imports/gamestate-comp';
+
 const STATES = [
   { key: 'WA', text: 'WA', value: 'WA' },
   { key: 'AL', text: 'AL', value: 'AL' },
@@ -64,7 +66,7 @@ const STATES = [
   { key: 'WY', text: 'WY', value: 'WY' },
 ];
 
-export default class PromoRegisterForm extends Component {
+class PromoRegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,6 +91,20 @@ export default class PromoRegisterForm extends Component {
   }
 
   render() {
+    if (!this.props.ready) {
+      return <Loading/>
+    } else if (this.props.gamestate.registration) {
+      return this._renderMain();
+    } else {
+      return <Message
+        info
+        header='Registration is closed'
+        content='The 2018 Great Puzzle Hunt is now in development!'
+      />
+    }
+  }
+
+  _renderMain() {
     switch (this.state.mode) {
       case 'thankyou':
         return this._thankyou();
@@ -268,3 +284,5 @@ export default class PromoRegisterForm extends Component {
     />
   }
 }
+
+export default GamestateComp(PromoRegisterForm);
