@@ -40,7 +40,7 @@ Meteor.startup(() => {
   // // Check every 15 seconds.
   // Meteor.setInterval(() => {
 
-  //     let gameState = GameState.findOne({});
+  //     let gameState = Gamestate.findOne({});
   //     if (!gameState.gameplay)
   //         return; // Game not one - don't check for puzzles.
 
