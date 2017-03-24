@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component, PropTypes } from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
+
+import GamestateComp from '../../../imports/gamestate-comp';
 
 class GamestateControlsInner extends Component {
 
@@ -66,13 +67,4 @@ GamestateControlsInner.propTypes = {
   gamestate: PropTypes.object,
 };
 
-export const GamestateControls = createContainer(() => {
-  const handle = Meteor.subscribe('gamestate');
-  const ready = handle.ready();
-  const gamestate = Gamestate.findOne({});
-
-  return {
-    ready,
-    gamestate,
-  };
-}, GamestateControlsInner);
+export const GamestateControls = GamestateComp(GamestateControlsInner);
