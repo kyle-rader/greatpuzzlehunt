@@ -1,3 +1,5 @@
+// ref: http://stackoverflow.com/questions/38241480/detect-macos-ios-windows-android-and-linux-os-with-js
+
 export default function getPlatform() {
   let userAgent = window.navigator.userAgent,
       platform = window.navigator.platform,
