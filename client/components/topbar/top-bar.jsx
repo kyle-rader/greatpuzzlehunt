@@ -80,7 +80,7 @@ const adminMenuItems = [
 ];
 const volunteerMenuItems = [
   {
-    name: 'Volunteer Home',
+    name: 'Home',
     to: '/volunteer',
     iconClass: 'violet home',
   },
