@@ -78,12 +78,19 @@ const adminMenuItems = [
     iconClass: 'yellow trophy',
   },
 ];
+const volunteerMenuItems = [
+  {
+    name: 'Volunteer Home',
+    to: '/volunteer',
+    iconClass: 'violet home',
+  },
+];
 
 TopBar = class TopBar extends Component {
   render() {
-    const { isAdmin } = this.props;
+    const { isAdmin, isVolunteer } = this.props;
     return (
-      <div className="ui fixed inverted labeled icon menu top-bar" ref="topbar">
+      <div className="ui fixed inverted small labeled icon menu top-bar" ref="topbar">
 
         <div className="ui dropdown item" ref="menuDropdown">
           <i className="large content icon"></i>
@@ -97,6 +104,7 @@ TopBar = class TopBar extends Component {
 
         <div className="right menu">
           { isAdmin() ? this._renderAdminMenu() : null }
+          { isVolunteer() ? this._renderVolunteerMenu() : null }
           {this._logInLogOutBtn()}
         </div>
       </div>
@@ -124,6 +132,17 @@ TopBar = class TopBar extends Component {
         Admin
         <div className="menu topbar-dropdown-menu">
           { this._renderMenuLinks(adminMenuItems) }
+        </div>
+      </div>
+    );
+  }
+  _renderVolunteerMenu() {
+    return (
+      <div className="ui dropdown item">
+        <Icon name='clock' size='large'/>
+        Volunteer
+        <div className="menu topbar-dropdown-menu">
+          { this._renderMenuLinks(volunteerMenuItems) }
         </div>
       </div>
     );
@@ -198,5 +217,8 @@ TopBar = createContainer(() => ({
   user: Meteor.user(),
   isAdmin() {
     return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
-  }
+  },
+  isVolunteer() {
+    return Boolean(Meteor.user()) && Meteor.user().hasRole('volunteer');
+  },
 }), TopBar);
