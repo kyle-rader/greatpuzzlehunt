@@ -48,7 +48,7 @@ Volunteer = class Volunteer extends React.Component {
       basic
       href={ href }
       content='Download QR App'
-    />
+    />;
   }
 }
 
