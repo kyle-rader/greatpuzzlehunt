@@ -9,7 +9,7 @@ class AdminUserList extends Component {
     if (this.props.loading) return <Loading />
 
     return (
-      <Card.Group doubling stackable itemsPerRow='4'>
+      <Card.Group doubling stackable itemsPerRow='3'>
         { this._users() }
       </Card.Group>
     );
