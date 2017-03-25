@@ -32,11 +32,14 @@ An on-line and in person real-time puzzle scavenger hunt!
   $ yarn install  # instead of npm install
   ```
 8. Add a new development settings file called `settings-development.json`
+  Note the `dropbox` section. If this section is provided files will be stored
+  in your dropbox folder at the `storagePath` (Dropbox config).  
+  If not, we will use local file storage.
 
   ```
   {
     "public": {
-      "siteName": "(Dev) Great Puzzle Hunt",
+      "siteName": "Great Puzzle Hunt",
       "accountsEmail": "Great Puzzle Hunt <accounts@greatpuzzlehunt.com>",
       "infoEmail": "Great Puzzle Hunt <info@greatpuzzlehunt.com>",
       "eventYear": "2017",
@@ -44,7 +47,7 @@ An on-line and in person real-time puzzle scavenger hunt!
         "facebook": "https://facebook.com/greatpuzzlehunt"
       },
       "analyticsSettings": {
-        "Google Analytics" : {"trackingId": ""}
+        "Google Analytics" : {"trackingId": "UA-78225937-1"}
       }
     },
     "admin": {
@@ -52,30 +55,35 @@ An on-line and in person real-time puzzle scavenger hunt!
       "lastname": "Rader",
       "name": "Kyle Rader",
       "username": "mcyamaha",
-      "email": "admin@gmail.com",
-      "password": "testtest",
+      "email": "kyle@kylerader.ninja",
+      "password": "_!CMnmkit5641",
       "roles": ["user", "volunteer", "admin"],
-      "address": "12345 NW Fake Dr.",
+      "address": "23714 NE 61st Street",
       "city": "Redmond",
       "state": "WA",
       "zip": "98053",
       "age": 25,
-      "phone": "1231231234",
+      "phone": "4252417977",
       "isAdult": true,
       "registrationType": "non-student",
       "photoPermission": true,
       "legalGuardian": {},
       "emergencyContact": {
-        "name": "Mom",
+        "name": "Janet King",
         "relation": "mother",
-        "phone": "1231231234",
-        "altPhone": "1112223333",
-        "email": "mom@gmail.com"
+        "phone": "4252410142",
+        "altPhone": "4252410106",
+        "email": "janet.king@comcast.net"
       }
     },
     "accounts": {
       "fromEmail": "Great Puzzle Hunt<accounts@greatpuzzlehunt.com>",
-      "registrationApiKey": "ashbadkvhbzsdl"
+      "registrationApiKey": "KM3zNRL61h0Pi98A58ASD9q5"
+    },
+    "dropbox": {
+      "key": "your_key",
+      "secret": "super_secret",
+      "token": "access_token"
     }
   }
   ```
@@ -89,4 +97,3 @@ An on-line and in person real-time puzzle scavenger hunt!
   ```
   $ meteor shell
   ```
-  
