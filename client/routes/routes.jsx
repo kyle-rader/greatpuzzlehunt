@@ -16,7 +16,6 @@ export const renderRoutes = () => (
       <Route path='qrcode' component={QRCode}/>
       <Route path='register' component={Register}/>
       <Route path='register-promo-code' component={RegisterPromoCode}/>
-      <Route path='volunteer' component={Volunteer}/>
 
       <Route path='login' component={Login}/>
       <Route path='requestpasswordreset' component={RequestPasswordReset}/>
@@ -34,6 +33,12 @@ export const renderRoutes = () => (
 
       <Route path='looking-for-team' component={makeAuthed('user')}>
         <IndexRoute component={ LookingForTeam }/>
+      </Route>
+
+      {/* Volunteer Routes */}
+      <Route path='volunteer' component={makeAuthed('volunteer')}>
+        <IndexRoute component={ Volunteer }/>
+        <Route path='time/:team' component={VolunteerTimer}/>
       </Route>
 
       {/* Admin Routes */}
