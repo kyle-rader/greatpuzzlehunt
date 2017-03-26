@@ -6,14 +6,14 @@ import { omit } from 'lodash';
 class PuzzleEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = this._stateFromprops(props);
+    this.state = this._stateFormprops(props);
   }
 
   componentWillReceiveProps(props) {
-    this.setState(this._stateFromprops(props));
+    this.setState(this._stateFormprops(props));
   }
 
-  _stateFromprops(props) = {
+  _stateFormprops(props) {
     const { puzzle } = props;
     return omit(puzzle, ['_id']);
   }
@@ -21,42 +21,41 @@ class PuzzleEditor extends Component {
   render() {
     return (
       <Form onSubmit={ (e) => this._handleSubmit(e) }>
-        <From.Group>
-          <Form.Input
-            name='name'
-            fluid
-            label='Puzzle Name'
-            value={ this.state.name }
-            onChange={ this._handleChange }
-          />
-        </From.Group>
-        <From.Group>
+        <Form.Input
+          name='name'
+          label='Puzzle Name'
+          value={ this.state.name }
+          onChange={ (e) => this._handleChange(e) }
+        />
+        <Form.Group widths='equal'>
           <Form.Input
             name='answer'
-            width='10'
             label='Answer'
             value={ this.state.answer }
-            onChange={ this._handleChange }
+            onChange={ (e) => this._handleChange(e) }
           />
           <Form.Input
             name='stage'
-            width='6'
             label='Stage'
             value={ this.state.stage }
-            onChange={ this._handleChange }
+            onChange={ (e) => this._handleChange(e, 'Number') }
           />
-        </From.Group>
-        <From.Group>
-          <Form.Input
-            name='location'
-            fluid
-            label='Location'
-            value={ this.state.location }
-            onChange={ this._handleChange }
-          />
-        </From.Group>
+        </Form.Group>
+
+        <Form.Input
+          name='location'
+          label='Location'
+          value={ this.state.location }
+          onChange={ (e) => this._handleChange(e) }
+        />
 
         {/* TODO: Render Hint editor */}
+        
+        <Form.Group>
+          <Form.Button color='green' type='submit' content='Save'/>
+          <Form.Button basic content='Cancel' onClick={this.props.afterUpdate}/>
+        </Form.Group>
+
       </Form>
     );
   }
@@ -64,15 +63,28 @@ class PuzzleEditor extends Component {
   _handleSubmit(e) {
     e.preventDefault();
     const { name, stage, answer, location } = this.state;
-
+    const fields = {
+      name: name.trim(),
+      stage: parseInt(stage),
+      answer: answer.trim().toLowerCase(),
+      location: location.trim(),
+      hints: [],
+    };
+    Meteor.call('admin.puzzle.update', this.props.puzzle._id, fields, (error, result) => {
+      if (error) return alert(error.reason);
+      this.props.afterUpdate();
+    });
   }
 
-  _handleChange(e) {
+  _handleChange(e, type) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
 }
 
 PuzzleEditor.propTypes = {
-  puzzle: PropTypes.object.isrequired,
+  puzzle: PropTypes.object.isRequired,
+  afterUpdate: PropTypes.func.isRequired,
 };
+
+export default PuzzleEditor;
