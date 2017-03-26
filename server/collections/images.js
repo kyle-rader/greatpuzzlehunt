@@ -36,8 +36,10 @@ Meteor.methods({
 
     // TODO:
     // Step 1. Find any Puzzles where this image is being used.
-    // Step 2. Disable removing Image if hints are using it.
+    const puzzlesUsing = Puzzles.find({ hints: { $elemMatch: { 'image.id': imageId } } }).count();
+    if (puzzlesUsing > 0) throw new Meteor.Error(400, 'There are puzzle(s) using this image still! Rmove them first');
+
     // Step 3. Remove the Image.
-    return true;
+    return Images.remove(imageId);
   }
 })
