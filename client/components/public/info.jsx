@@ -57,7 +57,7 @@ Info = class Info extends Component {
           </Accordion.Title>
           <Accordion.Content>
             Park for FREE! Parking enforcement is suspended on all campus lots 
-            April 1, but avoid parking in handicap zones or reserved spaces. space 
+            April 1, but avoid parking in handicap zones or reserved spaces. Space 
             will be limited in C-Lots due to another event.
             <div><a target="_blank" href="http://www.wwu.edu/ps/doc/pk/ParkingGuide.pdf">Parking Map</a></div>
             <Accordion styled fluid>
