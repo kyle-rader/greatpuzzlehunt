@@ -42,4 +42,4 @@ Meteor.methods({
     // Step 3. Remove the Image.
     return Images.remove(imageId);
   }
-})
+});

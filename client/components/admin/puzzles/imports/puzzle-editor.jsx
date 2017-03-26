@@ -3,17 +3,19 @@ import React, { Component, PropTypes } from 'react';
 import { Form, Message } from 'semantic-ui-react';
 import { omit } from 'lodash';
 
+import HintEditor from './hint-editor';
+
 class PuzzleEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = this._stateFormprops(props);
+    this.state = this._stateFormProps(props);
   }
 
   componentWillReceiveProps(props) {
-    this.setState(this._stateFormprops(props));
+    this.setState(this._stateFormProps(props));
   }
 
-  _stateFormprops(props) {
+  _stateFormProps(props) {
     const { puzzle } = props;
     return omit(puzzle, ['_id']);
   }
@@ -49,8 +51,8 @@ class PuzzleEditor extends Component {
           onChange={ (e) => this._handleChange(e) }
         />
 
-        {/* TODO: Render Hint editor */}
-        
+        <HintEditor puzzle={ this.props.puzzle } onChange={ (hints) => this.setState({ hints }) } />
+
         <Form.Group>
           <Form.Button color='green' type='submit' content='Save'/>
           <Form.Button basic content='Cancel' onClick={this.props.afterUpdate}/>
