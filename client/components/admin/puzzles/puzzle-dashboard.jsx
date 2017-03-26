@@ -4,6 +4,7 @@ import { Container, Message, Image, Button } from 'semantic-ui-react';
 
 import Dropzone from 'react-dropzone';
 import ImageList from './imports/image-list';
+import PuzzleList from './imports/puzzle-list';
 
 PuzzleDashboard = class PuzzleDashboard extends Component {
   constructor(props) {
@@ -19,7 +20,9 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
     return (
       <Container>
         <PuzzlePageTitle title='Puzzles'/>
-        <Dropzone
+
+        <PuzzleList />
+        {/* <Dropzone
           ref='dropzone'
           multiple={ false }
           accept='image/*'
@@ -35,7 +38,7 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
         { this.state.file ? <Image src={ this.state.file.preview } /> : null }
 
         <h4>Uploaded Images</h4>
-        <ImageList />
+        <ImageList /> */}
 
       </Container>
     );
