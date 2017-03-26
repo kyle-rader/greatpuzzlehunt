@@ -1,5 +1,5 @@
-Images = new FS.Collection('hint_images', {
-  stores:[new FS.Store.Dropbox('hint_images')],
+Images = new FS.Collection('images', {
+  stores:[new FS.Store.Dropbox('images')],
   filter: {
     allow: {
       contentTypes: ['image/*'],
@@ -12,6 +12,9 @@ Images.allow({
     return true;
   },
   update() {
+    return true;
+  },
+  remove() {
     return true;
   },
   download() {
