@@ -51,9 +51,49 @@ Info = class Info extends Component {
         </Segment>
 
         <Accordion styled fluid>
-
           <Accordion.Title>
             <Icon color="red" size="huge" name="dropdown"/>
+            Parking and Directions
+          </Accordion.Title>
+          <Accordion.Content>
+            Park for FREE! Parking enforcement is suspended on all campus lots 
+            April 1, but avoid parking in handicap zones or reserved spaces. space 
+            will be limited in C-Lots due to another event.
+            <div><a target="_blank" href="http://www.wwu.edu/ps/doc/pk/ParkingGuide.pdf">Parking Map</a></div>
+            <Accordion styled fluid>
+              <Accordion.Title>
+                <Icon color="blue" size="huge" name="dropdown"/>
+                Directions from the South
+              </Accordion.Title>
+              <Accordion.Content>
+                <List className='bulleted'>
+                  <List.Item description="From Interstate 5, take exit 252."/>
+                  <List.Item description="Turn left off the ramp onto S. Samish Way."/>
+                  <List.Item description="Turn left at the stop light onto N. Samish Way."/>
+                  <List.Item description="Stay in the left lane and go over the freeway."/>
+                  <List.Item description="At the second light, turn left onto Bill McDonald Parkway/Byron Avenue – there will be a Wendy's and a 76 Station on your left."/>
+                  <List.Item description="Drive on Bill McDonald Parkway for just over 1 mile and continue straight through two stop lights (you will still be on the Bill McDonald Parkway)."/>
+                  <List.Item description="The Campus Services Building will be the first building on the right after the intersection"/>
+                </List>
+              </Accordion.Content>
+              <Accordion.Title>
+                <Icon color="green" size="huge" name="dropdown"/>
+                Directions from the North
+              </Accordion.Title>
+              <Accordion.Content>
+                <List className='bulleted'>
+                  <List.Item description="From Interstate 5 going south, take exit 252 and get in the right lane."/>
+                  <List.Item description="Turn right off the ramp onto N. Samish Way, and get into the left lane."/>
+                  <List.Item description="At the next light, turn left onto Bill McDonald Parkway/Byron Avenue - there will be a Wendy's and a 76 Station on your left."/>
+                  <List.Item description="Drive on Bill McDonald Parkway for just over 1 mile and continue straight through two stop lights (you will still be on the Bill McDonald Parkway)."/>
+                  <List.Item description="The Campus Services Building will be the first building on the right after the intersection"/>
+                </List>
+              </Accordion.Content>
+            </Accordion>
+            <iframe frameborder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%"></iframe>
+          </Accordion.Content>
+          <Accordion.Title>
+            <Icon color="orange" size="huge" name="dropdown"/>
             What is the Great Puzzle Hunt?
           </Accordion.Title>
           <Accordion.Content>
@@ -66,7 +106,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="orange" size="big" name="dropdown"/>
+            <Icon color="yellow" size="big" name="dropdown"/>
             When is it?
           </Accordion.Title>
           <Accordion.Content>
@@ -82,7 +122,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="yellow" size="big" name="dropdown"/>
+            <Icon color="olive" size="big" name="dropdown"/>
             Who is it for?
           </Accordion.Title>
           <Accordion.Content>
@@ -91,7 +131,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="olive" size="big" name="dropdown"/>
+            <Icon color="green" size="big" name="dropdown"/>
             What team divisions are there?
           </Accordion.Title>
           <Accordion.Content>
@@ -108,7 +148,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="green" name="dropdown"/>
+            <Icon color="teal" name="dropdown"/>
             How much does this cost?
           </Accordion.Title>
           <Accordion.Content>
@@ -125,7 +165,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="teal" size="big" name="dropdown"/>
+            <Icon color="blue" size="big" name="dropdown"/>
             What should I bring to the puzzle hunt?
           </Accordion.Title>
           <Accordion.Content>
@@ -142,7 +182,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="blue" size="big" name="dropdown"/>
+            <Icon color="violet" size="big" name="dropdown"/>
             Do I have to be a math/science person?
           </Accordion.Title>
           <Accordion.Content>
@@ -152,7 +192,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="violet" size="big" name="dropdown"/>
+            <Icon color="purple" size="big" name="dropdown"/>
             How long will this last? (Event Schedule)
           </Accordion.Title>
           <Accordion.Content>
@@ -166,7 +206,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="purple" size="big" name="dropdown"/>
+            <Icon color="pink" size="big" name="dropdown"/>
             What if it rains?
           </Accordion.Title>
           <Accordion.Content>
@@ -174,7 +214,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="pink" size="big" name="dropdown"/>
+            <Icon color="brown" size="big" name="dropdown"/>
             What kind of puzzles will we be solving?
           </Accordion.Title>
           <Accordion.Content>
@@ -182,7 +222,7 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="brown" size="big" name="dropdown"/>
+            <Icon color="black" size="big" name="dropdown"/>
             What do the T-Shirts look like?
           </Accordion.Title>
           <Accordion.Content>
@@ -205,9 +245,7 @@ Info = class Info extends Component {
               <Image src="/img/2017/t-shirts/womens.jpg"/>
             </Image.Group>
           </Accordion.Content>
-
         </Accordion>
-
       </div>
     );
   }
