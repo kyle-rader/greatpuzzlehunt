@@ -44,9 +44,7 @@ class HintEditor extends Component {
   render() {
     return (
       <div>
-        <Form.Group key='add_hint_btn'>
-          <Button basic content='Add Hint' icon='plus' labelPosition='right' onClick={ (e) => this._addhint(e) }/>
-        </Form.Group>
+        <Button basic content='Add Hint' icon='plus' labelPosition='right' onClick={ (e) => this._addhint(e) }/>
         { flatten(this._hintInputs()) }
       </div>
     );
@@ -69,7 +67,7 @@ class HintEditor extends Component {
     return this.state.hints.map((hint, i) => {
       const name = `hint_${i}_description`;
       return (
-        <Grid stackable celled key={ `${this.props.puzzle._id}_${name}`} style={{paddingBottom: '10px' }}>
+        <Grid stackable key={ `${this.props.puzzle._id}_${name}`} style={{paddingBottom: '10px' }}>
           <Grid.Row columns='3'>
             <Grid.Column width='7'>
               <Form.Input
@@ -101,19 +99,24 @@ class HintEditor extends Component {
               />
             </Grid.Column>
             <Grid.Column width='2'>
-              <Button basic color='red' icon='trash' onClick={(e) => {
+              <Form.Field>
+                <label>Delete</label>
+                <Button basic color='red' icon='trash' onClick={(e) => {
                   e.preventDefault();
                   const { hints } = this.state;
                   hints.splice(i, 1);
                   this.props.onChange(hints);
                 }}
               />
+              </Form.Field>
             </Grid.Column>
           </Grid.Row>
           {
             hint.image.url ? (
               <Grid.Row columns='1'>
-                <Grid.Column><Image src={hint.image.url} size='small'/></Grid.Column>
+                <Grid.Column>
+                  <Image src={hint.image.url} size='small'/>
+                </Grid.Column>
               </Grid.Row>
             ) : null
           }
