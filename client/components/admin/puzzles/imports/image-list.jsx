@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Segment, Card, Image, Button } from 'semantic-ui-react';
 
+import imageSubscriber from './image-subscriber';
+
 class ImageList extends Component {
   render() {
     if (!this.props.ready) return null;
@@ -40,13 +42,4 @@ class ImageList extends Component {
   }
 }
 
-export default createContainer(() => {
-  const handle = Meteor.subscribe('admin.images');
-  const ready = handle.ready();
-  const images = Images.find().fetch();
-
-  return {
-    ready,
-    images,
-  };
-}, ImageList);
+export default imageSubscriber(ImageList);
