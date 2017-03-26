@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import SamplePuzzles from './imports/sample-puzzles';
+import SamplePuzzlesInner from './imports/sample-puzzles';
+import { Container } from 'semantic-ui-react';
 
-Puzzles = class Puzzle extends Component {
+SamplePuzzles = class Puzzle extends Component {
 
   render() {
     return (
-      <div className="ui container">
+      <Container>
         <br/>
-        <SamplePuzzles/>
-      </div>
+        <SamplePuzzlesInner/>
+      </Container>
     );
   }
 }
