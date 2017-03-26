@@ -52,7 +52,10 @@ class PuzzleEditor extends Component {
           onChange={ (e) => this._handleChange(e) }
         />
 
-        <HintEditor puzzle={ this.props.puzzle } onChange={ (hints) => this.setState({ hints }) } />
+        <HintEditor
+          puzzle={ this.props.puzzle }
+          hints={ this.state.hints }
+          onChange={ (hints) => this.setState({ hints }) } />
 
         <Form.Group>
           <Form.Button color='green' type='submit' content='Save'/>
@@ -65,14 +68,15 @@ class PuzzleEditor extends Component {
 
   _handleSubmit(e) {
     e.preventDefault();
-    const { name, stage, answer, location } = this.state;
+    const { name, stage, answer, location, hints } = this.state;
     const fields = {
       name: name.trim(),
       stage: parseInt(stage),
       answer: answer.trim().toLowerCase(),
       location: location.trim(),
-      hints: [],
+      hints,
     };
+
     Meteor.call('admin.puzzle.update', this.props.puzzle._id, fields, (error, result) => {
       if (error) return alert(error.reason);
       this.props.afterUpdate();
