@@ -18,10 +18,7 @@ Game = class Game extends Component {
 
 	_renderMain() {
 		return (
-			<Message
-	        info
-	        header='Game Running'
-	        content='Main Page Here' />
+			<GameAccess />
 		);
 	}
 }
