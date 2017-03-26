@@ -11,6 +11,7 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
 
     this.state = {
       file: null,
+      uploaded: null,
     };
   }
 
@@ -27,6 +28,9 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
 
         <Button basic content='Upload' onClick={() => this.upload() }/>
 
+        {
+          this.state.uploaded ? `Uploaded: ${this.state.uploaded.isUploaded()}` : null
+        }
         <h4>Preview</h4>
         { this.state.file ? <Image src={ this.state.file.preview } /> : null }
 
@@ -50,6 +54,11 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
       if (error) return alert(error.reason);
 
       console.log(fileObj);
+
+      this.setState({
+        file: null,
+        uploaded: fileObj,
+      });
     });
   }
 }
