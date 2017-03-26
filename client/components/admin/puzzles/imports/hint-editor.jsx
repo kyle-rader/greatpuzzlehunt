@@ -41,6 +41,7 @@ class HintEditor extends Component {
       return (
         <Form.Group key={ `${this.props.puzzle._id}_${name}`} widths='equal'>
           <Form.Input
+            name={name}
             label='Description'
             value={ this.state.hints[i].description }
             onChange={ (e) => {
@@ -50,6 +51,7 @@ class HintEditor extends Component {
             }}
           />
           <Form.Select
+            name={`hint_${i}_image`}
             label='Image'
             options={[]}
             placeholder='Image'
