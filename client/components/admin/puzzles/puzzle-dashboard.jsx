@@ -57,25 +57,4 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
       console.log(`Deleted puzzle ${puzzle.name} (${puzzle._id})`);
     });
   }
-  //
-  // onDrop(files) {
-  //   const file = files[0] || null;
-  //   if (!file) return;
-  //   this.setState({ file });
-  // }
-  //
-  // upload() {
-  //   if (!this.state.file) return;
-  //
-  //   Images.insert(this.state.file, (error, fileObj) => {
-  //     if (error) return alert(error.reason);
-  //
-  //     console.log(fileObj);
-  //
-  //     this.setState({
-  //       file: null,
-  //       uploaded: fileObj,
-  //     });
-  //   });
-  // }
 }
