@@ -1,13 +1,43 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Form, Message, Image } from 'semantic-ui-react';
-import { cloneDeep } from 'lodash';
+import { Grid, Form, Message, Image } from 'semantic-ui-react';
+import { cloneDeep, reduce, flatten } from 'lodash';
+
+import imageSubscriber from './image-subscriber';
+
+function buildImageMap(images) {
+  return reduce(images, (acc, img) => {
+    acc[img._id] = {
+      name: img.name(),
+      url: img.url(),
+    };
+    return acc;
+  }, {});
+}
+
+function buildImageOptions(images) {
+  return images.map((img) => ({
+    key: img._id,
+    value: img._id,
+    text: img.name(),
+  }));
+}
 
 class HintEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this._stateFromProps(props);
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState(this._stateFromProps(props));
+  }
+
+  _stateFromProps(props) {
+    return {
       hints: cloneDeep(props.puzzle.hints),
+      imageMap: buildImageMap(props.images),
+      imageOptions: buildImageOptions(props.images),
     };
   }
 
@@ -17,7 +47,7 @@ class HintEditor extends Component {
         <Form.Group key='add_hint_btn'>
           <Form.Button basic content='Add Hint' icon='plus' labelPosition='right' onClick={ (e) => this._addhint(e) }/>
         </Form.Group>
-        { this._hintInputs() }
+        { flatten(this._hintInputs()) }
       </div>
     );
   }
@@ -39,34 +69,46 @@ class HintEditor extends Component {
     return this.state.hints.map((hint, i) => {
       const name = `hint_${i}_description`;
       return (
-        <Form.Group key={ `${this.props.puzzle._id}_${name}`} widths='equal'>
-          <Form.Input
-            name={name}
-            label='Description'
-            value={ this.state.hints[i].description }
-            onChange={ (e) => {
-              const { hints } = this.state;
-              hints[i].description = e.target.value;
-              return this.setState({ hints });
-            }}
-          />
-          <Form.Select
-            name={`hint_${i}_image`}
-            label='Image'
-            options={[]}
-            placeholder='Image'
-            value={ this.state.hints[i].image.id }
-            onChange={ (e, { value }) => {
-              const { hints } = this.state;
-              hint[i].image = {
-                id: value,
-                // TODO: Set the URL by looking it up in images map.
-                url: this.state.images[value],
-              };
-              this.setState({ hints });
-            }}
-          />
-        </Form.Group>
+        <Grid key={ `${this.props.puzzle._id}_${name}`} widths='equal' style={{paddingBottom: '10px' }}>
+          <Grid.Row columns='2'>
+            <Grid.Column>
+              <Form.Input
+                name={name}
+                label='Description'
+                value={ this.state.hints[i].description }
+                onChange={ (e) => {
+                  const { hints } = this.state;
+                  hints[i].description = e.target.value;
+                  return this.setState({ hints });
+                }}
+              />
+            </Grid.Column>
+            <Grid.Column>
+              <Form.Select
+                name={`hint_${i}_image`}
+                label='Image'
+                options={this.state.imageOptions}
+                placeholder='Image'
+                value={ this.state.hints[i].image.id }
+                onChange={ (e, { value }) => {
+                  const { hints } = this.state;
+                  hints[i].image = {
+                    id: value,
+                    url: this.state.imageMap[value].url,
+                  };
+                  this.setState({ hints });
+                }}
+              />
+            </Grid.Column>
+          </Grid.Row>
+          {
+            hint.image.url ? (
+              <Grid.Row columns='1'>
+                <Grid.Column><Image src={hint.image.url} size='small'/></Grid.Column>
+              </Grid.Row>
+            ) : null
+          }
+        </Grid>
       );
     });
   }
@@ -75,6 +117,8 @@ class HintEditor extends Component {
 HintEditor.propTypes = {
   puzzle: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
 };
 
-export default HintEditor;
+export default imageSubscriber(HintEditor);
