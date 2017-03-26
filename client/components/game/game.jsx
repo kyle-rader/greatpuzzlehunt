@@ -1,27 +1,40 @@
-import React, { Component } from 'react';
-import { Message } from 'semantic-ui-react';
+import React, { Component, PropTypes } from 'react';
+import { Container, Message } from 'semantic-ui-react';
 import GamestateComp from '../imports/gamestate-comp';
+import moment from 'moment';
 
-Game = class Game extends Component {
+class GameInner extends Component {
   render() {
-    if (this.props.gamestate.gameplay) {
-      this._renderMain();
-    }
-    else {
-      return <Message
-        info
-        header='Game Not Running'
-        content='Indication Gameplay is Currently Off'
-      />
-    }
-  }
-
-  _renderMain() {
     return (
-      <GameAccess />
+      <Container>
+        <PuzzlePageTitle title='The Game'/>
+        { this._renderMain() }
+      </Container>
     );
   }
 
+  _renderMain() {
+    const { ready, gamestate } = this.props;
+    const timeToStart = moment('2017-04-01T10:00:00-07:00').fromNow();
+    if (!ready) {
+      return <Loading/>
+    }
+    else if (!gamestate.gameplay) {
+      return <Message
+        info
+        header='The Hunt has not started yet!'
+        content={`The Hunt will begin ${timeToStart}`}
+      />
+    }
+    return (
+      <div>Game ON!</div>
+    );
+  }
 }
 
-Game = GamestateComp(Game);
+GameInner.propTypes = {
+  ready: PropTypes.bool.isRequired,
+  gamestate: PropTypes.object,
+};
+
+Game = GamestateComp(GameInner);
