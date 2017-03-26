@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component, PropTypes } from 'react';
-import { Grid, Label, Button } from 'semantic-ui-react';
+import { Grid, Header, Label, Button } from 'semantic-ui-react';
 
 import puzzleSubscriber from './puzzle-subscriber';
 
@@ -21,10 +21,11 @@ class PuzzleList extends Component {
     return (
       <Grid.Row columns='1'>
         <Grid.Column>
-          <Button basic size='small' floated='right' content='New Puzzle' onClick={ () => this._createPuzzle() }/>
+          <Header as='h3' content='Puzzle List'/>
+          <Button basic size='small' content='New Puzzle' onClick={ () => this._createPuzzle() }/>
         </Grid.Column>
       </Grid.Row>
-    )
+    );
   }
 
   _createPuzzle() {

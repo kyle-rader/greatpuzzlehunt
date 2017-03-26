@@ -1,9 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Container, Message, Image, Button } from 'semantic-ui-react';
+import { Container, Header, Message, Image, Button } from 'semantic-ui-react';
 
 import PuzzleEditor from './imports/puzzle-editor';
 import PuzzleList from './imports/puzzle-list';
+import ImageManager from './imports/image-manager';
 
 PuzzleDashboard = class PuzzleDashboard extends Component {
   constructor(props) {
@@ -28,24 +29,8 @@ PuzzleDashboard = class PuzzleDashboard extends Component {
           onEdit={ (puzzle) => this._editPuzzle(puzzle) }
           onDelete={ (puzzle) => this._deletePuzzle(puzzle) }
         />
-        {/* <Dropzone
-          ref='dropzone'
-          multiple={ false }
-          accept='image/*'
-          onDrop={(files) => this.onDrop(files)}
-        />
-
-        <Button basic content='Upload' onClick={() => this.upload() }/>
-
-        {
-          this.state.uploaded ? `Uploaded: ${this.state.uploaded.isUploaded()}` : null
-        }
-        <h4>Preview</h4>
-        { this.state.file ? <Image src={ this.state.file.preview } /> : null }
-
-        <h4>Uploaded Images</h4>
-        <ImageList /> */}
-
+        <br/>
+        <ImageManager />
       </Container>
     );
   }
