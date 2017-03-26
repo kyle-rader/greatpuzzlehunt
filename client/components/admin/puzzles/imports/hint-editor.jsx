@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Grid, Form, Message, Image } from 'semantic-ui-react';
+import { Grid, Form, Message, Image, Button } from 'semantic-ui-react';
 import { cloneDeep, reduce, flatten } from 'lodash';
 
 import imageSubscriber from './image-subscriber';
@@ -45,7 +45,7 @@ class HintEditor extends Component {
     return (
       <div>
         <Form.Group key='add_hint_btn'>
-          <Form.Button basic content='Add Hint' icon='plus' labelPosition='right' onClick={ (e) => this._addhint(e) }/>
+          <Button basic content='Add Hint' icon='plus' labelPosition='right' onClick={ (e) => this._addhint(e) }/>
         </Form.Group>
         { flatten(this._hintInputs()) }
       </div>
@@ -69,9 +69,9 @@ class HintEditor extends Component {
     return this.state.hints.map((hint, i) => {
       const name = `hint_${i}_description`;
       return (
-        <Grid key={ `${this.props.puzzle._id}_${name}`} widths='equal' style={{paddingBottom: '10px' }}>
-          <Grid.Row columns='2'>
-            <Grid.Column>
+        <Grid stackable celled key={ `${this.props.puzzle._id}_${name}`} style={{paddingBottom: '10px' }}>
+          <Grid.Row columns='3'>
+            <Grid.Column width='7'>
               <Form.Input
                 name={name}
                 label='Description'
@@ -83,7 +83,7 @@ class HintEditor extends Component {
                 }}
               />
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width='7'>
               <Form.Select
                 name={`hint_${i}_image`}
                 label='Image'
@@ -96,6 +96,15 @@ class HintEditor extends Component {
                     id: value,
                     url: this.state.imageMap[value].url,
                   };
+                  this.props.onChange(hints);
+                }}
+              />
+            </Grid.Column>
+            <Grid.Column width='2'>
+              <Button basic color='red' icon='trash' onClick={(e) => {
+                  e.preventDefault();
+                  const { hints } = this.state;
+                  hints.splice(i, 1);
                   this.props.onChange(hints);
                 }}
               />
