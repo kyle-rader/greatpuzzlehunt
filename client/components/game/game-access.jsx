@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import QR from 'qrcode.react';
+import { Message } from 'semantic-ui-react';
 
 class GameAccess extends React.Component {
   render() {
@@ -18,8 +19,8 @@ class GameAccess extends React.Component {
   }
 }
 
-GameAccess = createContainer((props) => ({
+GameAccess = createContainer((props) => {
   return {
     user: Meteor.user(),
   };
-}), GameAccess);
+}, GameAccess);
