@@ -3,11 +3,11 @@ import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import QR from 'qrcode.react';
 
-GameAccess = class GameAccess extends React.Component {
+class GameAccess extends React.Component {
   render() {
     if (this.props.user.teamId) {
       return (
-        <QR value={'${Meteor.absoluteUrl()}volunteer/time/${teamId}'} size={128} />
+        <QR value={`${Meteor.absoluteUrl()}volunteer/time/${teamId}`} size={128} />
       );
     } else {
       return <Message
@@ -19,5 +19,7 @@ GameAccess = class GameAccess extends React.Component {
 }
 
 GameAccess = createContainer((props) => ({
-    user: Meteor.user()
+  return {
+    user: Meteor.user(),
+  };
 }), GameAccess);
