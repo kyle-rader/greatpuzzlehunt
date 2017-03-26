@@ -3,6 +3,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component, PropTypes } from 'react';
 import { Grid, Label, Button } from 'semantic-ui-react';
 
+import puzzleSubscriber from './puzzle-subscriber';
+
 const stageColorMap = {
   1: 'green',
   2: 'blue',
@@ -10,7 +12,7 @@ const stageColorMap = {
   4: 'red',
 };
 
-class PuzzleListInner extends Component {
+class PuzzleList extends Component {
   render() {
     return (
       <Grid>
@@ -52,16 +54,8 @@ class PuzzleListInner extends Component {
   }
 }
 
-PuzzleListInner.propTypes = {
+PuzzleList.propTypes = {
   puzzles: PropTypes.array.isRequired,
 };
 
-export default PuzzleList = createContainer(() => {
-  const handle = Meteor.subscribe('admin.puzzles');
-  const ready = handle.ready();
-  const puzzles = ready ? Puzzles.find().fetch() : [];
-  return {
-    ready,
-    puzzles,
-  };
-}, PuzzleListInner);
+export default puzzleSubscriber(PuzzleList);
