@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Message, Header } from 'semantic-ui-react';
 import { omit } from 'lodash';
 
 import HintEditor from './hint-editor';
@@ -23,6 +23,7 @@ class PuzzleEditor extends Component {
   render() {
     return (
       <Form onSubmit={ (e) => this._handleSubmit(e) }>
+        <Header as='h3' content='Puzzle Editor'/>
         <Form.Input
           name='name'
           label='Puzzle Name'
