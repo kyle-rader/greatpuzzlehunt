@@ -35,7 +35,7 @@ class HintEditor extends Component {
 
   _stateFromProps(props) {
     return {
-      hints: cloneDeep(props.puzzle.hints),
+      hints: props.hints,
       imageMap: buildImageMap(props.images),
       imageOptions: buildImageOptions(props.images),
     };
@@ -62,7 +62,7 @@ class HintEditor extends Component {
         url: '',
       },
     });
-    this.setState({ hints });
+    this.props.onChange(hints);
   }
 
   _hintInputs() {
@@ -79,7 +79,7 @@ class HintEditor extends Component {
                 onChange={ (e) => {
                   const { hints } = this.state;
                   hints[i].description = e.target.value;
-                  return this.setState({ hints });
+                  this.props.onChange(hints);
                 }}
               />
             </Grid.Column>
@@ -96,7 +96,7 @@ class HintEditor extends Component {
                     id: value,
                     url: this.state.imageMap[value].url,
                   };
-                  this.setState({ hints });
+                  this.props.onChange(hints);
                 }}
               />
             </Grid.Column>
@@ -116,6 +116,7 @@ class HintEditor extends Component {
 
 HintEditor.propTypes = {
   puzzle: PropTypes.object.isRequired,
+  hints: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
