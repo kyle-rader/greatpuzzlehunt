@@ -42,7 +42,7 @@ Info = class Info extends Component {
                 as="a"
                 color="orange"
                 icon='download'
-                href="/pdfs/2016/puzzle-hunt-map.pdf"
+                href="/pdfs/2017/puzzle-hunt-map.pdf"
                 target="_blank"
                 content='2016 Puzzle Campus Map'
               />
