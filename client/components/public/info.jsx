@@ -44,7 +44,7 @@ Info = class Info extends Component {
                 icon='download'
                 href="/pdfs/2017/puzzle-hunt-map.pdf"
                 target="_blank"
-                content='2016 Puzzle Campus Map'
+                content='2017 Puzzle Campus Map'
               />
             </List.Item>
           </List>
@@ -56,8 +56,8 @@ Info = class Info extends Component {
             Parking and Directions
           </Accordion.Title>
           <Accordion.Content>
-            Park for FREE! Parking enforcement is suspended on all campus lots 
-            April 1, but avoid parking in handicap zones or reserved spaces. Space 
+            Park for FREE! Parking enforcement is suspended on all campus lots
+            April 1, but avoid parking in handicap zones or reserved spaces. Space
             will be limited in C-Lots due to another event.
             <div><a target="_blank" href="http://www.wwu.edu/ps/doc/pk/ParkingGuide.pdf">Parking Map</a></div>
             <Accordion styled fluid>
@@ -90,7 +90,7 @@ Info = class Info extends Component {
                 </List>
               </Accordion.Content>
             </Accordion>
-            <iframe frameborder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%"></iframe>
+            <iframe frameBorder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%"></iframe>
           </Accordion.Content>
           <Accordion.Title>
             <Icon color="orange" size="huge" name="dropdown"/>
