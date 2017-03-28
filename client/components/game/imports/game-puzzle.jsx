@@ -1,15 +1,17 @@
-import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Segment, Header } from 'semantic-ui-react';
+
+import ActivePuzzle from './active-puzzle';
+import InactivePuzzle from './inactive-puzzle';
 
 class GamePuzzle extends Component {
   render() {
     const { team, puzzle } = this.props;
-    return (
-      <Segment>
-        <Header as='h4' content={ puzzle.name }/>
-      </Segment>
-    );
+
+    if (team.currentPuzzle === puzzle.puzzleId) {
+      return <ActivePuzzle team={ team } puzzle={ puzzle } />
+    } else {
+      return <InactivePuzzle team={ team } puzzle={ puzzle } />
+    }
   }
 }
 
