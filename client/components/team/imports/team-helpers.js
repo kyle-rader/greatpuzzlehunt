@@ -6,7 +6,7 @@ export function makeTeamComp(Comp) {
     const handle = Meteor.subscribe('teams.myTeam');
     const user = Meteor.user();
     const team = user ? Teams.findOne(user.teamId) : null;
-    const ready = handle.ready() && user;
+    const ready = Boolean(handle.ready() && user);
 
     return {
       user,

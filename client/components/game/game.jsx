@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import GamestateComp from '../imports/gamestate-comp';
 import GameCountdown from './imports/game-countdown';
+import GameMain from './imports/game-main';
 
 class GameInner extends Component {
 
@@ -20,25 +21,17 @@ class GameInner extends Component {
   }
 
   render() {
-    return (
-      <Container>
-        <br/>
-        { this._renderMain() }
-      </Container>
-    );
-  }
-
-  _renderMain() {
     const { ready, gamestate } = this.props;
     const timeToStart = moment('2017-04-01T10:00:00-07:00').from(this.state.now, true);
+
     if (!ready) {
-      return <Loading/>
+      return <Container><Loading/></Container>;
     }
     else if (!gamestate.gameplay) {
-      return <GameCountdown timeToStart={ timeToStart }/>;
+      return <Container><GameCountdown timeToStart={ timeToStart }/></Container>;
     }
     return (
-      <div>Game ON!</div>
+      <GameMain now={ this.state.now } />
     );
   }
 }
