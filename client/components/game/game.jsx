@@ -4,9 +4,9 @@ import moment from 'moment';
 
 import GamestateComp from '../imports/gamestate-comp';
 import GameCountdown from './imports/game-countdown';
-import GameMain from './imports/game-main';
+import GameTeamWrapper from './imports/game-team-wrapper';
 
-class GameInner extends Component {
+class GameStateWrapper extends Component {
 
   constructor(props) {
     super(props);
@@ -31,14 +31,14 @@ class GameInner extends Component {
       return <Container><GameCountdown timeToStart={ timeToStart }/></Container>;
     }
     return (
-      <GameMain now={ this.state.now } />
+      <GameTeamWrapper now={ this.state.now } />
     );
   }
 }
 
-GameInner.propTypes = {
+GameStateWrapper.propTypes = {
   ready: PropTypes.bool.isRequired,
   gamestate: PropTypes.object,
 };
 
-Game = GamestateComp(GameInner);
+Game = GamestateComp(GameStateWrapper);

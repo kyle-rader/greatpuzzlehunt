@@ -19,6 +19,14 @@ class GameUI extends Component {
       if (error) alert(`Oops! ${error.reason}`);
     });
   }
+
+  _main() {
+    return (
+      <pre>
+        { JSON.stringify(this.props.team, null, 2) }
+      </pre>
+    )
+  }
 }
 
 GameUI.propTypes = {
