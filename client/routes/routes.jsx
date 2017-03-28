@@ -42,7 +42,7 @@ export const renderRoutes = () => (
       {/* Volunteer Routes */}
       <Route path='volunteer' component={makeAuthed('volunteer')}>
         <IndexRoute component={ Volunteer }/>
-        <Route path='time/:team' component={VolunteerTimer}/>
+        <Route path='time/:teamId/:puzzleId' component={VolunteerTimer}/>
       </Route>
 
       {/* Admin Routes */}
