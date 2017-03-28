@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Container, Segment, Message, Statistic, Button } from 'semantic-ui-react';
+import { Container, Grid, Button } from 'semantic-ui-react';
 
 import GameStats from './game-stats';
 import GamePuzzles from './game-puzzles';
@@ -26,10 +26,10 @@ class GameUI extends Component {
   _main() {
     const { team } = this.props;
     return (
-      <Container fluid>
+      <Grid>
         {/* <GameStats team={ team }/> */}
         <GamePuzzles team={ team }/>
-      </Container>
+      </Grid>
     );
   }
 }

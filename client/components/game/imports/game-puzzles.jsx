@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Container, Header } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 
 import GamePuzzle from './game-puzzle';
 
@@ -8,10 +8,12 @@ class GamePuzzles extends Component {
   render() {
     const { team } = this.props;
     return (
-      <Container fluid>
-        <Header as='h2' content='Your Puzzles'/>
-        { this._renderPuzzles() }
-      </Container>
+      <Grid.Row columns='1'>
+        <Grid.Column>
+          <Header as='h2' content='Your Puzzles'/>
+          { this._renderPuzzles() }
+        </Grid.Column>
+      </Grid.Row>
     );
   }
 
