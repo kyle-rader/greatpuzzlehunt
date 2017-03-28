@@ -1,14 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Segment, Message, Statistic, Progress } from 'semantic-ui-react';
+import { Container, Segment, Header, Statistic, Progress } from 'semantic-ui-react';
 
 class GameStats extends Component {
   render() {
     const { team } = this.props;
     return (
-      <Segment>
-        Stats for { team.name }
-      </Segment>
+      <Container fluid>
+        <Header as='h2' content='Your Stats'/>
+      </Container>
     );
   }
 }
