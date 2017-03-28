@@ -10,7 +10,7 @@ class GamePuzzle extends Component {
     if (team.currentPuzzle === puzzle.puzzleId) {
       return <ActivePuzzle team={ team } puzzle={ puzzle } />
     } else {
-      return <InactivePuzzle team={ team } puzzle={ puzzle } />
+      return <InactivePuzzle team={ team } puzzle={ puzzle } disabled={ Boolean(team.currentPuzzle) }/>
     }
   }
 }
