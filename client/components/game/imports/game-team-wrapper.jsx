@@ -5,13 +5,14 @@ import { Container, Message, Statistic } from 'semantic-ui-react';
 import { makeTeamComp } from '../../team/imports/team-helpers';
 import GameUI from './game-ui.jsx';
 
-class GameMain extends Component {
+class GameTeamWrapper extends Component {
   render() {
     const { ready, team } = this.props;
 
     if (!ready) {
       return this._loading();
     }
+
     if (ready && !team) {
       return this._noTeam();
     }
@@ -32,6 +33,7 @@ class GameMain extends Component {
       </Container>
     );
   }
+  
   _loading() {
     return (
       <Container>
@@ -43,10 +45,10 @@ class GameMain extends Component {
 
 }
 
-GameMain.propTypes = {
+GameTeamWrapper.propTypes = {
   ready: PropTypes.bool.isRequired,
   team: PropTypes.object,
   now: PropTypes.object,
 };
 
-export default makeTeamComp(GameMain);
+export default makeTeamComp(GameTeamWrapper);

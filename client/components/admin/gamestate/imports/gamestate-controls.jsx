@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Segment, Form, Button } from 'semantic-ui-react';
+import { Segment, Form, Button, Header } from 'semantic-ui-react';
 
 import GamestateComp from '../../../imports/gamestate-comp';
 
@@ -32,11 +32,23 @@ class GamestateControlsInner extends Component {
   _renderForm() {
     return (
       <Form onSubmit={ (e) => e.preventDefault() }>
+        <Header as='h3' content='Registration'/>
         <Form.Group>
           { this._fieldButton('Registration') }
         </Form.Group>
+
+        <Header as='h3' content='Gameplay'/>
         <Form.Group>
           { this._fieldButton('Gameplay') }
+        </Form.Group>
+
+        <Header as='h3' content='Setup Teams for Gameplay'/>
+        <Form.Group>
+          <Button
+            basic color='blue'
+            content="Setup Team's Puzzles"
+            onClick={ (e) => this._setupTeams(e) }
+          />
         </Form.Group>
       </Form>
     );
@@ -58,6 +70,13 @@ class GamestateControlsInner extends Component {
         if (error) alert(error.reason);
       });
     }
+  }
+
+  _setupTeams(e) {
+    e.preventDefault();
+    Meteor.call('admin.teams.setup', (error, result) => {
+      if (error) alert(error.reason);
+    });
   }
 
 }
