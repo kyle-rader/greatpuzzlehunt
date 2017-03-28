@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Container, Message, Statistic } from 'semantic-ui-react';
 
 import { makeTeamComp } from '../../team/imports/team-helpers';
+import GameUI from './game-ui.jsx';
 
 class GameMain extends Component {
   render() {
@@ -18,6 +19,7 @@ class GameMain extends Component {
     return (
       <Container>
         <PuzzlePageTitle title={ team.name }/>
+        <GameUI team={ team } />
       </Container>
     );
   }
@@ -44,6 +46,7 @@ class GameMain extends Component {
 GameMain.propTypes = {
   ready: PropTypes.bool.isRequired,
   team: PropTypes.object,
+  now: PropTypes.object,
 };
 
 export default makeTeamComp(GameMain);
