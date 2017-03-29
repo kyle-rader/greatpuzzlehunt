@@ -21,6 +21,7 @@ export default class VolunteerPuzzles extends React.Component {
 
   _renderPuzzles() {
     const { team, targetPuzzle } = this.props;
+    if (!team.puzzles) return <Loading/>;
     return team.puzzles.map((puzzle) => <VolunteerPuzzle
       team={ team }
       puzzle={ puzzle }
