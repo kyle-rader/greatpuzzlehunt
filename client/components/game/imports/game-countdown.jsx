@@ -1,9 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { Message, Statistic } from 'semantic-ui-react';
+import moment from 'moment';
 
 class GameCountdown extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      now: moment(),
+      interval: Meteor.setInterval(() => this.setState({ now: moment() }), 1000),
+    };
+  }
+
+  componentWillUnmount() {
+    Meteor.clearInterval(this.state.interval);
+  }
+
   render() {
-    const { timeToStart } = this.props;
+    const timeToStart = moment('2017-04-01T10:00:00-07:00').from(this.state.now, true);
     return (
       <Message info>
         <Message.Header>The Hunt has not started yet!</Message.Header>
@@ -20,7 +33,6 @@ class GameCountdown extends Component {
 }
 
 GameCountdown.propTypes = {
-  timeToStart: PropTypes.string.isRequired,
 };
 
 export default GameCountdown;
