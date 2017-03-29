@@ -6,6 +6,9 @@ import { find } from 'lodash';
 export default class UnstartedPuzzle extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      error: null,
+    };
   }
 
   render() {
@@ -15,6 +18,7 @@ export default class UnstartedPuzzle extends React.Component {
       <Segment disabled={ disabled }>
         <Header as='h3' content={ puzzle.name }/>
         { this._startButton() }
+        { this._error() }
       </Segment>
     );
   }
@@ -34,6 +38,17 @@ export default class UnstartedPuzzle extends React.Component {
     }
   }
 
+  _error() {
+    if (!this.state.error) return null;
+    return (
+      <Message negative
+        header='Error'
+        content={ this.state.error.reason }
+        onDismiss={ () => this.setState({ error: null }) }
+      />
+    );
+  }
+
   _startTimer() {
     const { team, puzzle, targetPuzzle } = this.props;
     if (puzzle.puzzleId !== targetPuzzle) {
@@ -51,7 +66,9 @@ Are you sure you want to start this timer?
       if (!confirm(warningMsg)) return;
     }
 
-    alert(`Lets start ${puzzle.name}`);
+    Meteor.call('volunteer.team.startPuzzle', team._id, puzzle.puzzleId, (error, result) => {
+      if (error) return this.setState({ error });
+    });
   }
 
 }
