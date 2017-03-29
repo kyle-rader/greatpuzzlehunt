@@ -27,7 +27,7 @@ export default class PuzzleQRCode extends React.Component {
   }
 
   _toggleQRButton() {
-    return <Button basic color='green'
+    return <Button basic color={ this.props.color || 'green' }
       content={ this.state.showQRcode ? 'Hide QR Code' : this.props.qrButtonLabel }
       onClick={ () => this._toggleQRcode() }
     />;
@@ -54,4 +54,5 @@ PuzzleQRCode.propTypes = {
   disabled: PropTypes.bool.isRequired,
   qrLabel: PropTypes.string.isRequired,
   qrButtonLabel: PropTypes.string.isRequired,
+  color: PropTypes.string,
 };
