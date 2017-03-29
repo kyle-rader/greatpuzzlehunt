@@ -8,7 +8,13 @@ export default class ActivePuzzle extends React.Component {
   }
 
   render() {
-    return (<div>ActivePuzzle</div>);
+    const { team, puzzle } = this.props;
+
+    return (
+      <Segment>
+        <Header as='h3' content={ puzzle.name }/>
+      </Segment>
+    )
   }
 }
 

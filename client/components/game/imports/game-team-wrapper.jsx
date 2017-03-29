@@ -33,7 +33,7 @@ class GameTeamWrapper extends Component {
       </Container>
     );
   }
-  
+
   _loading() {
     return (
       <Container>
@@ -48,7 +48,6 @@ class GameTeamWrapper extends Component {
 GameTeamWrapper.propTypes = {
   ready: PropTypes.bool.isRequired,
   team: PropTypes.object,
-  now: PropTypes.object,
 };
 
 export default makeTeamComp(GameTeamWrapper);
