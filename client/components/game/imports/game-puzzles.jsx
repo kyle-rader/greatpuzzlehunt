@@ -4,7 +4,7 @@ import { Grid, Header } from 'semantic-ui-react';
 
 import GamePuzzle from './game-puzzle';
 
-class GamePuzzles extends Component {
+export default class GamePuzzles extends Component {
   render() {
     const { team } = this.props;
     return (
@@ -30,5 +30,3 @@ class GamePuzzles extends Component {
 GamePuzzles.propTypes = {
   team: PropTypes.object.isRequired,
 };
-
-export default GamePuzzles;
