@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Container, Segment, Message, Button } from 'semantic-ui-react';
 
-import VolunteerTimerUI from './imports/volunteer-timer-ui';
+import VolunteerPuzzles from './imports/volunteer-puzzles';
 
 class VolunteerTimerInner extends React.Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class VolunteerTimerInner extends React.Component {
       <Container>
         <PuzzlePageTitle title='Volunteer Timer'/>
           { this._timerUI() }
-          <Button basic size='large' fluid color='blue' content='Close This Page' onClick={(e) => window.close() }/>
+          <br/>
+          <Button basic size='large' fluid color='orange' content='Close This Page' onClick={(e) => window.close() }/>
       </Container>
     );
   }
@@ -32,7 +33,7 @@ class VolunteerTimerInner extends React.Component {
         content={ `No team with id ${prams.teamId}` }
       />;
     } else {
-      return <VolunteerTimerUI team={ team }/>;
+      return <VolunteerPuzzles team={ team } targetPuzzle={ params.puzzleId }/>;
     }
   }
 }
