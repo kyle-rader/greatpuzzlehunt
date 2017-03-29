@@ -14,8 +14,29 @@ export default class ActivePuzzle extends React.Component {
       <Segment>
         <Header as='h3' content={ puzzle.name }/>
         Puzzle timer coming...
+        <Button
+          basic fluid
+          color='red'
+          content='Reset Timer'
+          onClick={ () => this._resetTimer() }
+        />
       </Segment>
     );
+  }
+
+  _resetTimer() {
+    const { team, puzzle } = this.props;
+    const confirmMsg = `
+You want to reset ${puzzle.name}
+for team: ${team.name}?
+
+Are you absolutely positive?
+`
+    if (!confirm(confirmMsg)) return;
+
+    Meteor.call('volunteer.team.resetPuzzle', team._id, puzzle.puzzleId, (error, result) => {
+      if (error) return this.setState({ error });
+    });
   }
 }
 
