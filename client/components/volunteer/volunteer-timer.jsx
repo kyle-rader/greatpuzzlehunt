@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Container, Segment, Button } from 'semantic-ui-react';
+import { Container, Segment, Message, Button } from 'semantic-ui-react';
 
 import VolunteerTimerUI from './imports/volunteer-timer-ui';
 
@@ -15,13 +15,25 @@ class VolunteerTimerInner extends React.Component {
     return (
       <Container>
         <PuzzlePageTitle title='Volunteer Timer'/>
-        <Segment basic>
-          { ready ? <VolunteerTimerUI team={ team }/> : <Loading/> }
-
+          { this._timerUI() }
           <Button basic size='large' fluid color='blue' content='Close This Page' onClick={(e) => window.close() }/>
-        </Segment>
       </Container>
     );
+  }
+
+  _timerUI() {
+    const { ready, team, params } = this.props;
+    if (!ready) {
+      return <Loading />
+    } else if (!team) {
+      return <Message
+        negative
+        header='Oops!'
+        content={ `No team with id ${prams.teamId}` }
+      />;
+    } else {
+      return <VolunteerTimerUI team={ team }/>;
+    }
   }
 }
 
