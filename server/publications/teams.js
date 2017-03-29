@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { isAdmin } from '../../lib/imports/method-helpers.js';
+import { isAdmin, isVolunteer } from '../../lib/imports/method-helpers.js';
 
 Meteor.publish('admin.teams', function() {
   return isAdmin(this.userId) ? Teams.find({}) : this.ready();
@@ -15,6 +15,12 @@ Meteor.publish('teams.myTeam', function() {
   return Teams.find({
     members: userId,
   });
+});
+
+Meteor.publish('volunteer.team', function(teamId) {
+  check(teamId, String);
+  if (!isVolunteer(this.userId)) return this.ready();
+  return Teams.find(teamId);
 });
 
 Meteor.publish('teams.browse', function() {
