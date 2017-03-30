@@ -41,7 +41,7 @@ class AdminUserDisplay extends Component {
     const { user } = this.props;
     return (
       <p>
-        <Icon name='users' size='small'/> { user.teamId }
+        <Icon name='users' size='small'/> { user.teamName }
       </p>
     );
   }
