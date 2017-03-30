@@ -1,40 +1,29 @@
 import React, { Component, PropTypes } from 'react';
-import { Container, Message } from 'semantic-ui-react';
+import { Container, Message, Statistic } from 'semantic-ui-react';
+
 import GamestateComp from '../imports/gamestate-comp';
-import moment from 'moment';
+import GameCountdown from './imports/game-countdown';
+import GameTeamWrapper from './imports/game-team-wrapper';
 
-class GameInner extends Component {
+class GameStateWrapper extends Component {
   render() {
-    return (
-      <Container>
-        <PuzzlePageTitle title='The Game'/>
-        { this._renderMain() }
-      </Container>
-    );
-  }
-
-  _renderMain() {
     const { ready, gamestate } = this.props;
-    const timeToStart = moment('2017-04-01T10:00:00-07:00').fromNow();
+
     if (!ready) {
-      return <Loading/>
+      return <Container><Loading/></Container>;
     }
     else if (!gamestate.gameplay) {
-      return <Message
-        info
-        header='The Hunt has not started yet!'
-        content={`The Hunt will begin ${timeToStart}`}
-      />
+      return <Container><br/><GameCountdown/></Container>;
     }
     return (
-      <div>Game ON!</div>
+      <GameTeamWrapper />
     );
   }
 }
 
-GameInner.propTypes = {
+GameStateWrapper.propTypes = {
   ready: PropTypes.bool.isRequired,
   gamestate: PropTypes.object,
 };
 
-Game = GamestateComp(GameInner);
+Game = GamestateComp(GameStateWrapper);

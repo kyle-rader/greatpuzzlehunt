@@ -46,13 +46,13 @@ class PuzzleList extends Component {
         <Grid.Column>
           <Label color={ stagesColors[puzzle.stage] } content={ puzzle.stage }/>&nbsp; { puzzle.name }
           <Button basic floated='right'
-            content='Edit'
-            onClick={ () => this._edit(puzzle) }
+            icon='trash'
+            onClick={ () => this._delete(puzzle) }
           />
           <Button basic floated='right'
-            icon='trash'
-            color='red'
-            onClick={ () => this._delete(puzzle) }
+            content='Edit'
+            color='green'
+            onClick={ () => this._edit(puzzle) }
           />
         </Grid.Column>
       </Grid.Row>
