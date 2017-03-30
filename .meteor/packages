@@ -35,7 +35,6 @@ shell-server@0.2.3
 juliancwirko:postcss
 less@2.7.9
 meteorhacks:picker
-bozhao:link-accounts
 froatsnook:valid-email
 ostrio:files
 cfs:dropbox
