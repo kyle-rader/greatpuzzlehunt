@@ -49,10 +49,8 @@ AdminUsers = class AdminUsers extends Component {
           <Grid.Column width={7}>
             { this._pagination() }
           </Grid.Column>
-          <Grid.Column width={2}>
-            <Label>
-              <Icon name='users' color='green'/> { this.state.users }
-            </Label>
+          <Grid.Column width={2} verticalAlign='middle'>
+            <Icon name='users' color='green'/> { this.state.users }
           </Grid.Column>
           <Grid.Column stretched width={7}>
             <Input name='search' placeholder='Search...' fluid icon='search' value={this.state.search} onChange={(e) => this._handleSearchChange(e)}/>

@@ -35,9 +35,7 @@ Meteor.users.deny({
 
 Meteor.publish(null, function() {
   const { userId } = this;
-
   if (!userId) return this.ready();
-
   return Meteor.users.find({ _id: userId }, { fields: USER_FIELDS });
 });
 
@@ -45,7 +43,7 @@ Meteor.publish('users.myTeam', function() {
   const { userId } = this;
   if (!userId) return this.ready();
 
-  const user = Meteor.users.findOne({ _id: userId });
+  const user = Meteor.users.findOne(userId);
   if (!user) return this.ready();
 
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
@@ -95,8 +93,7 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
     query = {};
   }
 
-  // Meteor.logger.info('Query in progress!');
-  // Meteor.logger.logobj(query);
-
-  return Meteor.users.find(query, options);
+  const users = Meteor.users.find(query, options);
+  const teams = Teams.find({});
+  return [users, teams];
 });
