@@ -16,12 +16,14 @@ function pad(n, width, z = '0') {
 export default class PuzzleProgress extends React.Component {
   constructor(props) {
     super(props);
+    const hasEnded = Boolean(props.puzzle.end);
+
     this.state = {
       start: moment(props.puzzle.start),
-      now: props.puzzle.end ? moment(props.puzzle.end) : moment(),
+      now: hasEnded ? moment(props.puzzle.end) : moment(),
     };
 
-    if (!this.state.end) {
+    if (!hasEnded) {
       this.interval = Meteor.setInterval(() => this.setState({
         now: moment(),
       }), 1000);
