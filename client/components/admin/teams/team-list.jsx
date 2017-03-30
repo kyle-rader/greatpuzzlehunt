@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Container, Grid, Segment } from 'semantic-ui-react';
+import { Container, Grid, Segment, Message } from 'semantic-ui-react';
 
 AdminTeamList = class AdminTeamList extends Component {
   render() {
@@ -9,6 +9,7 @@ AdminTeamList = class AdminTeamList extends Component {
     return (
       <Container>
         <PuzzlePageTitle title='Teams'/>
+        { this._teamCounts() }
         { this._getTeamList() }
       </Container>
     );
@@ -16,6 +17,27 @@ AdminTeamList = class AdminTeamList extends Component {
 
   _getTeamList() {
     return this.props.teams.map((team) => <AdminTeamListRow key={team._id} team={team} />);
+  }
+
+  _teamCounts() {
+    const { teams } = this.props;
+    const validTeams = teams.filter((t) => t.members.length >= 4);
+    const fullTeams = validTeams.filter((t) => t.members.length = 6);
+    const shortTeams = teams.length - validTeams.length;
+    const haveBegun = teams.filter((t) => Boolean(t.hasBegun));
+    return (
+      <Message info>
+        <Message.Header>Team Counts</Message.Header>
+        <pre>
+          Total : { teams.length } <br/>
+          Full  : { fullTeams.length } <br/>
+          Valid : { validTeams.length } <br/>
+          Short : { shortTeams } <br/>
+
+          Have Begun: { haveBegun.length } <br/>
+        </pre>
+      </Message>
+    );
   }
 
 }
