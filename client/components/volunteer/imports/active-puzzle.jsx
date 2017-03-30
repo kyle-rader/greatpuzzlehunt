@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
 import { Segment, Header, Progress, Button } from 'semantic-ui-react';
 
-import PuzzleProgress from '../../game/imports/puzzle-progress';
+import PuzzleProgress from '../../imports/puzzle-progress';
 
 export default class ActivePuzzle extends React.Component {
   constructor(props) {

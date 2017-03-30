@@ -4,7 +4,7 @@ import { Segment, Header, Progress, Button } from 'semantic-ui-react';
 
 import PuzzleQRCode from './puzzle-qr-code';
 import PuzzleAnswerForm from './puzzle-answer-form';
-import PuzzleProgress from './puzzle-progress';
+import PuzzleProgress from '../../imports/puzzle-progress';
 // import PuzzleHints from './puzzle-hints';
 
 export default class ActivePuzzle extends React.Component {

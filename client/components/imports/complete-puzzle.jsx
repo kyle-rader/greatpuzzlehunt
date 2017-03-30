@@ -13,10 +13,17 @@ export default class CompletePuzzle extends React.Component {
         <PuzzleProgress puzzle={ puzzle }/>
         <Message positive>
           <Message.Header>Solved</Message.Header>
-          <pre>{ puzzle.answer }</pre>
+          { this._answer() }
         </Message>
       </Segment>
     );
+  }
+
+  _answer() {
+    if (this.props.showAnswer) {
+      return <pre>{ this.props.puzzle.answer }</pre>;
+    }
+    return null;
   }
 }
 
@@ -24,4 +31,5 @@ CompletePuzzle.propTypes = {
   team: PropTypes.object.isRequired,
   puzzle: PropTypes.object.isRequired,
   disabled: PropTypes.bool.isRequired,
+  showAnswer: PropTypes.bool.isRequired,
 };
