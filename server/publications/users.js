@@ -93,8 +93,7 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
     query = {};
   }
 
-  // Meteor.logger.info('Query in progress!');
-  // Meteor.logger.logobj(query);
-
-  return Meteor.users.find(query, options);
+  const users = Meteor.users.find(query, options);
+  const teams = Teams.find({});
+  return [users, teams];
 });
