@@ -30,8 +30,8 @@ AdminTeamList = class AdminTeamList extends Component {
         <Message.Header>Team Counts</Message.Header>
         <pre>
           Total : { teams.length } <br/>
-          Full  : { fullTeams.length } <br/>
           Valid : { validTeams.length } <br/>
+          Full  : { fullTeams.length } <br/>
           Short : { shortTeams } <br/>
 
           Have Begun: { haveBegun.length } <br/>

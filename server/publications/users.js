@@ -35,9 +35,7 @@ Meteor.users.deny({
 
 Meteor.publish(null, function() {
   const { userId } = this;
-
   if (!userId) return this.ready();
-
   return Meteor.users.find({ _id: userId }, { fields: USER_FIELDS });
 });
 
@@ -45,7 +43,7 @@ Meteor.publish('users.myTeam', function() {
   const { userId } = this;
   if (!userId) return this.ready();
 
-  const user = Meteor.users.findOne({ _id: userId });
+  const user = Meteor.users.findOne(userId);
   if (!user) return this.ready();
 
   return Meteor.users.find({ teamId: user.teamId }, { fields: USER_FIELDS });
