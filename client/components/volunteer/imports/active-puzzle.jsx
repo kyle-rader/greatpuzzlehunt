@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
 import { Segment, Header, Progress, Button } from 'semantic-ui-react';
 
+import PuzzleProgress from '../../game/imports/puzzle-progress';
+
 export default class ActivePuzzle extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,8 @@ export default class ActivePuzzle extends React.Component {
     return (
       <Segment>
         <Header as='h3' content={ puzzle.name }/>
-        Puzzle timer coming...
+        <PuzzleProgress puzzle={ puzzle }/>
+        <br/>
         <Button
           basic fluid
           color='red'
