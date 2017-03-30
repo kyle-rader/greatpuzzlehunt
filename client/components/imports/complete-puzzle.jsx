@@ -11,17 +11,29 @@ export default class CompletePuzzle extends React.Component {
       <Segment disabled={ disabled }>
         <Header as='h3' content={ this.props.puzzle.name }/>
         <PuzzleProgress puzzle={ puzzle }/>
-        <Message positive>
-          <Message.Header>Solved</Message.Header>
+        <Message positive={ !puzzle.timedOut } warning={ puzzle.timedOut }>
+          <Message.Header>{ this._header() }</Message.Header>
           { this._answer() }
         </Message>
       </Segment>
     );
   }
 
+  _header() {
+    if (this.props.puzzle.timedOut) {
+      return 'Timed Out';
+    } else {
+      return 'Solved!';
+    }
+  }
+
   _answer() {
     if (this.props.showAnswer) {
-      return <pre>{ this.props.puzzle.answer }</pre>;
+      return (
+        <p>
+          <pre>Answer: { this.props.puzzle.answer }</pre>
+        </p>
+      );
     }
     return null;
   }
