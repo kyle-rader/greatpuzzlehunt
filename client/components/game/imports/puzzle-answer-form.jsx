@@ -7,6 +7,8 @@ export default class PuzzleAnswerForm extends React.Component {
     super(props);
     this.state = {
       answer: '',
+      message: null,
+      error: null,
     };
   }
 
@@ -21,17 +23,49 @@ export default class PuzzleAnswerForm extends React.Component {
           onChange={ (e) => this._handleChange(e) }
         />
         <Form.Button basic color='green' content='Submit Answer'/>
+        { this._message() }
+        { this._error() }
       </Form>
     );
   }
 
   _handleSubmit(e) {
     e.preventDefault();
+    const { puzzle } = this.props;
+    const { answer } = this.state;
+
+    Meteor.call('team.puzzle.answer', puzzle.puzzleId, answer, (error, result) => {
+      this.setState({ answer: '' });
+      if (error) return this.setState({ error });
+      if (result.message) {
+        this.setState({ message: result.message });
+        Meteor.setTimeout(() => this.setState({ message: null }), 2000);
+      }
+    });
   }
 
   _handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  }
+
+  _message() {
+    const { message } = this.state;
+    if (!message) return null;
+    return <Message
+      content={ message }
+      onDismiss={ () => this.setState({ message: null }) }
+    />
+  }
+
+  _error() {
+    const { error } = this.state;
+    if (!error) return null;
+    return <Message
+      negative
+      content={ error.reason }
+      onDismiss={ () => this.setState({ error: null }) }
+    />
   }
 }
 
