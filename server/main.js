@@ -23,6 +23,8 @@ Meteor.logger = logger;
 Picker.middleware(bodyParser.json());
 Picker.middleware(bodyParser.urlencoded({ extended: true }));
 
-import './imports/start-up.js';
-import './imports/accounts.js';
-import './imports/set-traveled-distance.js';
+import './imports/start-up';
+import './imports/accounts';
+import './imports/set-traveled-distance';
+
+import './imports/puzzle-watcher';
