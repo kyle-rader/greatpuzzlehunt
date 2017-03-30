@@ -4,6 +4,7 @@ import { Segment, Header, Progress, Button } from 'semantic-ui-react';
 
 import PuzzleQRCode from './puzzle-qr-code';
 import PuzzleAnswerForm from './puzzle-answer-form';
+import PuzzleProgress from './puzzle-progress';
 // import PuzzleHints from './puzzle-hints';
 
 export default class ActivePuzzle extends React.Component {
@@ -25,6 +26,7 @@ export default class ActivePuzzle extends React.Component {
           qrButtonLabel='Puzzle QR Code'
           color='grey'
         />
+        <PuzzleProgress puzzle={ puzzle }/>
         <PuzzleAnswerForm
           team={ team }
           puzzle={ puzzle }
