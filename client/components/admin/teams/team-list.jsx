@@ -22,7 +22,7 @@ AdminTeamList = class AdminTeamList extends Component {
   _teamCounts() {
     const { teams } = this.props;
     const validTeams = teams.filter((t) => t.members.length >= 4);
-    const fullTeams = validTeams.filter((t) => t.members.length = 6);
+    const fullTeams = validTeams.filter((t) => t.members.length === 6);
     const shortTeams = teams.length - validTeams.length;
     const haveBegun = teams.filter((t) => Boolean(t.hasBegun));
     return (
