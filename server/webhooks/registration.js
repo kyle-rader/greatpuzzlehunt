@@ -18,6 +18,15 @@ PostRoute.route('/api/register', function(params, req, res, next) {
     return res.end();
   }
 
+  // Validate Game State:
+  const gamestate = Gamestate.findOne();
+  if (!gamestate.registration) {
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 403;
+    res.write('{"error: "Registration is closed" }');
+    return res.send();
+  }
+
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 200;
   res.end();

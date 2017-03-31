@@ -1,16 +1,29 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Container, Header, Segment, Accordion, Button, Icon } from 'semantic-ui-react';
+import { Container, Header, Segment, Message, Accordion, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
-import RegistrationStatus from './imports/registration-status-message';
+import GamestateComp from '../imports/gamestate-comp';
 
-Register = class Register extends Component {
+class RegisterInner extends Component {
   render() {
+
+    if (this.props.ready && !this.props.gamestate.registration) {
+      return (
+        <Container>
+          <br/>
+          <Message
+            info
+            header='Registration is closed'
+            content='The 2018 Great Puzzle Hunt is now in development!'
+          />
+        </Container>
+      );
+    }
+
     return (
       <Container>
         <br/>
-        <RegistrationStatus />
         <Segment basic>
           <Header as='h1' icon={<Icon name='ticket' color='violet'/>} content='Register for the 2017 Great Puzzle Hunt!'/>
           <Button color='green' size='large' as='a' target='_blank' href='https://commerce.cashnet.com/GreatPuzzleHunt2017' content='Register Now' icon='shop' labelPosition='right'/>
@@ -36,7 +49,10 @@ Register = class Register extends Component {
             </Accordion.Content>
           </Accordion>
         </Segment>
+
       </Container>
     );
   }
 }
+
+Register = GamestateComp(RegisterInner);
