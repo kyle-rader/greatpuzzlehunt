@@ -26,7 +26,6 @@ AdminEmailLists = class AdminEmailLists extends Component {
   render() {
     return (
       <Segment basic>
-        <h3>Columns: <pre>Firstname, Lastname, Email, Username</pre></h3>
         <EmailList title='Need to Finish Setup' emails={ this.state.needsSetup }/>
         <EmailList title='All Users' emails={ this.state.allUsers }/>
       </Segment>
