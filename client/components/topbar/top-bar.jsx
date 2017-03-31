@@ -58,6 +58,11 @@ const adminMenuItems = [
     iconClass: 'blue users',
   },
   {
+    name: 'Export Teams',
+    to: '/admin/teams-export',
+    iconClass: 'teal download',
+  },
+  {
     name: 'Puzzles',
     to: '/admin/puzzles',
     iconClass: 'violet puzzle',

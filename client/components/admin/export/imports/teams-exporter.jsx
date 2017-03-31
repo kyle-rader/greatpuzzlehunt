@@ -1,11 +1,14 @@
 import React, {PropTypes} from 'react';
-import { Container, Button } from 'semantic-ui-react';
+import { Container, Button, Checkbox } from 'semantic-ui-react';
 
 import Clipboard from 'clipboard';
 
 export default class TeamsExporter extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      usersOnly: true,
+    };
   }
 
   componentDidMount() {
@@ -16,8 +19,14 @@ export default class TeamsExporter extends React.Component {
     return (
       <Container>
         <PuzzlePageTitle title='Team & User Export'/>
+        <Checkbox
+          checked={ this.state.usersOnly }
+          label='Users Only ?'
+          style={ { paddingRight: '10px' } }
+          onChange={ (e, data) => this.setState({ usersOnly: data.checked })}
+        />
         <Button
-          basic
+          basic color='green'
           className='copy'
           content='Copy'
           data-clipboard-target='#team-export'
@@ -35,6 +44,7 @@ export default class TeamsExporter extends React.Component {
     teams.forEach((team) => {
       lines.push(`${team.name}, , `);
       team.members.forEach((user) => {
+        if (this.state.usersOnly && user.roles.length > 1) return;
         lines.push(` ,${team.owner === user._id ? '** ' : ''}${user.firstname},${user.lastname}`);
       });
       lines.push(`,,`);

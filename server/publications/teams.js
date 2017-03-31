@@ -8,7 +8,7 @@ Meteor.publish('admin.teams', function() {
 Meteor.publish('admin.teams.export', function() {
   if (!isAdmin(this.userId)) return this.ready();
 
-  const users = Meteor.users.find({});
+  const users = Meteor.users.find({ roles: { $nin: ['admin', 'volunteer'] } });
   const teams = Teams.find({});
   return [users, teams];
 });
