@@ -11,7 +11,6 @@ Meteor.publish('admin.teams.export', function() {
   const users = Meteor.users.find({});
   const teams = Teams.find({});
   return [users, teams];
-
 });
 
 Meteor.publish('teams.myTeam', function() {
