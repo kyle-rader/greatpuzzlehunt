@@ -40,7 +40,7 @@ export default class PuzzleHints extends React.Component {
       return (
         <Message>
           <p>{ hint.description }</p>
-          { hint.url ? <Image src={ hint.url }/> : null }
+          { hint.image.url ? <Image src={ hint.image.url }/> : null }
         </Message>
       );
     } else {
@@ -49,6 +49,16 @@ export default class PuzzleHints extends React.Component {
         onClick={ () => this._takeHint(i) }
       />;
     }
+  }
+
+  _takeHint(i) {
+    const { team, puzzle } = this.props;
+    const confirmMsg = `Are you Sure you want to take hint ${i+1}?`;
+    if (!confirm(confirmMsg)) return;
+
+    Meteor.call('team.puzzle.takeHint', puzzle.puzzleId, i, (error, result) => {
+      if (error) alert(error.reason);
+    });
   }
 }
 
