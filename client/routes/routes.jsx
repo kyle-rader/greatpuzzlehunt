@@ -50,6 +50,7 @@ export const renderRoutes = () => (
         <IndexRoute component={AdminUsers} />
         <Route path='users' component={AdminUsers} />
         <Route path='teams' component={AdminTeamList} />
+        <Route path='teams-export' component={TeamsExport} />
         <Route path='promo-codes' component={PromoCodesList} />
         <Route path='puzzles' component={PuzzleDashboard} />
         <Route path='email' component={AdminEmailContainer}>

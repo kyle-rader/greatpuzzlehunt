@@ -5,6 +5,15 @@ Meteor.publish('admin.teams', function() {
   return isAdmin(this.userId) ? Teams.find({}) : this.ready();
 });
 
+Meteor.publish('admin.teams.export', function() {
+  if (!isAdmin(this.userId)) return this.ready();
+
+  const users = Meteor.users.find({});
+  const teams = Teams.find({});
+  return [users, teams];
+
+});
+
 Meteor.publish('teams.myTeam', function() {
   const { userId } = this;
 
