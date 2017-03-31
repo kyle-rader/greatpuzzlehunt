@@ -17,6 +17,8 @@ export default class PuzzleHints extends React.Component {
     const { showHints } = this.state;
     const { team, puzzle } = this.props;
 
+    if (!puzzle.hints || puzzle.hints.length === 0) return <br/>;
+    
     return (
       <Grid style={ this.gridStyle }>
         { this._renderHints() }
