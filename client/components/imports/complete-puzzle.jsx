@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { Segment, Header, Message } from 'semantic-ui-react';
+import { Segment, Header, Message, Statistic } from 'semantic-ui-react';
 
 import PuzzleProgress from './puzzle-progress';
 
@@ -28,10 +28,15 @@ export default class CompletePuzzle extends React.Component {
   }
 
   _answer() {
+    const { puzzle } = this.props;
     if (this.props.showAnswer) {
       return (
         <p>
-          <pre>Answer: { this.props.puzzle.answer }</pre>
+          <pre>
+            Answer : { puzzle.answer }<br/>
+            Hints  : { puzzle.hintsTaken }<br/>
+            Score  : { puzzle.score } (sec)
+          </pre>
         </p>
       );
     }
