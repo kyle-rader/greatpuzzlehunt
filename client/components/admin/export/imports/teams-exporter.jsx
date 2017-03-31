@@ -1,16 +1,28 @@
 import React, {PropTypes} from 'react';
 import { Container, Button } from 'semantic-ui-react';
 
+import Clipboard from 'clipboard';
+
 export default class TeamsExporter extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    const cb = new Clipboard('.ui.copy.button');
+  }
+
   render() {
     return (
       <Container>
-        <Button basic content='Copy'/>
-        <pre>
+        <PuzzlePageTitle title='Team & User Export'/>
+        <Button
+          basic
+          className='copy'
+          content='Copy'
+          data-clipboard-target='#team-export'
+        />
+        <pre id='team-export'>
           { this._renderLines() }
         </pre>
       </Container>
@@ -24,8 +36,8 @@ export default class TeamsExporter extends React.Component {
       lines.push(`${team.name}, , `);
       team.members.forEach((user) => {
         lines.push(` ,${team.owner === user._id ? '** ' : ''}${user.firstname},${user.lastname}`);
-        lines.push(`,,`);
       });
+      lines.push(`,,`);
     });
     return lines.join("\n");
   }

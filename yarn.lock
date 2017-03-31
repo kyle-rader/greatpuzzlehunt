@@ -267,6 +267,14 @@ classnames@^2.1.5, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
+clipboard@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-1.6.1.tgz#65c5b654812466b0faab82dc6ba0f1d2f8e4be53"
+  dependencies:
+    good-listener "^1.2.0"
+    select "^1.1.2"
+    tiny-emitter "^1.0.0"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -395,6 +403,10 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
+delegate@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.1.2.tgz#1e1bc6f5cadda6cb6cbf7e6d05d0bcdd5712aebe"
+
 depd@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
@@ -522,6 +534,12 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.6.tgz#283ffd9fc1256840875311c1b60e8c40187110e6"
   dependencies:
     assert-plus "^1.0.0"
+
+good-listener@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
+  dependencies:
+    delegate "^3.1.2"
 
 google-distance@^1.0.1:
   version "1.0.1"
@@ -1102,6 +1120,10 @@ safe-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
+select@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
+
 semantic-ui-react@^0.56.0:
   version "0.56.14"
   resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.56.14.tgz#505177bf22aa2a82d55b828e60002e3c7bcb1770"
@@ -1203,6 +1225,10 @@ timers-browserify@^1.4.2:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-1.4.2.tgz#c9c58b575be8407375cb5e2462dacee74359f41d"
   dependencies:
     process "~0.11.0"
+
+tiny-emitter@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-1.1.0.tgz#ab405a21ffed814a76c19739648093d70654fecb"
 
 tough-cookie@>=0.12.0, tough-cookie@~2.3.0:
   version "2.3.2"
