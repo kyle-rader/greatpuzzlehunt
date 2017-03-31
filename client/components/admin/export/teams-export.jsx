@@ -35,6 +35,7 @@ TeamsExport = createContainer(() => {
   teams['zz_no_team'] = {
     members: [],
     name: 'zz_no_team',
+    division: 'zz_no_division',
   };
 
   // 2. Add users to teams.
@@ -45,6 +46,6 @@ TeamsExport = createContainer(() => {
 
   return {
     ready,
-    teams: sortBy(teams, 'name'),
+    teams: sortBy(teams, ['division', 'name']),
   };
 }, TeamsExportInner);

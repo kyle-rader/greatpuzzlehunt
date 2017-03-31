@@ -42,12 +42,12 @@ export default class TeamsExporter extends React.Component {
     const { teams } = this.props;
     const lines = ["Team Name,First Name,Last Name"];
     teams.forEach((team) => {
-      lines.push(`${team.name}, , `);
+      lines.push(`${team.division},${team.name}, , `);
       team.members.forEach((user) => {
         if (this.state.usersOnly && user.roles.length > 1) return;
-        lines.push(` ,${team.owner === user._id ? '** ' : ''}${user.firstname},${user.lastname}`);
+        lines.push(`,,${team.owner === user._id ? '** ' : ''}${user.firstname},${user.lastname}`);
       });
-      lines.push(`,,`);
+      lines.push(`,,,`);
     });
     return lines.join("\n");
   }
