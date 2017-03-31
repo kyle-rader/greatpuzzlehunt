@@ -12,8 +12,8 @@ TeamEditor = class TeamEditor extends Component {
     this.divisions = [
       { name: 'WWU Student (All members must be current WWU students)', value: 'wwu-student' },
       { name: 'WWU Alumni (Must have 4 or more alumni members)', value: 'wwu-alumni' },
-      { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
-      { name: 'High School (Must all be current high school students)', value: 'high-school' },
+      // { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
+      // { name: 'High School (Must all be current high school students)', value: 'high-school' },
       { name: 'Open (For mixed teams, community members, family, or anyone else!)', value: 'open' },
     ];
 
