@@ -16,13 +16,14 @@ export default class PuzzleAnswerForm extends React.Component {
     return (
       <Form onSubmit={ (e) => this._handleSubmit(e) } style={ { paddingTop: '10px' }}>
         <Form.Input
+          size='large'
           name='answer'
           label='Puzzle Answer (Case Insensitive)'
           placeholder='Answer'
           value={ this.state.answer }
           onChange={ (e) => this._handleChange(e) }
         />
-        <Form.Button basic color='green' content='Submit Answer'/>
+        <Form.Button basic fluid color='green' content='Submit Answer'/>
         { this._message() }
         { this._error() }
       </Form>
