@@ -85,6 +85,7 @@ ordered-dict@1.0.9
 ostrio:cookies@2.2.0
 ostrio:files@1.7.13
 pagebakers:ionicons@2.0.1_1
+percolate:migrations@0.9.8
 promise@0.8.8
 raderk:qr-decode@0.0.1
 raix:eventemitter@0.1.3

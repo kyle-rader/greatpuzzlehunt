@@ -39,3 +39,4 @@ froatsnook:valid-email
 ostrio:files
 cfs:dropbox
 cfs:filesystem
+percolate:migrations
