@@ -31,13 +31,11 @@ export default class CompletePuzzle extends React.Component {
     const { puzzle } = this.props;
     if (this.props.showAnswer) {
       return (
-        <p>
-          <pre>
-            Answer : { puzzle.answer }<br/>
-            Hints  : { puzzle.hintsTaken }<br/>
-            Score  : { puzzle.score } (sec)
-          </pre>
-        </p>
+        <pre style={ { paddingTop: '10px' }}>
+          Answer : { puzzle.answer }<br/>
+          Hints  : { puzzle.hintsTaken }<br/>
+          Score  : { puzzle.score } (sec)
+        </pre>
       );
     }
     return null;
