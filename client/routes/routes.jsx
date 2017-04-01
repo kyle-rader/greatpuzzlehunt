@@ -54,12 +54,9 @@ export const renderRoutes = () => (
         <Route path='promo-codes' component={PromoCodesList} />
         <Route path='puzzles' component={PuzzleDashboard} />
         <Route path='email' component={AdminEmailContainer}>
-          <IndexRoute component={AdminEmailMailer}/>
-          <Route path='mailer' component={AdminEmailMailer}/>
-          <Route path='lists' component={AdminEmailLists}/>
+          <IndexRoute component={AdminEmailLists}/>
         </Route>
         <Route path='game' component={GamestateManager} />
-        <Route path='scoring' component={Scoring} />
       </Route>
 
       <Route path='*' component={Home}/>
