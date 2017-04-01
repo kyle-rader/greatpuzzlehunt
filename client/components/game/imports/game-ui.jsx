@@ -27,7 +27,7 @@ class GameUI extends Component {
     const { team } = this.props;
     return (
       <Grid>
-        {/* <GameStats team={ team }/> */}
+        <GameStats team={ team }/>
         <GamePuzzles team={ team }/>
       </Grid>
     );
