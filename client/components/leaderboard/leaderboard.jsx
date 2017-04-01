@@ -45,6 +45,7 @@ class LeaderboardInner extends React.Component {
   }
 
   _team(team) {
+    if (!team.puzzles) return null;
     const finished = team.puzzles.every((p) => Boolean(p.score));
     const hintsTaken = team.puzzles.reduce((acc, p) => acc + p.hintsTaken, 0);
     const myTeam = this.props.user && this.props.user.teamId === team._id;
