@@ -1,28 +1,44 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import React, {PropTypes} from 'react';
-import { sortBy, groupBy } from 'lodash';
-import { Container, Grid, Icon } from 'semantic-ui-react';
+import { sortBy, groupBy, map } from 'lodash';
+import { Container, Grid, Icon, Header } from 'semantic-ui-react';
 import moment from 'moment';
 import { renderDuration } from '../imports/puzzle-progress';
 
+const divisionMap = {
+  'open': 'Open',
+  'wwu-alumni': 'WWU Alumni',
+  'wwu-student': 'WWU Student',
+};
+
 class LeaderboardInner extends React.Component {
+
   render() {
     const { ready } = this.props;
     let content = ready ? this._main() : <Loading/>;
 
     return (
       <Container>
-        <PuzzlePageTitle title='Leaderboard'/>
+        <PuzzlePageTitle title='Leaderboards'/>
         { content }
       </Container>
     );
   }
 
   _main() {
-    const { teams } = this.props;
+    const divisions = groupBy(this.props.teams, 'division');
+    return map(divisions, (teams, division) => this._leaderBoard(teams, division));
+  }
+
+  _leaderBoard(teams, division) {
     return (
-      <Grid celled>
+      <Grid celled key={division}>
+        <Grid.Row>
+          <Grid.Column>
+            <Header as='h3' content={ divisionMap[division] }/>
+          </Grid.Column>
+        </Grid.Row>
         { teams.map((t) => this._team(t)) }
       </Grid>
     );
