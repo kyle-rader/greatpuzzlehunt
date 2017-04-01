@@ -39,6 +39,7 @@ class AdminUser extends Component {
             onDelete={ (e) => this._deleteUser(e) }
             onToggleAdmin={ (e) => this._toggleRole('admin') }
             onToggleVolunteer={ (e) => this._toggleRole('volunteer') }
+            onVerifyEmail={ (e) => this._verifyEmail(e) }
           />
         </Card.Content>
       </Card>
@@ -118,6 +119,13 @@ class AdminUser extends Component {
         alert(err);
         btn.attr('data-content', 'Failed to delete user! 😰');
       }
+    });
+  }
+
+  _verifyEmail(e) {
+    e.preventDefault();
+    Meteor.call('admin.validateUser', this.props.user._id, (error, result) => {
+      if (error) alert(error.reason);
     });
   }
 

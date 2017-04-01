@@ -11,6 +11,7 @@ class Actions extends Component {
       onDelete,
       onToggleAdmin,
       onToggleVolunteer,
+      onVerifyEmail,
     } = this.props;
     return (
       <div>
@@ -24,6 +25,10 @@ class Actions extends Component {
             color={ user.hasRole('volunteer') ? 'teal' : null }
             onClick={ onToggleVolunteer }
             icon={ <Icon name='heart'/> }
+          />
+          <Button basic size='small'
+            onClick={ onVerifyEmail }
+            icon={ <Icon name='check'/> }
           />
         </p>
         <p>
@@ -72,6 +77,7 @@ Actions.propTypes = {
   editMode: PropTypes.bool.isRequired,
   onToggleAdmin: PropTypes.func.isRequired,
   onToggleVolunteer: PropTypes.func.isRequired,
+  onVerifyEmail: PropTypes.func.isRequired,
 };
 
 export default Actions;
