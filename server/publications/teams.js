@@ -60,14 +60,15 @@ Meteor.publish('leaderboard', function() {
     name: 1,
     members: 1,
     division: 1,
-    finalScore: 1,
     'puzzles.puzzleId': 1,
     'puzzles.name': 1,
     'puzzles.start': 1,
     'puzzles.end': 1,
-    'puzzles.hintsTaken': 1,
+    'puzzles.hints': 1,
     'puzzles.score': 1,
     'puzzles.allowedTime': 1,
+    'puzzles.timeoutScore': 1,
+    'puzzles.bonusTime': 1,
   };
 
   return Teams.find(query, { fields: projection });
