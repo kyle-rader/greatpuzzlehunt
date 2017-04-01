@@ -74,5 +74,9 @@ export default class PuzzleProgress extends React.Component {
 }
 
 PuzzleProgress.propTypes = {
-  puzzle: PropTypes.object.isRequired,
+  puzzle: React.PropTypes.shape({
+    start: PropTypes.object.isRequired,
+    end: PropTypes.object,
+    allowedTime: PropTypes.number.isRequired,
+  }),
 };
