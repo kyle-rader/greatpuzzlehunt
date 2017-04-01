@@ -84,6 +84,11 @@ const volunteerMenuItems = [
     to: '/volunteer',
     iconClass: 'violet home',
   },
+  {
+    name: 'Game Progress',
+    to: '/game-progress',
+    iconClass: 'teal refresh',
+  },
 ];
 
 TopBar = class TopBar extends Component {
