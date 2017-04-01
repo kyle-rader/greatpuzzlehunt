@@ -5,8 +5,7 @@ import moment from 'moment';
 
 function getColor(val) {
   const colors = ['green', 'olive', 'yellow', 'orange', 'red'];
-  const colorKey = Math.floor(val/(100/colors.length));
-  console.log(colorKey);
+  const colorKey = Math.floor(val/(100/(colors.length-1)));
   return colors[colorKey];
 }
 
