@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Container, Message, Statistic, Progress } from 'semantic-ui-react';
+import { Container, Message, Header, Statistic, Progress } from 'semantic-ui-react';
 
 class GameStats extends Component {
   constructor(props) {
@@ -10,7 +10,11 @@ class GameStats extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState(this._stateFromProps(props));
+    const newState = this._stateFromProps(props);
+    if (newState.finished !== this.state.finished) {
+      Meteor.setTimeout(() => $('.ui.button.scroll-top-btn').click(), 1500);
+    }
+    this.setState(newState);
   }
 
   _stateFromProps(props) {
@@ -43,10 +47,10 @@ class GameStats extends Component {
     const { finished } = this.state;
     if (!finished) return null;
     return (
-      <p>
-        <h3>Congratulations! You've finished the 2017 Puzzle Hunt!</h3>
-        <h4>Head back to Red Square</h4>
-      </p>
+      <Header as='h3'
+        content="Congratulations! You've finished the 2017 Puzzle Hunt!"
+        subheader="Head back to Red Square"
+      />
     );
   }
 

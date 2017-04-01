@@ -21,7 +21,7 @@ App = class App extends Component {
       <Footer />
 
       <ScrollToTop showUnder={1000}>
-        <Button labelPosition="right" icon="up arrow" content="Scroll Up" />
+        <Button labelPosition="right" icon="up arrow" content="Scroll Up" className='scroll-top-btn'/>
       </ScrollToTop>
 
     </div>
