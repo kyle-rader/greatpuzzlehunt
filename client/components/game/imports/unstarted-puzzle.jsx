@@ -21,7 +21,7 @@ export default class UnstartedPuzzle extends React.Component {
           team={ team }
           puzzle={ puzzle }
           disabled={ disabled }
-          qrLabel='Show QR Code to a Volunteer to Start!'
+          qrLabel={`Puzzle at: ${puzzle.location}`}
           qrButtonLabel='Start Puzzle!'
         />
       </Segment>
