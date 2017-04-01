@@ -57,6 +57,7 @@ class LeaderboardInner extends React.Component {
           <Icon name={ team.finished ? 'check' : 'refresh' } color={ team.finished ? 'green' : 'orange'}/>
           <small>{ team.finished ? 'Finished' : 'In Progress'}</small>
           &nbsp; <Icon name='lightbulb' color='yellow'/> { team.hintsTaken }
+          &nbsp; <Icon name='users' color='teal'/> { team.members.length }
         </Grid.Column>
         <Grid.Column style={ timeStyle }>
           { renderDuration(moment.duration({ seconds: team.finalScore })) } <br/> ({team.finalScore} sec)
