@@ -61,6 +61,8 @@ Meteor.publish('leaderboard', function() {
     members: 1,
     division: 1,
     finalScore: 1,
+    'puzzles.puzzleId': 1,
+    'puzzles.name': 1,
     'puzzles.start': 1,
     'puzzles.end': 1,
     'puzzles.hintsTaken': 1,
@@ -69,4 +71,36 @@ Meteor.publish('leaderboard', function() {
   };
 
   return Teams.find(query, { fields: projection });
+});
+
+Meteor.publish('game.progress', function() {
+  const { userId } = this;
+  const user = Meteor.users.findOne(userId);
+
+  const teamQuery = {
+    hasBegun: true,
+  };
+  const teamProjection = {
+    name: 1,
+    members: 1,
+    division: 1,
+    finalScore: 1,
+    'puzzles.puzzleId': 1,
+    'puzzles.name': 1,
+    'puzzles.start': 1,
+    'puzzles.end': 1,
+    'puzzles.hintsTaken': 1,
+    'puzzles.score': 1,
+  };
+
+  const puzzleProjection = {
+    name: 1,
+    allowedTime: 1,
+    location: 1,
+  };
+
+  return [
+    Teams.find(teamQuery, { fields: teamProjection }),
+    Puzzles.find({}, { fields: puzzleProjection }),
+  ];
 });
