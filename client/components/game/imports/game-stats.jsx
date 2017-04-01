@@ -5,7 +5,6 @@ import { Container, Message, Header, Statistic, Progress } from 'semantic-ui-rea
 class GameStats extends Component {
   constructor(props) {
     super(props);
-
     this.state = this._stateFromProps(props);
   }
 

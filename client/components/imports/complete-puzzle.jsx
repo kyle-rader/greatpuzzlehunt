@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import { Segment, Header, Message, Statistic } from 'semantic-ui-react';
 import moment from 'moment';
 
-import PuzzleProgress, { renderDuration } from './puzzle-progress';
+import PuzzleProgress, { renderScore } from './puzzle-progress';
 
 export default class CompletePuzzle extends React.Component {
   render() {
@@ -35,7 +35,7 @@ export default class CompletePuzzle extends React.Component {
         <pre style={ { paddingTop: '10px' }}>
           Answer : { puzzle.answer }<br/>
           Hints  : { puzzle.hintsTaken }<br/>
-          Score  : { renderDuration(moment.duration({ seconds: puzzle.score })) } ({ puzzle.score } sec)
+          Score  : { renderScore(puzzle.score) }
         </pre>
       );
     }

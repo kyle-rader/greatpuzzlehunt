@@ -21,6 +21,10 @@ export function renderDuration(duration) {
   return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 }
 
+export function renderScore(score) {
+  return `${ renderDuration(moment.duration({ seconds: score })) } (${ score } sec)`;
+}
+
 export default class PuzzleProgress extends React.Component {
   constructor(props) {
     super(props);
