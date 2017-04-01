@@ -17,7 +17,7 @@ class VolunteerTimerInner extends React.Component {
         <PuzzlePageTitle title='Volunteer Timer'/>
           { this._timerUI() }
           <br/>
-          <Button basic size='large' fluid color='orange' content='Close This Page' onClick={(e) => window.close() }/>
+          <Button basic size='large' fluid color='violet' content='Close This Page' onClick={(e) => window.close() }/>
       </Container>
     );
   }

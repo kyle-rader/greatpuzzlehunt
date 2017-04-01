@@ -68,19 +68,14 @@ const adminMenuItems = [
     iconClass: 'violet puzzle',
   },
   {
-    name: 'Email',
-    to: '/admin/email',
-    iconClass: 'orange mail',
-  },
-  {
     name: 'Game',
     to: '/admin/game',
     iconClass: 'red gamepad',
   },
   {
-    name: 'Scoring',
-    to: '/admin/scoring',
-    iconClass: 'yellow trophy',
+    name: 'Email',
+    to: '/admin/email',
+    iconClass: 'orange mail',
   },
 ];
 const volunteerMenuItems = [
