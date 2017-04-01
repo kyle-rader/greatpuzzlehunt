@@ -114,7 +114,7 @@ Leaderboard = createContainer(() => {
   return {
     ready,
     user,
-    teams,
+    teams: sortBy(teams, 'finalScore'),
   };
 
 }, LeaderboardInner);
