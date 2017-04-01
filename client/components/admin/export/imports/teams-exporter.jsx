@@ -40,7 +40,7 @@ export default class TeamsExporter extends React.Component {
 
   _renderLines() {
     const { teams } = this.props;
-    const lines = ["Team Name,First Name,Last Name"];
+    const lines = ["Division,Team Name,First Name,Last Name"];
     teams.forEach((team) => {
       lines.push(`${team.division},${team.name}, , `);
       team.members.forEach((user) => {
