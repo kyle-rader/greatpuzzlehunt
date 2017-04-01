@@ -78,7 +78,7 @@ import { scorePuzzle as scoreP } from '../../../lib/imports/puzzle-helpers';
 function scorePuzzle(puzzle) {
   if (!puzzle.start && !puzzle.end) return 0;
   const hintsTaken = puzzle.hints.length > 0 ? puzzle.hints.filter((hint) => hint.taken).length : 0;
-  return scoreP(puzzle.start, puzzle.end, hintsTaken, puzzle.bonusTime);
+  return scoreP(puzzle.start, puzzle.end, hintsTaken, puzzle.bonusTime, puzzle.allowedTime);
 }
 
 function hintsUsed(puzzle) {
