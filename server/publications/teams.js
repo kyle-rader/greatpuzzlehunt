@@ -43,3 +43,30 @@ Meteor.publish('teams.browse', function() {
     },
   });
 });
+
+Meteor.publish('leaderboard', function() {
+  const { userId } = this;
+  const user = Meteor.users.findOne(userId);
+
+  const query = {
+    hasBegun: true,
+    // $or: [
+    //   { members: { $size: 4 } },
+    //   { members: { $size: 5 } },
+    //   { members: { $size: 6 } },
+    // ],
+  };
+  const projection = {
+    name: 1,
+    members: 1,
+    division: 1,
+    finalScore: 1,
+    'puzzles.start': 1,
+    'puzzles.end': 1,
+    'puzzles.hintsTaken': 1,
+    'puzzles.score': 1,
+    'puzzles.allowedTime': 1,
+  };
+
+  return Teams.find(query, { fields: projection });
+});
