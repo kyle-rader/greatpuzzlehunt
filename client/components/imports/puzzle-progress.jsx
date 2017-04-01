@@ -5,12 +5,21 @@ import moment from 'moment';
 
 function getColor(val) {
   const colors = ['green', 'olive', 'yellow', 'orange', 'red'];
-  return colors[Math.floor(val/(100/colors.length))];
+  const colorKey = Math.floor(val/(100/colors.length));
+  console.log(colorKey);
+  return colors[colorKey];
 }
 
-function pad(n, width, z = '0') {
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+export function pad(n) {
+  n = n.toString();
+  return n.length > 1 ? n : `0${n}`;
+}
+
+export function renderDuration(duration) {
+  const hours = pad(duration.hours().toString(), 2);
+  const minutes = pad(duration.minutes().toString(), 2);
+  const seconds = pad(duration.seconds().toString(), 2);
+  return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 }
 
 export default class PuzzleProgress extends React.Component {
@@ -38,13 +47,11 @@ export default class PuzzleProgress extends React.Component {
     const { puzzle } = this.props;
     const { start, now } = this.state;
 
-    const max = moment.duration(1, 'hours').asSeconds();
+    const max = moment.duration({ minutes: puzzle.allowedTime }).asSeconds();
     const duration = moment.duration(now - start);
     const current = duration.asSeconds();
     const percent = 100 * Number((current/max).toFixed(2));
     // const timeLeft = moment.duration(1, 'hour').subtract(duration);
-    const min = pad(duration.minutes(), 2);
-    const sec = pad(duration.seconds(), 2);
 
     return (
       <Grid stackable>
@@ -54,7 +61,7 @@ export default class PuzzleProgress extends React.Component {
               size='small'
               color={ getColor(percent) }
               percent={ percent }>
-              Time elapsed: { min }:{ sec } <br/>
+              Time elapsed: { renderDuration(duration) } <br/>
             </Progress>
           </Grid.Column>
         </Grid.Row>

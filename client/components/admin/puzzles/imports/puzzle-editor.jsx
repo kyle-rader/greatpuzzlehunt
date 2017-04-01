@@ -41,7 +41,28 @@ class PuzzleEditor extends Component {
             name='stage'
             label='Stage'
             value={ this.state.stage }
-            onChange={ (e) => this._handleChange(e, 'Number') }
+            onChange={ (e) => this._handleChange(e) }
+          />
+        </Form.Group>
+
+        <Form.Group widths='equal'>
+          <Form.Input
+            name='allowedTime'
+            label='Time Allowed (min)'
+            value={ this.state.allowedTime }
+            onChange={ (e) => this._handleChange(e) }
+          />
+          <Form.Input
+            name='timeoutScore'
+            label='Timeout Score (min)'
+            value={ this.state.timeoutScore }
+            onChange={ (e) => this._handleChange(e) }
+          />
+          <Form.Input
+            name='bonusTime'
+            label='Bonus Time (min)'
+            value={ this.state.bonusTime }
+            onChange={ (e) => this._handleChange(e) }
           />
         </Form.Group>
 
@@ -68,10 +89,13 @@ class PuzzleEditor extends Component {
 
   _handleSubmit(e) {
     e.preventDefault();
-    const { name, stage, answer, location, hints } = this.state;
+    const { name, stage, answer, allowedTime, timeoutScore, bonusTime, location, hints } = this.state;
     const fields = {
       name: name.trim(),
       stage: parseInt(stage),
+      allowedTime: parseInt(allowedTime),
+      timeoutScore: parseInt(timeoutScore),
+      bonusTime: parseInt(bonusTime),
       answer: answer.trim().toLowerCase(),
       location: location.trim(),
       hints,
@@ -83,7 +107,7 @@ class PuzzleEditor extends Component {
     });
   }
 
-  _handleChange(e, type) {
+  _handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
