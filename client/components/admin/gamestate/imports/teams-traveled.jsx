@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import React, {PropTypes} from 'react';
 import { sortBy, groupBy, map } from 'lodash';
-import { Container, Grid, Icon, Header } from 'semantic-ui-react';
+import { Container, Grid, Icon, Header, List } from 'semantic-ui-react';
 
 const divisionMap = {
   'open': 'Open',
@@ -47,7 +47,7 @@ export default class TeamsTraveled extends React.Component {
       <Grid celled key={division}>
         <Grid.Row>
           <Grid.Column>
-            <Header as='h3' content={ divisionMap[division] }/>
+            <Header as='h2' color='blue' content={ divisionMap[division] }/>
           </Grid.Column>
         </Grid.Row>
         { teams.map((t) => this._team(t)) }
@@ -62,13 +62,29 @@ export default class TeamsTraveled extends React.Component {
 
     return (
       <Grid.Row columns='2' key={ team._id }>
-        <Grid.Column>
-          { team.name }
+        <Grid.Column width='10'>
+          <h3>{ team.name }</h3>
+          { this._miniTeamList(team.users) }
         </Grid.Column>
-        <Grid.Column style={ distanceStyle }>
-          { team.totalTraveled } km
+        <Grid.Column width='6' style={ distanceStyle }>
+          { team.totalTraveled.toFixed(2) } km
         </Grid.Column>
       </Grid.Row>
+    );
+  }
+
+  _miniTeamList(users) {
+    return (
+      <Grid>
+        { users.map((u) => (
+            <Grid.Row columns='3' key={u._id}>
+              <Grid.Column>{ u.name }</Grid.Column>
+              <Grid.Column>{ u.city }</Grid.Column>
+              <Grid.Column>{ u.state }</Grid.Column>
+            </Grid.Row>
+          ))
+        }
+      </Grid>
     );
   }
 }
