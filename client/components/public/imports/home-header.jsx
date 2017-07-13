@@ -5,7 +5,7 @@ export default class HomeHeader extends Component {
     return (
       <div className="header-main">
         <div className="header-text -left">
-          <div className="extra-text red-text">The Second Annual</div>
+          <div className="extra-text red-text">The Third Annual</div>
           WWU Great
           <img className="footprints" src="/img/footprints-left.png"/>
         </div>

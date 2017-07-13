@@ -63,7 +63,7 @@ export default class WelcomeSection extends Component {
         <List.Item>
           <Icon size='large' name='calendar'/>
           <List.Content>
-            April 1, 2017 &nbsp;|&nbsp; 10:00 AM
+            April 14, 2018 &nbsp;|&nbsp; 10:00 AM
           </List.Content>
         </List.Item>
         <List.Item>
@@ -85,9 +85,7 @@ export default class WelcomeSection extends Component {
         <List.Item>
           <Icon size='large' name='ticket'/>
           <List.Content className="white">
-            <p>$8 for Students</p>
-            <p>$15 for Non-Students</p>
-            <p>T-shirts $13 (2-3XL $15)</p>
+            <p>Prices TBA</p>
           </List.Content>
         </List.Item>
       </List>
