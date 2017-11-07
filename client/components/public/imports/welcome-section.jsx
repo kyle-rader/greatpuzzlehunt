@@ -48,7 +48,7 @@ export default class WelcomeSection extends Component {
       <LinkButton to="/info" size='large' color='orange' content='More Info'/>
       <LinkButton to="/volunteer" size='large' color='teal' content='Volunteer'/>
       <LinkButton as='a'
-        href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1"
+        href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='violet' content='Donate'
         icon={<Icon name='heart'/>}
       />

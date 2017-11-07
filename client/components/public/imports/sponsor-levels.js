@@ -20,7 +20,7 @@ export default class SponsorLevels extends Component {
                 Invest in Your Community by Sponsoring The Hunt!
               </h1>
               <LinkButton as='a'
-                href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1"
+                href="https://alumni.wwu.edu/greatpuzzlehunt"
                 size='large' color='violet' content='Donate Online'
                 icon={<Icon name='heart'/>}
               />

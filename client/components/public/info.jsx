@@ -161,7 +161,7 @@ Info = class Info extends Component {
             Open from March 11 - March 30, 2017 <br/>
             Student: $8<br/>
             Non-Student: $15<br/>
-            Fees help cover costs of materials, prizes, food, campus services & reservations, etc.  We are seeking <a target="_blank" href="https://securelb.imodules.com/s/1710/campaign/index-noshare.aspx?sid=1710&gid=2&pgid=467&cid=1175&dids=167&bledit=1">donations</a> to help keep fees minimized.
+            Fees help cover costs of materials, prizes, food, campus services & reservations, etc.  We are seeking <a target="_blank" href="https://alumni.wwu.edu/greatpuzzlehunt">donations</a> to help keep fees minimized.
           </Accordion.Content>
 
           <Accordion.Title>
