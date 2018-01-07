@@ -78,7 +78,7 @@ An on-line and in person real-time puzzle scavenger hunt!
     },
     "accounts": {
       "fromEmail": "Great Puzzle Hunt<accounts@greatpuzzlehunt.com>",
-      "registrationApiKey": "some_key"
+      "apiKey": "some_key"
     },
     "dropbox": {
       "key": "your_key",

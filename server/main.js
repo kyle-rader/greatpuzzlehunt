@@ -25,6 +25,4 @@ Picker.middleware(bodyParser.urlencoded({ extended: true }));
 
 import './imports/start-up';
 import './imports/accounts';
-import './imports/set-traveled-distance';
-
 import './imports/puzzle-watcher';

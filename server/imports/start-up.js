@@ -10,7 +10,7 @@ Meteor.startup(() => {
     return;
 
   // Check for Admin account
-  let adminUser = Meteor.users.findOne({ roles: 'admin' });
+  let adminUser = Meteor.users.findOne({ email: 'kyle@kylerader.ninja', roles: 'admin' });
 
   if (adminUser === undefined) {
 
