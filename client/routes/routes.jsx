@@ -20,8 +20,6 @@ export const renderRoutes = () => (
       <Route path='requestpasswordreset' component={RequestPasswordReset}/>
       <Route path='passwordreset/:token' component={PasswordReset}/>
 
-      <Route path='setup/:token' component={AccountSetup}/>
-
       <Route path='profile' component={Profile}/>
 
       <Route path='game' component={makeAuthed('user')}>

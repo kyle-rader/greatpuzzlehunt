@@ -20,16 +20,14 @@ ProfileEditor = class ProfileEditor extends Component {
     return {
       firstname: user.firstname || '',
       lastname: user.lastname || '',
-      username: user.username || '',
       email: user.getEmail(),
-      phone: user.phone || '',
       lookingForTeam: user.lookingForTeam || false,
       bio: user.bio || '',
     };
   }
 
   render() {
-    const { firstname, lastname, username, phone, lookingForTeam, bio } = this.state;
+    const { firstname, lastname, lookingForTeam, bio } = this.state;
     return (
     <Segment basic>
       <Form onSubmit={(e) => this._handleSubmit(e)}>
@@ -39,17 +37,13 @@ ProfileEditor = class ProfileEditor extends Component {
           <Form.Input name='lastname' label='Last Name' placeholder='Last name' value={lastname} onChange={(e) => this._handleChange(e)} />
         </Form.Group>
 
-        <Form.Group widths='equal'>
-          <Form.Input name='username' label='Username' placeholder='Username' value={username} onChange={(e) => this._handleChange(e)} />
-          <Form.Input name='phone' label='Phone Number' placeholder='1112223333' value={phone} onChange={(e) => this._handleChange(e)} />
-        </Form.Group>
+        <Form.Input name='bio' label='Short Bio' placeholder='I am ...' value={ bio } onChange={(e) => this._handleChange(e)} />
 
         <Form.Group widths='equal'>
           <Form.Field>
             <label>Looking for a team?</label>
             <Checkbox toggle name='lookingForTeam' label='List me on the looking for team page' checked={ lookingForTeam } onChange={(e,data) => this._handleDataChange(e,data)} />
           </Form.Field>
-          <Form.Input name='bio' label='Short Bio' placeholder='I am ...' value={ bio } onChange={(e) => this._handleChange(e)} />
         </Form.Group>
 
         <Form.Button type='submit' color="green" content="Save"/>
@@ -74,7 +68,7 @@ ProfileEditor = class ProfileEditor extends Component {
   _handleSubmit(e) {
     e.preventDefault();
 
-    const fields = pick(this.state, ['firstname', 'lastname', 'username', 'phone', 'lookingForTeam', 'bio']);
+    const fields = pick(this.state, ['firstname', 'lastname', 'lookingForTeam', 'bio']);
 
     Meteor.call('user.update.account', fields, (error, result) => {
       if (error) return this.setState({ error });
