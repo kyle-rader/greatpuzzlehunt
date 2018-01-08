@@ -9,20 +9,19 @@ Login = class Login extends Component {
 
     this.state = {
       err: null,
-      username: '',
+      email: '',
       password: '',
     };
   }
 
-  login(event) {
-    event.preventDefault();
+  login(e) {
+    e.preventDefault();
 
-    const { username, password } = this.state;
-
-    Meteor.loginWithPassword({ username }, password, (err) => {
-        if (err) {
-          this.setState({err: err});
-        }
+    const { email, password } = this.state;
+    Meteor.loginWithPassword({ email }, password, (err) => {
+      if (err) {
+        this.setState({err: err});
+      }
     });
   }
 
@@ -36,7 +35,7 @@ Login = class Login extends Component {
   }
 
   _handleUsernameChange(e) {
-    this.setState({ username: e.target.value });
+    this.setState({ email: e.target.value });
   }
 
   _handlePasswordChange(e) {
@@ -58,10 +57,10 @@ Login = class Login extends Component {
               icon="user"
               iconPosition="left"
               type="text"
-              name="username"
-              placeholder="Username"
+              name="email"
+              placeholder="Email"
               autoComplete="off"
-              value={this.state.username}
+              value={this.state.email}
               onChange={(e, data) => this._handleUsernameChange(e, data)}
             />
             <Form.Input
