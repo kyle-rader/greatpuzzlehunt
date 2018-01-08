@@ -24,8 +24,15 @@ Accounts.onEmailVerificationLink((token, done) => {
 
 // Redirect users clicking the enrollment URL to account setup
 Accounts.onEnrollmentLink((token, done) => {
-    done();
-    browserHistory.push('/setup/' + token);
+  Accounts.verifyEmail(token, (err) => {
+      if (err) {
+          // Route to bad link page
+          console.log(err);
+      } else {
+          done();
+          browserHistory.push('/profile');
+      }
+  });
 });
 
 // Redirect users clicking the reset password URL to the reset password from

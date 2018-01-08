@@ -1,9 +1,19 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
-const { siteName, accountsEmail } = Meteor.settings.public;
+import { registrationInfoHTML } from '../../lib/imports/emails';
 
-// Setup Email Verification
+const { siteName, eventYear, siteURL, accountsEmail } = Meteor.settings.public;
+
+const questions = `<p>If you have any questions please email <a href="mailto:support@greatpuzzleHunt.com">support@greatpuzzlehunt.com</a></p>`;
+const signature = `
+<p>
+  Cheers,<br>
+  The ${siteName} Team
+</p>
+`;
+
+// Customize Email Verification email
 Accounts.emailTemplates.siteName = siteName;
 Accounts.emailTemplates.from = accountsEmail;
 
@@ -14,35 +24,11 @@ Accounts.emailTemplates.verifyEmail = {
     html(user, url) {
         return `
 <p>Hi ${user.firstname}!</p>
-<p>Your username is <strong>${user.username}</strong>
-<p>Please verify this email address by clicking <a href='${url}'>here</a>.</p>
-<br>
-<p>
-Cheers,<br>
-The ${siteName} Team
-</p>`;
-    }
-};
-
-// Setup Enrollement/ Migration email
-Accounts.emailTemplates.enrollAccount = {
-    subject(user) {
-        return `Finish ${siteName} Registration!`;
-    },
-    html(user, url) {
-        return `
-<h3>Welcome ${user.firstname}, to the ${siteName}!</h3>
-<p>
-  <ol>
-    <li>Finish registration: <a href="${url}">click here</a>!</li>
-    <li>Create/find a team <a href="https://greatpuzzlehunt.com/profile">from your profile</a></li>
-  </ol>
-</p>
-<p>If you have any questions about the account setup process please email <a href="mailto:support@greatpuzzlehunt.com">support@greatpuzzlehunt.com</a></p>
-<br>
-<p>Welcome to the hunt!<br>
-<p>Cheers,</p>
-<p>The ${siteName} Team</p>`;
+<p>Please verify your email (${user.getEmail()}) by <a target="_blank" href='${url}'>clicking here</a>.</p>
+${questions}
+${registrationInfoHTML}
+${signature}
+`;
     }
 };
 
@@ -61,8 +47,12 @@ Accounts.validateLoginAttempt((attempt) => {
 // Extending Account Creation
 Accounts.onCreateUser((options, user) => {
 
-  // Assign all other properties from the options
-  user = _.extend(user, _.omit(options, ['password']));
+  // email and password get set specially, take all other options and
+  // set them directly on the user document.
+  user = _.extend(user, _.omit(options, ['email', 'password', 'confirmPassword']));
+  const now = new Date();
+  user.createdAt = now;
+  user.updatedAt = now;
 
   return user;
 });
