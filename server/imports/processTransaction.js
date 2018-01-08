@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import { map, extend, omit } from 'lodash';
-import crypto from 'crypto';
+import { sendTickets } from '../../lib/imports/sendTickets';
 
 export default function processTransaction(txData) {
   Meteor.logger.info(`Processing transaction "${txData.tx}" from ${txData.email}`);
@@ -11,6 +11,8 @@ export default function processTransaction(txData) {
 
   createTickets(txData.tx, txData.email, 'STUDENT', studentTickets);
   createTickets(txData.tx, txData.email, 'NONSTUDENT', nonStudentTickets);
+
+  sendTickets(txData.tx, txData.email);
 };
 
 function createTickets(tx, email, type, qty) {
