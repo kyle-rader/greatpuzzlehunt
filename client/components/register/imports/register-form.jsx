@@ -164,7 +164,6 @@ class RegisterForm extends Component {
   _register(e) {
     e.preventDefault();
     const data = this._registrationData();
-    console.log('Going to register with:', data);
 
     this.setState({ mode: 'loading' });
 
