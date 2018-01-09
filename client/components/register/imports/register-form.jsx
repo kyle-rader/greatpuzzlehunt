@@ -80,7 +80,7 @@ class RegisterForm extends Component {
           </Message.Content>
         </Message>
 
-        <RegistrationProcess currentStep={0} />
+        <RegistrationProcess currentStep={1} />
       </Segment>
     );
   }
@@ -88,8 +88,8 @@ class RegisterForm extends Component {
   _form() {
     return (
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
-          
-        <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`}/>
+
+        <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`} subheader={`Event date: ${eventDate} at Western Washington University, Bellingham, WA`}/>
 
         <Form.Group widths='equal'>
           <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
@@ -127,15 +127,17 @@ class RegisterForm extends Component {
           label='By checking this box I acknowledge that I have read and understand the Risk & Hold Harmless Agreement and that I am either 18+ years old or a WWU student or the parent/guardian of a minor participant.'
           onChange={ (e,data) => this._handleDataChange(e,data) }
         />
+        <List>
+          <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on their behalf on their minor.</List.Item>
+          <List.Item><strong>Participants under age 14:</strong> In addition to registering their minor, a parent/legal guardian must also register and join the same team as their under age 14 child and accompany them at all times during the Puzzle Hunt.</List.Item>
+        </List>
 
-        <Form.Button type='submit' content='Register' color='green'/>
+        <Form.Button fluid type='submit' content='Register' color='green'/>
 
         { this._errorMessage() }
-        <h3>Important Registration Information</h3>
-        <List>
-          <List.Item><strong>Participants under age 18 (minor child):</strong> A parent/legal guardian must complete this registration form on behalf of their minor child.</List.Item>
-          <List.Item><strong>Participants under age 14:</strong> In addition to registering their minor child, a parent/legal guardian must also register as a member of a team with their under age 14 minor child and accompany them at all times during the Puzzle Hunt.</List.Item>
-        </List>
+
+        <RegistrationProcess currentStep={0} />
+
       </Form>
     );
   }
