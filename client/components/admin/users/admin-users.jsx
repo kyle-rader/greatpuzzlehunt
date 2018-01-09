@@ -67,20 +67,22 @@ AdminUsers = class AdminUsers extends Component {
   }
 
   _pagination() {
-    return <ReactPaginate
-      pageCount={ this.state.pages }
-      pageRangeDisplayed={1}
-      marginPagesDisplayed={1}
-      initialPage={0}
-      containerClassName='ui pagination menu'
-      pageClassName='item btn'
-      previousClassName='item btn'
-      nextClassName='item btn'
-      breakClassName='item break'
-      activeClassName='active'
-      previousLabel='Prev'
-      onPageChange={(page) => this._handlePageChange(page)}
-    />;
+    return (
+      <ReactPaginate
+        pageCount={ this.state.pages }
+        pageRangeDisplayed={1}
+        marginPagesDisplayed={1}
+        initialPage={0}
+        containerClassName='ui pagination menu'
+        pageClassName='item btn'
+        previousClassName='item btn'
+        nextClassName='item btn'
+        breakClassName='item break'
+        activeClassName='active'
+        previousLabel='Prev'
+        onPageChange={(page) => this._handlePageChange(page)}
+      />
+    );
   }
 
   _handleSearchChange(e) {

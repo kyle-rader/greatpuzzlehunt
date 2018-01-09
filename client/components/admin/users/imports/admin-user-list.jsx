@@ -34,9 +34,9 @@ AdminUserList = createContainer(({ page = 1, search }) => {
     search = search.trim()
     query = {
       $or: [
-        { 'name': { $regex: search, $options: 'i' } },
+        { 'firstname': { $regex: search, $options: 'i' } },
+        { 'lastname': { $regex: search, $options: 'i' } },
         { 'emails': { $elemMatch: { address: { $regex: search, $options: 'i' } } } },
-        { 'username': { $regex: search, $options: 'i' } },
       ],
     };
   } else {

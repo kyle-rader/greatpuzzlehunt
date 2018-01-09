@@ -20,7 +20,7 @@ class AdminUser extends Component {
       <Card>
         <Card.Content>
           <Card.Header content={ user.name }/>
-          <Card.Meta>username: { user.username }</Card.Meta>
+          <Card.Meta>{ user.accountType }</Card.Meta>
           <Card.Description>
             {
               this.state.editMode ?
