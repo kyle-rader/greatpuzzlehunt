@@ -53,7 +53,7 @@ RegistrationProcess = class RegistrationProcess extends Component {
         <List.Item>
           {currentStep === 3 ? this._youAreHere() : null }
           Redeem ticket code at <a target="blank" href={`${siteURL}/redeem`}>{`${siteURL}/redeem`}</a>.<br/>
-          Deadline: <strong> 10:59 AM April 14, 2018</strong>
+          Deadline: <strong> 10:00 AM April 14, 2018</strong>
         </List.Item>
       </List>
     );
