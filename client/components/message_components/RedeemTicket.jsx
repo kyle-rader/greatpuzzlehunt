@@ -23,7 +23,7 @@ RedeemTicket = class RedeemTicket extends Component {
   _redeemForm() {
     return (
       <Container>
-        <br/>
+        <PuzzlePageTitle title="Finish Registration"/>
         <Segment raised>
           <Header as='h3'>Step 2: Buy ticket code</Header>
           <Button
