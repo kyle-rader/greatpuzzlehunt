@@ -1,17 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
-import { registrationInfoHTML } from '../../lib/imports/emails';
+import { registrationInfoHTML, questions, signature } from '../../lib/imports/emails';
 
 const { siteName, eventYear, siteURL, accountsEmail } = Meteor.settings.public;
-
-const questions = `<p>If you have any questions please email <a href="mailto:support@greatpuzzleHunt.com">support@greatpuzzlehunt.com</a></p>`;
-const signature = `
-<p>
-  Cheers,<br>
-  The ${siteName} Team
-</p>
-`;
 
 // Customize Email Verification email
 Accounts.emailTemplates.from = accountsEmail;
