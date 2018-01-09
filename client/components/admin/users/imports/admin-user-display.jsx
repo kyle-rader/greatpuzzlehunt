@@ -21,6 +21,7 @@ class AdminUserDisplay extends Component {
       <div>
         { this._email() }
         { this._team() }
+        { this._paid() }
       </div>
     );
   }
@@ -41,6 +42,15 @@ class AdminUserDisplay extends Component {
     return (
       <p>
         <Icon name='users' color={ user.teamId ? 'green' : 'yellow' }/> { user.teamName }
+      </p>
+    );
+  }
+
+  _paid() {
+    const { user } = this.props;
+    return (
+      <p>
+        <Icon name='ticket' color={ user.paid ? 'green' : 'yellow' }/> { user.ticketUsed }
       </p>
     );
   }
