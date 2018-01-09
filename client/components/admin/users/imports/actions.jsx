@@ -32,7 +32,7 @@ class Actions extends Component {
           />
         </p>
         <p>
-          <Button basic size='small'
+          <Button basic size='small' disabled
             icon={this._editIcon()}
             color={this._editColor()}
             onClick={ onEdit }
