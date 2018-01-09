@@ -9,7 +9,7 @@ RequestPasswordReset = class RequestPasswordReset extends Component {
     super(props);
     this.state = {
       error: null,
-      username: '',
+      email: '',
     };
   }
 
@@ -21,8 +21,9 @@ RequestPasswordReset = class RequestPasswordReset extends Component {
           <Segment raised>
             <Form onSubmit={(e) => this._handleSubmit(e)}>
               <Header as="h2" color="violet" content="Request Password Reset"/>
-              <Form.Input name="username" icon='user' iconPosition='left' placeholder="Username" value={this.state.username} onChange={(e) => this._handleChange(e)}/>
+              <Form.Input name="email" icon='mail' iconPosition='left' placeholder="Email" value={this.state.email} onChange={(e) => this._handleChange(e)}/>
               <Form.Button type='submit' color='violet' content='Reset' fluid/>
+
               <Message
                 negative
                 hidden={!this.state.error}
@@ -30,12 +31,13 @@ RequestPasswordReset = class RequestPasswordReset extends Component {
                 onDismiss={() => this.setState({ error: null })}
                 content={this.state.error ? this.state.error.reason : ''}
               />
+
               <Message
                 positive
-                hidden={!this.state.email}
+                hidden={!this.state.resultEmail}
                 icon="mail"
-                onDismiss={() => this.setState({ email: null })}
-                content={`A password reset email has been sent to ${this.state.email}`}
+                onDismiss={() => this.setState({ resultEmail: null })}
+                content={`A password reset email has been sent to ${this.state.resultEmail}`}
               />
             </Form>
           </Segment>
@@ -57,10 +59,9 @@ RequestPasswordReset = class RequestPasswordReset extends Component {
     e.preventDefault();
 
     // Call Meteor method to create account.
-    Meteor.call('user.passwordReset', this.state.username, (error, result) => {
+    Meteor.call('user.passwordReset', this.state.email, (error, result) => {
       if (error) return this.setState({ error });
-
-      this.setState({ error: null, email: result.email, username: '' });
+      this.setState({ error: null, resultEmail: result.email, email: ''});
     });
   }
 }

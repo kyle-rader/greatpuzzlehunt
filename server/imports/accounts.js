@@ -14,12 +14,12 @@ const signature = `
 `;
 
 // Customize Email Verification email
-Accounts.emailTemplates.siteName = siteName;
 Accounts.emailTemplates.from = accountsEmail;
+Accounts.emailTemplates.siteName = siteName;
 
 Accounts.emailTemplates.verifyEmail = {
     subject(user) {
-        return `${siteName} Email Verification for: ${user.getEmail()}`;
+        return `${siteName} Email Verification`;
     },
     html(user, url) {
         return `
@@ -27,6 +27,20 @@ Accounts.emailTemplates.verifyEmail = {
 <p>Please verify your email (${user.getEmail()}) by <a target="_blank" href='${url}'>clicking here</a>.</p>
 ${questions}
 ${registrationInfoHTML}
+${signature}
+`;
+    }
+};
+
+Accounts.emailTemplates.resetPassword = {
+    subject(user) {
+        return `${siteName} Password Reset Request`;
+    },
+    html(user, url) {
+        return `
+<p>Hi ${user.firstname}!</p>
+<p>You may reset your password by <a target="_blank" href='${url}'>clicking here</a>.</p>
+${questions}
 ${signature}
 `;
     }
