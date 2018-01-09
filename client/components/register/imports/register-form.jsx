@@ -88,9 +88,11 @@ class RegisterForm extends Component {
   _form() {
     return (
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
+
+        {/* TODO: Remove this test button */}
         <Form.Button
           content="Test It!"
-          onClick={(e,d) => {
+          onClick={ (e,d) => {
             e.preventDefault();
             this.setState({
               firstname: 'test',
@@ -99,9 +101,9 @@ class RegisterForm extends Component {
               accountType: 'NONSTUDENT',
               password: 'testtest',
               confirmPassword: 'testtest',
-              holdHarmless: true,
             });
-          }}></Form.Button>
+          } } />
+          
         <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`}/>
 
         <Form.Group widths='equal'>
