@@ -56,11 +56,13 @@ class GamestateControlsInner extends Component {
 
   _fieldButton(name) {
     const field = this.props.gamestate[name.toLowerCase()];
-    return <Button
-      color={ field ? 'green' : 'red' }
-      content={ `Turn ${name} ${(field ? 'Off' : 'On')}` }
-      onClick={ (e) => this._toggleField(e, name) }
-    />;
+    return (
+      <Button
+        color={ field ? 'green' : 'red' }
+        content={ `Turn ${name} ${(field ? 'Off' : 'On')}` }
+        onClick={ (e) => this._toggleField(e, name) }
+      />
+    );
   }
 
   _toggleField(e, name) {
@@ -75,7 +77,7 @@ class GamestateControlsInner extends Component {
   _setupTeams(e) {
     e.preventDefault();
     if (!confirm('Are you sure you want to setup puzzles for all teams?')) return;
-    
+
     Meteor.call('admin.teams.setup', (error, result) => {
       if (error) alert(error.reason);
     });
