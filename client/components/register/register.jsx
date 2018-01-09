@@ -25,7 +25,6 @@ class RegisterInner extends Component {
     return (
       <Container>
         <br/>
-
         <Segment basic>
           <RegisterForm/>
         </Segment>

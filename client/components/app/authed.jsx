@@ -4,8 +4,13 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 Authed = class Authed extends React.Component {
   render() {
+    const { user } = this.props;
     if (this.props.canView()) {
-      return this.props.children;
+      if (user.paid) {
+        return this.props.children;
+      } else {
+        return <RedeemTicket user={user}/>
+      }
     } else {
       return <Login />;
     }

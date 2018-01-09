@@ -19,8 +19,7 @@ export const renderRoutes = () => (
       <Route path='login' component={Login}/>
       <Route path='requestpasswordreset' component={RequestPasswordReset}/>
       <Route path='passwordreset/:token' component={PasswordReset}/>
-
-      <Route path='setup/:token' component={AccountSetup}/>
+      <Route path='redeem' component={RedeemTicket}/>
 
       <Route path='profile' component={Profile}/>
 

@@ -10,7 +10,7 @@ Meteor.startup(() => {
     return;
 
   // Check for Admin account
-  let adminUser = Meteor.users.findOne({ email: 'kyle@kylerader.ninja', roles: 'admin' });
+  let adminUser = Meteor.users.findOne({roles: 'admin', firstname: 'Kyle', lastname: 'Rader'});
 
   if (adminUser === undefined) {
 
@@ -20,8 +20,6 @@ Meteor.startup(() => {
     }
 
     const adminProps = cloneDeep(Meteor.settings.admin);
-    adminProps.updatedAt = new Date();
-
     const adminId = Accounts.createUser(adminProps);
     Accounts.addEmail(adminId, Meteor.settings.admin.email, true);
 

@@ -1,10 +1,26 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Segment, Header, Form, Button, Icon, List, Message } from 'semantic-ui-react';
+import { Segment,
+  Header,
+  Form,
+  Button,
+  Icon,
+  List,
+  Dropdown,
+  Message,
+} from 'semantic-ui-react';
 
 import GamestateComp from '../../imports/gamestate-comp';
 
-class PromoRegisterForm extends Component {
+const { eventYear, eventDate } = Meteor.settings.public;
+
+const accountTypeOptions = [
+  { key: 'student', value: 'STUDENT', text: 'Student (currently enrolled in any school)' },
+  { key: 'nonstudent', value: 'NONSTUDENT', text: 'Non-Student (not currently enrolled)' },
+  { key: 'volunteer', value: 'VOLUNTEER', text: 'Volunteer (does not play in game)' },
+];
+
+class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,10 +28,13 @@ class PromoRegisterForm extends Component {
       email: '',
       firstname: '',
       lastname: '',
-      ticketCode: '',
+      accountType: '',
+      password: '',
+      confirmPassword: '',
       coords: '',
       photoPermission: true,
       holdHarmless: false,
+      showHoldHarmless: false,
     };
 
     if (navigator.geolocation) {
@@ -40,6 +59,8 @@ class PromoRegisterForm extends Component {
 
   _renderMain() {
     switch (this.state.mode) {
+      case 'loading':
+        return <Loading />;
       case 'thankyou':
         return this._thankyou();
       default:
@@ -49,36 +70,54 @@ class PromoRegisterForm extends Component {
 
   _thankyou() {
     return (
-      <Message icon>
-        <Icon name='mail' color='green'/>
-        <Message.Content>
-          <Message.Header>Thank you for registering!<br/></Message.Header>
-          <p>We've sent an email to { this.state.email } with a link to finish setting up your account!</p>
-          <p>Once setup you will be able to join or create a team.</p>
-        </Message.Content>
-      </Message>
+      <Segment basic>
+        <Message icon>
+          <Icon name='mail' color='green'/>
+          <Message.Content>
+            <Header as='h3'>Thank you for registering!<br/></Header>
+            <p>We've sent a verification email to <strong>{ this.state.email }</strong>. Go check your email!</p>
+            <p>You must click the verificiation link in that email before you can log in.</p>
+          </Message.Content>
+        </Message>
+
+        <RegistrationProcess currentStep={0} />
+      </Segment>
     );
   }
 
   _form() {
     return (
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
-
-        <Header as='h1' icon={<Icon name='user' color='green'/>} content='Register for the 2018 Great Puzzle Hunt'/>
-
-        <Form.Input name='email' type='email' label='Email' placeholder='your@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
+        <Form.Button
+          content="Test It!"
+          onClick={(e,d) => {
+            e.preventDefault();
+            this.setState({
+              firstname: 'test',
+              lastname: 'McTest',
+              email: 'kyle+test@kylerader.ninja',
+              accountType: 'NONSTUDENT',
+              password: 'testtest',
+              confirmPassword: 'testtest',
+              holdHarmless: true,
+            });
+          }}></Form.Button>
+        <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`}/>
 
         <Form.Group widths='equal'>
           <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='lastname' label='Last Name' placeholder='Last Name' value={ this.state.lastname } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
-        <Form.Input name='ticketCode' label='Ticket Code (Optional)' placeholder='ticket code' value={ this.state.ticketCode } onChange={ (e) => this._handleTextChange(e) }/>
-        <Message color='yellow'>
-          <Icon name='ticket' />
-          <a href="" target="_blank">Buy Ticket Codes Here</a> and redeem now <strong>or after you register!</strong> <br/>
-          Each player must register and redeem one ticket code before the game begins in order to play!
-        </Message>
+        <Form.Group widths='equal'>
+          <Form.Input name='email' type='email' label='Email' placeholder='your@email.com' value={ this.state.email } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Dropdown name='accountType' label='Account Type' placeholder='Account Type' selection options={accountTypeOptions} value={ this.state.accountType } onChange={ (e, data) => this._handleDataChange(e, data) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
+          <Form.Input name='password' type='password' label='Password' placeholder='password' value={ this.state.password } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='confirmPassword' type='password' label='Confirm Password' placeholder='password again' value={ this.state.confirmPassword } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
 
         <h3><Icon name='camera' color='violet' size='large'/>Photo Permission</h3>
 
@@ -98,7 +137,7 @@ class PromoRegisterForm extends Component {
         <Form.Checkbox
           toggle
           name='holdHarmless'
-          label='By checking this box I acknowledge that I have read and understand the risk & hold harmless agreement and that I am either 18+ years old or a WWU student or the parent/ guardian of a minor participant.'
+          label='By checking this box I acknowledge that I have read and understand the Risk & Hold Harmless Agreement and that I am either 18+ years old or a WWU student or the parent/guardian of a minor participant.'
           onChange={ (e,data) => this._handleDataChange(e,data) }
         />
 
@@ -125,25 +164,27 @@ class PromoRegisterForm extends Component {
   _register(e) {
     e.preventDefault();
     const data = this._registrationData();
-    console.log('Going to register with:', data);
 
-    Meteor.call('promo_codes.register', data, (error, result) => {
-      if (error) return this.setState({ error });
+    this.setState({ mode: 'loading' });
+
+    Meteor.call('user.register', data, (error, result) => {
+      if (error) return this.setState({ error, mode: 'register' });
       this.setState({ error: null, result, mode: 'thankyou' });
     });
   }
 
   _registrationData() {
+    const { firstname, lastname, email, accountType, password, confirmPassword, coords, photoPermission, holdHarmless } = this.state;
     return {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      email: this.state.email,
-      ticketCode: this.state.ticketCode,
-      age: parseInt(this.state.age),
-      phone: this.state.phone,
-      zip: this.state.zip,
-      photoPermission: this.state.photoPermission,
-      holdHarmless: this.state.holdHarmless,
+      firstname,
+      lastname,
+      email,
+      accountType,
+      password,
+      confirmPassword,
+      coords,
+      photoPermission,
+      holdHarmless,
     };
   }
 
@@ -176,7 +217,7 @@ class PromoRegisterForm extends Component {
     if (!this.state.showHoldHarmless) return <p></p>;
     return (
       <Segment basic>
-        <p>I hereby acknowledge that I have voluntarily chosen (or voluntarily chosen to allow my minor child) to participate in the WWU Great Puzzle Hunt 2017 sponsored by the WWU Mathematics Department, held on April 1, 2017 (hereinafter referred to as “Puzzle Hunt”).  I understand the risks involved in the Puzzle Hunt, including the unlikely but potential risk of injury to me (or my minor child), and I agree to accept any and all risks associated with my participation.</p>
+        <p>I hereby acknowledge that I have voluntarily chosen (or voluntarily chosen to allow my minor child) to participate in the  {eventYear} WWU Great Puzzle Hunt sponsored by the WWU Mathematics Department, held on {eventDate} (hereinafter referred to as “Puzzle Hunt”).  I understand the risks involved in the Puzzle Hunt, including the unlikely but potential risk of injury to me (or my minor child), and I agree to accept any and all risks associated with my participation.</p>
         <p>In consideration of my (or my minor child’s) voluntary participation in the Puzzle Hunt, I agree to hold harmless Western Washington University, its officers, agents, volunteers, or employees from and against all financial loss, claim, suit, action, damage, or expense, arising out of my (or my minor child’s) participation, unless caused by the negligence or willful misconduct of the University, its officers, agents, volunteers, or employees.</p>
         <p>I understand that Western Washington University strongly recommends that participants have comprehensive health insurance that provides essential health benefits as required by the Affordable Care Act (ACA).</p>
         <p>I understand and acknowledge that a medical emergency may develop which necessitates the need for immediate medical treatment for a participant.  I hereby authorize Western and its officers, agents, volunteers or employees to arrange or provide any necessary emergency medical treatment on my (or my minor child’s) behalf.</p>
@@ -194,4 +235,4 @@ class PromoRegisterForm extends Component {
   }
 }
 
-export default GamestateComp(PromoRegisterForm);
+export default GamestateComp(RegisterForm);

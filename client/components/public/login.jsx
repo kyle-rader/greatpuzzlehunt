@@ -9,20 +9,19 @@ Login = class Login extends Component {
 
     this.state = {
       err: null,
-      username: '',
+      email: '',
       password: '',
     };
   }
 
-  login(event) {
-    event.preventDefault();
+  login(e) {
+    e.preventDefault();
 
-    const { username, password } = this.state;
-
-    Meteor.loginWithPassword({ username }, password, (err) => {
-        if (err) {
-          this.setState({err: err});
-        }
+    const { email, password } = this.state;
+    Meteor.loginWithPassword({ email }, password, (err) => {
+      if (err) {
+        this.setState({err: err});
+      }
     });
   }
 
@@ -36,7 +35,7 @@ Login = class Login extends Component {
   }
 
   _handleUsernameChange(e) {
-    this.setState({ username: e.target.value });
+    this.setState({ email: e.target.value });
   }
 
   _handlePasswordChange(e) {
@@ -45,44 +44,45 @@ Login = class Login extends Component {
 
   render() {
     return (
-    <Grid className="login" verticalAlign="middle" textAlign="center">
-      <Grid.Column>
-        <Form size="huge" onSubmit={(e) => this.login(e)}>
-          <Segment raised>
-            <Header color="blue">
-              <Header.Content as="h2">
-                Log In
-              </Header.Content>
-            </Header>
-            <Form.Input
-              icon="user"
-              iconPosition="left"
-              type="text"
-              name="username"
-              placeholder="Username"
-              autoComplete="off"
-              value={this.state.username}
-              onChange={(e, data) => this._handleUsernameChange(e, data)}
-            />
-            <Form.Input
-              icon="lock"
-              iconPosition="left"
-              type="password"
-              name="password"
-              placeholder="Password"
-              autoComplete="off"
-              value={this.state.password}
-              onChange={(e, data) => this._handlePasswordChange(e, data)}
-            />
-            <Form.Button fluid size="large" color="blue" type="submit" content="Login" />
-          </Segment>
-        </Form>
-        {this.getErrorMessage()}
+      <Grid className="login" verticalAlign="middle" textAlign="center">
+        <Grid.Column>
+          <Form size="huge" onSubmit={(e) => this.login(e)}>
+            <Segment raised>
+              <Header color="blue">
+                <Header.Content as="h2">
+                  Log In
+                </Header.Content>
+              </Header>
+              <Form.Input
+                icon="user"
+                iconPosition="left"
+                type="text"
+                name="email"
+                placeholder="Email"
+                autoComplete="off"
+                value={this.state.email}
+                onChange={(e, data) => this._handleUsernameChange(e, data)}
+              />
+              <Form.Input
+                icon="lock"
+                iconPosition="left"
+                type="password"
+                name="password"
+                placeholder="Password"
+                autoComplete="off"
+                value={this.state.password}
+                onChange={(e, data) => this._handlePasswordChange(e, data)}
+              />
+              <Form.Button fluid size="large" color="blue" type="submit" content="Login" />
+            </Segment>
+          </Form>
+          {this.getErrorMessage()}
 
-        <Message>
-          <Link to="/register">Join The Puzzle Hunt!</Link> &nbsp; | &nbsp; <Link to="/requestpasswordreset">Forgot Password</Link>
-        </Message>
-      </Grid.Column>
-    </Grid>);
+          <Message>
+            <Link to="/register">Join The Puzzle Hunt!</Link> &nbsp; | &nbsp; <Link to="/requestpasswordreset">Forgot Password</Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    );
   }
 }
