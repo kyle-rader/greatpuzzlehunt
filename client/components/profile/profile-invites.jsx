@@ -23,7 +23,7 @@ ProfileInvites = class ProfileInvites extends Component {
   _renderMain() {
     return (
       <Segment basic>
-        <Header icon={<Icon name='ticket' color='violet'/>} content="You've been invited to these teams!"/>
+        <Header icon={<Icon name='send' color='violet'/>} content="Team Invites"/>
         <Segment basic>
           <Card.Group>
             {this._renderInvites()}

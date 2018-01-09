@@ -21,7 +21,7 @@ class AdminUserDisplay extends Component {
       <div>
         { this._email() }
         { this._team() }
-        { this._moreInfo() }
+        { this._paid() }
       </div>
     );
   }
@@ -32,7 +32,7 @@ class AdminUserDisplay extends Component {
     const email = user.email || user.getEmail();
     return (
       <p>
-        <Icon name='mail' size='small'/> { email } <Icon color={ good ? 'green' : 'red' } name={ good ? 'check' : 'close' }/>
+        <Icon name='mail' color={ good ? 'green' : 'yellow' }/> { email }
       </p>
     );
   }
@@ -41,39 +41,18 @@ class AdminUserDisplay extends Component {
     const { user } = this.props;
     return (
       <p>
-        <Icon name='users' size='small'/> { user.teamName }
+        <Icon name='users' color={ user.teamId ? 'green' : 'yellow' }/> { user.teamName }
       </p>
     );
   }
 
-  _moreInfo() {
+  _paid() {
     const { user } = this.props;
     return (
-      <Grid.Row>
-        <Grid.Column computer={4} mobile={8}>
-          <Icon name='phone'/>{ phoneLink(user.phone) }
-        </Grid.Column>
-        <Grid.Column computer={6} mobile={8}>
-          <Icon name='location arrow'/>{ `${user.city}, ${user.state}` }
-        </Grid.Column>
-        <Grid.Column computer={6} mobile={16}>
-          <Icon name='first aid'/>{ this._ec() }
-        </Grid.Column>
-      </Grid.Row>
+      <p>
+        <Icon name='ticket' color={ user.paid ? 'green' : 'yellow' }/> { user.ticketUsed }
+      </p>
     );
-  }
-
-  _ec() {
-    const { user } = this.props;
-    if (!user.emergencyContact) return null;
-    const { emergencyContact: ec } = user;
-    const hasAlt = Boolean(ec.altPhone);
-    return (
-      <span>
-        { [ec.name, ec.relation].filter(n => Boolean(n)).join(', ') } <br/>
-        { phoneLink(ec.phone) } { hasAlt ? ', alt: ' : '' } { phoneLink(ec.altPhone) }
-      </span>
-    )
   }
 }
 

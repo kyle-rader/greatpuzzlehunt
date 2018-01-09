@@ -20,7 +20,7 @@ class AdminUser extends Component {
       <Card>
         <Card.Content>
           <Card.Header content={ user.name }/>
-          <Card.Meta>username: { user.username }</Card.Meta>
+          <Card.Meta>{ user.accountType }</Card.Meta>
           <Card.Description>
             {
               this.state.editMode ?
@@ -85,7 +85,7 @@ class AdminUser extends Component {
   }
 
   _sendEmailResend(event) {
-    if (!confirm(`Confirm Resend Enrollment/Verification email for "${this.props.user.name}" ?`))
+    if (!confirm(`Confirm Resend Verification email for "${this.props.user.name}" ?`))
       return;
 
     const btn = $(event.target);
@@ -93,7 +93,7 @@ class AdminUser extends Component {
     Meteor.call('admin.user.emailResend', this.props.user._id, (err, result) => {
       if (err) {
         console.log(err);
-        btn.attr('data-content', 'Send Failed! 😰');
+        btn.attr('data-content', `Send Failed! 😰 ${err.reason}`);
       } else {
         btn.attr('data-content', 'Email Sent! 😀');
       }

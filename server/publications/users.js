@@ -16,6 +16,7 @@ const USER_FIELDS = {
   photoPermission: 1,
   holdHarmless: 1,
   paid: 1,
+  ticketUsed: 1,
 };
 
 Meteor.users.deny({

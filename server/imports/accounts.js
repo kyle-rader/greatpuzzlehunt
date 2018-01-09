@@ -1,25 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
-import { registrationInfoHTML } from '../../lib/imports/emails';
+import { registrationInfoHTML, questions, signature } from '../../lib/imports/emails';
 
 const { siteName, eventYear, siteURL, accountsEmail } = Meteor.settings.public;
 
-const questions = `<p>If you have any questions please email <a href="mailto:support@greatpuzzleHunt.com">support@greatpuzzlehunt.com</a></p>`;
-const signature = `
-<p>
-  Cheers,<br>
-  The ${siteName} Team
-</p>
-`;
-
 // Customize Email Verification email
-Accounts.emailTemplates.siteName = siteName;
 Accounts.emailTemplates.from = accountsEmail;
+Accounts.emailTemplates.siteName = siteName;
 
 Accounts.emailTemplates.verifyEmail = {
     subject(user) {
-        return `${siteName} Email Verification for: ${user.getEmail()}`;
+        return `${siteName} Email Verification`;
     },
     html(user, url) {
         return `
@@ -27,6 +19,20 @@ Accounts.emailTemplates.verifyEmail = {
 <p>Please verify your email (${user.getEmail()}) by <a target="_blank" href='${url}'>clicking here</a>.</p>
 ${questions}
 ${registrationInfoHTML}
+${signature}
+`;
+    }
+};
+
+Accounts.emailTemplates.resetPassword = {
+    subject(user) {
+        return `${siteName} Password Reset Request`;
+    },
+    html(user, url) {
+        return `
+<p>Hi ${user.firstname}!</p>
+<p>You may reset your password by <a target="_blank" href='${url}'>clicking here</a>.</p>
+${questions}
 ${signature}
 `;
     }
