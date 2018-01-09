@@ -13,6 +13,7 @@ const SORT_BY_OPTS = [
   { text: 'Last Updated', value: 'last-updated' },
   { text: 'Team Size', value: 'size' },
 ];
+const { eventYear } = Meteor.settings.public;
 
 TeamBrowser = class TeamBrowser extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ TeamBrowser = class TeamBrowser extends Component {
   }
 
   _getTitle() {
-    return this.state.public ? '2017 Teams' : 'Join a Team';
+    return this.state.public ? `${eventYear} Teams` : 'Join a Team';
   }
 
   _handleChange(e, data) {
