@@ -21,7 +21,7 @@ export const DIVISION_OPTS = [
   { text: 'WWU Student', value: 'wwu-student' },
   { text: 'WWU Alumni', value: 'wwu-alumni' },
   // { text: 'Post-Secondary/Non-WWU college', value: 'post-secondary' },
-  // { text: 'High School', value: 'high-school' },
+  { text: 'High School', value: 'highschool' },
   { text: 'Open', value: 'open' },
 ];
 
@@ -29,6 +29,6 @@ export const DEVISION_MAP = {
   'wwu-student': 'WWU Student',
   'wwu-alumni': 'WWU Alumni',
   // 'post-secondary': 'Post-Secondary/Non-WWU college',
-  // 'high-school': 'High School',
+  'highschool': 'High School',
   'open': 'Open',
 };

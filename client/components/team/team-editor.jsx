@@ -13,7 +13,7 @@ TeamEditor = class TeamEditor extends Component {
       { name: 'WWU Student (All members must be current WWU students)', value: 'wwu-student' },
       { name: 'WWU Alumni (At least half of members must be WWU Alumni)', value: 'wwu-alumni' },
       // { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
-      { name: 'High School (All members must be current high school students)', value: 'high-school' },
+      { name: 'High School (All members must be current high school students)', value: 'highschool' },
       { name: 'Open (General public, mixed student/non-student, family - children under age 14 must be accompanied by a parent/guardian on their team)', value: 'open' },
     ];
 
