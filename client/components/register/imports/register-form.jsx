@@ -179,7 +179,7 @@ class RegisterForm extends Component {
           <Form.Input name='confirmPassword' type='password' label='Confirm Password' placeholder='password again' value={ this.state.confirmPassword } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
-        <Header as='h3' icon={<Icon name='home' color='blue'/>} content='Player Details' subheader='We have to collect this information for legal purposes because the event takes place at WWU'/>
+        <Header as='h3' icon={<Icon name='home' color='blue'/>} content='Player Details' subheader='This information is required in the case of emergency.'/>
 
         <Form.Group widths='equal'>
           <Form.Input name='phone' type='tel' label='Phone' placeholder='Your digits' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
@@ -196,7 +196,11 @@ class RegisterForm extends Component {
           <Form.Dropdown name='state' label='State' search selection options={ STATES } value={ this.state.state } onChange={ (e,data) => this._handleDataChange(e,data) }/>
         </Form.Group>
 
-        <Header as='h3' icon={<Icon name='ambulance' color='red'/>} content='Emergency Contact' subheader='We have to collect this information for legal purposes because the event takes place at WWU'/>
+        <Header as='h3' icon={<Icon name='ambulance' color='red'/>} content='Emergency Contact' subheader='This information is required in the case of emergency.'/>
+
+        <p>
+          <strong>Note:</strong> If player is under the age of 14 please enter a parent or legal guardian as their emergency contact.
+        </p>
 
         <Form.Group widths='equal'>
           <Form.Input name='ecName' label='Full Name' placeholder='Reliable person who has your back' value={ this.state.ecName } onChange={ (e) => this._handleTextChange(e) }/>
