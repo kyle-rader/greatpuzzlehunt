@@ -9,6 +9,7 @@ import { Segment,
   Dropdown,
   Message,
 } from 'semantic-ui-react';
+import { pick } from 'lodash';
 
 import GamestateComp from '../../imports/gamestate-comp';
 
@@ -94,6 +95,16 @@ class RegisterForm extends Component {
       password: '',
       confirmPassword: '',
       coords: '',
+      phone: '',
+      age: '',
+      address: '',
+      city: '',
+      zip: '',
+      state: '',
+      ecName: '',
+      ecRelationship: '',
+      ecPhone: '',
+      ecEmail: '',
       photoPermission: true,
       holdHarmless: false,
       showHoldHarmless: false,
@@ -168,11 +179,11 @@ class RegisterForm extends Component {
           <Form.Input name='confirmPassword' type='password' label='Confirm Password' placeholder='password again' value={ this.state.confirmPassword } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
-        <Header as='h3' icon={<Icon name='first aid' color='red' size='medium'/>} content='Player Details' subheader='We have to collect this information for legal purposes because the event takes place at WWU'/>
+        <Header as='h3' icon={<Icon name='home' color='blue'/>} content='Player Details' subheader='We have to collect this information for legal purposes because the event takes place at WWU'/>
 
         <Form.Group widths='equal'>
           <Form.Input name='phone' type='tel' label='Phone' placeholder='Your digits' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
-          <Form.Input name='age' type='number' label='Age' placeholder='Number of revolutions around sun' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='age' type='text' label='Age' placeholder='Number of revolutions around sun' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         <Form.Group widths='equal'>
@@ -181,12 +192,23 @@ class RegisterForm extends Component {
         </Form.Group>
 
         <Form.Group widths='equal'>
-          <Form.Input name='zip' label='Zip Code' placeholder='12345' value={ this.state.zip } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='zip' label='Zip Code' placeholder='Those 5 digits in particular' value={ this.state.zip } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Dropdown name='state' label='State' search selection options={ STATES } value={ this.state.state } onChange={ (e,data) => this._handleDataChange(e,data) }/>
         </Form.Group>
 
+        <Header as='h3' icon={<Icon name='ambulance' color='red'/>} content='Emergency Contact' subheader='We have to collect this information for legal purposes because the event takes place at WWU'/>
 
-        <Header as='h3' icon={<Icon name='camera' color='violet' size='medium'/>} content='Photo Permission'/>
+        <Form.Group widths='equal'>
+          <Form.Input name='ecName' label='Full Name' placeholder='Reliable person who has your back' value={ this.state.ecName } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='ecRelationship' label='Relationship' placeholder='How you know this person' value={ this.state.ecRelationship } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
+          <Form.Input name='ecPhone' label='Phone' placeholder='A phone that gets answered' value={ this.state.ecPhone } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='ecEmail' label='Email' placeholder='A reliable email' value={ this.state.ecEmail } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Header as='h3' icon={<Icon name='camera' color='violet'/>} content='Photo Permission'/>
 
         <Form.Checkbox
           toggle
@@ -196,7 +218,7 @@ class RegisterForm extends Component {
           onChange={ (e,data) => this._handleDataChange(e,data) }
         />
 
-        <Header as='h3' icon={<Icon name='pencil' color='orange' size='medium'/>} content='Acknowledgement of Risk & Hold Harmless Agreement' />
+        <Header as='h3' icon={<Icon name='pencil' color='orange'/>} content='Acknowledgement of Risk & Hold Harmless Agreement' />
 
         { this._holdHarmlessButton() }
         { this._holdHarmless() }
@@ -243,18 +265,13 @@ class RegisterForm extends Component {
   }
 
   _registrationData() {
-    const { firstname, lastname, email, accountType, password, confirmPassword, coords, photoPermission, holdHarmless } = this.state;
-    return {
-      firstname,
-      lastname,
-      email,
-      accountType,
-      password,
-      confirmPassword,
-      coords,
-      photoPermission,
-      holdHarmless,
-    };
+    const fields = [
+      'firstname', 'lastname', 'email', 'accountType', 'password', 'confirmPassword', 'coords',
+      'phone', 'age', 'address', 'city', 'zip', 'state', 'ecName', 'ecRelationship', 'ecPhone', 'ecEmail',
+      'photoPermission', 'holdHarmless'
+    ];
+
+    return pick(this.state, fields);
   }
 
   _handleTextChange(e) {
