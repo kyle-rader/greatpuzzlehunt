@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import GamestateComp from '../imports/gamestate-comp';
 import RegisterForm from './imports/register-form';
 
+const { eventYear } = Meteor.settings.public;
+
 class RegisterInner extends Component {
   render() {
 
@@ -14,9 +16,9 @@ class RegisterInner extends Component {
         <Container>
           <br/>
           <Message
-            info
-            header='Registration will open Jan 9, 2018'
-            content='The 2018 Great Puzzle Hunt is under development!'
+            info large
+            header='Registration is being updated...'
+            content={`The ${eventYear} Great Puzzle Hunt registration will be back online ASAP!`}
           />
         </Container>
       );
