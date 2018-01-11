@@ -20,6 +20,68 @@ const accountTypeOptions = [
   { key: 'volunteer', value: 'VOLUNTEER', text: 'Volunteer (does not play in game)' },
 ];
 
+const STATES = [
+  { key: 'WA', text: 'WA', value: 'WA' },
+  { key: 'AL', text: 'AL', value: 'AL' },
+  { key: 'AK', text: 'AK', value: 'AK' },
+  { key: 'AS', text: 'AS', value: 'AS' },
+  { key: 'AZ', text: 'AZ', value: 'AZ' },
+  { key: 'AR', text: 'AR', value: 'AR' },
+  { key: 'CA', text: 'CA', value: 'CA' },
+  { key: 'CO', text: 'CO', value: 'CO' },
+  { key: 'CT', text: 'CT', value: 'CT' },
+  { key: 'DE', text: 'DE', value: 'DE' },
+  { key: 'DC', text: 'DC', value: 'DC' },
+  { key: 'FM', text: 'FM', value: 'FM' },
+  { key: 'FL', text: 'FL', value: 'FL' },
+  { key: 'GA', text: 'GA', value: 'GA' },
+  { key: 'GU', text: 'GU', value: 'GU' },
+  { key: 'HI', text: 'HI', value: 'HI' },
+  { key: 'ID', text: 'ID', value: 'ID' },
+  { key: 'IL', text: 'IL', value: 'IL' },
+  { key: 'IN', text: 'IN', value: 'IN' },
+  { key: 'IA', text: 'IA', value: 'IA' },
+  { key: 'KS', text: 'KS', value: 'KS' },
+  { key: 'KY', text: 'KY', value: 'KY' },
+  { key: 'LA', text: 'LA', value: 'LA' },
+  { key: 'ME', text: 'ME', value: 'ME' },
+  { key: 'MH', text: 'MH', value: 'MH' },
+  { key: 'MD', text: 'MD', value: 'MD' },
+  { key: 'MA', text: 'MA', value: 'MA' },
+  { key: 'MI', text: 'MI', value: 'MI' },
+  { key: 'MN', text: 'MN', value: 'MN' },
+  { key: 'MS', text: 'MS', value: 'MS' },
+  { key: 'MO', text: 'MO', value: 'MO' },
+  { key: 'MT', text: 'MT', value: 'MT' },
+  { key: 'NE', text: 'NE', value: 'NE' },
+  { key: 'NV', text: 'NV', value: 'NV' },
+  { key: 'NH', text: 'NH', value: 'NH' },
+  { key: 'NJ', text: 'NJ', value: 'NJ' },
+  { key: 'NM', text: 'NM', value: 'NM' },
+  { key: 'NY', text: 'NY', value: 'NY' },
+  { key: 'NC', text: 'NC', value: 'NC' },
+  { key: 'ND', text: 'ND', value: 'ND' },
+  { key: 'MP', text: 'MP', value: 'MP' },
+  { key: 'OH', text: 'OH', value: 'OH' },
+  { key: 'OK', text: 'OK', value: 'OK' },
+  { key: 'OR', text: 'OR', value: 'OR' },
+  { key: 'PW', text: 'PW', value: 'PW' },
+  { key: 'PA', text: 'PA', value: 'PA' },
+  { key: 'PR', text: 'PR', value: 'PR' },
+  { key: 'RI', text: 'RI', value: 'RI' },
+  { key: 'SC', text: 'SC', value: 'SC' },
+  { key: 'SD', text: 'SD', value: 'SD' },
+  { key: 'TN', text: 'TN', value: 'TN' },
+  { key: 'TX', text: 'TX', value: 'TX' },
+  { key: 'UT', text: 'UT', value: 'UT' },
+  { key: 'VT', text: 'VT', value: 'VT' },
+  { key: 'VI', text: 'VI', value: 'VI' },
+  { key: 'VA', text: 'VA', value: 'VA' },
+  { key: 'WV', text: 'WV', value: 'WV' },
+  { key: 'WI', text: 'WI', value: 'WI' },
+  { key: 'WY', text: 'WY', value: 'WY' },
+];
+
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -89,7 +151,7 @@ class RegisterForm extends Component {
     return (
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
 
-        <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`} subheader={`Event date: ${eventDate} at Western Washington University, Bellingham, WA`}/>
+        <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`} subheader={`${eventDate} at Western Washington University, Bellingham, WA`}/>
 
         <Form.Group widths='equal'>
           <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
@@ -106,7 +168,25 @@ class RegisterForm extends Component {
           <Form.Input name='confirmPassword' type='password' label='Confirm Password' placeholder='password again' value={ this.state.confirmPassword } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
-        <h3><Icon name='camera' color='violet' size='large'/>Photo Permission</h3>
+        <Header as='h3' icon={<Icon name='first aid' color='red' size='medium'/>} content='Player Details' subheader='We have to collect this information for legal purposes because the event takes place at WWU'/>
+
+        <Form.Group widths='equal'>
+          <Form.Input name='phone' type='tel' label='Phone' placeholder='Your digits' value={ this.state.phone } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='age' type='number' label='Age' placeholder='Number of revolutions around sun' value={ this.state.age } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
+          <Form.Input name='address' type='text' label='Mailing Address' placeholder='Your mail goes here' value={ this.state.address } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='city' type='text' label='City' placeholder='Where you hail from' value={ this.state.city } onChange={ (e) => this._handleTextChange(e) }/>
+        </Form.Group>
+
+        <Form.Group widths='equal'>
+          <Form.Input name='zip' label='Zip Code' placeholder='12345' value={ this.state.zip } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Dropdown name='state' label='State' search selection options={ STATES } value={ this.state.state } onChange={ (e,data) => this._handleDataChange(e,data) }/>
+        </Form.Group>
+
+
+        <Header as='h3' icon={<Icon name='camera' color='violet' size='medium'/>} content='Photo Permission'/>
 
         <Form.Checkbox
           toggle
@@ -116,7 +196,7 @@ class RegisterForm extends Component {
           onChange={ (e,data) => this._handleDataChange(e,data) }
         />
 
-        <h3><Icon name='pencil' color='orange' size='large'/>Acknowledgement of Risk & Hold Harmless Agreement</h3>
+        <Header as='h3' icon={<Icon name='pencil' color='orange' size='medium'/>} content='Acknowledgement of Risk & Hold Harmless Agreement' />
 
         { this._holdHarmlessButton() }
         { this._holdHarmless() }

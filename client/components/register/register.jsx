@@ -30,7 +30,6 @@ class RegisterInner extends Component {
         <Segment basic>
           <RegisterForm/>
         </Segment>
-
       </Container>
     );
   }
