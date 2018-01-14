@@ -105,6 +105,7 @@ class RegisterForm extends Component {
       ecRelationship: '',
       ecPhone: '',
       ecEmail: '',
+      parentGuardian: '',
       photoPermission: true,
       holdHarmless: false,
       showHoldHarmless: false,
@@ -148,7 +149,7 @@ class RegisterForm extends Component {
           <Icon name='mail' color='green'/>
           <Message.Content>
             <Header as='h3'>Thank you for registering!<br/></Header>
-            <p>We've sent a verification email to <strong>{ this.state.email }</strong>. Go check your email!</p>
+            <p>We have sent a verification email to <strong>{ this.state.email }</strong>. Go check your email!</p>
             <p>You must click the verificiation link in that email before you can log in.</p>
           </Message.Content>
         </Message>
@@ -163,6 +164,8 @@ class RegisterForm extends Component {
       <Form onSubmit={ (e) => this._register(e) } style={ this._formStyle() }>
 
         <Header as='h1' icon={<Icon name='user' color='green'/>} content={`Register for the ${eventYear} Great Puzzle Hunt`} subheader={`${eventDate} at Western Washington University, Bellingham, WA`}/>
+
+        {this._errorMessage()}
 
         <Form.Group widths='equal'>
           <Form.Input name='firstname' label='First Name' placeholder='First Name' value={ this.state.firstname } onChange={ (e) => this._handleTextChange(e) }/>
@@ -212,15 +215,16 @@ class RegisterForm extends Component {
           <Form.Input name='ecEmail' label='Email' placeholder='A reliable email' value={ this.state.ecEmail } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
+        { this._parentGuardian()}
+
         <Header as='h3' icon={<Icon name='camera' color='violet'/>} content='Photo Permission'/>
 
         <Form.Checkbox
           toggle
-          defaultChecked={true}
+          defaultChecked={this.state.photoPermission}
           name='photoPermission'
-          label='I hereby give my permission to Western and the Great Puzzle Hunt to use my (or my minor child’s) image, in photo or video, in whole or in part, for public information and marketing of the WWU Great Puzzle Hunt at its discretion.'
-          onChange={ (e,data) => this._handleDataChange(e,data) }
-        />
+          label="I hereby give my permission to Western and the Great Puzzle Hunt to use my (or my minor child's) image, in photo or video, in whole or in part, for public information and marketing of the WWU Great Puzzle Hunt at its discretion."
+          onChange={ (e,data) => this._handleDataChange(e,data) } />
 
         <Header as='h3' icon={<Icon name='pencil' color='orange'/>} content='Acknowledgement of Risk & Hold Harmless Agreement' />
 
@@ -229,10 +233,10 @@ class RegisterForm extends Component {
 
         <Form.Checkbox
           toggle
+          defaultChecked={this.state.holdHarmless}
           name='holdHarmless'
           label='By checking this box I acknowledge that I have read and understand the Risk & Hold Harmless Agreement and that I am either 18+ years old or a WWU student or the parent/guardian of a minor participant.'
-          onChange={ (e,data) => this._handleDataChange(e,data) }
-        />
+          onChange={ (e,data) => this._handleDataChange(e,data) }/>
         <List>
           <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on their behalf on their minor.</List.Item>
           <List.Item><strong>Participants under age 14:</strong> In addition to registering their minor, a parent/legal guardian must also register and join the same team as their under age 14 child and accompany them at all times during the Puzzle Hunt.</List.Item>
@@ -271,7 +275,7 @@ class RegisterForm extends Component {
   _registrationData() {
     const fields = [
       'firstname', 'lastname', 'email', 'accountType', 'password', 'confirmPassword', 'coords',
-      'phone', 'age', 'address', 'city', 'zip', 'state', 'ecName', 'ecRelationship', 'ecPhone', 'ecEmail',
+      'phone', 'age', 'address', 'city', 'zip', 'state', 'ecName', 'ecRelationship', 'ecPhone', 'ecEmail', 'parentGuardian',
       'photoPermission', 'holdHarmless'
     ];
 
@@ -313,6 +317,21 @@ class RegisterForm extends Component {
         <p>I understand and acknowledge that a medical emergency may develop which necessitates the need for immediate medical treatment for a participant.  I hereby authorize Western and its officers, agents, volunteers or employees to arrange or provide any necessary emergency medical treatment on my (or my minor child’s) behalf.</p>
       </Segment>
     );
+  }
+
+  _parentGuardian() {
+    const age = parseInt(this.state.age);
+    if ((age < 14) || (age === NaN)) {
+      return (
+        <Form.Input
+          name='parentGuardian'
+          type='text'
+          label="Parent/Guardian Full Name (if player is under the age of 14)"
+          placeholder='Full name of legal parent/guardian' value={ this.state.parentGuardian } onChange={ (e) => this._handleTextChange(e) }/>
+      );
+    } else {
+      return null;
+    }
   }
 
   _errorMessage() {
