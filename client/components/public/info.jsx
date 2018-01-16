@@ -147,8 +147,10 @@ Info = class Info extends Component {
             Who is it for?
           </Accordion.Title>
           <Accordion.Content>
-            Students, Faculty, Staff, Alumni, Community, Everyone!<br/>
-            <small>* Children under 14 must be accompanied at all times by a parent/legal guardian who must also be registered on the same team as the child.</small>
+            <p>
+              Students, Faculty, Staff, Alumni, Community, Everyone!
+            </p>
+            <strong>*</strong> Children under 14 must be accompanied at all times by a parent/legal guardian who must also be registered on the same team as the child.
           </Accordion.Content>
 
           <Accordion.Title>
@@ -159,13 +161,13 @@ Info = class Info extends Component {
             <List className='bulleted'>
               <List.Item description="WWU Students - All team members must be currently enrolled at WWU (undergrad or grad)"/>
               <List.Item description="High School - All team members must be currently enrolled in high school"/>
-              <List.Item description="WWU Alumni - 4 or more team members must be WWU Alumni"/>
-              <List.Item description="Non-WWU Post-Secondary - All team members must be currently enrolled in a Post-Secondary institution"/>
-              <List.Item description="Open - General Public, Mixed Student/Non-Student, Family (children under age 14 must be accompanied by parent/legal guardian)"/>
+              <List.Item description="WWU Alumni - At least half of team members must be WWU Alumni"/>
+              <List.Item description="Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)"/>
             </List>
-            Note: A team must have a minimum of 4 members and a maximum of 6.<br/>
-            Note: A minimum of 15 teams are required to form a division; else the teams in that division will merge into the Open division.<br/>
-            Note: A WWU student may join an Open team, but not the reverse; else the WWU student team will become an Open division team<br/>
+            <p>
+              Note: A team may have up to 6 members. We recommend 4-6 for dividing up tasks.<br/>
+              Note: A minimum of 10 teams are required to form a division; else the teams in that division will merge into the Open division.<br/>
+            </p>
           </Accordion.Content>
 
           <Accordion.Title>
