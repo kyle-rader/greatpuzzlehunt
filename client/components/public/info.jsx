@@ -15,6 +15,12 @@ import {
 
 const { eventYear, eventDate, siteName } = Meteor.settings.public;
 
+const prizeNote = (
+  <p>
+    <strong>*</strong> Must be present at awards ceremony to claim prizes, else prizes go to the next place team.
+  </p>
+);
+
 Info = class Info extends Component {
 
   constructor(props) {
@@ -85,15 +91,31 @@ Info = class Info extends Component {
           </Accordion.Title>
           <Accordion.Content>
             <p>
-              A puzzle hunt is like a scavenger hunt, with puzzles.
-              Teams (up to 6 people) travel on foot about campus (outdoors) solving a
-              collection of puzzles (logic puzzles, word scrambles, trivia, etc.).
+              A puzzle hunt is an outdoor adventure think scavenger hunt but with puzzle-solving.
+              Teams of up to 6 (recommended size 4-6) travel on foot about WWU campus solving
+              a collection of puzzles (involving logic, patterns, decoding, and a variety
+              of skill sets). Lots of prizes* will be awarded. Whether your team places
+              first or two hundred and fifty-first, competing in a puzzle hunt is a
+              great way to stretch your mental muscles, bond with your teammates,
+              and have a lot of fun!
+            </p>
+            <p>
+              Registered teams are assigned a QR code and connected to our game
+              platform on their smartphone(s). Your mission: Reach each
+              puzzle location and scan your QR code to receive the puzzle and start the clock!
+            </p>
+            <p>
+              Don’t forget your bag of scissors, tape, hole punch, etc. to
+              MacGyver your way through. Once you determine and enter code words,
+              the clock stops and you are sent to the next destination. Connect
+              all the code words to complete the game! OPEN TO ALL!
             </p>
             <p>
               Lots of prizes will be awarded. Whether your team places first or two
               hundred and fifty-first, competing in a puzzle hunt is a great way to
               stretch your mental muscles, bond with your teammates, and have a lot of fun!
             </p>
+            {prizeNote}
           </Accordion.Content>
 
           <Accordion.Title>
@@ -144,6 +166,17 @@ Info = class Info extends Component {
             Note: A team must have a minimum of 4 members and a maximum of 6.<br/>
             Note: A minimum of 15 teams are required to form a division; else the teams in that division will merge into the Open division.<br/>
             Note: A WWU student may join an Open team, but not the reverse; else the WWU student team will become an Open division team<br/>
+          </Accordion.Content>
+
+          <Accordion.Title>
+            <Icon color="green" size="big" name="dropdown"/>
+            Prizes?
+          </Accordion.Title>
+          <Accordion.Content>
+            <p>
+              Awesome prizes* will be awarded to top three teams in each division. Other prizes* for best team names, costumes, spirit, and more!
+            </p>
+            {prizeNote}
           </Accordion.Content>
 
           <Accordion.Title>
