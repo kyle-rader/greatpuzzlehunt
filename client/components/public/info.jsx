@@ -264,8 +264,7 @@ Info = class Info extends Component {
           </Accordion.Title>
           <Accordion.Content>
             <List>
-              <List.Item description="10:00 AM -  Check in at Red Square, WWU campus. Receive wristband (color coded by
-      division), information packet, swag, and any pre-ordered shirts."/>
+              <List.Item description="10:00 AM -  Check in at Red Square, WWU campus. Receive wristband (color coded by division), information packet, swag, and any pre-ordered shirts."/>
               <List.Item description="10:45 AM - Announcements."/>
               <List.Item description="11:00 AM - Puzzle Hunt starts!"/>
               <List.Item description="1:30 - 3:30 PM KUGS Radio plays music Red Square"/>
@@ -312,33 +311,28 @@ Info = class Info extends Component {
             What kind of puzzles will we be solving?
           </Accordion.Title>
           <Accordion.Content>
-            Check out the <Link to="/puzzles">puzzles from last year</Link>!
+            Check out <Link to="/puzzles">past puzzles</Link>!
           </Accordion.Content>
 
           <Accordion.Title>
             <Icon color="violet" name="dropdown"/>
             <Icon name="shop"/>
-            Shirts, T-Shirts, & Sweatshirts!
+            What does the Gear/Apparel look like?
           </Accordion.Title>
           <Accordion.Content>
-            This year we have awesome Next Level Poly/Cotton blend T-Shirts!<br/>
+            <p>This year you have several choices of puzzle hunt gear and hundreds of color combinations!</p>
+            <p>Note: to buy gear you will be redirected to <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">this CashNet page</a> where you need to click the bottom gear link to select your gear options.</p>
             <List>
-              <List.Item>All colors can be viewed at Next Level:<a target="_blank" href="http://www.nextlevelapparel.com/Prod-24-1-29-2/men39s-polycotton-crew.htm">Men's Colors</a> | <a target="_blank" href="http://www.nextlevelapparel.com/Prod-22-1-13-1/next-level-polycotton-tee.htm">Women's Colors</a>.</List.Item>
-              <List.Item>Next Level Cotton/Poly blend Tshirts!</List.Item>
-              <List.Item>
-                Mens' Sizes: S-3XL<br/>
-                Ladies’ Sizes: S-2XL  (*The ladies run small. They are a Junior Fitted T-shirt. )<br/>
-                Sizes 2-3XL are an additional $2.
-              </List.Item>
-              <List.Item>White or Navy logo for any shirt color."</List.Item>
-              <List.Item>Early bird price: $10."</List.Item>
-              <List.Item>Regular Price (March 11 - March 23): $13"</List.Item>
-              <List.Item>T-Shirt sales end March 23, 2017 at midnight."</List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#tshirts">Mens Cotton T-Shirts</a> (Heavy weight cotton)</List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#wtshirts">Womens Cotton T-Shirts</a> (Heavy weight cotton)</List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#ktshirts">Youth Cotton Blend T-Shirts</a> (Heavy weight cotton)</List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#50/50">Mens & Womens 50/50 Poly/Cotton Blend T-Shirts</a> (Lighter weight/softer & not fitted)</List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#Ltshirt">Mens & Womens Long Sleeve Cotton T-Shirts</a> (Heavy weight cotton)</List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#sweatshirt">Unisex Cotton Sweatshirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#ksweatshirt">Youth Unisex Cotton Sweatshirts</a></List.Item>
             </List>
-            <Image.Group>
-              <Image src="/img/2017/t-shirts/mens.jpg"/>
-              <Image src="/img/2017/t-shirts/womens.jpg"/>
-            </Image.Group>
+            {gearPricing}
+            <p>The sale of these shirts helps to fund this event. Support the WWU Great Puzzle Hunt and wear our official Great Puzzle Hunt gear! Check out the styles, colors, and design. Pick up your shirts at event check-in.</p>
           </Accordion.Content>
         </Accordion>
 
