@@ -280,6 +280,9 @@ Info = class Info extends Component {
             </Image.Group>
           </Accordion.Content>
         </Accordion>
+
+        <br/>
+        <p>Last Updated: Jan 16, 2018</p>
       </Container>
     );
   }
