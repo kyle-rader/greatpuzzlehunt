@@ -21,6 +21,18 @@ const prizeNote = (
   </p>
 );
 
+const gearPricing = (
+  <span>
+    <strong>Official Puzzle Gear Pricing</strong>
+    <ul>
+      <li>Early Bird Discount Price (varying styles: prices range from $10-20, additional $2 for extended sizes) until March 18, {eventYear}</li>
+      <li>Regular Price (varying styles: prices range from $13-$23, additional $2 for extended sizes) begins March 19, {eventYear}</li>
+      <li>Gear sale ends midnight April 3, {eventYear}</li>
+      <li>The sale of these shirts helps to fund this event. Support the WWU Great Puzzle Hunt and wear our official Great Puzzle Hunt gear! Check out the styles, colors, and design. Pick up your shirts at event check-in.</li>
+    </ul>
+  </span>
+);
+
 Info = class Info extends Component {
 
   constructor(props) {
@@ -41,12 +53,14 @@ Info = class Info extends Component {
 
           <Accordion.Title>
             <Icon color="red" size="huge" name="dropdown"/>
+            <Icon name="download"/>
             Useful downloads (2017)
           </Accordion.Title>
           <Accordion.Content>{this._downloadButtons()}</Accordion.Content>
 
           <Accordion.Title>
             <Icon color="red" size="huge" name="dropdown"/>
+            <Icon name="map"/>
             Directions & Parking
           </Accordion.Title>
           <Accordion.Content>
@@ -87,6 +101,7 @@ Info = class Info extends Component {
 
           <Accordion.Title>
             <Icon color="orange" size="huge" name="dropdown"/>
+            <Icon name="info"/>
             What is the Great Puzzle Hunt?
           </Accordion.Title>
           <Accordion.Content>
@@ -120,6 +135,7 @@ Info = class Info extends Component {
 
           <Accordion.Title>
             <Icon color="orange" size="huge" name="dropdown"/>
+            <Icon name="users"/>
             How many people should be on my team?
           </Accordion.Title>
           <Accordion.Content>
@@ -127,7 +143,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="yellow" size="big" name="dropdown"/>
+            <Icon color="yellow" name="dropdown"/>
+            <Icon name="calendar"/>
             When is it?
           </Accordion.Title>
           <Accordion.Content>
@@ -143,7 +160,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="olive" size="big" name="dropdown"/>
+            <Icon color="yellow" name="dropdown"/>
+            <Icon name="user"/>
             Who is it for?
           </Accordion.Title>
           <Accordion.Content>
@@ -154,7 +172,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="green" size="big" name="dropdown"/>
+            <Icon color="olive" name="dropdown"/>
+            <Icon name="sitemap"/>
             What team divisions are there?
           </Accordion.Title>
           <Accordion.Content>
@@ -171,7 +190,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="green" size="big" name="dropdown"/>
+            <Icon color="olive" name="dropdown"/>
+            <Icon name="trophy"/>
             Prizes?
           </Accordion.Title>
           <Accordion.Content>
@@ -182,24 +202,35 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="teal" name="dropdown"/>
+            <Icon color="green" name="dropdown"/>
+            <Icon name="dollar"/>
             How much does this cost?
           </Accordion.Title>
           <Accordion.Content>
-            Registration Prices are per person.  All fees are non-refundable.  Fee is charged when person registers.<br/><br/>
-            <strong>Early Bird Registration Fee</strong><br/>
-            Open until March 10, 2017 <br/>
-            Student: $5<br/>
-            Non-Student: $10<br/><br/>
-            <strong>Regular Registration Fee</strong><br/>
-            Open from March 11 - March 30, 2017 <br/>
-            Student: $8<br/>
-            Non-Student: $15<br/>
-            Fees help cover costs of materials, prizes, food, campus services & reservations, etc.  We are seeking <a target="_blank" href="https://alumni.wwu.edu/greatpuzzlehunt">donations</a> to help keep fees minimized.
+            <p>
+              Registration Prices are per person. All fees are non-refundable. Fees charged when person buys ticket codes.<br/>
+              You can SAVE on the early bird discount prices!
+            </p>
+            <strong>Ticket Code Pricing</strong>
+            <ul>
+              <li>Early Bird Discount Price ($5 student/$10 non-student) until March 18, {eventYear}</li>
+              <li>Regular Price ($8 student/$15 non-student) begin March 19, {eventYear}</li>
+            </ul>
+            {gearPricing}
+            <p>
+              These fees are kept low thanks to generous donations from our sponsors.
+              They help cover costs of materials, prizes*, food, campus services
+              & reservations, etc.
+            </p>
+            {prizeNote}
+            <p>
+              Please consider <a target="_blank" href="https://alumni.wwu.edu/greatpuzzlehunt">donating to the {siteName}</a>.
+            </p>
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="blue" size="big" name="dropdown"/>
+            <Icon color="green" name="dropdown"/>
+            <Icon name="suitcase"/>
             What should I bring to the puzzle hunt?
           </Accordion.Title>
           <Accordion.Content>
@@ -216,7 +247,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="violet" size="big" name="dropdown"/>
+            <Icon color="teal" name="dropdown"/>
+            <Icon name="flask"/>
             Do I have to be a math/science person?
           </Accordion.Title>
           <Accordion.Content>
@@ -226,7 +258,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="purple" size="big" name="dropdown"/>
+            <Icon color="teal" name="dropdown"/>
+            <Icon name="clock"/>
             How long will this last? (Event Schedule)
           </Accordion.Title>
           <Accordion.Content>
@@ -240,7 +273,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="pink" size="big" name="dropdown"/>
+            <Icon color="blue" name="dropdown"/>
+            <Icon name="rain"/>
             What if it rains?
           </Accordion.Title>
           <Accordion.Content>
@@ -248,7 +282,8 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="brown" size="big" name="dropdown"/>
+            <Icon color="blue" name="dropdown"/>
+            <Icon name="puzzle"/>
             What kind of puzzles will we be solving?
           </Accordion.Title>
           <Accordion.Content>
@@ -256,8 +291,9 @@ Info = class Info extends Component {
           </Accordion.Content>
 
           <Accordion.Title>
-            <Icon color="black" size="big" name="dropdown"/>
-            What do the T-Shirts look like?
+            <Icon color="violet" name="dropdown"/>
+            <Icon name="shop"/>
+            Shirts, T-Shirts, & Sweatshirts!
           </Accordion.Title>
           <Accordion.Content>
             This year we have awesome Next Level Poly/Cotton blend T-Shirts!<br/>
