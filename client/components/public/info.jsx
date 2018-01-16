@@ -51,10 +51,10 @@ Info = class Info extends Component {
           </Accordion.Title>
           <Accordion.Content>
             <p>
-              Parking is FREE in all C-Lots on south campus.
+              Parking is FREE in all C-Lots on south campus on weekends.
             </p>
             <p>
-              Check in at Red Square in the middle of campus.
+              Check in at Red Square in the middle of campus. Food and prizes will also take place in Red Square.
             </p>
             <Button as='a' href="http://www.wwu.edu/map/" target="_blank" content="Interactive Campus Map" />
 
@@ -108,7 +108,7 @@ Info = class Info extends Component {
               Don’t forget your bag of scissors, tape, hole punch, etc. to
               MacGyver your way through. Once you determine and enter code words,
               the clock stops and you are sent to the next destination. Connect
-              all the code words to complete the game! OPEN TO ALL!
+              all the code words to complete the game! <strong>OPEN TO ALL!</strong>
             </p>
             <p>
               Lots of prizes will be awarded. Whether your team places first or two
@@ -131,14 +131,14 @@ Info = class Info extends Component {
             When is it?
           </Accordion.Title>
           <Accordion.Content>
-            <h4>
-              April 1, 2017 (Saturday) at 10:00 AM, Red Square, WWU
-            </h4>
+            <h3>
+              <strong>{eventDate}</strong> at 10:00 AM, Red Square, WWU
+            </h3>
             Other important dates:
             <List className='bulleted'>
-              <List.Item>March 10, 2017: Early Bird registration closes.</List.Item>
-              <List.Item>March 23, 2017: T-Shirt Pre-Order deadline (in order to pick up your shirt at check-in on April 1, 2017)</List.Item>
-              <List.Item>March 30, 2017: Registration Closes (Or earlier if team limit is reached).</List.Item>
+              <List.Item><strong>March 18, {eventYear}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
+              <List.Item><strong>April 3, {eventYear}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
+              <List.Item><strong>March 12, {eventYear}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
             </List>
           </Accordion.Content>
 
