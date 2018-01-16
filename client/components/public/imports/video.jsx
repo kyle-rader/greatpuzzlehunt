@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Vimeo extends Component {
+export default class Video extends Component {
   render() {
     return <div ref="embedded-video" className="ui embed"></div>;
   }
@@ -10,7 +10,7 @@ export default class Vimeo extends Component {
 
     video.embed({
       source      : this.props.source,
-      id          : this.props.vimeo_id,
+      id          : this.props.videoId,
     });
 
     $('html, body').scrollTop(0);

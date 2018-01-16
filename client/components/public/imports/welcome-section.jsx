@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Grid, Segment, Button, Icon, List, Embed } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
 import RowBuffer from './row-buffer';
-import Vimeo from './vimeo';
+import Video from './video';
 
 export default class WelcomeSection extends Component {
   render() {
@@ -25,12 +25,7 @@ export default class WelcomeSection extends Component {
             { this._infoList() }
           </Grid.Column>
           <Grid.Column width={10} className='dark-blue'>
-            <Vimeo vimeo_id='181258972' source='vimeo'/>
-            {/* <Embed
-              id='181258972'
-              placeholder='/img/2016/event-photos/gathering.jpg'
-              source='vimeo'
-            /> */}
+            <Video videoId="LYzpNT-vX7s" source="youtube"/>
           </Grid.Column>
         </Grid.Row>
 
@@ -45,8 +40,7 @@ export default class WelcomeSection extends Component {
     <div>
       <LinkButton to='/register' size='large' color='green' content='Register'/>
       <LinkButton to="/login" size='large' color='blue' content='Log In'/>
-      <LinkButton to="/info" size='large' color='orange' content='More Info'/>
-      <LinkButton to="/volunteer" size='large' color='teal' content='Volunteer'/>
+      <LinkButton to="/info" size='large' color='orange' content='FAQ'/>
       <LinkButton as='a'
         href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='violet' content='Donate'
