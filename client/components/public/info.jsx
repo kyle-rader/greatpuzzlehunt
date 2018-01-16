@@ -1,9 +1,26 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { renderToString } from 'react-dom/server';
-import { Accordion, List, Icon, Header, Segment, Button, Image } from 'semantic-ui-react';
 import { Link } from 'react-router';
+import {
+  Container,
+  Accordion,
+  List,
+  Icon,
+  Header,
+  Segment,
+  Button,
+  Image
+} from 'semantic-ui-react';
+
+const { eventYear, eventDate, siteName } = Meteor.settings.public;
 
 Info = class Info extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   componentDidMount() {
     $('html, body').scrollTop(0);
@@ -11,86 +28,56 @@ Info = class Info extends Component {
 
   render() {
     return (
-      <div className="ui container">
-        <PuzzlePageTitle title="Information"/>
-
-        <Segment basic>
-          <h3>Useful downloads</h3>
-          <List>
-            <List.Item>
-              <Button
-                as="a"
-                color="blue"
-                icon='download'
-                href="/pdfs/2017/2017_GPH_general_info.pdf"
-                target="_blank"
-                content='General Info'
-              />
-            </List.Item>
-            <List.Item>
-              <Button
-                as="a"
-                color="violet"
-                icon='download'
-                href="/pdfs/2017/2017_GPH_rules_of_play.pdf"
-                target="_blank"
-                content='2017 Rules of Play & Scoring'
-              />
-            </List.Item>
-            <List.Item>
-              <Button
-                as="a"
-                color="orange"
-                icon='download'
-                href="/pdfs/2017/puzzle-hunt-map.pdf"
-                target="_blank"
-                content='2017 Puzzle Campus Map'
-              />
-            </List.Item>
-          </List>
-        </Segment>
+      <Container>
+        <PuzzlePageTitle title="FAQ"/>
 
         <Accordion styled fluid>
+
+          <Accordion.Title>
+            <Icon color="blue" size="huge" name="dropdown"/>
+            Useful downloads (2017)
+          </Accordion.Title>
+          <Accordion.Content>{this._downloadButtons()}</Accordion.Content>
+
           <Accordion.Title>
             <Icon color="red" size="huge" name="dropdown"/>
-            Parking and Directions
+            Directions & Parking
           </Accordion.Title>
           <Accordion.Content>
-            Park for FREE! Parking enforcement is suspended on all campus lots
-            April 1, but avoid parking in handicap zones or reserved spaces. Space
-            will be limited in C-Lots due to another event.
-            <div><a target="_blank" href="http://www.wwu.edu/ps/doc/pk/ParkingGuide.pdf">Parking Map</a></div>
-            <Accordion styled fluid>
-              <Accordion.Title>
-                <Icon color="blue" size="huge" name="dropdown"/>
-                Directions from the South
-              </Accordion.Title>
-              <Accordion.Content>
-                <List className='bulleted'>
-                  <List.Item description="From Interstate 5, take exit 252."/>
-                  <List.Item description="Turn left off the ramp onto S. Samish Way."/>
-                  <List.Item description="Turn left at the stop light onto N. Samish Way."/>
-                  <List.Item description="Stay in the left lane and go over the freeway."/>
-                  <List.Item description="At the second light, turn left onto Bill McDonald Parkway/Byron Avenue – there will be a Wendy's and a 76 Station on your left."/>
-                  <List.Item description="Drive on Bill McDonald Parkway for just over 1 mile and continue straight through two stop lights (you will still be on the Bill McDonald Parkway)."/>
-                  <List.Item description="The Campus Services Building will be the first building on the right after the intersection"/>
-                </List>
-              </Accordion.Content>
-              <Accordion.Title>
-                <Icon color="green" size="huge" name="dropdown"/>
-                Directions from the North
-              </Accordion.Title>
-              <Accordion.Content>
-                <List className='bulleted'>
-                  <List.Item description="From Interstate 5 going south, take exit 252 and get in the right lane."/>
-                  <List.Item description="Turn right off the ramp onto N. Samish Way, and get into the left lane."/>
-                  <List.Item description="At the next light, turn left onto Bill McDonald Parkway/Byron Avenue - there will be a Wendy's and a 76 Station on your left."/>
-                  <List.Item description="Drive on Bill McDonald Parkway for just over 1 mile and continue straight through two stop lights (you will still be on the Bill McDonald Parkway)."/>
-                  <List.Item description="The Campus Services Building will be the first building on the right after the intersection"/>
-                </List>
-              </Accordion.Content>
-            </Accordion>
-            <iframe frameBorder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%"></iframe>
+            <p>
+              Parking is FREE in all C-Lots on south campus.
+            </p>
+            <p>
+              Check in at Red Square in the middle of campus.
+            </p>
+            <Button as='a' href="http://www.wwu.edu/map/" target="_blank" content="Interactive Campus Map" />
+
+            <Header as='h3' icon={<Icon color="blue" name="map"/>} content="Directions from the South" />
+            <List bulleted>
+              <List.Item description="From Interstate 5, take exit 252."/>
+              <List.Item description="Turn left off the ramp onto S. Samish Way."/>
+              <List.Item description="Turn left at the stop light onto N. Samish Way."/>
+              <List.Item description="Stay in the left lane and go over the freeway."/>
+              <List.Item description="At the second light, turn left onto Bill McDonald Parkway/Byron Avenue – there will be a Wendy's and a 76 Station on your left."/>
+              <List.Item description="Drive on Bill McDonald Parkway for just over 1 mile and continue straight through two stop lights (you will still be on the Bill McDonald Parkway)."/>
+              <List.Item description="The Campus Services Building will be the first building on the right after the intersection."/>
+              <List.Item description="The C-Lots will be the next left and right turns."/>
+            </List>
+
+            <Header as='h3' icon={<Icon color="green" name="map"/>} content="Directions from the North" />
+            <List bulleted>
+              <List.Item description="From Interstate 5 going south, take exit 252 and get in the right lane."/>
+              <List.Item description="Turn right off the ramp onto N. Samish Way, and get into the far left turn lane."/>
+              <List.Item description="At the light, turn left onto Bill McDonald Parkway/Byron Avenue - there will be a Wendy's and a 76 Station on your left."/>
+              <List.Item description="Drive on Bill McDonald Parkway for just over 1 mile and continue straight through two stop lights (you will still be on the Bill McDonald Parkway)."/>
+              <List.Item description="The Campus Services Building will be the first building on the right after the intersection"/>
+              <List.Item description="The C-Lots will be the next left and right turns."/>
+            </List>
+
+            <br/>
+
+            <iframe frameBorder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%" />
+
           </Accordion.Content>
           <Accordion.Title>
             <Icon color="orange" size="huge" name="dropdown"/>
@@ -246,7 +233,20 @@ Info = class Info extends Component {
             </Image.Group>
           </Accordion.Content>
         </Accordion>
-      </div>
+      </Container>
+    );
+  }
+
+  _downloadButtons() {
+    return (
+      <List relaxed>
+        <List.Item>
+          <a href="/pdfs/2017/2017_GPH_rules_of_play.pdf" target="_blank"><Icon name="download"/>2017 Rules of Play & Scoring</a>
+        </List.Item>
+        <List.Item>
+          <a href="/pdfs/2017/puzzle-hunt-map.pdf" target="_blank"><Icon name="download"/>2017 Puzzle Campus Map</a>
+        </List.Item>
+      </List>
     );
   }
 }
