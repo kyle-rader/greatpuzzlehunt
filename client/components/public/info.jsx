@@ -264,12 +264,37 @@ Info = class Info extends Component {
           </Accordion.Title>
           <Accordion.Content>
             <List>
-              <List.Item description="10:00 AM - Check in at Red Square.  Team's will receive a rules packet and any pre-ordered t-shirts."/>
+              <List.Item description="10:00 AM -  Check in at Red Square, WWU campus. Receive wristband (color coded by
+      division), information packet, swag, and any pre-ordered shirts."/>
               <List.Item description="10:45 AM - Announcements."/>
               <List.Item description="11:00 AM - Puzzle Hunt starts!"/>
-              <List.Item description="2 - 3 PM - Finishing Puzzles and Lunch"/>
-              <List.Item description="4:00 PM - Prizes awarded!"/>
+              <List.Item description="1:30 - 3:30 PM KUGS Radio plays music Red Square"/>
+              <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
+              <List.Item description="2 - 3 PM - Finishing Puzzles and return to Red Square"/>
+              <List.Item description="4 - 5 PM - Award Ceremony & Prizes*!"/>
             </List>
+            {prizeNote}
+          </Accordion.Content>
+
+          <Accordion.Title>
+            <Icon color="teal" name="dropdown"/>
+            <Icon name="food"/>
+            Will the be food?
+          </Accordion.Title>
+          <Accordion.Content>
+            <p>
+              Yes! To get food and beverages you <strong>must be wearing your wristband</strong> at all times.<br/>
+              Your wristband will be given to you at check in.
+            </p>
+            <p>There are two opportunities to get this food & beverage:</p>
+            <List>
+              <List.Item description="10:00 AM - Check in/receive wristband. Refreshments & breakfast items will be along Miller Hall."/>
+              <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
+            </List>
+            <p>
+              Special thanks to <a target="_blank" href="http://www.haggen.com/">Haggen NW Fresh</a> for providing fresh fruit and
+              breakfast pastries including gluten free (GF) option.
+            </p>
           </Accordion.Content>
 
           <Accordion.Title>
