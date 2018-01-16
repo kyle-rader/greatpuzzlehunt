@@ -23,7 +23,7 @@ export default function processTransaction(txData) {
 
   const studentTickets = parseInt(studentTicketsString);
   const nonStudentTickets = parseInt(nonStudentTicketsString);
-  const gearOrders = JSON.parse(gearRaw);
+  const gearOrders = JSON.parse(gearRaw) || [];
 
   info(`Processing transaction "${tx}" from ${email}`);
   info(`studentTickets: ${studentTickets} nonStudentTickets: ${nonStudentTickets}`);
@@ -31,6 +31,7 @@ export default function processTransaction(txData) {
   logobj(gearOrders);
 
   /*
+  Important Note:
   For Indempotency we check if transactions/tickets/gear orders have already
   been created with this transaction code. If they have, we skip inserting new
   documents. Every transaction will have a unique tx code.
