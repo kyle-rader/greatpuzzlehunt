@@ -12,7 +12,7 @@ export const renderRoutes = () => (
       <Route path='gallery' component={Gallery}/>
       <Route path='contact' component={Contact}/>
       <Route path='puzzles' component={SamplePuzzles}/>
-      <Route path='info' component={Info}/>
+      <Route path='faq' component={FAQ}/>
       <Route path='qrcode' component={QRCode}/>
       <Route path='register' component={Register}/>
 

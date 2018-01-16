@@ -26,8 +26,8 @@ const mainMenuLinks = [
     iconClass: 'red puzzle',
   },
   {
-    name: 'Info',
-    to: '/info',
+    name: 'FAQ',
+    to: '/faq',
     iconClass: 'orange circle info',
   },
   {

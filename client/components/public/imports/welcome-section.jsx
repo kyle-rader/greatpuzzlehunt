@@ -40,7 +40,7 @@ export default class WelcomeSection extends Component {
     <div>
       <LinkButton to='/register' size='large' color='green' content='Register'/>
       <LinkButton to="/login" size='large' color='blue' content='Log In'/>
-      <LinkButton to="/info" size='large' color='orange' content='FAQ'/>
+      <LinkButton to="/faq" size='large' color='orange' content='FAQ'/>
       <LinkButton as='a'
         href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='violet' content='Donate'

@@ -33,7 +33,7 @@ const gearPricing = (
   </span>
 );
 
-Info = class Info extends Component {
+FAQ = class FAQ extends Component {
 
   constructor(props) {
     super(props);
