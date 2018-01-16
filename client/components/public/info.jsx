@@ -34,7 +34,7 @@ Info = class Info extends Component {
         <Accordion styled fluid>
 
           <Accordion.Title>
-            <Icon color="blue" size="huge" name="dropdown"/>
+            <Icon color="red" size="huge" name="dropdown"/>
             Useful downloads (2017)
           </Accordion.Title>
           <Accordion.Content>{this._downloadButtons()}</Accordion.Content>
@@ -77,19 +77,31 @@ Info = class Info extends Component {
             <br/>
 
             <iframe frameBorder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%" />
-
           </Accordion.Content>
+
           <Accordion.Title>
             <Icon color="orange" size="huge" name="dropdown"/>
             What is the Great Puzzle Hunt?
           </Accordion.Title>
           <Accordion.Content>
-            A puzzle hunt is like a scavenger hunt, with puzzles.
-            Teams (size 4-6) travel on foot about campus (outdoors) solving a
-            collection of puzzles (logic puzzles, word scrambles, trivia, etc.).
-            Lots of prizes will be awarded. Whether your team places first or two
-            hundred and fifty-first, competing in a puzzle hunt is a great way to
-            stretch your mental muscles, bond with your teammates, and have a lot of fun!
+            <p>
+              A puzzle hunt is like a scavenger hunt, with puzzles.
+              Teams (up to 6 people) travel on foot about campus (outdoors) solving a
+              collection of puzzles (logic puzzles, word scrambles, trivia, etc.).
+            </p>
+            <p>
+              Lots of prizes will be awarded. Whether your team places first or two
+              hundred and fifty-first, competing in a puzzle hunt is a great way to
+              stretch your mental muscles, bond with your teammates, and have a lot of fun!
+            </p>
+          </Accordion.Content>
+
+          <Accordion.Title>
+            <Icon color="orange" size="huge" name="dropdown"/>
+            How many people should be on my team?
+          </Accordion.Title>
+          <Accordion.Content>
+            We recommend 4-6 people on a team. It can be an advantage to divvy up the work (cutting, constructing, googling, etc.).
           </Accordion.Content>
 
           <Accordion.Title>
