@@ -11,7 +11,7 @@ export default class SponsorLevels extends Component {
       <Grid centered textAlign="left" padded stackable style={{ padding: '10em 0em', margin:'0'}}>
         <Grid.Row  verticalAlign='middle' >
           <Grid.Column width={6}>
-                <Header as="h1" size="huge">
+                <Header as="h1" size="medium">
                 Invest in Your Community by Sponsoring The Hunt!
                 </Header>
                 Donations of any amount will help support this Event.<br/><br/>
