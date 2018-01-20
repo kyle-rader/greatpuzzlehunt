@@ -8,7 +8,7 @@ import Video from './video';
 export default class WelcomeSection extends Component {
   render() {
     return (
-      <Grid padded stackable className="filling">
+      <Grid padded stackable stretched className="filling">
 
         <Grid.Row>
           <Grid.Column className='dark-blue'>
@@ -28,9 +28,7 @@ export default class WelcomeSection extends Component {
             <Video videoId="LYzpNT-vX7s" source="youtube"/>
           </Grid.Column>
         </Grid.Row>
-
         <RowBuffer/>
-
       </Grid>
     );
   }
