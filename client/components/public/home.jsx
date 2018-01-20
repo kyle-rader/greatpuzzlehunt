@@ -9,6 +9,7 @@ import HomeEarlyBird from './imports/home-early-bird';
 import HomePastEvents from './imports/home-past-events';
 import HomeWhoAreWe from './imports/home-who-are-we';
 import SponsorLevels from './imports/sponsor-levels';
+
 // import Sponsors from './imports/sponsors';
 // import EventDescription2 from './imports/event-description-2';
 // import RegistrationInfo from './imports/registration-info';
@@ -26,6 +27,7 @@ Home = class Home extends Component {
       <SamplePuzzles/>
       <HomePastEvents/>
       <HomeWhoAreWe/>
+
 
       {/* <WelcomeSection/> */}
       {/*
