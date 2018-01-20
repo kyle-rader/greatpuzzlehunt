@@ -8,7 +8,7 @@ export default class HomeHeader extends Component {
       <section className="pattern-bg" id="home-header">
       <Grid stackable>
         <Grid.Row className="header-wrap">
-          <Grid.Column  padded width={9}>
+          <Grid.Column width={9}>
             <img className="header-magnyfying-glass" src="/img/header-magnifying-glass.png"/>
           </Grid.Column>
           <Grid.Column verticalAlign="middle" width={6}>
