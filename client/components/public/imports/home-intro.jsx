@@ -12,6 +12,8 @@ import { Grid,
   Embed,
 } from 'semantic-ui-react';
 import Video from './video';
+import LinkButton from '../../imports/link-button';
+
 
 export default class HomeIntro extends Component {
   render() {
@@ -51,7 +53,7 @@ export default class HomeIntro extends Component {
             <Grid.Column width={4}>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium" >What?</Header>
-                Scavenger hunting, puzzle solving, brain adventuring! More details <Link to="/info">here</Link>
+                Scavenger hunting, puzzle solving, brain adventuring! <LinkButton to="/faq" content="More details" size="tiny"/>
               </Segment>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium" >Why?</Header>

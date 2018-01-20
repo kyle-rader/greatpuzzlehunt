@@ -68,7 +68,7 @@ FAQ = class FAQ extends Component {
               Parking is FREE in all C-Lots on south campus on weekends.
             </p>
             <p>
-              Check in at Red Square in the middle of campus. Food and prizes will also take place in Red Square.
+            Go to Red Square in the middle of campus for: Check-in, food, coffee (courtesy of Haggen NW Fresh and Woods Coffee), and Awards Ceremony.
             </p>
             <Button as='a' href="http://www.wwu.edu/map/" target="_blank" content="Interactive Campus Map" />
 
@@ -106,7 +106,7 @@ FAQ = class FAQ extends Component {
           </Accordion.Title>
           <Accordion.Content>
             <p>
-              A puzzle hunt is an outdoor adventure think scavenger hunt but with puzzle-solving.
+              A puzzle hunt is an outdoor adventure - think scavenger hunt but with puzzle-solving.
               Teams of up to 6 (recommended size 4-6) travel on foot about WWU campus solving
               a collection of puzzles (involving logic, patterns, decoding, and a variety
               of skill sets). Lots of prizes* will be awarded. Whether your team places
@@ -185,7 +185,7 @@ FAQ = class FAQ extends Component {
             </List>
             <p>
               Note: A team may have up to 6 members. We recommend 4-6 for dividing up tasks.<br/>
-              Note: A minimum of 10 teams are required to form a division; else the teams in that division will merge into the Open division.<br/>
+              Note: A minimum of 10 teams are required to form a division; else the teams in that division may merge into the Open division.<br/>
             </p>
           </Accordion.Content>
 
@@ -231,7 +231,7 @@ FAQ = class FAQ extends Component {
           <Accordion.Title>
             <Icon color="green" name="dropdown"/>
             <Icon name="suitcase"/>
-            What should I bring to the puzzle hunt?
+            What should I bring?
           </Accordion.Title>
           <Accordion.Content>
             Your creativity and problem solving skills! Along with the following:<br/>
@@ -278,7 +278,7 @@ FAQ = class FAQ extends Component {
           <Accordion.Title>
             <Icon color="teal" name="dropdown"/>
             <Icon name="food"/>
-            Will the be food?
+            Food?
           </Accordion.Title>
           <Accordion.Content>
             <p>
@@ -291,8 +291,8 @@ FAQ = class FAQ extends Component {
               <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
             </List>
             <p>
-              Special thanks to <a target="_blank" href="http://www.haggen.com/">Haggen NW Fresh</a> for providing fresh fruit and
-              breakfast pastries including gluten free (GF) option.
+              Special thanks to Market Street Catering of <a target="_blank" href="http://www.haggen.com/">Haggen NW Fresh</a> for providing fresh fruit and
+              breakfast pastries including gluten free (GF) option and <a target="_blank" href="https://woodscoffee.com/">Woods Coffe</a> for the fresh brewed coffee!
             </p>
           </Accordion.Content>
 
@@ -323,16 +323,15 @@ FAQ = class FAQ extends Component {
             <p>This year you have several choices of puzzle hunt gear and hundreds of color combinations!</p>
             <p>Note: to buy gear you will be redirected to <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">this CashNet page</a> where you need to click the bottom gear link to select your gear options.</p>
             <List>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#tshirts">Mens Cotton T-Shirts</a> (Heavy weight cotton)</List.Item>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#wtshirts">Womens Cotton T-Shirts</a> (Heavy weight cotton)</List.Item>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#ktshirts">Youth Cotton Blend T-Shirts</a> (Heavy weight cotton)</List.Item>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#50/50">Mens & Womens 50/50 Poly/Cotton Blend T-Shirts</a> (Lighter weight/softer & not fitted)</List.Item>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#Ltshirt">Mens & Womens Long Sleeve Cotton T-Shirts</a> (Heavy weight cotton)</List.Item>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#sweatshirt">Unisex Cotton Sweatshirts</a></List.Item>
-              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#ksweatshirt">Youth Unisex Cotton Sweatshirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#tshirts">Mens Cotton T-Shirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#wtshirts">Womens Cotton T-Shirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#ktshirts">Youth Cotton Blend T-Shirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#50/50">Mens & Womens 50/50 Poly/Cotton Blend T-Shirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#Ltshirt">Mens & Womens Long Sleeve Cotton T-Shirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#sweatshirt">Unisex 50/50 Poly/Cotton Blend Sweatshirts</a></List.Item>
+              <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#ksweatshirt">Youth Unisex 50/50 Poly/Cotton Blend Sweatshirts</a></List.Item>
             </List>
             {gearPricing}
-            <p>The sale of these shirts helps to fund this event. Support the WWU Great Puzzle Hunt and wear our official Great Puzzle Hunt gear! Check out the styles, colors, and design. Pick up your shirts at event check-in.</p>
           </Accordion.Content>
         </Accordion>
 
