@@ -27,13 +27,10 @@ export default class HomeIntro extends Component {
             <Grid.Column width={8} className='raised'>
               <Container textAlign='left'>
                 <Header size='huge'>What is the Puzzle Hunt?</Header>
-                <p>
-                  The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles. Teams travel on foot to various locations solving a total of four hour-long puzzles gathering clues along the way to solve one final meta puzzle.
-                </p>
-                <br/>
-                <p>
-                  These are no ordinary puzzles though! It will take a diverse set of skills and talents to solve them! Our mission is to celebrate everyone's talents and demonstrate knowledge comes in many forms. Everything is timed using your phone, QR codes, and this online system! So yes you can win :)
-                </p>
+                <Segment basic size='large' className="no-padding">
+                  <p>The Great Puzzle Hunt is like a scavenger hunt adventure with puzzles. Teams travel on foot to various locations solving a total of four hour-long puzzles gathering clues along the way to solve one final meta puzzle.</p>
+                  <p>These are no ordinary puzzles though! It will take a diverse set of skills and talents to solve them! Our mission is to celebrate everyone's talents and demonstrate knowledge comes in many forms. Everything is timed using your phone, QR codes, and this online system! So yes you can win :)</p>
+                </Segment>
               </Container>
             </Grid.Column>
           </Grid.Row>
@@ -41,7 +38,7 @@ export default class HomeIntro extends Component {
             <Grid.Column width={4}>
               <Segment  inverted color='blue' >
                 <Header as='h1' size="medium">Who?</Header>
-                Everyone! However, each person under age 14 on a team must be accompanied by a parent/legal guardian at all times - parent/legal guardian must be registered on team with child under age 14. *Note: The puzzles are $nbsp created for ages 14 and older.
+                Everyone! However, each person under age 14 on a team must be accompanied by a parent/legal guardian at all times - parent/legal guardian must be registered on team with child under age 14. *Note: The puzzles are created for ages 14 and older.
               </Segment>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium">Where?</Header>

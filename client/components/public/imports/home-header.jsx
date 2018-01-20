@@ -23,13 +23,15 @@ export default class HomeHeader extends Component {
           <Grid.Row centered divided>
             <Grid.Column verticalAlign="middle" width={4}>
               <h2 className="sub-header-text">
-                Saturday April 14th 2018
+                Saturday April 14th 2018 <br/> 10:00 AM
               </h2>
             </Grid.Column>
             <Grid.Column verticalAlign="middle" width={4}>
-              Western Washington University<br/>
-              516 High Street<br/>
-              Bellingham, WA 98225<br/>
+              <Segment basic size='large' className="no-padding">
+                Western Washington University<br/>
+                516 High Street<br/>
+                Bellingham, WA 98225<br/>
+              </Segment>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row centered>
