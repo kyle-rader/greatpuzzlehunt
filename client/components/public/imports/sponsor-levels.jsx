@@ -59,13 +59,19 @@ export default class SponsorLevels extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
+            <Grid.Column width={8}>
+              Special thanks to Market Street Catering of <a href="http://www.haggen.com/" target="_blank" >Haggen NW Fresh </a> for providing fresh fruit and breakfast pastries including a  GF option and Woods Coffee for the brew!
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
           <Grid.Column width={8}>
             *The complimentary team registration benefit has a $90 fair market value. If this benefit is accepted, the tax-deductible value of your donation will be reduced by $90, as required by the IRS.
 
           </Grid.Column>
       </Grid.Row>
     </Grid>
-<Image fluid src='/img/2016/event-photos/gathering.jpg'/>
+
+<Image fluid src="/img/2016/event-photos/team-saxaphone-bugs-thin.jpg"/>
 
   </section>
       );

@@ -6,7 +6,7 @@ export default class HomeWhoAreWe extends Component {
     return (
       <section className="pattern-bg" id="home-who-are-we">
 
-          <Grid   stackable   style={{ padding: '10em 0em 0 0', margin:'0'}}>
+          <Grid  style={{ padding: '10em 0em 0 0', margin:'0'}}>
            <Grid.Row centered textAlign='left' verticalAlign="middle">
              <Grid.Column width={10} >
                <Header size="huge">Who Are we?</Header>
@@ -19,7 +19,7 @@ export default class HomeWhoAreWe extends Component {
               </Grid.Column>
            </Grid.Row>
          </Grid>
-       <Image fluid src="/img/2016/event-photos/team-mod-thin.jpg"/>
+       <Image fluid src="/img/2016/event-photos/gathering-thin.jpg"/>
     </section>
 
     );

@@ -13,7 +13,7 @@ export default class HomePastEvents extends Component {
                <Segment inverted color='blue' >
                  <Header as="h1" size='huge'>Take a look at past events</Header>
                  Photography courtesy of
-                   <a  href="http://www.gabrielleponcz.com/"> Gabrielle Ponz.</a>
+                   <a  style={{color:'white'}} href="http://www.gabrielleponcz.com/"> Gabrielle Ponz.</a>
               </Segment>
              </Grid.Column>
            </Grid.Row>

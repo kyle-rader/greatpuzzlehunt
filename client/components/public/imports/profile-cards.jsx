@@ -55,7 +55,7 @@ export default class ProfileCards extends Component {
 
   render() {
     return (
-      <Card.Group stackable itemsPerRow={3}>
+      <Card.Group stackable doubling itemsPerRow={3}>
         { this._renderProfiles() }
       </Card.Group>
     );

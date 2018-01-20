@@ -20,7 +20,7 @@ export default class HomeIntro extends Component {
         <Grid padded stackable centered textAlign='left'>
           <Grid.Row>
             <Grid.Column width={10} className='raised'>
-              <Video videoId='LYzpNT-vX7s' source='youtube'/> */}
+              <Video videoId='LYzpNT-vX7s' source='youtube'/>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -71,8 +71,9 @@ export default class HomeIntro extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+
         <Image fluid src="/img/2016/event-photos/team-mod-thin.jpg"/>
       </div>
-    );
+     );
   }
 }

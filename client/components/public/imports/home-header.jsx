@@ -24,7 +24,7 @@ export default class HomeHeader extends Component {
         <Grid.Row centered divided>
             <Grid.Column verticalAlign="middle" width={4}>
               <h2 className="sub-header-text">
-                Saturday April 3rd 2018
+                Saturday April 14th 2018
               </h2>
 
             </Grid.Column>

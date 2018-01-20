@@ -10,36 +10,26 @@ export default class Sponsors extends Component {
     this.sponsors = [
       {
         name: 'WECU',
-        logo: '/img/2017/sponsor-logos/wecu.jpg',
-        rank: 2,
+        logo: '/img/2017/sponsor-logos/wecu.png',
+        rank: 3,
       },
       {
-        name: 'ActionSprout',
-        logo: '/img/2017/sponsor-logos/actionsprout.png',
-        rank: 4,
-      },
-      {
-        name: 'WWU CSE',
-        logo: '/img/2017/sponsor-logos/wwu_cse.png',
-        rank: 2,
-      },
-      {
-        name: 'WWU Book Store',
-        logo: '/img/2017/sponsor-logos/wwu_bookstore.jpg',
+        name: 'anonymous',
+        logo: '/img/2017/sponsor-logos/anonymous-logo.png',
         rank: 1,
         width: 250,
       },
       {
-        name: 'Woods Coffee',
-        logo: '/img/2017/sponsor-logos/woods_logo.png',
-        rank: 2,
-        width: 275,
+        name: 'woods',
+        logo: '/img/2017/sponsor-logos/woods-logo.jpg',
+        rank: 1,
+        width: 250,
       },
       {
-        name: 'WWU Associated Students',
-        logo: '/img/2017/sponsor-logos/as_logo.png',
-        rank: 3,
-        width: 200,
+        name: 'anonymous2',
+        logo: '/img/2017/sponsor-logos/anonymous-logo.png',
+        rank: 2,
+        width: 250,
       },
       {
         name: 'Toyota of Bellingham',
@@ -48,11 +38,17 @@ export default class Sponsors extends Component {
         width: 250,
       },
       {
-        name: 'Faith & Paul Komarek',
-        logo: '/img/2017/sponsor-logos/faith_and_paul_komarek_logo.png',
+        name: 'Richard Golding & Craig Cruz',
+        logo: '/img/2017/sponsor-logos/richard-craig.png',
         rank: 4,
         width: 250,
       },
+      {
+        name: 'Haggen',
+        logo: '/img/2017/sponsor-logos/haggen.png',
+        rank: 4,
+        width: 250,
+      }
     ];
 
     this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
@@ -91,7 +87,6 @@ export default class Sponsors extends Component {
       .map((sponsor) =>
         <Segment style={{ textAlign: 'center'}}>
         <Image
-          size="tiny"
           key={ sponsor.name }
           src={ sponsor.logo }
           centered
