@@ -8,42 +8,28 @@ import HomeIntro from './imports/home-intro';
 import HomeEarlyBird from './imports/home-early-bird';
 import HomePastEvents from './imports/home-past-events';
 import HomeWhoAreWe from './imports/home-who-are-we';
-import SponsorLevels from './imports/sponsor-levels';
+import HomeSponsorLevels from './imports/home-sponsor-levels';
 import SamplePuzzles from './imports/sample-puzzles';
-
-// import Sponsors from './imports/sponsors';
-// import EventDescription2 from './imports/event-description-2';
-// import RegistrationInfo from './imports/registration-info';
-// import SamplePuzzles from './imports/sample-puzzles';
-// import GalleryPreview from './imports/gallery-preview';
 
 Home = class Home extends Component {
   render() {
     return (
-    <div>
-      <HomeHeader/>
-      <HomeIntro/>
-      <HomeEarlyBird/>
-      <SponsorLevels/>
-      <SamplePuzzles/>
-      <HomePastEvents/>
-      <HomeWhoAreWe/>
+      <div>
+        <HomeHeader/>
 
+        <HomeIntro/>
 
-      {/* <WelcomeSection/> */}
-      {/*
-      <EventDescription/>
-      <SponsorLevels/>
-      <br/>
+        <HomeEarlyBird/>
 
-      <Sponsors/>
-      <EventDescription2/>
-      <RegistrationInfo/>
-      <SamplePuzzles/>
-      <ProfileCards />
-      <GalleryPreview/>
-      */}
-    </div>
+        <HomeSponsorLevels/>
+
+        <SamplePuzzles/>
+
+        <HomePastEvents/>
+
+        <HomeWhoAreWe/>
+
+      </div>
     );
   }
 }

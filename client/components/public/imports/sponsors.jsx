@@ -9,66 +9,45 @@ export default class Sponsors extends Component {
 
     this.sponsors = [
       {
-        name: 'WECU',
-        logo: '/img/2017/sponsor-logos/wecu.png',
+        name: 'haggen',
+        logo: '/img/2018/sponsors/haggen.png',
+        rank: 4,
+        width: 250,
+      },
+      {
+        name: 'Richard Golding & Craig Cruz',
+        logo: '/img/2018/sponsors/richard_craig.png',
+        rank: 3,
+        width: 250,
+      },
+      {
+        name: 'wecu',
+        logo: '/img/2018/sponsors/wecu.png',
         rank: 3,
       },
       {
+        name: 'wwu_cse_math',
+        logo: '/img/2018/sponsors/wwu_cse_math.png',
+        rank: 2,
+        width: 250,
+      },
+      {
         name: 'anonymous',
-        logo: '/img/2017/sponsor-logos/anonymous-logo.png',
+        logo: '/img/2018/sponsors/anonymous.png',
         rank: 1,
         width: 250,
       },
       {
         name: 'woods',
-        logo: '/img/2017/sponsor-logos/woods-logo.jpg',
+        logo: '/img/2018/sponsors/woods.jpg',
         rank: 1,
         width: 250,
       },
       {
-        name: 'anonymous2',
-        logo: '/img/2017/sponsor-logos/anonymous-logo.png',
-        rank: 2,
-        width: 250,
-      },
-      {
-        name: 'Toyota of Bellingham',
-        logo: '/img/2017/sponsor-logos/toyota_logo.png',
+        name: 'toyota',
+        logo: '/img/2018/sponsors/toyota.png',
         rank: 1,
         width: 250,
-      },
-      {
-        name: 'Richard Golding & Craig Cruz',
-        logo: '/img/2017/sponsor-logos/richard-craig.png',
-        rank: 4,
-        width: 250,
-      },
-      {
-        name: 'Haggen',
-        logo: '/img/2017/sponsor-logos/haggen.png',
-        rank: 4,
-        width: 250,
-      }
-    ];
-
-    this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
-
-    this.sections = [
-      {
-        title: 'Puzzle Master',
-        rank: 4,
-      },
-      {
-        title: 'Cipher',
-        rank: 3,
-      },
-      {
-        title: 'Crossword',
-        rank: 2,
-      },
-      {
-        title: 'Jigsaw',
-        rank: 1,
       },
     ];
   }

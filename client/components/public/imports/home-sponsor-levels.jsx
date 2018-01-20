@@ -4,7 +4,7 @@ import { Grid, Segment, Card, Header, Button, Icon, Image, Message } from 'seman
 import LinkButton from '../../imports/link-button';
 import SponsorTile from './sponsor-tile';
 
-export default class SponsorLevels extends Component {
+export default class HomeSponsorLevels extends Component {
   render() {
     return (
       <section className="pattern-bg" id="sponsorship-levels">
@@ -60,16 +60,35 @@ export default class SponsorLevels extends Component {
           <Grid doubling columns={4}>
             <Grid.Row textAlign="left">
               <Grid.Column >
-                <SponsorTile title="Puzzle Master" rank={4} name="PUZZLE MASTER*" icon="trophy" price="$2000+" description="All from CIPHER + Name/Logo on all event materials, advertising, and press releases"/>
+                <SponsorTile
+                  name="PUZZLE MASTER*"
+                  rank={4}
+                  icon="trophy" price="$2000+"
+                  description="All from CIPHER + Name/Logo on all event materials, advertising, and press releases"/>
               </Grid.Column>
               <Grid.Column>
-                <SponsorTile title="Cipher" rank={3} name="CIPHER*" icon="code" price="$1000 - $1999" description="All from CROSSWORD + Complimentary registration for 6 person team"/>
+                <SponsorTile
+                  rank={3}
+                  name="CIPHER*"
+                  icon="code"
+                  price="$1000 - $1999"
+                  description="All from CROSSWORD + Complimentary registration for 6 person team"/>
               </Grid.Column>
               <Grid.Column>
-                <SponsorTile title="Crossword" rank={2} name="CROSSWORD" icon="crop" price="$500 - $999" description="All from JIGSAW + Name/Logo on t-shirt"/>
+                <SponsorTile
+                  name="CROSSWORD"
+                  rank={2}
+                  icon="crop"
+                  price="$500 - $999"
+                  description="All from JIGSAW + Name/Logo on t-shirt"/>
               </Grid.Column>
               <Grid.Column>
-                <SponsorTile title="Jigsaw" rank={1} name="JIGSAW" icon="puzzle" price="$200 - $499" description="Name/Logo on website sponsor list"/>
+                <SponsorTile
+                  name="JIGSAW"
+                  rank={1}
+                  icon="puzzle"
+                  price="$200 - $499"
+                  description="Name/Logo on website sponsor list"/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
