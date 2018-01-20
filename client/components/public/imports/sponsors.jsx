@@ -60,7 +60,6 @@ export default class Sponsors extends Component {
     );
   }
 
-
   _renderLogos({ rank }) {
     return sponsors = filter(this.sponsors, (s) => s.rank === rank).map((sponsor, i) => (
         <Segment style={{ textAlign: 'center'}} key={`sponsor-segment-${i}`}>
