@@ -28,25 +28,36 @@ export default class ProfileCards extends Component {
         role: 'Lead designer',
         email: 'agu.wnd@gmail.com',
         image: '/img/team/wendy.jpg',
+      },
+      {
+        name: 'Scott St. Clair',
+        title: '',
+        role: 'Scott-AS Club President 2017-18',
+        email: 'scott@gmail.com',
+        image: '/img/team/scott.jpg',
+      },
+      {
+        name: 'Jeff & Zoe',
+        title: '',
+        role: 'Puzzle Master Team',
+        email: 'jeff@gmail.com',
+        image: '/img/team/jeff-zoe.jpg',
+      },
+      {
+        name: 'Noah Strong',
+        title: '',
+        role: 'Tech Support',
+        email: 'Noah@gmail.com',
+        image: '/img/team/noah.jpg',
       }
     ];
   }
 
   render() {
     return (
-      <Grid padded stackable className='filling'>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment basic>
-              <h1 className='dark-blue'>Who are we?</h1>
-              <h2 className='dark-blue'>We are Mind Mobilizers who love our community and the amazing diversity of talents it has to offer :)</h2>
-              <Card.Group stackable itemsPerRow={3}>
-                { this._renderProfiles() }
-              </Card.Group>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Card.Group stackable itemsPerRow={3}>
+        { this._renderProfiles() }
+      </Card.Group>
     );
   }
 
