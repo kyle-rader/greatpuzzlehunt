@@ -1,13 +1,11 @@
 @import '../../lib/less/variables.less';
+
 .pattern-bg{
   background-image: url('../../../img/pattern-small.png') !important;
   background-repeat: repeat !important;
 }
 .home-section{
   padding: 8em 0 8em 0;
-}
-.header-wrap{
-  min-height: 40em;
 }
 .header-magnyfying-glass{
   position: absolute;
@@ -47,7 +45,9 @@
 }
 
 @media all and (min-width: @desktop-min) {
-
+  .header-wrap{
+    min-height: 40em;
+  }
   .header-main {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -112,9 +112,9 @@
 
 }
 
-@media all and (max-width: @mobile-max) {
-  .header-magnyfying-glass{
-    display: none;
+@media all and (max-width: @tablet-max) {
+  .header-wrap{
+    min-height: 10em;
   }
   .header-main {
     margin-top: 10px;

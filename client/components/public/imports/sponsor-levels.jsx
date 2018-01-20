@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { Grid, Segment, Card, Header, Button, Icon, Image } from 'semantic-ui-react';
+import { Grid, Segment, Card, Header, Button, Icon, Image, Message } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
 import SponsorTile from './sponsor-tile';
 
@@ -59,15 +59,19 @@ export default class SponsorLevels extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-            <Grid.Column width={8}>
+          <Grid.Column width={8}>
+            <Message>
               Special thanks to Market Street Catering of <a href="http://www.haggen.com/" target="_blank" >Haggen NW Fresh </a> for providing fresh fruit and breakfast pastries including a  GF option and Woods Coffee for the brew!
+            </Message>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={8}>
-            *The complimentary team registration benefit has a $90 fair market value. If this benefit is accepted, the tax-deductible value of your donation will be reduced by $90, as required by the IRS.
-
+            <Message>
+              *The complimentary team registration benefit has a $90 fair market value. If this benefit is accepted, the tax-deductible value of your donation will be reduced by $90, as required by the IRS.
+            </Message>
           </Grid.Column>
+
       </Grid.Row>
     </Grid>
 

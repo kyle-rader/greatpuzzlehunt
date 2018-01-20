@@ -56,7 +56,7 @@ export default class SamplePuzzles extends Component {
 
   _puzzles() {
     return this.puzzles.map((puzzle, i) => (
-      <Grid.Column width={3} key={`puzzle-${i}`}>
+      <Grid.Column key={`puzzle-${i}`}>
         <Segment  style={{minHeight:'250px'}} padded inverted color='blue' key={ puzzle.link }>
           <Header as='h1' size="medium">{ puzzle.name }</Header>
           { puzzle.tagline }
