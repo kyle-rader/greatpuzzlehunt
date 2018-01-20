@@ -33,53 +33,40 @@ Everything is timed using your phone, QR codes, and this online system! So yes y
      </Grid.Row>
 
      <Grid.Row >
-       <Grid.Column width={14}>
-       <Card.Group itemsPerRow={3}>
-         <Card padded color='teal' >
-           <Card.Header as='h1'>Who?</Card.Header>
-           <Card.Description>
+       <Grid.Column width={4}>
+         <Segment  inverted color='blue' >
+           <Header as='h1' size="medium">Who?</Header>
               Everyone! However, each person under age 14 on a team must be accompanied by a parent/legal guardian at all times - parent/legal guardian must be registered on team with child under age 14. *Note: The puzzles are $nbsp created for ages 14 and older.
-          </Card.Description>
-
-        </Card>
-        <Card color='teal' >
-          <Card.Header as='h1'>What?</Card.Header>
-          <Card.Description>
+        </Segment>
+        <Segment padded inverted color='blue' >
+          <Header as='h1' size="medium">Where?</Header>
+          At Red Square<br/>
+          Western Washington University<br/>
+          516 High Street<br/>
+          Bellingham, WA 98225<br/><br/>
+       </Segment>
+        </Grid.Column>
+        <Grid.Column width={4}>
+        <Segment padded inverted color='blue' >
+          <Header as='h1' size="medium" >What?</Header>
              cavenger hunting, puzzle solving, brain adventuring! More details
-             <a href="/info">here</a>
-         </Card.Description>
-
-       </Card>
-       <Card color='teal' >
-         <Card.Header as='h1'>When?</Card.Header>
-         <Card.Description>
-           Saturday, April 14, 2018 from 10AM - 5PM<br/>
-           Awards and Prizes* at 4PM<br/>
-           At Red Square, Western Washington University, Bellingham, WA<br/>
-*Must be present at awards ceremony to claim prizes, else prizes go to the next place team.<br/>
-        </Card.Description>
-
-      </Card>
-         <Card color='teal' >
-           <Card.Header as='h1'>When?</Card.Header>
-           <Card.Description>
-             Western Washington University<br/>
-             516 High Street<br/>
-             Bellingham, WA 98225<br/><br/>
-          </Card.Description>
-
-        </Card>
-        <Card color='teal' >
-          <Card.Header as='h1'>Why?</Card.Header>
-          <Card.Description>
-             Stretch your mental muscles, bond with your teammates, compete alongside people of all ages and walks of life, and have a lot of fun!
-         </Card.Description>
-
-       </Card>
-        </Card.Group>
-      </Grid.Column>
-
+             <a href="/info"> here</a>
+       </Segment>
+       <Segment padded inverted color='blue' >
+         <Header as='h1' size="medium" >Why?</Header>
+            Stretch your mental muscles, bond with your teammates, compete alongside people of all ages and walks of life, and have a lot of fun!
+      </Segment>
+     </Grid.Column>
+     <Grid.Column width={4}>
+     <Segment padded inverted color='blue' >
+       <Header as='h1' size="medium" >When?</Header>
+       Saturday, April 14, 2018 from 10AM - 5PM<br/>
+       Awards and Prizes* at 4PM<br/>
+   *Must be present at awards ceremony to claim prizes, else prizes go to the next place team.<br/>
+    </Segment>
+  </Grid.Column>
      </Grid.Row>
+
  </Grid>
  <Image fluid src="/img/2016/event-photos/team-mod-thin.jpg"/>
 </section>

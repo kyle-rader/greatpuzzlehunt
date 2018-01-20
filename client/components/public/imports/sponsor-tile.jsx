@@ -8,8 +8,8 @@ class SponsorTile extends Component {
       <div>
         <Segment style={{'min-height':'300px'}} vertical padded basic inverted color='blue'>
           <Icon style={{ textAlign: 'center'}} name={this.props.icon} size="huge"/>
-          <Header as="h2" content={this.props.name}/>
-          <Header as="h3" content={this.props.price} />
+          <Header as="h2" size="huge" content={this.props.name}/>
+          <Header as="h3"  content={this.props.price} />
             <div className="sub header">
               {this.props.description}
             </div>

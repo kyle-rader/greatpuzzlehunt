@@ -9,10 +9,12 @@ export default class HomePastEvents extends Component {
         <Segment inverted color='blue' style={{ padding: '10em 0em', margin:'0'}}>
           <Grid   stackable   >
            <Grid.Row centered verticalAlign="middle">
-             <Grid.Column width={10} >
-               <Header size='huge'>Take a look at past events</Header>
-               <Container>Photography courtesy of
-                 <a  href="http://www.gabrielleponcz.com/"> Gabrielle Ponz.</a></Container>
+             <Grid.Column width={10}>
+               <Segment inverted color='blue' >
+                 <Header as="h1" size='huge'>Take a look at past events</Header>
+                 Photography courtesy of
+                   <a  href="http://www.gabrielleponcz.com/"> Gabrielle Ponz.</a>
+              </Segment>
              </Grid.Column>
            </Grid.Row>
            <Grid.Row  centered verticalAlign="middle">
