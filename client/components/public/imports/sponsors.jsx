@@ -9,125 +9,70 @@ export default class Sponsors extends Component {
 
     this.sponsors = [
       {
-        name: 'WECU',
-        logo: '/img/2017/sponsor-logos/wecu.jpg',
-        rank: 2,
-      },
-      {
-        name: 'ActionSprout',
-        logo: '/img/2017/sponsor-logos/actionsprout.png',
+        name: 'haggen',
+        logo: '/img/2018/sponsors/haggen.png',
         rank: 4,
-      },
-      {
-        name: 'WWU CSE',
-        logo: '/img/2017/sponsor-logos/wwu_cse.png',
-        rank: 2,
-      },
-      {
-        name: 'WWU Book Store',
-        logo: '/img/2017/sponsor-logos/wwu_bookstore.jpg',
-        rank: 1,
         width: 250,
       },
       {
-        name: 'Woods Coffee',
-        logo: '/img/2017/sponsor-logos/woods_logo.png',
-        rank: 2,
-        width: 275,
-      },
-      {
-        name: 'WWU Associated Students',
-        logo: '/img/2017/sponsor-logos/as_logo.png',
+        name: 'Richard Golding & Craig Cruz',
+        logo: '/img/2018/sponsors/richard_craig.png',
         rank: 3,
-        width: 200,
-      },
-      {
-        name: 'Toyota of Bellingham',
-        logo: '/img/2017/sponsor-logos/toyota_logo.png',
-        rank: 1,
         width: 250,
       },
       {
-        name: 'Faith & Paul Komarek',
-        logo: '/img/2017/sponsor-logos/faith_and_paul_komarek_logo.png',
-        rank: 4,
-        width: 250,
-      },
-    ];
-
-    this.rankLogoMap = { 1: 'puzzle', 2: 'crop', 3: 'code', 4: 'trophy' };
-
-    this.sections = [
-      {
-        title: 'Puzzle Master',
-        rank: 4,
-      },
-      {
-        title: 'Cipher',
+        name: 'wecu',
+        logo: '/img/2018/sponsors/wecu.png',
         rank: 3,
       },
       {
-        title: 'Crossword',
+        name: 'wwu_cse_math',
+        logo: '/img/2018/sponsors/wwu_cse_math.png',
         rank: 2,
+        width: 250,
       },
       {
-        title: 'Jigsaw',
+        name: 'anonymous',
+        logo: '/img/2018/sponsors/anonymous.png',
         rank: 1,
+        width: 250,
+      },
+      {
+        name: 'woods',
+        logo: '/img/2018/sponsors/woods.jpg',
+        rank: 1,
+        width: 250,
+      },
+      {
+        name: 'toyota',
+        logo: '/img/2018/sponsors/toyota.png',
+        rank: 1,
+        width: 250,
       },
     ];
   }
 
   render() {
     return (
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>
-            <Header className='dark-blue' as='h1' content='Our Epic 2017 Sponsors!'/>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            { this._renderSections() }
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
-  }
-
-  _renderSections() {
-    return this.sections.map((section) => this._renderSponsorSection(section));
-  }
-
-  _renderSponsorSection({ title, rank }) {
-    const sponsors = this._renderLogos({ rank });
-    let content = null;
-
-    if (sponsors.length === 0) {
-      return null;
-    }
-
-    content = <Image.Group size='medium'>{ sponsors }</Image.Group>;
-
-    return (
-      <Segment basic key={title}>
-        <Header className='dark-blue' size='large' icon={<Icon name={this.rankLogoMap[rank]} color='black'/>} content={`${title} Sponsors`}/>
-        { content }
-      </Segment>
+      <div>
+        { this._renderLogos(this.props) }
+      </div>
     );
   }
 
   _renderLogos({ rank }) {
-    return sponsors = filter(this.sponsors, (s) => s.rank === rank)
-      .map((sponsor) =>
-        <Image
-          style={ { width: `${sponsor.width}px` || '300px' } }
-          key={ sponsor.name }
-          src={ sponsor.logo }
-          centered
-          verticalAlign='middle'
-          label={<small>{sponsor.level}</small>}
-          spaced
-        />
-      );
+    return sponsors = filter(this.sponsors, (s) => s.rank === rank).map((sponsor, i) => (
+        <Segment style={{ textAlign: 'center'}} key={`sponsor-segment-${i}`}>
+          <Image
+            key={ sponsor.name }
+            src={ sponsor.logo }
+            centered
+            verticalAlign='middle'
+            label={<small>{sponsor.level}</small>}
+            spaced
+          />
+        </Segment>
+      )
+    );
   }
 }

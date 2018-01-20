@@ -42,17 +42,17 @@ RegistrationProcess = class RegistrationProcess extends Component {
       <List ordered relaxed>
         <List.Item>
           {currentStep === 0 ? this._youAreHere() : null }
-          Create an account at <a target="blank" href={`${siteURL}/register`}>{`${siteURL}/register`}</a>.<br/>
+          Create an account <a target="blank" href={`${siteURL}/register`}>HERE</a>.<br/>
           Deadline: <strong>11:59 PM April 12, 2018</strong>
         </List.Item>
         <List.Item>
           {currentStep === 1 ? this._youAreHere() : null }
-          Purchase ticket code at <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">https://commerce.cashnet.com/TheGreatPuzzleHunt2018</a>.<br/>
+          Purchase ticket code <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">HERE</a>.<br/>
           Deadline: <strong>10:00 AM April, 14 2018</strong>
         </List.Item>
         <List.Item>
           {currentStep === 3 ? this._youAreHere() : null }
-          Redeem ticket code at <a target="blank" href={`${siteURL}/redeem`}>{`${siteURL}/redeem`}</a>.<br/>
+          Redeem ticket code <a target="blank" href={`${siteURL}/redeem`}>HERE</a>.<br/>
           Deadline: <strong> 10:00 AM April 14, 2018</strong>
         </List.Item>
       </List>

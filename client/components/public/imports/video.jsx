@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default class Video extends Component {
+class Video extends Component {
   render() {
     return <div ref="embedded-video" className="ui embed"></div>;
   }
@@ -16,3 +17,10 @@ export default class Video extends Component {
     $('html, body').scrollTop(0);
   }
 }
+
+Video.PropTypes = {
+  source: PropTypes.string.isRequired,
+  videoId: PropTypes.string.isRequired,
+};
+
+export default Video;

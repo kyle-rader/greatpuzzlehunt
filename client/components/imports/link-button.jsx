@@ -18,8 +18,7 @@ export default class LinkButton extends Component {
         content={this.props.content}
         icon={this.props.icon}
         href={this.props.href}
-        target='_blank'
-      />
+        target='_blank'/>
     }
 
     return (

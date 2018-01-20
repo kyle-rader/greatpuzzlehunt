@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Grid, Segment, Header, Button, Icon, Image } from 'semantic-ui-react';
+import { Grid, Card, Container, Segment, Header, Button, Icon, Image } from 'semantic-ui-react';
 
 export default class SamplePuzzles extends Component {
   constructor(props) {
@@ -30,35 +30,39 @@ export default class SamplePuzzles extends Component {
     ];
   }
 
+
   render() {
     return (
-      <Grid padded stackable className='filling'>
+      <section className="pattern-bg" id="sample-puzzles">
+      <Grid padded centered textAlign="left" stackable style={{ padding: '10em 0em', margin:'0'}} >
         <Grid.Row>
-          <Grid.Column>
-            <Image src="/img/2016/event-photos/team-theres-waldo-thin.jpeg"/>
-          </Grid.Column>
+          <Grid.Column width={10}>
+            <Header size="huge">
+              Sample Puzzles (from the 2016 hunt)
+            </Header>
+            Below You can find some of the past Puzzles. Download them and try to solve them for yourself.
+        </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment basic>
-              <h1 className='dark-blue'>Sample Puzzles (from the 2016 hunt)</h1>
-            </Segment>
-          </Grid.Column>
+        <Grid.Row centered columns={4}>
+              { this._puzzles() }
         </Grid.Row>
-        <Grid.Row columns={2}>
-          { this._puzzles() }
-        </Grid.Row>
+
       </Grid>
+       <Image fluid src="/img/2016/event-photos/team-the-purple-penguins-thin.jpg"/>
+    </section>
     )
   }
 
+
   _puzzles() {
-    return this.puzzles.map((puzzle) => (
-      <Grid.Column key={ puzzle.link }>
-        <Segment basic>
-          <h2 className='dark-blue'>{ puzzle.name }</h2>
-          <p className='dark-blue'>{ puzzle.tagline }</p>
-          <Button className='dark-blue' as='a' href='_blank' href={`/puzzles/2016/${puzzle.link}`} content='Download'/>
+    return this.puzzles.map((puzzle, i) => (
+      <Grid.Column key={`puzzle-${i}`}>
+        <Segment  style={{minHeight:'250px'}} padded inverted color='blue' key={ puzzle.link }>
+          <Header as='h1' size="medium">{ puzzle.name }</Header>
+          { puzzle.tagline }
+          <br/>
+          <br/>
+          <Button  as='a' href='_blank' href={`/puzzles/2016/${puzzle.link}`} content='Download'/>
         </Segment>
       </Grid.Column>
     ));

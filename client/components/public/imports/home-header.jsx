@@ -1,26 +1,60 @@
 import React, { Component } from 'react';
-
+import LinkButton from '../../imports/link-button';
+import { Grid, Card, Container, Segment, Header, Button, Icon, Image, Responsive } from 'semantic-ui-react';
 export default class HomeHeader extends Component {
   render() {
     return (
-      <div className="header-main">
-        <div className="header-text -left">
-          <div className="extra-text red-text">The Third Annual</div>
-          WWU Great
-          <img className="footprints" src="/img/footprints-left.png"/>
-        </div>
-        <img src="/img/logo-color-512.png"/>
-        <div className="header-text -right">
-          <img className="footprints" src="/img/footprints-right.png"/>
-          Puzzle Hunt
-          <div className="extra-text">
-            <strong>
-              <span className="dark-blue">Mobilizing</span>
-              <span className="blue-text">Minds</span>
-            </strong>
-          </div>
-        </div>
-      </div>
+      <section className="pattern-bg" id="home-header">
+        <Grid stackable>
+          <Grid.Row className="header-wrap">
+            <Grid.Column className="hide-on-mobile" width={9}>
+              <img className="header-magnyfying-glass" src="/img/header-magnifying-glass.png"/>
+            </Grid.Column>
+            <Grid.Column verticalAlign="middle" width={6}>
+              <Container>
+                <h1 className="header-text text-highlight-color">Third Annual</h1>
+                <h1 className="header-text gigantic">WWU</h1>
+                <h1 className="header-text gigantic">Great</h1>
+                <h1 className="header-text gigantic">Puzzle</h1>
+                <h1 className="header-text gigantic">Hunt</h1>
+              </Container>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row centered divided>
+            <Grid.Column verticalAlign="middle" width={4}>
+              <h2 className="sub-header-text">
+                Saturday April 14th 2018 <br/> 10:00 AM
+              </h2>
+            </Grid.Column>
+            <Grid.Column verticalAlign="middle" width={4}>
+              <Segment basic size='large' className="no-padding">
+                Western Washington University<br/>
+                516 High Street<br/>
+                Bellingham, WA 98225<br/>
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Grid.Column width={8}>
+              { this._linkButtons() }
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </section>
     );
+  }
+
+  _linkButtons() {
+    return (
+    <div>
+      <LinkButton to='/register' size='large' color='blue' content='Register'/>
+      <LinkButton to="/login" size='large' content='Log In'/>
+      <LinkButton to="/faq" size='large' content='FAQ'/>
+      <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
+        size='large' color='blue' content='Donate'
+        icon={<Icon name='heart'/>}
+      />
+    </div>
+    )
   }
 }
