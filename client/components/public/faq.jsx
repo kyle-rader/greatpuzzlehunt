@@ -155,7 +155,7 @@ FAQ = class FAQ extends Component {
             <List className='bulleted'>
               <List.Item><strong>March 18, {eventYear}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
               <List.Item><strong>April 3, {eventYear}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
-              <List.Item><strong>March 12, {eventYear}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
+              <List.Item><strong>April 12, {eventYear}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
             </List>
           </Accordion.Content>
 
