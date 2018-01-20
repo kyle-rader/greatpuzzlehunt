@@ -83,18 +83,18 @@ export default class Sponsors extends Component {
 
 
   _renderLogos({ rank }) {
-    return sponsors = filter(this.sponsors, (s) => s.rank === rank)
-      .map((sponsor) =>
-        <Segment style={{ textAlign: 'center'}}>
-        <Image
-          key={ sponsor.name }
-          src={ sponsor.logo }
-          centered
-          verticalAlign='middle'
-          label={<small>{sponsor.level}</small>}
-          spaced
-        />
+    return sponsors = filter(this.sponsors, (s) => s.rank === rank).map((sponsor, i) => (
+        <Segment style={{ textAlign: 'center'}} key={`sponsor-segment-${i}`}>
+          <Image
+            key={ sponsor.name }
+            src={ sponsor.logo }
+            centered
+            verticalAlign='middle'
+            label={<small>{sponsor.level}</small>}
+            spaced
+          />
         </Segment>
-      );
+      )
+    );
   }
 }

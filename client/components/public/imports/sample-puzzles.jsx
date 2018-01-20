@@ -34,8 +34,8 @@ export default class SamplePuzzles extends Component {
   render() {
     return (
       <section className="pattern-bg" id="sample-puzzles">
-      <Grid padded centered text-align="left" stackable style={{ padding: '10em 0em', margin:'0'}} >
-        <Grid.Row  >
+      <Grid padded centered textAlign="left" stackable style={{ padding: '10em 0em', margin:'0'}} >
+        <Grid.Row>
           <Grid.Column width={10}>
             <Header size="huge">
               Sample Puzzles (from the 2016 hunt)
@@ -43,7 +43,7 @@ export default class SamplePuzzles extends Component {
             Below You can find some of the past Puzzles. Download them and try to solve them for yourself.
         </Grid.Column>
         </Grid.Row>
-        <Grid.Row  padded centered columns={4}>
+        <Grid.Row centered columns={4}>
               { this._puzzles() }
         </Grid.Row>
 
@@ -55,16 +55,16 @@ export default class SamplePuzzles extends Component {
 
 
   _puzzles() {
-    return this.puzzles.map((puzzle) => (
-        <Grid.Column width={3} >
-      <Segment  style={{'min-height':'250px'}} padded inverted color='blue' key={ puzzle.link }>
-            <Header as='h1' size="medium">{ puzzle.name }</Header>
-             { puzzle.tagline }
-             <br/>
-             <br/>
-            <Button  as='a' href='_blank' href={`/puzzles/2016/${puzzle.link}`} content='Download'/>
-       </Segment>
-         </Grid.Column>
+    return this.puzzles.map((puzzle, i) => (
+      <Grid.Column width={3} key={`puzzle-${i}`}>
+        <Segment  style={{minHeight:'250px'}} padded inverted color='blue' key={ puzzle.link }>
+          <Header as='h1' size="medium">{ puzzle.name }</Header>
+          { puzzle.tagline }
+          <br/>
+          <br/>
+          <Button  as='a' href='_blank' href={`/puzzles/2016/${puzzle.link}`} content='Download'/>
+        </Segment>
+      </Grid.Column>
     ));
   }
 }

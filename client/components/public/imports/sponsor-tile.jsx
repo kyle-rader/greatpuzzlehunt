@@ -6,7 +6,7 @@ class SponsorTile extends Component {
   render() {
     return (
       <div>
-        <Segment style={{'min-height':'300px'}} vertical padded basic inverted color='blue'>
+        <Segment style={{minHeight:'300px'}} vertical padded basic inverted color='blue'>
           <Icon style={{ textAlign: 'center'}} name={this.props.icon} size="huge"/>
           <Header as="h2" size="huge" content={this.props.name}/>
           <Header as="h3"  content={this.props.price} />
