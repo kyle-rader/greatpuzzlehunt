@@ -1,0 +1,20 @@
+import { Meteor } from 'meteor/meteor';
+import { isAdmin } from '../../lib/imports/method-helpers.js';
+
+const SPONSOR_FIELDS = {
+  name: 1,
+  amount: 1,
+  logoUrl: 1,
+  imageId: 1,
+  publish: 1,
+  createdAt: 1,
+  updatedAt: 1,
+};
+
+Meteor.publish('admin.sponsors', function() {
+  if (!isAdmin(this.userId)) {
+    return this.ready();
+  }
+
+  return Sponsors.find({}, { fields: SPONSOR_FIELDS });
+});

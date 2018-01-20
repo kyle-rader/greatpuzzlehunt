@@ -27,6 +27,7 @@ export default class ImageUploader extends Component {
     Images.insert(file, (error, fileObj) => {
       if (error) return alert(error.reason);
       console.log('Uploaded:', fileObj);
+      window.URL.revokeObjectURL(file.preview);
     });
   }
 }
