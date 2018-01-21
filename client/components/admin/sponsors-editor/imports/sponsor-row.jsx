@@ -12,6 +12,7 @@ import {
   Image,
   Button,
   Message,
+  Confirm,
 } from 'semantic-ui-react';
 
 const dropZoneStyle = {
@@ -78,9 +79,15 @@ class SponsorRow extends Component {
                 defaultChecked={this.state.publish}
                 onChange={ (e,data) => this._handleDataChange(e,data) } />
 
-              <Form.Button floated="right" content="Delete" icon={<Icon name="trash"/>} basic color='red' onClick={(e) => this._delete(e)}/>
+              <Form.Button floated="right" content="Delete" icon={<Icon name="trash"/>} basic color='red' onClick={(e) => this.setState({ confirming: true })}/>
             </Form.Group>
           </Form>
+
+          <Confirm
+            open={this.state.confirming}
+            onCancel={() => this.setState({ confirming: false })}
+            onConfirm={() => this._delete()}
+            content={`Are you sure you want to remove ${this.state.name}?`}/>
 
           { this.state.message ? this._message() : null}
         </Grid.Column>
@@ -135,11 +142,10 @@ class SponsorRow extends Component {
   }
 
   _delete(e) {
-    if (confirm(`Are you sure you want to delete ${this.state.name} form the sponsors list?`)) {
-      Meteor.call('sponsors.remove', this.props.sponsor._id, (error, result) => {
-        if (error) return alert(error.reason);
-      });
-    }
+    this.setState({confirming: false});
+    Meteor.call('sponsors.remove', this.props.sponsor._id, (error, result) => {
+      if (error) return alert(error.reason);
+    });
   }
 
   _message() {
