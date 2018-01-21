@@ -20,7 +20,7 @@ class SponsorEditorList extends Component {
       <Grid stackable>
         <Grid.Row>
           <Grid.Column>
-            <Button color="green" onClick={this.props.onNewSponsor} content="New Sponsor"/>
+            <Button color="green" onClick={(e) => this._newSponsor(e)} content="New Sponsor"/>
           </Grid.Column>
         </Grid.Row>
 
@@ -28,6 +28,12 @@ class SponsorEditorList extends Component {
 
       </Grid>
     );
+  }
+
+  _newSponsor(e) {
+    Meteor.call('sponsors.create', (error, result) => {
+      if (error) return alert(error.reason);
+    });
   }
 
   _renderSponsors() {

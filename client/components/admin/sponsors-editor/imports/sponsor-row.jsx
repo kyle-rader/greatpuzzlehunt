@@ -17,21 +17,28 @@ const dropZoneStyle = {
   marginLeft: ".5em",
 };
 
+const levelOptions = [
+  { key: 'puzzlemaster', value: 'puzzlemaster', text: 'Puzzle Master ($2000+)' },
+  { key: 'cipher', value: 'cipher', text: 'Cipher ($1000-$1999)' },
+  { key: 'crossword', value: 'crossword', text: 'Crossword ($500-$999)' },
+  { key: 'jigsaw', value: 'jigsaw', text: 'Jigsaw ($200-$499)' },
+];
+
 class SponsorRow extends Component {
   constructor(props) {
     super(props);
-    const { _id, name, amount, publish, logoUrl, imageId } = props.sponsor;
+    const { _id, name, level, publish, logoUrl, imageId } = props.sponsor;
     this.state = {
       _id,
       name,
-      amount,
+      level,
       publish,
       logoUrl: logoUrl || "https://react.semantic-ui.com/assets/images/avatar/large/matthew.png",
     };
   }
 
   render () {
-    const { _id, name, amount, publish, logoUrl } = this.state;
+    const { _id, name, level, publish, logoUrl } = this.state;
     return (
       <Grid.Row columns={2}>
         <Grid.Column width={4}>
@@ -41,13 +48,13 @@ class SponsorRow extends Component {
           <Form onSubmit={(e) => e.preventDefault()}>
             <Form.Group>
               <Form.Input name="name" label='Sponsor Name' placeholder='Cool Company' value={this.state.name} onChange={ (e) => this._handleTextChange(e) } width={12}/>
-              <Form.Input name='amount' label='Donation Amount' placeholder='$500' value={this.state.amount} onChange={ (e) => this._handleTextChange(e) } width={4}/>
+              <Form.Dropdown name='level' label='Donor Level' placeholder='Donor Level' selection options={levelOptions} value={ this.state.level } onChange={ (e, data) => this._handleDataChange(e, data) }/>
             </Form.Group>
 
             <p></p> {/* For mobile spacing */}
 
             <Form.Group>
-              <Dropzone name='logoUpload' className="ui basic button" disablePreview style={dropZoneStyle} accept='image/*' multiple={false} onDrop={(files) => this._onDrop(files)}>
+              <Dropzone name='logoUpload' className="ui basic teal button" disablePreview style={dropZoneStyle} accept='image/*' multiple={false} onDrop={(files) => this._onDrop(files)}>
                 Upload Logo
               </Dropzone>
 
@@ -79,7 +86,9 @@ class SponsorRow extends Component {
         imageId: fileObj._id,
         sponsorId: this.props.sponsor._id,
       };
-      Meteor.call('sponsors.updateImage', data);
+      Meteor.call('sponsors.updateImage', data, (error, result) => {
+        if (error) return alert(error.reason);
+      });
     });
   }
 
@@ -95,7 +104,7 @@ class SponsorRow extends Component {
   }
 
   _save(e) {
-    const data = pick(this.state, ['_id', 'name', 'amount', 'publish', 'logoUrl', 'imageId']);
+    const data = pick(this.state, ['_id', 'name', 'level', 'publish']);
     Meteor.call('sponsors.update', data, (error, result) => {
       if (error) return alert(error.reason);
     });

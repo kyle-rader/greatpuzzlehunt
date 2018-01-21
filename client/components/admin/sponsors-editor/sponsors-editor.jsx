@@ -16,15 +16,9 @@ class SponsorsEditorInner extends Component {
     return (
       <Container>
         <PuzzlePageTitle title="Sponsors Editor"/>
-        {loading ? <Loading /> : <SponsorEditorList sponsors={this.props.sponsors} onNewSponsor={(e) => this._newSponsor(e)}/>}
+        {loading ? <Loading /> : <SponsorEditorList sponsors={this.props.sponsors}/>}
       </Container>
     );
-  }
-
-  _newSponsor(e) {
-    Meteor.call('sponsors.create', (error, result) => {
-      if (error) return alert(error.reason);
-    });
   }
 }
 
