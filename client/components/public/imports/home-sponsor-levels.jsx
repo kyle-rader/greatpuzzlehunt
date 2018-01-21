@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Grid, Segment, Card, Header, Button, Icon, Image, Message } from 'semantic-ui-react';
 import LinkButton from '../../imports/link-button';
-import SponsorTile from './sponsor-tile';
+import SponsorRow from './sponsor-row';
 
 export default class HomeSponsorLevels extends Component {
   render() {
@@ -20,7 +20,7 @@ export default class HomeSponsorLevels extends Component {
 
   _donations() {
     return (
-      <Grid.Row  verticalAlign='middle' >
+      <Grid.Row verticalAlign='middle' width={14}>
         <Grid.Column width={6}>
           <Header as="h1" size="medium">
           Invest in Your Community by Sponsoring The Hunt!
@@ -57,40 +57,30 @@ export default class HomeSponsorLevels extends Component {
       <Grid.Row>
         <Grid.Column width={14}>
           <Header as="h1" size="huge"> Sponsorship Levels</Header>
-          <Grid doubling columns={4}>
-            <Grid.Row textAlign="left">
-              <Grid.Column >
-                <SponsorTile
-                  name="PUZZLE MASTER*"
-                  rank={4}
-                  icon="trophy" price="$2000+"
-                  description="All from CIPHER + Name/Logo on all event materials, advertising, and press releases"/>
-              </Grid.Column>
-              <Grid.Column>
-                <SponsorTile
-                  rank={3}
-                  name="CIPHER*"
-                  icon="code"
-                  price="$1000 - $1999"
-                  description="All from CROSSWORD + Complimentary registration for 6 person team"/>
-              </Grid.Column>
-              <Grid.Column>
-                <SponsorTile
-                  name="CROSSWORD"
-                  rank={2}
-                  icon="crop"
-                  price="$500 - $999"
-                  description="All from JIGSAW + Name/Logo on t-shirt"/>
-              </Grid.Column>
-              <Grid.Column>
-                <SponsorTile
-                  name="JIGSAW"
-                  rank={1}
-                  icon="puzzle"
-                  price="$200 - $499"
-                  description="Name/Logo on website sponsor list"/>
-              </Grid.Column>
-            </Grid.Row>
+          <Grid stackable divided='vertically'>
+            <SponsorRow
+              name="PUZZLE MASTER*"
+              level='puzzlemaster'
+              icon="trophy" price="$2000+"
+              description="All from CIPHER + Name/Logo on all event materials, advertising, and press releases"/>
+            <SponsorRow
+              level='cipher'
+              name="CIPHER*"
+              icon="code"
+              price="$1000 - $1999"
+              description="All from CROSSWORD + Complimentary registration for 6 person team"/>
+            <SponsorRow
+              name="CROSSWORD"
+              level='crossword'
+              icon="crop"
+              price="$500 - $999"
+              description="All from JIGSAW + Name/Logo on t-shirt"/>
+            <SponsorRow
+              name="JIGSAW"
+              level='jigsaw'
+              icon="puzzle"
+              price="$200 - $499"
+              description="Name/Logo on website sponsor list"/>
           </Grid>
         </Grid.Column>
       </Grid.Row>
@@ -100,16 +90,16 @@ export default class HomeSponsorLevels extends Component {
   _thanks() {
     return [
       <Grid.Row key='sponsor-thanks-1'>
-        <Grid.Column width={8}>
+        <Grid.Column width={14}>
           <Message>
-          Special thanks to Market Street Catering of <a href="http://www.haggen.com/" target="_blank" >Haggen NW Fresh </a> for providing fresh fruit and breakfast pastries including a  GF option and Woods Coffee for the brew!
+            Special thanks to Market Street Catering of <a href="http://www.haggen.com/" target="_blank" >Haggen NW Fresh </a> for providing fresh fruit and breakfast pastries including a  GF option and Woods Coffee for the brew!
           </Message>
         </Grid.Column>
       </Grid.Row>,
       <Grid.Row key='sponsor-thanks-2'>
-        <Grid.Column width={8}>
-          <Message>
-          *The complimentary team registration benefit has a $90 fair market value. If this benefit is accepted, the tax-deductible value of your donation will be reduced by $90, as required by the IRS.
+        <Grid.Column width={14}>
+          <Message info>
+            *The complimentary team registration benefit has a $90 fair market value. If this benefit is accepted, the tax-deductible value of your donation will be reduced by $90, as required by the IRS.
           </Message>
         </Grid.Column>
       </Grid.Row>

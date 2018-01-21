@@ -50,7 +50,7 @@ const adminMenuItems = [
   {
     name: 'Promo Codes',
     to: '/admin/promo-codes',
-    iconClass: 'green ticket',
+    iconClass: 'ticket',
   },
   {
     name: 'Teams',
@@ -80,7 +80,7 @@ const adminMenuItems = [
   {
     name: 'Sponsors',
     to: '/admin/sponsors',
-    iconClass: 'green mail',
+    iconClass: 'green dollar',
   },
 ];
 const volunteerMenuItems = [

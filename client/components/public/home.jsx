@@ -22,13 +22,12 @@ Home = class Home extends Component {
         <HomeEarlyBird/>
 
         <HomeSponsorLevels/>
-
+        
         <SamplePuzzles/>
 
         <HomePastEvents/>
 
         <HomeWhoAreWe/>
-
       </div>
     );
   }

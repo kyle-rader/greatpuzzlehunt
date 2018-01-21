@@ -18,3 +18,11 @@ Meteor.publish('admin.sponsors', function() {
 
   return Sponsors.find({}, { fields: SPONSOR_FIELDS });
 });
+
+Meteor.publish('sponsors', function(level) {
+  check(level, String);
+  return Sponsors.find({ level, publish: true }, { fields: {
+    level: 1,
+    logoUrl: 1,
+  }});
+});
