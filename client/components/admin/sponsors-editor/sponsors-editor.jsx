@@ -25,9 +25,9 @@ class SponsorsEditorInner extends Component {
 export default SponsorsEditor = withTracker((props) => {
   const sponsorsHandle = Meteor.subscribe('admin.sponsors');
   const loading = !Boolean(sponsorsHandle.ready());
-  const sponsors = Sponsors.find({});
+  const sponsors = Sponsors.find({}).fetch();
   return {
     loading,
-    sponsors: loading ? [] : sponsors.fetch(),
+    sponsors,
   };
 })(SponsorsEditorInner);

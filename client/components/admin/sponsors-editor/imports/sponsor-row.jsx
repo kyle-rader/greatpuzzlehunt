@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { pick } from 'lodash';
 import Dropzone from 'react-dropzone';
+import { debounce } from 'lodash';
 
 import {
   Form,
@@ -28,15 +29,26 @@ const levelOptions = [
 class SponsorRow extends Component {
   constructor(props) {
     super(props);
+    this.state = this._stateFromprops(props);
+
+    this.debouncedSave = debounce(() => this._save(), 500, { trailing: true });
+  }
+
+  _stateFromprops(props) {
     const { _id, name, level, publish, logoUrl, imageId } = props.sponsor;
-    this.state = {
+    return {
       _id,
       name,
       level,
       publish,
       message: null,
       logoUrl: logoUrl || "https://react.semantic-ui.com/assets/images/avatar/large/matthew.png",
+      imageId,
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(this._stateFromprops(nextProps));
   }
 
   render () {
@@ -49,7 +61,7 @@ class SponsorRow extends Component {
         <Grid.Column width={12}>
           <Form onSubmit={(e) => e.preventDefault()}>
             <Form.Group>
-              <Form.Input name="name" label='Sponsor Name' placeholder='Cool Company' value={this.state.name} onChange={ (e) => this._handleTextChange(e) } width={12}/>
+              <Form.Input name="name" label='Sponsor (Not Public)' placeholder='Cool Company' value={this.state.name} onChange={ (e) => this._handleTextChange(e) } width={12}/>
               <Form.Dropdown name='level' label='Donor Level' placeholder='Donor Level' selection options={levelOptions} value={ this.state.level } onChange={ (e, data) => this._handleDataChange(e, data) }/>
             </Form.Group>
 
@@ -65,11 +77,8 @@ class SponsorRow extends Component {
                 label="Publish on Homepage"
                 defaultChecked={this.state.publish}
                 onChange={ (e,data) => this._handleDataChange(e,data) } />
-            </Form.Group>
 
-            <Form.Group>
-              <Form.Button content="Save" icon={<Icon name="save"/>} basic color='green' onClick={(e) => this._save(e)}/>
-              <Form.Button content="Delete" icon={<Icon name="trash"/>} basic color='red' onClick={(e) => this._delete(e)}/>
+              <Form.Button floated="right" content="Delete" icon={<Icon name="trash"/>} basic color='red' onClick={(e) => this._delete(e)}/>
             </Form.Group>
           </Form>
 
@@ -86,10 +95,16 @@ class SponsorRow extends Component {
   upload(file) {
     Images.insert(file, (error, fileObj) => {
       if (error) return alert(error.reason);
+
+      // Before updating the image go ahead and save Before
+      // the file upload triggers a server update.
+      this._save();
+
       const data = {
         imageId: fileObj._id,
         sponsorId: this.props.sponsor._id,
       };
+
       Meteor.call('sponsors.updateImage', data, (error, result) => {
         if (error) return alert(error.reason);
       });
@@ -99,15 +114,18 @@ class SponsorRow extends Component {
   _handleTextChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+    this.debouncedSave();
   }
 
   _handleDataChange(e, data) {
     const { name, value, checked } = data;
     // console.log(data);
     this.setState({ [name]: (value || checked) });
+
+    this.debouncedSave();
   }
 
-  _save(e) {
+  _save() {
     const data = pick(this.state, ['_id', 'name', 'level', 'publish']);
     Meteor.call('sponsors.update', data, (error, result) => {
       if (error) return alert(error.reason);
