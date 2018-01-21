@@ -10,6 +10,7 @@ import {
   Icon,
   Image,
   Button,
+  Message,
 } from 'semantic-ui-react';
 
 const dropZoneStyle = {
@@ -33,6 +34,7 @@ class SponsorRow extends Component {
       name,
       level,
       publish,
+      message: null,
       logoUrl: logoUrl || "https://react.semantic-ui.com/assets/images/avatar/large/matthew.png",
     };
   }
@@ -70,6 +72,8 @@ class SponsorRow extends Component {
               <Form.Button content="Delete" icon={<Icon name="trash"/>} basic color='red' onClick={(e) => this._delete(e)}/>
             </Form.Group>
           </Form>
+
+          { this.state.message ? this._message() : null}
         </Grid.Column>
       </Grid.Row>
     );
@@ -107,6 +111,8 @@ class SponsorRow extends Component {
     const data = pick(this.state, ['_id', 'name', 'level', 'publish']);
     Meteor.call('sponsors.update', data, (error, result) => {
       if (error) return alert(error.reason);
+      this.setState({ message: "Saved" })
+      Meteor.setTimeout(() => this._clearMessage(), 1000);
     });
   }
 
@@ -116,6 +122,17 @@ class SponsorRow extends Component {
         if (error) return alert(error.reason);
       });
     }
+  }
+
+  _message() {
+    const { message } = this.state;
+    return (
+      <Message positive content={this.state.message}/>
+    );
+  }
+
+  _clearMessage() {
+    this.setState({ message: null });
   }
 }
 
