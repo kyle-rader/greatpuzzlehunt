@@ -6,12 +6,7 @@ import Dropzone from 'react-dropzone';
 export default class ImageUploader extends Component {
   render() {
     const style = {
-      width: '100%',
-      height: '120px',
-    };
-
-    const msgStyle = {
-      padding: '15px',
+      cursor: 'pointer',
     };
 
     return (
@@ -19,7 +14,7 @@ export default class ImageUploader extends Component {
         style={ style }
         accept='image/*'
         onDrop={(files) => this.onDrop(files)}>
-        <Message style={ msgStyle } content='Uploade Images (Drag and Drop or Click Here)'/>
+        <Button fluid color='teal' content='Upload Images (Drag & Drop or Click Here)'/>
       </Dropzone>
     );
   }
@@ -32,6 +27,7 @@ export default class ImageUploader extends Component {
     Images.insert(file, (error, fileObj) => {
       if (error) return alert(error.reason);
       console.log('Uploaded:', fileObj);
+      window.URL.revokeObjectURL(file.preview);
     });
   }
 }

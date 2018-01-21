@@ -11,6 +11,7 @@ export default class ImageManager extends Component {
       <div>
         <Header as='h3' content='Image Manager'/>
         <ImageUploader />
+        <br/>
         <ImageList />
       </div>
     );

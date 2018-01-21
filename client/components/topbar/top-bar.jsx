@@ -50,7 +50,7 @@ const adminMenuItems = [
   {
     name: 'Promo Codes',
     to: '/admin/promo-codes',
-    iconClass: 'green ticket',
+    iconClass: 'ticket',
   },
   {
     name: 'Teams',
@@ -76,6 +76,11 @@ const adminMenuItems = [
     name: 'Email',
     to: '/admin/email',
     iconClass: 'orange mail',
+  },
+  {
+    name: 'Sponsors',
+    to: '/admin/sponsors',
+    iconClass: 'green dollar',
   },
 ];
 const volunteerMenuItems = [
@@ -105,7 +110,7 @@ TopBar = class TopBar extends Component {
           </div>
         </div>
 
-        { this._renderSocialButtons() }
+        {/* this._renderSocialButtons() */}
 
         <div className="right menu">
           { isAdmin() ? this._renderAdminMenu() : null }
