@@ -3,12 +3,19 @@ import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Icon } from 'semantic-ui-react';
+import Scrollchor from 'react-scrollchor';
 
 const mainMenuLinks = [
   {
     name: 'Home',
     to: '/',
-    iconClass: 'green home',
+    iconClass: 'gray home',
+  },
+  {
+    name: 'Sponsors',
+    to: '#sponsors',
+    iconClass: 'green heart',
+    custom: true,
   },
   {
     name: 'Teams',
@@ -122,12 +129,25 @@ TopBar = class TopBar extends Component {
   }
 
   _renderMenuLinks(links) {
-    return links.map((item) => (
+    return links.map((item) => this._renderMenuLink(item));
+  }
+
+  _renderMenuLink(item) {
+    if (item.custom) {
+      return (
+        <Scrollchor key={item.to} className='item' to={item.to} animate={{offset:-60, duration:800}}>
+          <Icon className={item.iconClass}/>
+          {item.name}
+        </Scrollchor>
+      );
+    } else {
+      return (
       <Link key={ item.to } className='item' to={ item.to }>
         <Icon className={ item.iconClass }/>
         { item.name }
       </Link>
-    ));
+      );
+    }
   }
 
   _renderSocialButtons() {

@@ -7,7 +7,7 @@ import SponsorRow from './sponsor-row';
 export default class HomeSponsors extends Component {
   render() {
     return (
-      <section className="pattern-bg">
+      <section className="pattern-bg" id="sponsors">
         <Grid centered textAlign="left" padded stackable style={{ padding: '2em 0em', margin:'0'}}>
           {this._sponsors()}
           {this._thanks()}

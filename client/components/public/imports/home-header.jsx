@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import LinkButton from '../../imports/link-button';
-import { Grid, Card, Container, Segment, Header, Button, Icon, Image, Responsive } from 'semantic-ui-react';
+import Scrollchor from 'react-scrollchor';
+import { Grid, Container, Segment, Icon } from 'semantic-ui-react';
+
 export default class HomeHeader extends Component {
   render() {
     return (
       <section className="pattern-bg" id="home-header">
         <Grid stackable>
+
           <Grid.Row className="header-wrap">
             <Grid.Column className="hide-on-mobile" width={9}>
               <img className="header-magnyfying-glass" src="/img/header-magnifying-glass.png"/>
@@ -20,6 +23,7 @@ export default class HomeHeader extends Component {
               </Container>
             </Grid.Column>
           </Grid.Row>
+
           <Grid.Row centered divided>
             <Grid.Column verticalAlign="middle" width={4}>
               <h2 className="sub-header-text">
@@ -34,11 +38,25 @@ export default class HomeHeader extends Component {
               </Segment>
             </Grid.Column>
           </Grid.Row>
+
           <Grid.Row centered>
-            <Grid.Column width={8}>
+            <Grid.Column width={12}>
               { this._linkButtons() }
             </Grid.Column>
           </Grid.Row>
+
+          <Grid.Row centered>
+            <Grid.Column width={12}>
+              <h3>
+                This event is made possible thanks to
+                <Scrollchor
+                  to="#sponsors"
+                  animate={{offset:-60, duration:800}}><strong> our Awesome Sponsors</strong>
+                </Scrollchor>!
+              </h3>
+            </Grid.Column>
+          </Grid.Row>
+
         </Grid>
       </section>
     );

@@ -25,9 +25,9 @@ Home = class Home extends Component {
         <HomeDonate/>
 
         <a name='sponsors'/>
-        
+
         <HomeSponsors/>
-        
+
         <SamplePuzzles/>
 
         <HomePastEvents/>
