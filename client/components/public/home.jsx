@@ -8,7 +8,8 @@ import HomeIntro from './imports/home-intro';
 import HomeEarlyBird from './imports/home-early-bird';
 import HomePastEvents from './imports/home-past-events';
 import HomeWhoAreWe from './imports/home-who-are-we';
-import HomeSponsorLevels from './imports/home-sponsor-levels';
+import HomeDonate from './imports/home-donate';
+import HomeSponsors from './imports/home-sponsors';
 import SamplePuzzles from './imports/sample-puzzles';
 
 Home = class Home extends Component {
@@ -21,7 +22,11 @@ Home = class Home extends Component {
 
         <HomeEarlyBird/>
 
-        <HomeSponsorLevels/>
+        <HomeDonate/>
+
+        <a name='sponsors'/>
+        
+        <HomeSponsors/>
         
         <SamplePuzzles/>
 

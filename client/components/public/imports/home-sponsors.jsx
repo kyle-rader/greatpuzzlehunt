@@ -4,51 +4,16 @@ import { Grid, Segment, Card, Header, Button, Icon, Image, Message } from 'seman
 import LinkButton from '../../imports/link-button';
 import SponsorRow from './sponsor-row';
 
-export default class HomeSponsorLevels extends Component {
+export default class HomeSponsors extends Component {
   render() {
     return (
-      <section className="pattern-bg" id="sponsorship-levels">
-        <Grid centered textAlign="left" padded stackable style={{ padding: '10em 0em', margin:'0'}}>
-          {this._donations()}
+      <section className="pattern-bg">
+        <Grid centered textAlign="left" padded stackable style={{ padding: '2em 0em', margin:'0'}}>
           {this._sponsors()}
           {this._thanks()}
         </Grid>
         <Image fluid src="/img/2016/event-photos/team-saxaphone-bugs-thin.jpg"/>
       </section>
-    );
-  }
-
-  _donations() {
-    return (
-      <Grid.Row verticalAlign='middle' width={14}>
-        <Grid.Column width={6}>
-          <Header as="h1" size="medium">
-          Invest in Your Community by Sponsoring The Hunt!
-          </Header>
-          <Segment basic size='large' className="no-padding">
-            <p>Donations of any amount will help support this Event.</p>
-            <p>
-              Please Consider:<br/>
-              Sponsoring a student or team that needs help to participate <br/>
-              Non monetary support such as prizes,or sign up as a volunteer<br/><br/>
-              All donations are made through WWU and are tax deductible!<br/>
-            </p>
-          </Segment>
-          <LinkButton as='a'
-            href="https://alumni.wwu.edu/greatpuzzlehunt"
-            size='large'  content='Donate Online'
-            icon={<Icon name='heart'/>}
-          />
-          <LinkButton as='a'
-            href="http://foundation.wwu.edu/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=420"
-            size='large'  className="white button" content='Donating by check?'
-            icon={<Icon name='heart'/>}
-          />
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Image fluid src='/img/2016/event-photos/gathering.jpg'/>
-        </Grid.Column>
-      </Grid.Row>
     );
   }
 
