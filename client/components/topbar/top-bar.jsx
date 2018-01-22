@@ -13,7 +13,7 @@ const mainMenuLinks = [
   },
   {
     name: 'Sponsors',
-    to: '#sponsors',
+    to: '/#sponsors',
     iconClass: 'green heart',
     custom: true,
   },
@@ -135,10 +135,10 @@ TopBar = class TopBar extends Component {
   _renderMenuLink(item) {
     if (item.custom) {
       return (
-        <Scrollchor key={item.to} className='item' to={item.to} animate={{offset:-60, duration:800}}>
+        <a key={item.to} className='item' href={item.to}>
           <Icon className={item.iconClass}/>
           {item.name}
-        </Scrollchor>
+        </a>
       );
     } else {
       return (
