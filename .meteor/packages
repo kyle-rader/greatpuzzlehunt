@@ -36,7 +36,7 @@ juliancwirko:postcss
 less@2.7.11
 meteorhacks:picker
 froatsnook:valid-email
-cfs:dropbox
 cfs:filesystem
 percolate:migrations
 dynamic-import
+cfs:gridfs
