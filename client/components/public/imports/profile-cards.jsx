@@ -40,7 +40,7 @@ export default class ProfileCards extends Component {
         name: 'Jeff & Zoe',
         title: '',
         role: 'Puzzle Master Team',
-        email: 'jeff@gmail.com',
+        email: 'gphpuzzlemasters@gmail.com',
         image: '/img/team/jeff-zoe.jpg',
       },
       {
