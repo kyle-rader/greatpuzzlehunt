@@ -33,21 +33,21 @@ export default class ProfileCards extends Component {
         name: 'Scott St. Clair',
         title: '',
         role: 'Scott-AS Club President 2017-18',
-        email: 'scott@gmail.com',
+        email: 'stclais2@wwu.edu',
         image: '/img/team/scott.jpg',
       },
       {
         name: 'Jeff & Zoe',
         title: '',
         role: 'Puzzle Master Team',
-        email: 'jeff@gmail.com',
+        email: 'gphpuzzlemasters@gmail.com',
         image: '/img/team/jeff-zoe.jpg',
       },
       {
         name: 'Noah Strong',
         title: '',
         role: 'Tech Support',
-        email: 'Noah@gmail.com',
+        email: 'support@greatpuzzlehunt.com',
         image: '/img/team/noah.jpg',
       }
     ];
