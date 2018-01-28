@@ -215,7 +215,7 @@ class RegisterForm extends Component {
 
         <List>
           <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on their behalf on their minor.</List.Item>
-          <List.Item><strong>Participants under age 14:</strong> In addition to registering their minor, a <u>parent/legal guardian must also register</u> and <u>join the same team</u> as their under age 14 child and <u>accompany them at all times</u> during the Puzzle Hunt.</List.Item>
+          <List.Item><strong>Participants under age 14:</strong> In addition to registering their child, a <u>parent/legal guardian must also register</u> and <u>join the same team</u> as their under age 14 child and <u>accompany them at all times</u> during the Puzzle Hunt.</List.Item>
         </List>
 
         <Header as='h3' icon={<Icon name='camera' color='violet'/>} content='Photo Permission'/>
@@ -324,7 +324,7 @@ class RegisterForm extends Component {
         <Form.Input
           name='parentGuardian'
           type='text'
-          label="Parent/Guardian Full Name (if player is under the age of 14)"
+          label="Parent/Guardian accompanying player if under the age of 14"
           placeholder='Full name of legal parent/guardian' value={ this.state.parentGuardian } onChange={ (e) => this._handleTextChange(e) }/>
       );
     } else {
