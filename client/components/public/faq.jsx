@@ -241,7 +241,7 @@ FAQ = class FAQ extends Component {
               <List.Item description="Scissors and tape."/>
               <List.Item description="Writing utensils (pencils, colored pencils, erasers, highlighters)."/>
               <List.Item description="A sturdy single hole punch (capable of punching through 8 layers of paper)."/>
-              <List.Item description="Water to drink! You are welcome to bring your own snacks too."/>
+              <List.Item description="Water to drink and a sack lunch or snacks! Light refreshments will be provided."/>
               <List.Item description="Umbrella for your puzzles!"/>
             </List>
           </Accordion.Content>
@@ -290,7 +290,7 @@ FAQ = class FAQ extends Component {
               Coffee and light refreshments will be available in front of Miller Hall (in Red Square) throughout the event while supplies last.
             </p>
             <List>
-              <List.Item description="10:00 AM - Check in/receive wristband. Refreshments opens along Miller Hall."/>
+              <List.Item description="10:00 AM - Check in/receive wristband. Refreshments area opens along Miller Hall."/>
               <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
             </List>
             <p>
