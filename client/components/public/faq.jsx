@@ -282,17 +282,20 @@ FAQ = class FAQ extends Component {
           </Accordion.Title>
           <Accordion.Content>
             <p>
-              Yes! To get food and beverages you <strong>must be wearing your wristband</strong> at all times.<br/>
-              Your wristband will be given to you at check in.
+              Yes! To enter the free refreshments area, <strong>you must be wearing your wristband</strong> at all times.
+              <br/>
+              Wristbands are distributed at check-in.
             </p>
-            <p>There are two opportunities to get this food & beverage:</p>
+            <p>
+              Coffee and light refreshments will be available in front of Miller Hall (in Red Square) throughout the event while supplies last.
+            </p>
             <List>
-              <List.Item description="10:00 AM - Check in/receive wristband. Refreshments & breakfast items will be along Miller Hall."/>
+              <List.Item description="10:00 AM - Check in/receive wristband. Refreshments opens along Miller Hall."/>
               <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
             </List>
             <p>
               Special thanks to Market Street Catering of <a target="_blank" href="http://www.haggen.com/">Haggen NW Fresh</a> for providing fresh fruit and
-              breakfast pastries including gluten free (GF) option and <a target="_blank" href="https://woodscoffee.com/">Woods Coffe</a> for the fresh brewed coffee!
+              breakfast pastries including gluten free (GF) option and <a target="_blank" href="https://woodscoffee.com/">Woods Coffee</a> for the fresh brewed coffee!
             </p>
           </Accordion.Content>
 
