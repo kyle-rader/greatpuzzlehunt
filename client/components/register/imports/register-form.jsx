@@ -201,21 +201,22 @@ class RegisterForm extends Component {
 
         <Header as='h3' icon={<Icon name='ambulance' color='red'/>} content='Emergency Contact' subheader='This information is required in the case of emergency.'/>
 
-        <p>
-          <strong>Note:</strong> If player is under the age of 14 please enter a parent or legal guardian as their emergency contact.
-        </p>
-
         <Form.Group widths='equal'>
-          <Form.Input name='ecName' label='Full Name' placeholder='Reliable person who has your back' value={ this.state.ecName } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='ecName' label='Full Name' placeholder='Emergency Contact' value={ this.state.ecName } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='ecRelationship' label='Relationship' placeholder='How you know this person' value={ this.state.ecRelationship } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         <Form.Group widths='equal'>
-          <Form.Input name='ecPhone' label='Phone' placeholder='A phone that gets answered' value={ this.state.ecPhone } onChange={ (e) => this._handleTextChange(e) }/>
+          <Form.Input name='ecPhone' label='Phone' placeholder='A phone they will answer' value={ this.state.ecPhone } onChange={ (e) => this._handleTextChange(e) }/>
           <Form.Input name='ecEmail' label='Email' placeholder='A reliable email' value={ this.state.ecEmail } onChange={ (e) => this._handleTextChange(e) }/>
         </Form.Group>
 
         { this._parentGuardian()}
+
+        <List>
+          <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on their behalf on their minor.</List.Item>
+          <List.Item><strong>Participants under age 14:</strong> In addition to registering their child, a <u>parent/legal guardian must also register</u> and <u>join the same team</u> as their under age 14 child and <u>accompany them at all times</u> during the Puzzle Hunt.</List.Item>
+        </List>
 
         <Header as='h3' icon={<Icon name='camera' color='violet'/>} content='Photo Permission'/>
 
@@ -229,6 +230,7 @@ class RegisterForm extends Component {
         <Header as='h3' icon={<Icon name='pencil' color='orange'/>} content='Acknowledgement of Risk & Hold Harmless Agreement' />
 
         { this._holdHarmlessButton() }
+
         { this._holdHarmless() }
 
         <Form.Checkbox
@@ -237,10 +239,6 @@ class RegisterForm extends Component {
           name='holdHarmless'
           label='By checking this box I acknowledge that I have read and understand the Risk & Hold Harmless Agreement and that I am either 18+ years old or a WWU student or the parent/guardian of a minor participant.'
           onChange={ (e,data) => this._handleDataChange(e,data) }/>
-        <List>
-          <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on their behalf on their minor.</List.Item>
-          <List.Item><strong>Participants under age 14:</strong> In addition to registering their minor, a parent/legal guardian must also register and join the same team as their under age 14 child and accompany them at all times during the Puzzle Hunt.</List.Item>
-        </List>
 
         <Form.Button fluid type='submit' content='Register' color='green'/>
 
@@ -326,7 +324,7 @@ class RegisterForm extends Component {
         <Form.Input
           name='parentGuardian'
           type='text'
-          label="Parent/Guardian Full Name (if player is under the age of 14)"
+          label="Parent/Guardian accompanying player if under the age of 14"
           placeholder='Full name of legal parent/guardian' value={ this.state.parentGuardian } onChange={ (e) => this._handleTextChange(e) }/>
       );
     } else {
