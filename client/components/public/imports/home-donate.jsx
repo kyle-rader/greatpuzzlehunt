@@ -7,10 +7,10 @@ export default class HomeDonate extends Component {
   render() {
     return (
       <section className="pattern-bg" id="donate-message">
-        
+
         <Grid centered textAlign="left" padded stackable style={{ padding: '2em 0em', margin:'0'}}>
           <Grid.Row verticalAlign='middle' width={14}>
-            
+
             <Grid.Column width={6}>
               <Header as="h1" size="medium">
               Invest in Your Community by Sponsoring The Hunt!
@@ -30,7 +30,7 @@ export default class HomeDonate extends Component {
                 icon={<Icon name='heart'/>}
               />
               <LinkButton as='a'
-                href="http://foundation.wwu.edu/s/1710/campaign/index.aspx?sid=1710&gid=2&pgid=420"
+                href="https://foundation.wwu.edu/making-gift"
                 size='large'  className="white button" content='Donating by check?'
                 icon={<Icon name='heart'/>}
               />
