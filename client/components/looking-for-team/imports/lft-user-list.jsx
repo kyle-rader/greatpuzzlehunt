@@ -3,7 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import React, { Component, PropTypes } from 'react';
 import { Card, Icon } from 'semantic-ui-react';
 
-Users = class Users extends Component {
+class Users extends Component {
   render() {
     if (!this.props.ready) return <Loading/>
 
