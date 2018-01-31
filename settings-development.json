@@ -1,7 +1,7 @@
 {
   "public": {
     "siteName": "Great Puzzle Hunt (Dev)",
-    "siteUrl": "http://localhost:3000",
+    "siteURL": "http://localhost:3000",
     "accountsEmail": "Great Puzzle Hunt <accounts@greatpuzzlehunt.com>",
     "infoEmail": "Great Puzzle Hunt <info@greatpuzzlehunt.com>",
     "eventYear": "2018",
