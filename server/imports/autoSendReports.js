@@ -4,7 +4,7 @@ import moment from 'moment';
 import { sendReports } from '../../lib/imports/sendReports';
 
 const CHECK_INTERVAL = {
-  minutes: 1,
+  minutes: 5,
 };
 
 function autoSendReports() {
