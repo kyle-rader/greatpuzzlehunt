@@ -1,9 +1,0 @@
-Migrations.add({
-  version: 1,
-  up: function() {
-    // Nothing yet
-  },
-  down: function() {
-    // There is no going back!
-  },
-});
