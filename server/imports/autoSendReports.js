@@ -4,21 +4,22 @@ import moment from 'moment';
 import { sendReports } from '../../lib/imports/sendReports';
 
 const CHECK_INTERVAL = {
-  minutes: 30,
+  minutes: 1,
 };
 
 function autoSendReports() {
   const now = moment();
-  const lastAutoReportSend = moment(Gamestate.findOne().lastAutoReportSend || moment(now).subtract(2, 'day'));
+  const gameState = Gamestate.findOne();
+  const lastAutoReportSend = moment(gameState.lastAutoReportSend || moment(now).subtract(2, 'day'));
   const waitingUntil = moment(lastAutoReportSend).add(1, 'day');
 
   Meteor.logger.info(`Checking to send auto reports. now: ${now} .. waiting for ${waitingUntil}`);
 
   if (now.isAfter(waitingUntil)) {
     const sendTime = moment(now).startOf('hour');
-    Meteor.logger.info(`Sending auto reports at ${sendTime}`);
-    Gamestate.update({}, { lastAutoReportSend: sendTime });
-    sendReports();
+    Meteor.logger.info(`Sending auto reports at ${sendTime} to: ${gameState.sendReportsTo}`);
+    sendReports(gameState.sendReportsTo);
+    Gamestate.update({ _id: gameState._id}, { $set: { lastAutoReportSend: sendTime }});
   }
 }
 
