@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { map, extend } from 'lodash';
 
-import { PostRoute } from '../imports/post-route.js';
+import { PostRoute } from '../imports/route-types.js';
 import processTransaction from '../imports/processTransaction.js';
 
 PostRoute.route('/api/tickets', function(params, req, res, next) {
