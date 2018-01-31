@@ -26,3 +26,4 @@ Picker.middleware(bodyParser.urlencoded({ extended: true }));
 import './imports/start-up';
 import './imports/accounts';
 import './imports/puzzle-watcher';
+import './imports/autoSendReports';
