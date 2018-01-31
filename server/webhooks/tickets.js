@@ -1,13 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { map, extend } from 'lodash';
 
-import { PostRoute } from '../imports/post-route.js';
+import { PostRoute } from '../imports/route-types.js';
 import processTransaction from '../imports/processTransaction.js';
+
+const { token } = Meteor.settings.accounts;
 
 PostRoute.route('/api/tickets', function(params, req, res, next) {
 
   // Validate api token
-  if (!params.query.token || params.query.token !== Meteor.settings.accounts.apiKey) {
+  Meteor.logger.info(`Comparing token: ${token} with params.query.token: ${params.query.token}`);
+
+  if (!params.query.token || params.query.token !== token) {
     Meteor.logger.info(`Request on "/api/tickets" with BAD TOKEN: "${params.query.token}" from ${Meteor.logger.jstring(req.headers)}`);
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 403;

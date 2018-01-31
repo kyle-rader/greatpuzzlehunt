@@ -4,7 +4,7 @@
   "description": "A Puzzle Hunt Game System",
   "main": "main.js",
   "scripts": {
-    "start": "meteor --settings settings.json || true",
+    "start": "meteor --settings settings-development.json || true",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "git tag `date \"+deploy-%Y_%m_%d-%H_%M_%S\"` && git push --tags && mup deploy --config=mup-production.js --settings=settings-production.json"
   },
@@ -24,6 +24,7 @@
     "body-parser": "^1.15.2",
     "clipboard": "^1.6.1",
     "dropbox": "^2.5.13",
+    "jszip": "^3.1.5",
     "lodash": "^4.17.2",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.17.0",
