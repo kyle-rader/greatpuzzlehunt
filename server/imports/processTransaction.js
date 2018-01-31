@@ -44,6 +44,9 @@ export default function processTransaction(txData) {
       tx,
       email,
       name,
+      studentTickets,
+      nonStudentTickets,
+      gearOrders,
       createdAt: now,
       updatedAt: now,
     });

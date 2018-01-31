@@ -5,5 +5,6 @@ Meteor.publish('gamestate', function() {
       volunteerRegistration: 1,
       playerRegistration: 1,
       gameplay: 1,
+      sendReportsTo: 1,
     });
 });
