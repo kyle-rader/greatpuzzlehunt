@@ -15,25 +15,27 @@ import SamplePuzzles from './imports/SamplePuzzles';
 Home = class Home extends Component {
   render() {
     return (
-      <Container>
-        <HomeHeader/>
+      <div className="pattern-bg">
+        <Container>
+          <HomeHeader/>
 
-        <HomeIntro/>
+          <HomeIntro/>
 
-        <HomeEarlyBird/>
+          <HomeEarlyBird/>
 
-        <HomeDonate/>
+          <HomeDonate/>
 
-        <a name='sponsors'/>
+          <a name='sponsors'/>
 
-        <HomeSponsors/>
+          <HomeSponsors/>
 
-        <SamplePuzzles/>
+          <SamplePuzzles/>
 
-        <HomePastEvents/>
+          <HomePastEvents/>
 
-        <HomePeople/>
-      </Container>
+          <HomePeople/>
+        </Container>
+      </div>
     );
   }
 }

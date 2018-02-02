@@ -11,7 +11,7 @@ export default class HomeDonate extends Component {
         <Grid centered textAlign="left" padded stackable style={{ padding: '2em 0em', margin:'0'}}>
           <Grid.Row verticalAlign='middle' width={14}>
 
-            <Grid.Column width={6}>
+            <Grid.Column width={8}>
               <Header as="h1" size="medium">
               Invest in Your Community by Sponsoring The Hunt!
               </Header>

@@ -20,7 +20,7 @@ export default class HomeSponsors extends Component {
   _sponsors() {
     return (
       <Grid.Row>
-        <Grid.Column width={14}>
+        <Grid.Column width={16}>
           <Header as="h1" size="huge"> Sponsorship Levels</Header>
           <Grid stackable divided='vertically'>
             <SponsorRow

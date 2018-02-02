@@ -14,19 +14,22 @@ import { Grid,
 import Video from './Video';
 import LinkButton from '../../imports/LinkButton';
 
+const { eventDate } = Meteor.settings.public;
 
 export default class HomeIntro extends Component {
   render() {
     return (
       <div className="pattern-bg" id="HomeIntro">
         <Grid padded stackable centered textAlign='left'>
+
           <Grid.Row>
-            <Grid.Column width={10} className='raised'>
+            <Grid.Column width={16} className='raised'>
               <Embed active={true} icon={null} url="https://www.youtube.com/embed/LYzpNT-vX7s"/>
             </Grid.Column>
           </Grid.Row>
+
           <Grid.Row>
-            <Grid.Column width={8} className='raised'>
+            <Grid.Column width={16} className='raised'>
               <Container textAlign='left'>
                 <Header size='huge'>What is the Puzzle Hunt?</Header>
                 <Segment basic size='large' className="no-padding">
@@ -36,8 +39,9 @@ export default class HomeIntro extends Component {
               </Container>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={4}>
+
+          <Grid.Row columns={3}>
+            <Grid.Column>
               <Segment  inverted color='blue' >
                 <Header as='h1' size="medium">Who?</Header>
                 Everyone! However, each person under age 14 on a team must be accompanied by a parent/legal guardian at all times - parent/legal guardian must be registered on team with child under age 14. *Note: The puzzles are created for ages 14 and older.
@@ -50,25 +54,26 @@ export default class HomeIntro extends Component {
                 Bellingham, WA 98225<br/><br/>
               </Segment>
             </Grid.Column>
-            <Grid.Column width={4}>
+            <Grid.Column>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium" >What?</Header>
-                Scavenger hunting, puzzle solving, brain adventuring! <LinkButton to="/faq" content="More details" size="tiny"/>
+                Scavenger hunting, puzzle solving, brain adventuring!
               </Segment>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium" >Why?</Header>
                 Stretch your mental muscles, bond with your teammates, compete alongside people of all ages and walks of life, and have a lot of fun!
               </Segment>
             </Grid.Column>
-            <Grid.Column width={4}>
+            <Grid.Column>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium" >When?</Header>
-                Saturday, April 14, 2018 from 10AM - 5PM<br/>
+                {eventDate} from 10AM - 5PM<br/>
                 Awards and Prizes* at 4PM<br/>
                 *Must be present at awards ceremony to claim prizes, else prizes go to the next place team.<br/>
               </Segment>
             </Grid.Column>
           </Grid.Row>
+
         </Grid>
 
         <Image fluid src="/img/2016/event-photos/team-mod-thin.jpg"/>
