@@ -22,9 +22,7 @@ export default class HomeIntro extends Component {
         <Grid padded stackable centered textAlign='left'>
           <Grid.Row>
             <Grid.Column width={10} className='raised'>
-              {/* <Video videoId='LYzpNT-vX7s' source='youtube'/> */}
-              <Embed iframe={<iframe width="100%" height="100%" src="https://www.youtube.com/embed/LYzpNT-vX7s" allow="autoplay; encrypted-media" allowfullscreen></iframe>}/>
-              {/* </Embed> */}
+              <Embed active={true} icon={null} url="https://www.youtube.com/embed/LYzpNT-vX7s"/>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
