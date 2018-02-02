@@ -3,7 +3,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Grid, Icon, Header } from 'semantic-ui-react';
-import SponsorLogoList from './sponsor-logo-list';
+import SponsorLogoList from './SponsorLogoList';
 
 class SponsorRowInner extends Component {
   render() {

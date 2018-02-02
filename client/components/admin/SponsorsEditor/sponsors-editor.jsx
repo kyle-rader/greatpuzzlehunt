@@ -3,7 +3,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component, PropTypes } from 'react';
 import { Container } from 'semantic-ui-react';
 
-import SponsorEditorList from './imports/sponsor-editor-list';
+import SponsorEditorList from './imports/SponsorEditorList';
 
 class SponsorsEditorInner extends Component {
   constructor(props) {

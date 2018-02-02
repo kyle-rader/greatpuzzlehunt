@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Grid, Segment, Container, Image, Header, Button } from 'semantic-ui-react';
-import LinkButton from '../../imports/link-button';
+import LinkButton from '../../imports/LinkButton';
 export default class HomePastEvents extends Component {
   render() {
     return (
-      <section id="home-past-events">
+      <section id="HomePastEvents">
         <Segment inverted color='blue' style={{ padding: '10em 0em', margin:'0'}}>
           <Grid   stackable   >
            <Grid.Row centered verticalAlign="middle">

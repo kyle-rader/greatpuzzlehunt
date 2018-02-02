@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinkButton from '../../imports/link-button';
+import LinkButton from '../../imports/LinkButton';
 import Scrollchor from 'react-scrollchor';
 import { Grid, Container, Segment, Icon } from 'semantic-ui-react';
 

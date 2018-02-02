@@ -7,7 +7,7 @@ import {
   Button,
 } from 'semantic-ui-react';
 
-import SponsorRow from './sponsor-row';
+import SponsorRow from './SponsorRow';
 
 class SponsorEditorList extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class SponsorEditorList extends Component {
 
   _renderSponsors() {
     const { sponsors } = this.props;
-    return sponsors.map((sponsor, i) => (<SponsorRow key={`sponsor-row-${i}`} sponsor={sponsor}/>));
+    return sponsors.map((sponsor, i) => (<SponsorRow key={`SponsorRow-${i}`} sponsor={sponsor}/>));
   }
 }
 

@@ -11,18 +11,20 @@ import { Grid,
   List,
   Embed,
 } from 'semantic-ui-react';
-import Video from './video';
-import LinkButton from '../../imports/link-button';
+import Video from './Video';
+import LinkButton from '../../imports/LinkButton';
 
 
 export default class HomeIntro extends Component {
   render() {
     return (
-      <div className="pattern-bg" id="home-intro">
+      <div className="pattern-bg" id="HomeIntro">
         <Grid padded stackable centered textAlign='left'>
           <Grid.Row>
             <Grid.Column width={10} className='raised'>
-              <Video videoId='LYzpNT-vX7s' source='youtube'/>
+              {/* <Video videoId='LYzpNT-vX7s' source='youtube'/> */}
+              <Embed iframe={<iframe width="100%" height="100%" src="https://www.youtube.com/embed/LYzpNT-vX7s" allow="autoplay; encrypted-media" allowfullscreen></iframe>}/>
+              {/* </Embed> */}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Grid, Segment, Container, Image, Header, Button } from 'semantic-ui-react';
-import LinkButton from '../../imports/link-button';
+import LinkButton from '../../imports/LinkButton';
 export default class HomeEarlyBird extends Component {
   render() {
     return (
@@ -18,7 +18,7 @@ export default class HomeEarlyBird extends Component {
              </Grid.Column>
 
              <Grid.Column width={6}>
-               
+
                <Segment inverted color='blue'>
                  <Header as="h1" size="huge">Early Bird Registration Until March 18th 2018</Header>
                  Student   $5<br/><br/>
@@ -32,7 +32,7 @@ export default class HomeEarlyBird extends Component {
                   Non-Student   $15<br/><br/>
                   * Registration prices are per person. Each person wanting to join a team must register themselves first.
                 </Segment>
-                
+
               </Grid.Column>
            </Grid.Row>
          </Grid>

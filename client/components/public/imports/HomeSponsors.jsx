@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Grid, Segment, Card, Header, Button, Icon, Image, Message } from 'semantic-ui-react';
-import LinkButton from '../../imports/link-button';
-import SponsorRow from './sponsor-row';
+import LinkButton from '../../imports/LinkButton';
+import SponsorRow from './SponsorRow';
 
 export default class HomeSponsors extends Component {
   render() {

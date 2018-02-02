@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Grid, Segment, Container, Image, Header, Button } from 'semantic-ui-react';
-import ProfileCards from './profile-cards';
-export default class HomeWhoAreWe extends Component {
+import ProfileCards from './ProfileCards';
+export default class HomePeople extends Component {
   render() {
     return (
-      <section className="pattern-bg" id="home-who-are-we">
+      <section className="pattern-bg" id="HomePeople">
 
           <Grid  style={{ padding: '10em 0em 0 0', margin:'0'}}>
            <Grid.Row centered textAlign='left' verticalAlign="middle">

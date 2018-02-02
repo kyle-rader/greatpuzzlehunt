@@ -3,19 +3,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Container, Header, Icon, Button } from 'semantic-ui-react';
 
-import HomeHeader from './imports/home-header';
-import HomeIntro from './imports/home-intro';
-import HomeEarlyBird from './imports/home-early-bird';
-import HomePastEvents from './imports/home-past-events';
-import HomeWhoAreWe from './imports/home-who-are-we';
-import HomeDonate from './imports/home-donate';
-import HomeSponsors from './imports/home-sponsors';
-import SamplePuzzles from './imports/sample-puzzles';
+import HomeHeader from './imports/HomeHeader';
+import HomeIntro from './imports/HomeIntro';
+import HomeEarlyBird from './imports/HomeEarlyBird';
+import HomePastEvents from './imports/HomePastEvents';
+import HomePeople from './imports/HomePeople';
+import HomeDonate from './imports/HomeDonate';
+import HomeSponsors from './imports/HomeSponsors';
+import SamplePuzzles from './imports/SamplePuzzles';
 
 Home = class Home extends Component {
   render() {
     return (
-      <div>
+      <Container>
         <HomeHeader/>
 
         <HomeIntro/>
@@ -32,8 +32,8 @@ Home = class Home extends Component {
 
         <HomePastEvents/>
 
-        <HomeWhoAreWe/>
-      </div>
+        <HomePeople/>
+      </Container>
     );
   }
 }

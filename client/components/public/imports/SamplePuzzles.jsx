@@ -33,7 +33,7 @@ export default class SamplePuzzles extends Component {
 
   render() {
     return (
-      <section className="pattern-bg" id="sample-puzzles">
+      <section className="pattern-bg" id="SamplePuzzles">
       <Grid padded centered textAlign="left" stackable style={{ padding: '10em 0em', margin:'0'}} >
         <Grid.Row>
           <Grid.Column width={10}>
