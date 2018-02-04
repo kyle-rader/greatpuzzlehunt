@@ -38,6 +38,7 @@ FAQ = class FAQ extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
   }
 
   componentDidMount() {
@@ -45,25 +46,26 @@ FAQ = class FAQ extends Component {
   }
 
   render() {
+    const { activeIndex } = this.state;
     return (
       <Container>
         <PuzzlePageTitle title="FAQ"/>
 
         <Accordion styled fluid>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 0} index={0} onClick={(e,p) => this.handleClick(e,p)}>
             <Icon color="red" size="huge" name="dropdown"/>
             <Icon name="download"/>
             Useful downloads (2017)
           </Accordion.Title>
-          <Accordion.Content>{this._downloadButtons()}</Accordion.Content>
+          <Accordion.Content active={activeIndex === 0}>{this._downloadButtons()}</Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 1} index={1} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="red" size="huge" name="dropdown"/>
             <Icon name="map"/>
             Directions & Parking
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 1}>
             <p>
               Parking is FREE in all C-Lots on south campus on weekends.
             </p>
@@ -99,12 +101,12 @@ FAQ = class FAQ extends Component {
             <iframe frameBorder="0" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzFT6fltUNTF7Vas25IJmMkUAa5yVPi4I&amp;q=Campus+Services+Bellingham+WA" width="100%" />
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 2} index={2} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="orange" size="huge" name="dropdown"/>
             <Icon name="info"/>
             What is the Great Puzzle Hunt?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 2}>
             <p>
               A puzzle hunt is an outdoor adventure - think scavenger hunt but with puzzle-solving.
               Teams of up to 6 (recommended size 4-6) travel on foot about WWU campus solving
@@ -133,21 +135,21 @@ FAQ = class FAQ extends Component {
             {prizeNote}
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 3} index={3} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="orange" size="huge" name="dropdown"/>
             <Icon name="users"/>
             How many people should be on my team?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 3}>
             We recommend 4-6 people on a team. It can be an advantage to divvy up the work (cutting, constructing, googling, etc.).
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 4} index={4} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="yellow" name="dropdown"/>
             <Icon name="calendar"/>
             When is it?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 4}>
             <h3>
               <strong>{eventDate}</strong> at 10:00 AM, Red Square, WWU
             </h3>
@@ -159,24 +161,24 @@ FAQ = class FAQ extends Component {
             </List>
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 5} index={5} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="yellow" name="dropdown"/>
             <Icon name="user"/>
             Who is it for?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 5}>
             <p>
               Students, Faculty, Staff, Alumni, Community, Everyone!
             </p>
             <strong>*</strong> Children under 14 must be accompanied at all times by a parent/legal guardian who must also be registered on the same team as the child.
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 6} index={6} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="olive" name="dropdown"/>
             <Icon name="sitemap"/>
             What team divisions are there?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 6}>
             <List className='bulleted'>
               <List.Item description="WWU Students - All team members must be currently enrolled at WWU (undergrad or grad)"/>
               <List.Item description="High School - All team members must be currently enrolled in high school"/>
@@ -189,24 +191,24 @@ FAQ = class FAQ extends Component {
             </p>
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 7} index={7} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="olive" name="dropdown"/>
             <Icon name="trophy"/>
             Prizes?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 7}>
             <p>
               Awesome prizes* will be awarded to top three teams in each division. Other prizes* for best team names, costumes, spirit, and more!
             </p>
             {prizeNote}
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 8} index={8} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="green" name="dropdown"/>
             <Icon name="dollar"/>
             How much does this cost?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 8}>
             <p>
               Registration Prices are per person. All fees are non-refundable. Fees charged when person buys ticket codes.<br/>
               You can SAVE on the early bird discount prices!
@@ -228,12 +230,12 @@ FAQ = class FAQ extends Component {
             </p>
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 9} index={9} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="green" name="dropdown"/>
             <Icon name="suitcase"/>
             What should I bring?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 9}>
             Your creativity and problem solving skills! Along with the following:<br/>
             <List>
               <List.Item description="At least one smart phone. The more the better! (Think about battery life). Googling is encouraged!"/>
@@ -246,23 +248,23 @@ FAQ = class FAQ extends Component {
             </List>
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 10} index={10} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="teal" name="dropdown"/>
             <Icon name="flask"/>
             Do I have to be a math/science person?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 10}>
             NO! A common misconception is that only mathematically inclined people are good at solving puzzles.
             In this puzzle hunt, it will be to your advantage to have people on your team with
             knowledge of music, art, humanities and social sciences, as well as science and mathematics.
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 11} index={11} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="teal" name="dropdown"/>
             <Icon name="clock"/>
             How long will this last? (Event Schedule)
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 11}>
             <List>
               <List.Item description="10:00 AM -  Check in at Red Square, WWU campus. Receive wristband (color coded by division), information packet, swag, and any pre-ordered shirts."/>
               <List.Item description="10:45 AM - Announcements."/>
@@ -275,12 +277,12 @@ FAQ = class FAQ extends Component {
             {prizeNote}
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 12} index={12} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="teal" name="dropdown"/>
             <Icon name="food"/>
             Food?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 12}>
             <p>
               Yes! To enter the free refreshments area, <strong>you must be wearing your wristband</strong> at all times.
               <br/>
@@ -299,30 +301,30 @@ FAQ = class FAQ extends Component {
             </p>
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 13} index={13} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="blue" name="dropdown"/>
             <Icon name="rain"/>
             What if it rains?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 13}>
             Welcome to Washington.  We hunt on!
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 14} index={14} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="blue" name="dropdown"/>
             <Icon name="puzzle"/>
             What kind of puzzles will we be solving?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 14}>
             Check out <Link to="/puzzles">past puzzles</Link>!
           </Accordion.Content>
 
-          <Accordion.Title>
+          <Accordion.Title active={activeIndex === 15} index={15} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="violet" name="dropdown"/>
             <Icon name="shop"/>
             What does the Gear/Apparel look like?
           </Accordion.Title>
-          <Accordion.Content>
+          <Accordion.Content active={activeIndex === 15}>
             <p>This year you have several choices of puzzle hunt gear and hundreds of color combinations!</p>
             <p>Note: to buy gear you will be redirected to <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">this CashNet page</a> where you need to click the bottom gear link to select your gear options.</p>
             <List>
@@ -342,6 +344,14 @@ FAQ = class FAQ extends Component {
         <p>Last Updated: Jan 16, 2018</p>
       </Container>
     );
+  }
+
+  handleClick(e, titleProps) {
+    console.log("handling click for: ", titleProps);
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = (activeIndex === index) ? -1 : index;
+    this.setState({ activeIndex: newIndex });
   }
 
   _downloadButtons() {
