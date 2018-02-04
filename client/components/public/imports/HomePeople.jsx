@@ -6,7 +6,7 @@ export default class HomePeople extends Component {
     return (
       <section className="pattern-bg" id="HomePeople">
 
-          <Grid  style={{ padding: '10em 0em 0 0', margin:'0'}}>
+          <Grid  style={{ padding: '4em 0em 0 0', margin:'0'}}>
            <Grid.Row centered textAlign='left' verticalAlign="middle">
              <Grid.Column width={16} >
                <Header size="huge">Who Are we?</Header>

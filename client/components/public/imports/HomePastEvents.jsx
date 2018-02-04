@@ -6,7 +6,7 @@ export default class HomePastEvents extends Component {
   render() {
     return (
       <section id="HomePastEvents">
-        <Segment inverted color='blue' style={{ padding: '10em 0em', margin:'0'}}>
+        <Segment inverted color='blue' style={{ padding: '2em 0em', margin:'0'}}>
           <Grid   stackable   >
 
            <Grid.Row centered verticalAlign="middle">

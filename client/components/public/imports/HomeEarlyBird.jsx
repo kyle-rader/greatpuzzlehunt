@@ -6,7 +6,7 @@ export default class HomeEarlyBird extends Component {
   render() {
     return (
       <section id="home-early-bird">
-        <Segment inverted color='blue' style={{ padding: '10em 0em', margin:'0'}} className="no-border-radius">
+        <Segment inverted color='blue' style={{ padding: '4em 0em', margin:'0'}} className="no-border-radius">
           <Grid   stackable  textAlign='left' >
            <Grid.Row centered verticalAlign="top">
 
