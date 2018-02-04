@@ -12,3 +12,5 @@ private/
 mailurl
 
 backup-data/
+*dump.gzip
+*dump*
