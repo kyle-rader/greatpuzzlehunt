@@ -19,15 +19,15 @@
   },
   "homepage": "https://github.com/kyle-rader/greatpuzzlehunt#readme",
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.39",
     "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "clipboard": "^1.6.1",
-    "dropbox": "^2.5.13",
     "jszip": "^3.1.5",
     "lodash": "^4.17.2",
     "meteor-node-stubs": "^0.2.3",
-    "moment": "^2.17.0",
+    "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "qrcode.react": "^0.6.1",
     "react": "^15.1.0",
@@ -41,7 +41,7 @@
     "react-scroll-up": "^1.1.5",
     "react-scrollchor": "^4.2.1",
     "request": "^2.81.0",
-    "semantic-ui-react": "^0.56.0",
+    "semantic-ui-react": "^0.77.2",
     "winston": "^2.2.0"
   },
   "devDependencies": {

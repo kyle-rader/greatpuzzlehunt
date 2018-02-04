@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 
-import { GamestateControls } from './imports/gamestate-controls';
+import { GamestateControls } from './imports/GamestateControls';
 
 GamestateManager = class GamestateManager extends Component {
   render() {

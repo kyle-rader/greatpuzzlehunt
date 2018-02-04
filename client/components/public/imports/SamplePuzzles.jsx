@@ -33,15 +33,15 @@ export default class SamplePuzzles extends Component {
 
   render() {
     return (
-      <section className="pattern-bg" id="sample-puzzles">
-      <Grid padded centered textAlign="left" stackable style={{ padding: '10em 0em', margin:'0'}} >
+      <section className="pattern-bg" id="SamplePuzzles">
+      <Grid padded centered textAlign="left" stackable style={{ padding: '4em 0em', margin:'0'}} >
         <Grid.Row>
-          <Grid.Column width={10}>
+          <Grid.Column width={16}>
             <Header size="huge">
               Sample Puzzles (from the 2016 hunt)
             </Header>
             Below You can find some of the past Puzzles. Download them and try to solve them for yourself.
-        </Grid.Column>
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row centered columns={4}>
               { this._puzzles() }

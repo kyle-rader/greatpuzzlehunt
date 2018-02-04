@@ -1,7 +1,10 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import LinkButton from '../../imports/link-button';
+import LinkButton from '../../imports/LinkButton';
 import Scrollchor from 'react-scrollchor';
 import { Grid, Container, Segment, Icon } from 'semantic-ui-react';
+
+const { eventDate } = Meteor.settings.public;
 
 export default class HomeHeader extends Component {
   render() {
@@ -25,12 +28,12 @@ export default class HomeHeader extends Component {
           </Grid.Row>
 
           <Grid.Row centered divided>
-            <Grid.Column verticalAlign="middle" width={4}>
+            <Grid.Column verticalAlign="middle" width={5}>
               <h2 className="sub-header-text">
-                Saturday April 14th 2018 <br/> 10:00 AM
+                {eventDate} <br/> 10:00 AM
               </h2>
             </Grid.Column>
-            <Grid.Column verticalAlign="middle" width={4}>
+            <Grid.Column verticalAlign="middle" width={5}>
               <Segment basic size='large' className="no-padding">
                 Western Washington University<br/>
                 516 High Street<br/>
@@ -40,13 +43,13 @@ export default class HomeHeader extends Component {
           </Grid.Row>
 
           <Grid.Row centered>
-            <Grid.Column width={12}>
+            <Grid.Column width={16}>
               { this._linkButtons() }
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row centered>
-            <Grid.Column width={12}>
+            <Grid.Column width={16}>
               <h3>
                 This event is made possible thanks to
                 <Scrollchor
