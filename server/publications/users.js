@@ -60,21 +60,24 @@ Meteor.publish('admin.team.members', function(teamId) {
   return Meteor.users.find({ teamId: teamId });
 });
 
-Meteor.publish('admin.users', function(page = 0, search = null) {
-  check(page, Number);
-  check(search, Match.Any);
-  const hasSearch = search && search.length > 0;
-
+Meteor.publish('admin.users', function(search = null) {
+  check(search, String);
   if (!isAdmin(this.userId)) return this.ready();
 
+  const hasSearch = search && search.length > 0;
+
+  const defaultSort = [
+    ['createdAt', 'desc'],
+    ['firstname', 'desc'],
+  ];
+
   const options = {
-    limit: hasSearch ? undefined : FIND_LIMIT,
-    skip: hasSearch ? undefined : FIND_LIMIT * page,
+    sort: defaultSort,
   };
 
-  let query;
+  let query = {};
   if (hasSearch) {
-    search = search.trim()
+    search = search.trim();
     query = {
       $or: [
         { 'firstname': { $regex: search, $options: 'i' } },
@@ -82,8 +85,6 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
         { 'emails': { $elemMatch: { address: { $regex: search, $options: 'i' } } } },
       ],
     };
-  } else {
-    query = {};
   }
 
   const users = Meteor.users.find(query, options);

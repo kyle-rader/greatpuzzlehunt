@@ -1,15 +1,15 @@
 import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Card } from 'semantic-ui-react';
-import { createContainer } from 'meteor/react-meteor-data';
 import AdminUser from './admin-user';
 
-class AdminUserList extends Component {
+class AdminUserListInner extends Component {
   render() {
     if (this.props.loading) return <Loading />
 
     return (
-      <Card.Group doubling stackable itemsPerRow='3'>
+      <Card.Group doubling stackable itemsPerRow='4'>
         { this._users() }
       </Card.Group>
     );
@@ -21,17 +21,26 @@ class AdminUserList extends Component {
 
 }
 
-AdminUserList = createContainer(({ page = 1, search }) => {
-  const usersHandle = Meteor.subscribe('admin.users', page, search);
+AdminUserListTracker = withTracker(({ search }) => {
+  const usersHandle = Meteor.subscribe('admin.users', search);
   const loading = !usersHandle.ready();
 
   if (loading) return { loading, users: [] };
 
   const hasSearch = search && search.length > 0;
-  const options = {};
-  let query;
+
+  const defaultSort = [
+    ['createdAt', 'desc'],
+    ['firstname', 'desc'],
+  ];
+
+  const options = {
+    sort: defaultSort,
+  };
+
+  let query = {};
   if (hasSearch) {
-    search = search.trim()
+    search = search.trim();
     query = {
       $or: [
         { 'firstname': { $regex: search, $options: 'i' } },
@@ -39,8 +48,6 @@ AdminUserList = createContainer(({ page = 1, search }) => {
         { 'emails': { $elemMatch: { address: { $regex: search, $options: 'i' } } } },
       ],
     };
-  } else {
-    query = {};
   }
 
   const teams = Teams.find({}).fetch().reduce((acc, t) => {
@@ -57,6 +64,6 @@ AdminUserList = createContainer(({ page = 1, search }) => {
     loading,
     users,
   };
-}, AdminUserList);
+})(AdminUserListInner);
 
-export default AdminUserList;
+export default AdminUserListTracker;
