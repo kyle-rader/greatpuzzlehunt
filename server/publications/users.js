@@ -9,6 +9,7 @@ const USER_FIELDS = {
   firstname: 1,
   lastname: 1,
   roles: 1,
+  createdAt: 1,
   updatedAt: 1,
   accountType: 1,
   teamId: 1,
