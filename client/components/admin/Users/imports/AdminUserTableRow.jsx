@@ -32,11 +32,23 @@ class AdminUserTableRow extends Component {
   }
 
   _name() {
-    const { firstname, lastname, paid } = this.props.user;
+    const { user } = this.props;
+    const { firstname, lastname, paid, accountType } = user;
     const fullname = `${firstname} ${lastname}`;
+    let volunteerIcon = null;
+    let adminIcon = null;
+
+    if (accountType === 'VOLUNTEER') {
+      volunteerIcon = <Icon name='hand paper' color='teal'/>;
+    }
+
+    if (user.hasRole('admin')) {
+      adminIcon = <Icon name='spy' color='purple'/>;
+    }
+
     return (
       <span>
-        <Icon name='ticket' color={paid ? 'green' : 'yellow'}/> {fullname}
+        <Icon name='ticket' color={paid ? 'green' : 'yellow'}/> {fullname} {adminIcon}{volunteerIcon}
       </span>
     );
   }
