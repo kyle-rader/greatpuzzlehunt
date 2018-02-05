@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import { isAdmin } from '../../lib/imports/method-helpers.js';
+import { extend } from 'lodash';
 
 const FIND_LIMIT = 25;
 const USER_FIELDS = {
@@ -60,21 +61,25 @@ Meteor.publish('admin.team.members', function(teamId) {
   return Meteor.users.find({ teamId: teamId });
 });
 
-Meteor.publish('admin.users', function(page = 0, search = null) {
-  check(page, Number);
-  check(search, Match.Any);
-  const hasSearch = search && search.length > 0;
-
+Meteor.publish('admin.users', function(search = null) {
+  check(search, String);
   if (!isAdmin(this.userId)) return this.ready();
 
-  const options = {
-    limit: hasSearch ? undefined : FIND_LIMIT,
-    skip: hasSearch ? undefined : FIND_LIMIT * page,
+  const hasSearch = search && search.length > 0;
+
+  const adminFields = {
+    age: 1, phone: 1, address: 1, city: 1, state: 1, zip: 1,
+    ecName: 1, ecRelationship: 1, ecPhone: 1, ecEmail: 1,
+    parentGuardian: 1,
   };
 
-  let query;
+  const options = {
+    fields: extend({}, adminFields, USER_FIELDS),
+  };
+
+  let query = {};
   if (hasSearch) {
-    search = search.trim()
+    search = search.trim();
     query = {
       $or: [
         { 'firstname': { $regex: search, $options: 'i' } },
@@ -82,8 +87,6 @@ Meteor.publish('admin.users', function(page = 0, search = null) {
         { 'emails': { $elemMatch: { address: { $regex: search, $options: 'i' } } } },
       ],
     };
-  } else {
-    query = {};
   }
 
   const users = Meteor.users.find(query, options);
