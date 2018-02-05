@@ -27,7 +27,7 @@ AdminUsers = class AdminUsers extends Component {
               <DebounceSearch
                 fluid
                 icon='search'
-                placeholder='Search...'
+                placeholder='Search by Name or Email'
                 delay={350}
                 onSearch={(search) => this.setState({ search })}
               />

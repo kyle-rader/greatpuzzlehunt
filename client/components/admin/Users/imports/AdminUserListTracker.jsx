@@ -1,31 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
-import AdminUser from './admin-user';
 
-class AdminUserListInner extends Component {
-  render() {
-    if (this.props.loading) return <Loading />
+import AdminUserTable from './AdminUserTable';
 
-    return (
-      <Card.Group doubling stackable itemsPerRow='4'>
-        { this._users() }
-      </Card.Group>
-    );
-  }
-
-  _users() {
-    return this.props.users.map((user) => <AdminUser user={user} key={user._id}/>);
-  }
-
-}
-
-AdminUserListTracker = withTracker(({ search }) => {
+export default AdminUserListTracker = withTracker(({ search }) => {
   const usersHandle = Meteor.subscribe('admin.users', search);
   const loading = !usersHandle.ready();
 
-  if (loading) return { loading, users: [] };
+  if (loading) {
+    return { loading, users: [] };
+  }
 
   const hasSearch = search && search.length > 0;
 
@@ -64,6 +49,4 @@ AdminUserListTracker = withTracker(({ search }) => {
     loading,
     users,
   };
-})(AdminUserListInner);
-
-export default AdminUserListTracker;
+})(AdminUserTable);
