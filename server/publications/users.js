@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import { isAdmin } from '../../lib/imports/method-helpers.js';
+import { extend } from 'lodash';
 
 const FIND_LIMIT = 25;
 const USER_FIELDS = {
@@ -71,8 +72,15 @@ Meteor.publish('admin.users', function(search = null) {
     ['firstname', 'desc'],
   ];
 
+  const adminFields = {
+    age: 1, phone: 1, address: 1, city: 1, state: 1, zip: 1,
+    ecName: 1, ecRelationship: 1, ecPhone: 1, ecEmail: 1,
+    parentGuardian: 1,
+  };
+
   const options = {
     sort: defaultSort,
+    fields: extend({}, adminFields, USER_FIELDS),
   };
 
   let query = {};
