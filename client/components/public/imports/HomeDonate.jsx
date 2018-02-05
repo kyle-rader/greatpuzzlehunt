@@ -19,9 +19,11 @@ export default class HomeDonate extends Component {
                 <p>Donations of any amount will help support this Event.</p>
                 <p>
                   Please Consider:<br/>
-                  Sponsoring a student or team that needs help to participate <br/>
-                  Non monetary support such as prizes,or sign up as a volunteer<br/><br/>
-                  All donations are made through WWU and are tax deductible!<br/>
+                  <ul>
+                    <li>Sponsoring a student or team that needs help to participate.</li>
+                    <li>Non-monetary support such as prizes or signing up as a volunteer!</li>
+                  </ul>
+                  All donations are made through WWU and are tax deductible!
                 </p>
               </Segment>
               <LinkButton as='a'
