@@ -67,11 +67,6 @@ Meteor.publish('admin.users', function(search = null) {
 
   const hasSearch = search && search.length > 0;
 
-  const defaultSort = [
-    ['createdAt', 'desc'],
-    ['firstname', 'desc'],
-  ];
-
   const adminFields = {
     age: 1, phone: 1, address: 1, city: 1, state: 1, zip: 1,
     ecName: 1, ecRelationship: 1, ecPhone: 1, ecEmail: 1,
@@ -79,7 +74,6 @@ Meteor.publish('admin.users', function(search = null) {
   };
 
   const options = {
-    sort: defaultSort,
     fields: extend({}, adminFields, USER_FIELDS),
   };
 
