@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Icon } from 'semantic-ui-react';
 import Scrollchor from 'react-scrollchor';
 
@@ -52,42 +52,27 @@ const adminMenuItems = [
   {
     name: 'Users',
     to: '/admin/users',
-    iconClass: 'green user',
+    iconClass: 'green users',
   },
   {
-    name: 'Promo Codes',
-    to: '/admin/promo-codes',
-    iconClass: 'ticket',
+    name: 'Transactions',
+    to: '/admin/transactions',
+    iconClass: 'blue ticket',
   },
   {
-    name: 'Teams',
-    to: '/admin/teams',
-    iconClass: 'blue users',
+    name: 'Game State',
+    to: '/admin/gamestate',
+    iconClass: 'orange gamepad',
   },
   {
-    name: 'Export Teams',
-    to: '/admin/teams-export',
-    iconClass: 'teal download',
+    name: 'Sponsors',
+    to: '/admin/sponsors',
+    iconClass: 'red heart',
   },
   {
     name: 'Puzzles',
     to: '/admin/puzzles',
     iconClass: 'violet puzzle',
-  },
-  {
-    name: 'Game',
-    to: '/admin/game',
-    iconClass: 'red gamepad',
-  },
-  {
-    name: 'Email',
-    to: '/admin/email',
-    iconClass: 'orange mail',
-  },
-  {
-    name: 'Sponsors',
-    to: '/admin/sponsors',
-    iconClass: 'green dollar',
   },
 ];
 const volunteerMenuItems = [
@@ -243,12 +228,14 @@ TopBar = class TopBar extends Component {
 
 }
 
-TopBar = createContainer(() => ({
-  user: Meteor.user(),
-  isAdmin() {
-    return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
-  },
-  isVolunteer() {
-    return Boolean(Meteor.user()) && Meteor.user().hasRole('volunteer');
-  },
-}), TopBar);
+TopBar = withTracker(() => {
+  return {
+    user: Meteor.user(),
+    isAdmin() {
+      return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
+    },
+    isVolunteer() {
+      return Boolean(Meteor.user()) && Meteor.user().hasRole('volunteer');
+    },
+  };
+})(TopBar);

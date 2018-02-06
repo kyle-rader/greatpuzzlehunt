@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 
 import { GamestateControls } from './imports/GamestateControls';
 
-GamestateManager = class GamestateManager extends Component {
+AdminGamestate = class AdminGamestate extends Component {
   render() {
     return (
       <Container>

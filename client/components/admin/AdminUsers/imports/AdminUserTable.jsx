@@ -41,7 +41,7 @@ class AdminUserTable extends Component {
     return (
       <div> {/* outer div for react root component element */}
         <Message icon>
-          <Icon name="users"/>
+          <Icon name="users" color="green"/>
           <Message.Content>
             <Message.Header>User Summary</Message.Header>
               <strong>Total:</strong> {userCount} &nbsp; <strong>Players:</strong> {playerCount} &nbsp; <strong>Volunteers:</strong> {volunteerCount}

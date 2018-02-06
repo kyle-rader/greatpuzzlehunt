@@ -48,15 +48,13 @@ export const renderRoutes = () => (
       <Route path='admin' component={makeAuthed('admin')}>
         <IndexRoute component={AdminUsers} />
         <Route path='users' component={AdminUsers} />
-        <Route path='teams' component={AdminTeamList} />
-        <Route path='teams-export' component={TeamsExport} />
-        <Route path='promo-codes' component={PromoCodesList} />
-        <Route path='puzzles' component={PuzzleDashboard} />
-        <Route path='email' component={AdminEmailContainer}>
+        <Route path='transactions' component={AdminTransactions} />
+        <Route path='sponsors' component={AdminSponsors} />
+        <Route path='puzzles' component={AdminPuzzles} />
+        <Route path='gamestate' component={AdminGamestate} />
+        {/* <Route path='email' component={AdminEmailContainer}>
           <IndexRoute component={AdminEmailLists}/>
-        </Route>
-        <Route path='game' component={GamestateManager} />
-        <Route path='sponsors' component={SponsorsEditor} />
+        </Route> */}
       </Route>
 
       <Route path='*' component={Home}/>

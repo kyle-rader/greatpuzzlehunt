@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Form, Message, Header } from 'semantic-ui-react';
 import { omit } from 'lodash';
 
-import HintEditor from './hint-editor';
+// import HintEditor from './hint-editor';
 
 class PuzzleEditor extends Component {
   constructor(props) {
@@ -73,10 +73,10 @@ class PuzzleEditor extends Component {
           onChange={ (e) => this._handleChange(e) }
         />
 
-        <HintEditor
+        {/* <HintEditor
           puzzle={ this.props.puzzle }
           hints={ this.state.hints }
-          onChange={ (hints) => this.setState({ hints }) } />
+          onChange={ (hints) => this.setState({ hints }) } /> */}
 
         <Form.Group>
           <Form.Button color='green' type='submit' content='Save'/>
