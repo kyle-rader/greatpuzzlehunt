@@ -62,7 +62,7 @@ Meteor.publish('admin.team.members', function(teamId) {
   return Meteor.users.find({ teamId: teamId });
 });
 
-Meteor.publish('admin.users', function(search = null) {
+Meteor.publish('admin.users', function _publishAdminUsers(search = null) {
   check(search, String);
   if (!isAdmin(this.userId)) return this.ready();
 
