@@ -57,7 +57,12 @@ const adminMenuItems = [
   {
     name: 'Transactions',
     to: '/admin/transactions',
-    iconClass: 'teal ticket',
+    iconClass: 'blue ticket',
+  },
+  {
+    name: 'Game State',
+    to: '/admin/gamestate',
+    iconClass: 'orange gamepad',
   },
   {
     name: 'Sponsors',
@@ -68,11 +73,6 @@ const adminMenuItems = [
     name: 'Puzzles',
     to: '/admin/puzzles',
     iconClass: 'violet puzzle',
-  },
-  {
-    name: 'Game State',
-    to: '/admin/gamestate',
-    iconClass: 'red gamepad',
   },
 ];
 const volunteerMenuItems = [
