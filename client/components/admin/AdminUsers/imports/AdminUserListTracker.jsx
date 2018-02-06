@@ -16,7 +16,6 @@ export default AdminUserListTracker = withTracker(({ search }) => {
 
   const defaultSort = [
     ['createdAt', 'desc'],
-    ['firstname', 'asc'],
   ];
 
   const options = {

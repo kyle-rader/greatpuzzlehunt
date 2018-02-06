@@ -52,7 +52,7 @@ const adminMenuItems = [
   {
     name: 'Users',
     to: '/admin/users',
-    iconClass: 'green user',
+    iconClass: 'green users',
   },
   {
     name: 'Transactions',
