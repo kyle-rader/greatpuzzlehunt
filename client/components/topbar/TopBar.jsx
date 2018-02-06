@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Icon } from 'semantic-ui-react';
 import Scrollchor from 'react-scrollchor';
 
@@ -55,9 +55,9 @@ const adminMenuItems = [
     iconClass: 'green user',
   },
   {
-    name: 'Promo Codes',
-    to: '/admin/promo-codes',
-    iconClass: 'ticket',
+    name: 'Transactions',
+    to: '/admin/tickets',
+    iconClass: 'teal ticket',
   },
   {
     name: 'Teams',
@@ -65,9 +65,9 @@ const adminMenuItems = [
     iconClass: 'blue users',
   },
   {
-    name: 'Export Teams',
-    to: '/admin/teams-export',
-    iconClass: 'teal download',
+    name: 'Export',
+    to: '/admin/export',
+    iconClass: 'orange download',
   },
   {
     name: 'Puzzles',
@@ -75,7 +75,7 @@ const adminMenuItems = [
     iconClass: 'violet puzzle',
   },
   {
-    name: 'Game',
+    name: 'Game State',
     to: '/admin/game',
     iconClass: 'red gamepad',
   },
@@ -243,12 +243,14 @@ TopBar = class TopBar extends Component {
 
 }
 
-TopBar = createContainer(() => ({
-  user: Meteor.user(),
-  isAdmin() {
-    return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
-  },
-  isVolunteer() {
-    return Boolean(Meteor.user()) && Meteor.user().hasRole('volunteer');
-  },
-}), TopBar);
+TopBar = withTracker(() => {
+  return {
+    user: Meteor.user(),
+    isAdmin() {
+      return Boolean(Meteor.user()) && Meteor.user().hasRole('admin');
+    },
+    isVolunteer() {
+      return Boolean(Meteor.user()) && Meteor.user().hasRole('volunteer');
+    },
+  };
+})(TopBar);
