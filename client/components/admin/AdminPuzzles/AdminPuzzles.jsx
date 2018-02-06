@@ -4,7 +4,6 @@ import { Container, Header, Message, Image, Button } from 'semantic-ui-react';
 
 import PuzzleEditor from './imports/puzzle-editor';
 import PuzzleList from './imports/puzzle-list';
-import ImageManager from './imports/image-manager';
 
 AdminPuzzles = class AdminPuzzles extends Component {
   constructor(props) {
@@ -29,8 +28,6 @@ AdminPuzzles = class AdminPuzzles extends Component {
           onEdit={ (puzzle) => this._editPuzzle(puzzle) }
           onDelete={ (puzzle) => this._deletePuzzle(puzzle) }
         />
-        <br/>
-        <ImageManager />
       </Container>
     );
   }
