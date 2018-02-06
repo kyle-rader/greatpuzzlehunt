@@ -6,7 +6,7 @@ import PuzzleEditor from './imports/puzzle-editor';
 import PuzzleList from './imports/puzzle-list';
 import ImageManager from './imports/image-manager';
 
-PuzzleDashboard = class PuzzleDashboard extends Component {
+AdminPuzzles = class AdminPuzzles extends Component {
   constructor(props) {
     super(props);
 

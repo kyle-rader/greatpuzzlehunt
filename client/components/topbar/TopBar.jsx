@@ -56,18 +56,13 @@ const adminMenuItems = [
   },
   {
     name: 'Transactions',
-    to: '/admin/tickets',
+    to: '/admin/transactions',
     iconClass: 'teal ticket',
   },
   {
-    name: 'Teams',
-    to: '/admin/teams',
-    iconClass: 'blue users',
-  },
-  {
-    name: 'Export',
-    to: '/admin/export',
-    iconClass: 'orange download',
+    name: 'Sponsors',
+    to: '/admin/sponsors',
+    iconClass: 'red heart',
   },
   {
     name: 'Puzzles',
@@ -76,18 +71,8 @@ const adminMenuItems = [
   },
   {
     name: 'Game State',
-    to: '/admin/game',
+    to: '/admin/gamestate',
     iconClass: 'red gamepad',
-  },
-  {
-    name: 'Email',
-    to: '/admin/email',
-    iconClass: 'orange mail',
-  },
-  {
-    name: 'Sponsors',
-    to: '/admin/sponsors',
-    iconClass: 'green dollar',
   },
 ];
 const volunteerMenuItems = [

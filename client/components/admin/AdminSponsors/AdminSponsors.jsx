@@ -5,7 +5,7 @@ import { Container } from 'semantic-ui-react';
 
 import SponsorEditorList from './imports/SponsorEditorList';
 
-class SponsorsEditorInner extends Component {
+class AdminSponsorsInner extends Component {
   constructor(props) {
     super(props);
   }
@@ -22,7 +22,7 @@ class SponsorsEditorInner extends Component {
   }
 }
 
-export default SponsorsEditor = withTracker((props) => {
+export default AdminSponsors = withTracker((props) => {
   const sponsorsHandle = Meteor.subscribe('admin.sponsors');
   const loading = !Boolean(sponsorsHandle.ready());
   const sponsors = Sponsors.find({}).fetch();
@@ -30,4 +30,4 @@ export default SponsorsEditor = withTracker((props) => {
     loading,
     sponsors,
   };
-})(SponsorsEditorInner);
+})(AdminSponsorsInner);
