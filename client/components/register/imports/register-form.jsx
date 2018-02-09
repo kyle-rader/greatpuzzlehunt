@@ -214,7 +214,7 @@ class RegisterForm extends Component {
         { this._parentGuardian()}
 
         <List>
-          <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on their behalf on their minor.</List.Item>
+          <List.Item><strong>Participants under age 18:</strong> A parent/legal guardian must complete this registration form on behalf of their minor.</List.Item>
           <List.Item><strong>Participants under age 14:</strong> In addition to registering their child, a <u>parent/legal guardian must also register</u> and <u>join the same team</u> as their under age 14 child and <u>accompany them at all times</u> during the Puzzle Hunt.</List.Item>
         </List>
 
