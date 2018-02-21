@@ -43,12 +43,12 @@ TeamEditor = class TeamEditor extends Component {
 
   render() {
     return (
-      <Form widths='equal' onSubmit={(e, data) => this._handleSubmit(e, data)}>
+      <Form widths='equal' onSubmit={(e) => this._saveTeam(e)}>
         <Form.Group>
-          <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={this._handleChange} />
+          <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={(e,d) => this._handleTextChange(e,d)} />
           <Form.Field>
             <label>Team Password <Popup trigger={<Icon name='question'/>} content='You can share your team password with your friends to let them join your team!'/></label>
-            <Input name='password' placeholder='Team Password' value={this.state.password} onChange={this._handleChange} />
+            <Input name='password' placeholder='Team Password' value={this.state.password} onChange={(e, d) => this._handleTextChange(e, d)} />
           </Form.Field>
         </Form.Group>
         <Form.Field>
@@ -85,43 +85,38 @@ TeamEditor = class TeamEditor extends Component {
   }
 
   _renderDivisionRadio() {
-    return this.divisions.map((division) => (<Form.Radio key={division.value} label={division.name} name='division' value={division.value} checked={this.state.division === division.value} onChange={this._handleChange}/>));
+    return this.divisions.map((division) => (<Form.Radio key={division.value} label={division.name} name='division' value={division.value} checked={this.state.division === division.value} onChange={(e, d) => this._handleDataChange(e, d)}/>));
   }
 
-  _handleDataChange(e,data) {
+  _handleTextChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  _handleDataChange(e, data) {
     const { name, value, checked } = data;
+    // console.log(data);
     this.setState({ [name]: (value || checked) });
   }
 
-  _handleSubmit(e, formData) {
+  _saveTeam(e) {
     e.preventDefault();
+    const data = this._teamData();
 
-    const { name, password, division, lookingForMembers } = formData;
-    if (this.props.team) {
-      formData._id = this.props.team._id;
-    }
-
-    if (!name) {
-      return this.setState({ error: { reason: 'You must choose a Team Name' } });
-    }
-    else if (!password) {
-      return this.setState({ error: { reason: 'You must make a Team Password' } });
-    }
-    else if (password.length < 6) {
-      return this.setState({ error: { reason: 'Your Team Password must be at least 6 characters long' } });
-    }
-    else if (!this.state.division) {
-      return this.setState({ error: { reason: 'You must select a team division' } });
-    }
-
-    Meteor.call('teams.upsert', formData, (error, result) => {
+    Meteor.call('teams.upsert', data, (error, result) => {
       if (error) return this.setState({ error });
-
-      if (this.props.showsSuccess) {
-        this.setState({ success: 'Team Saved!', error: null });
-        Meteor.setTimeout(() => this.setState({ success: null }), 2000);
-      }
+      this.setState({ success: 'Team Saved!', error: null });
+      Meteor.setTimeout(() => this.setState({success: null}), 2000);
     });
+  }
+
+  _teamData() {
+    const { team } = this.props;
+    const { name, password, division, lookingForMembers } = this.state;
+    return {
+      name, password, division, lookingForMembers,
+      _id: team ? team._id : undefined,
+    };
   }
 
 }

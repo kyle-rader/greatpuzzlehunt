@@ -32,61 +32,59 @@ An on-line and in person real-time puzzle scavenger hunt!
   $ yarn install  # instead of npm install
   ```
 8. Add a new development settings file called `settings-development.json`
-  Note the `dropbox` section. If this section is provided files will be stored
-  in your dropbox folder at the `storagePath` (Dropbox config).  
-  If not, we will use local file storage.
 
   ```
   {
     "public": {
-      "siteName": "Great Puzzle Hunt",
+      "siteName": "[DEV] Great Puzzle Hunt",
+      "siteURL": "http://localhost:3000",
       "accountsEmail": "Great Puzzle Hunt <accounts@greatpuzzlehunt.com>",
       "infoEmail": "Great Puzzle Hunt <info@greatpuzzlehunt.com>",
-      "eventYear": "2017",
+      "eventYear": "2018",
+      "eventDate": "Saturday April 14, 2018",
       "social": {
         "facebook": "https://facebook.com/greatpuzzlehunt"
       },
       "analyticsSettings": {
-        "Google Analytics" : {"trackingId": "UA-78225937-1"}
+        "Google Analytics": {
+          "trackingId": ""
+        }
       }
     },
     "admin": {
-      "firstname": "First",
-      "lastname": "Last",
-      "name": "First Last",
-      "username": "username",
-      "email": "your@email.com",
-      "password": "test",
-      "roles": ["user", "volunteer", "admin"],
-      "address": "12345 Street Name",
-      "city": "City",
-      "state": "ST",
-      "zip": "12345",
-      "age": 25,
-      "phone": "1231231234",
-      "isAdult": true,
-      "registrationType": "non-student",
+      "firstname": "Super",
+      "lastname": "Admin",
+      "email": "super.admin@email.com",
+      "password": "testtest",
+      "roles": [
+        "user",
+        "volunteer",
+        "player",
+        "admin"
+      ],
+      "address": "1234 Cool Street",
+      "city": "Redmond",
+      "state": "WA",
+      "zip": "98053",
+      "age": 26,
+      "phone": "1112223333",
+      "accountType": "VOLUNTEER",
       "photoPermission": true,
-      "legalGuardian": {},
-      "emergencyContact": {
-        "name": "Mom",
-        "relation": "mother",
-        "phone": "1231231234",
-        "altPhone": "1231231234",
-        "email": "mom@email.com"
-      }
+      "holdHarmless": true,
+      "ecName": "Emergency Contact",
+      "ecRelationship": "friend",
+      "ecPhone": "7778889999",
+      "ecEmail": "ec.friend@email.com",
+      "paid": true,
+      "ticketUsed": null
     },
     "accounts": {
-      "fromEmail": "Great Puzzle Hunt<accounts@greatpuzzlehunt.com>",
-      "apiKey": "some_key"
-    },
-    "dropbox": {
-      "key": "your_key",
-      "secret": "super_secret",
-      "token": "access_token"
+      "fromEmail": "Great Puzzle Hunt (Dev)<accounts@greatpuzzlehunt.com>",
+      "token": "test_token"
     }
   }
   ```
+
 9. Run the application using the scripts define in `package.json`
 
   ```
