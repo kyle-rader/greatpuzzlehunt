@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import Scrollchor from 'react-scrollchor';
-import { Grid, Container, Segment, Icon, Message } from 'semantic-ui-react';
+import { Grid, Container, Segment, Icon, Message, Button } from 'semantic-ui-react';
 import moment from 'moment';
 
 import LinkButton from '../../imports/LinkButton';
@@ -25,7 +25,7 @@ const registrationClosesMessage = (
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
       Registration Closes on April 12, 11:59 PM. <br/>
-      <small>You can still buy and redeem tickets until 10:00 AM April 14.</small>
+      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" target="_blank">buy and redeem tickets</a> until 10:00 AM April 14.
     </Message.Content>
   </Message>
 );
@@ -77,8 +77,7 @@ export default class HomeHeader extends Component {
             <TimedComp
               beforeComp={registerNowMessage}
               afterComp={registrationClosesMessage}
-              timeout={moment("2018-03-2T00:00:00-07:00")}
-              // timeout={moment("2018-03-19T00:00:00-07:00")}
+              timeout={moment("2018-03-19T00:00:00-07:00")}
             />
           </Grid.Column>
         </Grid.Row>
@@ -110,6 +109,7 @@ export default class HomeHeader extends Component {
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
+      <Button as='a' size="large" target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/" content="Buy Gear"/>
     </div>
     );
   }
