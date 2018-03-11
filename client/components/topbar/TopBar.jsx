@@ -103,11 +103,6 @@ TopBar = class TopBar extends Component {
         </div>
 
         {/* this._renderSocialButtons() */}
-	<div className="early-bird-banner">
-	  Early Bird Registration closes March 18th!
-	  <br />
-	  <a href="/register">Click here to register</a>
-	</div>
 
         <div className="right menu">
           { isAdmin() ? this._renderAdminMenu() : null }

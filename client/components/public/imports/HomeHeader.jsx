@@ -1,10 +1,34 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import LinkButton from '../../imports/LinkButton';
 import Scrollchor from 'react-scrollchor';
-import { Grid, Container, Segment, Icon } from 'semantic-ui-react';
+import { Grid, Container, Segment, Icon, Message } from 'semantic-ui-react';
+import moment from 'moment';
+
+import LinkButton from '../../imports/LinkButton';
+import TimedComp from './TimedComp';
 
 const { eventDate } = Meteor.settings.public;
+
+const registerNowMessage = (
+  <Message icon color='teal'>
+    <Icon name='ticket'/>
+    <Message.Content>
+      <Message.Header>Why Register Now?</Message.Header>
+      All ticket and gear prices go up on March 18th at midnight!
+    </Message.Content>
+  </Message>
+);
+
+const registrationClosesMessage = (
+  <Message icon color='yellow'>
+    <Icon name='ticket'/>
+    <Message.Content>
+      <Message.Header>Why Register Now?</Message.Header>
+      Registration Closes on April 12, 11:59 PM. <br/>
+      <small>You can still buy and redeem tickets until 10:00 AM April 14.</small>
+    </Message.Content>
+  </Message>
+);
 
 export default class HomeHeader extends Component {
   render() {
@@ -48,7 +72,18 @@ export default class HomeHeader extends Component {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row centered>
+        <Grid.Row centered>
+          <Grid.Column width={10}>
+            <TimedComp
+              beforeComp={registerNowMessage}
+              afterComp={registrationClosesMessage}
+              timeout={moment("2018-03-2T00:00:00-07:00")}
+              // timeout={moment("2018-03-19T00:00:00-07:00")}
+            />
+          </Grid.Column>
+        </Grid.Row>
+
+          <Grid.Row>
             <Grid.Column width={16}>
               <h3>
                 This event is made possible thanks to
@@ -76,6 +111,6 @@ export default class HomeHeader extends Component {
         icon={<Icon name='heart'/>}
       />
     </div>
-    )
+    );
   }
 }

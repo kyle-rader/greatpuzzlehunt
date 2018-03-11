@@ -19,12 +19,12 @@ export default class HomeDonate extends Component {
                 <p>Donations of any amount will help support this Event.</p>
                 <p>
                   Please Consider:<br/>
-                  <ul>
-                    <li>Sponsoring a student or team that needs help to participate.</li>
-                    <li>Non-monetary support such as prizes or signing up as a volunteer!</li>
-                  </ul>
-                  All donations are made through WWU and are tax deductible!
                 </p>
+                <ul>
+                  <li>Sponsoring a student or team that needs help to participate.</li>
+                  <li>Non-monetary support such as prizes or signing up as a volunteer!</li>
+                </ul>
+                All donations are made through WWU and are tax deductible!
               </Segment>
               <LinkButton as='a'
                 href="https://alumni.wwu.edu/greatpuzzlehunt"
