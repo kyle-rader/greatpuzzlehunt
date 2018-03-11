@@ -104,6 +104,8 @@ export default class HomeHeader extends Component {
     <div>
       <LinkButton to='/register' size='large' color='blue' content='Register'/>
       <LinkButton to="/login" size='large' content='Log In'/>
+      <LinkButton as='a' href='http://www.wwu.edu/emarket/puzzlehunt/#tshirts'
+        size='large' color='blue' content='Buy Gear' />
       <LinkButton to="/faq" size='large' content='FAQ'/>
       <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='blue' content='Donate'
