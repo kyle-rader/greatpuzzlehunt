@@ -5,6 +5,7 @@ import { Table, Message, Icon } from 'semantic-ui-react';
 import { reduce } from 'lodash';
 
 import AdminUserTableRow from './AdminUserTableRow';
+import AdminUserModal from './AdminUserModal';
 
 class AdminUserTable extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class AdminUserTable extends Component {
     const { loading, users } = this.props;
     if (loading) return <Loading/>;
 
-    const { userCount, volunteerCount, playerCount } = this.state;
+    const { userCount, volunteerCount, playerCount, selectedUser } = this.state;
 
     return (
       <div> {/* outer div for react root component element */}
@@ -44,9 +45,9 @@ class AdminUserTable extends Component {
           <Icon name="users" color="green"/>
           <Message.Content>
             <Message.Header>User Summary</Message.Header>
-              <strong>Total:</strong> {userCount} &nbsp; <strong>Players:</strong> {playerCount} &nbsp; <strong>Volunteers:</strong> {volunteerCount}
-            </Message.Content>
-          </Message>
+            <strong>Total:</strong> {userCount} &nbsp; <strong>Players:</strong> {playerCount} &nbsp; <strong>Volunteers:</strong> {volunteerCount}
+          </Message.Content>
+        </Message>
         <Table celled striped>
           <Table.Header>
             <Table.Row>
@@ -61,13 +62,26 @@ class AdminUserTable extends Component {
             {this._mapUsers()}
           </Table.Body>
         </Table>
+
+        <AdminUserModal user={selectedUser} clearUser={() => this.setState({ selectedUser: null })}/>
       </div>
     );
   }
 
   _mapUsers() {
     const { users } = this.props;
-    return users.map((user) => <AdminUserTableRow user={user} key={user._id}/>);
+    return users.map((user) => {
+      return (
+      <AdminUserTableRow
+        user={user}
+        key={user._id}
+        selectUser={() => this._selectUser(user) }
+      />);
+    });
+  }
+
+  _selectUser(user) {
+    this.setState({ selectedUser: user });
   }
 }
 
