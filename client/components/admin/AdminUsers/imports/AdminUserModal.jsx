@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'semantic-ui-react';
 
+import AdminUserEditForm from './AdminUserEditForm';
+
 class AdminUserModal extends Component {
   constructor(props) {
     super(props);
@@ -24,10 +26,12 @@ class AdminUserModal extends Component {
       <Modal
         size="large"
         open={true}
+        closeIcon={true}
         onClose={() => clearUser() }
       >
-        <Modal.Header>Got User {user.firstname}</Modal.Header>
+        <Modal.Header>{user.name}</Modal.Header>
         <Modal.Content>
+          <AdminUserEditForm user={user}/>
         </Modal.Content>
         <Modal.Actions>
         </Modal.Actions>

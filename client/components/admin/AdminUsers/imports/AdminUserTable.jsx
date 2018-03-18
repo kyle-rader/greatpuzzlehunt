@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Message, Icon } from 'semantic-ui-react';
-import { reduce } from 'lodash';
+import { reduce, find } from 'lodash';
 
 import AdminUserTableRow from './AdminUserTableRow';
 import AdminUserModal from './AdminUserModal';
@@ -14,11 +14,11 @@ class AdminUserTable extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(this.stateFromProps(nextProps));
+    this.setState(this.stateFromProps(nextProps, this.state));
   }
 
-  stateFromProps(props) {
-    const { loading, users } = props;
+  stateFromProps(newProps, currentState = {}) {
+    const { loading, users } = newProps;
     const volunteerCount = reduce(users, (acc, user) => {
       if (user.accountType === 'VOLUNTEER') {
         acc += 1;
@@ -26,10 +26,18 @@ class AdminUserTable extends Component {
       return acc;
     }, 0);
 
+    let { selectedUserId, selectedUser } = currentState;
+
+    if (selectedUserId) {
+      selectedUser = find(users, (u) => (u._id === selectedUserId));
+    }
+
     return {
       userCount: users.length,
       volunteerCount,
       playerCount: users.length - volunteerCount,
+      selectedUserId,
+      selectedUser,
     };
   }
 
@@ -63,7 +71,7 @@ class AdminUserTable extends Component {
           </Table.Body>
         </Table>
 
-        <AdminUserModal user={selectedUser} clearUser={() => this.setState({ selectedUser: null })}/>
+        <AdminUserModal user={selectedUser} clearUser={() => this._clearSelectedUser()}/>
       </div>
     );
   }
@@ -81,7 +89,11 @@ class AdminUserTable extends Component {
   }
 
   _selectUser(user) {
-    this.setState({ selectedUser: user });
+    this.setState({ selectedUser: user, selectedUserId: user._id });
+  }
+
+  _clearSelectedUser() {
+    this.setState({ selectedUser: null, selectedUserId: null });
   }
 }
 
