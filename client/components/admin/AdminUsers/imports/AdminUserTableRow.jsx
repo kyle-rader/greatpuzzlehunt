@@ -72,13 +72,17 @@ class AdminUserTableRow extends Component {
   }
 
   _actions() {
-    return null;
+    const { user, selectUser } = this.props;
+    return (
+      <Button basic icon="options" content="More" onClick={() => selectUser(user)}/>
+    );
   }
 
 }
 
 AdminUserTableRow.propTypes = {
   user: PropTypes.object.isRequired,
+  selectUser: PropTypes.func.isRequired,
 };
 
 export default AdminUserTableRow;
