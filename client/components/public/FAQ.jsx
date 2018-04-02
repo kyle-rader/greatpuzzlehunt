@@ -38,7 +38,6 @@ FAQ = class FAQ extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-
   }
 
   componentDidMount() {
@@ -239,9 +238,10 @@ FAQ = class FAQ extends Component {
             Your creativity and problem solving skills! Along with the following:<br/>
             <List>
               <List.Item description="At least one smart phone. The more the better! (Think about battery life). Googling is encouraged!"/>
-              <List.Item description="A clip board, or a note pad.  Graph paper might come in handy."/>
+              <List.Item description="A clip board, or a note pad. Graph paper might come in handy."/>
               <List.Item description="Scissors and tape."/>
-              <List.Item description="Writing utensils (pencils, colored pencils, erasers, highlighters)."/>
+              <List.Item description="Writing utensils (pencils, erasers, highlighters)."/>
+              <List.Item description="Standard 10-12 pack of colored pencils."/>
               <List.Item description="A sturdy single hole punch (capable of punching through 8 layers of paper)."/>
               <List.Item description="Water to drink and a sack lunch or snacks! Light refreshments will be provided."/>
               <List.Item description="Umbrella for your puzzles!"/>
