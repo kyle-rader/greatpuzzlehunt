@@ -21,6 +21,7 @@ Profile = class Profile extends Component {
   _makeStateFromUser(user) {
     return {
       updatedAt: user ? moment(user.updatedAt).fromNow() : '',
+      showTeamPreview: !user.hasRole('volunteer'),
     };
   }
 
@@ -39,6 +40,7 @@ Profile = class Profile extends Component {
   }
 
   _renderMain() {
+    const { showTeamPreview } = this.state;
     return (
     <Container>
       <PuzzlePageTitle
@@ -47,7 +49,9 @@ Profile = class Profile extends Component {
       />
       Last Updated: {this.state.updatedAt}
       <ProfileEditor user={this.props.user} />
-      <ProfileTeamPreview />
+
+      {showTeamPreview ? <ProfileTeamPreview /> : null }
+
       <PasswordEditor />
     </Container>
     );

@@ -28,7 +28,7 @@ export const renderRoutes = () => (
       </Route>
 
       <Route path='team' component={makeAuthed('user')}>
-        <IndexRoute component={TeamManager}/>
+        <IndexRoute component={Team}/>
         <Route path='create' component={TeamCreator}/>
         <Route path='join' component={TeamBrowser}/>
       </Route>

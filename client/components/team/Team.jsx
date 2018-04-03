@@ -1,10 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { Container, Segment, Header, Grid, Form, Icon } from 'semantic-ui-react';
 import { makeTeamComp } from './imports/team-helpers.js';
 import moment from 'moment';
 
-TeamManager = class TeamManager extends Component {
+Team = class Team extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,14 +14,22 @@ TeamManager = class TeamManager extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.team) {
-      this.setState({ lastUpdated: moment(nextProps.team.updatedAt).fromNow() });
-    } else {
-      this.setState({ lastUpdated: null });
-    }
+    const isVolunteer = nextProps.user ? nextProps.user.hasRole('volunteer') : false;
+    const lastUpdated = nextProps.team ? moment(nextProps.team.updatedAt).fromNow() : null;
+
+    this.setState({
+      lastUpdated,
+      isVolunteer,
+    });
   }
 
   render() {
+    // If you are a volunteer - hide teams all together
+    const { isVolunteer } = this.state;
+    if (isVolunteer) {
+      browserHistory.push('/volunteer');
+    }
+
     const content = this.props.team ? this._renderMain() : <Segment basic><NoTeamMessage><ProfileInvites user={this.props.user}/></NoTeamMessage></Segment>;
 
     return (
@@ -58,4 +67,4 @@ TeamManager = class TeamManager extends Component {
   }
 }
 
-TeamManager = makeTeamComp(TeamManager);
+Team = makeTeamComp(Team);
