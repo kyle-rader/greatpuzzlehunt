@@ -107,7 +107,7 @@ TopBar = class TopBar extends Component {
         <div className="right menu">
           { isAdmin() ? this._renderAdminMenu() : null }
           { isVolunteer() ? this._renderVolunteerMenu() : null }
-          {this._logInLogOutBtn()}
+          {this._profileMenu()}
         </div>
       </div>
     );
@@ -140,6 +140,15 @@ TopBar = class TopBar extends Component {
     return socialApps.map((app) => this._socialButton(app));
   }
 
+  _socialButton(socialApp) {
+    return (
+      <a className="item" href={Meteor.settings.public.social[socialApp]} target="_blank" key={`${socialApp}-btn`}>
+        <i className={`large ${socialApp} ${socialApp}-color icon`}></i>
+        {`${socialApp[0].toUpperCase()}${socialApp.substring(1)}`}
+      </a>
+    );
+  }
+
   _renderAdminMenu() {
     return (
       <div className="ui dropdown item">
@@ -151,6 +160,7 @@ TopBar = class TopBar extends Component {
       </div>
     );
   }
+
   _renderVolunteerMenu() {
     return (
       <div className="ui dropdown item">
@@ -163,17 +173,10 @@ TopBar = class TopBar extends Component {
     );
   }
 
-  _socialButton(socialApp) {
-    return (
-      <a className="item" href={Meteor.settings.public.social[socialApp]} target="_blank" key={`${socialApp}-btn`}>
-        <i className={`large ${socialApp} ${socialApp}-color icon`}></i>
-        {`${socialApp[0].toUpperCase()}${socialApp.substring(1)}`}
-      </a>
-    );
-  }
-
-  _logInLogOutBtn() {
-    if (this.props.user) {
+  _profileMenu() {
+    const { user } = this.props;
+    if (user) {
+      const isVolunteer = user.hasRole('volunteer');
       return (
         <div className="ui dropdown item">
           <Icon name='settings' size='large'/>
@@ -183,10 +186,7 @@ TopBar = class TopBar extends Component {
               <Icon name="user" color="green"/>
               Profile
             </Link>
-            <Link className="item" to="/team">
-              <Icon name="users" color="blue"/>
-              Team
-            </Link>
+            {isVolunteer ? null : this._teamButton() }
             <Link className="item" to="/game">
               <Icon name="puzzle" color="violet"/>
               Game
@@ -199,14 +199,23 @@ TopBar = class TopBar extends Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <Link className="item" to="/login">
-          <Icon name='sign in'/>
-          Login
-        </Link>
-      );
     }
+
+    return (
+      <Link className="item" to="/login">
+        <Icon name='sign in'/>
+        Login
+      </Link>
+    );
+  }
+
+  _teamButton() {
+    return (
+      <Link className="item" to="/team">
+        <Icon name="users" color="blue" />
+        Team
+      </Link>
+    );
   }
 
   _logout(event) {
