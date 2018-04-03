@@ -17,7 +17,7 @@ export default class ProfileCards extends Component {
       },
       {
         name: 'Kyle Rader',
-        title: 'Software Engineer, Action Sprout',
+        title: 'Software Engineer, Microsoft',
         role: 'Lead developer and secondary event coordinator',
         email: 'kyle@kylerader.ninja',
         image: '/img/team/kyle.jpg',
@@ -42,6 +42,13 @@ export default class ProfileCards extends Component {
         role: 'Puzzle Master Team',
         email: 'gphpuzzlemasters@gmail.com',
         image: '/img/team/jeff-zoe.jpg',
+      },
+      {
+        name: 'Zac Pontrantolfi',
+        title: '',
+        role: 'Puzzle Master Team',
+        email: 'Zac.Pontrantolfi@gmail.com',
+        image: '/img/team/zac.jpg',
       },
       {
         name: 'Noah Strong',
