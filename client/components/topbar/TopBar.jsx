@@ -60,7 +60,7 @@ const adminMenuItems = [
     iconClass: 'blue ticket',
   },
   {
-    name: 'Game State',
+    name: 'Game Control',
     to: '/admin/gamestate',
     iconClass: 'orange gamepad',
   },
