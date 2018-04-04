@@ -82,7 +82,7 @@ export default class HomeHeader extends Component {
           </Grid.Column>
         </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row centered>
             <Grid.Column width={16}>
               <h3>
                 This event is made possible thanks to
