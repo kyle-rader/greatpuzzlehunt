@@ -21,7 +21,6 @@ export default class HomePeople extends Component {
           </Grid.Row>
 
         </Grid>
-        <Image fluid src="/img/2016/event-photos/gathering-thin.jpg"/>
       </section>
     );
   }
