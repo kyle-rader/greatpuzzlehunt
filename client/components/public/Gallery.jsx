@@ -99,7 +99,7 @@ Gallery = class Gallery extends Component {
   render() {
     return (
       <div className="ui container">
-        <PuzzlePageTitle title="Gallery" subTitle="Photo Credit: Gabrielle Poncz" />
+        <PuzzlePageTitle title="Gallery" subTitle={<span>Photo Credit: <a href="http://www.gabrielleponcz.com/" target="_blank">Gabrielle Poncz</a></span>} />
 
         <div className="ui stackable two column grid">
           {this._getImages()}
