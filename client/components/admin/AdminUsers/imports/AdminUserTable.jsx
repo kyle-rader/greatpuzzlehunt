@@ -18,7 +18,7 @@ class AdminUserTable extends Component {
   }
 
   stateFromProps(newProps, currentState = {}) {
-    const { loading, users } = newProps;
+    const { loading, users, teams } = newProps;
     const volunteerCount = reduce(users, (acc, user) => {
       if (user.accountType === 'VOLUNTEER') {
         acc += 1;
@@ -36,6 +36,7 @@ class AdminUserTable extends Component {
       userCount: users.length,
       volunteerCount,
       playerCount: users.length - volunteerCount,
+      teamCount: teams ? Object.keys(teams).length : 0,
       selectedUserId,
       selectedUser,
     };
@@ -45,7 +46,7 @@ class AdminUserTable extends Component {
     const { loading, users } = this.props;
     if (loading) return <Loading/>;
 
-    const { userCount, volunteerCount, playerCount, selectedUser } = this.state;
+    const { userCount, volunteerCount, playerCount, teamCount, selectedUser } = this.state;
 
     return (
       <div> {/* outer div for react root component element */}
@@ -53,7 +54,10 @@ class AdminUserTable extends Component {
           <Icon name="users" color="green"/>
           <Message.Content>
             <Message.Header>User Summary</Message.Header>
-            <strong>Total:</strong> {userCount} &nbsp; <strong>Players:</strong> {playerCount} &nbsp; <strong>Volunteers:</strong> {volunteerCount}
+            <strong>Total:</strong> {userCount} &nbsp;
+            <strong>Players:</strong> {playerCount} &nbsp;
+            <strong>Volunteers:</strong> {volunteerCount} &nbsp;
+            <strong>Teams:</strong> {teamCount} &nbsp;
           </Message.Content>
         </Message>
         <Table celled striped>
