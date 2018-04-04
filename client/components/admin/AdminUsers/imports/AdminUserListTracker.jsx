@@ -47,5 +47,6 @@ export default AdminUserListTracker = withTracker(({ search }) => {
   return {
     loading,
     users,
+    teams,
   };
 })(AdminUserTable);
