@@ -109,7 +109,7 @@ export default class HomeHeader extends Component {
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
-      <Button as='a' size="large" target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/" content="Buy Gear"/>
+      <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" content="Buy Tickets"/>
     </div>
     );
   }
