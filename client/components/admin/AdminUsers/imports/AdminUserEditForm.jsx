@@ -105,6 +105,7 @@ class AdminUserEditForm extends Component {
     Meteor.call('admin.user.update', userData, (error, result) => {
       if (error) return this.setState({ error });
       this.setState({ error: null });
+      alert(`${userData.firstname} ${userData.lastname} saved!`);
     });
 
     // One call to update normal string fieldss
@@ -117,6 +118,7 @@ class AdminUserEditForm extends Component {
       Meteor.call('admin.user.updateEmail', emailData, (error, result) => {
         if (error) return this.setState({ error });
         this.setState({ error: null });
+        alert(`${userData.firstname} ${userData.lastname} email updated to ${emailData.newEmail}`);
       });
     }
   }
