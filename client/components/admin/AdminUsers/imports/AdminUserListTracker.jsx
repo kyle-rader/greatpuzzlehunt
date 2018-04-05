@@ -4,15 +4,15 @@ import React, { Component } from 'react';
 
 import AdminUserTable from './AdminUserTable';
 
-export default AdminUserListTracker = withTracker(({ search }) => {
-  const usersHandle = Meteor.subscribe('admin.users', search);
+export default AdminUserListTracker = withTracker(({ userSearch, teamSearch }) => {
+  const usersHandle = Meteor.subscribe('admin.users', userSearch);
   const loading = !usersHandle.ready();
 
   if (loading) {
     return { loading, users: [] };
   }
 
-  const hasSearch = search && search.length > 0;
+  const hasUserSearch = userSearch && userSearch.length > 0;
 
   const defaultSort = [
     ['createdAt', 'desc'],
@@ -23,13 +23,13 @@ export default AdminUserListTracker = withTracker(({ search }) => {
   };
 
   let query = {};
-  if (hasSearch) {
-    search = search.trim();
+  if (hasUserSearch) {
+    userSearch = userSearch.trim();
     query = {
       $or: [
-        { 'firstname': { $regex: search, $options: 'i' } },
-        { 'lastname': { $regex: search, $options: 'i' } },
-        { 'emails': { $elemMatch: { address: { $regex: search, $options: 'i' } } } },
+        { 'firstname': { $regex: userSearch, $options: 'i' } },
+        { 'lastname': { $regex: userSearch, $options: 'i' } },
+        { 'emails': { $elemMatch: { address: { $regex: userSearch, $options: 'i' } } } },
       ],
     };
   }
@@ -39,10 +39,16 @@ export default AdminUserListTracker = withTracker(({ search }) => {
     return acc;
   }, {});
 
-  const users = Meteor.users.find(query, options).fetch().map((u) => {
+  let users = Meteor.users.find(query, options).fetch().map((u) => {
     u.teamName = u.teamId ? teams[u.teamId] : '';
     return u;
   });
+
+  // Filter users by team name
+  if (teamSearch && teamSearch.length > 0) {
+    const teamSearchSafe = teamSearch.trim().toLowerCase();
+    users = users.filter((user, i, _users) => (user.teamName.toLowerCase().search(teamSearchSafe) > -1));
+  }
 
   return {
     loading,

@@ -9,12 +9,13 @@ AdminUsers = class AdminUsers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
+      userSearch: '',
+      teamSearch: '',
     };
   }
 
   render() {
-    const { search } = this.state;
+    const { userSearch, teamSearch } = this.state;
 
     return (
       <Container>
@@ -22,21 +23,30 @@ AdminUsers = class AdminUsers extends Component {
 
         <Grid stackable>
 
-          <Grid.Row>
-            <Grid.Column>
+          <Grid.Row columns={2}>
+            <Grid.Column width={10}>
               <DebounceSearch
                 fluid
                 icon='search'
-                placeholder='Search by Name or Email'
+                placeholder='Search by First Name, Last Name, or Email'
                 delay={350}
-                onSearch={(search) => this.setState({ search })}
+                onSearch={(search) => this.setState({ userSearch: search })}
+              />
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <DebounceSearch
+                fluid
+                icon='search'
+                placeholder='Search by Team Name'
+                delay={350}
+                onSearch={(search) => this.setState({ teamSearch: search })}
               />
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row>
             <Grid.Column>
-              <AdminUserListTracker search={search} />
+              <AdminUserListTracker userSearch={userSearch} teamSearch={teamSearch}/>
             </Grid.Column>
           </Grid.Row>
 
