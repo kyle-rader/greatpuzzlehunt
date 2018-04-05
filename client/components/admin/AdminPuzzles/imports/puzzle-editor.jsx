@@ -1,9 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import React, { Component, PropTypes } from 'react';
-import { Form, Message, Header } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Grid, Form, Message, Header } from 'semantic-ui-react';
 import { omit } from 'lodash';
-
-// import HintEditor from './hint-editor';
 
 class PuzzleEditor extends Component {
   constructor(props) {

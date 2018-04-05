@@ -1,16 +1,16 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Header, Label, Button } from 'semantic-ui-react';
 
-import puzzleSubscriber from './puzzle-subscriber';
+import puzzleTracker from './PuzzleTracker';
 
 const stagesColors = ['green', 'blue', 'orange', 'red'];
 
 class PuzzleList extends Component {
   render() {
     return (
-      <Grid>
+      <Grid stackable>
         { this._actions() }
         { this._puzzles() }
       </Grid>
@@ -21,7 +21,7 @@ class PuzzleList extends Component {
     return (
       <Grid.Row columns='1'>
         <Grid.Column>
-          <Header as='h3' content='Puzzle List'/>
+          <Header as='h3' content='Puzzles'/>
           <Button basic size='small' content='New Puzzle' onClick={ () => this._createPuzzle() }/>
         </Grid.Column>
       </Grid.Row>
@@ -42,9 +42,20 @@ class PuzzleList extends Component {
 
   _puzzle(puzzle) {
     return (
-      <Grid.Row columns='1' key={ puzzle._id }>
+      <Grid.Row columns={5} key={ puzzle._id }>
         <Grid.Column>
           <Label color={ stagesColors[puzzle.stage] } content={ puzzle.stage }/>&nbsp; { puzzle.name }
+        </Grid.Column>
+        <Grid.Column>
+          {puzzle.allowedTime} allowed
+        </Grid.Column>
+        <Grid.Column>
+          {puzzle.bonusTime} bonus
+        </Grid.Column>
+        <Grid.Column>
+          {puzzle.timeoutScore} timeout score
+        </Grid.Column>
+        <Grid.Column>
           <Button basic floated='right'
             icon='trash'
             onClick={ () => this._delete(puzzle) }
@@ -74,4 +85,4 @@ PuzzleList.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-export default puzzleSubscriber(PuzzleList);
+export default puzzleTracker(PuzzleList);

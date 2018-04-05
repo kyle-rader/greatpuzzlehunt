@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { isAdmin } from '../../lib/imports/method-helpers';
 
-
 const store = new FS.Store.GridFS('images');
 
 Images = new FS.Collection("images", {

@@ -1,6 +1,6 @@
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default (Comp) => createContainer(() => {
+export default (Comp) => withTracker(() => {
   const handle = Meteor.subscribe('admin.puzzles');
   const ready = handle.ready();
   const puzzles = Puzzles.find({}).fetch();
@@ -9,4 +9,4 @@ export default (Comp) => createContainer(() => {
     ready,
     puzzles,
   };
-}, Comp);
+})(Comp);

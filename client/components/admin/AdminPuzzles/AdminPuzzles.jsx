@@ -21,7 +21,6 @@ AdminPuzzles = class AdminPuzzles extends Component {
     return (
       <Container>
         <PuzzlePageTitle title='Puzzles'/>
-
         { this._editor() }
         <br/>
         <PuzzleList
