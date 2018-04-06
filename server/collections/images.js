@@ -7,9 +7,8 @@ Images = new FS.Collection("images", {
   stores: [store],
 });
 
-
 function onImageUploaded(storeName, fileObj) {
-  // Check for referenced Sposprs.
+  // Check for referenced Sponsors.
   const url = fileObj.url();
   Sponsors.update({ imageId: fileObj._id }, { $set: {
     logoUrl: url,

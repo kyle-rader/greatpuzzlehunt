@@ -31,7 +31,6 @@ class PuzzleList extends Component {
   _createPuzzle() {
     Meteor.call('admin.puzzle.create', (error, result) => {
       if (error) return alert(error.reason);
-      console.log('Created Puzzle', result);
     });
   }
 

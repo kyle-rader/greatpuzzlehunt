@@ -2,8 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Container, Header, Message, Image, Button } from 'semantic-ui-react';
 
-import PuzzleEditor from './imports/puzzle-editor';
-import PuzzleList from './imports/puzzle-list';
+import PuzzleEditor from './imports/PuzzleEditor';
+import PuzzleList from './imports/PuzzleList';
 
 AdminPuzzles = class AdminPuzzles extends Component {
   constructor(props) {
@@ -11,8 +11,6 @@ AdminPuzzles = class AdminPuzzles extends Component {
 
     this.state = {
       activePuzzle: null,
-      file: null,
-      uploaded: null,
     };
   }
 
@@ -33,13 +31,15 @@ AdminPuzzles = class AdminPuzzles extends Component {
 
   _editor() {
     const { activePuzzle } = this.state;
-    if (activePuzzle) {
-      return <PuzzleEditor
+    if (!activePuzzle) {
+      return <Message info content='Select a puzzle to edit...'/>;
+    }
+    return (
+      <PuzzleEditor
         puzzle={ activePuzzle }
         afterUpdate={ () => this.setState({ activePuzzle: null }) }
-      />;
-    }
-    return <Message info content='Select a puzzle to edit...'/>;
+      />
+    );
   }
 
   _editPuzzle(puzzle) {

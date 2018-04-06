@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Grid, Form, Message, Header } from 'semantic-ui-react';
 import { omit } from 'lodash';
 
+import HintEditor from './HintEditor';
+
 class PuzzleEditor extends Component {
   constructor(props) {
     super(props);
@@ -72,10 +74,7 @@ class PuzzleEditor extends Component {
           onChange={ (e) => this._handleChange(e) }
         />
 
-        {/* <HintEditor
-          puzzle={ this.props.puzzle }
-          hints={ this.state.hints }
-          onChange={ (hints) => this.setState({ hints }) } /> */}
+        <HintEditor hints={this.state.hints} updateHints={(hints) => this.setState({ hints })}/>
 
         <Form.Group>
           <Form.Button color='green' type='submit' content='Save'/>

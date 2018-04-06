@@ -7,7 +7,6 @@ Images = new FS.Collection("images", {
   stores: [store],
 });
 
-
 Images.allow({
   insert(userId, fileObj) {
     return isAdmin(userId);
