@@ -191,6 +191,10 @@ TopBar = class TopBar extends Component {
               <Icon name="puzzle" color="violet"/>
               Game
             </Link>
+            <Link className="item" to="/rules">
+              <Icon name="info" color="teal"/>
+              Rules of Play
+            </Link>
             <div className="divider"></div>
             <a className="item" onClick={(e) => this._logout(e)}>
               <Icon name="sign out"/>
