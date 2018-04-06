@@ -35,12 +35,17 @@ const mainMenuLinks = [
   {
     name: 'FAQ',
     to: '/faq',
-    iconClass: 'orange circle info',
+    iconClass: 'orange question',
+  },
+  {
+    name: 'Rules of Play',
+    to: '/rules',
+    iconClass: 'teal circle info',
   },
   {
     name: 'Gallery',
     to: '/gallery',
-    iconClass: 'teal camera',
+    iconClass: 'olive camera',
   },
   {
     name: 'QR Encoder',
