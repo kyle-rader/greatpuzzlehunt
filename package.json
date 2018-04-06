@@ -41,7 +41,7 @@
     "react-scroll-up": "^1.1.5",
     "react-scrollchor": "^4.2.1",
     "request": "^2.85.0",
-    "semantic-ui-react": "^0.77.2",
+    "semantic-ui-react": "^0.79",
     "winston": "^2.4.1"
   },
   "devDependencies": {
