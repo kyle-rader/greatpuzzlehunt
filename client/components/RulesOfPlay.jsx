@@ -42,7 +42,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
           <List bulleted relaxed size="large">
             <List.Item>Use the internet! Google things! For public Wi-Fi, select <strong>WWUwireless-Guest</strong>. (<a href="https://atus.wwu.edu/kb/wwu-public-wifi-network" target="_blank">More WiFi info</a>)</List.Item>
             <List.Item>Have fun and make it fun for others by abiding by the standards of fair play.</List.Item>
-            <List.Item>Post questions and comments in <a href="https://www.facebook.com/groups/gph2018/" target="_blank">the GPH 2018 Facebook Group</a>. Please do not post photos of others without their explicit consent!</List.Item>
+            <List.Item>Post questions and comments on <a href="https://www.facebook.com/events/323776618104349/" target="_blank">the GPH 2018 Facebook Event</a>. Please do not post photos of others without their explicit consent!</List.Item>
             <List.Item>Report anything during the Hunt that you feel is unsafe or represents unsportsmanlike conduct. (<Link to="/contact">Contact Info</Link>)</List.Item>
           </List>
         </Segment>
