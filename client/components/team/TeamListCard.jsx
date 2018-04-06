@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Icon, Button, Progress, Form, Popup, Header } from 'semantic-ui-react';
 import moment from 'moment';
 
@@ -141,5 +142,5 @@ TeamListCard = class TeamListCard extends Component {
 }
 
 TeamListCard.propTypes = {
-  team: React.PropTypes.object.isRequired,
+  team: PropTypes.object.isRequired,
 };

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Progress } from 'semantic-ui-react';
 import moment from 'moment';
 
@@ -74,7 +75,7 @@ export default class PuzzleProgress extends React.Component {
 }
 
 PuzzleProgress.propTypes = {
-  puzzle: React.PropTypes.shape({
+  puzzle: PropTypes.shape({
     start: PropTypes.object.isRequired,
     end: PropTypes.object,
     allowedTime: PropTypes.number.isRequired,
