@@ -42,7 +42,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
           <List bulleted relaxed size="large">
             <List.Item>Use the internet! Google things! For public Wi-Fi, select <strong>WWUwireless-Guest</strong>. (<a href="https://atus.wwu.edu/kb/wwu-public-wifi-network" target="_blank">More WiFi info</a>)</List.Item>
             <List.Item>Have fun and make it fun for others by abiding by the standards of fair play.</List.Item>
-            <List.Item>Post questions and comments in <a href="https://www.facebook.com/groups/gph2018/" target="_blank">the GPH 2018 Facebook Group</a>. Please do not post photos of other without their explicit consent!</List.Item>
+            <List.Item>Post questions and comments in <a href="https://www.facebook.com/groups/gph2018/" target="_blank">the GPH 2018 Facebook Group</a>. Please do not post photos of others without their explicit consent!</List.Item>
             <List.Item>Report anything during the Hunt that you feel is unsafe or represents unsportsmanlike conduct. (<Link to="/contact">Contact Info</Link>)</List.Item>
           </List>
         </Segment>
@@ -86,15 +86,15 @@ RulesOfPlay = class RulesOfPlay extends Component {
             <List.Item>If you do not finish in 65 minutes you receive a score of 100 minutes for that puzzle. (25 for meta puzzle)</List.Item>
             <List.Item>There is no penalty or limit for incorrect code word entries.</List.Item>
             <List.Item>Each primary puzzle has 3 hints available.</List.Item>
-            <List.Item>Teams may buy hints. Cost increases per hint: any hint taken 1 st , 2 nd , or 3 rd (in any order) adds 5, 10, or 15 minutes respectively, to your score.</List.Item>
+            <List.Item>Teams may buy hints. Cost increases per hint: any hint taken 1st , 2nd , or 3rd (in any order) adds 5, 10, or 15 minutes respectively, to your score.</List.Item>
             <List.Item>Hints are progressive and teams may buy them in any order. (e.g., You may choose to only buy hint 3 near the end of a puzzle at a cost of 5 minutes).</List.Item>
-            <List.Item>Boni>: If you finish within 65 minutes and do not use any hints, 10 minutes are subtracted from your score! (No hints or bonus available for meta puzzle)</List.Item>
+            <List.Item>Bonus>: If you finish within 65 minutes and do not use any hints, 10 minutes are subtracted from your score! (No hints or bonus available for meta puzzle)</List.Item>
             <List.Item>In summary:
               <pre><code>
               total score = (timed minutes) <br/>
-              &nbsp; + (5 * any 1 st hint used) <br/>
-              &nbsp; + (10 * any 2 nd hint used) <br/>
-              &nbsp; + (15 * any 3 rd hint used) <br/>
+              &nbsp; + (5 * any 1st hint used) <br/>
+              &nbsp; + (10 * any 2nd hint used) <br/>
+              &nbsp; + (15 * any 3rd hint used) <br/>
               &nbsp; - (bonus time if applicable)
               </code></pre>
             </List.Item>
