@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
 import { times } from 'lodash';
 
@@ -28,5 +29,5 @@ TeamList = class TeamList extends Component {
 }
 
 TeamList.propTypes = {
-  teams: React.PropTypes.array.isRequired,
+  teams: PropTypes.array.isRequired,
 };

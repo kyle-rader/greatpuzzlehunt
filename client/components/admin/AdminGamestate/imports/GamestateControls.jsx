@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Segment, Form, Button, Header } from 'semantic-ui-react';
 
-import GamestateComp from '../../../imports/gamestate-comp';
+import GamestateComp from '../../../imports/GamestateComp';
 
 class GamestateControlsInner extends Component {
 

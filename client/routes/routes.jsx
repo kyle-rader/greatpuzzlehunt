@@ -53,9 +53,6 @@ export const renderRoutes = () => (
         <Route path='sponsors' component={AdminSponsors} />
         <Route path='puzzles' component={AdminPuzzles} />
         <Route path='gamestate' component={AdminGamestate} />
-        {/* <Route path='email' component={AdminEmailContainer}>
-          <IndexRoute component={AdminEmailLists}/>
-        </Route> */}
       </Route>
 
       <Route path='*' component={Home}/>

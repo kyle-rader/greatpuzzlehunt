@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Icon, Message } from 'semantic-ui-react';
 
 TeamDangerZone = class TeamDangerZone extends Component {
@@ -42,10 +43,9 @@ TeamDangerZone = class TeamDangerZone extends Component {
       });
     }
   }
-
 }
 
 TeamDangerZone.propTypes = {
-  team: React.PropTypes.object.isRequired,
-  user: React.PropTypes.object.isRequired,
+  team: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };

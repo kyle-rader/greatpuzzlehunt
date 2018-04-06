@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Card, Icon, Button, Message } from 'semantic-ui-react';
 
 TeamMembers = class TeamMembers extends Component {
@@ -76,7 +77,7 @@ TeamMembers = class TeamMembers extends Component {
   }
 }
 
-TeamMembers = createContainer(({ team }) => {
+TeamMembers = withTracker(({ team }) => {
   const membersHandle = Meteor.subscribe('users.myTeam');
   const ready = membersHandle.ready();
   const members = Meteor.users.find({ teamId: team._id }).fetch();
@@ -85,8 +86,8 @@ TeamMembers = createContainer(({ team }) => {
     ready,
     members,
   };
-}, TeamMembers);
+})(TeamMembers);
 
 TeamMembers.propTypes = {
-  team: React.PropTypes.object.isRequired,
+  team: PropTypes.object.isRequired,
 };

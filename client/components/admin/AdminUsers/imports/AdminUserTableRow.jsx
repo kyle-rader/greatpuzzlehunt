@@ -38,7 +38,7 @@ class AdminUserTableRow extends Component {
     let volunteerIcon = null;
     let adminIcon = null;
 
-    if (accountType === 'VOLUNTEER') {
+    if (user.hasRole('volunteer')) {
       volunteerIcon = <Icon name='hand paper' color='teal'/>;
     }
 

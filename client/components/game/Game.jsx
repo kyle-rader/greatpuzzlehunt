@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Message, Statistic } from 'semantic-ui-react';
 
-import GamestateComp from '../imports/gamestate-comp';
+import GamestateComp from '../imports/GamestateComp';
 import GameCountdown from './imports/game-countdown';
 import GameTeamWrapper from './imports/game-team-wrapper';
 

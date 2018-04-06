@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import React, { PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Container, Segment, Message, Button } from 'semantic-ui-react';
 
 import VolunteerPuzzles from './imports/volunteer-puzzles';
@@ -44,7 +45,7 @@ VolunteerTimerInner.propTypes = {
 };
 
 // In this container "params" is coming from the props added via react-router.
-VolunteerTimer = createContainer(({ params }) => {
+VolunteerTimer = withTracker(({ params }) => {
   const { teamId, puzzleId } = params;
   const handle = Meteor.subscribe('volunteer.team', teamId);
   const ready = handle.ready();
@@ -53,4 +54,4 @@ VolunteerTimer = createContainer(({ params }) => {
     ready,
     team,
   };
-}, VolunteerTimerInner);
+})(VolunteerTimerInner);

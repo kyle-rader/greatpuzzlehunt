@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 
 Authed = class Authed extends React.Component {
   render() {
@@ -17,11 +17,11 @@ Authed = class Authed extends React.Component {
   }
 }
 
-Authed = createContainer(({ accessLevel }) => {
+Authed = withTracker(({ accessLevel }) => {
   return {
     user: Meteor.user(),
     canView() {
       return Boolean(Meteor.user()) && Meteor.user().hasRole(accessLevel);
     }
   };
-}, Authed);
+})(Authed);

@@ -4,8 +4,6 @@ import { Link, browserHistory } from 'react-router';
 import { Container, Segment, Form, Message, Header, Icon, Button } from 'semantic-ui-react';
 import { makeTeamComp } from './imports/team-helpers.js';
 
-import { createContainer } from 'meteor/react-meteor-data';
-
 TeamCreator = class TeamCreator extends Component {
 
   constructor(props) {

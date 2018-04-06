@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { Segment, Header, Card, Button, Icon } from 'semantic-ui-react';
 import { map } from 'lodash';
-import moment from 'moment'
+import moment from 'moment';
 
 ProfileInvites = class ProfileInvites extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ ProfileInvites = class ProfileInvites extends Component {
   }
 }
 
-ProfileInvites = createContainer(({ user }) => {
+ProfileInvites = withTracker(({ user }) => {
   const invitesHandle = Meteor.subscribe('invites.myInvites');
   const ready = invitesHandle.ready();
   const invites = Invites.find({ email: user.getEmail(), accepted: false }).fetch();
@@ -69,4 +69,4 @@ ProfileInvites = createContainer(({ user }) => {
     ready,
     invites,
   };
-}, ProfileInvites);
+})(ProfileInvites);

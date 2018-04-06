@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Link, browserHistory } from 'react-router';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import moment from 'moment';
@@ -21,7 +21,7 @@ Profile = class Profile extends Component {
   _makeStateFromUser(user) {
     return {
       updatedAt: user ? moment(user.updatedAt).fromNow() : '',
-      showTeamPreview: !user.hasRole('volunteer'),
+      showTeamPreview: user ? !user.hasRole('volunteer')  : false,
     };
   }
 
@@ -56,9 +56,10 @@ Profile = class Profile extends Component {
     </Container>
     );
   }
-
 }
 
-Profile = createContainer((props) => ({
-    user: Meteor.user()
-}), Profile);
+Profile = withTracker((props) => {
+  return {
+    user: Meteor.user(),
+  };
+})(Profile);

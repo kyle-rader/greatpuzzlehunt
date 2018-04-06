@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
-import React, { Component, PropTypes } from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Icon } from 'semantic-ui-react';
 
 class Users extends Component {
@@ -33,13 +34,13 @@ class Users extends Component {
   }
 }
 
-Users = createContainer(() => {
+Users = withTracker(() => {
   const user = Meteor.user();
   const handle = Meteor.subscribe('users.lookingForTeam');
   const ready = handle.ready();
   const users = Meteor.users.find({ _id: { $ne: user._id }, lookingForTeam: true }).fetch();
 
   return { ready, users };
-}, Users);
+})(Users);
 
 export default Users;

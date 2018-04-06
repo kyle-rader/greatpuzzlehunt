@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { Container, Segment, Grid, Form, Header, Icon, Message } from 'semantic-ui-react';
@@ -82,7 +82,7 @@ TeamBrowser = class TeamBrowser extends Component {
 
 }
 
-TeamBrowser = createContainer((props) => {
+TeamBrowser = withTracker((props) => {
   const user = Meteor.user();
   const teamsHandle = Meteor.subscribe('teams.browse');
   const ready = teamsHandle.ready();
@@ -93,4 +93,4 @@ TeamBrowser = createContainer((props) => {
     user,
     teams,
   };
-}, TeamBrowser);
+})(TeamBrowser);

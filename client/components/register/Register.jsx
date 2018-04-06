@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Container, Header, Segment, Message, Accordion, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
-import GamestateComp from '../imports/gamestate-comp';
-import RegisterForm from './imports/register-form';
+import GamestateComp from '../imports/GamestateComp';
+import RegisterForm from './imports/RegisterForm';
 
 const { eventYear } = Meteor.settings.public;
 

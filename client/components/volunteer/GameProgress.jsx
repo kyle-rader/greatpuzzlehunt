@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import React, {PropTypes} from 'react';
 import { sortBy, groupBy, map, clone, each } from 'lodash';
 import { Container, Grid, Icon, Header, Progress } from 'semantic-ui-react';
@@ -82,7 +82,7 @@ GameProgressInner.propTypes = {
   user: PropTypes.object,
 };
 
-GameProgress = createContainer(() => {
+GameProgress = withTracker(() => {
   const handle = Meteor.subscribe('game.progress');
   const ready = handle.ready();
   const user = Meteor.user();
@@ -96,4 +96,4 @@ GameProgress = createContainer(() => {
     puzzles,
   };
 
-}, GameProgressInner);
+})(GameProgressInner);

@@ -11,7 +11,7 @@ import { Segment,
 } from 'semantic-ui-react';
 import { pick } from 'lodash';
 
-import GamestateComp from '../../imports/gamestate-comp';
+import GamestateComp from '../../imports/GamestateComp';
 
 const { eventYear, eventDate } = Meteor.settings.public;
 
