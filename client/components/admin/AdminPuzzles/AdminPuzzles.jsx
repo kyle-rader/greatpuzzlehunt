@@ -37,7 +37,7 @@ AdminPuzzles = class AdminPuzzles extends Component {
     return (
       <PuzzleEditor
         puzzle={ activePuzzle }
-        afterUpdate={ () => this.setState({ activePuzzle: null }) }
+        closePuzzle={ () => this.setState({ activePuzzle: null }) }
       />
     );
   }

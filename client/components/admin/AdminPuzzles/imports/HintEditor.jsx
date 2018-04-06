@@ -21,19 +21,47 @@ class HintEditor extends Component {
     const { hints } = this.state;
     return (
       <Grid stackable celled>
-        <Grid.Row columns={hints.length}>
-          {this._renderHints()}
+        <Grid.Row>
+          <Grid.Column>
+            <Button basic color="green" content="Add Hint" onClick={(e) => this._addHint(e)}/>
+            <Button basic color="red" content="Remove Last Hint" onClick={(e) => this._removeLastHint(e)}/>
+          </Grid.Column>
         </Grid.Row>
+
+          {this._renderHints()}
+
       </Grid>
     );
   }
 
+  _addHint(e) {
+    e.preventDefault();
+    const newHint = { text: "", imageUrl: "" };
+    let { hints } = this.state;
+    hints.push(newHint);
+    this.props.updateHints(hints);
+  }
+
+  _removeLastHint(e) {
+    e.preventDefault();
+    let { hints } = this.state;
+    hints.pop();
+    this.props.updateHints(hints);
+  }
+
   _renderHints() {
     const { hints } = this.state;
-    return hints.map((hint, i) => this._renderHint(hint, i));
+    if (hints.length == 0) return null;
+    return (
+      <Grid.Row columns={hints.length}>
+        { hints.map((hint, i) => this._renderHint(hint, i)) }
+      </Grid.Row>
+    );
   }
 
   _renderHint(hint, i) {
+    const hasImage = !!hint.imageUrl && hint.imageUrl.length > 0;
+
     return (
       <Grid.Column key={`hint_${i}`}>
         <Form.Input
@@ -50,7 +78,7 @@ class HintEditor extends Component {
           onChange={(e) => this._handleHintChange('imageUrl', e, i)}
         />
 
-        { hint.imageUrl ? <Image src={hint.imageUrl}/> : null}
+        { hasImage ? <Image src={hint.imageUrl}/> : null}
       </Grid.Column>
     );
   }

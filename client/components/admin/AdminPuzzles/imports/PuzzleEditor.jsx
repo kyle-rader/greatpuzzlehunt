@@ -9,21 +9,21 @@ import HintEditor from './HintEditor';
 class PuzzleEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = this._stateFormProps(props);
+    this.state = this._stateFromProps(props);
   }
 
   componentWillReceiveProps(props) {
-    this.setState(this._stateFormProps(props));
+    this.setState(this._stateFromProps(props));
   }
 
-  _stateFormProps(props) {
+  _stateFromProps(props) {
     const { puzzle } = props;
     return omit(puzzle, ['_id']);
   }
 
   render() {
     return (
-      <Form onSubmit={ (e) => this._handleSubmit(e) }>
+      <Form onSubmit={(e) => e.preventDefault() }>
         <Header as='h3' content='Puzzle Editor'/>
         <Form.Input
           name='name'
@@ -77,15 +77,15 @@ class PuzzleEditor extends Component {
         <HintEditor hints={this.state.hints} updateHints={(hints) => this.setState({ hints })}/>
 
         <Form.Group>
-          <Form.Button color='green' type='submit' content='Save'/>
-          <Form.Button basic content='Cancel' onClick={this.props.afterUpdate}/>
+          <Form.Button color='green' content='Save' onClick={(e) => this._save(e)}/>
+          <Form.Button basic content='Close' onClick={this.props.closePuzzle}/>
         </Form.Group>
 
       </Form>
     );
   }
 
-  _handleSubmit(e) {
+  _save(e) {
     e.preventDefault();
     const { name, stage, answer, allowedTime, timeoutScore, bonusTime, location, hints } = this.state;
     const fields = {
@@ -101,7 +101,7 @@ class PuzzleEditor extends Component {
 
     Meteor.call('admin.puzzle.update', this.props.puzzle._id, fields, (error, result) => {
       if (error) return alert(error.reason);
-      this.props.afterUpdate();
+      alert(`"${fields.name}" saved!`)
     });
   }
 
@@ -113,7 +113,7 @@ class PuzzleEditor extends Component {
 
 PuzzleEditor.propTypes = {
   puzzle: PropTypes.object.isRequired,
-  afterUpdate: PropTypes.func.isRequired,
+  closePuzzle: PropTypes.func.isRequired,
 };
 
 export default PuzzleEditor;
