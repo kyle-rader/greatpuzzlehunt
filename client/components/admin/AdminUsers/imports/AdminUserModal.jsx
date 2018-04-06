@@ -42,6 +42,7 @@ class AdminUserModal extends Component {
             onDelete={(e) => this._deleteUser(e)}
             onToggleAdmin={(e) => this._toggleRole('admin')}
             onToggleVolunteer={(e) => this._toggleRole('volunteer')}
+            onTogglePaid={(e) => this._togglePaid(e)}
             onVerifyEmail={(e) => this._verifyEmail(e)}
           />
         </Modal.Actions>
@@ -116,6 +117,16 @@ class AdminUserModal extends Component {
     if (!confirm(`Toggle ${role} for ${user.name} ?`)) return;
 
     Meteor.call('admin.user.toggleRole', user._id, role, (err, result) => {
+      if (err) return alert(err);
+    });
+  }
+
+  _togglePaid(e) {
+    e.preventDefault();
+    const { user } = this.props;
+    if (!confirm(`Toggle Paid for ${user.name} ?`)) return;
+
+    Meteor.call('admin.user.togglePaid', user._id, (err, result) => {
       if (err) return alert(err);
     });
   }

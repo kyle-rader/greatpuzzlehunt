@@ -12,6 +12,7 @@ class AdminUserActions extends Component {
       onDelete,
       onToggleAdmin,
       onToggleVolunteer,
+      onTogglePaid,
       onVerifyEmail,
     } = this.props;
     return (
@@ -25,6 +26,12 @@ class AdminUserActions extends Component {
           color={ user.hasRole('volunteer') ? 'teal' : null }
           onClick={ onToggleVolunteer }
           icon={ <Icon name='heart'/> }
+        />
+        <Button basic
+          content={ user.paid ? "Un-Pay" : "Pay" }
+          color={ user.paid ? 'red' : 'green' }
+          onClick={ onTogglePaid }
+          icon={ <Icon name='ticket'/> }
         />
         <Button basic
           onClick={ onVerifyEmail }
@@ -68,6 +75,7 @@ AdminUserActions.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onToggleAdmin: PropTypes.func.isRequired,
   onToggleVolunteer: PropTypes.func.isRequired,
+  onTogglePaid: PropTypes.func.isRequired,
   onVerifyEmail: PropTypes.func.isRequired,
 };
 
