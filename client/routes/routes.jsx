@@ -7,6 +7,8 @@ export const renderRoutes = () => (
 
     <Route path='/' component={App}>
 
+
+      {/* Home/Public Routes */}
       <IndexRoute component={Home}/>
       <Route path='teams-list' component={PublicTeamList}/>
       <Route path='gallery' component={Gallery}/>
@@ -17,17 +19,21 @@ export const renderRoutes = () => (
       <Route path='register' component={Register}/>
       <Route path='rules' component={ RulesOfPlay }/>
 
+      {/* Authentication Routes */}
       <Route path='login' component={Login}/>
       <Route path='requestpasswordreset' component={RequestPasswordReset}/>
       <Route path='passwordreset/:token' component={PasswordReset}/>
       <Route path='redeem' component={RedeemTicket}/>
 
+      {/* User Routes */}
       <Route path='profile' component={Profile}/>
 
+      {/* Game Routes */}
       <Route path='game' component={makeAuthed('user')}>
         <IndexRoute component={ Game }/>
       </Route>
 
+      {/* Team Routes */}
       <Route path='team' component={makeAuthed('user')}>
         <IndexRoute component={Team}/>
         <Route path='create' component={TeamCreator}/>
@@ -43,6 +49,8 @@ export const renderRoutes = () => (
         <IndexRoute component={ Volunteer }/>
         <Route path='time/:teamId/:puzzleId' component={VolunteerTimer}/>
         <Route path='/game-progress' component={GameProgress}/>
+
+        <Route path='checkin/:teamId' component={VolunteerCheckIn}/>
       </Route>
 
       {/* Admin Routes */}
