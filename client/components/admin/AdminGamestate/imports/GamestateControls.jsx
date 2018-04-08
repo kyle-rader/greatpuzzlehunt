@@ -41,6 +41,11 @@ class GamestateControlsInner extends Component {
           { this._fieldButton('Registration') }
         </Form.Group>
 
+        <Header as='h3' content='Check In'/>
+        <Form.Group>
+          { this._fieldButton('CheckIn') }
+        </Form.Group>
+
         <Header as='h3' content='Gameplay'/>
         <Form.Group>
           { this._fieldButton('Gameplay') }
@@ -59,20 +64,21 @@ class GamestateControlsInner extends Component {
   }
 
   _fieldButton(name) {
-    const field = this.props.gamestate[name.toLowerCase()];
+    const fieldName = name.toLowerCase();
+    const fieldValue = this.props.gamestate[fieldName];
     return (
       <Button
-        color={ field ? 'green' : 'red' }
-        content={ `Turn ${name} ${(field ? 'Off' : 'On')}` }
-        onClick={ (e) => this._toggleField(e, name) }
+        color={fieldValue ? 'green' : 'red' }
+        content={`Turn ${name} ${(fieldValue ? 'Off' : 'On')}` }
+        onClick={(e) => this._toggleField(e, fieldName) }
       />
     );
   }
 
-  _toggleField(e, name) {
+  _toggleField(e, fieldName) {
     e.preventDefault();
-    if (confirm(`Are you sure you want to toggle ${name}?`)) {
-      Meteor.call(`admin.gamestate.toggle${name}`, (error, result) => {
+    if (confirm(`Are you sure you want to toggle ${fieldName}?`)) {
+      Meteor.call(`admin.gamestate.toggleField`, fieldName, (error, result) => {
         if (error) alert(error.reason);
       });
     }

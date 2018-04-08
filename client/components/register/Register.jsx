@@ -11,25 +11,32 @@ const { eventYear } = Meteor.settings.public;
 class RegisterInner extends Component {
   render() {
 
-    if (this.props.ready && !this.props.gamestate.registration) {
-      return (
-        <Container>
-          <br/>
-          <Message
-            info large
-            header='Registration is being updated...'
-            content={`The ${eventYear} Great Puzzle Hunt registration will be back online ASAP!`}
-          />
-        </Container>
+    const { ready, gamestate } = this.props;
+
+    if (!ready) return <Loading />;
+
+    let content = null;
+
+    if (gamestate.registration) {
+      content = (
+        <Segment basic>
+          <RegisterForm />
+        </Segment>
+      );
+    } else {
+      content = (
+        <Message
+          info size='large'
+          header='Registration is Closed'
+          content={`The ${eventYear} Great Puzzle Hunt registration is now closed.`}
+        />
       );
     }
 
     return (
       <Container>
         <br/>
-        <Segment basic>
-          <RegisterForm/>
-        </Segment>
+        {content}
       </Container>
     );
   }
