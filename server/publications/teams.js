@@ -20,9 +20,24 @@ Meteor.publish('teams.myTeam', function() {
     return this.ready();
   }
 
-  return Teams.find({
+  const user = Meteor.users.findOne(userId);
+
+  const teamQuery = Teams.find({
     members: userId,
   });
+
+  const usersQuery = Meteor.users.find({
+    teamId: user.teamId
+  }, { fields: {
+    firstname: 1,
+    lastname: 1,
+    phone: 1,
+    emails: 1,
+    checkedIn: 1,
+    paid: 1,
+  }});
+
+  return [teamQuery, usersQuery];
 });
 
 Meteor.publish('volunteer.team', function(teamId) {

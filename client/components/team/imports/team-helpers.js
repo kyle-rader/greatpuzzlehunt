@@ -1,21 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 
-export function makeTeamComp(Comp) {
-  return withTracker((props) => {
-    const handle = Meteor.subscribe('teams.myTeam');
-    const user = Meteor.user();
-    const team = user ? Teams.findOne(user.teamId) : null;
-    const ready = Boolean(handle.ready() && user);
-
-    return {
-      user,
-      ready,
-      team,
-    };
-  })(Comp);
-}
-
 export const DIVISION_OPTS = [
   { text: 'All', value: 'all' },
   { text: 'WWU Student', value: 'wwu-student' },

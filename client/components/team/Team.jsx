@@ -2,8 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { Container, Segment, Header, Grid, Form, Icon } from 'semantic-ui-react';
-import { makeTeamComp } from './imports/team-helpers.js';
 import moment from 'moment';
+
+import TeamComp from '../imports/TeamComp';
 
 Team = class Team extends Component {
   constructor(props) {
@@ -67,4 +68,4 @@ Team = class Team extends Component {
   }
 }
 
-Team = makeTeamComp(Team);
+Team = TeamComp(Team);

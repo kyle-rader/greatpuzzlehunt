@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { Container, Segment, Form, Message, Header, Icon, Button } from 'semantic-ui-react';
-import { makeTeamComp } from './imports/team-helpers.js';
+import TeamComp from '../imports/TeamComp';
 
 TeamCreator = class TeamCreator extends Component {
 
@@ -35,4 +35,4 @@ TeamCreator = class TeamCreator extends Component {
 
 }
 
-TeamCreator = makeTeamComp(TeamCreator);
+TeamCreator = TeamComp(TeamCreator);

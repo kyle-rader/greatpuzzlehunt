@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Grid, Segment, Message, Header, Icon, Button } from 'semantic-ui-react';
-import { makeTeamComp } from '../team/imports/team-helpers.js';
+import TeamComp from '../imports/TeamComp';
 
 ProfileTeamPreview = class ProfileTeamPreview extends Component {
   constructor(props) {
@@ -52,4 +52,4 @@ ProfileTeamPreview = class ProfileTeamPreview extends Component {
   }
 }
 
-ProfileTeamPreview = makeTeamComp(ProfileTeamPreview);
+ProfileTeamPreview = TeamComp(ProfileTeamPreview);

@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Container, Message, Statistic } from 'semantic-ui-react';
 
-import { makeTeamComp } from '../../team/imports/team-helpers';
+import TeamComp from '../../imports/TeamComp';
 import GameUI from './game-ui.jsx';
 
 class GameTeamWrapper extends Component {
@@ -50,4 +50,4 @@ GameTeamWrapper.propTypes = {
   team: PropTypes.object,
 };
 
-export default makeTeamComp(GameTeamWrapper);
+export default TeamComp(GameTeamWrapper);
