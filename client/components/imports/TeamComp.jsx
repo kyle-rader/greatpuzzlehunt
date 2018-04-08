@@ -6,7 +6,7 @@ export default function TeamComp(Comp) {
     const handle = Meteor.subscribe('teams.myTeam');
     const user = Meteor.user();
     const team = user ? Teams.findOne(user.teamId) : null;
-    const teamMembers = user ? Meteor.users.find({ teamId: user.teamId }) : [];
+    const teamMembers = user ? Meteor.users.find({ teamId: user.teamId }).fetch() : [];
     const ready = Boolean(handle.ready() && user);
 
     return {

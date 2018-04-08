@@ -112,6 +112,7 @@ TopBar = class TopBar extends Component {
         <div className="right menu">
           { isAdmin() ? this._renderAdminMenu() : null }
           { isVolunteer() ? this._renderVolunteerMenu() : null }
+          {this._checkinButton()}
           {this._profileMenu()}
         </div>
       </div>
@@ -186,25 +187,33 @@ TopBar = class TopBar extends Component {
         <div className="ui dropdown item">
           <Icon name='settings' size='large'/>
           { this.props.user.name }
+
           <div className="menu topbar-dropdown-menu">
+
             <Link className="item" to="/profile">
               <Icon name="user" color="green"/>
               Profile
             </Link>
+
             {isVolunteer ? null : this._teamButton() }
+
             <Link className="item" to="/game">
               <Icon name="puzzle" color="violet"/>
               Game
             </Link>
+
             <Link className="item" to="/rules">
               <Icon name="info" color="teal"/>
               Rules of Play
             </Link>
+
             <div className="divider"></div>
+
             <a className="item" onClick={(e) => this._logout(e)}>
               <Icon name="sign out"/>
               Logout
             </a>
+
           </div>
         </div>
       );
@@ -223,6 +232,17 @@ TopBar = class TopBar extends Component {
       <Link className="item" to="/team">
         <Icon name="users" color="blue" />
         Team
+      </Link>
+    );
+  }
+
+  _checkinButton() {
+    const { hasTeam } = this.props;
+    if (!hasTeam()) return null;
+    return (
+      <Link className="item" to="/team/checkin">
+        <Icon name="rocket"/>
+        Check In
       </Link>
     );
   }
@@ -254,6 +274,10 @@ TopBar = withTracker(() => {
     },
     isVolunteer() {
       return Boolean(Meteor.user()) && Meteor.user().hasRole('volunteer');
+    },
+    hasTeam() {
+      const user = Meteor.user();
+      return Boolean(user) && user.teamId;
     },
   };
 })(TopBar);
