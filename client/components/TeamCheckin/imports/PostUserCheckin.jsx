@@ -5,6 +5,7 @@ import {
   Segment, Header, Icon, Button
 } from 'semantic-ui-react';
 
+import TeamMemberCheckIn from './TeamMemberCheckIn';
 import TeamCheckInQRCode from './TeamCheckInQRCode';
 
 class PostUserCheckin extends Component {
@@ -12,7 +13,7 @@ class PostUserCheckin extends Component {
     const { user, team, teamMembers } = this.props;
     return (
       <div>
-        {/* <TeamMemberCheckIn teamMembers={teamMembers}/> */}
+        <TeamMemberCheckIn teamMembers={teamMembers}/>
         <TeamCheckInQRCode teamId={user.teamId}/>
       </div>
     );

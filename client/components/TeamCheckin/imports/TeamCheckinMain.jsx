@@ -13,6 +13,7 @@ import PostUserCheckin from './PostUserCheckin';
 class TeamCheckinMain extends Component {
   render() {
     const { ready, user, team, teamMembers } = this.props;
+    console.log(ready, user, team, teamMembers);
 
     if (!ready) return <Container><Loading/></Container>;
 

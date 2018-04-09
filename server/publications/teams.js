@@ -21,23 +21,22 @@ Meteor.publish('teams.myTeam', function() {
   }
 
   const user = Meteor.users.findOne(userId);
+  if (!user) return this.ready();
 
-  const teamQuery = Teams.find({
-    members: userId,
-  });
-
-  const usersQuery = Meteor.users.find({
-    teamId: user.teamId
-  }, { fields: {
+  const userFields = {
     firstname: 1,
     lastname: 1,
     phone: 1,
     emails: 1,
     checkedIn: 1,
     paid: 1,
-  }});
+    teamId: 1,
+  };
 
-  return [teamQuery, usersQuery];
+  return [
+    Teams.find({ members: userId }),
+    Meteor.users.find({ teamId: user.teamId }, { fields: userFields }),
+  ];
 });
 
 Meteor.publish('volunteer.team', function(teamId) {
@@ -57,36 +56,6 @@ Meteor.publish('teams.browse', function() {
       lookingForMembers: 1,
     },
   });
-});
-
-Meteor.publish('leaderboard', function() {
-  const { userId } = this;
-  const user = Meteor.users.findOne(userId);
-
-  const query = {
-    hasBegun: true,
-    // $or: [
-    //   { members: { $size: 4 } },
-    //   { members: { $size: 5 } },
-    //   { members: { $size: 6 } },
-    // ],
-  };
-  const projection = {
-    name: 1,
-    members: 1,
-    division: 1,
-    'puzzles.puzzleId': 1,
-    'puzzles.name': 1,
-    'puzzles.start': 1,
-    'puzzles.end': 1,
-    'puzzles.hints': 1,
-    'puzzles.score': 1,
-    'puzzles.allowedTime': 1,
-    'puzzles.timeoutScore': 1,
-    'puzzles.bonusTime': 1,
-  };
-
-  return Teams.find(query, { fields: projection });
 });
 
 Meteor.publish('game.progress', function() {
