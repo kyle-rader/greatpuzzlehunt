@@ -13,7 +13,7 @@ class PostUserCheckin extends Component {
     const { user, team, teamMembers } = this.props;
     return (
       <div>
-        <TeamMemberCheckIn teamMembers={teamMembers}/>
+        <TeamMemberCheckIn team={team} teamMembers={teamMembers}/>
         <TeamCheckInQRCode teamId={user.teamId}/>
       </div>
     );

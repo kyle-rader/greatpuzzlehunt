@@ -24,6 +24,7 @@ class TeamMemeberCheckIn extends Component {
 
   _renderMember(member, i) {
     const { name, paid, checkedIn, _id: userId } = member;
+    const { checkInConfirmed } = this.props.team;
     return (
       <Grid.Row columns={3} key={userId}>
         <Grid.Column>
@@ -35,7 +36,7 @@ class TeamMemeberCheckIn extends Component {
           { this._message(paid, checkedIn) }
         </Grid.Column>
         <Grid.Column>
-          <Button disabled={!paid} basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Check In"} onClick={() => this._toggleCheckin(userId)}/>
+          <Button disabled={!paid || checkInConfirmed} basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Here!"} onClick={() => this._toggleCheckin(userId)}/>
         </Grid.Column>
       </Grid.Row>
     );
@@ -55,6 +56,7 @@ class TeamMemeberCheckIn extends Component {
 }
 
 TeamMemeberCheckIn.propTypes = {
+  team: PropTypes.object.isRequired,
   teamMembers: PropTypes.arrayOf(Object).isRequired,
 };
 

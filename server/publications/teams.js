@@ -42,7 +42,13 @@ Meteor.publish('teams.myTeam', function() {
 Meteor.publish('volunteer.team', function(teamId) {
   check(teamId, String);
   if (!isVolunteer(this.userId)) return this.ready();
-  return Teams.find(teamId);
+
+  Meteor.logger.info(`Publishing volunteer data for team ${teamId}`);
+
+  return [
+    Teams.find(teamId),
+    Meteor.users.find({ teamId }),
+  ];
 });
 
 Meteor.publish('teams.browse', function() {

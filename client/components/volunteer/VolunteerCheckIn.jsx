@@ -5,12 +5,14 @@ import {
   Header,
 } from 'semantic-ui-react';
 
+import VolunteerTeamCheckInMain from './imports/VolunteerTeamCheckInMain';
+
 VolunteerCheckIn = class VolunteerCheckIn extends Component {
   render() {
+    const { teamId } = this.props.params;
     return (
       <Container>
-        <Header as="h2" content="Check In Team:"/>
-        Checking in Team with id <pre>{this.props.params.teamId}</pre>
+        <VolunteerTeamCheckInMain teamId={teamId}/>
       </Container>
     );
   }
