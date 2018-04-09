@@ -20,8 +20,10 @@ class VolunteerTeamCheckInMain extends Component {
 
     return (
       <Grid>
-        { this._header() }
-        { this._members(teamMembers) }
+        {this._header()}
+        {this._itemsToGive(teamMembers)}
+        {this._members(teamMembers)}
+        {this._confirmButton(team)}
       </Grid>
     );
   }
@@ -36,6 +38,39 @@ class VolunteerTeamCheckInMain extends Component {
       <Grid.Row>
         <Grid.Column>
           <PuzzlePageTitle title="GPH 2018 Checkin" subTitle={name}/>
+        </Grid.Column>
+      </Grid.Row>
+    );
+  }
+
+  _itemsToGive(teamMembers) {
+    let noPhotoUsers = 0;
+    let packets = 0;
+
+    console.log(teamMembers);
+    teamMembers.forEach(member => {
+      if (member.checkedIn) packets++;
+      if (!member.photoPermission) noPhotoUsers++;
+    });
+
+    return (
+      <Grid.Row>
+        <Grid.Column>
+          <Message info size="large">
+            <Message.Header>Give to this team:</Message.Header>
+            <Message.Content>
+              <Grid>
+                <Grid.Row columns={2}>
+                  <Grid.Column width={12}>Anti-Photo Badges:</Grid.Column>
+                  <Grid.Column width={4}><strong>{noPhotoUsers}</strong></Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={2}>
+                  <Grid.Column width={12}>Puzzle Bags/Packets:</Grid.Column>
+                  <Grid.Column width={4}><strong>{packets}</strong></Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Message.Content>
+          </Message>
         </Grid.Column>
       </Grid.Row>
     );
@@ -72,6 +107,29 @@ class VolunteerTeamCheckInMain extends Component {
     if (!paid) return "Needs Ticket!";
     else if (paid && !checkedIn) return "Not Here";
     else return "Ready to Play!";
+  }
+
+  _confirmButton(team) {
+    const { checkinConfirmed: confirmed, name } = team;
+    let content = <Button fluid size="large" color="green" content="Confirm Check In" onClick={() => this._confirmTeamCheckin(team)} />;
+    if (confirmed) {
+      content = <Message success header="Check In Confirmed!" content={`${name} is ready to play!`}/>
+    }
+    return (
+      <Grid.Row>
+        <Grid.Column>
+          {content}
+        </Grid.Column>
+      </Grid.Row>
+    );
+  }
+
+  _confirmTeamCheckin({_id: teamId, name}) {
+    if (confirm(`Are you Sure?\nConfirm Check In for team: "${name}"?`)) {
+      Meteor.call('team.checkin.confirm', teamId, (error, result) => {
+        if (error) return alert(error.reason);
+      });
+    }
   }
 }
 

@@ -51,7 +51,7 @@ export const renderRoutes = () => (
         <Route path='time/:teamId/:puzzleId' component={VolunteerTimer}/>
         <Route path='/game-progress' component={GameProgress}/>
 
-        <Route path='checkin/:teamId' component={VolunteerCheckIn}/>
+        <Route path='checkin/:teamId' component={VolunteerTeamCheckIn}/>
       </Route>
 
       {/* Admin Routes */}

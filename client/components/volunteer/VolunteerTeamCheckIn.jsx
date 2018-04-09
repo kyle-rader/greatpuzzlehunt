@@ -7,7 +7,7 @@ import {
 
 import VolunteerTeamCheckInMain from './imports/VolunteerTeamCheckInMain';
 
-VolunteerCheckIn = class VolunteerCheckIn extends Component {
+VolunteerTeamCheckIn = class VolunteerCheckIn extends Component {
   render() {
     const { teamId } = this.props.params;
     return (
