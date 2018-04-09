@@ -2,7 +2,7 @@ import { meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Segment, Header, Icon, Button, Message
+  Container, Header, Icon, Button, Message
 } from 'semantic-ui-react';
 
 import TeamComp from '../../imports/TeamComp';
@@ -14,7 +14,7 @@ class TeamCheckinMain extends Component {
   render() {
     const { ready, user, team, teamMembers } = this.props;
 
-    if (!ready) return <Loading/>;
+    if (!ready) return <Container><Loading/></Container>;
 
     if (!user.teamId && !team) {
       return (
@@ -23,14 +23,14 @@ class TeamCheckinMain extends Component {
     }
 
     return (
-      <div>
-        <Header as="h2" content={team.name}/>
+      <Container>
+        <PuzzlePageTitle title="GPH 2018 Check In" subTitle={team.name}/>
         {
-          team.userCheckedIn ?
+          team.userCheckin ?
           <PostUserCheckin user={user} team={team} teamMembers={teamMembers}/> :
           <PreUserCheckin user={user} team={team}/>
         }
-      </div>
+      </Container>
     );
   }
 }

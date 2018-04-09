@@ -8,14 +8,15 @@ import {
 class PreUserCheckin extends Component {
   render() {
     return (
-      <Segment basic>
-        <Button fluid color="green" size="large" icon="rocket" content="Start Check In" onClick={(e) => this._startChecking(e)}/>
-      </Segment>
+      <Button fluid color="green" size="large" icon="rocket" content="Start Check In" onClick={(e) => this._startChecking(e)}/>
     );
   }
 
   _startChecking(e) {
     e.preventDefault();
+    Meteor.call('team.checkin.start', (error, result) => {
+      if (error) return alert(`Oops! ${error.reason}`);
+    });
   }
 }
 

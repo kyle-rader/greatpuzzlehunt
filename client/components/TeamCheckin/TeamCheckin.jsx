@@ -13,12 +13,7 @@ class TeamCheckinInner extends Component {
     const { ready, gamestate } = this.props;
     if (!ready) return <Container><Loading /></Container>;
 
-    return (
-      <Container>
-        <PuzzlePageTitle title="Welcome!"/>
-        {gamestate.checkin ? this._renderCheckin() : this._renderCheckinClosed() }
-      </Container>
-    );
+    return gamestate.checkin ? this._renderCheckin() : this._renderCheckinClosed();
   }
 
   _renderCheckin() {
