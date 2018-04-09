@@ -27,16 +27,24 @@ class TeamMemeberCheckIn extends Component {
     return (
       <Grid.Row columns={3} key={userId}>
         <Grid.Column>
-          <Icon name="ticket" color={paid ? 'green' : 'red'} size="large"/> {name}
+           <strong>{name}</strong>
         </Grid.Column>
         <Grid.Column>
-          <Icon name={checkedIn ? "check" : "remove"} color={checkedIn ? 'green' : 'yellow'} size="large" /> {checkedIn ? "Ready" : "Not Here"}
+          <Icon name="ticket" color={paid ? 'green' : 'red'} size="large" /> <Icon name={checkedIn ? "check" : "remove"} color={checkedIn ? 'green' : 'yellow'} size="large" />
+          <br/>
+          { this._message(paid, checkedIn) }
         </Grid.Column>
         <Grid.Column>
-          <Button basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Check In"} onClick={() => this._toggleCheckin(userId)}/>
+          <Button disabled={!paid} basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Check In"} onClick={() => this._toggleCheckin(userId)}/>
         </Grid.Column>
       </Grid.Row>
     );
+  }
+
+  _message(paid, checkedIn) {
+    if (!paid) return "Needs Ticket";
+    else if (checkedIn) return "Ready";
+    else return "Not here";
   }
 
   _toggleCheckin(userId) {
