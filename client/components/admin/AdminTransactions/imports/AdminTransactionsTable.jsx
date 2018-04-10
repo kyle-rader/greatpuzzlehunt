@@ -52,25 +52,31 @@ class AdminTransactionTable extends Component {
               <Table.HeaderCell>Email</Table.HeaderCell>
               <Table.HeaderCell>Tx #</Table.HeaderCell>
               <Table.HeaderCell>Actions</Table.HeaderCell>
+              <Table.HeaderCell>Tickets</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this._mapTransactions()}
+            {this._renderTransactions()}
           </Table.Body>
         </Table>
       </div>
     );
   }
 
-  _mapTransactions() {
-    const { transactions } = this.props;
-    return transactions.map((transaction) => <AdminTransactionTableRow transaction={transaction} key={transaction._id} />);
+  _renderTransactions() {
+    const { transactions, tickets, gearOrders } = this.props;
+    return transactions.map((transaction) => {
+      const { tx } = transaction;
+      return <AdminTransactionTableRow transaction={transaction} key={tx} tickets={tickets[tx]} gearOrders={gearOrders[tx]}/>;
+    });
   }
 }
 
 AdminTransactionTable.propTypes = {
   loading: PropTypes.bool.isRequired,
   transactions: PropTypes.arrayOf(PropTypes.object),
+  tickets: PropTypes.object,
+  gearOrders: PropTypes.object,
 };
 
 export default AdminTransactionTable;

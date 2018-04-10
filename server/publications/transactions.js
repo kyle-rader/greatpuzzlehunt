@@ -27,5 +27,9 @@ Meteor.publish('admin.transactions', function _publishAdminTransactions(search =
     };
   }
 
-  return Transactions.find(query, options);
+  return [
+    Transactions.find(query, options),
+    Tickets.find({}),
+    GearOrders.find({}),
+  ];
 });
