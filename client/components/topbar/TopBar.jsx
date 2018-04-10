@@ -112,7 +112,10 @@ TopBar = class TopBar extends Component {
         <div className="right menu">
           { isAdmin() ? this._renderAdminMenu() : null }
           { isVolunteer() ? this._renderVolunteerMenu() : null }
+
           {this._checkinButton()}
+          {this._gameButton()}
+
           {this._profileMenu()}
         </div>
       </div>
@@ -182,7 +185,7 @@ TopBar = class TopBar extends Component {
   _profileMenu() {
     const { user } = this.props;
     if (user) {
-      const isVolunteer = user.hasRole('volunteer');
+      const isPlayer = user.hasRole('player');
       return (
         <div className="ui dropdown item">
           <Icon name='settings' size='large'/>
@@ -195,12 +198,7 @@ TopBar = class TopBar extends Component {
               Profile
             </Link>
 
-            {isVolunteer ? null : this._teamButton() }
-
-            <Link className="item" to="/game">
-              <Icon name="puzzle" color="violet"/>
-              Game
-            </Link>
+            {isPlayer ? this._teamButton() : null }
 
             <Link className="item" to="/rules">
               <Icon name="info" color="teal"/>
@@ -243,6 +241,17 @@ TopBar = class TopBar extends Component {
       <Link className="item" to="/team/checkin">
         <Icon name="rocket"/>
         Check In
+      </Link>
+    );
+  }
+
+  _gameButton() {
+    const { hasTeam } = this.props;
+    if (!hasTeam()) return null;
+    return (
+      <Link className="item" to="/game">
+        <Icon name="puzzle"/>
+        Game
       </Link>
     );
   }
