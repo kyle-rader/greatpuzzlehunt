@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { groupBy } from 'lodash';
 
 import AdminTransactionsTable from './AdminTransactionsTable';
 
@@ -8,7 +9,7 @@ export default AdminTransactionsTracker = withTracker(({ search = null }) => {
   const loading = !handle.ready();
 
   if (loading) {
-    return { loading, transactions: [] };
+    return { loading, transactions: [], tickets: null, gearOrders: null };
   }
 
   const hasSearch = search && search.length > 0;
@@ -35,8 +36,13 @@ export default AdminTransactionsTracker = withTracker(({ search = null }) => {
 
   const transactions = Transactions.find(query, options).fetch();
 
+  const tickets = groupBy(Tickets.find({}).fetch(), (ticket) => ticket.tx);
+  const gearOrders = groupBy(GearOrders.find({}).fetch(), (order) => order.tx);
+
   return {
     loading,
     transactions,
+    tickets,
+    gearOrders,
   };
 })(AdminTransactionsTable);

@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Icon, Button } from 'semantic-ui-react';
+import { Table, Icon, Button, Item } from 'semantic-ui-react';
 import moment from 'moment';
 
 class AdminTransactionTableRow extends Component {
@@ -22,6 +22,7 @@ class AdminTransactionTableRow extends Component {
         <Table.Cell>{this._email()}</Table.Cell>
         <Table.Cell>{this._tx()}</Table.Cell>
         <Table.Cell>{this._actions()}</Table.Cell>
+        <Table.Cell>{this._tickets()}</Table.Cell>
       </Table.Row>
     );
   }
@@ -51,9 +52,10 @@ class AdminTransactionTableRow extends Component {
   }
 
   _actions() {
-    const { transaction } = this.props;
+    const { transaction, tickets, gearOrders } = this.props;
+    const { tx } = transaction;
     return [
-      <Button basic key={`${transaction.tx}-btn-1`} icon='mail' content='Resend' onClick={() => this._resendTickets(transaction)}/>,
+      <Button basic key={`${tx}-btn-1`} icon='mail' content='Resend' onClick={() => this._resendTickets(transaction)}/>,
     ];
   }
 
@@ -67,10 +69,22 @@ class AdminTransactionTableRow extends Component {
     }
   }
 
+  _tickets() {
+    const { tickets } = this.props;
+    if (!tickets) return null;
+    return tickets.map((ticket) => {
+      const { code, redeemed, redeemedBy } = ticket;
+      return (
+        <Item key={code}><code>{code}</code> &nbsp; { redeemed ? `Used by: ${redeemedBy}` : null}</Item>
+      );
+    });
+  }
 }
 
 AdminTransactionTableRow.propTypes = {
   transaction: PropTypes.object.isRequired,
+  tickets: PropTypes.arrayOf(Object),
+  gearOrders: PropTypes.arrayOf(Object),
 };
 
 export default AdminTransactionTableRow;
