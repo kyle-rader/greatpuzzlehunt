@@ -50,15 +50,6 @@ class GamestateControlsInner extends Component {
         <Form.Group>
           { this._fieldButton('Gameplay') }
         </Form.Group>
-
-        <Header as='h3' content='Setup Teams for Gameplay'/>
-        <Form.Group>
-          <Button
-            basic color='blue'
-            content="Setup Team's Puzzles"
-            onClick={ (e) => this._setupTeams(e) }
-          />
-        </Form.Group>
       </Form>
     );
   }
@@ -83,16 +74,6 @@ class GamestateControlsInner extends Component {
       });
     }
   }
-
-  _setupTeams(e) {
-    e.preventDefault();
-    if (!confirm('Are you sure you want to setup puzzles for all teams?')) return;
-
-    Meteor.call('admin.teams.setup', (error, result) => {
-      if (error) alert(error.reason);
-    });
-  }
-
 }
 
 GamestateControlsInner.propTypes = {

@@ -1,48 +1,51 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Container, Message, Statistic } from 'semantic-ui-react';
+import { Link } from 'react-router';
+import { Container, Message, Button } from 'semantic-ui-react';
 
 import TeamComp from '../../imports/TeamComp';
-import GameUI from './game-ui.jsx';
+import GameUI from './GameUI.jsx';
 
 class GameTeamWrapper extends Component {
   render() {
+    return (
+      <Container>
+        {this._title()}
+        {this._content()}
+      </Container>
+    );
+  }
+
+  _title() {
     const { ready, team } = this.props;
+    return <PuzzlePageTitle title={team ? team.name : 'The Game'} />;
+  }
 
+  _content() {
+    const { ready, team } = this.props;
     if (!ready) {
-      return this._loading();
+      return <Loading/>;
     }
 
-    if (ready && !team) {
-      return this._noTeam();
+    if (!team) {
+      return <NoTeamMessage/>;
     }
 
-    return (
-      <Container>
-        <PuzzlePageTitle title={ team.name }/>
-        <GameUI team={ team } />
-      </Container>
-    );
+    if (!team.checkinConfirmed) {
+      return this._checkin();
+    }
+
+    return <GameUI team={team} />
   }
 
-  _noTeam() {
+  _checkin() {
     return (
-      <Container>
-        <PuzzlePageTitle title='The Game'/>
-        <NoTeamMessage/>
-      </Container>
+      <Message info size="large">
+        <Message.Header>You need to check in!</Message.Header>
+        <Message.Content><p></p><Link to="/team/checkin"><Button color="green" content="Check In"/></Link></Message.Content>
+      </Message>
     );
   }
-
-  _loading() {
-    return (
-      <Container>
-        <br/>
-        <Loading/>
-      </Container>
-    );
-  }
-
 }
 
 GameTeamWrapper.propTypes = {
