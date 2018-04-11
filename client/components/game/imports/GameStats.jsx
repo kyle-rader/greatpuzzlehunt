@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
-import { Container, Message, Header, Statistic, Progress } from 'semantic-ui-react';
+import { Segment, Message, Header, Statistic, Progress } from 'semantic-ui-react';
 
 import { renderScore } from '../../imports/puzzle-progress';
 
@@ -31,18 +31,18 @@ class GameStats extends Component {
     const { team } = this.props;
     const { puzzlesSolved, finished } = this.state;
     return (
-      <Container fluid>
-        <Message info={ !finished } positive={ finished }>
-          <Message.Header>Team Stats</Message.Header>
-          <pre>
-            Starting Location:<br/>
-            { team.startLocation } <br/><br/>
-            Puzzles Solved: { puzzlesSolved } <br/>
-            Total Score   : { renderScore(team.finalScore) }
-          </pre>
-          { this._doneMessage() }
-        </Message>
-      </Container>
+      <Message info={!finished} positive={finished}>
+        <Header as="h4" content="Starting Location"/>
+        <p>{team.startLocation}</p>
+
+        <Header as="h4" content="Puzzles Solved" />
+        <p>{puzzlesSolved}</p>
+
+        <Header as="h4" content="Total Score" />
+        <p>{renderScore(team.finalScore)}</p>
+
+        { this._doneMessage() }
+      </Message>
     );
   }
 
