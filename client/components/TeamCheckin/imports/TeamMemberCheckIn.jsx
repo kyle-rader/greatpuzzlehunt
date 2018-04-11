@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import {
-  Segment, Header, Grid, Icon, Button, Message
+  Segment, Header, Grid, Icon, Button, Message, List
 } from 'semantic-ui-react';
 
 class TeamMemeberCheckIn extends Component {
@@ -12,7 +12,7 @@ class TeamMemeberCheckIn extends Component {
       <Segment basic>
         {this._checkinConfirmation()}
         <Header as="h2" content="Who is playing today?"/>
-        <Grid relaxed divided='vertically'>
+        <Grid divided='vertically'>
           {this._renderMembers()}
         </Grid>
       </Segment>
@@ -22,8 +22,24 @@ class TeamMemeberCheckIn extends Component {
   _checkinConfirmation() {
     const { checkinConfirmed: confirmed } = this.props.team;
     const header = confirmed ? "Team Check In Confirmed!" : "Awaiting Check In Confirmation";
-    const content = confirmed ? <Link to="/game"><Button size="small" color="purple" icon="puzzle" content="Go To Game" style={{marginTop: '10px'}}/></Link> : <div>Check in your players below and then check in with a volunteer!</div>;
-    return <Message size="large" positive={confirmed} info={!confirmed} header={header} content={content}/>
+    let content = <Link to="/game"><Button size="small" color="purple" icon="puzzle" content="Go To Game" style={{ marginTop: '10px' }} /></Link>;
+    if (!confirmed) {
+      content = (
+        <List bulleted>
+          <List.Item>Check in your players below.</List.Item>
+          <List.Item>Then scroll down & check in with a volunteer to get your supplies!</List.Item>
+        </List>
+      );
+    }
+
+    return (
+      <Message
+        size="large"
+        positive={confirmed}
+        info={!confirmed}
+        header={header}
+        content={content}/>
+    );
   }
 
   _renderMembers() {
@@ -37,12 +53,10 @@ class TeamMemeberCheckIn extends Component {
     return (
       <Grid.Row columns={3} key={userId}>
         <Grid.Column>
-           <strong>{name}</strong>
+          <Header as="h4" content={name}/>
         </Grid.Column>
         <Grid.Column>
-          <Icon name="ticket" color={paid ? 'green' : 'red'} size="large" /> <Icon name={checkedIn ? "check" : "remove"} color={checkedIn ? 'green' : 'yellow'} size="large" />
-          <br/>
-          { this._message(paid, checkedIn) }
+          <Icon name={checkedIn ? "check" : "remove"} color={checkedIn ? 'green' : 'yellow'} size="large" /> {this._message(paid, checkedIn)}
         </Grid.Column>
         <Grid.Column>
           <Button disabled={!paid || checkInConfirmed} basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Here!"} onClick={() => this._toggleCheckin(userId)}/>

@@ -2,7 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid,
+  Segment,
+  List,
   Header,
   Button,
   Icon,
@@ -19,12 +20,12 @@ class VolunteerTeamCheckInMain extends Component {
     if (ready && !team) return this._noTeam(teamId);
 
     return (
-      <Grid>
+      <div>
         {this._header()}
-        {this._itemsToGive(teamMembers)}
-        {this._members(teamMembers)}
+        {this._itemsToGive(team, teamMembers)}
         {this._confirmButton(team)}
-      </Grid>
+        {this._members(teamMembers)}
+      </div>
     );
   }
 
@@ -34,18 +35,13 @@ class VolunteerTeamCheckInMain extends Component {
 
   _header() {
     const { name } = this.props.team;
-    return (
-      <Grid.Row>
-        <Grid.Column>
-          <PuzzlePageTitle title="GPH 2018 Checkin" subTitle={name}/>
-        </Grid.Column>
-      </Grid.Row>
-    );
+    return <PuzzlePageTitle title="GPH 2018 Checkin" subTitle={name}/>;
   }
 
-  _itemsToGive(teamMembers) {
+  _itemsToGive(team, teamMembers) {
     let noPhotoUsers = 0;
     let packets = 0;
+    const { division } = team;
 
     console.log(teamMembers);
     teamMembers.forEach(member => {
@@ -54,36 +50,26 @@ class VolunteerTeamCheckInMain extends Component {
     });
 
     return (
-      <Grid.Row>
-        <Grid.Column>
-          <Message info size="large">
-            <Message.Header>Give to this team:</Message.Header>
-            <Message.Content>
-              <Grid>
-                <Grid.Row columns={2}>
-                  <Grid.Column width={12}>Anti-Photo Badges:</Grid.Column>
-                  <Grid.Column width={4}><strong>{noPhotoUsers}</strong></Grid.Column>
-                </Grid.Row>
-                <Grid.Row columns={2}>
-                  <Grid.Column width={12}>Puzzle Bags/Packets:</Grid.Column>
-                  <Grid.Column width={4}><strong>{packets}</strong></Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </Message.Content>
-          </Message>
-        </Grid.Column>
-      </Grid.Row>
+      <Message info size="large">
+        <Message.Header>Give to this team:</Message.Header>
+        <Message.Content>
+          <p></p>
+          <List bulleted>
+            <List.Item><b>{noPhotoUsers}</b> Anti-Photo Badges</List.Item>
+            <List.Item><b>{packets}</b> Swag Bags</List.Item>
+            <List.Item><b>{packets}</b> {division} Wrist Bands</List.Item>
+          </List>
+        </Message.Content>
+      </Message>
     );
   }
 
   _members(members) {
     return (
-      <Grid.Row>
-        <Grid.Column>
-          <Header as="h3" content="Team Members"/>
-          { members.map((member) => this._member(member)) }
-        </Grid.Column>
-      </Grid.Row>
+      <Segment basic>
+        <Header as="h3" content="Team Members"/>
+        { members.map((member) => this._member(member)) }
+      </Segment>
     );
   }
 
@@ -116,11 +102,9 @@ class VolunteerTeamCheckInMain extends Component {
       content = <Message success header="Check In Confirmed!" content={`${name} is ready to play!`}/>
     }
     return (
-      <Grid.Row>
-        <Grid.Column>
-          {content}
-        </Grid.Column>
-      </Grid.Row>
+      <Segment basic>
+        {content}
+      </Segment>
     );
   }
 
