@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
 import { Form, Message, Input, Popup, Icon, Checkbox } from 'semantic-ui-react';
 
@@ -42,8 +43,12 @@ TeamEditor = class TeamEditor extends Component {
   }
 
   render() {
+    const { team } = this.props;
     return (
       <Form widths='equal' onSubmit={(e) => this._saveTeam(e)}>
+
+        { team.checkinConfirmed ? <Message positive header="Check in Confirmed" content="Your team is checked in an cannot be updated anymore"/> : null}
+
         <Form.Group>
           <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={(e,d) => this._handleTextChange(e,d)} />
           <Form.Field>
@@ -66,7 +71,7 @@ TeamEditor = class TeamEditor extends Component {
             onChange={ (e,data) => this._handleDataChange(e,data) }
           />
         </Form.Field>
-        <Form.Button type='submit' icon='save' labelPosition='right' content={this.props.team ? 'Save Team' : 'Create Team'}/>
+        <Form.Button type='submit' icon='save' labelPosition='right' content={this.props.team ? 'Save Team' : 'Create Team'} disabled={team.checkinConfirmed}/>
         <Message
          negative
          hidden={!this.state.error}
@@ -118,5 +123,8 @@ TeamEditor = class TeamEditor extends Component {
       _id: team ? team._id : undefined,
     };
   }
-
 }
+
+TeamEditor.propTypes = {
+  team: PropTypes.object.isRequired,
+};
