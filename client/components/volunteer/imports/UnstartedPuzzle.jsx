@@ -50,32 +50,31 @@ export default class UnstartedPuzzle extends React.Component {
   }
 
   _startTimer() {
-    const { team, puzzle, targetPuzzle } = this.props;
-    if (puzzle.puzzleId !== targetPuzzle) {
-      const target = find(team.puzzles, (p) => p.puzzleId === targetPuzzle);
+    const { team, puzzle, volunteer } = this.props;
+    if (puzzle.puzzleId !== volunteer.puzzleStation) {
+      const target = find(team.puzzles, (p) => p.puzzleId === puzzle.puzzleId);
+      const volunteerPuzzle = find(team.puzzles, (p) => p.puzzleId === volunteer.puzzleStation);
       const warningMsg = `
-WARNING!
+Error!
 They asked for
 "${target.name}"
 
-But, you are trying to start
-"${puzzle.name}"
+But, your puzzle station is set to
+"${volunteerPuzzle.name}"
 
-Are you sure you want to start this timer?
+You can only start a puzzle time that matches your current active puzzle station!
 `
-      if (!confirm(warningMsg)) return;
+      return;
     }
 
     Meteor.call('volunteer.team.startPuzzle', team._id, puzzle.puzzleId, (error, result) => {
       if (error) return this.setState({ error });
     });
   }
-
 }
 
 UnstartedPuzzle.propTypes = {
   team: PropTypes.object.isRequired,
+  volunteer: PropTypes.object.isRequired,
   puzzle: PropTypes.object.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  targetPuzzle: PropTypes.string,
 };

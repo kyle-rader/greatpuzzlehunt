@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-import ActivePuzzle from './active-puzzle';
-import InactivePuzzle from './inactive-puzzle';
+import ActivePuzzle from './ActivePuzzle';
+import InactivePuzzle from './InactivePuzzle';
 
 class GamePuzzle extends Component {
   render() {

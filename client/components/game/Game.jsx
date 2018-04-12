@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Container, Message, Statistic } from 'semantic-ui-react';
 
 import GamestateComp from '../imports/GamestateComp';
-import GameCountdown from './imports/game-countdown';
-import GameTeamWrapper from './imports/game-team-wrapper';
+import GameCountdown from './imports/GameCountdown';
+import GameTeamWrapper from './imports/GameTeamWrapper';
 
 class GameStateWrapper extends Component {
   render() {

@@ -2,10 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
 import { Segment, Header, Progress, Button } from 'semantic-ui-react';
 
-import PuzzleQRCode from './puzzle-qr-code';
-import PuzzleAnswerForm from './puzzle-answer-form';
+import PuzzleQRCode from './PuzzleQrCode';
+import PuzzleAnswerForm from './PuzzleAnswerForm';
 import PuzzleProgress from '../../imports/puzzle-progress';
-import PuzzleHints from './puzzle-hints';
+import PuzzleHints from './PuzzleHints';
 
 export default class ActivePuzzle extends React.Component {
   constructor(props) {

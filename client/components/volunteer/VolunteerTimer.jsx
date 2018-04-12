@@ -51,7 +51,7 @@ VolunteerTimer = withTracker(({ params }) => {
   const { teamId, puzzleId } = params;
   const handle = Meteor.subscribe('volunteer.team', teamId);
   const volunteer = Meteor.user();
-  const ready = handle.ready();
+  const ready = handle.ready() && Boolean(volunteer);
   const team = Teams.findOne(teamId);
   return {
     ready,

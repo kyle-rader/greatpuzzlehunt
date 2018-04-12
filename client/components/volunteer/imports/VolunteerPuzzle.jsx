@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Message, Button } from 'semantic-ui-react';
 
-import ActivePuzzle from './active-puzzle';
-import InactivePuzzle from './inactive-puzzle';
+import ActivePuzzle from './ActivePuzzle';
+import InactivePuzzle from './InactivePuzzle';
 
 class VolunteerPuzzle extends Component {
   render() {
@@ -15,28 +15,31 @@ class VolunteerPuzzle extends Component {
     if (volunteer.puzzleStation !== puzzle.puzzleId) {
       const puzzleStationName = team.puzzles.find((p) => p.puzzleId === volunteer.puzzleStation).name;
       return (
-        <Message negative icon="question" size="large">
+        <Message negative size="large">
           <Message.Header>Puzzle Mis-Match!</Message.Header>
           <Message.Content>
-            {team.name} wants to start {puzzle.name}. <br/>
-            <b>But</b><br/>
-            Your active puzzle station is {puzzleStationName}!
+            "{team.name}" wants to start <br/>{puzzle.name}<br/>
+            <b>But</b>
+            <br/>
+            Your active puzzle station is <br/>{puzzleStationName}!
           </Message.Content>
         </Message>
       );
     }
 
     if (team.currentPuzzle === puzzle.puzzleId) {
-      return <ActivePuzzle team={ team } puzzle={ puzzle }/>;
+      return <ActivePuzzle team={team} volunteer={volunteer} puzzle={puzzle}/>;
     } else {
-      return <InactivePuzzle team={ team } puzzle={ puzzle }/>;
+      // If there is no current puzzle, the inactive puzzles should be enabled.
+      const disabled = Boolean(team.currentPuzzle);
+      return <InactivePuzzle team={team} volunteer={volunteer} puzzle={puzzle} disabled={disabled}/>;
     }
   }
 }
 
 VolunteerPuzzle.propTypes = {
-  volunteer: PropTypes.object.isRequired,
   team: PropTypes.object.isRequired,
+  volunteer: PropTypes.object.isRequired,
   puzzle: PropTypes.object.isRequired,
 };
 

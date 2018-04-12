@@ -18,7 +18,7 @@ export default class PuzzleHints extends React.Component {
     const { team, puzzle } = this.props;
 
     if (!puzzle.hints || puzzle.hints.length === 0) return <br/>;
-    
+
     return (
       <Grid style={ this.gridStyle }>
         { this._renderHints() }
@@ -41,8 +41,8 @@ export default class PuzzleHints extends React.Component {
     if (hint.taken) {
       return (
         <Message>
-          <p>{ hint.description }</p>
-          { hint.image.url ? <Image src={ hint.image.url }/> : null }
+          <p>{ hint.text }</p>
+          {hint.imageUrl ? <Image src={hint.imageUrl }/> : null }
         </Message>
       );
     } else {

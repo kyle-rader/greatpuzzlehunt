@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Segment, Header, Button } from 'semantic-ui-react';
 
-import PuzzleQRCode from './puzzle-qr-code';
+import PuzzleQRCode from './PuzzleQrCode';
 
 export default class UnstartedPuzzle extends React.Component {
   constructor(props) {

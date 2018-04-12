@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Grid, Header } from 'semantic-ui-react';
 
-import GamePuzzle from './game-puzzle';
+import GamePuzzle from './GamePuzzle';
 
 export default class GamePuzzles extends Component {
   render() {

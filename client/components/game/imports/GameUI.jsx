@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Container, Button } from 'semantic-ui-react';
 
 import GameStats from './GameStats';
-import GamePuzzles from './game-puzzles';
+import GamePuzzles from './GamePuzzles';
 
 class GameUI extends Component {
   render() {
