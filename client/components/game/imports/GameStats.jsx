@@ -32,6 +32,7 @@ class GameStats extends Component {
   render() {
     const { team } = this.props;
     const { puzzlesSolved, finished } = this.state;
+    const { time, minutes } = renderScore(team.finalScore);
     return (
       <Message info={!finished} positive={finished}>
         {puzzlesSolved > 0 ? null : <Header as="h4" content="Starting Location"/>}
@@ -41,7 +42,10 @@ class GameStats extends Component {
         <p>{puzzlesSolved} of {team.puzzles.length}</p>
 
         <Header as="h4" content="Total Score" />
-        <p>{renderScore(team.finalScore)}</p>
+        <p>
+          {time} <br/>
+          ({minutes} minutes)
+        </p>
 
         { this._doneMessage() }
       </Message>

@@ -30,12 +30,14 @@ export default class CompletePuzzle extends React.Component {
 
   _answer() {
     const { puzzle } = this.props;
+    const { time, minutes } = renderScore(puzzle.score);
     if (this.props.showAnswer) {
       return (
-        <pre style={ { paddingTop: '10px' }}>
+        <pre>
           Answer: { puzzle.answer }<br/>
           Hints : { puzzle.hintsTaken }<br/>
-          Score : { renderScore(puzzle.score) }
+          Score : { time }<br/>
+                  ({ minutes } minutes)
         </pre>
       );
     }

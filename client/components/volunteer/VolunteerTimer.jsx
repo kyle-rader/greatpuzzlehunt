@@ -12,9 +12,10 @@ class VolunteerTimerInner extends React.Component {
   }
 
   render() {
+    const { team } = this.props
     return (
       <Container>
-        <PuzzlePageTitle title='Volunteer Timer'/>
+        <PuzzlePageTitle title='Volunteer Timer' subTitle={team ? team.name : null}/>
           { this._timerUI() }
           <br/>
           <Button basic size='large' fluid color='violet' content='Close This Page' onClick={(e) => window.close() }/>
