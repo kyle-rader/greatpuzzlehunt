@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 import { Container, Segment, Header, Grid, Form, Icon } from 'semantic-ui-react';
 import moment from 'moment';
@@ -31,7 +32,11 @@ Team = class Team extends Component {
       browserHistory.push('/volunteer');
     }
 
-    const content = this.props.team ? this._renderMain() : <Segment basic><NoTeamMessage><ProfileInvites user={this.props.user}/></NoTeamMessage></Segment>;
+    const { ready, team, user } = this.props;
+    let content = <Loading/>;
+    if (ready) {
+      content = team ? this._renderMain() : <Segment basic><NoTeamMessage><ProfileInvites user={user}/></NoTeamMessage></Segment>;
+    }
 
     return (
       <Container>
@@ -67,5 +72,10 @@ Team = class Team extends Component {
     );
   }
 }
+
+Team.propTypes = {
+  ready: PropTypes.bool.isRequired,
+  team: PropTypes.object,
+};
 
 Team = TeamComp(Team);

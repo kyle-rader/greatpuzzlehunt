@@ -33,9 +33,10 @@ TeamEditor = class TeamEditor extends Component {
         password: team.password || '',
         division: team.division || null,
         lookingForMembers: (team.lookingForMembers || false),
+        checkedIn: team.checkinConfirmed,
       };
     }
-    return { name: '', password: '', division: null, lookingForMembers: false };
+    return { name: '', password: '', division: null, lookingForMembers: false, checkedIn: false};
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,11 +44,10 @@ TeamEditor = class TeamEditor extends Component {
   }
 
   render() {
-    const { team } = this.props;
     return (
       <Form widths='equal' onSubmit={(e) => this._saveTeam(e)}>
 
-        { team.checkinConfirmed ? <Message positive header="Check in Confirmed" content="Your team is checked in an cannot be updated anymore"/> : null}
+        { (this.state.checkedIn) ? <Message positive header="Check in Confirmed" content="Your team is checked in an cannot be updated anymore"/> : null}
 
         <Form.Group>
           <Form.Input name='name' label='Team Name' placeholder='Team Name' value={this.state.name} onChange={(e,d) => this._handleTextChange(e,d)} />
@@ -71,7 +71,7 @@ TeamEditor = class TeamEditor extends Component {
             onChange={ (e,data) => this._handleDataChange(e,data) }
           />
         </Form.Field>
-        <Form.Button type='submit' icon='save' labelPosition='right' content={this.props.team ? 'Save Team' : 'Create Team'} disabled={team.checkinConfirmed}/>
+        <Form.Button type='submit' icon='save' labelPosition='right' content={this.props.team ? 'Save Team' : 'Create Team'} disabled={this.state.checkedIn}/>
         <Message
          negative
          hidden={!this.state.error}
@@ -126,5 +126,5 @@ TeamEditor = class TeamEditor extends Component {
 }
 
 TeamEditor.propTypes = {
-  team: PropTypes.object.isRequired,
+  team: PropTypes.any,
 };
