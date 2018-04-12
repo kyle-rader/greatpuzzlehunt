@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import { Container, Segment, Button } from 'semantic-ui-react';
 
 import getPlatform from './imports/get-platform';
+import VolunteerPuzzleStationSelector from './imports/VolunteerPuzzleStationSelector';
 
 Volunteer = class Volunteer extends React.Component {
   constructor(props) {
@@ -24,6 +25,8 @@ Volunteer = class Volunteer extends React.Component {
         <Segment basic>
           { this._appDownloadButton() }
         </Segment>
+
+        <VolunteerPuzzleStationSelector/>
       </Container>
     );
   }
