@@ -18,7 +18,7 @@ Login = class Login extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
-    Meteor.loginWithPassword({ email }, password, (err) => {
+    Meteor.loginWithPassword({ email: email.trim() }, password, (err) => {
       if (err) {
         this.setState({err: err});
       }
