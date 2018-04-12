@@ -26,10 +26,10 @@ class GameUI extends Component {
   _main() {
     const { team } = this.props;
     return (
-      <Container fluid>
+      <div>
         <GameStats team={ team }/>
         <GamePuzzles team={ team }/>
-      </Container>
+      </div>
     );
   }
 }

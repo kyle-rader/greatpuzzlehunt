@@ -16,12 +16,13 @@ export default class UnstartedPuzzle extends React.Component {
     const startUrl = `${window.location.origin}/volunteer/time/${team._id}/${puzzle.puzzleId}`;
     return (
       <Segment disabled={ disabled }>
-        <Header as='h3' content={ this.props.puzzle.name }/>
+        <Header as='h3' content={this.props.puzzle.name} subheader={this.props.puzzle.location}/>
+
         <PuzzleQRCode
           team={ team }
           puzzle={ puzzle }
           disabled={ disabled }
-          qrLabel={`Puzzle at: ${puzzle.location}`}
+          qrLabel="Present to volunteer to start puzzle"
           qrButtonLabel='Start Puzzle!'
         />
       </Segment>
