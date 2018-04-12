@@ -66,7 +66,11 @@ class VolunteerPuzzleSelectorInner extends Component {
   _renderPuzzle(puzzle, active) {
     const confirmContent = (
       <Segment basic style={{fontSize: '16px'}}>
-        Are you sure you want to set <br/><i>{puzzle.name}</i>,<br/>located at <br/><i>{puzzle.location}</i>,<br/> as your active puzzle station?
+        <p>Are you sure you want to set</p>
+        <p><b>{puzzle.name}</b></p>
+        <p>located at</p>
+        <p><b>{puzzle.location}</b></p>
+        <p>as your active puzzle station?</p>
       </Segment>
     );
     return (
@@ -74,10 +78,10 @@ class VolunteerPuzzleSelectorInner extends Component {
         <Message.Content>
           <Header as="h4" content={puzzle.name}/>
           {puzzle.location}
-          <Button floated="right" color={active ? "grey" : "green"} disabled={active} content={active ? "Current" : "Set Active"} onClick={() => this.setState({ [puzzle._id]: true })}/>
+          <Button floated="right" basic={!active} color={active ? "grey" : "green"} disabled={active} content={active ? "Current" : "Set Active"} onClick={() => this.setState({ [puzzle._id]: true })}/>
           <Confirm
             open={this.state[puzzle._id]}
-            header="Are you Sure?"
+            header="Confirm Switch Puzzle Station"
             cancelButton="Cancel"
             confirmButton="Yes do it!"
             content={confirmContent}

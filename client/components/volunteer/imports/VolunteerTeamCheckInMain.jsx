@@ -13,6 +13,13 @@ import {
 
 import VolunteerTeamComp from './VolunteerTeamComp';
 
+const WRIST_BAND_COLOR = {
+  'wwu-student': 'Orange',
+  'wwu-alumni': 'Blue',
+  'highschool': 'Green',
+  'open': 'Yellow',
+};
+
 class VolunteerTeamCheckInMain extends Component {
   render() {
     const { teamId, ready, team, teamMembers } = this.props;
@@ -57,7 +64,7 @@ class VolunteerTeamCheckInMain extends Component {
           <List bulleted>
             <List.Item><b>{noPhotoUsers}</b> Anti-Photo Badges</List.Item>
             <List.Item><b>{packets}</b> Swag Bags</List.Item>
-            <List.Item><b>{packets}</b> {division} Wrist Bands</List.Item>
+            <List.Item><b>{packets}</b> <Label color={WRIST_BAND_COLOR[division].toLowerCase()}>{WRIST_BAND_COLOR[division]}</Label> Wrist Bands</List.Item>
           </List>
         </Message.Content>
       </Message>

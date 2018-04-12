@@ -30,7 +30,7 @@ export default class UnstartedPuzzle extends React.Component {
     } else {
       return <Button
         color='green'
-        fluid basic
+        fluid
         size='large'
         content='Start Timer'
         onClick={ () => this._startTimer() }
