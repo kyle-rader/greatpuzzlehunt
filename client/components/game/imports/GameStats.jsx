@@ -4,6 +4,8 @@ import { Segment, Message, Header, Statistic, Progress } from 'semantic-ui-react
 
 import { renderScore } from '../../imports/puzzle-progress';
 
+const { eventYear } = Meteor.settings.public;
+
 class GameStats extends Component {
   constructor(props) {
     super(props);
@@ -32,11 +34,11 @@ class GameStats extends Component {
     const { puzzlesSolved, finished } = this.state;
     return (
       <Message info={!finished} positive={finished}>
-        <Header as="h4" content="Starting Location"/>
-        <p>{team.startLocation}</p>
+        {puzzlesSolved > 0 ? null : <Header as="h4" content="Starting Location"/>}
+        {puzzlesSolved > 0 ? null : <p>{team.startLocation}</p>}
 
         <Header as="h4" content="Puzzles Solved" />
-        <p>{puzzlesSolved}</p>
+        <p>{puzzlesSolved} of {team.puzzles.length}</p>
 
         <Header as="h4" content="Total Score" />
         <p>{renderScore(team.finalScore)}</p>
@@ -51,7 +53,7 @@ class GameStats extends Component {
     if (!finished) return null;
     return (
       <Header as='h3'
-        content="Congratulations! You've finished the 2017 Puzzle Hunt!"
+        content={`Congratulations! You've finished the ${eventYear} Puzzle Hunt!`}
         subheader="Head back to Red Square"
       />
     );

@@ -43,8 +43,6 @@ Meteor.publish('volunteer.team', function(teamId) {
   check(teamId, String);
   if (!isVolunteer(this.userId)) return this.ready();
 
-  Meteor.logger.info(`Publishing volunteer data for team ${teamId}`);
-
   return [
     Teams.find(teamId),
     Meteor.users.find({ teamId }),

@@ -2,17 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 
 const CHECK_INTERVAL = {
-  seconds: 10,
+  seconds: 5,
 };
 
 function timeOutPuzzles() {
+  const now = moment();
   const teams = Teams.find({
-    puzzles: {
-      $elemMatch: {
-        start: { $ne: null },
-        end: null,
-      },
-    },
+    currentPuzzle: { $ne: null },
   }).fetch();
 
   const puzzles = Puzzles.find({}).fetch().reduce((acc, p) => {
@@ -20,10 +16,8 @@ function timeOutPuzzles() {
     return acc;
   }, {});
 
-  const now = moment();
-
   teams.forEach((team) => {
-    const i = team.puzzles.findIndex((p) => (p.start && !p.end));
+    const i = team.puzzles.findIndex((p) => (p.puzzleId === team.currentPuzzle));
     const puzzle = team.puzzles[i];
 
     const allowedTime = { minutes: puzzle.allowedTime };

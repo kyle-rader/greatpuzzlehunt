@@ -33,9 +33,9 @@ export default class CompletePuzzle extends React.Component {
     if (this.props.showAnswer) {
       return (
         <pre style={ { paddingTop: '10px' }}>
-          Answer : { puzzle.answer }<br/>
-          Hints  : { puzzle.hintsTaken }<br/>
-          Score  : { renderScore(puzzle.score) }
+          Answer: { puzzle.answer }<br/>
+          Hints : { puzzle.hintsTaken }<br/>
+          Score : { renderScore(puzzle.score) }
         </pre>
       );
     }

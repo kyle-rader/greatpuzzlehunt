@@ -9,7 +9,7 @@ const mainMenuLinks = [
   {
     name: 'Home',
     to: '/',
-    iconClass: 'gray home',
+    iconClass: 'grey home',
   },
   {
     name: 'Sponsors',
@@ -50,7 +50,7 @@ const mainMenuLinks = [
   {
     name: 'QR Encoder',
     to: '/qrcode',
-    iconClass: 'gray qrcode',
+    iconClass: 'grey qrcode',
   },
 ];
 const adminMenuItems = [

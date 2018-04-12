@@ -74,7 +74,7 @@ class VolunteerPuzzleSelectorInner extends Component {
         <Message.Content>
           <Header as="h4" content={puzzle.name}/>
           {puzzle.location}
-          <Button floated="right" color={active ? "gray" : "green"} disabled={active} content={active ? "Current" : "Set Active"} onClick={() => this.setState({ [puzzle._id]: true })}/>
+          <Button floated="right" color={active ? "grey" : "green"} disabled={active} content={active ? "Current" : "Set Active"} onClick={() => this.setState({ [puzzle._id]: true })}/>
           <Confirm
             open={this.state[puzzle._id]}
             header="Are you Sure?"
