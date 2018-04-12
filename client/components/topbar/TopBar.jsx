@@ -189,7 +189,7 @@ TopBar = class TopBar extends Component {
       return (
         <div className="ui dropdown item">
           <Icon name='settings' size='large'/>
-          { this.props.user.name }
+          { this.props.user.firstname }
 
           <div className="menu topbar-dropdown-menu">
 
