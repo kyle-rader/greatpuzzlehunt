@@ -35,7 +35,7 @@ class GameStats extends Component {
     const { time, minutes } = renderScore(team.finalScore);
     return (
       <Message info={!finished} positive={finished}>
-        {puzzlesSolved > 0 ? null : <Header as="h4" content="Starting Location"/>}
+        {puzzlesSolved > 0 ? null : <Header as="h4" content="Starting Puzzle"/>}
         {puzzlesSolved > 0 ? null : <p>{team.startLocation}</p>}
 
         <Header as="h4" content="Puzzles Solved" />
