@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Progress } from 'semantic-ui-react';
+import { Segment, Progress, Message } from 'semantic-ui-react';
 import moment from 'moment';
 
 function getColor(val) {
@@ -19,7 +19,8 @@ export function renderDuration(duration) {
   const hours = pad(duration.hours().toString(), 2);
   const minutes = pad(duration.minutes().toString(), 2);
   const seconds = pad(duration.seconds().toString(), 2);
-  return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  const negative = (hours < 0) || (minutes < 0) || (seconds < 0) ? "- " : "";
+  return `${negative}${pad(Math.abs(hours))}:${pad(Math.abs(minutes))}:${pad(Math.abs(seconds))}`;
 }
 
 export function renderScore(score) {
@@ -55,25 +56,26 @@ export default class PuzzleProgress extends React.Component {
     const { puzzle } = this.props;
     const { start, now } = this.state;
 
+    if (!start) {
+      return (
+        <Message content="Unstarted"/>
+      );
+    }
+
     const max = moment.duration({ minutes: puzzle.allowedTime }).asSeconds();
     const duration = moment.duration(now - start);
     const current = duration.asSeconds();
     const percent = 100 * Number((current/max).toFixed(2));
-    // const timeLeft = moment.duration(1, 'hour').subtract(duration);
 
     return (
-      <Grid stackable>
-        <Grid.Row columns='1'>
-          <Grid.Column>
-            <Progress
-              size='small'
-              color={ getColor(percent) }
-              percent={ percent }>
-              Time elapsed: { renderDuration(duration) } <br/>
-            </Progress>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Segment basic>
+        <Progress
+          size='small'
+          color={ getColor(percent) }
+          percent={ percent }>
+          Time elapsed: { renderDuration(duration) } <br/>
+        </Progress>
+      </Segment>
     );
   }
 }

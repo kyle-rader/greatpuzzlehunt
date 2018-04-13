@@ -4,7 +4,7 @@ import React, {PropTypes} from 'react';
 import { sortBy, groupBy, map, clone, each } from 'lodash';
 import { Container, Grid, Icon, Header, Progress } from 'semantic-ui-react';
 import moment from 'moment';
-import { renderDuration } from '../imports/puzzle-progress';
+import { renderDuration } from '../imports/PuzzleProgress';
 
 class GameProgressInner extends React.Component {
   constructor(props) {

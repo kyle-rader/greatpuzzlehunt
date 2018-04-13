@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react';
 import { Segment, Message, Header, Statistic, Progress } from 'semantic-ui-react';
 
-import { renderScore } from '../../imports/puzzle-progress';
+import { renderScore } from '../../imports/PuzzleProgress';
 
 const { eventYear } = Meteor.settings.public;
 

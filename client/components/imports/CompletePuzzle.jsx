@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import { Segment, Header, Message, Statistic } from 'semantic-ui-react';
 import moment from 'moment';
 
-import PuzzleProgress, { renderScore } from './puzzle-progress';
+import PuzzleProgress, { renderScore } from './PuzzleProgress';
 
 export default class CompletePuzzle extends React.Component {
   render() {

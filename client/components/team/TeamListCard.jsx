@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Card, Icon, Button, Progress, Form, Popup, Header } from 'semantic-ui-react';
 import moment from 'moment';
 
-import { DEVISION_MAP } from './imports/team-helpers.js';
+import { DIVISION_MAP } from './imports/team-helpers.js';
 
 TeamListCard = class TeamListCard extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ TeamListCard = class TeamListCard extends Component {
     this.state = {
       isFull: team.members.length >= 6,
       memberCount: team.members.length,
-      division: DEVISION_MAP[team.division],
+      division: DIVISION_MAP[team.division],
       lookingForMembers: team.lookingForMembers,
       showPasswordField: false,
       showOwner: false,

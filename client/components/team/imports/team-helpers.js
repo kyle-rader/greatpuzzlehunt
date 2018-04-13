@@ -10,7 +10,7 @@ export const DIVISION_OPTS = [
   { text: 'Open', value: 'open' },
 ];
 
-export const DEVISION_MAP = {
+export const DIVISION_MAP = {
   'wwu-student': 'WWU Student',
   'wwu-alumni': 'WWU Alumni',
   // 'post-secondary': 'Post-Secondary/Non-WWU college',
