@@ -39,6 +39,7 @@ export default class PuzzleProgress extends React.Component {
     this.state = {
       start: moment(props.puzzle.start),
       now: hasEnded ? moment(props.puzzle.end) : moment(),
+      hasEnded,
     };
 
     if (!hasEnded) {
@@ -54,7 +55,7 @@ export default class PuzzleProgress extends React.Component {
 
   render() {
     const { puzzle } = this.props;
-    const { start, now } = this.state;
+    const { start, now, hasEnded } = this.state;
 
     if (!start) {
       return (
@@ -73,7 +74,7 @@ export default class PuzzleProgress extends React.Component {
           size='small'
           color={ getColor(percent) }
           percent={ percent }>
-          Time elapsed: { renderDuration(duration) } <br/>
+          {hasEnded ? "Final" : null} Solve Time: { renderDuration(duration) } <br/>
         </Progress>
       </Segment>
     );
