@@ -25,7 +25,7 @@ AdminLeaderboard = class AdminLeaderboard extends Component {
       <Container fluid>
         <Segment basic style={thinSegmentStyle}>
           <Header as="h2" content="Admin Leader Board"/>
-          <Message info header="Stats" content={`There are ${teams.length} in play.`}/>
+          <Message info header="Stats" content={`${teams.length} teams in play.`}/>
         </Segment>
         {content}
       </Container>

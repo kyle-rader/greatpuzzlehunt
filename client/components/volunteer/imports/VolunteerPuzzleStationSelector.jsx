@@ -35,23 +35,25 @@ class VolunteerPuzzleSelectorInner extends Component {
 
   render() {
     const { ready, gamestate } = this.props;
-
     if (!ready) return this._renderMain(<Loading/>);
-
-    if (!gamestate.gameplay) {
-      return this._renderMain(this._waitingForGame());
-    }
-
-    return this._renderMain(this._renderPuzzles());
+    return this._renderMain(gamestate.gameplay ? this._renderPuzzles() : this._waitingForGame());
   }
 
   _renderMain(content) {
     return (
       <Segment basic>
-        <Header as="h2" content="Puzzle Station Selection" />
+        <Header as="h2" content="Puzzle Station Selection"/>
+        <p>Current Station: <b>{this._currentStation()}</b></p>
         {content}
       </Segment>
     );
+  }
+
+  _currentStation() {
+    const { volunteer, puzzles } = this.props;
+    const puzzle = puzzles.find((p) => p._id === volunteer.puzzleStation);
+    if (!puzzle) return "No Puzzle Station Selected!".toUpperCase();
+    return puzzle.name;
   }
 
   _waitingForGame() {
@@ -78,7 +80,13 @@ class VolunteerPuzzleSelectorInner extends Component {
         <Message.Content>
           <Header as="h4" content={puzzle.name}/>
           {puzzle.location}
-          <Button floated="right" basic={!active} color={active ? "blue" : "green"} disabled={active} content={active ? "Your Current Station" : "Set Active"} onClick={() => this.setState({ [puzzle._id]: true })}/>
+          <Button fluid
+            basic={!active}
+            color={active ? "blue" : "green"}
+            style={{marginTop: '10px'}}
+            disabled={active}
+            content={active ? "Your Current Station" : "Set Active"}
+            onClick={() => this.setState({ [puzzle._id]: true })}/>
           <Confirm
             open={this.state[puzzle._id]}
             header="Confirm Switch Puzzle Station"
