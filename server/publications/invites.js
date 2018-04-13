@@ -17,5 +17,5 @@ Meteor.publish('invites.myInvites', function() {
   const user = Meteor.users.findOne({ _id: userId });
   if (!user) return this.ready();
 
-  return Invites.find({ email: user.getEmail() });
+  return Invites.find({ email: user.getEmail().toLowerCase() });
 });
