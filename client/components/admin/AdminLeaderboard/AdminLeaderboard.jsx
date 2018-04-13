@@ -6,6 +6,7 @@ import {
   Container,
   Header,
   Segment,
+  Message
 } from 'semantic-ui-react';
 
 import AdminLeaderboardTracker from './imports/AdminLeaderboardTracker';
@@ -18,11 +19,13 @@ const thinSegmentStyle = {
 
 AdminLeaderboard = class AdminLeaderboard extends Component {
   render() {
+    const { teams } = this.props;
     const content = this._getContent();
     return (
       <Container fluid>
         <Segment basic style={thinSegmentStyle}>
           <Header as="h2" content="Admin Leader Board"/>
+          <Message info header="Stats" content={`There are ${teams.length} in play.`}/>
         </Segment>
         {content}
       </Container>
@@ -30,10 +33,10 @@ AdminLeaderboard = class AdminLeaderboard extends Component {
   }
 
   _getContent() {
-    const { ready, user, teams, users } = this.props;
+    const { ready, user, teams } = this.props;
 
     if (ready) {
-      return <AdminLeaderboardMain user={user} users={users} teams={teams}/>;
+      return <AdminLeaderboardMain user={user} teams={teams} />;
     } else {
       return <Loading/>;
     }
@@ -43,7 +46,6 @@ AdminLeaderboard = class AdminLeaderboard extends Component {
 AdminLeaderboard.propTypes = {
   ready: PropTypes.bool.isRequired,
   user: PropTypes.object,
-  users: PropTypes.arrayOf(Object),
   teams: PropTypes.arrayOf(Object),
 };
 

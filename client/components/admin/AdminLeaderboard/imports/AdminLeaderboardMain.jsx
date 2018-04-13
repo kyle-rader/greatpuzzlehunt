@@ -39,16 +39,14 @@ class AdminLeaderboardMain extends Component {
 
   _renderDivisions() {
     const { teamsByDivision } = this.state;
-    const { user } = this.props;
     return Object.keys(teamsByDivision).map((division) => {
-      return <AdminLeaderboardDivisionTable user={user} division={DIVISION_MAP[division]} teams={teamsByDivision[division]} key={division}/>
+      return <AdminLeaderboardDivisionTable division={DIVISION_MAP[division]} teams={teamsByDivision[division]} key={division}/>
     });
   }
 }
 
 AdminLeaderboardMain.propTypes = {
   user: PropTypes.object.isRequired,
-  users: PropTypes.arrayOf(Object).isRequired,
   teams: PropTypes.arrayOf(Object).isRequired,
 };
 

@@ -49,13 +49,16 @@ class AdminLeaderboardDivisionTable extends Component {
   }
 
   _renderTeamRow(team) {
-    const { _id: teamId, name, members, puzzles, finalScore } = team;
+    const { _id: teamId, name, members, memberIds, puzzles, finalScore } = team;
     const finished = every(puzzles, (puzzle) => Boolean(puzzle.end));
+
     return (
       <Table.Row key={teamId}>
         <Table.Cell>{name}</Table.Cell>
-        <Table.Cell>{members.length}</Table.Cell>
-        <Table.Cell positive={finished} negative={!finished}>{renderScore(team.finalScore).time}</Table.Cell>
+        <Table.Cell>{members.length} / {memberIds.length}</Table.Cell>
+        <Table.Cell positive={finished} negative={!finished}>
+          <code>{renderScore(team.finalScore).time}</code>
+        </Table.Cell>
         {puzzles.map((puzzle) => this._renderPuzzle(puzzle))}
       </Table.Row>
     );
@@ -67,10 +70,10 @@ class AdminLeaderboardDivisionTable extends Component {
     const finished = Boolean(end);
     const inProgress = started && !finished;
     return (
-      <Table.Cell key={puzzle.puzzleId} positive={finished}>
-        { finished ? renderScore(puzzle.score).time : null }
-        { inProgress ? <div>In Progress <Icon name="spinner" color="blue" loading/></div> : null }
-        { !started ? "Unstarted" : null }
+      <Table.Cell key={puzzle.puzzleId} positive={finished} warning={!started}>
+        { finished ? <code>{renderScore(puzzle.score).time}</code> : null }
+        {inProgress ? <div><Icon name="spinner" color="blue" loading /> In Progress</div> : null }
+        { !started ? <code>--:--:--</code> : null }
       </Table.Cell>
     );
   }
