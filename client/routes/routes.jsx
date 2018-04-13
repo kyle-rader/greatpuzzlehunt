@@ -59,6 +59,7 @@ export const renderRoutes = () => (
         <IndexRoute component={AdminUsers} />
         <Route path='users' component={AdminUsers} />
         <Route path='transactions' component={AdminTransactions} />
+        <Route path='leaderboard' component={AdminLeaderboard} />
         <Route path='sponsors' component={AdminSponsors} />
         <Route path='puzzles' component={AdminPuzzles} />
         <Route path='gamestate' component={AdminGamestate} />

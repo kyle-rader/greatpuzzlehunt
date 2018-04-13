@@ -53,6 +53,7 @@ const mainMenuLinks = [
     iconClass: 'grey qrcode',
   },
 ];
+
 const adminMenuItems = [
   {
     name: 'Users',
@@ -63,6 +64,11 @@ const adminMenuItems = [
     name: 'Transactions',
     to: '/admin/transactions',
     iconClass: 'blue ticket',
+  },
+  {
+    name: 'Leaderboard',
+    to: '/admin/leaderboard',
+    iconClass: 'yellow trophy',
   },
   {
     name: 'Game Control',
@@ -80,6 +86,7 @@ const adminMenuItems = [
     iconClass: 'violet puzzle',
   },
 ];
+
 const volunteerMenuItems = [
   {
     name: 'Home',
