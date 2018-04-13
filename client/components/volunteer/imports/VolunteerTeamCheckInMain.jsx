@@ -9,6 +9,7 @@ import {
   Icon,
   Message,
   Label,
+  Confirm,
 } from 'semantic-ui-react';
 
 import VolunteerTeamComp from './VolunteerTeamComp';
@@ -21,6 +22,11 @@ const WRIST_BAND_COLOR = {
 };
 
 class VolunteerTeamCheckInMain extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showConfirm: false };
+  }
+
   render() {
     const { teamId, ready, team, teamMembers } = this.props;
     if (!ready) return <Loading/>;
@@ -32,6 +38,7 @@ class VolunteerTeamCheckInMain extends Component {
         {this._itemsToGive(team, teamMembers)}
         {this._confirmButton(team)}
         {this._members(teamMembers)}
+        {this._confirmModal(team)}
       </div>
     );
   }
@@ -104,7 +111,7 @@ class VolunteerTeamCheckInMain extends Component {
 
   _confirmButton(team) {
     const { checkinConfirmed: confirmed, name } = team;
-    let content = <Button fluid size="large" color="green" content="Confirm Check In" onClick={() => this._confirmTeamCheckin(team)} />;
+    let content = <Button fluid size="large" color="green" content="Confirm Check In" onClick={() => this.setState({ showConfirm: true })} />;
     if (confirmed) {
       content = <Message success header="Check In Confirmed!" content={`${name} is ready to play!`}/>
     }
@@ -116,11 +123,24 @@ class VolunteerTeamCheckInMain extends Component {
   }
 
   _confirmTeamCheckin({_id: teamId, name}) {
-    if (confirm(`Are you Sure?\nConfirm Check In for team: "${name}"?`)) {
-      Meteor.call('team.checkin.confirm', teamId, (error, result) => {
-        if (error) return alert(error.reason);
-      });
-    }
+    Meteor.call('team.checkin.confirm', teamId, (error, result) => {
+      if (error) return alert(error.reason);
+      this.setState({ showConfirm: false });
+    });
+  }
+
+  _confirmModal(team) {
+    const { showConfirm } = this.state;
+    return (
+      <Confirm open={showConfirm}
+        header="Confirm Checkin?"
+        size="large"
+        content={<Segment basic style={{fontSize: '16px'}}><p>Are you sure you want to confirm check in for</p><p><b>{team.name}</b>?</p></Segment>}
+        cancelButton="Cancel"
+        confirmButton="Yes Check Them In!"
+        onCancel={() => this.setState({ showConfirm: false })}
+        onConfirm={() => this._confirmTeamCheckin(team)}/>
+    );
   }
 }
 

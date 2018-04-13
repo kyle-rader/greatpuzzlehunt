@@ -51,15 +51,13 @@ class TeamMemeberCheckIn extends Component {
     const { name, paid, checkedIn, _id: userId } = member;
     const { checkInConfirmed } = this.props.team;
     return (
-      <Grid.Row columns={3} key={userId}>
+      <Grid.Row columns={2} key={userId}>
         <Grid.Column>
           <Header as="h4" content={name}/>
+          <Button disabled={!paid || checkInConfirmed} basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Here!"} onClick={() => this._toggleCheckin(userId)}/>
         </Grid.Column>
         <Grid.Column>
           <Icon name={checkedIn ? "check" : "remove"} color={checkedIn ? 'green' : 'yellow'} size="large" /> {this._message(paid, checkedIn)}
-        </Grid.Column>
-        <Grid.Column>
-          <Button disabled={!paid || checkInConfirmed} basic={checkedIn} color={checkedIn ? "grey" : "green"} content={checkedIn ? "Cancel" : "Here!"} onClick={() => this._toggleCheckin(userId)}/>
         </Grid.Column>
       </Grid.Row>
     );
