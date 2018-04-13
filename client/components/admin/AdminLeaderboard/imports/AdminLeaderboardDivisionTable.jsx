@@ -12,10 +12,15 @@ import {
 
 import { renderScore } from '../../../imports/PuzzleProgress';
 
+const UNFINISHED_OFFSET = 26000;
+
 class AdminLeaderboardDivisionTable extends Component {
   render() {
     const { division, teams } = this.props;
-    const sortedTeams = sortBy(teams, ['finalScore']);
+
+    const sortedTeams = sortBy(teams, (team) => {
+      return team.finalScore + (team.finished ? 0 : UNFINISHED_OFFSET);
+    });
 
     return (
       <Segment basic>
@@ -42,22 +47,21 @@ class AdminLeaderboardDivisionTable extends Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {teams.map((team) => this._renderTeamRow(team))}
+          {teams.map((team, i) => this._renderTeamRow(team, i))}
         </Table.Body>
       </Table>
     );
   }
 
-  _renderTeamRow(team) {
-    const { _id: teamId, name, members, memberIds, puzzles, finalScore } = team;
-    const finished = every(puzzles, (puzzle) => Boolean(puzzle.end));
+  _renderTeamRow(team, i) {
+    const { _id: teamId, name, members, memberIds, puzzles, finalScore, finished } = team;
 
     return (
       <Table.Row key={teamId}>
-        <Table.Cell>{name}</Table.Cell>
+        <Table.Cell>{i+1} | {name}</Table.Cell>
         <Table.Cell>{members.length} / {memberIds.length}</Table.Cell>
-        <Table.Cell positive={finished} negative={!finished}>
-          <code>{renderScore(team.finalScore).time}</code>
+        <Table.Cell positive={finished} warning={!finished}>
+          <code>{renderScore(team.finalScore).time}</code> {!finished ? <Icon name="spinner" color="blue" loading /> : null}
         </Table.Cell>
         {puzzles.map((puzzle) => this._renderPuzzle(puzzle))}
       </Table.Row>
@@ -70,7 +74,7 @@ class AdminLeaderboardDivisionTable extends Component {
     const finished = Boolean(end);
     const inProgress = started && !finished;
     return (
-      <Table.Cell key={puzzle.puzzleId} positive={finished} warning={!started}>
+      <Table.Cell key={puzzle.puzzleId} positive={finished} warning={!finished}>
         { finished ? <code>{renderScore(puzzle.score).time}</code> : null }
         {inProgress ? <div><Icon name="spinner" color="blue" loading /> In Progress</div> : null }
         { !started ? <code>--:--:--</code> : null }

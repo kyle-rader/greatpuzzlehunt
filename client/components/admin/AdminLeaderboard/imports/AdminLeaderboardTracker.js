@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { groupBy } from 'lodash';
+import { groupBy, every } from 'lodash';
 
 export default function AdminLeaderboardTracker(Comp) {
   return withTracker((props) => {
@@ -13,6 +13,7 @@ export default function AdminLeaderboardTracker(Comp) {
     const teams = ready ? Teams.find({ hasBegun: true }).fetch() : [];
 
     teams.forEach((team) => {
+      team.finished = every(team.puzzles, (puzzle) => Boolean(puzzle.end));
       team.memberIds = team.members;
       team.members = usersByTeam[team._id];
     });
