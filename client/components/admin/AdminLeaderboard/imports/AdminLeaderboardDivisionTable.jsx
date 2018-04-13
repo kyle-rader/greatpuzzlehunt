@@ -30,18 +30,15 @@ class AdminLeaderboardDivisionTable extends Component {
   }
 
   _renderTable(teams) {
+    const puzzleNames = teams[0].puzzles.map((p) => p.name);
     return (
       <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Team</Table.HeaderCell>
             <Table.HeaderCell>Size</Table.HeaderCell>
-            <Table.HeaderCell>Final Score</Table.HeaderCell>
-            <Table.HeaderCell>Puzzle 1</Table.HeaderCell>
-            <Table.HeaderCell>Puzzle 2</Table.HeaderCell>
-            <Table.HeaderCell>Puzzle 3</Table.HeaderCell>
-            <Table.HeaderCell>Puzzle 4</Table.HeaderCell>
-            <Table.HeaderCell>Puzzle 5</Table.HeaderCell>
+            <Table.HeaderCell>Score</Table.HeaderCell>
+            {puzzleNames.map((name) => <Table.HeaderCell key={name}>{name}</Table.HeaderCell>)}
           </Table.Row>
         </Table.Header>
         <Table.Body>
