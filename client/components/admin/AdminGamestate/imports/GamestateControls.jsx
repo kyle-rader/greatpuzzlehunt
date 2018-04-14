@@ -36,6 +36,10 @@ class GamestateControlsInner extends Component {
           <Form.Button icon="mail" content="Email Reports" onClick={(e) => Meteor.call('admin.sendReport')}/>
         </Form.Group>
 
+        <Form.Group>
+          <Form.Button icon="mail" content="Email Users & Teams" onClick={(e) => { Meteor.call('admin.sendUsersAndTeams'); alert("Emails are sending!"); }}/>
+        </Form.Group>
+
         <Header as='h3' content='Registration'/>
         <Form.Group>
           { this._fieldButton('Registration') }
