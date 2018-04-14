@@ -69,13 +69,13 @@ class AdminLeaderboardDivisionTable extends Component {
   }
 
   _renderPuzzle(puzzle) {
-    const { score, start, end } = puzzle;
+    const { score, start, end, hintsTaken } = puzzle;
     const started = Boolean(start);
     const finished = Boolean(end);
     const inProgress = started && !finished;
     return (
       <Table.Cell key={puzzle.puzzleId} positive={finished} warning={!finished}>
-        { finished ? <code>{renderScore(puzzle.score).time}</code> : null }
+        {finished ? <code>{renderScore(puzzle.score).time} ({hintsTaken})</code> : null }
         {inProgress ? <div><Icon name="spinner" color="blue" loading /> In Progress</div> : null }
         { !started ? <code>--:--:--</code> : null }
       </Table.Cell>
