@@ -7,7 +7,6 @@ export default function AdminLeaderboardTracker(Comp) {
     const handle = Meteor.subscribe('admin.leaderboard');
     const ready = handle.ready();
 
-    const user = Meteor.user();
     const users = ready ? Meteor.users.find({ checkedIn: true, teamId: { $ne: null } }).fetch() : [];
     const usersByTeam = groupBy(users, 'teamId');
     const teams = ready ? Teams.find({ hasBegun: true }).fetch() : [];
@@ -19,8 +18,7 @@ export default function AdminLeaderboardTracker(Comp) {
     });
 
     return {
-      ready: ready && Boolean(user),
-      user,
+      ready,
       teams,
     };
 

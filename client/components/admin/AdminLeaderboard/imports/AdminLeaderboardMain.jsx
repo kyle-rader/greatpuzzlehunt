@@ -46,7 +46,6 @@ class AdminLeaderboardMain extends Component {
 }
 
 AdminLeaderboardMain.propTypes = {
-  user: PropTypes.object.isRequired,
   teams: PropTypes.arrayOf(Object).isRequired,
 };
 
