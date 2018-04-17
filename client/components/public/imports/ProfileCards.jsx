@@ -16,13 +16,6 @@ export default class ProfileCards extends Component {
         image: '/img/2016/event-photos/millie_johnson.jpg',
       },
       {
-        name: 'Kyle Rader',
-        title: 'Software Engineer, Microsoft',
-        role: 'Lead developer and secondary event coordinator',
-        email: 'kyle@kylerader.ninja',
-        image: '/img/team/kyle.jpg',
-      },
-      {
         name: 'Wendy Aguilar',
         title: 'Web Design Specialist, CDK Global',
         role: 'Lead designer',
