@@ -7,6 +7,7 @@ export const renderRoutes = () => (
 
     <Route path='/' component={App}>
 
+
       {/* Home/Public Routes */}
       <IndexRoute component={Home}/>
       <Route path='teams-list' component={PublicTeamList}/>
@@ -17,7 +18,6 @@ export const renderRoutes = () => (
       <Route path='qrcode' component={QRCode}/>
       <Route path='register' component={Register}/>
       <Route path='rules' component={ RulesOfPlay }/>
-      <Route path='leaderboard' component={ AdminLeaderboard }/>
 
       {/* Authentication Routes */}
       <Route path='login' component={Login}/>

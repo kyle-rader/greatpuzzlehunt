@@ -25,7 +25,7 @@ AdminLeaderboard = class AdminLeaderboard extends Component {
       <Container fluid>
         <Segment basic style={thinSegmentStyle}>
           <Header as="h2" content="Admin Leader Board"/>
-          <Message info header="Stats" content={<p>{teams.length} teams total. The <code>([0-3])</code> Next to the time indicates # of hints taken.</p>}/>
+          <Message info header="Stats" content={`${teams.length} teams in play.`}/>
         </Segment>
         {content}
       </Container>
@@ -45,6 +45,7 @@ AdminLeaderboard = class AdminLeaderboard extends Component {
 
 AdminLeaderboard.propTypes = {
   ready: PropTypes.bool.isRequired,
+  user: PropTypes.object,
   teams: PropTypes.arrayOf(Object),
 };
 

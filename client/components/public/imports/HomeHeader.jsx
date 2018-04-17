@@ -9,6 +9,27 @@ import TimedComp from './TimedComp';
 
 const { eventDate } = Meteor.settings.public;
 
+const registerNowMessage = (
+  <Message icon color='teal'>
+    <Icon name='ticket'/>
+    <Message.Content>
+      <Message.Header>Why Register Now?</Message.Header>
+      All ticket and gear prices go up on March 18th at midnight!
+    </Message.Content>
+  </Message>
+);
+
+const registrationClosesMessage = (
+  <Message icon color='yellow'>
+    <Icon name='ticket'/>
+    <Message.Content>
+      <Message.Header>Why Register Now?</Message.Header>
+      Registration Closes on April 12, 11:59 PM. <br/>
+      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" target="_blank">buy and redeem tickets</a> until 10:00 AM April 14.
+    </Message.Content>
+  </Message>
+);
+
 export default class HomeHeader extends Component {
   render() {
     return (
@@ -21,7 +42,7 @@ export default class HomeHeader extends Component {
             </Grid.Column>
             <Grid.Column verticalAlign="middle" width={6}>
               <Container>
-                <h1 className="header-text text-highlight-color">Fourth Annual</h1>
+                <h1 className="header-text text-highlight-color">Third Annual</h1>
                 <h1 className="header-text gigantic">WWU</h1>
                 <h1 className="header-text gigantic">Great</h1>
                 <h1 className="header-text gigantic">Puzzle</h1>
@@ -51,6 +72,16 @@ export default class HomeHeader extends Component {
             </Grid.Column>
           </Grid.Row>
 
+        <Grid.Row centered>
+          <Grid.Column width={10}>
+            <TimedComp
+              beforeComp={registerNowMessage}
+              afterComp={registrationClosesMessage}
+              timeout={moment("2018-03-19T00:00:00-07:00")}
+            />
+          </Grid.Column>
+        </Grid.Row>
+
           <Grid.Row centered>
             <Grid.Column width={16}>
               <h3>
@@ -71,15 +102,14 @@ export default class HomeHeader extends Component {
   _linkButtons() {
     return (
     <div>
-      {/* <LinkButton to='/register' size='large' color='blue' content='Register'/> */}
-      {/* <LinkButton to="/login" size='large' content='Log In'/> */}
-      <LinkButton icon="trophy" color="purple" to="/leaderboard" size='large' content='2018 Leaderboard'/>
+      <LinkButton to='/register' size='large' color='blue' content='Register'/>
+      <LinkButton to="/login" size='large' content='Log In'/>
       <LinkButton to="/faq" size='large' content='FAQ'/>
       <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
-      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" content="Buy Tickets"/> */}
+      <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" content="Buy Tickets"/>
     </div>
     );
   }
