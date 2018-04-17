@@ -61,7 +61,7 @@ class AdminLeaderboardDivisionTable extends Component {
         <Table.Cell>{i+1} | {name}</Table.Cell>
         <Table.Cell>{members.length} / {memberIds.length}</Table.Cell>
         <Table.Cell positive={finished} warning={!finished}>
-          <code>{renderScore(team.finalScore).time}</code> {!finished ? <Icon name="spinner" color="blue" loading /> : null}
+          <code>{renderScore(team.finalScore).time} ({team.finalScore} sec)</code> {!finished ? <Icon name="spinner" color="blue" loading /> : null}
         </Table.Cell>
         {puzzles.map((puzzle) => this._renderPuzzle(puzzle))}
       </Table.Row>
@@ -75,7 +75,7 @@ class AdminLeaderboardDivisionTable extends Component {
     const inProgress = started && !finished;
     return (
       <Table.Cell key={puzzle.puzzleId} positive={finished} warning={!finished}>
-        {finished ? <code>{renderScore(puzzle.score).time} ({hintsTaken})</code> : null }
+    {finished ? <code>{renderScore(puzzle.score).time} (hints {hintsTaken}) ({puzzle.score} sec)</code> : null }
         {inProgress ? <div><Icon name="spinner" color="blue" loading /> In Progress</div> : null }
         { !started ? <code>--:--:--</code> : null }
       </Table.Cell>
