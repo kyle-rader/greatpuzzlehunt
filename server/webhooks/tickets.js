@@ -4,7 +4,9 @@ import { map, extend } from 'lodash';
 import { PostRoute } from '../imports/route-types.js';
 import processTransaction from '../imports/processTransaction.js';
 
-const { token } = Meteor.settings.accounts;
+// const { token } = Meteor.settings.accounts;
+const accts = Meteor.settings.accounts || {};
+const { token } = accts;
 
 PostRoute.route('/api/tickets', function(params, req, res, next) {
 
