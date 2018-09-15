@@ -23,7 +23,7 @@ const mainMenuLinks = [
     iconClass: 'blue users',
   },
   {
-    name: 'GPH Contact',
+    name: 'Contact',
     to: '/contact',
     iconClass: 'violet mail',
   },
