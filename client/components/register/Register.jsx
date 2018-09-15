@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import GamestateComp from '../imports/GamestateComp';
 import RegisterForm from './imports/RegisterForm';
 
-const { eventYear } = Meteor.settings.public;
+const { eventYear, registrationOpenDate } = Meteor.settings.public;
 
 class RegisterInner extends Component {
   render() {
@@ -28,7 +28,7 @@ class RegisterInner extends Component {
         <Message
           info size='large'
           header='Registration is Closed'
-          content={`The ${eventYear} Great Puzzle Hunt registration is now closed.`}
+          content={`Registration for the ${eventYear} Great Puzzle Hunt will open ${registrationOpenDate}.`}
         />
       );
     }
