@@ -8,6 +8,7 @@ import {
   List,
   Icon,
   Header,
+  Message,
   Segment,
   Button,
   Image
@@ -33,6 +34,14 @@ const gearPricing = (
   </span>
 );
 
+const importantDates = (
+  <List className='bulleted'>
+    <List.Item><strong>March ??, {eventYear}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
+    <List.Item><strong>April ??, {eventYear}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
+    <List.Item><strong>April ??, {eventYear}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
+  </List>
+);
+
 FAQ = class FAQ extends Component {
 
   constructor(props) {
@@ -49,6 +58,12 @@ FAQ = class FAQ extends Component {
     return (
       <Container>
         <PuzzlePageTitle title="FAQ"/>
+
+        <Message
+          info size='large'
+          header='Note!'
+          content="Some dates, times, and other details may change for the 2019 Hunt. Please check back again later."
+        />
 
         <Accordion styled fluid>
 
@@ -152,12 +167,11 @@ FAQ = class FAQ extends Component {
             <h3>
               <strong>{eventDate}</strong> at 10:00 AM, Red Square, WWU
             </h3>
+            {/*
+            * To be added back when early bird dates, etc are finalized
             Other important dates:
-            <List className='bulleted'>
-              <List.Item><strong>March 18, {eventYear}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
-              <List.Item><strong>April 3, {eventYear}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
-              <List.Item><strong>April 12, {eventYear}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
-            </List>
+            {importantDates}
+            */}
           </Accordion.Content>
 
           <Accordion.Title active={activeIndex === 5} index={5} onClick={(e,p) => this.handleClick(e,p)} >
@@ -341,7 +355,7 @@ FAQ = class FAQ extends Component {
         </Accordion>
 
         <br/>
-        <p>Last Updated: Jan 16, 2018</p>
+        <p>Last Updated: Sep 15, 2018</p>
       </Container>
     );
   }
