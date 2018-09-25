@@ -4,8 +4,9 @@
     "siteURL": "http://localhost:3000",
     "accountsEmail": "Great Puzzle Hunt <accounts@greatpuzzlehunt.com>",
     "infoEmail": "Great Puzzle Hunt <info@greatpuzzlehunt.com>",
-    "eventYear": "2018",
-    "eventDate": "Saturday April 14, 2018",
+    "eventYear": "2019",
+    "eventDate": "Saturday, April 13, 2019",
+    "registrationOpenDate": "Tuesday, January 8, 2019",
     "social": {
       "facebook": "https://facebook.com/greatpuzzlehunt"
     },
@@ -16,9 +17,9 @@
     }
   },
   "admin": {
-    "firstname": "Kyle",
-    "lastname": "Rader",
-    "email": "kyle@kylerader.ninja",
+    "firstname": "Noah",
+    "lastname": "S",
+    "email": "support@greatpuzzlehunt.com",
     "password": "testtest",
     "roles": [
       "user",
@@ -26,18 +27,18 @@
       "player",
       "admin"
     ],
-    "address": "1234 Cool Street",
-    "city": "Redmond",
+    "address": "516 High Street",
+    "city": "Bellingham",
     "state": "WA",
-    "zip": "98053",
+    "zip": "98225",
     "age": 26,
-    "phone": "1112223333",
+    "phone": "5552223333",
     "accountType": "VOLUNTEER",
     "photoPermission": true,
     "holdHarmless": true,
     "ecName": "Emergency Contact",
     "ecRelationship": "friend",
-    "ecPhone": "7778889999",
+    "ecPhone": "5558889999",
     "ecEmail": "ec.friend@email.com",
     "paid": true,
     "ticketUsed": null

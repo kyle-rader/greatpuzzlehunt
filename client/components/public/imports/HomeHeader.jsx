@@ -72,16 +72,6 @@ export default class HomeHeader extends Component {
             </Grid.Column>
           </Grid.Row>
 
-        <Grid.Row centered>
-          <Grid.Column width={10}>
-            <TimedComp
-              beforeComp={registerNowMessage}
-              afterComp={registrationClosesMessage}
-              timeout={moment("2018-03-19T00:00:00-07:00")}
-            />
-          </Grid.Column>
-        </Grid.Row>
-
           <Grid.Row centered>
             <Grid.Column width={16}>
               <h3>
