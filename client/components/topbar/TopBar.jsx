@@ -43,8 +43,8 @@ const mainMenuLinks = [
     iconClass: 'teal circle info',
   },
   {
-    name: 'Gallery',
-    to: '/gallery',
+    name: 'Media',
+    to: '/media',
     iconClass: 'olive camera',
   },
   {
