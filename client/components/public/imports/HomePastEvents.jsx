@@ -20,7 +20,7 @@ export default class HomePastEvents extends Component {
            </Grid.Row>
 
            <Grid.Row  centered verticalAlign="middle">
-             <Button className='dark-blue' as='a' href='_blank' href={`/gallery`} content='View Gallery' />
+             <Button className='dark-blue' as='a' href='_blank' href={`/media`} content='View Media' />
            </Grid.Row>
 
            <Grid.Row columns={3}>
