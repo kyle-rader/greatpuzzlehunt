@@ -2,15 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { Container, Image, Divider, Icon } from 'semantic-ui-react';
 
-const ImageExampleLink = () => (
-  <Image
-    src='https://react.semantic-ui.com/images/wireframe/image-text.png'
-    as='a'
-    size='medium'
-    href='http://google.com'
-    target='_blank'
-  />
-)
 Media = class Media extends Component {
 
   render() {
