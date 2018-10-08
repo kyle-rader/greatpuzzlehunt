@@ -95,3 +95,11 @@ An on-line and in person real-time puzzle scavenger hunt!
   ```
   $ meteor shell
   ```
+
+# Scripts
+
+A few handy scripts exist in the `scripts/` directory.
+
+* `sh scripts/hh_export.sh` will export all the users in the database. Used for "hold harmless" records.
+* `sh scripts/update-heroku-config` will update the configuration settings in Heroku based on the `settings-prod.json` file.
+* `sh restore_db.sh` will restore the local MongoDB database with the contents of a Mongo "dump" file `gph-mongo.dump`
