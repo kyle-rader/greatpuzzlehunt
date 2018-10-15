@@ -42,7 +42,7 @@ export default class HomeHeader extends Component {
             </Grid.Column>
             <Grid.Column verticalAlign="middle" width={6}>
               <Container>
-                <h1 className="header-text text-highlight-color">Third Annual</h1>
+                <h1 className="header-text text-highlight-color">Fourth Annual</h1>
                 <h1 className="header-text gigantic">WWU</h1>
                 <h1 className="header-text gigantic">Great</h1>
                 <h1 className="header-text gigantic">Puzzle</h1>
