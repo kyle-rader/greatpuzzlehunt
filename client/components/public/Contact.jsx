@@ -15,7 +15,7 @@ Contact = class Contact extends Component {
       <h3>
         For Event Questions Contact Millie at <a href='mailto:millie@greatpuzzlehunt.com'>millie.johnson@wwu.edu</a>
         <br/><br/>
-        For Account/Tech Questions Contact Kyle at <a href='mailto:kyle@kylerader.ninja'>kyle@kylerader.ninja</a>
+        For Account/Tech Questions Contact <a href='mailto:support@greatpuzzlehunt.com'>support@greatpuzzlehunt.com</a>
       </h3>
     </div>
     );
