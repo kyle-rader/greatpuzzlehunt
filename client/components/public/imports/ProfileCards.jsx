@@ -23,12 +23,13 @@ export default class ProfileCards extends Component {
         image: '/img/team/wendy.jpg',
       },
       {
-        name: 'Scott St. Clair',
+        name: 'Noah Strong',
         title: '',
-        role: 'Scott-AS Club President 2017-18',
-        email: 'stclais2@wwu.edu',
-        image: '/img/team/scott.jpg',
+        role: 'Lead Developer',
+        email: 'noah@greatpuzzlehunt.com',
+        image: '/img/team/noah.jpg',
       },
+      /* Second Row */
       {
         name: 'Zoe & Jeff',
         title: '',
@@ -44,12 +45,54 @@ export default class ProfileCards extends Component {
         image: '/img/team/zac.jpg',
       },
       {
-        name: 'Noah Strong',
+        name: 'Alex Covington',
         title: '',
-        role: 'Tech Support',
-        email: 'support@greatpuzzlehunt.com',
-        image: '/img/team/noah.jpg',
-      }
+        role: 'Developer',
+        email: '',
+        image: '/img/team/alex_c.jpg',
+      },
+      {
+        name: 'Jordan King',
+        title: '',
+        role: 'Co-President',
+        email: '',
+        image: '/img/team/jordan_k.jpg',
+      },
+      {
+        name: 'Elias Peters',
+        title: '',
+        role: 'Co-President',
+        email: '',
+        image: '/img/team/elias_p.jpg',
+      },
+      {
+        name: 'Katrina Duttkin',
+        title: '',
+        role: 'Marketing and Promotions',
+        email: '',
+        image: '/img/team/katrina.jpg',
+      },
+      {
+        name: 'Danielle Glewwe',
+        title: '',
+        role: 'Marketing and Promotions',
+        email: '',
+        image: '/img/team/danielle_g.jpg',
+      },
+      {
+        name: 'Miranda Reed',
+        title: '',
+        role: 'Co-Budget Coordinator',
+        email: '',
+        image: '/img/team/miranda_r.jpeg',
+      },
+      {
+        name: 'Alex Kuhn',
+        title: '',
+        role: 'Co-Budget Coordinator',
+        email: '',
+        image: '/img/team/',
+      },
     ];
   }
 
@@ -66,7 +109,7 @@ export default class ProfileCards extends Component {
   }
 
   _renderProfileCard({ name, title, role, email, image }) {
-    return <Card key={email}
+    return <Card key={name}
       image={image}
       header={name}
       meta={title}
