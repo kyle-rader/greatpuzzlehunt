@@ -6,7 +6,9 @@
   "scripts": {
     "start": "meteor --settings settings-development.json || true",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "git tag `date \"+deploy-%Y_%m_%d-%H_%M_%S\"` && git push --tags && mup deploy --config=mup-production.js --settings=settings-production.json"
+    "deploy": "git tag `date \"+deploy-%Y_%m_%d-%H_%M_%S\"` && git push --tags && mup deploy --config=mup-production.js --settings=settings-production.json",
+    "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
+    "chimp-test": "chimp --mocha --path=tests"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
+    "chimp": "^0.51.1",
     "clipboard": "^1.6.1",
     "jszip": "^3.1.5",
     "lodash": "^4.17.5",
@@ -45,7 +48,9 @@
     "winston": "^2.4.1"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.1"
+    "autoprefixer": "^6.3.1",
+    "chromedriver": "^2.43.0",
+    "selenium-webdriver": "^3.0.0-beta-2"
   },
   "postcss": {
     "plugins": {
