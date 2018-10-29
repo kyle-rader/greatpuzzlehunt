@@ -78,7 +78,7 @@ Meteor.publish('game.progress', function() {
     'puzzles.name': 1,
     'puzzles.start': 1,
     'puzzles.end': 1,
-    'puzzles.hintsTaken': 1,
+    // 'puzzles.hintsTaken': 1,
     'puzzles.score': 1,
   };
 

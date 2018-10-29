@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 
 import { renderScore } from '../../../imports/PuzzleProgress';
+import { getHintsTaken } from '../../../../../lib/imports/puzzle-helpers';
 
 const UNFINISHED_OFFSET = 26000;
 
@@ -69,7 +70,8 @@ class AdminLeaderboardDivisionTable extends Component {
   }
 
   _renderPuzzle(puzzle) {
-    const { score, start, end, hintsTaken } = puzzle;
+    const { score, start, end } = puzzle;
+    let hintsTaken = getHintsTaken(puzzle);
     const started = Boolean(start);
     const finished = Boolean(end);
     const inProgress = started && !finished;
