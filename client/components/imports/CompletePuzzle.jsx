@@ -3,6 +3,7 @@ import { Segment, Header, Message, Statistic } from 'semantic-ui-react';
 import moment from 'moment';
 
 import PuzzleProgress, { renderScore } from './PuzzleProgress';
+import { getHintsTaken } from '../../../lib/imports/puzzle-helpers';
 
 export default class CompletePuzzle extends React.Component {
   render() {
@@ -31,11 +32,12 @@ export default class CompletePuzzle extends React.Component {
   _answer() {
     const { puzzle } = this.props;
     const { time, minutes } = renderScore(puzzle.score);
+    const hintsTaken = getHintsTaken(puzzle.hints);
     if (this.props.showAnswer) {
       return (
         <pre>
           Answer: { puzzle.answer }<br/>
-          Hints : { puzzle.hintsTaken }<br/>
+          Hints : { hintsTaken }<br/>
           Score : { time }<br/>
                   ({ minutes } minutes)
         </pre>

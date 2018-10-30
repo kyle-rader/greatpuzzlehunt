@@ -5,6 +5,7 @@ import { sortBy, groupBy, map, clone, each } from 'lodash';
 import { Container, Grid, Icon, Header, Progress } from 'semantic-ui-react';
 import moment from 'moment';
 import { renderDuration } from '../imports/PuzzleProgress';
+import { getFinalScore } from '../../../lib/imports/puzzle-helpers';
 
 class GameProgressInner extends React.Component {
   constructor(props) {
@@ -86,7 +87,9 @@ GameProgress = withTracker(() => {
   const handle = Meteor.subscribe('game.progress');
   const ready = handle.ready();
   const user = Meteor.user();
-  const teams = sortBy(Teams.find({}).fetch(), 'finalScore');
+  const teams = sortBy(Teams.find({}).fetch(), [(team)=>{
+    return getFinalScore(team);
+  }]);
   const puzzles = Puzzles.find({}).fetch();
 
   return {
