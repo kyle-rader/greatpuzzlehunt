@@ -73,7 +73,7 @@ Meteor.publish('game.progress', function() {
     name: 1,
     members: 1,
     division: 1,
-    finalScore: 1,
+    // finalScore: 1,
     'puzzles.puzzleId': 1,
     'puzzles.name': 1,
     'puzzles.start': 1,

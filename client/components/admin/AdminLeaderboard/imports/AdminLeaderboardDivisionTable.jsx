@@ -11,7 +11,7 @@ import {
 } from 'semantic-ui-react';
 
 import { renderScore } from '../../../imports/PuzzleProgress';
-import { getHintsTaken } from '../../../../../lib/imports/puzzle-helpers';
+import { getHintsTaken, getFinalScore } from '../../../../../lib/imports/puzzle-helpers';
 
 const UNFINISHED_OFFSET = 26000;
 
@@ -20,7 +20,7 @@ class AdminLeaderboardDivisionTable extends Component {
     const { division, teams } = this.props;
 
     const sortedTeams = sortBy(teams, (team) => {
-      return team.finalScore + (team.finished ? 0 : UNFINISHED_OFFSET);
+      return getFinalScore(team) + (team.finished ? 0 : UNFINISHED_OFFSET);
     });
 
     return (
@@ -55,14 +55,15 @@ class AdminLeaderboardDivisionTable extends Component {
   }
 
   _renderTeamRow(team, i) {
-    const { _id: teamId, name, members, memberIds, puzzles, finalScore, finished } = team;
+    const { _id: teamId, name, members, memberIds, puzzles, finished } = team;
+    const finalScore = getFinalScore(team);
 
     return (
       <Table.Row key={teamId}>
         <Table.Cell>{i+1} | {name}</Table.Cell>
         <Table.Cell>{members.length} / {memberIds.length}</Table.Cell>
         <Table.Cell positive={finished} warning={!finished}>
-          <code>{renderScore(team.finalScore).time} ({team.finalScore} sec)</code> {!finished ? <Icon name="spinner" color="blue" loading /> : null}
+          <code>{renderScore(finalScore).time} ({finalScore} sec)</code> {!finished ? <Icon name="spinner" color="blue" loading /> : null}
         </Table.Cell>
         {puzzles.map((puzzle) => this._renderPuzzle(puzzle))}
       </Table.Row>
