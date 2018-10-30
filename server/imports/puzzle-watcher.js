@@ -35,9 +35,6 @@ function timeOutPuzzles() {
           [`puzzles.${i}.answer`]: puzzles[puzzle.puzzleId].answer,
           [`puzzles.${i}.timedOut`]: true,
         },
-        $inc: {
-          finalScore: timeOutScore,
-        },
       });
     }
   });
