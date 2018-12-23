@@ -5,7 +5,7 @@ Migrations.add({
   up: function () {
     // Add studentTickets and nonStudentTickets counts to transaction docs.
     Gamestate.update({}, { $set: {
-      sendReportsTo: ['kyle@kylerader.ninja', 'millie.johnson@wwu.edu'],
+      sendReportsTo: ['greatpuzzlehunt@gmail.com', 'millie.johnson@wwu.edu'],
     }});
   },
   down: function () {
