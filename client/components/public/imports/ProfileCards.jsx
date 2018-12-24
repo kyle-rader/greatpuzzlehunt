@@ -73,7 +73,7 @@ export default class ProfileCards extends Component {
         name: 'Alex Kuhn',
         title: '',
         role: 'AS Co-Budget Coordinator',
-        image: '/img/team/',
+        image: '/img/team/placeholder.png',
       },
     ];
     this.pastProfiles = [
