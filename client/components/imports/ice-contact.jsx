@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Grid, Button, Header } from 'semantic-ui-react';
 
+const { phone } = Meteor.settings.public.contact;
+
 export default class ICEContact extends React.Component {
   render() {
     return (
@@ -12,10 +14,10 @@ export default class ICEContact extends React.Component {
         </Grid.Row>
         <Grid.Row columns='3'>
           <Grid.Column>
-            <Button fluid as='a' color='blue' content='Call' href="tel:4252417977"/>
+            <Button fluid as='a' color='blue' content={'Call: ' + phone} href={"tel:" + phone} />
           </Grid.Column>
           <Grid.Column>
-            <Button fluid as='a' color='orange' content='Text' href="sms:4252417977"/>
+            <Button fluid as='a' color='orange' content={'Text: ' + phone} href={"sms:" + phone} />
           </Grid.Column>
           <Grid.Column>
             <Button fluid as='a' color='green' content='Email' href="mailto:support@greatpuzzlehunt.com"/>
