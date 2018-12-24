@@ -16,3 +16,4 @@ backup-data/
 *dump*
 dev.sh
 settings-prod.json
+settings-test.json
