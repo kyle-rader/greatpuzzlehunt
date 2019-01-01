@@ -14,7 +14,7 @@ import {
   Image
 } from 'semantic-ui-react';
 
-const { eventYear, eventDate, siteName } = Meteor.settings.public;
+const { eventYear, eventDate, siteName, earlyBirdLastDate, gearSaleEnd, registrationCloseDate, regularRegistrationStart, regularRegistrationEnd } = Meteor.settings.public;
 
 const prizeNote = (
   <p>
@@ -26,9 +26,9 @@ const gearPricing = (
   <span>
     <strong>Official Puzzle Gear Pricing</strong>
     <ul>
-      <li>Early Bird Discount Price (varying styles: prices range from $10-20, additional $2 for extended sizes) until March 18, {eventYear}</li>
-      <li>Regular Price (varying styles: prices range from $13-$23, additional $2 for extended sizes) begins March 19, {eventYear}</li>
-      <li>Gear sale ends midnight April 3, {eventYear}</li>
+      <li>Early Bird Discount Price (varying styles: prices range from $10-20, additional $2 for extended sizes) until {earlyBirdLastDate}</li>
+      <li>Regular Price (varying styles: prices range from $13-$23, additional $2 for extended sizes) begins {regularRegistrationStart} through {gearSaleEnd}</li>
+      <li>Gear sale ends midnight {gearSaleEnd}</li>
       <li>The sale of these shirts helps to fund this event. Support the WWU Great Puzzle Hunt and wear our official Great Puzzle Hunt gear! Check out the styles, colors, and design. Pick up your shirts at event check-in.</li>
     </ul>
   </span>
@@ -36,9 +36,9 @@ const gearPricing = (
 
 const importantDates = (
   <List className='bulleted'>
-    <List.Item><strong>March ??, {eventYear}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
-    <List.Item><strong>April ??, {eventYear}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
-    <List.Item><strong>April ??, {eventYear}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
+    <List.Item><strong>{earlyBirdLastDate}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
+    <List.Item><strong>{gearSaleEnd}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
+    <List.Item><strong>{registrationCloseDate}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
   </List>
 );
 
@@ -167,11 +167,8 @@ FAQ = class FAQ extends Component {
             <h3>
               <strong>{eventDate}</strong> at 10:00 AM, Red Square, WWU
             </h3>
-            {/*
-            * To be added back when early bird dates, etc are finalized
             Other important dates:
             {importantDates}
-            */}
           </Accordion.Content>
 
           <Accordion.Title active={activeIndex === 5} index={5} onClick={(e,p) => this.handleClick(e,p)} >
@@ -228,8 +225,8 @@ FAQ = class FAQ extends Component {
             </p>
             <strong>Ticket Code Pricing</strong>
             <ul>
-              <li>Early Bird Discount Price ($5 student/$10 non-student) until March 18, {eventYear}</li>
-              <li>Regular Price ($8 student/$15 non-student) begin March 19, {eventYear}</li>
+              <li>Early Bird Discount Price ($5 student/$10 non-student) until {earlyBirdLastDate}.</li>
+              <li>Regular Price ($8 student/$15 non-student) {regularRegistrationStart} through {regularRegistrationEnd}.</li>
             </ul>
             {gearPricing}
             <p>

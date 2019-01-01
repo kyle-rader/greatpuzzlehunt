@@ -11,6 +11,11 @@
     "eventYear": "2019",
     "eventDate": "Saturday, April 13, 2019",
     "registrationOpenDate": "Tuesday, January 8, 2019",
+    "registrationCloseDate": "April 11, 2019",
+    "earlyBirdLastDate": "March 17, 2019",
+    "regularRegistrationStart": "March 18",
+    "regularRegistrationEnd": "April 11, 2019",
+    "gearSaleEnd": "April 3, 2019",
     "social": {
       "facebook": "https://facebook.com/greatpuzzlehunt"
     },
