@@ -40,3 +40,5 @@ cfs:filesystem
 percolate:migrations
 dynamic-import@0.3.0
 cfs:gridfs
+xolvio:cleaner
+meteortesting:mocha

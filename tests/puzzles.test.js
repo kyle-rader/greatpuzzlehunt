@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 const { admin } = require('../settings-development');
 
 describe('Puzzle management', () => {
@@ -15,7 +14,6 @@ describe('Puzzle management', () => {
   });
 
   it('can create a puzzle', () => {
-    console.log('test');
     // Navigate to puzzle management page
     browser.url('http://localhost:3000/admin/puzzles');
 
@@ -30,6 +28,25 @@ describe('Puzzle management', () => {
     browser.setValue('input[name="answer"]', '42');
     browser.setValue('input[name="hint_0_text"]', 'The answer to life, the universe, everything');
 
-    // while(true) {}
+    // Save the form
+    browser.$$('button.ui.green.button')[1].click();
+    try {
+      browser.alertAccept();
+    } catch (err) {
+      console.error(err);
+    }
+
+    // Check that puzzle properly created by refreshing page and checking list for puzzle
+    browser.url('http://localhost:3000/admin/puzzles');
+    let found = false;
+    browser.$$('div.column').forEach((e) => {
+      try {
+        if (e.getText().indexOf('Test Puzzle') !== -1) found = true;
+      } catch (err) {
+        // Pass
+      }
+    });
+
+    while(true) {}
   });
 });
