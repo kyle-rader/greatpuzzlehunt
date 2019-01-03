@@ -2,6 +2,10 @@
   "public": {
     "siteName": "[DEV] Great Puzzle Hunt",
     "siteURL": "http://localhost:3000",
+    "contact": {
+      "phone": "(206) 395-9633",
+      "supportEmail": "support@greatpuzzlehunt.com"
+    },
     "accountsEmail": "Great Puzzle Hunt <accounts@greatpuzzlehunt.com>",
     "infoEmail": "Great Puzzle Hunt <info@greatpuzzlehunt.com>",
     "eventYear": "2019",

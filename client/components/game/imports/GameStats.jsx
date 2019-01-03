@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Segment, Message, Header, Statistic, Progress } from 'semantic-ui-react';
 
 import { renderScore } from '../../imports/PuzzleProgress';
+import { getFinalScore } from '../../../../lib/imports/puzzle-helpers';
 
 const { eventYear } = Meteor.settings.public;
 
@@ -32,7 +33,7 @@ class GameStats extends Component {
   render() {
     const { team } = this.props;
     const { puzzlesSolved, finished } = this.state;
-    const { time, minutes } = renderScore(team.finalScore);
+    const { time, minutes } = renderScore(getFinalScore(team));
     return (
       <Message info={!finished} positive={finished}>
         {puzzlesSolved > 0 ? null : <Header as="h4" content="Starting Puzzle"/>}

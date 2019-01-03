@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
 import { Segment, Grid, Header, Button, Image, Message, Confirm } from 'semantic-ui-react';
+import { getHintsTaken } from '../../../../lib/imports/puzzle-helpers';
 
 const HINT_COST = [5, 10, 15];
 
@@ -22,7 +23,7 @@ export default class PuzzleHints extends React.Component {
     if (!puzzle.hints || puzzle.hints.length === 0) return <br/>;
 
     const { showConfirm, hintToTake } = this.state;
-    const currentHintCost = HINT_COST[puzzle.hintsTaken];
+    const currentHintCost = HINT_COST[getHintsTaken(puzzle)];
 
     return (
       <Grid style={ this.gridStyle }>
