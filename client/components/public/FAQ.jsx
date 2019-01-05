@@ -42,6 +42,49 @@ const importantDates = (
   </List>
 );
 
+const schedule_data = [
+  {
+    time: "10:00 AM",
+    desc: "Red Square, WWU Campus: Check in, receive wristband (color coded by division), information packet, swag, and any pre-ordered shirts. Photos for team costume competition.",
+  },
+  {
+    time: "10:45 AM",
+    desc: "Red Square: Announcements."
+  },
+  {
+    time: "11:00 AM",
+    desc: "Red Square: Puzzle Hunt starts!"
+  },
+  {
+    time: "1:30 - 3:30 PM",
+    desc: "Red Square: KUGS Radio plays music."
+  },
+  {
+    time: "1:30 - 3:30 PM",
+    desc: "Red Square: Stop by between puzzles and grab a slice or 2 – Domino’s Pizza. Free to registered participants."
+  },
+  {
+    time: "4:15 PM",
+    desc: "Puzzle Stations close. Finish Puzzles and return to Red Square."
+  },
+  {
+    time: "4:30 - 5:00 PM",
+    desc: "Red Square: Award Ceremony & Prizes*!"
+  },
+]
+
+const schedule = (
+  <table>
+    <tbody>
+      {schedule_data.map((item, idx) => (
+      <tr key={idx}>
+        <td style={{width: "130px", fontWeight: "bold", textAlign: "right", paddingRight: "10px"}}>{item.time}</td>
+        <td>{item.desc}</td>
+      </tr>))}
+    </tbody>
+  </table>
+);
+
 FAQ = class FAQ extends Component {
 
   constructor(props) {
@@ -169,6 +212,11 @@ FAQ = class FAQ extends Component {
             </h3>
             Other important dates:
             {importantDates}
+
+            Schedule for the day:
+            {schedule}
+
+            {prizeNote}
           </Accordion.Content>
 
           <Accordion.Title active={activeIndex === 5} index={5} onClick={(e,p) => this.handleClick(e,p)} >
@@ -189,16 +237,33 @@ FAQ = class FAQ extends Component {
             What team divisions are there?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 6}>
+            <Header as="h2">Competitive*</Header>
             <List className='bulleted'>
-              <List.Item description="WWU Students - All team members must be currently enrolled at WWU (undergrad or grad)"/>
-              <List.Item description="High School - All team members must be currently enrolled in high school"/>
-              <List.Item description="WWU Alumni - At least half of team members must be WWU Alumni"/>
-              <List.Item description="Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)"/>
+              <List.Item
+                header="WWU Students"
+                description="All team members must be currently enrolled at WWU (undergrad or grad)."
+              />
+              <List.Item
+                header="High School"
+                description="All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member."
+              />
+              <List.Item
+                header="WWU Alumni"
+                description="At least half of team members must be WWU Alumni."
+              />
+              <List.Item
+                header="Open"
+                description="General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)."
+              />
             </List>
             <p>
-              Note: A team may have up to 6 members. We recommend 4-6 for dividing up tasks.<br/>
-              Note: A minimum of 10 teams are required to form a division; else the teams in that division may merge into the Open division.<br/>
+              <small>
+                <strong>*Note:</strong> A minimum of 10 teams are required to form a division; else the teams in that division may merge into the Open division.<br/>
+              </small>
             </p>
+
+            <Header as="h2">Non-competitive</Header>
+            All teams who enjoy puzzling without time pressure.
           </Accordion.Content>
 
           <Accordion.Title active={activeIndex === 7} index={7} onClick={(e,p) => this.handleClick(e,p)} >
@@ -208,7 +273,7 @@ FAQ = class FAQ extends Component {
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 7}>
             <p>
-              Awesome prizes* will be awarded to top three teams in each division. Other prizes* for best team names, costumes, spirit, and more!
+              Awesome prizes* will be awarded to top three teams in each division. Other prizes* for best team names, costumes, and more!
             </p>
             {prizeNote}
           </Accordion.Content>
@@ -276,15 +341,7 @@ FAQ = class FAQ extends Component {
             How long will this last? (Event Schedule)
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 11}>
-            <List>
-              <List.Item description="10:00 AM -  Check in at Red Square, WWU campus. Receive wristband (color coded by division), information packet, swag, and any pre-ordered shirts."/>
-              <List.Item description="10:45 AM - Announcements."/>
-              <List.Item description="11:00 AM - Puzzle Hunt starts!"/>
-              <List.Item description="1:30 - 3:30 PM KUGS Radio plays music Red Square"/>
-              <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
-              <List.Item description="2 - 3 PM - Finishing Puzzles and return to Red Square"/>
-              <List.Item description="4 - 5 PM - Award Ceremony & Prizes*!"/>
-            </List>
+            {schedule}
             {prizeNote}
           </Accordion.Content>
 
@@ -304,7 +361,7 @@ FAQ = class FAQ extends Component {
             </p>
             <List>
               <List.Item description="10:00 AM - Check in/receive wristband. Refreshments area opens along Miller Hall."/>
-              <List.Item description="2:30 PM - Domino’s Pizza Arrives in Red Square"/>
+              <List.Item description="1:30 PM - Domino’s Pizza Arrives in Red Square"/>
             </List>
             <p>
               Special thanks to Market Street Catering of <a target="_blank" href="http://www.haggen.com/">Haggen NW Fresh</a> for providing fresh fruit and
@@ -337,7 +394,7 @@ FAQ = class FAQ extends Component {
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 15}>
             <p>This year you have several choices of puzzle hunt gear and hundreds of color combinations!</p>
-            <p>Note: to buy gear you will be redirected to <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">this CashNet page</a> where you need to click the bottom gear link to select your gear options.</p>
+            <p>Note: to buy gear you will be redirected to <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019">this CashNet page</a> where you need to click the bottom gear link to select your gear options.</p>
             <List>
               <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#tshirts">Mens Cotton T-Shirts</a></List.Item>
               <List.Item><a target="_blank" href="http://www.wwu.edu/emarket/puzzlehunt/#wtshirts">Womens Cotton T-Shirts</a></List.Item>
@@ -352,7 +409,7 @@ FAQ = class FAQ extends Component {
         </Accordion>
 
         <br/>
-        <p>Last Updated: Sep 15, 2018</p>
+        <p>Last Updated: January 2019</p>
       </Container>
     );
   }
