@@ -49,7 +49,7 @@ class VolunteerTeamCheckInMain extends Component {
 
   _header() {
     const { name } = this.props.team;
-    return <PuzzlePageTitle title="GPH 2018 Checkin" subTitle={name}/>;
+    return <PuzzlePageTitle title="GPH 2019 Checkin" subTitle={name}/>;
   }
 
   _itemsToGive(team, teamMembers) {

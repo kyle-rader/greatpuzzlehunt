@@ -47,7 +47,7 @@ RegistrationProcess = class RegistrationProcess extends Component {
         </List.Item>
         <List.Item>
           {currentStep === 1 ? this._youAreHere() : null }
-          Purchase ticket code <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018">HERE</a>.<br/>
+          Purchase ticket code <a target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019">HERE</a>.<br/>
           Deadline: <strong>10:00 AM {eventDate}</strong>
         </List.Item>
         <List.Item>

@@ -25,7 +25,7 @@ const registrationClosesMessage = (
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
       Registration Closes {registrationCloseDate}, 11:59 PM. <br/>
-      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
+      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
     </Message.Content>
   </Message>
 );
@@ -102,7 +102,7 @@ export default class HomeHeader extends Component {
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
-      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" content="Buy Tickets"/> */}
+      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" content="Buy Tickets"/> */}
     </div>
     );
   }
