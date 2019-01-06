@@ -40,7 +40,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
         <Segment basic>
           <Header id="do" as='h2' icon={<Icon name="check" color="green"/>} content="Do"/>
           <List bulleted relaxed size="large">
-            <List.Item>Use the internet! Google things! For public Wi-Fi, select <strong>WWUwireless-Guest</strong>. (<a href="https://atus.wwu.edu/kb/wwu-public-wifi-network" target="_blank">More WiFi info</a>)</List.Item>
+            <List.Item>Use the internet! Google things! For public Wi-Fi, select <strong>WWUwireless-Guest</strong>. (<a href="https://atus.wwu.edu/kb/wwu-public-wifi-network" target="_blank">More WiFi info</a>.)</List.Item>
             <List.Item>Have fun and make it fun for others by abiding by the standards of fair play.</List.Item>
             <List.Item>Send questions to <a href="mailto:support@greatpuzzlehunt.com">support@greatpuzzlehunt.com</a>.</List.Item>
             <List.Item>Report anything during the Hunt that you feel is unsafe or represents unsportsmanlike conduct. (<Link to="/contact">Contact Info</Link>)</List.Item>
@@ -72,7 +72,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
 
         {/* MECHANICS Section */}
         <Segment basic>
-          <Header id="mechanics" as="h2" icon={<Icon name="cogs" color="orange"/>} content="Mechanics" />
+          <Header id="mechanics" as="h2" icon={<Icon name="cog" color="orange"/>} content="Mechanics" />
           <List bulleted relaxed size="large">
             <List.Item>To solve a puzzle you must:
                 <List ordered={true}>
