@@ -7,14 +7,14 @@ import moment from 'moment';
 import LinkButton from '../../imports/LinkButton';
 import TimedComp from './TimedComp';
 
-const { eventDate } = Meteor.settings.public;
+const { eventDate, earlyBirdLastDate, registrationCloseDate } = Meteor.settings.public;
 
 const registerNowMessage = (
   <Message icon color='teal'>
     <Icon name='ticket'/>
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
-      All ticket and gear prices go up on March 18th at midnight!
+      All ticket and gear prices go up on {earlyBirdLastDate} at midnight!
     </Message.Content>
   </Message>
 );
@@ -24,8 +24,8 @@ const registrationClosesMessage = (
     <Icon name='ticket'/>
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
-      Registration Closes on April 12, 11:59 PM. <br/>
-      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" target="_blank">buy and redeem tickets</a> until 10:00 AM April 14.
+      Registration Closes {registrationCloseDate}, 11:59 PM. <br/>
+      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
     </Message.Content>
   </Message>
 );
@@ -102,7 +102,7 @@ export default class HomeHeader extends Component {
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
-      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" content="Buy Tickets"/> */}
+      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" content="Buy Tickets"/> */}
     </div>
     );
   }

@@ -24,7 +24,7 @@ export default class HomeIntro extends Component {
 
           <Grid.Row>
             <Grid.Column width={16} className='raised'>
-              <Embed active={true} icon={null} url="https://www.youtube.com/embed/LYzpNT-vX7s"/>
+              <Embed active={true} icon={null} url="https://www.youtube.com/embed/paBGQzMCdUo"/>
             </Grid.Column>
           </Grid.Row>
 
@@ -67,8 +67,8 @@ export default class HomeIntro extends Component {
             <Grid.Column>
               <Segment padded inverted color='blue' >
                 <Header as='h1' size="medium" >When?</Header>
-                {eventDate} from 10AM - 5PM<br/>
-                Awards and Prizes* at 4PM<br/>
+                {eventDate} from 10 AM - 5 PM<br/>
+                Awards and Prizes* at 4:30 PM<br/>
                 *Must be present at awards ceremony to claim prizes, else prizes go to the next place team.<br/>
               </Segment>
             </Grid.Column>
