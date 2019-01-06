@@ -58,6 +58,12 @@ export default class ProfileCards extends Component {
         image: '/img/team/katrina.jpg',
       },
       {
+        name: 'Patrick Carroll',
+        title: '',
+        role: 'AS Marketing and Promotions',
+        image: '/img/team/patrick_c.jpg',
+      },
+      {
         name: 'Danielle Glewwe',
         title: '',
         role: 'AS Marketing and Promotions',
@@ -73,7 +79,7 @@ export default class ProfileCards extends Component {
         name: 'Alex Kuhn',
         title: '',
         role: 'AS Co-Budget Coordinator',
-        image: '/img/team/placeholder.png',
+        image: '/img/team/alex_k.jpg',
       },
     ];
     this.pastProfiles = [
