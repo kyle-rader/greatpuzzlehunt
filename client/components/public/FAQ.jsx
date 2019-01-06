@@ -102,12 +102,6 @@ FAQ = class FAQ extends Component {
       <Container>
         <PuzzlePageTitle title="FAQ"/>
 
-        <Message
-          info size='large'
-          header='Note!'
-          content="Some dates, times, and other details may change for the 2019 Hunt. Please check back again later."
-        />
-
         <Accordion styled fluid>
 
           <Accordion.Title active={activeIndex === 0} index={0} onClick={(e,p) => this.handleClick(e,p)}>
