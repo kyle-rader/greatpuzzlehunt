@@ -42,6 +42,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
           <List bulleted relaxed size="large">
             <List.Item>Use the internet! Google things! For public Wi-Fi, select <strong>WWUwireless-Guest</strong>. (<a href="https://atus.wwu.edu/kb/wwu-public-wifi-network" target="_blank">More WiFi info</a>)</List.Item>
             <List.Item>Have fun and make it fun for others by abiding by the standards of fair play.</List.Item>
+            <List.Item>Send questions to <a href="mailto:support@greatpuzzlehunt.com">support@greatpuzzlehunt.com</a> if you have questions.</List.Item>
             {/*
             <List.Item>Post questions and comments on <a href="https://www.facebook.com/events/323776618104349/" target="_blank">the GPH 2018 Facebook Event</a>. Please do not post photos of others without their explicit consent!</List.Item>
             */}
@@ -55,6 +56,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
           <List bulleted relaxed size="large">
             <List.Item>Interfere with another team’s enjoyment of the Hunt.</List.Item>
             <List.Item>Give Puzzle information to or obtain Puzzle information from another team.</List.Item>
+            <List.Item>Please do not post photos of others without their explicit consent!</List.Item>
           </List>
         </Segment>
 
