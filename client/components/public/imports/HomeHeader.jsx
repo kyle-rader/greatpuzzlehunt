@@ -24,7 +24,7 @@ const registrationClosesMessage = (
     <Icon name='ticket'/>
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
-      Registration Closes {registrationCloseDate}, 11:59 PM. <br/>
+      Step 1 of Registration Closes {registrationCloseDate}, 11:59 PM. <br/>
       You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
     </Message.Content>
   </Message>
