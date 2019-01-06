@@ -36,9 +36,9 @@ const gearPricing = (
 
 const importantDates = (
   <List className='bulleted'>
-    <List.Item><strong>{earlyBirdLastDate}</strong>: Early Bird discount prices for ticket codes and official gear ends.</List.Item>
+    <List.Item><strong>{earlyBirdLastDate}</strong>: Early Bird discount prices for ticket codes and official gear end.</List.Item>
     <List.Item><strong>{gearSaleEnd}</strong>: Official Puzzle Hunt Gear Pre-Order deadline (pick up your gear at check-in on {eventDate})</List.Item>
-    <List.Item><strong>{registrationCloseDate}</strong>: Registration Closes (Or earlier if team limit is reached). <br/>If you've already made an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
+    <List.Item><strong>{registrationCloseDate}</strong>: Step 1 of Registration Closes (Or earlier if team limit is reached). <br/>If you've already created an account you can purchase and redeem a ticket codes up until {eventDate} at 10:00 AM.</List.Item>
   </List>
 );
 
@@ -61,7 +61,7 @@ const schedule_data = [
   },
   {
     time: "1:30 - 3:30 PM",
-    desc: "Red Square: Stop by between puzzles and grab a slice or 2 – Domino’s Pizza. Free to registered participants."
+    desc: "Red Square: Domino’s Pizza. Stop by between puzzles and grab a slice or 2. Free to registered participants."
   },
   {
     time: "4:15 PM",
@@ -103,13 +103,6 @@ FAQ = class FAQ extends Component {
         <PuzzlePageTitle title="FAQ"/>
 
         <Accordion styled fluid>
-
-          <Accordion.Title active={activeIndex === 0} index={0} onClick={(e,p) => this.handleClick(e,p)}>
-            <Icon color="red" size="huge" name="dropdown"/>
-            <Icon name="download"/>
-            Useful downloads (2017)
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 0}>{this._downloadButtons()}</Accordion.Content>
 
           <Accordion.Title active={activeIndex === 1} index={1} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="red" size="huge" name="dropdown"/>
@@ -155,15 +148,15 @@ FAQ = class FAQ extends Component {
           <Accordion.Title active={activeIndex === 2} index={2} onClick={(e,p) => this.handleClick(e,p)} >
             <Icon color="orange" size="huge" name="dropdown"/>
             <Icon name="info"/>
-            What is the Great Puzzle Hunt?
+            What is the WWU Great Puzzle Hunt?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 2}>
             <p>
-              A puzzle hunt is an outdoor adventure - think scavenger hunt but with puzzle-solving.
-              Teams of up to 6 (recommended size 4-6) travel on foot about WWU campus solving
+              The WWU Great Puzzle Hunt is an outdoor adventure - think scavenger hunt, but with puzzle-solving.
+              Teams of up to 6 (recommended size 4-6) travel on foot about WWU campus (outdoors) solving
               a collection of puzzles (involving logic, patterns, decoding, and a variety
               of skill sets). Lots of prizes* will be awarded. Whether your team places
-              first or two hundred and fifty-first, competing in a puzzle hunt is a
+              first or two hundred and fifty-first, competing in the puzzle hunt is a
               great way to stretch your mental muscles, bond with your teammates,
               and have a lot of fun!
             </p>
@@ -174,14 +167,9 @@ FAQ = class FAQ extends Component {
             </p>
             <p>
               Don’t forget your bag of scissors, tape, hole punch, etc. to
-              MacGyver your way through. Once you determine and enter code words,
+              MacGyver your way through. Once you determine and enter code word(s),
               the clock stops and you are sent to the next destination. Connect
               all the code words to complete the game! <strong>OPEN TO ALL!</strong>
-            </p>
-            <p>
-              Lots of prizes will be awarded. Whether your team places first or two
-              hundred and fifty-first, competing in a puzzle hunt is a great way to
-              stretch your mental muscles, bond with your teammates, and have a lot of fun!
             </p>
             {prizeNote}
           </Accordion.Content>
@@ -252,12 +240,16 @@ FAQ = class FAQ extends Component {
             </List>
             <p>
               <small>
-                <strong>*Note:</strong> A minimum of 10 teams are required to form a division; else the teams in that division may merge into the Open division.<br/>
+                <strong>*Note:</strong> A minimum of 10 teams are required to form a division; else the teams in that division may merge with another division.<br/>
               </small>
             </p>
 
             <Header as="h2">Non-competitive</Header>
             All teams who enjoy puzzling without time pressure.
+            <br /><br />
+            <hr />
+
+            <strong>Note:</strong> All teams may have up to 6 members. We recommend 4-6 for dividing up tasks.
           </Accordion.Content>
 
           <Accordion.Title active={activeIndex === 7} index={7} onClick={(e,p) => this.handleClick(e,p)} >
@@ -351,7 +343,7 @@ FAQ = class FAQ extends Component {
               Wristbands are distributed at check-in.
             </p>
             <p>
-              Coffee and light refreshments will be available in front of Miller Hall (in Red Square) throughout the event while supplies last.
+              Coffee, tea, cocoa, and light refreshments will be available in front of Miller Hall (in Red Square) throughout the event while supplies last.
             </p>
             <List>
               <List.Item description="10:00 AM - Check in/receive wristband. Refreshments area opens along Miller Hall."/>
