@@ -92,6 +92,10 @@ export default class HomeHeader extends Component {
   _linkButtons() {
     return (
     <div>
+      <Message color="red" compact>
+        <Message.Header>Registration is now open!</Message.Header>
+      </Message>
+      <br />
       <LinkButton to='/register' size='large' color='blue' content='Register'/>
       <LinkButton to="/login" size='large' content='Log In'/>
       <LinkButton to="/faq" size='large' content='FAQ'/>
