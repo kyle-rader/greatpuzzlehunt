@@ -92,17 +92,14 @@ export default class HomeHeader extends Component {
   _linkButtons() {
     return (
     <div>
-      {/* <LinkButton to='/register' size='large' color='blue' content='Register'/> */}
-      {/* <LinkButton to="/login" size='large' content='Log In'/> */}
-        <LinkButton as='a' href="https://greatpuzzlehunt.us14.list-manage.com/track/click?u=176d08f225169ced62da05750&id=3a59c57f71&e=551c17f39d"
-        size='large' color='blue' content='Pre Register for 2019'
-      />
+      <LinkButton to='/register' size='large' color='blue' content='Register'/>
+      <LinkButton to="/login" size='large' content='Log In'/>
       <LinkButton to="/faq" size='large' content='FAQ'/>
       <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
-      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" content="Buy Tickets"/> */}
+      <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" content="Buy Tickets"/>
     </div>
     );
   }
