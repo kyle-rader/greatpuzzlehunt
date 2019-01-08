@@ -76,7 +76,7 @@ const schedule_data = [
 const schedule = (
   <List>
     {schedule_data.map((item, idx) => (
-      <List.Item header={item.time} description={item.desc} />
+      <List.Item header={item.time} description={item.desc} key={idx}/>
     ))}
   </List>
 );

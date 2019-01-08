@@ -75,7 +75,7 @@ RulesOfPlay = class RulesOfPlay extends Component {
 
         {/* MECHANICS Section */}
         <Segment basic>
-          <Header id="mechanics" as="h2" icon={<Icon name="setting" color="orange"/>} content="Mechanics" />
+          <Header id="mechanics" as="h2" icon={<Icon name="setting" color="orange"/>} content="Game Mechanics" />
           <List bulleted relaxed size="large">
             <List.Item>To solve a puzzle you must:
                 <List ordered={true}>
