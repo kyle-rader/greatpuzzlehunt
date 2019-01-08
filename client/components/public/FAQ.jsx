@@ -180,6 +180,8 @@ FAQ = class FAQ extends Component {
             How many people should be on my team?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 3}>
+            A maximum of 6 people are allowed on a team.
+            <br /><br />
             We recommend 4-6 people on a team. It can be an advantage to divvy up the work (cutting, constructing, googling, etc.).
           </Accordion.Content>
 
