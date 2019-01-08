@@ -74,15 +74,11 @@ const schedule_data = [
 ]
 
 const schedule = (
-  <table>
-    <tbody>
-      {schedule_data.map((item, idx) => (
-      <tr key={idx}>
-        <td style={{width: "130px", fontWeight: "bold", textAlign: "right", paddingRight: "10px"}}>{item.time}</td>
-        <td>{item.desc}</td>
-      </tr>))}
-    </tbody>
-  </table>
+  <List>
+    {schedule_data.map((item, idx) => (
+      <List.Item header={item.time} description={item.desc} />
+    ))}
+  </List>
 );
 
 FAQ = class FAQ extends Component {

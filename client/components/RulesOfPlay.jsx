@@ -25,10 +25,13 @@ RulesOfPlay = class RulesOfPlay extends Component {
           <p>Scroll To: <br/></p>
           <p>
             <Scrollchor to="#dont" animate={{ offset: -70, duration: 300 }}>
-              <Button basic content="Dont" color="red"/>
+              <Button basic content="Don't" color="red"/>
             </Scrollchor>
             <Scrollchor to="#puzzles" animate={{ offset: -70, duration: 300 }}>
               <Button basic content="Puzzles" color="purple"/>
+            </Scrollchor>
+            <Scrollchor to="#mechanics" animate={{ offset: -70, duration: 300 }}>
+              <Button basic content="Mechanics" color="orange"/>
             </Scrollchor>
             <Scrollchor to="#scoring" animate={{ offset: -70, duration: 300 }}>
               <Button basic content="Scoring" color="blue"/>
