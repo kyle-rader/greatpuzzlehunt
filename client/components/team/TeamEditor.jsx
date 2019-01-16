@@ -11,11 +11,11 @@ TeamEditor = class TeamEditor extends Component {
     this.state = this._getStateFromProps(props);
 
     this.divisions = [
-      { name: 'WWU Student (All members must be current WWU students)', value: 'wwu-student' },
-      { name: 'WWU Alumni (At least half of members must be WWU Alumni)', value: 'wwu-alumni' },
+      { name: 'WWU Student - All team members must be currently enrolled at WWU (undergrad or grad).', value: 'wwu-student' },
+      { name: 'WWU Alumni - At least half of team members must be WWU Alumni.', value: 'wwu-alumni' },
       // { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
-      { name: 'High School (All members must be current high school students)', value: 'highschool' },
-      { name: 'Open (General public, mixed student/non-student, family - children under age 14 must be accompanied by a parent/guardian on their team)', value: 'open' },
+      { name: 'High School - All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member.', value: 'highschool' },
+      { name: 'Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian).', value: 'open' },
     ];
 
     this._handleChange = (e, { name: dataName, value: dataValue } = {}) => {
@@ -58,6 +58,7 @@ TeamEditor = class TeamEditor extends Component {
         </Form.Group>
         <Form.Field>
           <label>Team Division <br/><small>This determines your prize group</small></label>
+          <strong>Note:</strong> Our new non-competitive division option is coming soon!
           <br/>
           {this._renderDivisionRadio()}
         </Form.Field>
