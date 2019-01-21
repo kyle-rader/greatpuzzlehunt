@@ -7,14 +7,14 @@ import moment from 'moment';
 import LinkButton from '../../imports/LinkButton';
 import TimedComp from './TimedComp';
 
-const { eventDate } = Meteor.settings.public;
+const { eventDate, earlyBirdLastDate, registrationCloseDate } = Meteor.settings.public;
 
 const registerNowMessage = (
   <Message icon color='teal'>
     <Icon name='ticket'/>
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
-      All ticket and gear prices go up on March 18th at midnight!
+      All ticket and gear prices go up on {earlyBirdLastDate} at midnight!
     </Message.Content>
   </Message>
 );
@@ -24,8 +24,8 @@ const registrationClosesMessage = (
     <Icon name='ticket'/>
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
-      Registration Closes on April 12, 11:59 PM. <br/>
-      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" target="_blank">buy and redeem tickets</a> until 10:00 AM April 14.
+      Step 1 of Registration Closes {registrationCloseDate}, 11:59 PM. <br/>
+      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
     </Message.Content>
   </Message>
 );
@@ -92,17 +92,18 @@ export default class HomeHeader extends Component {
   _linkButtons() {
     return (
     <div>
-      {/* <LinkButton to='/register' size='large' color='blue' content='Register'/> */}
-      {/* <LinkButton to="/login" size='large' content='Log In'/> */}
-        <LinkButton as='a' href="https://greatpuzzlehunt.us14.list-manage.com/track/click?u=176d08f225169ced62da05750&id=3a59c57f71&e=551c17f39d"
-        size='large' color='blue' content='Pre Register for 2019'
-      />
+      <Message color="red" compact>
+        <Message.Header>Registration is now open!</Message.Header>
+      </Message>
+      <br />
+      <LinkButton to='/register' size='large' color='blue' content='Register'/>
+      <LinkButton to="/login" size='large' content='Log In'/>
       <LinkButton to="/faq" size='large' content='FAQ'/>
       <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='blue' content='Donate'
         icon={<Icon name='heart'/>}
       />
-      {/* <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2018" content="Buy Tickets"/> */}
+      <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" content="Buy Tickets"/>
     </div>
     );
   }

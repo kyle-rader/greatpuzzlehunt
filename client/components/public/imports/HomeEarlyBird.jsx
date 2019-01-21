@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Grid, Segment, Container, Image, Header, Button } from 'semantic-ui-react';
 import LinkButton from '../../imports/LinkButton';
+
+const { earlyBirdLastDate, regularRegistrationStart, regularRegistrationEnd } = Meteor.settings.public;
+
 export default class HomeEarlyBird extends Component {
   render() {
     return (
@@ -20,14 +23,14 @@ export default class HomeEarlyBird extends Component {
              <Grid.Column width={6}>
 
                <Segment inverted color='blue'>
-                 <Header as="h1" size="huge">Early Bird Registration Until March 18th 2018</Header>
+                 <Header as="h1" size="huge">Early Bird Registration Until {earlyBirdLastDate}</Header>
                  Student   $5<br/><br/>
                  Non-Student   $10<br/><br/><br/>
                </Segment>
 
                 <Segment  inverted color='blue'>
                   <Header as="h1" size='huge'>Regular Registration</Header>
-                  March 19 - April 12, 2018<br/><br/>
+                  {regularRegistrationStart} through {regularRegistrationEnd}<br/><br/>
                   Student   $8<br/><br/>
                   Non-Student   $15<br/><br/>
                   * Registration prices are per person. Each person wanting to join a team must register themselves first.

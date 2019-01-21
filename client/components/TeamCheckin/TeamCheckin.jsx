@@ -23,7 +23,7 @@ class TeamCheckinInner extends Component {
   _renderCheckinClosed() {
     return (
       <Container>
-        <PuzzlePageTitle title="GPH 2018 Check In"/>
+        <PuzzlePageTitle title="GPH 2019 Check In"/>
         <Message icon={<Icon loading name="refresh"/>} info header="Waiting for Check In to open"/>
       </Container>
     );

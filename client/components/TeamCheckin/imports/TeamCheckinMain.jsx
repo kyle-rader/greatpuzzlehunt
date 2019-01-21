@@ -24,7 +24,7 @@ class TeamCheckinMain extends Component {
 
     return (
       <Container>
-        <PuzzlePageTitle title="GPH 2018 Check In" subTitle={team.name}/>
+        <PuzzlePageTitle title="GPH 2019 Check In" subTitle={team.name}/>
         {
           team.userCheckin ?
           <PostUserCheckin user={user} team={team} teamMembers={teamMembers}/> :

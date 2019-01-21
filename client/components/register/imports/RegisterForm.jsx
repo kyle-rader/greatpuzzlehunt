@@ -127,7 +127,7 @@ class RegisterForm extends Component {
       return <Message
         info
         header='Registration is closed'
-        content='The 2018 Great Puzzle Hunt is now in development' />
+        content='The 2019 Great Puzzle Hunt is now in development' />
     }
   }
 
