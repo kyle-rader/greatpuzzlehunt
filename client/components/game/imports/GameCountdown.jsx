@@ -16,7 +16,7 @@ class GameCountdown extends Component {
   }
 
   render() {
-    const timeToStart = moment('2018-04-14T10:00:00-07:00').from(this.state.now, true);
+    const timeToStart = moment('2019-04-13T10:00:00-07:00').from(this.state.now, true);
     return (
       <Message info>
         <Message.Header>The Hunt has not started yet!</Message.Header>
