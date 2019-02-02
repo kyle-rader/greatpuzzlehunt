@@ -49,12 +49,19 @@ describe('User management', () => {
       return browser.getUrl() === 'http://localhost:3000/admin/users';
     });
 
-    const userRow = browser.$('tr td span');
-    console.log(userRow);
-    while(true) {}
+    // Check that test user is in the list of users
+    browser.pause(1000); // This is to make sure the DOM loads in time
+    const userName = browser.$(`span=${testUser.firstName} ${testUser.lastName}`);
+    if (userName.value === null) throw new Error('Couldn\'t find test user in user list');
 
+    // Verify and pay for the user
+    const userRow = userName.$('..').$('..');
+    userRow.$('button').click();
+    browser.$('button=Verify Email').click();
+    browser.$('button=Pay').click();
+    browser.alertAccept();
   });
-})
+});
 
 describe('Puzzle management', () => {
   beforeEach(() => {

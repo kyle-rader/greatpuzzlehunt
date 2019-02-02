@@ -1,0 +1,16 @@
+{
+  "testUser": {
+    "firstName": "Test",
+    "lastName": "McGee",
+    "email": "test@test.com",
+    "password": "thisisatestpassword",
+    "phone": 1234567890,
+    "age": 22,
+    "address": "516 High St",
+    "city": "Bellingham",
+    "zip": 98225,
+    "state": "WA",
+    "emergencyContact": "Emergency McGee",
+    "relationship": "Clone"
+  }
+}
