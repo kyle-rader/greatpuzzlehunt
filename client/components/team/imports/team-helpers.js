@@ -10,6 +10,47 @@ export const DIVISION_OPTS = [
   { text: 'Open', value: 'open' },
 ];
 
+export const DIVISION_TYPES = [
+  {
+    text: 'WWU Student',
+    value: 'wwu-student',
+    notADesc: "All team members must be currently enrolled at WWU (undergrad or grad)."
+  },
+  {
+    text: 'WWU Alumni',
+    value: 'wwu-alumni',
+    notADesc: "At least half of team members must be WWU Alumni."
+  },
+  {
+    text: 'High School',
+    value: 'highschool',
+    notADesc: "All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member."
+  },
+  {
+    text: "Non-Competitive",
+    value: "noncompetitive",
+    notADesc: "[[NON-COMPETITIVE DIVISION DESCRIPTION]]"
+  },
+  {
+    text: 'Open',
+    value: 'open',
+    notADesc: "Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)."
+  },
+];
+
+// export const DIVISION_OPTS = [
+//   ...DIVISION_TYPES.map(div => ({text: div.text, value: div.value})),
+//   {text: "All", value: "all"}
+// ];
+
+// export const DIVISION_MAP = function(){
+//   map = {};
+//   DIVISION_TYPES.forEach(div => {
+//     map[div.value] = div.text
+//   });
+//   return map;
+// }();
+
 export const DIVISION_MAP = {
   'wwu-student': 'WWU Student',
   'wwu-alumni': 'WWU Alumni',
