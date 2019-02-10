@@ -104,8 +104,7 @@ describe('User management', () => {
 describe('Puzzle management', () => {
   beforeEach(() => {
     // Login as admin user
-    browser.url('http://localhost:3000');
-    browser.click('a.item[href="/login"]');
+    browser.url('http://localhost:3000/login');
     browser.setValue('input[name="email"]', admin.email);
     browser.setValue('input[name="password"]', admin.password);
     browser.click('button[type="submit"]');
@@ -117,12 +116,10 @@ describe('Puzzle management', () => {
     browser.url('http://localhost:3000/admin/gamestate');
     browser.pause(1000);
     const checkIn = browser.$('button.red');
-    console.log(checkIn);
     checkIn.click();
     browser.alertAccept();
     browser.pause(1000);
     const registration = browser.$('button.red');
-    console.log(registration);
     registration.click();
     browser.alertAccept();
     browser.pause(1000);
@@ -131,7 +128,6 @@ describe('Puzzle management', () => {
     browser.url('http://localhost:3000/');
     browser.pause(1000);
     const menu = browser.$('i.settings').$('..');
-    console.log(menu);
     menu.click();
     browser.pause(1000);
     menu.$('i.sign.out').$('..').click();
@@ -140,12 +136,21 @@ describe('Puzzle management', () => {
   it('can create a puzzle', () => {
     // Navigate to puzzle management page
     browser.url('http://localhost:3000/admin/puzzles');
+    browser.waitUntil(() => {
+      return browser.getUrl() === 'http://localhost:3000/admin/puzzles';
+    });
+    browser.pause(1000);
 
     // Click the 'New Puzzle' button
-    browser.click('button.ui.small.basic.button[role="button"]');
+    const newPuzzle = browser.$('button=New Puzzle');
+    newPuzzle.click();
+    browser.pause(1000);
 
     // Click the 'Edit' button
-    browser.click('button.ui.green.basic.right.floated.button');
+    const edit = browser.$('button=Edit');
+    edit.click();
+    browser.pause(1000);
+    // browser.click('button.ui.green.basic.right.floated.button');
 
     // Fill out puzzle form
     browser.setValue('input[name="name"]', 'Test Puzzle');
@@ -170,8 +175,15 @@ describe('Puzzle management', () => {
         // Pass
       }
     });
-    console.log(found);
+    if (!found) throw new Error('Cannot find newly created puzzle');
 
-    while(true) {}
+    // Let's sign out
+    browser.url('http://localhost:3000/');
+    browser.pause(1000);
+    const menu = browser.$('i.settings').$('..');
+    menu.click();
+    browser.pause(1000);
+    menu.$('i.sign.out').$('..').click();
+    browser.pause(1000);
   });
 });
