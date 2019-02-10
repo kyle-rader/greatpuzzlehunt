@@ -165,18 +165,6 @@ describe('Puzzle management', () => {
       console.error(err);
     }
 
-    // Check that puzzle properly created by refreshing page and checking list for puzzle
-    browser.url('http://localhost:3000/admin/puzzles');
-    let found = false;
-    browser.$$('.column.five.row').forEach((e) => {
-      try {
-        if (e.getText().indexOf('Test Puzzle') !== -1) found = true;
-      } catch (err) {
-        // Pass
-      }
-    });
-    if (!found) throw new Error('Cannot find newly created puzzle');
-
     // Let's sign out
     browser.url('http://localhost:3000/');
     browser.pause(1000);
@@ -185,5 +173,55 @@ describe('Puzzle management', () => {
     browser.pause(1000);
     menu.$('i.sign.out').$('..').click();
     browser.pause(1000);
+  });
+});
+
+describe('Gameplay tests', () => {
+  it('allows a player to check-in', () => {
+    // Login as user
+    browser.url('http://localhost:3000/team/checkin');
+    browser.setValue('input[name="email"]', testUser.email);
+    browser.setValue('input[name="password"]', testUser.password);
+    browser.click('button[type="submit"]');
+    browser.waitUntil(() => {
+      return browser.getUrl() === 'http://localhost:3000/team/checkin';
+    });
+    browser.pause(1000);
+
+    // Depending on how you get to this view, this button might be here
+    try {
+      browser.click('button=Start Check In');
+    } catch(err) {
+      // Pass
+    }
+
+    // Check in the player
+    browser.click('button=Here!');
+    browser.pause(1000);
+
+    // Check in with the volunteer
+    browser.click('button=Check In with Volunteer');
+    browser.pause(1000);
+
+    console.log('You will need to manually check-in the player with your phone...');
+
+    // Wait until the purple 'Go To Game' button appears, then click it
+    browser.waitUntil(() => {
+      try {
+        browser.click('button=Go To Game');
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }, 120000);
+    browser.pause(1000);
+
+    // Click begin
+    browser.click('button=Click to Begin');
+  });
+
+  it('lets users submit puzzle answers', () => {
+    browser.url('http://localhost:3000/game');
+    while(true) {}
   });
 });
