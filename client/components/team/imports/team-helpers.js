@@ -1,15 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 
-export const DIVISION_OPTS = [
-  { text: 'All', value: 'all' },
-  { text: 'WWU Student', value: 'wwu-student' },
-  { text: 'WWU Alumni', value: 'wwu-alumni' },
-  // { text: 'Post-Secondary/Non-WWU college', value: 'post-secondary' },
-  { text: 'High School', value: 'highschool' },
-  { text: 'Open', value: 'open' },
-];
-
 export const DIVISION_TYPES = [
   {
     text: 'WWU Student',
@@ -51,23 +42,10 @@ export const WRIST_BAND_COLOR = function(){
   return map;
 }();
 
-// export const DIVISION_OPTS = [
-//   ...DIVISION_TYPES.map(div => ({text: div.text, value: div.value})),
-//   {text: "All", value: "all"}
-// ];
-
-// export const DIVISION_MAP = function(){
-//   map = {};
-//   DIVISION_TYPES.forEach(div => {
-//     map[div.value] = div.text
-//   });
-//   return map;
-// }();
-
-export const DIVISION_MAP = {
-  'wwu-student': 'WWU Student',
-  'wwu-alumni': 'WWU Alumni',
-  // 'post-secondary': 'Post-Secondary/Non-WWU college',
-  'highschool': 'High School',
-  'open': 'Open',
-};
+export const DIVISION_MAP = function(){
+  map = {};
+  DIVISION_TYPES.forEach(div => {
+    map[div.value] = div.text
+  });
+  return map;
+}();

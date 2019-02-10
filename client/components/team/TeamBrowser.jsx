@@ -6,7 +6,14 @@ import { Container, Segment, Grid, Form, Header, Icon, Message } from 'semantic-
 import { filter, sortBy as sort } from 'lodash';
 import moment from 'moment';
 
-import { DIVISION_OPTS } from './imports/team-helpers.js';
+import {DIVISION_TYPES} from './imports/team-helpers';
+
+const DIVISION_OPTS = [
+  /* Just throw out all fields other than 'text' and 'value' */
+  ...(DIVISION_TYPES.map( ({text, value}) => ({text, value}))),
+  /* Add the 'All' sorting option */
+  { text: 'All', value: 'all' }
+];
 
 const SORT_BY_OPTS = [
   { text: 'None', value: 'none' },

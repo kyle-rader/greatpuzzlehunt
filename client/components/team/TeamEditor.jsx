@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
 import { Form, Message, Input, Popup, Icon, Checkbox } from 'semantic-ui-react';
+import { DIVISION_TYPES } from "./imports/team-helpers"
 
 TeamEditor = class TeamEditor extends Component {
 
@@ -10,13 +11,9 @@ TeamEditor = class TeamEditor extends Component {
     super(props);
     this.state = this._getStateFromProps(props);
 
-    this.divisions = [
-      { name: 'WWU Student - All team members must be currently enrolled at WWU (undergrad or grad).', value: 'wwu-student' },
-      { name: 'WWU Alumni - At least half of team members must be WWU Alumni.', value: 'wwu-alumni' },
-      // { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
-      { name: 'High School - All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member.', value: 'highschool' },
-      { name: 'Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian).', value: 'open' },
-    ];
+    this.divisions = DIVISION_TYPES.map(division => (
+      { name: division.text, value: division.value }
+    ));
 
     this._handleChange = (e, { name: dataName, value: dataValue } = {}) => {
       const name = e.target.name || dataName;
