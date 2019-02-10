@@ -14,12 +14,7 @@ import {
 
 import VolunteerTeamComp from './VolunteerTeamComp';
 
-const WRIST_BAND_COLOR = {
-  'wwu-student': 'Orange',
-  'wwu-alumni': 'Blue',
-  'highschool': 'Green',
-  'open': 'Yellow',
-};
+import {WRIST_BAND_COLOR} from "../../team/imports/team-helpers";
 
 class VolunteerTeamCheckInMain extends Component {
   constructor(props) {
