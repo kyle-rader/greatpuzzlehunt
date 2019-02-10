@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, {PropTypes} from 'react';
 import { Grid, Form, Message } from 'semantic-ui-react';
+import NCGiveUp from './NCGiveUp';
 
 export default class PuzzleAnswerForm extends React.Component {
   constructor(props) {
@@ -26,8 +27,17 @@ export default class PuzzleAnswerForm extends React.Component {
         <Form.Button basic fluid color='green' content='Submit Answer'/>
         { this._message() }
         { this._error() }
+        { this._giveUpButton() }
       </Form>
     );
+  }
+
+  _giveUpButton() {
+    const { team, puzzle } = this.props;
+    const show = team.division === "noncompetitive";
+    if(!show) return null;
+
+    return <NCGiveUp team={team} puzzle={puzzle} />
   }
 
   _handleSubmit(e) {

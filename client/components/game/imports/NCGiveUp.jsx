@@ -10,7 +10,11 @@ export default class GiveUp extends React.Component {
         }
         this._handleClick = this._handleClick.bind(this);
     }
-    _handleClick(){
+    _handleClick(e){
+        if(e.preventDefault) e.preventDefault();
+        let didConfirm = confirm("Are you sure you want to end this puzzle and get the answer?");
+        if(!didConfirm) return;
+
         let teamId = this.props.team._id;
         let puzzleId = this.props.puzzle.puzzleId;
         console.log(teamId, puzzleId);
@@ -43,7 +47,8 @@ export default class GiveUp extends React.Component {
 
     render(){
         return (
-            <Button disabled={this.state.loading} onClick={this._handleClick}>Give Up!</Button>
+            <Button fluid color='red' content='Get the Answer'
+                disabled={this.state.loading} onClick={this._handleClick} />
         );
     }
 }
