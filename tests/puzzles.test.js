@@ -222,6 +222,36 @@ describe('Gameplay tests', () => {
 
   it('lets users submit puzzle answers', () => {
     browser.url('http://localhost:3000/game');
-    while(true) {}
+    browser.pause(1000);
+
+    // Start the puzzle
+    browser.click('button=Start Puzzle!');
+
+    console.log('You will need to manually check-in the player with your phone...');
+
+    // Wait until the answer field shows up
+    browser.waitUntil(() => {
+      try {
+        browser.click('button=Submit Answer');
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }, 120000);
+
+    // Submit a bad answer
+    browser.setValue('input[name="answer"]', 'some answer');
+    browser.click('button=Submit Answer');
+    browser.pause(1000);
+
+    // Take a hint
+    browser.click('button=Take Hint 1');
+    browser.pause(1000);
+    browser.click('button=Take the Hint!');
+
+    // Input the correct answer
+    browser.setValue('input[name="answer"]', '42');
+    browser.click('button=Submit Answer');
+    browser.pause(1000);
   });
 });
