@@ -8,11 +8,12 @@ import { getHintsTaken } from '../../../lib/imports/puzzle-helpers';
 export default class CompletePuzzle extends React.Component {
   render() {
     const { team, puzzle, disabled } = this.props;
+    const isNC = team.division === "noncompetitive";
 
     return (
       <Segment disabled={ disabled }>
         <Header as='h3' content={ this.props.puzzle.name }/>
-        <PuzzleProgress puzzle={ puzzle }/>
+        {isNC ? "" : <PuzzleProgress puzzle={ puzzle }/>}
         <Message positive={ !puzzle.timedOut } warning={ puzzle.timedOut }>
           <Message.Header>{ this._header() }</Message.Header>
           { this._answer() }
