@@ -8,6 +8,7 @@ const CHECK_INTERVAL = {
 function timeOutPuzzles() {
   const now = moment();
   const teams = Teams.find({
+    division: { $ne: "noncompetitive" },
     currentPuzzle: { $ne: null },
   }).fetch();
 
