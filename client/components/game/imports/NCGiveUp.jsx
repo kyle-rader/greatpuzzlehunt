@@ -17,7 +17,6 @@ export default class GiveUp extends React.Component {
 
         let teamId = this.props.team._id;
         let puzzleId = this.props.puzzle.puzzleId;
-        console.log(teamId, puzzleId);
         this.setState({loading: true});
 
         Meteor.call("team.puzzle.giveUp", puzzleId, teamId, (error, result)=>{
