@@ -11,9 +11,7 @@ TeamEditor = class TeamEditor extends Component {
     super(props);
     this.state = this._getStateFromProps(props);
 
-    this.divisions = DIVISION_TYPES.map(division => (
-      { name: division.text, value: division.value }
-    ));
+    this.divisions = [...DIVISION_TYPES];
 
     this._handleChange = (e, { name: dataName, value: dataValue } = {}) => {
       const name = e.target.name || dataName;
@@ -55,7 +53,6 @@ TeamEditor = class TeamEditor extends Component {
         </Form.Group>
         <Form.Field>
           <label>Team Division <br/><small>This determines your prize group</small></label>
-          <strong>Note:</strong> Our new non-competitive division option is coming soon!
           <br/>
           {this._renderDivisionRadio()}
         </Form.Field>
@@ -88,7 +85,22 @@ TeamEditor = class TeamEditor extends Component {
   }
 
   _renderDivisionRadio() {
-    return this.divisions.map((division) => (<Form.Radio key={division.value} label={division.name} name='division' value={division.value} checked={this.state.division === division.value} onChange={(e, d) => this._handleDataChange(e, d)}/>));
+    return this.divisions.map((division) => {
+      const label = (
+        <label>
+          <strong>{division.text}</strong>
+          <span> </span>
+          <small>{division.description}</small>
+        </label>
+      );
+
+      return <Form.Radio key={division.value}
+        label={label}
+        name='division'
+        value={division.value}
+        checked={this.state.division === division.value}
+        onChange={(e, d) => this._handleDataChange(e, d)}/>
+    });
   }
 
   _handleTextChange(e) {
@@ -98,7 +110,9 @@ TeamEditor = class TeamEditor extends Component {
 
   _handleDataChange(e, data) {
     const { name, value, checked } = data;
-    // console.log(data);
+    if(value === "noncompetitive"){
+      if(!confirm("Are you sure? Non-competitive teams do not have a time limit and are not eligible for prizes!")) return;
+    }
     this.setState({ [name]: (value || checked) });
   }
 

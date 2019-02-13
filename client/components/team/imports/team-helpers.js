@@ -21,16 +21,16 @@ export const DIVISION_TYPES = [
     description: "All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member."
   },
   {
-    text: "Non-Competitive",
-    value: "noncompetitive",
-    wristBandColor: "(unknown)",
-    description: "[[NON-COMPETITIVE DIVISION DESCRIPTION]]"
-  },
-  {
     text: 'Open',
     value: 'open',
     wristBandColor: "Yellow",
-    description: "Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)."
+    description: "General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)."
+  },
+  {
+    text: "Non-Competitive",
+    value: "noncompetitive",
+    wristBandColor: "(unknown)",
+    description: "All teams who enjoy puzzling without time pressure."
   },
 ];
 
