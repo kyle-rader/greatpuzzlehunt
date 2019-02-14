@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
 import { Form, Message, Input, Popup, Icon, Checkbox } from 'semantic-ui-react';
+import { DIVISION_TYPES } from "./imports/team-helpers"
 
 TeamEditor = class TeamEditor extends Component {
 
@@ -10,13 +11,7 @@ TeamEditor = class TeamEditor extends Component {
     super(props);
     this.state = this._getStateFromProps(props);
 
-    this.divisions = [
-      { name: 'WWU Student - All team members must be currently enrolled at WWU (undergrad or grad).', value: 'wwu-student' },
-      { name: 'WWU Alumni - At least half of team members must be WWU Alumni.', value: 'wwu-alumni' },
-      // { name: 'Post-Secondary/Non-WWU college students', value: 'post-secondary' },
-      { name: 'High School - All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member.', value: 'highschool' },
-      { name: 'Open - General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian).', value: 'open' },
-    ];
+    this.divisions = [...DIVISION_TYPES];
 
     this._handleChange = (e, { name: dataName, value: dataValue } = {}) => {
       const name = e.target.name || dataName;
@@ -58,7 +53,6 @@ TeamEditor = class TeamEditor extends Component {
         </Form.Group>
         <Form.Field>
           <label>Team Division <br/><small>This determines your prize group</small></label>
-          <strong>Note:</strong> Our new non-competitive division option is coming soon!
           <br/>
           {this._renderDivisionRadio()}
         </Form.Field>
@@ -91,7 +85,22 @@ TeamEditor = class TeamEditor extends Component {
   }
 
   _renderDivisionRadio() {
-    return this.divisions.map((division) => (<Form.Radio key={division.value} label={division.name} name='division' value={division.value} checked={this.state.division === division.value} onChange={(e, d) => this._handleDataChange(e, d)}/>));
+    return this.divisions.map((division) => {
+      const label = (
+        <label>
+          <strong>{division.text}</strong>
+          <span> </span>
+          <small>{division.description}</small>
+        </label>
+      );
+
+      return <Form.Radio key={division.value}
+        label={label}
+        name='division'
+        value={division.value}
+        checked={this.state.division === division.value}
+        onChange={(e, d) => this._handleDataChange(e, d)}/>
+    });
   }
 
   _handleTextChange(e) {
@@ -101,7 +110,9 @@ TeamEditor = class TeamEditor extends Component {
 
   _handleDataChange(e, data) {
     const { name, value, checked } = data;
-    // console.log(data);
+    if(value === "noncompetitive"){
+      if(!confirm("Are you sure? Non-competitive teams do not have a time limit and are not eligible for prizes!")) return;
+    }
     this.setState({ [name]: (value || checked) });
   }
 

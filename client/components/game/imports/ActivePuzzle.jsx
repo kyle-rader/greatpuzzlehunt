@@ -12,6 +12,14 @@ export default class ActivePuzzle extends React.Component {
     super(props);
   }
 
+  /* Hide the progress bar for non-competitive teams */
+  _inner(team, puzzle){
+    const isNC = team.division === "noncompetitive";
+    if(isNC) return null;
+
+    return <PuzzleProgress puzzle={puzzle} />
+  }
+
   render() {
     const { team, puzzle } = this.props;
 
@@ -26,7 +34,7 @@ export default class ActivePuzzle extends React.Component {
           qrButtonLabel='Puzzle QR Code'
           color='grey'
         />
-        <PuzzleProgress puzzle={ puzzle }/>
+        { this._inner(team, puzzle) }
         <PuzzleAnswerForm
           team={ team }
           puzzle={ puzzle }
