@@ -92,18 +92,25 @@ export default class HomeHeader extends Component {
   _linkButtons() {
     return (
     <div>
-      <Message color="red" compact>
-        <Message.Header>Registration is now open!</Message.Header>
-      </Message>
-      <br />
-      <LinkButton to='/register' size='large' color='blue' content='Register'/>
-      <LinkButton to="/login" size='large' content='Log In'/>
-      <LinkButton to="/faq" size='large' content='FAQ'/>
+      <LinkButton to='/register' size='huge' color='blue' content='Register Now!'/>
+      <LinkButton to="/login" size='huge' content='Log In'/>
+      <br /><br />
+
+      <LinkButton as='a' href="https://www.wwu.edu/emarket/puzzlehunt/#tshirts"
+        size="large" target="_blank"
+        icon={<Icon name="shopping cart" />}
+        content="Buy Gear"
+        />
+      <LinkButton as='a' href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019"
+        size="large" target="_blank"
+        icon={<Icon name="tags" />}
+        content="Buy Tickets"
+        />
       <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
-        size='large' color='blue' content='Donate'
+        size='large' color='blue'
         icon={<Icon name='heart'/>}
+        content='Donate'
       />
-      <Button as='a' size="large" target="_blank" href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" content="Buy Tickets"/>
     </div>
     );
   }
