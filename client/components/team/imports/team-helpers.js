@@ -26,12 +26,12 @@ export const DIVISION_TYPES = [
     wristBandColor: "Yellow",
     description: "General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)."
   },
-  {
-    text: "Non-Competitive",
-    value: "noncompetitive",
-    wristBandColor: "(unknown)",
-    description: "All teams who enjoy puzzling without time pressure."
-  },
+  // {
+  //   text: "Non-Competitive",
+  //   value: "noncompetitive",
+  //   wristBandColor: "(unknown)",
+  //   description: "All teams who enjoy puzzling without time pressure."
+  // },
 ];
 
 export const WRIST_BAND_COLOR = function(){
