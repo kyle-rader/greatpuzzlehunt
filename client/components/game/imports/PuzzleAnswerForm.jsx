@@ -46,7 +46,6 @@ export default class PuzzleAnswerForm extends React.Component {
     const smartApostropheRegex = /\u{2018}|\u{2019}/ug
     const { puzzle } = this.props;
     const answer = this.state.answer.replace(smartQuoteRegex, '"').replace(smartApostropheRegex, '\'');
-    console.log(answer);
 
     Meteor.call('team.puzzle.answer', puzzle.puzzleId, answer, (error, result) => {
       this.setState({ answer: '' });
