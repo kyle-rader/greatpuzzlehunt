@@ -90,8 +90,14 @@ export default class HomeHeader extends Component {
   }
 
   _linkButtons() {
+    const earlyBirdEnd = moment("2019-03-17T23:59:59-0700");
+    let ebMessage = "";
+    if(moment() < earlyBirdEnd){
+      ebMessage = registerNowMessage;
+    }
     return (
     <div>
+      {ebMessage}
       <LinkButton to='/register' size='huge' color='blue' content='Register Now!'/>
       <LinkButton to="/login" size='huge' content='Log In'/>
       <br /><br />
