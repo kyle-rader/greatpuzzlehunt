@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
-import { Form, Message, Input, Popup, Icon, Checkbox } from 'semantic-ui-react';
+import { Form, Message, Input, Popup, Icon, Checkbox, Confirm, Segment } from 'semantic-ui-react';
 import { DIVISION_TYPES } from "./imports/team-helpers"
 
 TeamEditor = class TeamEditor extends Component {
@@ -10,6 +10,7 @@ TeamEditor = class TeamEditor extends Component {
   constructor(props) {
     super(props);
     this.state = this._getStateFromProps(props);
+    this.state.showConfirm = false;
 
     this.divisions = [...DIVISION_TYPES];
 
@@ -41,6 +42,8 @@ TeamEditor = class TeamEditor extends Component {
   render() {
     return (
       <Form widths='equal' onSubmit={(e) => this._saveTeam(e)}>
+
+        {this._ncConfirmation()}
 
         { (this.state.checkedIn) ? <Message positive header="Check in Confirmed" content="Your team is checked in an cannot be updated anymore"/> : null}
 
@@ -111,9 +114,28 @@ TeamEditor = class TeamEditor extends Component {
   _handleDataChange(e, data) {
     const { name, value, checked } = data;
     if(value === "noncompetitive"){
-      if(!confirm("Are you sure? Non-competitive teams do not have a time limit and are not eligible for prizes!")) return;
+      this.setState({showConfirm: true});
+    } else {
+      this.setState({ [name]: (value || checked) });
     }
-    this.setState({ [name]: (value || checked) });
+  }
+
+  _ncConfirmation(){
+    let { showConfirm } = this.state;
+    return (
+      <Confirm
+        open={showConfirm}
+        header="Are you sure?"
+        content={<Segment basic style={{fontSize: '16px'}}>
+          <p>Non-competitive teams do not have a time limit and are not eligible for prizes but for bragging rights, teams that solve at least one puzzle are recognized online for the number of puzzles completed!</p>
+        </Segment>}
+        confirmButton={`Yes, Non-Competitive`}
+        cancelButton="Nevermind"
+        onConfirm={() => this.setState({showConfirm: false, division: "noncompetitive" })}
+        onCancel={() => this.setState({showConfirm: false})}
+        size="large"
+      />
+    );
   }
 
   _saveTeam(e) {
