@@ -5,7 +5,7 @@ export const DIVISION_TYPES = [
   {
     text: 'WWU Student',
     value: 'wwu-student',
-    wristBandColor: "Orange",
+    wristBandColor: "Green",
     description: "All team members must be currently enrolled at WWU (undergrad or grad)."
   },
   {
@@ -17,21 +17,21 @@ export const DIVISION_TYPES = [
   {
     text: 'High School',
     value: 'highschool',
-    wristBandColor: "Green",
+    wristBandColor: "Purple",
     description: "All team members must be currently enrolled in high school. Exception: One adult chaperone per team may register as a team member."
   },
   {
     text: 'Open',
     value: 'open',
-    wristBandColor: "Yellow",
+    wristBandColor: "Orange",
     description: "General public, mixed student/non-student, family (children under age 14 must be accompanied by a parent/guardian)."
   },
-  // {
-  //   text: "Non-Competitive",
-  //   value: "noncompetitive",
-  //   wristBandColor: "(unknown)",
-  //   description: "All teams who enjoy puzzling without time pressure."
-  // },
+  {
+    text: "Non-Competitive",
+    value: "noncompetitive",
+    wristBandColor: "Yellow",
+    description: "All teams who enjoy puzzling without time pressure."
+  },
 ];
 
 export const WRIST_BAND_COLOR = function(){
