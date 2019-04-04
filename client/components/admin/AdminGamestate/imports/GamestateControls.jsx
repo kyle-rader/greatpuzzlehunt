@@ -54,6 +54,11 @@ class GamestateControlsInner extends Component {
         <Form.Group>
           { this._fieldButton('Gameplay') }
         </Form.Group>
+
+        <Header as='h3' content='Leaderboard'/>
+        <Form.Group>
+          { this._fieldButton('Leaderboard') }
+        </Form.Group>
       </Form>
     );
   }
