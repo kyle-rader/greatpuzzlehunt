@@ -29,7 +29,6 @@ class AdminLeaderboardDivisionTable extends Component {
         const { gaveUp, end } = puzzle;
         if(end && !gaveUp) nComplete++;
       });
-      console.log(`${team.name} completed ${nComplete} puzzles`);
       return -nComplete;
     });
 
