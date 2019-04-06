@@ -38,14 +38,18 @@ export default class PuzzleProgress extends React.Component {
 
     this.state = {
       start: moment(props.puzzle.start),
-      now: hasEnded ? moment(props.puzzle.end) : moment(),
+      now: hasEnded ? moment(props.puzzle.end) : null,
       hasEnded,
     };
 
     if (!hasEnded) {
-      this.interval = Meteor.setInterval(() => this.setState({
-        now: moment(),
-      }), 1000);
+      this.interval = Meteor.setInterval(() => {
+        const _this = this;
+        Meteor.call('serverTime', (err, time) => {
+          if (err) _this.setState({ now: moment() });
+          else _this.setState({ now: moment(time) });
+        })
+      }, 1000);
     }
   }
 
@@ -60,6 +64,12 @@ export default class PuzzleProgress extends React.Component {
     if (!start) {
       return (
         <Message content="Unstarted"/>
+      );
+    }
+
+    if (!now) {
+      return (
+        <Message content="Getting remaining time..." />
       );
     }
 
