@@ -6,6 +6,7 @@ import moment from 'moment';
 
 import LinkButton from '../../imports/LinkButton';
 import TimedComp from './TimedComp';
+import GamestateComp from '../../imports/GamestateComp'
 
 const { eventDate, earlyBirdLastDate, registrationCloseDate } = Meteor.settings.public;
 
@@ -31,7 +32,7 @@ const registrationClosesMessage = (
   </Message>
 );
 
-export default class HomeHeader extends Component {
+class HomeHeader extends Component {
   render() {
     return (
       <section className="pattern-bg" id="home-header">
@@ -92,6 +93,7 @@ export default class HomeHeader extends Component {
 
   _linkButtons() {
     const earlyBirdEnd = moment("2019-03-17T23:59:59-0700");
+    const { gamestate } = this.props;
     let ebMessage = "";
     if(moment() < earlyBirdEnd){
       ebMessage = registerNowMessage;
@@ -101,6 +103,7 @@ export default class HomeHeader extends Component {
       {ebMessage}
       <LinkButton to='/register' size='huge' color='blue' content='Register Now!'/>
       <LinkButton to="/login" size='huge' content='Log In'/>
+      {gamestate && gamestate.leaderboard ? <LinkButton to="/leaderboard" size='huge' content='2019 Leader Board'/> : null}
       <br /><br />
 
       {registrationClosesMessage}
@@ -120,3 +123,6 @@ export default class HomeHeader extends Component {
     );
   }
 }
+
+HomeHeader = GamestateComp(HomeHeader);
+export default HomeHeader
