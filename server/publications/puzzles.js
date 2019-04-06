@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { isAdmin, isVolunteer } from '../../lib/imports/method-helpers.js';
+import moment from 'moment'
 
 Meteor.publish('admin.puzzles', function() {
   if (!isAdmin(this.userId)) return this.ready();
@@ -22,4 +23,8 @@ Meteor.publish('volunteer.puzzles', function() {
     Puzzles.find({}, { fields: { location: 1, name: 1 } }),
     Gamestate.find({}),
   ];
+});
+
+Meteor.methods({
+  serverTime: () => moment().format(),
 });

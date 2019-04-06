@@ -19,7 +19,7 @@ export function renderDuration(duration) {
   const hours = pad(duration.hours().toString(), 2);
   const minutes = pad(duration.minutes().toString(), 2);
   const seconds = pad(duration.seconds().toString(), 2);
-  const negative = (hours < 0) || (minutes < 0) || (seconds < 0) ? "- " : "";
+  const negative = (hours < 0) || (minutes < 0) || (seconds < 0) ? "-" : "";
   return `${negative}${pad(Math.abs(hours))}:${pad(Math.abs(minutes))}:${pad(Math.abs(seconds))}`;
 }
 
@@ -38,14 +38,18 @@ export default class PuzzleProgress extends React.Component {
 
     this.state = {
       start: moment(props.puzzle.start),
-      now: hasEnded ? moment(props.puzzle.end) : moment(),
+      now: hasEnded ? moment(props.puzzle.end) : null,
       hasEnded,
     };
 
     if (!hasEnded) {
-      this.interval = Meteor.setInterval(() => this.setState({
-        now: moment(),
-      }), 1000);
+      this.interval = Meteor.setInterval(() => {
+        const _this = this;
+        Meteor.call('serverTime', (err, time) => {
+          if (err) _this.setState({ now: moment() });
+          else _this.setState({ now: moment(time) });
+        })
+      }, 1000);
     }
   }
 
@@ -60,6 +64,12 @@ export default class PuzzleProgress extends React.Component {
     if (!start) {
       return (
         <Message content="Unstarted"/>
+      );
+    }
+
+    if (!now) {
+      return (
+        <Message content="Getting remaining time..." />
       );
     }
 

@@ -25,7 +25,8 @@ const registrationClosesMessage = (
     <Message.Content>
       <Message.Header>Why Register Now?</Message.Header>
       Step 1 of Registration Closes {registrationCloseDate}, 11:59 PM. <br/>
-      You can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
+      Gear sales are closed, but
+      you can still <a href="https://commerce.cashnet.com/TheGreatPuzzleHunt2019" target="_blank">buy and redeem tickets</a> until 10:00 AM {eventDate}.
     </Message.Content>
   </Message>
 );
@@ -102,11 +103,13 @@ export default class HomeHeader extends Component {
       <LinkButton to="/login" size='huge' content='Log In'/>
       <br /><br />
 
-      <LinkButton as='a' href="https://www.wwu.edu/emarket/puzzlehunt/#design"
+      {registrationClosesMessage}
+
+      {/* <LinkButton as='a' href="https://www.wwu.edu/emarket/puzzlehunt/#design"
         size="large" color="blue" target="_blank"
         icon={<Icon name="shopping cart" />}
         content="Buy Gear"
-        />
+        /> */}
       <LinkButton to="/faq" size="large" content="FAQ" />
       <LinkButton as='a' href="https://alumni.wwu.edu/greatpuzzlehunt"
         size='large' color='green'
