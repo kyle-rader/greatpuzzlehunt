@@ -19,8 +19,18 @@ class AdminLeaderboardDivisionTable extends Component {
   render() {
     const { division, teams } = this.props;
 
-    const sortedTeams = sortBy(teams, (team) => {
+    const preSortedTeams = sortBy(teams, (team) => {
       return getFinalScore(team) + (team.finished ? 0 : UNFINISHED_OFFSET);
+    });
+    const sortedTeams = sortBy(preSortedTeams, team => {
+      /* Sort by the number of puzzles completed (not include those that they gave up on) */
+      let nComplete = 0;
+      team.puzzles.forEach(puzzle => {
+        const { gaveUp, end } = puzzle;
+        if(end && !gaveUp) nComplete++;
+      });
+      console.log(`${team.name} completed ${nComplete} puzzles`);
+      return -nComplete;
     });
 
     return (
@@ -71,14 +81,15 @@ class AdminLeaderboardDivisionTable extends Component {
   }
 
   _renderPuzzle(puzzle) {
-    const { score, start, end } = puzzle;
+    const { score, start, end, gaveUp } = puzzle;
     let hintsTaken = getHintsTaken(puzzle);
     const started = Boolean(start);
     const finished = Boolean(end);
     const inProgress = started && !finished;
     return (
       <Table.Cell key={puzzle.puzzleId} positive={finished} warning={!finished}>
-    {finished ? <code>{renderScore(puzzle.score).time} (hints {hintsTaken}) ({puzzle.score} sec)</code> : null }
+        { gaveUp ? <Icon name="ban" color="red" /> : null }
+        {finished ? <code>{renderScore(puzzle.score).time} (hints {hintsTaken}) ({puzzle.score} sec)</code> : null }
         {inProgress ? <div><Icon name="spinner" color="blue" loading /> In Progress</div> : null }
         { !started ? <code>--:--:--</code> : null }
       </Table.Cell>
