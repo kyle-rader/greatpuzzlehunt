@@ -19,7 +19,7 @@ export function renderDuration(duration) {
   const hours = pad(duration.hours().toString(), 2);
   const minutes = pad(duration.minutes().toString(), 2);
   const seconds = pad(duration.seconds().toString(), 2);
-  const negative = (hours < 0) || (minutes < 0) || (seconds < 0) ? "- " : "";
+  const negative = (hours < 0) || (minutes < 0) || (seconds < 0) ? "-" : "";
   return `${negative}${pad(Math.abs(hours))}:${pad(Math.abs(minutes))}:${pad(Math.abs(seconds))}`;
 }
 
