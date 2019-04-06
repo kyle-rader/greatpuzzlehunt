@@ -11,24 +11,24 @@ An on-line and in person real-time puzzle scavenger hunt!
 
 4. Install [Meteor](https://www.meteor.com/install)
 
-5. Use NVM to install `Node@4.4.7` and set an alias for that version as meteor.  If you want to use [yarn](https://code.facebook.com/posts/1840075619545360) as well install yarn.
+5. Use NVM to install the most recent version of Node and set an alias for that version as meteor.  If you want to use [yarn](https://code.facebook.com/posts/1840075619545360) as well install yarn.
 
   ```bash
-  $ nvm install 4.4.7
+  $ nvm install 11.12.0
 
-  $ nvm alias meteor 4.4.7
+  $ nvm alias meteor 11.12.0
   $ nvm use meteor
   $ npm i -g yarn
   ```
 6. Clone the repo
 
   ```bash
-  $ git clone git@github.com:kyle-rader/puzzlehunt.git
+  $ git clone git@github.com:cabeese/greatpuzzlehunt.git
   ```
 7. CD into the repo and install NPM packages
 
   ```bash
-  $ cd puzzlehunt/
+  $ cd greatpuzzlehunt/
   $ yarn install  # instead of npm install
   ```
 8. Add a new development settings file called `settings-development.json`
@@ -103,3 +103,11 @@ A few handy scripts exist in the `scripts/` directory.
 * `sh scripts/hh_export.sh` will export all the users in the database. Used for "hold harmless" records.
 * `sh scripts/update-heroku-config` will update the configuration settings in Heroku based on the `settings-prod.json` file.
 * `sh restore_db.sh` will restore the local MongoDB database with the contents of a Mongo "dump" file `gph-mongo.dump`
+
+# Troubleshooting
+
+You might see an error message about not having the right version of bcrypt/missing bcrypt. Just manually install it:
+
+```bash
+$ meteor npm install bcrypt
+```
