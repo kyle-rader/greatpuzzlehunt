@@ -99,7 +99,7 @@ export default class HomeHeader extends Component {
     return (
     <div>
       {ebMessage}
-      <LinkButton to='/register' size='huge' color='blue' content='Register Now!'/>
+      {/* <LinkButton to='/register' size='huge' color='blue' content='Register Now!'/> */}
       <LinkButton to="/login" size='huge' content='Log In'/>
       <br /><br />
 

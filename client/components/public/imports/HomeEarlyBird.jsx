@@ -15,9 +15,9 @@ export default class HomeEarlyBird extends Component {
 
               <Grid.Column width={8}>
                 <Image fluid src="/img/2016/event-photos/station1.jpg"/>
-                <Segment basic textAlign="center">
+                {/* <Segment basic textAlign="center">
                   <LinkButton to='/register' size='huge' content='Register'/>
-                </Segment>
+                </Segment> */}
              </Grid.Column>
 
              <Grid.Column width={6}>
