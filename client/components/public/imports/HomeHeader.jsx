@@ -103,7 +103,7 @@ export default class HomeHeader extends Component {
       <LinkButton to="/login" size='huge' content='Log In'/>
       <br /><br />
 
-      {registrationClosesMessage}
+      {/* {registrationClosesMessage} */}
 
       {/* <LinkButton as='a' href="https://www.wwu.edu/emarket/puzzlehunt/#design"
         size="large" color="blue" target="_blank"
