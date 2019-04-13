@@ -8,7 +8,8 @@ Meteor.publish('admin.puzzles', function() {
 });
 
 Meteor.publish('admin.leaderboard', function() {
-  if(!isAdmin(this.userId)) return this.ready();
+  const [gamestate] = Gamestate.find({}, { leaderboard: 1 }).fetch();
+  if(!gamestate.leaderboard && !isAdmin(this.userId)) return this.ready();
 
   // Return All Users and Teams that Checked In.
   return [

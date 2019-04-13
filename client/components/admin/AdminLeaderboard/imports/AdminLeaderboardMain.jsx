@@ -18,7 +18,7 @@ class AdminLeaderboardMain extends Component {
   }
 
   _stateFromProps(props) {
-    const { users, teams } = props;
+    const { teams } = props;
 
     return {
       teamsByDivision: groupBy(teams, (team) => team.division),
@@ -46,7 +46,6 @@ class AdminLeaderboardMain extends Component {
 }
 
 AdminLeaderboardMain.propTypes = {
-  user: PropTypes.object.isRequired,
   teams: PropTypes.arrayOf(Object).isRequired,
 };
 

@@ -18,6 +18,7 @@ export const renderRoutes = () => (
       <Route path='qrcode' component={QRCode}/>
       <Route path='register' component={Register}/>
       <Route path='rules' component={ RulesOfPlay }/>
+      <Route path='leaderboard' component={AdminLeaderboard} />
 
       {/* Authentication Routes */}
       <Route path='login' component={Login}/>
@@ -59,7 +60,6 @@ export const renderRoutes = () => (
         <IndexRoute component={AdminUsers} />
         <Route path='users' component={AdminUsers} />
         <Route path='transactions' component={AdminTransactions} />
-        <Route path='leaderboard' component={AdminLeaderboard} />
         <Route path='sponsors' component={AdminSponsors} />
         <Route path='puzzles' component={AdminPuzzles} />
         <Route path='gamestate' component={AdminGamestate} />

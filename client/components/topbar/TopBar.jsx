@@ -5,6 +5,14 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Icon } from 'semantic-ui-react';
 import Scrollchor from 'react-scrollchor';
 
+import GamestateComp from '../imports/GamestateComp';
+
+const leaderboardLink = {
+  name: 'Leaderboard',
+  to: '/leaderboard',
+  iconClass: 'yellow trophy',
+};
+
 const mainMenuLinks = [
   {
     name: 'Home',
@@ -67,7 +75,7 @@ const adminMenuItems = [
   },
   {
     name: 'Leaderboard',
-    to: '/admin/leaderboard',
+    to: '/leaderboard',
     iconClass: 'yellow trophy',
   },
   {
@@ -130,7 +138,11 @@ TopBar = class TopBar extends Component {
   }
 
   _renderMenuLinks(links) {
-    return links.map((item) => this._renderMenuLink(item));
+    const { gamestate } = this.props;
+    const linksToRender = links.slice();
+    if (gamestate && gamestate.leaderboard)
+      linksToRender.push(leaderboardLink);
+    return linksToRender.map((item) => this._renderMenuLink(item));
   }
 
   _renderMenuLink(item) {
@@ -282,6 +294,7 @@ TopBar = class TopBar extends Component {
 
 }
 
+TopBar = GamestateComp(TopBar);
 TopBar = withTracker(() => {
   return {
     user: Meteor.user(),
