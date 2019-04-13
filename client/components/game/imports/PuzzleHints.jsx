@@ -61,7 +61,11 @@ export default class PuzzleHints extends React.Component {
         <Message>
           <p>{ hint.text }</p>
           <br/>
-          {hint.imageUrl ? <Image src={hint.imageUrl }/> : null }
+          {hint.imageUrl ?
+            <Image as="a" href={hint.imageUrl} src={hint.imageUrl }/>
+            :
+            null
+          }
         </Message>
       );
     } else {
